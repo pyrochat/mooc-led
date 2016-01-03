@@ -1,2 +1,0 @@
- #!/bin/bash
-pandoc -s --normalize --css style.css -o index.html plan-mooc-led.md

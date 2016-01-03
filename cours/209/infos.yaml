@@ -1,0 +1,13 @@
+titre:
+    - "Séquenceurs à compteurs"
+type:             Théorie
+niveau:           avancé
+auteur:          
+    - YT
+statut:           Relecture
+code:             seq-compteur
+url:
+    cours-html:   seq-compteur.html
+    cours-pdf:    seq-compteur.pdf
+    dias-video:   seq-compteur-dia.pdf
+    dias-compact: seq-compteur-dia-compact.pdf

@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+/* Auteur : Nicolas Jeanmonod */
+/* Adaptations : Pierre-Yves Rochat */
+
+/* Pour installer la police Impact sur Ubuntu (source: https://doc.ubuntu-fr.org/msttcorefonts) :
+   sudo apt-get install ttf-mscorefonts-installer
+   Pour la conversion HTML ⇒ PDF http://weasyprint.org */
+
+@page {
+	size: 60.02cm 33.76cm;
+	margin: 0 0 0 0;
+	font-family: Impact, monospace;
+}
+
+body {
+	font-family: Arial Narrow, sans-serif;
+	font-size: 45pt;
+}
+
+section {
+	page-break-after: always;
+	display: block;
+}
+
+div {
+	display: block;
+	position: absolute;
+}
+
+div.liste_demi {
+	top: 7.0cm;
+	left: 35.0cm;
+	display: block;
+	position: absolute;
+	font-size: 53pt;
+	line-height: 1.5;
+}
+
+img {
+	display: block;
+	position: absolute;
+}
+
+h1 {
+	top:12.8cm;
+	left:2.62cm;
+	font-family: Impact, monospace;
+	font-weight: normal;
+	font-size:61pt;
+}
+
+h1.en_tete {
+	top: 0cm;
+	left: 2cm;
+	font-family: Impact, monospace;
+	font-weight: normal;
+	font-size: 61pt;
+	position: absolute;
+}
+
+pre, code {
+	font-family: Ubuntu Mono, monospace;
+}
+
+/* LISTES */
+ul
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+li
+{
+	margin: 0 0 0 0.75em;
+	padding: 0;
+	text-indent: 0;
+}
+
+li:before
+{
+	font-family: monospace;
+	font-size: 120%;
+	vertical-align: middle;
+	color: red;
+	content: "•";
+	margin: 0 0 0 -0.75em;
+	width: 0.75em;
+	padding: 0;
+	display: inline-block;
+}
+
+
+

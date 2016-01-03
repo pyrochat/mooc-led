@@ -1,0 +1,13 @@
+titre:
+    - "Représentation binaire"
+type:             Théorie
+niveau:           base
+auteur:          
+    - YT
+statut:           Relecture
+code:             binaire
+url:
+    cours-html:   ../104/binaire.html
+    cours-pdf:    ../104/binaire.pdf
+    dias-video:   ../104/binaire-dia.pdf
+    dias-compact: ../104/binaire-dia-compact.pdf

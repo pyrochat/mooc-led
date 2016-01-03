@@ -1,0 +1,14 @@
+titre:
+    - "Goutte tombante sur un ruban de LED"
+    - "Animation graphique sur afficheur matriciel RGB"
+type:             Devoir
+niveau:           base
+auteur:          
+    - '?'
+statut:           Pas publié
+code:             codeduchapitre
+url:
+    cours-html:   codeduchapitre.html
+    cours-pdf:    codeduchapitre.pdf
+    dias-video:   codeduchapitre-dia.pdf
+    dias-compact: codeduchapitre-dia-compact.pdf

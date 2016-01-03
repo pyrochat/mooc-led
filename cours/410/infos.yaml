@@ -1,0 +1,14 @@
+titre:
+    - "Afficheur matriciel 31x7 (veroboard)"
+    - "Afficheur 16x16"
+type:             Expérience
+niveau:           base
+auteur:          
+    - PCB
+statut:           Pas publié
+code:             codeduchapitre
+url:
+    cours-html:   codeduchapitre.html
+    cours-pdf:    codeduchapitre.pdf
+    dias-video:   codeduchapitre-dia.pdf
+    dias-compact: codeduchapitre-dia-compact.pdf

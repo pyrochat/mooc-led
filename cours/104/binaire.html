@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Pierre-Yves Rochat, EPFL" />
+  <title>Nombres et champs de bits</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Nombres et champs de bits</h1>
+<h2 class="author"><script type="text/javascript">
+<!--
+h='&#112;&#x79;&#114;&#46;&#x63;&#104;';a='&#64;';n='&#112;&#x79;&#114;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Pierre-Yves Rochat'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;&#32;&#40;&#112;&#x79;&#114;&#32;&#x61;&#116;&#32;&#112;&#x79;&#114;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#104;&#x29;</noscript>, EPFL</h2>
+<h3 class="date">et <script type="text/javascript">
+<!--
+h='&#x79;&#x61;&#104;&#x6f;&#x6f;&#46;&#102;&#114;';a='&#64;';n='&#116;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#x79;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Yves Tiecoura'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#x59;&#118;&#x65;&#x73;&#32;&#84;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#32;&#40;&#116;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#x79;&#32;&#x61;&#116;&#32;&#x79;&#x61;&#104;&#x6f;&#x6f;&#32;&#100;&#x6f;&#116;&#32;&#102;&#114;&#x29;</noscript>, INP-HB</h3>
+</div>
+<p>% rév 2015/12/25</p>
+<p>Document en cours de relecture, rév du 2015/12/13 Ce document n'est pas à jour, il n'a pas encore été adapté aux modifications des diapositives pour la vidéo.</p>
+<h2 id="bascules-et-registres">Bascules et registres</h2>
+<p>Une LED peut être, à un instant donné, allumée ou éteinte. Cette valeur est généralement mémorisée par une bascule.</p>
+<p>Les enseignes et afficheurs à LED utilisent beaucoup de registres, composée de bascule. Ces registres sont souvent de 8 bits, de 16 bits, mais aussi de valeur beaucoup plus grande.</p>
+<p>La valeur de chaque LED est aussi fréquemment mémorisée dans la mémoire d'un microcontrôleur. Le processeur du microcontrôleur reçoit des données de ses entrées, il les traite et diffuse les résultats sur ses sorties. Tous les systèmes informatiques travaillent en binaire.</p>
+<p>....</p>
+<h2 id="champ-de-bit">Champ de bit</h2>
+<p>On appelle bit un symbole binaire. Il peut prendre les valeur <em>0</em> et <em>1</em>, qui peuvent aussi s'appeler <em>vrai</em> et <em>faux</em>, <em>allumé</em> et <em>éteint</em>, etc.</p>
+<p>On désigne par mot binaire, ou champ de bits, un ensemble de bits. Des opérations logiques peuvent s'appliquer à ces champs de bits (non, et, ou, etc). Elles seront étudiées plus loin dans ce cours.</p>
+<h2 id="nombres-binaires">Nombres binaires</h2>
+<p>Un champ de bit peut aussi représenter un nombre. La numération binaire est bien connue :</p>
+<div class="figure">
+<img src="images/numeration-bin.png" title="Nombres positifs sur 3 bits" alt="Figure : Numération binaire" />
+<p class="caption">Figure : Numération binaire</p>
+</div>
+<p>... poids...</p>
+<p>Par exemple, 2345 (en décimal) s'exprime par 100100101001 en nombre binaire. Preuve en est : 1<em>1 + 0</em>2 + 0<em>4 + 1</em>8 + 0<em>16 + 1</em>32 + 0<em>64 + 0</em>128 + 1<em>256 + 0</em>512 + 0<em>1024 + 1</em>2048 vaut bien 2345.</p>
+<p>Pour coder un nombre décimal en binaire, on effectue des divisions entières successives par 2 jusqu'à ce que le quotient soit nul. Le premier reste est le poids faible, le dernier est le poids fort.</p>
+<h2 id="arithmétique-modulaire">Arithmétique modulaire</h2>
+<p>Lorsque qu'un nombre est matérialisé dans un circuit électronique, il a forcément une taille limitée.</p>
+<p>On peut utiliser ces nombres pour des calculs. Mais il faut être attentif que ces nombres ont une limite dans leur taille. En étudiant les mathématiques, on prend l'habitude d'utiliser des nombres immatériels, qui peuvent être aussi grands que nécessaire. Lorsqu'un nombre doit être matérialisé dans une dispositif physique, dans notre cas dans un registre ou une mémoire d'ordinateur, sa taille est forcément limitée. On se trouve alors en face d'une arithmétique différente, l'<em>arithmétique modulaire</em>.</p>
+<p>Pour bien la comprendre, prenons l'exemple des nombres représentés par 3 bits. Ils peuvent prendre 8 valeur (2 à la puissance 3).</p>
+<div class="figure">
+<img src="images/nombres-pos.png" title="Nombres positifs sur 3 bits" alt="Figure : Nombres positifs sur 3 bits" />
+<p class="caption">Figure : Nombres positifs sur 3 bits</p>
+</div>
+<p>On voit qu'il n'est possible de représenter qu'un nombre limité de valeurs. S'il s'agissait de nombres de 8 bits, on aurait un choix de 256 valeurs (de 0 à 255). Pour des nombres de 16 bits, on aurait 65'536 valeurs (de 0 à 65'535).</p>
+<p>Sur le cercle qui représente l'ensemble des valeurs possible, l'incrémentation (addition de <em>1</em>) correspond à une avance dans un sens. Lorsqu'on dépasse la valeur la plus grande (<em>7</em> dans le cas de 3 bits), on retrouve la valeur <em>0</em>. On a franchi la limite du dépassement de capacité (<em>overflow</em> en anglais).</p>
+<p>La décrémentation (soustraction de <em>1</em>) correspond au sens contraire. Un dépassement de capacité se produit aussi lors du passage de <em>0</em> à la valeur la plus grande</p>
+<p>Les opérations arithmétiques classiques sur les nombres entiers doivent donc tenir compte du dépassement de capacité. Il s'agit de l'arithmétique modulaire. Dans le cas de 3 bits le résultat est donné <em>modulo 8</em>. L'opération Modulo correspond aussi au reste de la division entière.</p>
+<p>Prenons quelques exemples :</p>
+<div class="figure">
+<img src="images/oper-3bits-pos.png" title="Opérations sur des nombre de 3 bits" alt="Figure : Opérations sur des nombre de 3 bits" />
+<p class="caption">Figure : Opérations sur des nombre de 3 bits</p>
+</div>
+<h2 id="nombres-signés">Nombres signés</h2>
+<p>Dans l'usage courant, les nombres peuvent être positifs ou négatifs. Est-ce possible de les représenter en binaire ? Il existe beaucoup de manière de le faire et plusieurs d'entre elles ont été utilisées au cours de l'histoire de l'informatique. Mais c'est la représentation appelée <em>en complément à 2</em> qui est de loin la plus utilisée actuellement.</p>
+<p>Voici une figure qui en explique le principe, appliqué à des nombres de 3 bits :</p>
+<div class="figure">
+<img src="images/nombres-pos-neg.png" title="Nombres positifs et négatifs sur 3 bits" alt="Figure : Nombres positifs et négatifs sur 3 bits" />
+<p class="caption">Figure : Nombres positifs et négatifs sur 3 bits</p>
+</div>
+<p>On remarque que le bit de poids fort indique s'il est à <em>1</em> que le nombre est négatif.</p>
+<h2 id="types-en-c">Types en C</h2>
+<p>Les langages de programmation définissent aussi des types avec des nombre entiers d'une taille limités. Les types permettent d'allouer l'espace mémoire optimal pour pour chaque format.</p>
+<p>Les types <em>historiques</em> du C sont :</p>
+<ul>
+<li><strong><code>char</code></strong> : mot de 8 bits (signé ou non signé, selon les réglages du compilateur)</li>
+<li><strong><code>signed char</code></strong> : mot de 8 bits signé</li>
+<li><strong><code>unsigned char</code></strong> : mot de 8 bits positif</li>
+<li><strong><code>int</code></strong> : mot <em>généralement</em> de 16 bits (signé ou non, selon les réglages du compilateur)</li>
+<li><strong><code>signed int</code></strong> : mot de 16 bits signé</li>
+<li><strong><code>unsigned int</code></strong> : mot de 16 bits positif</li>
+<li><strong><code>long int</code></strong> : mot <em>généralement</em> de 32 bits (signé ou non, selon les réglages du compilateur)</li>
+<li><strong><code>signed long int</code></strong> : mot de 32 bits signé</li>
+<li><strong><code>unsigned long int</code></strong> : mot de 32 bits positif.</li>
+</ul>
+<p>Ces notations sont souvent ambiguës. On préfère maintenant une notation plus claire, standardisée depuis la version C99 :</p>
+<ul>
+<li><strong><code>int8_t</code></strong> : mot de 8 bits signé</li>
+<li><strong><code>uint8_t</code></strong> : mot de 8 bits positif</li>
+<li><strong><code>int16_t</code></strong> : mot de 16 bits signé</li>
+<li><strong><code>uint16_t</code></strong> : mot de 16 bits positif</li>
+<li><strong><code>int32_t</code></strong> : mot de 32 bits signé</li>
+<li><strong><code>uint32_t</code></strong> : mot de 32 bits positif.</li>
+</ul>
+<p>C'est cette notation que nous utiliserons dans ce cours.</p>
+<p>Les opérations arithmétiques disponibles pour ces types sont : * l'addition (symbole +) * la soustraction (symbole -) * la multiplication (symbole <em>)</em> la division entière (symbole /) * le reste de la division entière, appelée aussi modulo (symbole %).</p>
+<h2 id="hexadécimal">Hexadécimal</h2>
+<p>Dans notre exemple précédent, le nombre 2345, qui utilise quatre digits en base 10, prend déjà 12 bits en binaire. L'écriture en binaire et fastidieuse pour l'être humain !</p>
+<p>En utilisant une base qui est une puissance de 2, on bénéficie d'une conversion très simple avec le binaire. La base la plus pratique est la base 16, appelée Hexadécimal.</p>
+<div class="figure">
+<img src="images/Hexa-def-40.png" title="Hexadécimal" alt="Figure : Hexadécimal" />
+<p class="caption">Figure : Hexadécimal</p>
+</div>
+<p>Pour convertir un nombre binaire en hexadécimal, il suffit de le couper en tranches de 4 bits de la droite vers la gauche. On complétera à gauche avec des zéros non significatifs.</p>
+<div class="figure">
+<img src="images/Hexa-5BA0.png" title="Conversion binaire-hexadécimal" alt="Figure : Conversion binaire-hexadécimal" />
+<p class="caption">Figure : Conversion binaire-hexadécimal</p>
+</div>
+<p>Pour convertir un nombre hexadécimal en binaire, il faut simplement écrire les 4 valeurs binaires de chaque digit hexadécimal.</p>
+<h2 id="codage-des-caractères">Codage des caractères</h2>
+<p>Parmi les données que traitent les systèmes informatique (par exemple un microcontrôleur), on trouve souvent des caractères. Pour représenter les caractères, on utilise des tables de transcodage vers le binaire.</p>
+<p>Un codage sur 7 bits a été standardisé dans les années 1960.</p>
+<div class="figure">
+<img src="images/ASCII-code.png" title="Caractères Ascii" alt="Figure : Caractères Ascii" />
+<p class="caption">Figure : Caractères Ascii</p>
+</div>
+<p>Malheureusement, les caractères accentués n'étant pas standardisés par la table Ascii, un grand nombre de tables sont apparues, qui cohabitent encore à notre époque de l'Internet.</p>
+<p>Une des tables les plus souvent utilisées est l'UTF8.</p>
+</body>
+</html>

@@ -20,7 +20,7 @@
 			text-align: center;
 		}
 	</style>
-	<link rel="stylesheet" href="statiques/style.css" type="text/css" />
+	<link rel="stylesheet" href="statique/style.css" type="text/css" />
 </head>
 <body>
 	<div id="header">
@@ -28,7 +28,7 @@
 	</div>
 	<!-- <div style="text-align:center; margin: 100px 0;"> -->
 	<div class="container">
-		<img src="statiques/images/vignette.jpg" alt="Vignette du MOOC" style="width:400px;"/>
+		<img src="images/vignette.jpg" alt="Vignette du MOOC" style="width:400px;"/>
 		<p>Ce MOOC a pour but de présenter les concepts et techniques permettant de comprendre et de mettre en œuvre des enseignes et des afficheurs à LED.</p>
 		<p class="center"><a href="cours/000/plan-mooc-led.html">Table des matières</a></p>
 	</div>

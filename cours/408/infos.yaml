@@ -1,0 +1,13 @@
+titre:
+    - "Commande d’un afficheur matriciel multiplexé avec une FPGA"
+type:             Théorie
+niveau:           avancé
+auteur:          
+    - MLN
+statut:           Pas publié
+code:             codeduchapitre
+url:
+    cours-html:   codeduchapitre.html
+    cours-pdf:    codeduchapitre.pdf
+    dias-video:   codeduchapitre-dia.pdf
+    dias-compact: codeduchapitre-dia-compact.pdf

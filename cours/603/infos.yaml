@@ -1,0 +1,13 @@
+titre:
+    - "Horloge temps réel"
+type:             Théorie
+niveau:           base
+auteur:          
+    - PYR
+statut:           Relecture
+code:             horloge
+url:
+    cours-html:   horloge.html
+    cours-pdf:    horloge.pdf
+    dias-video:   horloge-dia.pdf
+    dias-compact: horloge-dia-compact.pdf

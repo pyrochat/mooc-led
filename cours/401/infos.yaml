@@ -1,0 +1,13 @@
+titre:
+    - "Les afficheurs matriciels"
+type:             Théorie
+niveau:           base
+auteur:          
+    - PYR
+statut:           Relecture
+code:             matrice
+url:
+    cours-html:   matrice.html
+    cours-pdf:    matrice.pdf
+    dias-video:   matrice-dia.pdf
+    dias-compact: matrice-dia-compact.pdf

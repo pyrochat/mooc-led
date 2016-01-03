@@ -1,0 +1,13 @@
+titre:
+    - "Circuits logiques combinatoires"
+type:             Théorie
+niveau:           base
+auteur:          
+    - MLN
+statut:           Relecture
+code:             sys-combi
+url:
+    cours-html:   sys-combi.html
+    cours-pdf:    sys-combi.pdf
+    dias-video:   sys-combi-dia.pdf
+    dias-compact: sys-combi-dia-compact.pdf

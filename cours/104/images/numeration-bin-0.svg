@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="387.22046"
+   height="322.18796"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="numeration-bin-0.svg"
+   inkscape:export-filename="/home/pyr/Dropbox/MOOC-Leds/10-doc-pyr-mooc-led/104-binaire/images/numeration-bin-0.png"
+   inkscape:export-xdpi="300.0112"
+   inkscape:export-ydpi="300.0112">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="128.66978"
+     inkscape:cy="164.05084"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1393"
+     inkscape:window-height="876"
+     inkscape:window-x="47"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     units="mm"
+     fit-margin-top="4"
+     fit-margin-bottom="4"
+     fit-margin-left="4"
+     fit-margin-right="4">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985"
+       units="mm"
+       empspacing="5"
+       dotted="true"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="-9.8588875mm"
+       originy="-102.85889mm" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-34.933071,-365.71358)">
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="198.4252"
+       y="301.18106"
+       id="text2989-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2991-9"
+         x="198.4252"
+         y="301.18106" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="53.149612"
+       y="435.82675"
+       id="text5049"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="435.82675"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch"
+         id="tspan5677">        0        0</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="450.82675"
+         id="tspan5053"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">        1        1</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="465.82675"
+         id="tspan5055"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">      1 0        2</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="480.82675"
+         id="tspan5057"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">      1 1        3</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="495.82675"
+         id="tspan5059"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">    1 0 0        4</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="510.82675"
+         id="tspan5061"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">    1 0 1        5</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="525.82672"
+         id="tspan5063"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">    1 1 0        6</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="540.82672"
+         id="tspan5065"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">    1 1 1        7</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="555.82672"
+         id="tspan5067"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">  1 0 0 0        8</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="570.82672"
+         id="tspan5069"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">  1 0 0 1        9</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="585.82672"
+         id="tspan5071"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">  1 0 1 0       10</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="600.82672"
+         id="tspan5073"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">  1 0 1 1       11</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="615.82672"
+         id="tspan5075"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">  1 1 0 0       12</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="630.82672"
+         id="tspan5077"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">  1 1 0 1       13</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="645.82672"
+         id="tspan5079"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">  1 1 1 0       14</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="660.82672"
+         id="tspan5081"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">  1 1 1 1       15</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="675.82672"
+         id="tspan5083"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">1 0 0 0 0       16</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:13px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="67.322838"
+       y="389.76376"
+       id="text5112"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5114"
+         x="67.322838"
+         y="389.76376">Codage binaire</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 187.79528,400.39368 0,279.92125 -138.188976,0 -5e-6,-279.92125 z"
+       id="path5671"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 21.759847,55.93993 127.559053,0"
+       id="path5679"
+       inkscape:connector-curvature="0"
+       transform="translate(34.933071,365.71358)"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="53.149612"
+       y="414.56689"
+       id="text5049-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5051-1"
+         x="53.149612"
+         y="414.56689"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">  Binaire  Décimal</tspan><tspan
+         sodipodi:role="line"
+         x="53.149612"
+         y="429.56689"
+         id="tspan5083-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch" /></text>
+  </g>
+</svg>

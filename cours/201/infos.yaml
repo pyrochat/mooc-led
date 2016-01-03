@@ -1,0 +1,13 @@
+titre:
+    - "Le transistor"
+type:             Théorie
+niveau:           base
+auteur:          
+    - YT
+statut:           Relecture
+code:             transistor
+url:
+    cours-html:   transistor.html
+    cours-pdf:    transistor.pdf
+    dias-video:   transistor-dia.pdf
+    dias-compact: transistor-dia-compact.pdf

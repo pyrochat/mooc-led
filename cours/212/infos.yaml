@@ -1,0 +1,13 @@
+titre:
+    - "MSP430, chenillard 8 LED et 1 poussoir sur breadboard"
+type:             Expérience
+niveau:           base
+auteur:          
+    - '?'
+statut:           Pas publié
+code:             codeduchapitre
+url:
+    cours-html:   codeduchapitre.html
+    cours-pdf:    codeduchapitre.pdf
+    dias-video:   codeduchapitre-dia.pdf
+    dias-compact: codeduchapitre-dia-compact.pdf

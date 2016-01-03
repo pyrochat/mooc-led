@@ -1,0 +1,14 @@
+titre:
+    - "Rubans de LEDs RGB, pilotée par un MSP432"
+    - "Afficheur Matriciel RGB"
+type:             Expérience
+niveau:           base
+auteur:          
+    - '?'
+statut:           Pas publié
+code:             codeduchapitre
+url:
+    cours-html:   codeduchapitre.html
+    cours-pdf:    codeduchapitre.pdf
+    dias-video:   codeduchapitre-dia.pdf
+    dias-compact: codeduchapitre-dia-compact.pdf

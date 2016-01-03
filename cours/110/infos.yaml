@@ -1,0 +1,13 @@
+titre:
+    - "Synthèse de circuits combinatoires"
+type:             Théorie
+niveau:           base
+auteur:          
+    - MLN
+statut:           Relecture
+code:             synth-combi
+url:
+    cours-html:   synth-combi.html
+    cours-pdf:    synth-combi.pdf
+    dias-video:   synth-combi-dia.pdf
+    dias-compact: synth-combi-dia-compact.pdf

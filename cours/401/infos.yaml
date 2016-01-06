@@ -7,7 +7,7 @@ auteur:
 statut:           Relecture
 code:             matrice
 url:
-    cours-html:   matrice.html
-    cours-pdf:    matrice.pdf
-    dias-video:   matrice-dia.pdf
-    dias-compact: matrice-dia-compact.pdf
+    cours-html:   ../401/matrice.html
+    cours-pdf:    ../401/matrice.pdf
+    dias-video:   ../401/matrice-dia.pdf
+    dias-compact: ../401/matrice-dia-compact.pdf

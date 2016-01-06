@@ -7,5 +7,5 @@ pandoc  --standalone --from markdown --to html --highlight-style pygments --emai
 
 weasyprint binaire-dia-compact.html binaire-dia-compact.pdf
 
-rm binaire-dia-pre.md
+rm binaire-dia-pre-compact.md
 rm binaire-dia.html

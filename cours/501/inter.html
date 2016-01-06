@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Yves Tiecoura, INP-HB Yamoussoukro" />
+  <title>Les interruptions</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Les interruptions</h1>
+<h2 class="author"><script type="text/javascript">
+<!--
+h='&#x79;&#x61;&#104;&#x6f;&#x6f;&#46;&#102;&#114;';a='&#64;';n='&#116;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#x79;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Yves Tiecoura'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#x59;&#118;&#x65;&#x73;&#32;&#84;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#32;&#40;&#116;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#x79;&#32;&#x61;&#116;&#32;&#x79;&#x61;&#104;&#x6f;&#x6f;&#32;&#100;&#x6f;&#116;&#32;&#102;&#114;&#x29;</noscript>, INP-HB Yamoussoukro</h2>
+<h3 class="date">rév 2015/12/13</h3>
+</div>
+<p>Version provisoire. Nous travaillons sur ce document, mais les remarques sont les bienvenues !</p>
+<h2 id="motivation">Motivation</h2>
+<p>Un système à microcontrôleur est généralement pourvu d'entrées et de sorties. Le but premier du programme est souvent de réagir correctement aux changements d'état des entrées, en agissant en conséquence sur les sorties.</p>
+<p>Les enseignes et afficheurs à LED sont plutôt une exception dans ce domaine. Beaucoup d'enseignes ou d'afficheurs n'ont aucune entrée et ne font que faire évoluer les sorties selon un ordre prédéfini.</p>
+<p>Il existe toutefois des cas où une enseigne ou un afficheur doit réagir à des entrées. Par exemple, une télécommande peut être utilisée pour allumer et éteindre un afficheur, changer sa luminosité ou le texte qu'il doit afficher. Un autre cas où le système doit réagir à un événement est la gestion du temps dans un afficheur multiplexé : à des instants précis, il faut envoyer de nouvelles valeurs sur les LED.</p>
+<h2 id="définition">Définition</h2>
+<p>On appelle <strong>interruption</strong> dans un système informatique l'arrêt temporaire d'un programme au profit d'un autre programme, jugé à cet instant plus important. L'interruption correspond au sens qu'on donne à ce mot dans nos vies courantes. Prenons un exemple : je suis en train de travailler à mon bureau. Le téléphone sonne. Je vais répondre au téléphone. Après la conversation, je reprends mon travail là où je l'avais laissé.</p>
+<div class="figure">
+<img src="images/dring-allo-90dpi.png" title="Interruption dans la vie courante" alt="Interruption dans la vie courante" />
+<p class="caption">Interruption dans la vie courante</p>
+</div>
+<p>C'est toujours un <em>événement</em> qui va produire une interruption. Cet événement a un caractère imprévisible, le programme ne sais pas quand il va se produire.</p>
+<h2 id="implémentation">Implémentation</h2>
+<p>Pour utiliser les interruptions, il n'est pas indispensable de comprendre en détail le mécanisme qui les rend possibles. C'est comme les procédures ou les fonctions, que nous avons l'habitude d'utiliser sans forcément connaître les mécanismes matériels qui les rendent possibles.</p>
+<p>Toutefois, nous allons ici faire une petite incursion dans le monde de la programmation en assembleur, pour mieux comprendre les interruptions. La figure ci-dessous montre un programme, dont les instructions successives sont notées en bleu. Dans le cas où une fraction du programme doit s'exécuter plusieurs fois, on a l'habitude de grouper ses instructions, notées ici en vert. On appelle ce morceau de programme une <em>routine</em> ou <em>sous-routine</em>. Ce concept correspond aux procédures et aux fonctions dans les langages évolués comme le C.</p>
+<div class="figure">
+<img src="images/inter-principe7-court.png" title="Appel d&#39;une routines" alt="Appel d&#39;une routine" />
+<p class="caption">Appel d'une routine</p>
+</div>
+<p>L'appel de la routine se fait par une instruction <strong>Call</strong> dans le programme principal. A la fin de l'exécution de la routine, une instruction <strong>Ret</strong> (return = retour) permet de revenir au programme appelant, juste après l'instruction <em>Call</em>. La routine peut être appelée plusieurs fois dans le programme principal.</p>
+<p>Notons que l'adresse de retour doit être mémorisée pour que le retour soit possible. C'est une <strong>pile</strong> (<em>stack</em>) en mémoire vive qui est utilisée à cette fin. Nous ne détaillerons pas son mécanisme ici.</p>
+<p>Regardons maintenant la figure suivante. Un nouvelle routine, appelée <strong>Routine d'interruption</strong> est représentée en rouge. On voit qu'elle va aussi s'exécuter. Mais son exécution n'est pas la conséquence d'une instruction <em>Call</em>.</p>
+<div class="figure">
+<img src="images/inter-principe.png" title="Principe des interruptions" alt="Principe des interruptions" />
+<p class="caption">Principe des interruptions</p>
+</div>
+<p>Rien dans le programme principal ne permet de savoir que cette routine va s'exécuter. C'est un <strong>événement</strong> qui est la cause de son exécution. C'est ce qu'on appelle un interruption.</p>
+<p>La routine d'interruption se termine aussi par une instruction de retour, appelée <strong>Reti</strong> (<em>return from interrupt</em>). En plus d'effectuer le retour au programme interrompu, elle rétablit le mode de sensibilité aux interruptions qui prévalait avant l'interruption.</p>
+<h2 id="nature-des-événements">Nature des événements</h2>
+<p>Quels sont ces événements qui vont produire une interruption ? Il en existe principalement deux sortes :</p>
+<ul>
+<li>Les événements <strong>extérieurs</strong> au microcontrôleur. Il s'agit par exemple d'un changement sur une entrée.</li>
+<li>Les événements <strong>intérieurs</strong> au microcontrôleur. Par exemple, beaucoup de microcontrôleurs sont pourvus d'un convertisseur analogique-numérique (<em>ADC = Analog to Digital Converter</em>). La conversion est déclenchée par un fanion et dure un certain temps. Plutôt que d'attendre la fin de la conversion, le programme principal peut continuer, puis être interrompu au moment de la fin de la conversion.</li>
+</ul>
+<p>Dans cette catégorie des interruptions intérieures au microcontrôleur, les plus importantes sont celle liées aux <strong>Timers</strong>. Ce sujet sera abordé dans un chapitre séparé, vu son importance pour la commande des enseignes et afficheurs à LED.</p>
+<h2 id="discrimination-des-sources-dinterruption">Discrimination des sources d'interruption</h2>
+<p>Il existe généralement plusieurs sources interruptions sur un microcontrôleur. Lorsqu'une interruption se produit, le système doit être capable d'en savoir la source. Si rien n'est prévu au niveau matériel, la routine d'interruption doit consulter les registres pour chaque interruption, pour connaître celle qui a été activée.</p>
+<p>Les <strong>vecteurs d'interruption</strong> (<em>interrupt vectors</em>) permettent d'être plus efficace : une adresse différente est réservée pour le début de la routine de chaque interruption.</p>
+<p>Souvent ces deux mécanismes vont être utilisés successivement, comme nous le verrons plus bas lors d'une interruption produite par une entrée sur un MSP430.</p>
+<p>Voici la table résumée des vecteurs d'interruption pour un MSP430G, y compris l'adresse pour le Reset :</p>
+<ul>
+<li>0xFFFE : Reset</li>
+<li>0xFFFC : NMI</li>
+<li>0xFFFA : Timer1 CCR0</li>
+<li>0xFFF8 : Timer1 CCR1, CCR2, TAIFG</li>
+<li>0xFFF6 : Comparator_A</li>
+<li>0xFFF4 : Watchdog Timer</li>
+<li>0xFFF2 : Timer0 CCR0</li>
+<li>0xFFF0 : Timer0 CCR1, CCR2, TAIFG</li>
+<li>0xFFEE : USCI status</li>
+<li>0xFFEC : USCI receive/transmit</li>
+<li>0xFFEA : ADC10</li>
+<li>0xFFE8 : -</li>
+<li>0xFFE6 : Port P2</li>
+<li>0xFFE4 : Port P1</li>
+</ul>
+<p>Les adresses se trouvent en mémoire flash, ce sont les dernières adresses de l'espace d'adressage de 16 bits.</p>
+<p>Plusieurs sources d'interruptions nécessitent la scrutation pour déterminer la cause exacte de l'interruption. C'est le cas par exemple des interruptions sur les ports : chaque bit peut produire une interruption. C'est aussi le cas d'une des interruptions des Timers : les registre de comparaison 1 et 2, ainsi que l'interruption générale du Timer sont regroupés sur un vecteur unique.</p>
+<h2 id="mise-en-œuvre-dune-interruption">Mise en œuvre d'une interruption</h2>
+<p>Plusieurs étapes sont nécessaire pour mettre en œuvre une routine d'interruption :</p>
+<ol style="list-style-type: decimal">
+<li>Enclencher l'interruption qui nous intéresse. Par exemple une interruption sur une entrée.</li>
+<li>Préciser comment cette interruption doit fonctionner. Par exemple dire sur quel flanc l'interruption doit se produire.</li>
+<li>Enclencher globalement les interruptions. Les microprocesseurs disposent d'un fanion général qui autorise les interruptions. Il est souvent utilisé pour pouvoir éviter les interruptions dans certaines parties critiques au programme, qui ne doivent pas être interrompues.</li>
+</ol>
+<p>Le schéma logique ci-dessous montre la logique qui permet de générer les interruptions et les fanions qu'il faut ajuster.</p>
+<div class="figure">
+<img src="images/decodage-inter.png" title="Logique de génération des interruptions" alt="Logique de génération des interruptions" />
+<p class="caption">Logique de génération des interruptions</p>
+</div>
+<p>On y trouve :</p>
+<ul>
+<li>la logique qui permet de saisir un événement</li>
+<li>les fanions qui règlent la manière dont l'événement est décodé</li>
+<li>le fanion qui enclenche cette interruption particulière</li>
+<li>la porte ET associée à ce fanion pour produire cette interruption</li>
+<li>la porte OU qui permet à toutes les interruptions d'être prises en compte</li>
+<li>le fanion général d'autorisation des interruptions</li>
+<li>la porte ET qui produit finalement les interruptions.</li>
+</ul>
+<h2 id="syntaxe-des-routines-dinterruptions">Syntaxe des routines d'interruptions</h2>
+<p>Le langage C ne définit pas la syntaxe des routines d'interruptions. Plusieurs notations sont utilisées, dépendant des compilateurs. Nous présenterons ici une des syntaxe supportée par les compilateurs GCC.</p>
+<pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#pragma vector=NUMERO_DU_VECTEUR</span>
+ __interrupt <span class="dt">void</span> Nom_de_la_routine (<span class="dt">void</span>) {
+  ...
+ }</code></pre>
+<p>La première ligne indique au compilateur à quel vecteur d'interruption la routine sera associée. La seconde ligne est une déclaration de procédure presque habituelle, avec un nom et aucun paramètres d'entrée <code>(void)</code>. L'indication <code>__interrupt</code> permet au compilateur d'utiliser les instructions correspondant à une routine d'interruption, en particulier le <em>Reti</em> final.</p>
+<h2 id="interruption-produite-par-une-entrée">Interruption produite par une entrée</h2>
+<p>Sur les microcontrôleurs MSP430, plusieurs registres permettent de définir la manière dont une broche d'entrée-sortie est utilisée. Ils sont associés à un Port, composé de 8 broches. Sur le MSP430G2553 du Launchpad, deux ports sont disponibles : P1 et P2. On connaît déjà les registres suivant :</p>
+<ul>
+<li><strong><code>P1DIR</code></strong> : détermine le rôle de la broche (entrée ou sortie)</li>
+<li><strong><code>P1OUT</code></strong> : donne la valeur pour les broches de sortie</li>
+<li><strong><code>P1IN</code></strong> : permet de lire la valeur des entrées</li>
+<li><strong><code>P1REN</code></strong> : permet d'enclencher une résistance de tirage (pull-up ou pull-down, selon l'état de bit de P1OUT correspondant</li>
+</ul>
+<p>Pour mettre en œuvre les interruptions sur des broches du port P1, trois registres supplémentaires sont disponibles :</p>
+<ul>
+<li><strong><code>P1IE</code></strong> : (<em>Interrupt Enable</em>) permet l'enclenchement de l'interruption pour chaque bit. L'usage habituel est d'écrire dans ce registre pour choisir quels bits vont causer une interruption.</li>
+<li><strong><code>P1IES</code></strong> : (<em>Interrupt Edge Select</em>) permet de choisir pour chaque bit le flanc qui va produire l'interruption. Lorsque le bit est à 0, l'interruption va se produire lors d'une transition de 0 vers 1 (<em>low-to-high transition</em>). L'usage habituel est d'écrire dans ce registre pour choisir quel flanc va causer une interruption, pour chaque bit.</li>
+<li><strong><code>P1IFG</code></strong> : (<em>Interrupt FlaG</em>) les <strong>fanions d'interruption</strong>. Lorsque qu'un transition telle qu'elle est spécifiée dans un bit de <code>P1E</code>, le bit correspondant s'active dans P1IFG. C'est son activation qui produit l'interruption elle-même.</li>
+</ul>
+<p>Voici un programme qui met en œuvre une interruption sur l'entrée <code>P1.3</code> (le poussoir du Launchpad) et qui change d'état <code>P1.6</code> (la LED verte) à chaque flanc descendant.</p>
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="dt">int</span> main() {
+    WDTCTL = WDTPW + WDTHOLD; <span class="co">// Stop watchdog timer</span>
+    P1DIR |= (<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>); <span class="co">// Led verte en sortie</span>
+    P1OUT |= (1&lt;&lt;3); P1REN |= (1&lt;&lt;3); <span class="co">//pull-up sur l&#39;entrée P1.3</span>
+
+    P1IES |= (<span class="dv">1</span>&lt;&lt;<span class="dv">3</span>); <span class="co">// Mode d&#39;interruption : sur le flanc descendant</span>
+    P1IE |= (1&lt;&lt;3); <span class="co">// Interruption P1 activée sur le bit 3</span>
+    P1IFG &amp;=~(1&lt;&lt;3); <span class="co">// Fanion d&#39;interruption remis à zéro</span>
+    __enable_interrupt(); <span class="co">// General Interrupt Enable</span>
+
+    <span class="kw">while</span>(1) { <span class="co">// il n&#39;y a rien à faire dans la boucle principale !</span>
+    }
+}
+
+<span class="co">// Routine d&#39;interruption associée au Port P1</span>
+<span class="co">// Syntaxe spécifique pour les interruptions :</span>
+<span class="ot">#pragma vector=PORT1_VECTOR  </span>
+__interrupt <span class="dt">void</span> Port1_ISR(<span class="dt">void</span>) {
+  P1IFG &amp;= ~(1&lt;&lt;3); <span class="co">// Fanion d&#39;interruption correspondant au bit 3 remis à 0 </span>
+  P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>); <span class="co">// inverse P1.6 (LED verte)</span>
+}</code></pre></td></tr></table>
+<!-- retour au mode normal pour l'éditeur -->
+<p>La première remarque, c'est que la boucle principale <code>while(1)...</code> ne fait rien ! En plus des initialisations classique des entrées et des sorties, trois instructions ont été ajoutées, correspondant aux étapes de mise en œuvre d'une interruption :</p>
+<ul>
+<li>L'activation d'un bit dans <code>P1IES</code> sélectionne le flanc descendant</li>
+<li>L'activation d'un bit dans <code>P1IE</code> autorise l'interruptions sur l'entrée <code>P1.3</code></li>
+<li>L'appel de la procédure <code>__enable_interrupt()</code> autorise globalement les interruptions sélectionnées</li>
+</ul>
+<p>La mise à 0 du bit 3 dans le registre des fanions d'interruption <code>P1IFG</code> évite qu'un flanc sur l'entrée <code>P1.3</code> pouvant s'être produit avant l'autorisation des interruptions ne cause une interruption.</p>
+<p>La routine d'interruption a été placée à la suite du programme principal, alors que nous avons l'habitude de placer les procédures avant le programme principal. Cette procédure n'est en effet jamais appelée explicitement.</p>
+<h2 id="scrutation-du-bit-concerné">Scrutation du bit concerné</h2>
+<p>Dans notre exemple, seul le bit 3 est concerné par les interruptions. Dans la routine d'interruption, il n'y a donc pas besoin de regarder quel bit a produit l'interruption et c'est systématiquement le fanion 3 qui est remis a 0.</p>
+<p>Lorsque l'interruption peut provenir de plusieurs entrées, il est alors nécessaire de scruter le registre pour connaître le bit qui a causé l'interruption, comme le montre cet exemple :</p>
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="dt">int</span> main() {
+  ...
+  P1IES &amp;=~((<span class="dv">1</span>&lt;&lt;<span class="dv">3</span>)|(<span class="dv">1</span>&lt;&lt;<span class="dv">4</span>)); <span class="co">// interruptions aux flancs montants</span>
+  P1IE |= (1&lt;&lt;3)|(1&lt;&lt;4); <span class="co">// Interruption activée sur 2 entrées</span>
+  P1IFG &amp;=~((1&lt;&lt;3)|(1&lt;&lt;4)); <span class="co">// Fanions d&#39;interruption remis à zéro</span>
+  ...
+
+<span class="ot">#pragma vector=PORT1_VECTOR</span>
+__interrupt <span class="dt">void</span> Port1_ISR(<span class="dt">void</span>) {
+  <span class="co">// scrutation des causes possible de l&#39;interruption :</span>
+  <span class="kw">if</span> (P1IFG &amp; (<span class="dv">1</span>&lt;&lt;<span class="dv">3</span>)) {... ; P1IFG &amp;= ~(<span class="dv">1</span>&lt;&lt;<span class="dv">3</span>); }
+  <span class="kw">if</span> (P1IFG &amp; (<span class="dv">1</span>&lt;&lt;<span class="dv">4</span>)) {... ; P1IFG &amp;= ~(<span class="dv">1</span>&lt;&lt;<span class="dv">4</span>); }
+}</code></pre></td></tr></table>
+<!-- retour au mode normal pour l'éditeur -->
+<h2 id="interruption-de-fin-de-conversion">Interruption de fin de conversion</h2>
+<p>Voici un autre exemple d'interruption, où l'événement est interne au microcontrôleur. L'interruption doit se produire lorsque le convertisseur Analogique-Numérique (ADC) termine sa conversion.</p>
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="dt">int</span> main() {
+  WDTCTL = WDTPW + WDTHOLD; <span class="co">// Stop watchdog timer</span>
+  P1DIR |= (<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>); P1OUT &amp;=~(<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>); <span class="co">// LED verte en sortie</span>
+  <span class="co">// Activation du convertisseur ADC 10 bits (ADC10) :</span>
+  ADC10CTL0 = ADC10SHT_2 + ADC10ON + ADC10IE; <span class="co">// ADC10ON, interrupt enabled</span>
+  ADC10CTL1 = INCH_1; <span class="co">// Canal 1 = entrée A1 = P1.1</span>
+  ADC10AE0 |= (1&lt;&lt;1); <span class="co">// Enclanchement de l&#39;entrée A1</span>
+  __enable_interrupt(); <span class="co">// General Interrupt Enable</span>
+  ADC10CTL0 |= ENC + ADC10SC; <span class="co">// lance une première conversion</span>
+
+  <span class="kw">while</span>(1) { <span class="co">// il n&#39;y a rien à faire dans la boucle principale !</span>
+  }
+}
+
+<span class="co">// Routine d&#39;interruption associée à la fin de conversion ADC</span>
+<span class="ot">#pragma vector=ADC10_VECTOR</span>
+__interrupt <span class="dt">void</span> ADC10_ISR(<span class="dt">void</span>) {
+  <span class="dt">uint16_t</span> val = ADC10MEM; <span class="co">// lit le résultat de la conversion</span>
+  ADC10CTL0 |= ENC + ADC10SC; <span class="co">// lance la conversion suivante</span>
+  <span class="kw">if</span> (val &gt; 512) { <span class="co">// Montre sur la LED verte si la valeur dépasse Vcc/2</span>
+    P1OUT |= (<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>); <span class="co">// LED verte On</span>
+  } <span class="kw">else</span> {
+    P1OUT &amp;=~(<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>); <span class="co">// LED verte Off</span>
+  }
+}</code></pre></td></tr></table>
+</body>
+</html>

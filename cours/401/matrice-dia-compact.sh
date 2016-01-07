@@ -1,11 +1,11 @@
 #!/bin/bash
 
-python ../../generation/pre-dia.py -c C-Arduino-dia.md C-Arduino-dia-pre-compact.md
+python ../../generation/pre-dia.py -c matrice-dia.md matrice-dia-pre-compact.md
 
 pandoc  --standalone --from markdown --to html --highlight-style pygments --email-obfuscation references \
---normalize --css=../../statiques/diaporama.css --output C-Arduino-dia-compact.html C-Arduino-dia-pre-compact.md
+--normalize --css=../../statiques/diaporama.css --output matrice-dia-compact.html matrice-dia-pre-compact.md
 
-weasyprint C-Arduino-dia-compact.html C-Arduino-dia-compact.pdf
+weasyprint matrice-dia-compact.html matrice-dia-compact.pdf
 
-rm C-Arduino-dia-pre-compact.md
-rm C-Arduino-dia.html
+rm matrice-dia-pre-compact.md
+rm matrice-dia.html

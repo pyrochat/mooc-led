@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Yves Tiecoura, INP-HB Yamoussoukro" />
+  <title>Introduction au transistor</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Introduction au transistor</h1>
+<h2 class="author"><script type="text/javascript">
+<!--
+h='&#x79;&#x61;&#104;&#x6f;&#x6f;&#46;&#102;&#114;';a='&#64;';n='&#116;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#x79;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Yves Tiecoura'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#x59;&#118;&#x65;&#x73;&#32;&#84;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#32;&#40;&#116;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#x79;&#32;&#x61;&#116;&#32;&#x79;&#x61;&#104;&#x6f;&#x6f;&#32;&#100;&#x6f;&#116;&#32;&#102;&#114;&#x29;</noscript>, INP-HB Yamoussoukro</h2>
+<h3 class="date">rév 2015/11/11</h3>
+</div>
+<h2 id="une-invention-de-premier-plan">Une invention de premier plan</h2>
+<p>Pour réaliser des enseignes et afficheurs à LED, il est très souvent nécessaire d'utiliser l'élément le plus emblématique de l'électronique : le transistor.</p>
+<p>La mise au point de ce dispositif à semi-conducteur a marqué une étape importante dans l’évolution de l’électronique et de l’humanité en général. Bien que son invention date de 1948, ses inventeurs, William Schockley, John Bardeen et Walter Houster Brattain ont reçu en 1956 le prix Nobel de physique pour leurs travaux.</p>
+<p>Le transistor est utilisé en électronique comme amplificateur ou comme interrupteur. Les premiers transistors étaient fabriqués avec du Germanium, mais par la suite, c'est le Silicium qui a été principalement utilisé. D'autre matériaux semi-conducteurs sont utilisée pour certaines applications, tels l'Arsenure de Galium (GaAs).</p>
+<h2 id="présentation">Présentation</h2>
+<p>Le transistor se présente sous la forme d’un composant à trois broches, désignées par <strong><em>base</em></strong>, <strong><em>collecteur</em></strong> et <strong><em>émetteur</em></strong>. Le mot <em>transistor</em> signifie <em>trans-résistance</em>, qui met en évidence qu'une résistance peut varier. La figure suivante montre le transistor comme un tri-pôle.</p>
+<div class="figure">
+<img src="images/transistor-tripol-150dpi.png" title="Le transistor vu comme un tri-pôle" alt="Le transistor vu comme un tri-pôle" />
+<p class="caption">Le transistor vu comme un tri-pôle</p>
+</div>
+<p>Dans un transistor, la valeur de la résistance <strong>Rce</strong> entre le collecteur et l’émetteur varie en fonction du courant <strong>Ib</strong> qui circule entre la base et l'émetteur. Une augmentation du courant de base provoque une diminution de la résistance <strong>Rce</strong>, ce qui permet une augmentation du courant <strong>Ic</strong> qui circule entre le collecteur et l’émetteur. C'est ce qu'on appelle l'<em>effet transistor</em>.</p>
+<p>Cette similitude avec un système hydraulique aide à comprendre le principe :</p>
+<div class="figure">
+<img src="images/transistor-robinet-150dpi.png" title="Analogie hydraulique" alt="Analogie hydraulique" />
+<p class="caption">Analogie hydraulique</p>
+</div>
+<p>On sait que U = R • I (Loi d'Ohm). Une variation du petit courant <strong>Ib</strong> provoque une variation du grand courant <strong>Ic</strong>.</p>
+<p>Dans certaines conditions, cette variation est linéaire :</p>
+<p>Ic = Beta • Ib</p>
+<p>Ce coefficient Beta est appelé <em>facteur d'amplification du transistor</em>. Sa valeur est largement supérieure à 1, souvent 100 ou plusieurs centaines.</p>
+<p>Il faut noter que le courant de base doit toujours rester petit pour éviter la destruction du transistor. Une résistance sur la base est généralement utilisée pour limiter ce courant.</p>
+<h2 id="structure-dun-transistor">Structure d'un transistor</h2>
+<p>Pour mieux comprendre le fonctionnement du transistor, regardons sa structure interne. Un transistor est construit à partir d'un morceau de silicium de type N (dopé négativement) dans lequel sont diffusées des impuretés de type P. Il s'agit là d'un transistor de type <strong>NPN</strong>. La figure suivante montre le principe de la constitution d'un transistor NPN, ainsi que le symbole utilisé.</p>
+<div class="figure">
+<img src="images/transistor-npn-80dpi.png" title="Transistor NPN, principe et symbole" alt="Transistor NPN, principe et symbole" />
+<p class="caption">Transistor NPN, principe et symbole</p>
+</div>
+<p>Pour obtenir un transistor de type <strong>PNP</strong>, ce sont des impuretés de type N qui sont diffusées dans une lame de silicium de type P.</p>
+<div class="figure">
+<img src="images/transistor-pnp-80dpi.png" title="Transistor PNP, principe et symbole" alt="Transistor PNP, principe et symbole" />
+<p class="caption">Transistor PNP, principe et symbole</p>
+</div>
+<h2 id="les-jonctions-et-modes-de-fonctionnement">Les jonctions et modes de fonctionnement</h2>
+<p>On appelle <em>jonction</em> le contact entre une zone de silicium dopé N et une zone de silicium dopé P. Deux <em>jonctions</em> sont créées dans un transistor, une jonction base-émetteur <strong>Jbe</strong> et une jonction base-collecteur <strong>Jbc</strong>.</p>
+<p>Une jonction est dite <em>polarisée en direct</em> lorsque la tension entre zone P et la zone N est supérieure à 0,7 Volt (tension de seuil). Dans le cas contraire, on dit qu'elle est polarisée en inverse.</p>
+<p>Le transistor a trois modes de fonctionnement intéressants :</p>
+<ul>
+<li>le mode bloqué</li>
+<li>le mode amplificateur</li>
+<li>le mode saturé</li>
+</ul>
+<p>Dans toutes les applications liées aux enseignes et afficheurs à LED, nous allons utiliser les transistors en mode de commutation, c'est-à-dire soit bloqué, soit saturé. Le transistor fonctionne alors comme un interrupteur, pour allumer ou éteindre des LED.</p>
+<p>Le transistor est en mode bloqué lorsque la jonction base-émetteur n'est pas polarisée en direct. C'est le cas où la tension base-émetteur est inférieure à la tension de seuil. Aucun courant ne circule alors entre le collecteur et l'émetteur : Ic = 0</p>
+<p>Lorsque la tension base-émetteur dépasse la tension de seuil, le transistor va conduire. Etant donné que le facteur d'amplification Beta du transistor est généralement important, le courant du collecteur va rapidement n'être limité que par la charge se trouvant dans le circuit du collecteur. On dit alors que le transistor est saturé.</p>
+<p>Voici un montage fréquemment utilisé pour les enseignes à LED. Un transistor est utilisé en commutation pour allumer ou éteindre une LED. La résistance dans la base limite le courant de base. Elle est calculée de telle manière que le courant produit par un état logique &quot;1&quot; soit suffisant pour saturer le transistor.</p>
+<div class="figure">
+<img src="images/transistor-res-led-50dpi.png" title="Commande d&#39;une LED par un transistor" alt="Commande d&#39;une LED par un transistor" />
+<p class="caption">Commande d'une LED par un transistor</p>
+</div>
+<h2 id="caractéristiques-des-transistors">Caractéristiques des transistors</h2>
+<p>Il existe des milliers de modèles de transistors sur le marché ! Ils se présentent dans des boîtiers de tailles et de formes très différentes, dont voici quelques exemples :</p>
+<div class="figure">
+<img src="images/1024px-Transistors-white.jpg" title="Quelques boîtiers de transistors" alt="Quelques boîtiers de transistors" />
+<p class="caption">Quelques boîtiers de transistors</p>
+</div>
+<p>Aujourd'hui, les boîtiers sont souvent prévus pour le montage en surface sur les circuits imprimés (SMD : Surface Mounted Device = Composants Montés en Surface) :</p>
+<div class="figure">
+<img src="images/sot23.jpg" title="Transistor à monter en surface" alt="Transistor à monter en surface" />
+<p class="caption">Transistor à monter en surface</p>
+</div>
+<p>Comment choisir un transistor adapté à une application particulière ? Les fabricants de semi-conducteurs donnent beaucoup de valeurs dans les <em>data sheets</em> décrivant leurs composants.</p>
+<p>Voici les paramètres généralement les plus important à prendre en compte :</p>
+<h4 id="le-courant-maximum-dans-le-collecteur-icmax">Le courant maximum dans le collecteur Icmax</h4>
+<p>La taille du transistor et la dimension de ses broches déterminent ce courant maximal, pouvant aller de quelques mA jusqu'à plusieurs dizaines d'Ampères.</p>
+<h4 id="la-tension-maximale-entre-la-base-et-le-collecteur-vbcmax">La tension maximale entre la base et le collecteur Vbcmax</h4>
+<p>Au dessus d'une certaine valeur de la tension entre la base et le collecteur, la jonction base-collecteur risque en effet de se détériorer. Cette valeur est rarement en dessous de 10V et peut aller jusqu'à des centaines de Volt.</p>
+<h4 id="la-puissance-maximale-dissipable-par-le-transistor">La puissance maximale dissipable par le transistor</h4>
+<p>En effet, même lorsqu'il est saturé, la résistance entre le collecteur et l'émetteur n'est pas nulle. L'effet Joule se produit donc dans un transistor, produisant de la chaleur. Les transistors <em>de puissance</em> ont des boîtiers conçus spécialement à cet effet. Cette valeur varie de quelques centaines de mW jusqu'à des centaines de Watt.</p>
+<h4 id="la-fréquence-maximale-de-fonctionnement">La fréquence maximale de fonctionnement</h4>
+<p>Le fabricant indique également la fréquence maximale de fonctionnement du transistor. Elle est s'exprime généralement en Mhz, voire davantage.</p>
+</body>
+</html>

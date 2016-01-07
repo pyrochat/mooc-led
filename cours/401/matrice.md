@@ -61,8 +61,8 @@ int main() {
   // initialisations...
   uint8_t i;
   while (1) {
-    for (i=0; i<8; i++) { // envoie une colonne avec un seul pixel allumé
-      P1OUT = (1<<i); // une colonne de 8 pixels, un seul allumé
+    for (i=0; i<16; i++) { // envoie une colonne avec un seul pixel allumé
+      P1OUT = (1<<(i&7)); // une colonne de 8 pixels, un seul allumé
       SerClockOn; SerClockOff; // envoie un coup d'horloge série
       ParCloclOn; ParClockOff; // envoie un coup d'horloge
     }
@@ -75,70 +75,75 @@ Pour gérer des caractères, il faut disposer d'une table décrivant les pixels 
 Voici une manière de les représenter :
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
-const GenCar [] { // tableau des pixels des caractères
-  0b011111110, // caractère 'A'
-  0b000010001, // Il faut pencher la tête à droite
-  0b000010001, // pour voire sa forme !
-  0b000010001,
-  0b011111110,
+const uint8_t GenCar [] { // tableau des pixels des caractères
+  0b01111110, // caractère 'A'
+  0b00001001, // Il faut pencher la tête à droite
+  0b00001001, // pour voire sa forme !
+  0b00001001,
+  0b01111110,
 
-  0b011111111, // caractère 'B'
-  0b010010001, // Les caractères forment une
-  0b010010001, // une matrice de 5x7
-  0b010010001,
-  0b001101110,
+  0b01111111, // caractère 'B'
+  0b01001001, // Les caractères forment une
+  0b01001001, // une matrice de 5x7
+  0b01001001,
+  0b00110110,
 
-  0b011111111, // caractère 'C'
-  0b010000001, // Les caractères ont ici
-  0b010000001, // une "chasse" fixe
-  0b010000001, // (un même nombre de pixel
-  0b010000001  // quelque soit le caractère).
-}
+  0b00111110, // caractère 'C'
+  0b01000001, // Les caractères ont ici
+  0b01000001, // une "chasse" fixe
+  0b01000001, // (un même nombre de pixel
+  0b01000001  // quelque soit le caractère)
+};
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
 
 Voici un programme qui affiche un texte :
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
-const char Texte = "ABC AA BB CC \0"; // texte, terminé par le caractère nul
-int main() {
-  // initialisations...
-  *uint8_t ptTexte = &Texte; // pointeur au texte à afficher
-  char caractere;
-  uint16_t idxGenCar;
-  while (1) {
+char *Texte = "ABC\0"; // texte, terminé par le caractère nul
+const char *ptTexte; // pointeur au texte à afficher
+
+int main(void) {
+  ... initialisations
+
+  while(1) { // le texte défile sans fin
+    ptTexte = Texte;
     while (*ptTexte!='\0') { // boucle des caractères du texte
       caractere = *ptTexte; // le caractère à afficher
       idxGenCar = (caractere-'A') * 5; // index dans le générateur
       for (i=0; i<5; i++) { // envoie les 5 colonnes du caractère
-        P2OUT = GenCar[idxGenCar++]:
-        SerClockOn; SerClockOff; // envoie un coup d'horloge série
-        ParCloclOn; ParClockOff; // envoie un coup d'horloge
+        P2OUT = ~GenCar[idxGenCar++]; // une colonne du caractère (actif à 0)
+        SerClockOn; SerClockOff; // coup d'horloge série
+        ParClockOn; ParClockOff; // coup d'horloge parallèle
+        AttenteMs (delai);
       }
-      P2OUT = 0; // colonne vide, séparant les caractères
-      SerClockOn; SerClockOff; // envoie un coup d'horloge série
-      ParCloclOn; ParClockOff; // envoie un coup d'horloge
       ptTexte++; // passe au caractère suivant
+      P2OUT = ~0; // colonne vide, séparant les caractères
+      SerClockOn; SerClockOff; // coup d'horloge série
+      ParClockOn; ParClockOff; // coup d'horloge parallèle
+      AttenteMs (delai);
     }
   }
-  ptTexte = &Texte; // Le texte est terminé, on répète...
 }
+
+	
+
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
 
-Pour cet exemple simple, le texte à afficher a été placé comme un tableau. Le mot `const` indique au compilateur qu'il peut être placé directement en mémoire de programme. Pour accéder aux caractère de ce texte, un pointeur est utilisé. La déclaration du pointeur s'écrit : `*uint8_t ptTexte = &Texte;`. Le symbole * indique qu'il s'agit d'un pointeur. Le symbole & indique qu'il faut prendre l'adresse mémoire où le Texte est placé.
+Pour cet exemple simple, le texte à afficher a été placé comme un tableau. Le mot `const` indique au compilateur qu'il peut être placé directement en mémoire de programme. Pour accéder aux caractère de ce texte, un pointeur est utilisé. La déclaration du pointeur s'écrit : `const char *ptTexte;`. Le symbole * indique qu'il s'agit d'un pointeur.
 
 Cette manière d'envoyer les caractères fonctionne, mais présente tellement de limitations qu'elle ne sera jamais utilisée. Par exemple, elle ne peut pas fonctionner si l'ordre des LED est inversé : le texte ne pourra pas se décaler correctement de droite à gauche. Elle est aussi incompatible avec les afficheurs multiplexés.
 
 ## Génération et rafraîchissement séparés ##
 
-La bonne manière de programmer un afficheur est de séparer complètement la génération de l'image à afficher et l'envoi de cette image sur l'afficheur. La valeur courante de chaque pixel sera placée dans une **mémoire**. La partie du logiciel qui prépare les images va **écrire** dans cette mémoire. Les procédures qui vont envoyer les informations à l'afficheur vont **lire** dans cette mémoire.
+La bonne manière de programmer un afficheur est de **séparer** complètement la génération de l'image à afficher et l'envoi de cette image sur l'afficheur. La valeur courante de chaque pixel sera placée dans une **mémoire**. La partie du logiciel qui prépare les images va **écrire** dans cette mémoire. Les procédures qui vont envoyer les informations à l'afficheur vont **lire** dans cette mémoire.
 
 Dans notre exemple, l'afficheur a 8 lignes de 16 pixels. Un mot de 16 bit pourra donc mémoriser une ligne. Voici comment réserver la zone mémoire pour les pixels :
 
 ~~~~~~~ { .c }
-#define NbLignes 8`
-uint16_t Matrice[NbLignes]; // mots de 16 bits, correspondant à une ligne`
+#define NbLignes 8
+uint16_t Matrice[NbLignes]; // mots de 16 bits, correspondant à une ligne
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
 
@@ -156,6 +161,7 @@ void AllumePoint(int16_t x, int16_t y) {
 void EteintPoint(int16_t x, int16_t y) {
   Matrice[y] &=~(1<<x); // clear bit
 }
+
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
 
@@ -167,8 +173,8 @@ Voici une procédure pour afficher une diagonale en travers de l'afficheur :
 
 void Diagonale() {
   int16_t i;
-  for (i=0; i<MaxY, i++) {
-    SetPoint(i*(MaxX/MaxY), i);
+  for (i=0; i<MaxY; i++) {
+    AllumePoint(i*MaxX/MaxY, i);
   }
 }
 ~~~~~~~
@@ -177,18 +183,15 @@ void Diagonale() {
 Mais toutes ces procédures ne vont rien afficher sur les LED ! Il faut encore une procédure qui va placer chaque pixel sur la LED correspondante. Pour l'écrire, il faut garder en mémoire l'organisation matérielle de notre matrice, avec les 8 registres série-parallèles de 16 bits.
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
-#define MaxX 16
-#define MaxY NbLignes
-
 void AfficheMatrice() {
-  for (y=0, y<MaxY, y++) {
+  for (uint16_t x=0; x<MaxX; x++) {
     // Préparation des valeurs qui doivent être envoyées aux 8 registres:
-    for (x=0, x<MaxX, x++) { 
-      if (Matrice[y]&(1<<x)) P2OUT |= (1<<x); else P2OUT &=~(1<<x);
+    for (uint16_t y=0; y<MaxY; y++)  { 
+      if (Matrice[y]&(1<<x)) P2OUT &=~(1<<y); else P2OUT |= (1<<y);
     }
     SerClockOn; SerClockOff; // envoie un coup d'horloge série
   }
-  ParCloclOn; ParClockOff; // envoie les valeur sur les LED
+  ParClockOn; ParClockOff; // envoie les valeur sur les LED
 }
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
@@ -197,24 +200,25 @@ Cette procédure semble compliquée. Une autre organisation des données en mém
 
 ![Organisation plus optimale des pixels en mémoire](images/organisation-aff-8x16-byte-120dpi.png "Organisation plus optimale des pixels en mémoire")
 
-Voici la définition et la procédure correspondante :
+Voici la définition et le procédure correspondante :
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
-uint8_t Matrice[MaxX]; // mots de 8 bits, correspondant à une colonne
+#define NbColonnes 16
+uint8_t Matrice[NbColonnes]; // mots de 8 bits, correspondant à une colonne
 
 void AfficheMatrice() {
-  for (y=0, y<MaxY, y++) {
-    P2OUT = Matrice[y];
+  for (uint16_t x=0; x<MaxX; x++) {
+    P2OUT = ~Matrice[x];
     SerClockOn; SerClockOff; // envoie un coup d'horloge série
   }
-  ParCloclOn; ParClockOff; // envoie les valeur sur les LED
+  ParClockOn; ParClockOff; // envoie les valeur sur les LED
 }
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
 
-Non seulement elle est beaucoup plus simple, mais en plus elle va prendre moins de temps pour son exécution. Dans notre cas, la vitesse ne pose pas de problème. Mais dès que les afficheurs deviennent plus grands, cette question devient cruciale.
+Non seulement la procédure `AfficheMatrice()` est beaucoup plus simple, mais en plus elle va prendre moins de temps pour son exécution. Dans notre cas, la vitesse ne pose pas de problème. Mais dès que les afficheurs deviennent plus grands, cette question devient cruciale.
 
-De manière générale, on va donc chercher à optimiser l'organisation des pixels en mémoire en vue de simplifier et de rendre plus rapide l'envoi des pixels sur les LED, quitte à rendre plus compliquées les procédures qui créent les images.
+De manière générale, on va donc chercher à optimiser l'organisation des pixels en mémoire en vue de simplifier et de rendre plus rapide l'envoi des pixels sur les LED, quitte à compliquer un peu les procédures qui créent les images.
 
 ## Programmer des animations ##
 
@@ -231,5 +235,82 @@ et ainsi de suite.
 
 Voici un programme complet qui génère une animation graphique sur notre afficheur :
 
-*(le programme définitif sera ajouté  lors qu'il sera testé sur un afficheur en cours de développement. Les procédures de ce document seront aussi testées à ce moment).*
+~~~~~~~ { .c .numberLines startFrom="1" }
+// Afficheur didactique 16x8
+// Les 8 bits sont sur P2
+// Usage d'une matrice en byte
+// Ping !
 
+#include <msp430g2553.h>
+
+#define DELAI 100
+
+#define SerClockOn P1OUT|=(1<<5)
+#define SerClockOff P1OUT&=~(1<<5)
+
+#define ParClockOn P1OUT|=(1<<4)
+#define ParClockOff P1OUT&=~(1<<4)
+
+void AttenteMs (uint16_t duree) {
+  for (uint16_t i=0; i<duree; i++) {
+    for (volatile uint16_t j=0; j<500; j++) {
+    }
+  }
+}
+
+#define NbColonnes 16
+uint8_t Matrice[NbColonnes]; // mots de 8 bits, correspondant à une colonne
+
+#define MaxX NbColonnes
+#define MaxY 8
+
+void AllumePoint(int16_t x, int16_t y) {
+  Matrice[x] |= (1<<y); // set bit
+}
+
+void EteintPoint(int16_t x, int16_t y) {
+  Matrice[x] &=~(1<<y); // clear bit
+}
+
+void AfficheMatrice() {
+  for (uint16_t x=0; x<MaxX; x++) {
+    P2OUT = ~Matrice[x];
+    SerClockOn; SerClockOff; // envoie un coup d'horloge série
+  }
+  ParClockOn; ParClockOff; // envoie les valeur sur les LED
+}
+
+void Ping() {
+  int16_t x=0;
+  int16_t y=0;
+  int8_t sensX=1;
+  int8_t sensY=1;
+  do {
+    AllumePoint(x,y);
+    AfficheMatrice();
+    AttenteMs(DELAI);
+    EteintPoint(x,y);
+    x+=sensX;
+    if(x==(MaxX-1)) sensX=(-1);
+    if(x==0) sensX=1;
+    y+=sensY;
+    if(y==(MaxY-1)) sensY=(-1);
+    if(y==0) sensY=1;
+  } while (!((x==0)&&(y==0)));
+}
+
+int main(void) {
+  WDTCTL = WDTPW + WDTHOLD; // Stop watchdog timer
+  BCSCTL1 = CALBC1_16MHZ; DCOCTL = CALDCO_16MHZ; // Horloge à 16 MHz
+  P1DIR = (1<<4)|(1<<5); P2DIR = 0xFF; P2SEL = 0;
+
+  for (uint16_t i=0; i<NbColonnes; i++) { // initialise la matrice
+    Matrice[i]=0x0; 
+  }
+  
+  while(1) { 
+    Ping();
+  }
+}
+~~~~~~~
+<!-- retour au mode normal pour l'éditeur -->

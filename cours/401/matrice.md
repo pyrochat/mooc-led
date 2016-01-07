@@ -64,8 +64,8 @@ int main() {
     for (i=0; i<16; i++) { // envoie une colonne avec un seul pixel allumé
       P1OUT = (1<<(i&7)); // une colonne de 8 pixels, un seul allumé
       SerClockOn; SerClockOff; // envoie un coup d'horloge série
-      ParCloclOn; ParClockOff; // envoie un coup d'horloge
     }
+      ParCloclOn; ParClockOff; // envoie un coup d'horloge parallèle
   }
 }
 ~~~~~~~
@@ -115,7 +115,7 @@ int main(void) {
         P2OUT = ~GenCar[idxGenCar++]; // une colonne du caractère (actif à 0)
         SerClockOn; SerClockOff; // coup d'horloge série
         ParClockOn; ParClockOff; // coup d'horloge parallèle
-        AttenteMs (delai);
+        AttenteMs (delai); // la nouvelle colonne sera visible
       }
       ptTexte++; // passe au caractère suivant
       P2OUT = ~0; // colonne vide, séparant les caractères

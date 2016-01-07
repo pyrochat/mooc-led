@@ -91,8 +91,8 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Pier
     <span class="kw">for</span> (i=0; i&lt;16; i++) { <span class="co">// envoie une colonne avec un seul pixel allumé</span>
       P1OUT = (1&lt;&lt;(i&amp;7)); <span class="co">// une colonne de 8 pixels, un seul allumé</span>
       SerClockOn; SerClockOff; <span class="co">// envoie un coup d&#39;horloge série</span>
-      ParCloclOn; ParClockOff; <span class="co">// envoie un coup d&#39;horloge</span>
     }
+      ParCloclOn; ParClockOff; <span class="co">// envoie un coup d&#39;horloge parallèle</span>
   }
 }</code></pre></td></tr></table>
 <!-- retour au mode normal pour l'éditeur -->
@@ -179,7 +179,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Pier
         P2OUT = ~GenCar[idxGenCar++]; <span class="co">// une colonne du caractère (actif à 0)</span>
         SerClockOn; SerClockOff; <span class="co">// coup d&#39;horloge série</span>
         ParClockOn; ParClockOff; <span class="co">// coup d&#39;horloge parallèle</span>
-        AttenteMs (delai);
+        AttenteMs (delai); <span class="co">// la nouvelle colonne sera visible</span>
       }
       ptTexte++; <span class="co">// passe au caractère suivant</span>
       P2OUT = ~0; <span class="co">// colonne vide, séparant les caractères</span>

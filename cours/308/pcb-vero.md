@@ -18,7 +18,7 @@ Sans entrer en détail dans les techniques de fabrication des circuits imprimés
 
 La réalisation artisanale de circuits imprimés simples est possible. Certaines écoles sont équipées pour réaliser des circuits simple face, ou même double face.
 
-...
+Nous déconseillons cette technique : elle produit toujours de la pollution. D'autre part, elle ne permet pas de réaliser des circuits de bonne qualité et les trous métalisés manquent. Et sou coût est souvent aussi élevé que la réalisation de circuits par des entreprises spécialisées.
 
 ## Logiciels de dessin de circuits imprimés ##
 
@@ -29,12 +29,25 @@ Tous les logiciels de conception de circuits imprimés produisent des fichiers s
 Ainsi, il est aujourd'hui à la portés d'un amateur de concevoir un circuit imprimé, d'envoyer les fichiers Gerber à un fabricant et d'obtenir des circuits de très bonne qualité à un prix raisonnable. Il faut noter que le prix dépend principalement de la quantité produite et également du délai de livraison demandé. Trois circuits en production express coûteront plus cher que 100 pièces avec un délai de production de deux semaines.
 
 image Circuit imprimé pour un dé électronique 
+![Circuit imprimé pour un dé électronique](images/de-el-pcb.jpg "Circuit imprimé pour un dé électronique")
+
+Les étapes successives pour la conception d'un circuit imprimé sont les suivantes :
+
+* dessin du schéma électronique. On place des *composants*, qu'on relie ensemble.
+* l'association composants-modules. On choisit le boîtier pour chaque composant.
+* le dessin du circuit imprimé : On place les modules et on dessine les pistes.
+
+Certains logiciels mélangent ces étapes. C'est parfois pratique, mais un peu de rigueur 
+
+Voici quelques copies d'écran de la conception d'un circuit de commande d'une enseigne à trois groupes de LED, avec un MSP430G2231 et les transistors de commande.
 
 ## Plaques universelles *Veroboard* ##
 
 Comme alternative intéressante pour l'amateur, on trouve des circuits imprimés déjà réalisés, avec des trous au pas de 2.54 mm (un dixième de pouces, l'unité la plus utilisée en électronique). Selon les modèles, chaque trou a sa pastille, isolée de autres pastilles. Sur un modèle qui me semble plus intéressant, des bandes de cuivre relient les trous dans une direction.
 
 image vero
+
+![Veroboard](images/vero.jpg "Veroboard")
 
 Les premières cartes de ce type ont été proposée par la société *Vero*, sous le nom de _**Veroboard**_. Ce nom est passé dans le langage courant des électroniciens. Le mot *Protoboard* est aussi souvent utilisé, mais son usage correspond parfois aussi aux plaques d'expérimentations que nous désignons  par *Breadboard*.
 
@@ -53,8 +66,12 @@ image coupure d'une piste par image fraisage d'un trou
 
 J'ai souvent remarqué que la réalisation sur Veroboard se fait souvent un peu par dépit : *je ne peux pas tirer de circuits imprimés, je bricole un Veroboard, vite fait - mal fait...* Or le Veroboard permet de réaliser des cartes très propres si la conception du circuit passe par la même logique que pour un circuit imprimé : l'utilisation d'un logiciel de conception de circuits imprimés.
 
-On va donc dessiner un *circuit imprimé* qui obéit à des règles très précise, correspondant à la géométrie des plaques Veroboard.
+On va donc dessiner un *circuit imprimé* qui obéit à des règles très précise, correspondant à la géométrie des plaques Veroboard :
 
+* tous les trous sont placés sur une grille de 2.54 mm, les composants doivent s'adapter à cette grille.
+* toutes les pistes de la face inférieure sont *horizontales* (ce sont le pistes du Veroboard)
+* si une piste horizontale toit être coupée, il faut réserver un trou pour la coupure
+* les *pistes de la face supérieure* sont en fait des fils *verticaux", allant d'un trou à un autre
 
 Une fois la conception faite, la réalisation devient simple :
 * imprimer le plan et le coller sur le Veroboard
@@ -63,7 +80,7 @@ Une fois la conception faite, la réalisation devient simple :
 * placer de souder les fils perpendiculaires aux  pistes
 * placer et souder les composants, par ordre de hauteur
 
-Voici en image la réalisation d'un circuit de commande d'une enseigne à trois groupes de LED, avec un MSP430G2231 et les transistors de commande.
+Voici en image la réalisation d'un circuit de commande sur Veroboard d'une enseigne à trois groupes de LED, avec un MSP430G2231 et les transistors de commande.
 
 
 

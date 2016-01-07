@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<p>Réalisation de cartes électroniques</p>
+<h2 id="montages-définitifs">Montages définitifs</h2>
+<p>Les montages électroniques sur plaques d'expérimentation (<em>Breadboard</em>) sont utiles pour l'expérimentation. Ils sont un bon moyen pour apprendre l'électronique. Mais ces montages sont éphémères et ne conviennent pas à une réalisation qu'on souhaite conserver.</p>
+<p>De nos jours, beaucoup de montages déjà réalisés sont proposés aux amateurs, à commencer par les cartes Arduino. Il est possible de réaliser des enseignes ou des afficheurs à LED en assemblant des modules trouvés sur Internet.</p>
+<p>Mais nous souhaitons aller plus loin et être capable de concevoir et réaliser nous-même des cartes électroniques. C'est le sujet de cette leçon.</p>
+<h2 id="circuits-imprimés">Circuits imprimés</h2>
+<p>La technique universellement utilisée pour assembler des composants électroniques est celle des <strong>circuits imprimés</strong> (<em>Printed Circuit Board</em>, <em>PCB</em>). Son principe est simple : des pistes en cuivres sont déposées sur une plaque isolante, généralement en Epoxy. Des trous entourés de pastilles de cuivre permettent de placer les composants, qui sont soudés sur les pastilles.</p>
+<p>image circuit imprimé</p>
+<p>Sans entrer en détail dans les techniques de fabrication des circuits imprimés, disons simplement qu'il s'agit de <em>photo-lithographie</em>. La plaque d'Epoxy est recouverte d'une fine couche de cuivre (généralement 35 microns)</p>
+<p>La réalisation artisanale de circuits imprimés simples est possible. Certaines écoles sont équipées pour réaliser des circuits simple face, ou même double face.</p>
+<p>Nous déconseillons cette technique : elle produit toujours de la pollution. D'autre part, elle ne permet pas de réaliser des circuits de bonne qualité et les trous métalisés manquent. Et sou coût est souvent aussi élevé que la réalisation de circuits par des entreprises spécialisées.</p>
+<h2 id="logiciels-de-dessin-de-circuits-imprimés">Logiciels de dessin de circuits imprimés</h2>
+<p>Alors que la réalisation des masques de photo-lithographie se faisait auparavant en collant des bandes noires sur des feuilles transparentes, la conception des circuits imprimés se fait actuellement avec des logiciels dédiés. Ils sont restés longtemps très coûteux et réservés à des professionnels, mais on trouve aujourd'hui d'excellents logiciels de conception de circuits imprimés gratuit et même en logiciel libre (<em>Open Source</em>), comme le logiciel KiCad.</p>
+<p>Tous les logiciels de conception de circuits imprimés produisent des fichiers standardisés, que les fabricants utilisent pour la fabrication. Le format généralement utilisé est le format Gerber.</p>
+<p>Ainsi, il est aujourd'hui à la portés d'un amateur de concevoir un circuit imprimé, d'envoyer les fichiers Gerber à un fabricant et d'obtenir des circuits de très bonne qualité à un prix raisonnable. Il faut noter que le prix dépend principalement de la quantité produite et également du délai de livraison demandé. Trois circuits en production express coûteront plus cher que 100 pièces avec un délai de production de deux semaines.</p>
+<p>image Circuit imprimé pour un dé électronique <img src="images/de-el-pcb.jpg" title="Circuit imprimé pour un dé électronique" alt="Circuit imprimé pour un dé électronique" /></p>
+<p>Les étapes successives pour la conception d'un circuit imprimé sont les suivantes :</p>
+<ul>
+<li>dessin du schéma électronique. On place des <em>composants</em>, qu'on relie ensemble.</li>
+<li>l'association composants-modules. On choisit le boîtier pour chaque composant.</li>
+<li>le dessin du circuit imprimé : On place les modules et on dessine les pistes.</li>
+</ul>
+<p>Certains logiciels mélangent ces étapes. C'est parfois pratique, mais un peu de rigueur</p>
+<p>Voici quelques copies d'écran de la conception d'un circuit de commande d'une enseigne à trois groupes de LED, avec un MSP430G2231 et les transistors de commande.</p>
+<h2 id="plaques-universelles-veroboard">Plaques universelles <em>Veroboard</em></h2>
+<p>Comme alternative intéressante pour l'amateur, on trouve des circuits imprimés déjà réalisés, avec des trous au pas de 2.54 mm (un dixième de pouces, l'unité la plus utilisée en électronique). Selon les modèles, chaque trou a sa pastille, isolée de autres pastilles. Sur un modèle qui me semble plus intéressant, des bandes de cuivre relient les trous dans une direction.</p>
+<p>image vero</p>
+<div class="figure">
+<img src="images/vero.jpg" title="Veroboard" alt="Veroboard" />
+<p class="caption">Veroboard</p>
+</div>
+<p>Les premières cartes de ce type ont été proposée par la société <em>Vero</em>, sous le nom de <em><strong>Veroboard</strong></em>. Ce nom est passé dans le langage courant des électroniciens. Le mot <em>Protoboard</em> est aussi souvent utilisé, mais son usage correspond parfois aussi aux plaques d'expérimentations que nous désignons par <em>Breadboard</em>.</p>
+<p>Pour utiliser de manière optimale ces plaques, on va :</p>
+<ul>
+<li>disposer les composants de manière à utiliser au maximum les bandes de cuivres existantes</li>
+<li>couper les bandes de cuivre là où c'est nécessaire</li>
+<li>ajouter des fils perpendiculaires aux bandes de cuivre, qui se placent du côté des composants</li>
+<li>utiliser les fragments de pistes libres pour des connexions si nécessaire</li>
+</ul>
+<p>Pour faciliter la coupure des piste là où c'est nécessaire, on fera la coupire au niveau d'un trou, en utilisant une mèche comme fraise conique :</p>
+<p>image coupure d'une piste par image fraisage d'un trou</p>
+<h2 id="conception-dun-circuit-veroboard">Conception d'un circuit Veroboard</h2>
+<p>J'ai souvent remarqué que la réalisation sur Veroboard se fait souvent un peu par dépit : <em>je ne peux pas tirer de circuits imprimés, je bricole un Veroboard, vite fait - mal fait...</em> Or le Veroboard permet de réaliser des cartes très propres si la conception du circuit passe par la même logique que pour un circuit imprimé : l'utilisation d'un logiciel de conception de circuits imprimés.</p>
+<p>On va donc dessiner un <em>circuit imprimé</em> qui obéit à des règles très précise, correspondant à la géométrie des plaques Veroboard :</p>
+<ul>
+<li>tous les trous sont placés sur une grille de 2.54 mm, les composants doivent s'adapter à cette grille.</li>
+<li>toutes les pistes de la face inférieure sont <em>horizontales</em> (ce sont le pistes du Veroboard)</li>
+<li>si une piste horizontale toit être coupée, il faut réserver un trou pour la coupure</li>
+<li>les <em>pistes de la face supérieure</em> sont en fait des fils *verticaux&quot;, allant d'un trou à un autre</li>
+</ul>
+<p>Une fois la conception faite, la réalisation devient simple : * imprimer le plan et le coller sur le Veroboard * repérer et marquer les trous sur lesquels des coupures doivent être faites * fraiser les trous pour les coupures * placer de souder les fils perpendiculaires aux pistes * placer et souder les composants, par ordre de hauteur</p>
+<p>Voici en image la réalisation d'un circuit de commande sur Veroboard d'une enseigne à trois groupes de LED, avec un MSP430G2231 et les transistors de commande.</p>
+</body>
+</html>

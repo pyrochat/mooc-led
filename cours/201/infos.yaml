@@ -7,7 +7,7 @@ auteur:
 statut:           Relecture
 code:             transistor
 url:
-    cours-html:   transistor.html
-    cours-pdf:    transistor.pdf
-    dias-video:   transistor-dia.pdf
-    dias-compact: transistor-dia-compact.pdf
+    cours-html:   ../201/transistor.html
+    cours-pdf:    ../201transistor.pdf
+    dias-video:   ../201transistor-dia.pdf
+    dias-compact: ../201transistor-dia-compact.pdf

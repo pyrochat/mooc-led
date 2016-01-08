@@ -8,4 +8,4 @@ pandoc  --standalone --from markdown --to html --highlight-style pygments --emai
 weasyprint matrice-dia-compact.html matrice-dia-compact.pdf
 
 rm matrice-dia-pre-compact.md
-rm matrice-dia.html
+rm matrice-dia-compact.html

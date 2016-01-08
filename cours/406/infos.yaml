@@ -7,7 +7,7 @@ auteur:
 statut:           Relecture
 code:             memoires-perm
 url:
-    cours-html:   memoires-perm.html
-    cours-pdf:    memoires-perm.pdf
-    dias-video:   memoires-perm-dia.pdf
-    dias-compact: memoires-perm-dia-compact.pdf
+    cours-html:   ../406/memoires-perm.html
+    cours-pdf:    ../406/memoires-perm.pdf
+    dias-video:   ../406/memoires-perm-dia.pdf
+    dias-compact: ../406/memoires-perm-dia-compact.pdf

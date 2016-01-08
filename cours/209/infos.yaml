@@ -7,7 +7,7 @@ auteur:
 statut:           Relecture
 code:             seq-compteur
 url:
-    cours-html:   seq-compteur.html
-    cours-pdf:    seq-compteur.pdf
-    dias-video:   seq-compteur-dia.pdf
-    dias-compact: seq-compteur-dia-compact.pdf
+    cours-html:   ../209/seq-compteur.html
+    cours-pdf:    ../209/seq-compteur.pdf
+    dias-video:   ../209/seq-compteur-dia.pdf
+    dias-compact: ../209/seq-compteur-dia-compact.pdf

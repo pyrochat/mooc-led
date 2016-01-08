@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Pierre-Yves Rochat, EPFL" />
+  <title>Mémoires permanentes</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Mémoires permanentes</h1>
+<h2 class="author"><script type="text/javascript">
+<!--
+h='&#112;&#x79;&#114;&#46;&#x63;&#104;';a='&#64;';n='&#112;&#x79;&#114;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Pierre-Yves Rochat'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;&#32;&#40;&#112;&#x79;&#114;&#32;&#x61;&#116;&#32;&#112;&#x79;&#114;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#104;&#x29;</noscript>, EPFL</h2>
+<h3 class="date">rév 2015/09/18</h3>
+</div>
+<h2 id="types-de-mémoires">Types de mémoires</h2>
+<p>Tous les microcontrôleurs disposent de deux types de mémoire :</p>
+<ul>
+<li>la mémoire Flash, prévue principalement pour recevoir le programme, qui est permanente</li>
+<li>la mémoire vive (RAM = Random Access Memory), qui perd son contenu lorsque le circuit n'est plus alimenté.</li>
+</ul>
+<p>Pour commander des enseignes et afficheurs à LED, on placera souvent en mémoire non volatile non seulement le programme proprement dit, mais aussi les informations sur le contenu qui sera visualisé. En effet, les séquences d'une enseigne ou les textes d'un afficheur doivent être mémorisés de manière non-volatile, pour leur assurer un fonctionnement correct après une coupure de courant.</p>
+<p>Une particularité de la mémoire Flash est son organisation en blocs. S'il est possible d'écrire une valeur dans une position mémoire précise, il n'est pas possible d'effacer une position mémoire seule. Les effacements se font toujours par bloc. La taille d'un bloc varie considérablement d'un microcontrôleur à un autre, parfois seulement 64 octets, jusqu'à plusieurs dizaines de kB.</p>
+<h2 id="les-mémoires-eeprom">Les mémoires EEPROM</h2>
+<p>Certains microcontrôleurs disposent d'un troisième type de mémoire, en plus de la Flash et de la RAM. Il s'agit de mémoires EEPROM. Ce sont aussi des mémoires non-volatiles, mais chaque position mémoire peut être écrite et effacée indépendamment des autres. On trouve ce type de mémoire dans les microcontrôleurs AVR, dont l'ATmega328, bien connu pour être utilisé dans les Arduino.</p>
+<p>L'accès à l'EEPROM interne d'un microcontrôleur est généralement très simple. Des registres sont prévus pour l'adresse (EEAR) et pour la donnée (EEDR), en lecture ou en écriture. Sur les AVR, deux registres donnent l'accès aux adresses et aux données :</p>
+<div class="figure">
+<img src="images/eeprom-avr.png" title="Accès à l&#39;EEPROM sur les AVR" alt="Accès à l&#39;EEPROM sur les AVR" />
+<p class="caption">Accès à l'EEPROM sur les AVR</p>
+</div>
+<p>Voici les instructions pour lire et écrire dans la mémoire :</p>
+<pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Lecture en EEPROM :</span>
+  EEAR = adresse; <span class="co">// l&#39;adresse est donnée</span>
+  EECR = (1&lt;&lt;EERE); <span class="co">// le fanion de lecture est activé</span>
+  valeur = EEDR; <span class="co">// lecture de la valeur</span>
+
+  <span class="co">// Ecriture en EEPROM :</span>
+  <span class="kw">while</span> (EECR &amp; (1&lt;&lt;EEPE)) {} <span class="co">// attente de la fin d&#39;une éventuelle écriture précédente</span>
+  EEAR = adresse; <span class="co">// l&#39;adresse est donnée</span>
+  EEDR = valeur; <span class="co">// la valeur est donnée</span>
+  EECR = (1&lt;&lt;EEMPE); <span class="co">// autorise une écriture (Master Write Enable)</span>
+  EECR = (1&lt;&lt;EEPE); <span class="co">// lance le cycle d&#39;écriture (Write Enable)</span></code></pre>
+<!-- retour au mode normal pour l'éditeur -->
+<p>Le fanion EEMPE signifiait EEprom Master Program Enable. Mais les lettres PE sont traduites dans la documentation actuelle par Write Enable. EEMPE doit être activé juste avant l'activation du fanion EEPE (EEprom Write Enable) qui lance le cycle d'écriture. Son activation ne dure que quelques cycles d'horloge : il est automatiquement remis à zéro. Aucune écriture n'est possible s'il n'est pas actif. Son but est de rendre improbable une écriture accidentelle en EEPROM. L'activation des EEMPE et de EEPE doivent en effet se suivre de près pour qu'une écriture soit possible.</p>
+<p>Le fanion EEPE est remis à zéro automatiquement par le microcontrôleur lorsque le cycle d'écriture est terminé. Alors que la lecture est immédiate, il faut se souvenir que l'écriture prend un temps relativement long, de l'ordre de quelques millisecondes.</p>
+<h2 id="accès-à-la-mémoire-flash-par-programmation">Accès à la mémoire Flash par programmation</h2>
+<p>Pour y placer le programme, la mémoire Flash du microcontrôleur est accédée de l'extérieur, au moyen d'un programmateur. S'il reste de la place dans la mémoire Flash, il est possible de l'utiliser depuis le programme pour y placer des données. La manière de le faire dépend de l'architecture du microcontrôleur. Il faut se référer à la documentation du microcontrôleur pour avoir les détails.</p>
+<p>Sur les MSP430, l'architecture de Von Neumann rend facile l'accès à la mémoire Flash. La lecture se fait simplement en indiquant l'adresse de la position mémoire :</p>
+<pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Lecture en Flash :</span>
+  <span class="dt">uint8_t</span> *pointeur; <span class="co">// pointeur dans la Flash</span>
+  pointeur = (<span class="dt">uint8_t</span> *) <span class="bn">0x1040</span>; <span class="co">//place l&#39;adresse dans le pointeur</span>
+  <span class="dt">uint8_t</span> valeur = *pointeur;</code></pre>
+<!-- retour au mode normal pour l'éditeur -->
+<p>On remarque le trans-typage de l'adresse, indiquée ici en hexadécimal, vers le type du pointeur, qui est dans ce cas un pointeur vers des valeurs 8 bits non-signées <code>(uint8_t *)</code>.</p>
+<p>L'écriture se fait de la même manière. Il faut toutefois précéder l'écriture par la désactivation du fanion qui bloque l'écriture en mémoire Flash. Son rôle est de rendre improbable des effacements accidentels de la mémoire.</p>
+<pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Ecriture en Flash :</span>
+  FCTL3 = FWKEY; <span class="co">// Clear Lock bit</span>
+  *pointeur = valeur; <span class="co">// écrit la valeur dans la Flash</span>
+  FCTL3 = FWKEY + LOCK; <span class="co">// Set LOCK bit</span></code></pre>
+<!-- retour au mode normal pour l'éditeur -->
+<p>L'effacement s'effectue par bloc. Il s'effectue lorsqu'une écriture est faite dans la zone du bloc alors que le fanion d'effacement est activé. Mais il est nécessaire de désactiver au préalable le fanion qui bloque toute écriture en mémoire Flash.</p>
+<pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Effacement d&#39;un bloc de la mémoire Flash</span>
+  FCTL1 = FWKEY + ERASE; <span class="co">// Set Erase bit</span>
+  FCTL3 = FWKEY; <span class="co">// Clear Lock bit</span>
+  *pointeur = 0; <span class="co">// lance un cycle d&#39;effacement du bloc, la valeur donnée n&#39;a pas d&#39;importance</span>
+  FCTL3 = FWKEY + LOCK; <span class="co">// Set LOCK bit</span>
+  FCTL1 = FWKEY; <span class="co">// Clear WRT bit</span></code></pre>
+<!-- retour au mode normal pour l'éditeur -->
+<p>Souvent, des librairies sont disponibles pour faciliter ce travail. Pour les AVR, construits sur une architecture de Harvard, la librairie <code>Pgmspace.h</code> est utilisée.</p>
+<h2 id="limite-du-nombre-de-cycles-décriture">Limite du nombre de cycles d'écriture</h2>
+<p>Toutes les mémoires non-volatiles ont une limite dans le nombre d'écriture ou d'effacements. Pour les Flash, la limite est souvent de 10'000 cycles. S'il ne s'agit que de programmer le microcontrôleur, ce nombre semble très grand : qui va programmer 10'000 fois un même microcontrôleur ?</p>
+<p>Toutefois... à l'occasion du MOOC Comprendre les microcontrôleurs, proposé par l'EPFL sur Coursera dès 2013, nous avons mis au point un système de correction de devoirs. Il a corrigé à ce jour plus de 70'000 devoirs. Les microcontrôleurs ont donc été changés de temps en temps, pour éviter des pannes.</p>
+<p>Les EEPROM sont souvent capables d'un nombre de cycles d'écriture plus grand que les Flash. L'ordre de grandeur est de 100'000 cycles ou davantage. Mais attention, ce nombre est très vite atteint si certaines précautions ne sont pas prises. Remarquez par exemple qu'en écrivant une valeur chaque seconde, on atteint la limite peu après un jour de fonctionnement.</p>
+<h2 id="mémoires-externes">Mémoires externes</h2>
+<p>Il est possible d'ajouter de la mémoire non-volatile à un microcontrôleur en utilisant des circuits mémoire externes. On choisira un circuit en fonction de la taille des données à mémoriser. Les solutions les plus courantes sont :</p>
+<ul>
+<li>les mémoires EEPROM, souvent disponibles dans des boîtier à 8 broches (DIL 8 ou modèles correspondant en SMD)</li>
+<li>les cartes SD (ou microSD).</li>
+</ul>
+<p>Au moyen d'une autre technologie, les circuits horloges temps réel offrent souvent quelques positions mémoires RAM. Or celles-ci sont rendues non-volatiles par la pile qui maintient le circuit en fonctionnement permanent.</p>
+<h2 id="eeprom-i2c-ou-spi">EEPROM I2C ou SPI</h2>
+<p>Plusieurs fabricants proposent des familles de mémoires EEPROM, tels que Microchip, Atmel, STmicro, Winbond, etc. Le dialogue entre ces mémoires et le microcontrôleur se fait en série, le plus souvent par des signaux aux normes I2C ou SPI.</p>
+<p>Par exemple, la mémoire M95256 de STmicro a une capacité de 256 kb. Attention, la lettre b est en minuscule, ce qui signifie bit. En d'autre termes, c'est une mémoire de 32 kB (kilo Bytes). Elle utilise les signaux SPI. Voici un schéma de mise en œuvre :</p>
+<div class="figure">
+<img src="images/m95256.png" title="Mise en œuvre d&#39;une EEPROM" alt="Mise en œuvre d&#39;une EEPROM" />
+<p class="caption">Mise en œuvre d'une EEPROM</p>
+</div>
+<p>Pour dialoguer avec ces circuits pour lire ou écrire des valeurs en mémoire, on trouve facilement sur Internet des librairies prêtes à l'emploi. La lecture des sources permet d'en comprendre le fonctionnement.</p>
+<p>Il faut être attentif à un point important. Presque tous les microcontrôleurs sont équipés de contrôleurs spécialisés pour I2C ou pour SPI. Pour pouvoir utiliser ces contrôleurs, il faut impérativement utiliser les broches choisies à cet effet par le fabricant. On n'est donc pas libre de choisir les broches.</p>
+<p>Bien entendu, il est possible de programmer les procédures I2C ou SPI en <em>bit banging</em>, c'est-à-dire en agissant directement sur les broches d'entrée-sortie. Dans ce cas, on a toute liberté dans le choix des broches. L'usage des contrôleurs intégrés a deux avantages. D'une part, le travail de programmation est simplifié. Mais surtout, ces contrôleurs permettent d'atteindre des vitesses de transfert plus élevées. Pour les afficheurs à LED de grande taille, c'est un aspect très important.</p>
+<p>On trouve des mémoires EEPROM dont les capacités vont de quelques dizaines d'octets jusqu'à des dizaines de méga-octets.</p>
+<h2 id="cartes-sd">Cartes SD</h2>
+<p>Pour des capacités plus grandes, on choisira des cartes SD. Elles utilisent en interne des mémoires Flash, mais un contrôleur s'occupe de gérer l'accès aux blocs. Il gère également les mauvais blocs, qui peuvent souvent apparaître avec ce type de mémoires.</p>
+<p>Les cartes SD seront aussi utilisées lorsqu'il est nécessaire de déplacer la mémoire pour la connecter à un PC. Dans le cas d'un afficheur à LED, on peut envisager de mettre le contenu à afficher dans une cartes SD à partir d'un PC, puis de placer la carte dans l'afficheur.</p>
+<p>La capacité des cartes SD est très importante, aujourd’hui jusqu'au TB (1 tera octet = 1'000'000'000'000 octets).</p>
+<h2 id="système-de-fichier">Système de fichier</h2>
+<p>Pour placer ou lire des données sur une carte SD, on choisit généralement d'utiliser le format spécifique d'un système de fichiers (<em>file system</em>). On bénéficie ainsi d'un accès aux données par fichier. On peut aussi utiliser les dossiers, appelés aussi répertoires. Le standard FAT32 est le plus souvent utilisé, vu qu'il est compatible avec tous les systèmes d'exploitation.</p>
+<p>Pour faciliter l'accès aux données des fichiers en lecture ou en écriture, de nombreuses librairies sont disponibles : <em>FatFS</em>, <em>PetitFat</em>, <em>SdFat</em>, etc.</p>
+<p>A titre d'exemple, la librairie <strong><em>PetitFat</em></strong> fournit les primitives suivantes :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Procédure</th>
+<th align="left">Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>pf_mount:</code></td>
+<td align="left">Monter un volume</td>
+</tr>
+<tr class="even">
+<td align="left"><code>pf_open:</code></td>
+<td align="left">Ouvrir un fichier</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>pf_read:</code></td>
+<td align="left">Lire des données dans un fichier</td>
+</tr>
+<tr class="even">
+<td align="left"><code>pf_write:</code></td>
+<td align="left">Écrire des données dans un fichier</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>pf_lseek:</code></td>
+<td align="left">Déplacer le pointeur de lecture ou d'écriture</td>
+</tr>
+<tr class="even">
+<td align="left"><code>pf_opendir:</code></td>
+<td align="left">Ouvrir un dossier</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>pf_readdir:</code></td>
+<td align="left">Lire le contenu d'un dossier.</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

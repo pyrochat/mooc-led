@@ -7,7 +7,7 @@ auteur:
 statut:           Relecture
 code:             registres-ser-par
 url:
-    cours-html:   registres-ser-par.html
-    cours-pdf:    registres-ser-par.pdf
-    dias-video:   registres-ser-par-dia.pdf
-    dias-compact: registres-ser-par-dia-compact.pdf
+    cours-html:   ../305/registres-ser-par.html
+    cours-pdf:    ../305/registres-ser-par.pdf
+    dias-video:   ../305/registres-ser-par-dia.pdf
+    dias-compact: ../305/registres-ser-par-dia-compact.pdf

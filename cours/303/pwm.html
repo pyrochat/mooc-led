@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<h1 id="pwm-modulation-de-largeur-dimpulsion"><strong>PWM : Modulation de Largeur d'Impulsion</strong></h1>
+<h2 id="pierre-yves-rochat-epfl"><script type="text/javascript">
+<!--
+h='&#112;&#x79;&#114;&#46;&#x63;&#104;';a='&#64;';n='&#112;&#x79;&#114;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Pierre-Yves Rochat'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;&#32;&#40;&#112;&#x79;&#114;&#32;&#x61;&#116;&#32;&#112;&#x79;&#114;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#104;&#x29;</noscript>, EPFL</h2>
+<blockquote>
+<p>Document en cours de relecture, version du 2015/07/19</p>
+</blockquote>
+<h2 id="varier-lintensité-dune-led">Varier l'intensité d'une LED</h2>
+<p>Beaucoup d'enseignes à LED se contentent d'allumer et d'éteindre des LED ou des groupes de LED. On pourrait obtenir des effets beaucoup plus intéressants et variés en ayant la possibilité de changer leurs intensités lumineuses.</p>
+<div class="figure">
+<img src="images/led3-varie-intens.svg" title="Varier l&#39;intensité d&#39;une LED" alt="Figure : Varier l&#39;intensité d&#39;une LED" />
+<p class="caption">Figure : Varier l'intensité d'une LED</p>
+</div>
+<p>Comment faire varier l'intensité d'une LED ? On sait que c'est le courant qui la traverse qui produit de la lumière. Faire varier ce courant n'est généralement pas facile. On peut faire varier la tension qui alimente la LED, ou encore la résistance qui limite son courant. Il est aussi possible de piloter le courant par un transistor, avec un montage adéquat.</p>
+<p>Mais il existe une solution très différente et généralement beaucoup plus simple à implémenter. Souvenons-nous du clignotement d'une LED. Que se passe-t-il lorsqu'on augmente la fréquence du clignotement ? À partir d'une certaine fréquence, notre œil commence à ne plus voir qu'un scintillement. En augmentant encore la fréquence, il voit simplement la LED allumée, mais avec une intensité plus faible que si elle était allumée en permanence.</p>
+<h2 id="le-pwm">Le PWM</h2>
+<p>À l'idée de faire clignoter rapidement la LED, ajoutons l'idée de faire varier le temps pendant lequel elle est allumée. On obtient alors la Modulation de Largeur d'Impulsion (MLI) ou Pulse Width Modulation (PWM) en anglais. Regardons la figure suivante :</p>
+<div class="figure">
+<img src="images/pwm.svg" title="Signal PWM" alt="Figure : signal PWM" />
+<p class="caption">Figure : signal PWM</p>
+</div>
+<p>Le signal a une période constante (donc une fréquence constante). La durée de la partie active du signal varie. Dans la première partie du tracé, 25% de la puissance disponible peut être envoyée à la charge, vu que le signal est à <em>1</em> durant 25% du temps alors qu'il est à <em>0</em> le reste du temps. De même, la puissance passe à 50% au milieu du tracé et à 75% dans la dernière partie. Il est aussi possible de n'envoyer aucune puissance (0%) en laissant la sortie à <em>0</em>, ou toute la puissance (100%) en laissant la sortie à <em>1</em>.</p>
+<p>Le rapport entre la durée de la partie active du signal et la durée de la période s'appelle le <strong>rapport cyclique</strong> (en anglais <em>duty cycle</em>).</p>
+<h2 id="fréquence-du-pwm">Fréquence du PWM</h2>
+<p>L'usage du PWM est très répandu, avec des applications dans beaucoup de domaines. La commande de moteurs s'effectue très souvent par PWM. Dans ce cas, c'est la nature inductive du moteur qui effectue l'intégration du signal, ainsi que l'inertie mécanique du système.</p>
+<p>Dans le cas de la commande de diodes lumineuses, le temps d'allumage et d'extinction est très court. La LED continue à &quot;clignoter&quot; jusqu'à plusieurs dizaines de MHz. C'est l'œil humain qui ne voit pas le clignotement. L'œil a une fréquence de perception maximale située vers 75 Hz. C'est bien lui qui effectue l'intégration du signal pour en percevoir une valeur moyenne.</p>
+<p>Dans divers domaines de l'électronique, les fréquences des signaux PWM peuvent aller couramment jusqu'à des dizaines de MHz. Mais plus la fréquence est élevée, plus les pertes électriques à l'instant des changements de valeurs sont importantes et peuvent conduire à une dissipation importante d'énergie dans les éléments de commutation.</p>
+<p>L'oeil a une fréquence limite de perception du clignotement. Par exemple, on sait qu'un tube fluorescent (Néon) clignote à 100 Hz, vu qu'il est commandé par du courant alternatif à 50 Hz, et que chaque période a une alternance positive et une alternance négative. Les cellules sensibles de notre oeil (les cônes pour la vision en couleur et les batonnets pour la vision périphérique et à faible intensité) n'ont pas la même limite de perception du clignotement.</p>
+<p>Pour les enseignes et afficheurs à LED, on vise généralement de fréquences de l'ordre de 100 à 200 Hz. Il'est déjà souvent extrêmement difficile d'envoyer à ces fréquences toutes les informations à l'ensemble des LED, qui peuvent être très nombreuses. Par exemple, les murs de LED capables d'afficher de la vidéo nécessitent des circuits électroniques complexes, qui seront étudiés plus tard dans ce cours.</p>
+<h2 id="programmation-dun-pwm">Programmation d'un PWM</h2>
+<p>Voici un programme très simple qui génère un signal PWM sur une sortie d'un microcontrôleur :</p>
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="ot">#define LedOn digitalWrite(P1_0, 1)</span>
+<span class="ot">#define LedOff digitalWrite(P1_0, 0)</span>
+
+<span class="dt">uint16_t</span> pwmLed; <span class="co">// valeur du PWM, 0 à 100</span>
+
+<span class="dt">void</span> setup() { <span class="co">// Initialisations</span>
+  pinMode(P1_0, OUTPUT); <span class="co">// LED en sortie</span>
+  pwmLed = <span class="dv">25</span>; <span class="co">// valeur du PWM. </span>
+}
+
+<span class="dt">void</span> loop() { <span class="co">// Boucle infinie, durée 10ms =&gt; un cycle du PWM à 100 Hz</span>
+  LedOn;
+  delayMicrosecond(100*pwmLed); <span class="co">// durée de l&#39;impulsion</span>
+  LedOff;
+  delayMicrosecond(100*(100-pwmLed)); <span class="co">// solde de la période</span>
+}</code></pre></td></tr></table>
+<!-- retour au mode normal pour l'éditeur -->
+<p>Le programme a été écrit de telle manière que les valeurs du PWM doivent être choisies entre 0 et 100, elles représentent donc dans ce cas des <em>pour cents</em>. Les informaticiens choisissent plus souvent des valeurs dans une plage binaire, comme par exemple de 0 à 255 (8 bits, voir l'exemple suivant).</p>
+<p>La fréquence a été choisie ici à 100 Hz. En effet les deux délais de la boucle principale totalisent 100 * 100 us, donc 10 ms.</p>
+<p>Après les initialisations de la sortie et de la variable qui contient en permanence la valeur du PWM, la boucle infinie alterne la partie active et la partie inactive du signal. Les attentes sont obtenues par des délais exprimés en us.</p>
+<p>Ce programme donne l'impression que la diode lumineuse est à demi intensité, malgré une commande à 25 %. C'est lié au fait que la réponse de l'œil n'est pas linéaire, mais logarithmique. On remarque aussi que le PWM est visible en déplaçant rapidement la diode devant l'œil.</p>
+<h2 id="génération-de-plusieurs-signaux-pwm">Génération de plusieurs signaux PWM</h2>
+<p>Le principe du programme que nous venons de voir ne convient pas à la programmation de PWM sur plusieurs sortie. Voici une manière de programmer un PWM qui se prête à gérer plusieurs sorties :</p>
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="dt">uint8_t</span> pwmLed; <span class="co">// valeur du PWM, 0 à 255 (8 bits)</span>
+<span class="dt">uint8_t</span> cptPwm; <span class="co">// compteur du PWM</span>
+
+<span class="dt">void</span> setup() { <span class="co">// Initialisations</span>
+  pinMode(P1_0, OUTPUT); <span class="co">// LED en sortie</span>
+  pwmLed = <span class="dv">64</span>; <span class="co">// valeur du PWM. Elle est ici fixe, mais pourrait changer</span>
+               <span class="co">// à tout moment en complétant le programme.</span>
+  cptPwm = <span class="dv">0</span>; <span class="co">// compteur du PWM</span>
+}
+
+<span class="dt">void</span> loop() { <span class="co">// Boucle infinie, durée 39us (256 * 39us = ~10ms)</span>
+  <span class="kw">if</span> ((cptPwm==<span class="dv">0</span>) &amp;&amp; (pwmLed&gt;<span class="dv">0</span>)) LedOn; <span class="co">// seulement pour une valeur positive</span>
+  <span class="kw">if</span> (cptPwm==pwmLed) LedOff;
+  
+  cptPwm++; <span class="co">// passe automatiquement de 255 à 0 (overflow)</span>
+  delayMicroseconds(<span class="dv">39</span>);
+}</code></pre></td></tr></table>
+<!-- retour au mode normal pour l'éditeur -->
+<p>Dans ce cas, la boucle principale dure seulement le temps qui correspond à une fraction de la période du PWM, ici un 256<sup>ème</sup> de la période. L'usage de cette valeur, associée à un compteur de type uint8_t (8 bits non signés), simplifie le programme, en évitant de gérer le retour à zéro, qui s'effectue au moment du dépassement de capacité (overflow).</p>
+<p>Voici comment modifier ce programme pour qu'il commande 8 LED, avec 8 valeurs différentes de PWM :</p>
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="dt">uint8_t</span> pwmLed[8]; <span class="co">// valeurs des PWM, 0 à 255 (8 bits), pour 8 LED</span>
+<span class="dt">uint8_t</span> cptPwm; <span class="co">// compteur du PWM</span>
+
+<span class="dt">void</span> setup() ...
+
+<span class="dt">void</span> LedOn (<span class="dt">uint8_t</span> n) ... procédure qui allume une des <span class="dv">8</span> LED
+<span class="dt">void</span> LedOff (<span class="dt">uint8_t</span> n) ... procédure qui éteint une des <span class="dv">8</span> LED
+
+<span class="dt">void</span> loop() { <span class="co">// Boucle infinie</span>
+  <span class="kw">for</span> (<span class="dt">uint8_t</span> i=<span class="dv">0</span>; i&lt;<span class="dv">8</span>; i++) {
+    <span class="kw">if</span> ((cptPwm==0) &amp;&amp; (pwmLed[i]&gt;0)) LedOn(i); <span class="co">// allume la LED concernée</span>
+    <span class="kw">if</span> (cptPwm==pwmLed[i]) LedOff(i); <span class="co">// éteint la LED correspondante</span>
+  }
+
+  cptPwm++; <span class="co">// passe automatiquement de 255 à 0 (overflow)</span>
+  delayMicrosecond(<span class="dv">39</span>); <span class="co">// on pourrait diminuer cette valeur</span>
+  <span class="co">// pour tenir compte du temps d&#39;exécution de la boucle for.</span>
+}</code></pre></td></tr></table>
+<!-- retour au mode normal pour l'éditeur -->
+<h2 id="programmation-dune-séquence-en-pwm">Programmation d'une séquence en PWM</h2>
+<p>Dans des applications comme la gestion des moteurs d'un robot mobile, les valeurs du PWM sont calculées à chaque cycle, en fonction des valeurs des capteurs (capteurs de distance, caméras, etc.)</p>
+<p>Dans le cas des enseignes et afficheurs à LED, les valeurs sont calculées en fonction du temps qui passe, pour former des séquences. Comment connaître le temps qui s'écoule ? Une des manières consiste simplement à compter les cycles du PWM, qui ont une durée constante.</p>
+<p>Prenons un exemple. Pour donner l'impression qu'un appareil est en mode &quot;repos&quot;, une LED va avoir son intensité qui varie de la manière suivante :</p>
+<div class="figure">
+<img src="images/chrono-repos.svg" title="diagramme des temps de la LED suggérant le repos" alt="Figure : diagramme des temps de la LED suggérant le repos" />
+<p class="caption">Figure : diagramme des temps de la LED suggérant le repos</p>
+</div>
+<p>La séquence est cyclique et dure 4 secondes. Il imite la respiration d'une personne qui dort. Durant la première seconde, l'intensité augmente jusqu'au maximum. Durant la deuxième seconde, elle diminue jusqu'à zéro, valeur qui reste jusqu'à la fin du cycle.</p>
+<p>La courbe se divise en 3 parties. Il est facile d'exprimer l'intensité en fonction du temps dans chacune des parties. Voici comment compléter le programme :</p>
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="dt">uint16_t</span> pwmLed; <span class="co">// valeur du PWM, 0 à 255 (8 bits, dans une variable 16 bits pour les calculs)</span>
+<span class="dt">uint16_t</span> cpt10ms = 0; <span class="co">// compteur des cycles, de 0 à 400 (par 10ms, total 4s)</span>
+...
+<span class="dt">void</span> loop() { <span class="co">// Boucle infinie, durée 39us (256 * 39us = ~10ms)</span>
+  <span class="kw">if</span> (cptPwm==<span class="dv">0</span>) {
+    cpt10ms++;
+    <span class="kw">if</span> (cpt10ms&lt;100) { <span class="co">//première seconde</span>
+      pwmLed = cpt10ms * <span class="dv">256</span> / <span class="dv">100</span>; <span class="co">// droite montante</span>
+    } <span class="kw">else</span> <span class="kw">if</span> (cpt10ms&lt;200) { <span class="co">// deuxième seconde</span>
+      pwmLed = <span class="dv">256</span> - ((cpt10ms<span class="dv">-100</span>) * <span class="dv">256</span> / <span class="dv">100</span>); <span class="co">// droite descendante</span>
+    } <span class="kw">else</span> {
+      pwmLed = <span class="dv">0</span>;
+      <span class="kw">if</span> ( cpt10ms==<span class="dv">400</span>) cpt10ms = <span class="dv">0</span>; <span class="co">// fin des 4 secondes</span>
+    }
+  }
+  
+  <span class="kw">if</span> ((cptPwm==<span class="dv">0</span>) &amp;&amp; (pwmLed&gt;<span class="dv">0</span>)) LedOn; <span class="co">// allume la LED seulement pour une valeur positive</span>
+  <span class="kw">if</span> (cptPwm==pwmLed) LedOff;
+  
+  cptPwm++; <span class="co">// passe automatiquement de 255 à 0 (overflow)</span>
+  delayMicroseconds(<span class="dv">39</span>);
+}</code></pre></td></tr></table>
+<!-- retour au mode normal pour l'éditeur -->
+<p>Il est important de contrôler que les variables utilisées ne produisent pas de dépassement de capacité pour les calculs effectués. La variable <code>pwmLed</code> a été choisie ici sur 16 bits. Pour la première droite, <code>cpt10ms</code> peut aller jusqu'à <em>99</em>. Multiplié par <em>256</em>, on obtient un nombre inférieur à <em>65'535</em> (qui est le nombre maximum que peut représenter un nombre entier de 16 bits). Le contrôle doit être fait pour tous les cas.</p>
+<h2 id="convertisseur-dac-simple">Convertisseur DAC simple</h2>
+<p>Bien que le signal PWM soit un signal binaire (il est soit à <em>0</em> soit à <em>1</em> à un instant donné), il est porteur d'une valeur analogique. Il suffit en effet de faire l'intégrale du signal pour s'en rendre compte. Il faut pondérer le <em>1</em> logique comme la valeur +1 et le <em>0</em> logique comme la valeur -1, comme le montre la figure suivante :</p>
+<div class="figure">
+<img src="images/pwm-dac.svg" title="Signal PWM intégré" alt="Figure : signal PWM intégré" />
+<p class="caption">Figure : signal PWM intégré</p>
+</div>
+<p>Il est donc possible de réaliser un convertisseur numérique-analogique (Digital to Analog Converter, DAC) basé sur un signal PWM. Il doit être suivi par un filtre passe-bas adapté à la fréquence du PWM. Ce filtre peut être un simple filtre R-C.</p>
+<h2 id="circuits-spécialisés">Circuits spécialisés</h2>
+<p>Comment générer un signal en PWM avec des circuits logiques ? Il faut utiliser un compteur, piloté par une horloge de fréquence fixe. Un détecteur de 0 permet de signaler le début du cycle. Un comparateur, connecté à un registre qui contient la valeur du PWM, permet de détecter la fin de l'impulsion. Une bascule <em>Set-Reset</em> génère le signal.</p>
+<div class="figure">
+<img src="images/compteur-pwm.svg" title="Génération d&#39;un PWM avec un système logique]" alt="Figure : génération d&#39;un PWM avec un système logique" />
+<p class="caption">Figure : génération d'un PWM avec un système logique</p>
+</div>
+<p>Les microcontrôleurs contiennent des circuits logiques supplémentaires ressemblant beaucoup à ce schéma. On les appelle des <em>Timers</em>. Complétés de circuits logiques dédiés, ils peuvent générer du PWM sans autre programmation que l'initialisation des registres de contrôle qui leur sont associés. Nous en parlerons plus tard dans ce cours.</p>
+</body>
+</html>

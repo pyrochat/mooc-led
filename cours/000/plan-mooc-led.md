@@ -9,6 +9,8 @@ Version de travail du 2016/01/02
 **Enseignants** : (YT) : Yves Tiecours, (AT) Alain Tiedeu, (MLN) Mamadou Lamine Ndiaye, (PYR) Pierre-Yves Rochat (?) à déterminer.
 
 **Documents** : Les notes de cours sont disponibles en HTML et en PDF. Les dispositives sont en PDF, avec une version complète utilisée pour les vidéos, ainsi qu'une version compacte qui sera mise à disposition des participants du MOOC.   
+**0.1** **Utilisation de Git et de GitHub à l’usage des étudiants du MOOC** (NJ) [cours-html](git-etudiants.html)   
+**0.2** **Utilisation de Git et de GitHub à l’usage des contributeurs du MOOC** (NJ) [cours-html](git-contrib.html)   
 
 ## Semaine 1 ##
 
@@ -40,15 +42,15 @@ Version de travail du 2016/01/02
 
 
 
-**2.1** **Le transistor** (YT) [dias-video](transistor-dia.pdf) | [cours-html](transistor.html) | [cours-pdf](transistor.pdf) | [dias-compact](transistor-dia-compact.pdf)   
+**2.1** **Le transistor** (YT) [dias-video](../201transistor-dia.pdf) | [cours-html](../201/transistor.html) | [cours-pdf](../201transistor.pdf) | [dias-compact](../201transistor-dia-compact.pdf)   
 **2.2** *Pratique :* Montages à transistor <!-- (2 segments de 4 LED) --> (?)   
-**2.3** **Enseignes à motifs fixes** (PYR) [dias-video](enseignes-fixes-dia.pdf) | [cours-html](enseignes-fixes.html) | [cours-pdf](enseignes-fixes.pdf) | [dias-compact](enseignes-fixes-dia-compact.pdf)   
+**2.3** **Enseignes à motifs fixes** (PYR) [dias-video](../203/enseignes-fixes-dia.pdf) | [cours-html](../203/enseignes-fixes.html) | [cours-pdf](../203/enseignes-fixes.pdf) | [dias-compact](../203/enseignes-fixes-dia-compact.pdf)   
 **2.4** **Circuits logiques séquentiels** (MLN)   
 **2.5** *Pratique :* Bascule D (?)   
-**2.6** **Programmation en C-Arduino** (PYR)   
+**2.6** **Programmation en C-Arduino** (PYR) [dias-video](../206/C-Arduino-dia.pdf) | [cours-html](../206/C-Arduino.html) | [cours-pdf](../206/C-Arduino.pdf) | [dias-compact](../206/C-Arduino-dia-compact.pdf)   
 **2.7** *Pratique :* Microcontrôleur sur Breadboard (?)   
 **2.8** *[avancé]* **Physique des semi-conducteurs** (AT)   
-**2.9** *[avancé]* **Séquenceurs à compteurs** (YT) [dias-video](seq-compteur-dia.pdf) | [cours-html](seq-compteur.html) | [cours-pdf](seq-compteur.pdf) | [dias-compact](seq-compteur-dia-compact.pdf)   
+**2.9** *[avancé]* **Séquenceurs à compteurs** (YT) [dias-video](../209/seq-compteur-dia.pdf) | [cours-html](../209/seq-compteur.html) | [cours-pdf](../209/seq-compteur.pdf) | [dias-compact](../209/seq-compteur-dia-compact.pdf)   
 **2.10** *Pratique sur PC :* Séquenceurs sur simulateur logique (?)   
 **2.11** *[avancé]* **Circuits séquentiels en VHDL** (MLN)   
 
@@ -68,12 +70,12 @@ Version de travail du 2016/01/02
 
 **3.1** **Entrées-sorties et manipulation de champs de bits** (PYR)   
 **3.2** *Pratique sur PC :* Passage de l’Arduino au C (?)   
-**3.3** **PWM** (PYR) [dias-video](pwm-dia.pdf) | [cours-html](pwm.html) | [cours-pdf](pwm.pdf) | [dias-compact](pwm-dia-compact.pdf)   
+**3.3** **PWM** (PYR) [dias-video](../303/pwm-dia.pdf) | [cours-html](../303/pwm.html) | [cours-pdf](../303/pwm.pdf) | [dias-compact](../303/pwm-dia-compact.pdf)   
 **3.4** *Pratique sur PC :* Programmation de deux PWM (?)   
-**3.5** **Registre d’extension série-parallèle** (PYR) [dias-video](registres-ser-par-dia.pdf) | [cours-html](registres-ser-par.html) | [cours-pdf](registres-ser-par.pdf) | [dias-compact](registres-ser-par-dia-compact.pdf)   
+**3.5** **Registre d’extension série-parallèle** (PYR) [dias-video](../305/registres-ser-par-dia.pdf) | [cours-html](../305/registres-ser-par.html) | [cours-pdf](../305/registres-ser-par.pdf) | [dias-compact](../305/registres-ser-par-dia-compact.pdf)   
 **3.6** *[avancé]* **Microcontrôleurs ARM** (?)   
 **3.7** *Pratique sur PC :* Mise en oeuvre d’un Launchpad MSP432 (?)   
-**3.8** *Pratique :* Montages sur Veroboard (?)   
+**3.8** *Pratique :* Réalisation de montages électoniques (?)   
 **3.9** **Introduction à la colorimétrie et aux LED RGB** (AT)   
 **3.10** *Pratique :* Mise en œuvre d’une LED RGB en PWM (?)   
 **3.11** *[avancé]* **Introduction aux FPGA** (MLN)   
@@ -94,12 +96,12 @@ Version de travail du 2016/01/02
 
 
 
-**4.1** **Les afficheurs matriciels** (PYR) [dias-video](matrice-dia.pdf) | [cours-html](matrice.html) | [cours-pdf](matrice.pdf) | [dias-compact](matrice-dia-compact.pdf)   
+**4.1** **Les afficheurs matriciels** (PYR) [dias-video](../401/matrice-dia.pdf) | [cours-html](../401/matrice.html) | [cours-pdf](../401/matrice.pdf) | [dias-compact](../401/matrice-dia-compact.pdf)   
 **4.2** *Pratique :* Circuit imprimé 16x16 LED (?)   
-**4.3** **Le multiplexage temporel** (PYR) [dias-video](multiplex-dia.pdf) | [cours-html](multiplex.html) | [cours-pdf](multiplex.pdf) | [dias-compact](multiplex-dia-compact.pdf)   
+**4.3** **Le multiplexage temporel** (PYR) [dias-video](../403/multiplex-dia.pdf) | [cours-html](../403/multiplex.html) | [cours-pdf](../403/multiplex.pdf) | [dias-compact](../403/multiplex-dia-compact.pdf)   
 **4.4** **Les afficheurs matriciels multiplexés** (PYR)   
 **4.5** *Pratique :* Veroboard 31x7 LED (?)   
-**4.6** **Mémoires permanentes** (PYR) [dias-video](memoires-perm-dia.pdf) | [cours-html](memoires-perm.html) | [cours-pdf](memoires-perm.pdf) | [dias-compact](memoires-perm-dia-compact.pdf)   
+**4.6** **Mémoires permanentes** (PYR) [dias-video](../406/memoires-perm-dia.pdf) | [cours-html](../406/memoires-perm.html) | [cours-pdf](../406/memoires-perm.pdf) | [dias-compact](../406/memoires-perm-dia-compact.pdf)   
 **4.7** *[avancé]* **Correction Gamma** (AT)   
 **4.8** *[avancé]* **Commande d’un afficheur matriciel multiplexé avec une FPGA** (MLN)   
 **4.9** *[avancé]* **Conception de circuits imprimés** (?)   
@@ -119,7 +121,7 @@ Version de travail du 2016/01/02
 
 
 
-**5.1** **Les Interruptions** (YT) [dias-video](inter-dia.pdf) | [cours-html](inter.html) | [cours-pdf](inter.pdf) | [dias-compact](inter-dia-compact.pdf)   
+**5.1** **Les Interruptions** (YT) [dias-video](../501/inter-dia.pdf) | [cours-html](../501/inter.html) | [cours-pdf](../501/inter.pdf) | [dias-compact](../501/inter-dia-compact.pdf)   
 **5.2** **Les timers** (YT)   
 **5.3** *Pratique :* Récepteur de télécommande IR (?)   
 **5.4** **Programmation multi-tâche** (?)   
@@ -146,7 +148,7 @@ Version de travail du 2016/01/02
 
 **6.1** **Direct Memory Access** (PYR)   
 **6.2** *Pratique :* Afficheur matriciel commandé en DMA (?)   
-**6.3** **Horloge temps réel** (PYR) [dias-video](horloge-dia.pdf) | [cours-html](horloge.html) | [cours-pdf](horloge.pdf) | [dias-compact](horloge-dia-compact.pdf)   
+**6.3** **Horloge temps réel** (PYR) [dias-video](../603/horloge-dia.pdf) | [cours-html](../603/horloge.html) | [cours-pdf](../603/horloge.pdf) | [dias-compact](../603/horloge-dia-compact.pdf)   
 **6.4** *Pratique :* Affichage de l’heure sur une enseigne à MSP432 (?)   
 **6.5** **Commande à distance** (PYR)   
 **6.6** *Pratique :* Mise en oeuvre d’un module WiFi (NJ)   

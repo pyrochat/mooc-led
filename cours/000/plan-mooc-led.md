@@ -9,8 +9,6 @@ Version de travail du 2016/01/02
 **Enseignants** : (YT) : Yves Tiecours, (AT) Alain Tiedeu, (MLN) Mamadou Lamine Ndiaye, (PYR) Pierre-Yves Rochat (?) à déterminer.
 
 **Documents** : Les notes de cours sont disponibles en HTML et en PDF. Les dispositives sont en PDF, avec une version complète utilisée pour les vidéos, ainsi qu'une version compacte qui sera mise à disposition des participants du MOOC.   
-**0.1** **Utilisation de Git et de GitHub à l’usage des étudiants du MOOC** (NJ) [cours-html](git-etudiants.html)   
-**0.2** **Utilisation de Git et de GitHub à l’usage des contributeurs du MOOC** (NJ) [cours-html](git-contrib.html)   
 
 ## Semaine 1 ##
 

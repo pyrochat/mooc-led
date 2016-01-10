@@ -7,6 +7,7 @@
 
 <!--
 Comme les afficheurs sont le sujet de ce MOOC, je me demande si tu ne devrais pas prévoir un chapitre d’introduction où tu décris de manière très générale les types d’affichages existants et où tu précises les types qui seront abordés dans le cours et ceux qui ne le seront pas. Peut-être que tu avais prévu de le faire, mais ça ne se voit pas dans la table des matières.
+PYR : c'est ce sujet qui devrait introduire le concept d'afficheur, par opposition aux enseignes, généralement fixes. Le problème se posera en anglais : je n'ai pas trouvé de bonne traduction pour "enseignes et afficheurs".
 -->
 
 Voici une définition du mot afficheur : dispositif électronique permettant de présenter visuellement des données. Cette définition correspond aussi très bien à ce qu'on appelle un écran. Ce terme “écran” vient de la technique des tubes cathodiques, qui comportaient un écran de phosphore, capable de transformer le faisceau d'électrons en une tache lumineuse.
@@ -24,7 +25,7 @@ Un afficheur est caractérisé par plusieurs paramètres, dont un des plus impor
 
 Dans le domaine des écrans, les modèles VGA des années 1980 affichaient 480 lignes de 640 points. Aujourd'hui, l'écran d'un ordinateur portable à faible coût peut afficher 800 lignes de 1'280 pixels. Une image vidéo *Full HD* affiche 1'080 lignes de 1'920 pixels.
 
-La taille de l'afficheur est évidemment aussi un paramètre important, sa *hauteur* (on part de l'idée que l'écran est vertical <!-- Quelle importance ? C’est la même chose que l’écran soit horizontal ou vertical. -->) et sa *largeur*.
+La taille de l'afficheur est évidemment aussi un paramètre important, sa *hauteur* (on part de l'idée que l'écran est vertical <!-- Quelle importance ? C’est la même chose que l’écran soit horizontal ou vertical. PYR: on devrait dire longeur et largeur. Je ne parle pas de Portrait ou Paysage, mais bien de Vertical ou Honrizontal -->) et sa *largeur*.
 
 À partir de la taille et du nombre de pixels, on peut calculer deux autres caractéristiques d'un afficheur :
 
@@ -46,6 +47,8 @@ Si la distance est la même horizontalement et verticalement (en x et y), l'affi
 
 La taille des afficheurs à LED varie de manière considérable : on trouve de petits journaux lumineux intégrés à des médaillons de ceinture, mais il existe aussi des afficheurs vidéos d'une surface de plusieurs dizaines de mètres carrés.
 
+Chaque pixel peut être composé d'une LE. Il existe aussi des afficheurs comportant deux LED par pixel, généralement verte et rouge. Il s'agit d'un héritage historique, de l'époque où les LED bleues n'étaient pas disponibles ou hors de prix. Il faut noter que la composition du rouge et du vert donne une couleur ressemblant à l'orange. Finalement, beaucoup d'afficheurs à LED comportent trois LED, rouge, verte et bleue. Il est alors possible d'obtenir toutes les autres couleurs par composition.
+
 
 ## Commande des LED par des registres ##
 
@@ -59,6 +62,7 @@ Une fois les 16 valeurs introduites dans les registres séries, elles sont trans
 
 <!--
 Sur le schéma, pour les 3 registres, la 5e LED depuis la gauche est cul-de-jatte.
+Je corrige...
 -->
 ![Schéma d'un afficheur comportant 8 lignes de 16 LED](images/aff-8x16-120dpi.png "Schéma d'un afficheur comportant 8 lignes de 16 LED")
 
@@ -84,6 +88,9 @@ SerClockOn ⇒ SerClockSet
 SerClockOff ⇒ SerClockClear
 
 Ce problème m’avait donné pas mal de fil à retordre lors du MOOC µcontrôleurs.
+
+==> JUSTE ! Mais il faudra traquer les incohérences dans d'autres leçons !
+
 -->
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
@@ -93,8 +100,8 @@ int main() {
   while (1) {
     for (i=0; i<16; i++) { // envoie une colonne avec un seul pixel allumé
       P1OUT = (1<<(i&7)); // 1 col de 8 px, 1 seul allumé -> dents de scie
-      SerClockOn; SerClockOff; // envoie un coup d'horloge série
-	  ParCloclOn; ParClockOff; // envoie un coup d'horloge
+      SerClockOn; SerClockClear; // envoie un coup d'horloge série
+	  ParCloclOn; ParClockClear; // envoie un coup d'horloge
     }
   }
 }
@@ -128,7 +135,7 @@ const uint8_t GenCar [] { // tableau des pixels des caractères
 <!-- retour au mode normal pour l'éditeur -->
 
 Voici un programme qui affiche un texte :
-<!-- Est-ce que tu expliques le concept de pointeur dans le cours ? -->
+<!-- Est-ce que tu expliques le concept de pointeur dans le cours ? PYR : Pas prévu... à réfléchir ! -->
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
 char *Texte = "ABC\0"; // texte, terminé par le caractère nul
@@ -143,21 +150,18 @@ int main(void) {
       idxGenCar = (caractere-'A') * 5; // conversion ASCII à index GenCar[]
       for (i=0; i<5; i++) { // envoie les 5 colonnes du caractère
         P2OUT = ~GenCar[idxGenCar++]; // 1 colonne du caractère (actif à 0)
-        SerClockOn; SerClockOff; // coup d'horloge série
-        ParClockOn; ParClockOff; // coup d'horloge parallèle
+        SerClockSet; SerClockClear; // coup d'horloge série
+        ParClockSet; ParClockClear; // coup d'horloge parallèle
         AttenteMs (delai);
       }
       ptTexte++; // passe au caractère suivant
       P2OUT = ~0; // colonne vide, séparant les caractères
-      SerClockOn; SerClockOff; // coup d'horloge série
-      ParClockOn; ParClockOff; // coup d'horloge parallèle
+      SerClockSet; SerClockClear; // coup d'horloge série
+      ParClockSet; ParClockClear; // coup d'horloge parallèle
       AttenteMs (delai);
     }
   }
 }
-
-
-
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
 
@@ -220,9 +224,9 @@ void AfficheMatrice() {
     for (uint16_t y=0; y<MaxY; y++)  {
       if (Matrice[y]&(1<<x)) P2OUT &=~(1<<y); else P2OUT |= (1<<y);
     }
-    SerClockOn; SerClockOff; // envoie un coup d'horloge série
+    SerClockSet; SerClockClear; // envoie un coup d'horloge série
   }
-  ParClockOn; ParClockOff; // envoie les valeur sur les LED
+  ParClockSet; ParClockClear; // envoie les valeur sur les LED
 }
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
@@ -240,16 +244,16 @@ uint8_t Matrice[NbColonnes]; // mots de 8 bits, correspondant à une colonne
 void AfficheMatrice() {
   for (uint16_t x=0; x<MaxX; x++) {
     P2OUT = ~Matrice[x];
-    SerClockOn; SerClockOff; // envoie un coup d'horloge série
+    SerClockSet; SerClockClear; // envoie un coup d'horloge série
   }
-  ParClockOn; ParClockOff; // envoie les valeur sur les LED
+  ParClockSet; ParClockClear; // envoie les valeur sur les LED
 }
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
 
 Non seulement la procédure `AfficheMatrice()` est beaucoup plus simple, mais en plus elle va prendre moins de temps à être exécutée. Dans notre cas, la vitesse ne pose pas de problème. Mais dès que les afficheurs deviennent plus grands, cette question devient cruciale.
 
-De manière générale, on va donc chercher à optimiser l'organisation des pixels en mémoire en vue de simplifier et de rendre plus rapide l'envoi des pixels sur les LED, quitte à compliquer un peu les procédures qui créent les images. <!-- Je ne comprends pas pourquoi on devrait créer des images puisque au contraire on les stocke en mémoire... -->
+De manière générale, on va donc chercher à optimiser l'organisation des pixels en mémoire en vue de simplifier et de rendre plus rapide l'envoi des pixels sur les LED, quitte à compliquer un peu les procédures qui créent les images. <!-- Je ne comprends pas pourquoi on devrait créer des images puisque au contraire on les stocke en mémoire... PYR On part d'une description vectorielle (points, segments) et on crèe des images bitmap, qui sont ensuite affichées -->
 
 
 ## Programmer des animations ##
@@ -259,7 +263,7 @@ Pour générer des animations sur l'afficheur, il faut :
 * préparer une image en mémoire,
 * envoyer son contenu sur l'afficheur,
 * attendre le temps nécessaire,
-* préparer une autre image <!-- C’est le premier point ⇒ donc tu peux enlever celui-ci -->
+* préparer une autre image <!-- C’est le premier point ⇒ donc tu peux enlever celui-ci. PYR Le mot autre aide à comptendre, je préfère laisser la répétition -->
 
 et ainsi de suite.
 
@@ -277,11 +281,11 @@ Voici un programme complet qui génère une animation graphique sur notre affich
 
 #define DELAI 100
 
-#define SerClockOn P1OUT|=(1<<5)
-#define SerClockOff P1OUT&=~(1<<5)
+#define SerClockSet P1OUT|=(1<<5)
+#define SerClockClear P1OUT&=~(1<<5)
 
-#define ParClockOn P1OUT|=(1<<4)
-#define ParClockOff P1OUT&=~(1<<4)
+#define ParClockSet P1OUT|=(1<<4)
+#define ParClockClear P1OUT&=~(1<<4)
 
 void AttenteMs (uint16_t duree) {
   for (uint16_t i=0; i<duree; i++) {
@@ -307,9 +311,9 @@ void EteintPoint(int16_t x, int16_t y) {
 void AfficheMatrice() {
   for (uint16_t x=0; x<MaxX; x++) {
     P2OUT = ~Matrice[x];
-    SerClockOn; SerClockOff; // envoie un coup d'horloge série
+    SerClockSet; SerClockClear; // envoie un coup d'horloge série
   }
-  ParClockOn; ParClockOff; // envoie les valeurs sur les LED
+  ParClockSet; ParClockClear; // envoie les valeurs sur les LED
 }
 
 void Ping() {

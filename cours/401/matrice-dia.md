@@ -5,7 +5,7 @@
 <img src="../../statiques/images/epfl-logo-pp.png" style="top:1.05cm; left:1.95cm; width:5.87cm" />
 <img src="../../statiques/images/rescif-trait.png" style="top:5.07cm; left:0cm; width:60.02cm; height:0.23cm" />
 <div style="top:13cm; left:5.65cm; font-size:50pt; font-family: Arial Narrow, sans-serif; color: #e2001a; ">Enseignes et afficheurs à LED</div>
-<div style="top:20cm; left:5.65cm; font-size:70pt; font-family: Impact, sans-serif;">Programmation en matrice</div>
+<div style="top:20cm; left:5.65cm; font-size:70pt; font-family: Impact, sans-serif;">Affichages matriciels</div>
 <img src="../../statiques/images/epfl-logo-pp.png" style="top:27.69cm; left:5.65cm; width:4.34cm" />
 <div style="top:27.7cm; left:10.8cm; font-size:47pt; font-family: Arial Narrow, sans-serif;">Pierre-Yves Rochat</div>
 </section>
@@ -15,10 +15,10 @@
 <!-- def A --><img src="../../statiques/images/epfl-logo-pp.png" style="top:0.8cm; left:54.41cm; width:3.6cm" />
 <!-- def A --><img src="../../statiques/images/rescif-trait.png" style="top:5.07cm; left:0cm; width:60.02cm; height:0.23cm" />
 <!-- def A --><div style="top:31.26cm; left:35cm; width:23cm; text-align: right;  font-size:21pt; font-family: Arial Narrow, sans-serif; color:#555555;">
-<!-- def A -->**Enseignes et afficheurs à LED** | Programmation en matrice
+<!-- def A -->**Enseignes et afficheurs à LED** | Affichages matriciels
 <!-- def A --></div>
 <!-- A -->
-<h1 class="en_tete">Programmation en matrice</h1>
+<h1 class="en_tete">Affichages matriciels</h1>
 <div style="top:6.5cm; left:35cm; width:23cm; text-align: right;  font-size:48pt; font-family: Impact, sans-serif;">
 Pierre-Yves Rochat
 </div>
@@ -28,66 +28,293 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">Afficheurs</h1>
-<div class="liste_demi"; style="font-size:48pt; left:35cm; width:26.0cm; top:8cm;">
+<div class="liste_demi"; style="font-size:48pt; left:35cm; width:24.0cm; top:8cm;">
+* Notion de pixel
 * Caractéristique des afficheurs
 * Matrices de LED
+* Commandes par registres
 * Programmation
 * Génération et rafraîchissement
 </div>
 </section>
 
-<!-- 3 significations-->
+<!-- Pixel-->
 <section>
 <!-- A -->
-<h1 class="en_tete">Significations du mot Arduino</h1>
-<div style="top: 5cm; left: 6cm; font-size: 53pt; line-height: 1.5;">
-L'Arduino a participé à rendre populaires les microcontrôleurs de manière extraordinaire.
-<!-- 2345 --><br/>Qu'est-ce qui se cache derrière ce nom ?
+<h1 class="en_tete">Notion de pixel</h1>
+<div style="top: 8cm; left: 6cm; font-size: 53pt; line-height: 1.5; width:44cm;">
+* **afficheur** : dispositif électronique permettant de présenter visuellement des données<br/><br/>
+<!-- 234 -->* ensemble de **pixels**
+<!-- 34 -->* **résolution** : distance entre un pixel et son plus proche voisin
+<!-- 4 -->* **densité** : nombre de pixels par unité de surface
 </div>
-<!-- 345 --><div style="top: 18cm; left: 6cm; font-size: 53pt; line-height: 1.5;">
-<!-- 345 -->* une carte à microcontrôleurs
-<!-- 45 -->* un environnement de développement
-<!-- 5 -->* une librairie pour microcontrôleurs (un ensemble de procédures)
-<!-- 234 --></div>
 </section>
 
-
-<!-- Blink -->
+<!-- Afficheur à LED-->
 <section>
 <!-- A -->
-<h1 class="en_tete">Programme *Blink*</h1>
-<div style="top: 6cm; left: 4cm; font-size: 53pt; line-height: 2;">
-~~~~~~~ { .c .numberLines startFrom="1" }
-void setup() {
-  pinMode(P1_0, OUTPUT);
-}
+<h1 class="en_tete">Afficheurs à LED</h1>
+<img src="./images/aff-10x24-300dpi.png" style="top:8cm; left:10cm; width:34cm;" />
+</section>
 
-void loop() {
-  digitalWrite(P1_0, 1);
-  delay(500);
-  digitalWrite(P1_0, 0);
-  delay(500);
+<!-- Registres-->
+<section>
+<!-- A -->
+<h1 class="en_tete">Commande des LED par des registres</h1>
+<img src="./images/aff-8x16-200dpi.png" style="top:6cm; left:6cm; width:36cm;" />
+</section>
+
+<!-- Programmation -->
+<section>
+<!-- A -->
+<h1 class="en_tete">Programme de commande</h1>
+<div style="top: 6cm; left: 4cm; font-size: 42pt; line-height: 2;">
+~~~~~~~ { .c .numberLines startFrom="1" }
+int main() {
+  init(); // initialisations...
+  uint8_t i;
+  while (1) {
+    for (i=0; i<16; i++) { // envoie une colonne avec un seul pixel allumé
+      P1OUT = (1<<(i&7)); // 1 col de 8 px, 1 seul allumé -> dents de scie
+      SerClockOn; SerClockClear; // envoie un coup d'horloge série
+	  ParCloclOn; ParClockClear; // envoie un coup d'horloge
+    }
+  }
 }
 ~~~~~~~
 </div>
-<!-- 2 --><img src="./images/chrono-blink-300dpi.png" style="top:24.5cm; left:17cm; width:41cm;" />
 </section>
 
-<!-- Page conclusion + librairies, demi-->
+<!-- Gencar -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Programmation en matrice</h1>
-<img src="./images/Uno.jpg" style="top:6cm; left:35cm; width:10cm;" />
-<img src="./images/coin-ide.png" style="top:6.5cm; left:47cm; width:7cm;" />
-<div class="liste_demi"; style="font-size:48pt; left:35cm; width:26.0cm; top:13cm;">
+<h1 class="en_tete">Générateurs de caractères</h1>
+<div style="top: 6cm; left: 4cm; font-size: 38pt; line-height: 2;">
+~~~~~~~ { .c .numberLines startFrom="1" }
+const uint8_t GenCar [] { // tableau des pixels des caractères
+  0b01111110, // caractère 'A'
+  0b00001001, // Il faut pencher la tête à droite
+  0b00001001, // pour voir sa forme !
+  0b00001001,
+  0b01111110,
+
+  0b01111111, // caractère 'B'
+  0b01001001, // Les caractères forment
+  0b01001001, // une matrice de 5x7
+  0b01001001,
+  0b00110110,
+
+  0b00111110, // caractère 'C'
+  0b01000001, // Les caractères ont ici
+  0b01000001, // une chasse fixe, c'est-à-dire
+  0b01000001, // que tous les caractères ont
+  0b01000001  // la même largeur en pixels
+};
+~~~~~~~
+</div>
+</section>
+
+<!-- Gencar -->
+<section>
+<!-- A -->
+<h1 class="en_tete">Affichage d'un texte</h1>
+<div style="top: 6cm; left: 4cm; font-size: 37pt; line-height: 2;">
+~~~~~~~ { .c .numberLines startFrom="1" }
+char *Texte = "ABC\0"; // texte, terminé par le caractère nul
+const char *ptTexte; // pointeur vers le texte à afficher
+
+~~~~~~~
+</div>
+</section>
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Affichage d'un texte</h1>
+<div style="top: 5.5cm; left: 4cm; font-size: 36pt; line-height: 2;">
+~~~~~~~ { .c .numberLines startFrom="3" }
+int main(void) {
+  init(); // initialisations...
+  while(1) { // le texte défile sans fin
+    ptTexte = Texte;
+    while (*ptTexte!='\0') { // boucle des caractères du texte
+      caractere = *ptTexte; // le caractère à afficher
+      idxGenCar = (caractere-'A') * 5; // conversion ASCII à index GenCar[]
+      for (i=0; i<5; i++) { // envoie les 5 colonnes du caractère
+        P2OUT = ~GenCar[idxGenCar++]; // 1 colonne du caractère (actif à 0)
+        SerClockSet; SerClockClear; // coup d'horloge série
+        ParClockSet; ParClockClear; // coup d'horloge parallèle
+        AttenteMs (delai);
+      }
+      ptTexte++; // passe au caractère suivant
+      P2OUT = ~0; // colonne vide, séparant les caractères
+      SerClockSet; SerClockClear; // coup d'horloge série
+      ParClockSet; ParClockClear; // coup d'horloge parallèle
+      AttenteMs (delai);
+    }
+  }
+}
+~~~~~~~
+</div>
+</section>
+<!-- Page séparer gen-raf, demi-->
+<section>
+<!-- A -->
+<h1 class="en_tete">Séparer génération et rafraîchissement</h1>
+<div class="liste_demi"; style="font-size:48pt; left:33cm; width:26.0cm; top:8cm;">
+* Géométrie pas toujours idéales
+<!-- 23 -->* Afficheurs multiplexés
+<!-- 3 -->* Génération et rafraîchissement séparés
+</div>
+</section>
+
+<!-- Mémoire des pixels -->
+<section>
+<!-- A -->
+<h1 class="en_tete">Mémoire des pixels</h1>
+<div style="top: 6cm; left: 4cm; font-size: 42pt; line-height: 2;">
+~~~~~~~ { .c .numberLines startFrom="1" }
+#define NbLignes 8
+uint16_t Matrice[NbLignes]; // mots de 16 bits, correspondant à une ligne
+~~~~~~~
+</div>
+<img src="./images/organisation-aff-8x16-120dpi.png" style="top:15cm; left:6cm; width:34cm;" />
+</section>
+
+<!-- Dessin des points -->
+<section>
+<!-- A -->
+<h1 class="en_tete">Dessin des points</h1>
+<div style="top: 6cm; left: 4cm; font-size: 38pt; line-height: 2;">
+~~~~~~~ { .c .numberLines startFrom="1" }
+void AllumePoint(int16_t x, int16_t y) {
+  Matrice[y] |= (1<<x); // set bit
+}
+
+void EteintPoint(int16_t x, int16_t y) {
+  Matrice[y] &=~(1<<x); // clear bit
+}
+
+#define MaxX 16
+#define MaxY NbLignes
+
+void Diagonale() {
+  int16_t i;
+  for (i=0; i<MaxY; i++) {
+    AllumePoint(i*MaxX/MaxY, i);
+  }
+}
+~~~~~~~
+</div>
+</section>
+
+
+<!-- Afficher matrice -->
+<section>
+<!-- A -->
+<h1 class="en_tete">Affichage de la matrice</h1>
+<div style="top: 6cm; left: 4cm; font-size: 38pt; line-height: 2;">
+~~~~~~~ { .c .numberLines startFrom="1" }
+void AfficheMatrice() {
+  for (uint16_t x=0; x<MaxX; x++) {
+    // Préparation des valeurs qui doivent être envoyées aux 8 registres:
+    for (uint16_t y=0; y<MaxY; y++)  {
+      if (Matrice[y]&(1<<x)) P2OUT &=~(1<<y); else P2OUT |= (1<<y);
+    }
+    SerClockSet; SerClockClear; // envoie un coup d'horloge série
+  }
+  ParClockSet; ParClockClear; // envoie les valeur sur les LED
+}
+~~~~~~~
+</div>
+</section>
+
+<!-- + simple -->
+<section>
+<!-- A -->
+<h1 class="en_tete">Mémoire des pixels</h1>
+<div style="top: 6cm; left: 4cm; font-size: 38pt; line-height: 2;">
+~~~~~~~ { .c .numberLines startFrom="1" }
+#define NbColonnes 16
+uint8_t Matrice[NbColonnes]; // mots de 8 bits, correspondant à une colonne
+
+~~~~~~~
+</div>
+<img src="./images/organisation-aff-8x16-byte-120dpi.png" style="top:11cm; left:6cm; width:28cm;" />
+</section>
+
+<!-- Mémoire des pixels -->
+<section>
+<!-- A -->
+<h1 class="en_tete">Mémoire des pixels</h1>
+<div style="top: 6cm; left: 4cm; font-size: 38pt; line-height: 2;">
+~~~~~~~ { .c .numberLines startFrom="1" }
+#define NbColonnes 16
+uint8_t Matrice[NbColonnes]; // mots de 8 bits, correspondant à une colonne
+
+void AfficheMatrice() {
+  for (uint16_t x=0; x<MaxX; x++) {
+    P2OUT = ~Matrice[x];
+    SerClockSet; SerClockClear; // envoie un coup d'horloge série
+  }
+  ParClockSet; ParClockClear; // envoie les valeur sur les LED
+}
+~~~~~~~
+</div>
+</section>
+
+
+<!-- Animations-->
+<section>
+<!-- A -->
+<h1 class="en_tete">Animations</h1>
+<div style="top: 8cm; left: 6cm; font-size: 53pt; line-height: 1.5; width:44cm;">
+* préparer une image en mémoire,
+<!-- 2345 -->* envoyer son contenu sur l'afficheur,
+<!-- 345 -->* attendre le temps nécessaire,
+<!-- 45 -->* préparer une autre image 
+<!-- 5 -->* ...
+</div>
+</section>
+
+<!-- Ping -->
+<section>
+<!-- A -->
+<h1 class="en_tete">Ping !</h1>
+<div style="top: 6cm; left: 4cm; font-size: 38pt; line-height: 2;">
+~~~~~~~ { .c .numberLines startFrom="1" }
+void Ping() {
+  int16_t x=0;
+  int16_t y=0;
+  int8_t sensX=1;
+  int8_t sensY=1;
+  do {
+    AllumePoint(x,y);
+    AfficheMatrice();
+    AttenteMs(DELAI);
+    EteintPoint(x,y);
+    x+=sensX;
+    if(x==(MaxX-1)) sensX=(-1);
+    if(x==0) sensX=1;
+    y+=sensY;
+    if(y==(MaxY-1)) sensY=(-1);
+    if(y==0) sensY=1;
+  } while (!((x==0)&&(y==0)));
+}
+~~~~~~~
+</div>
+</section>
+
+<!-- Page conclusion, demi-->
+<section>
+<!-- A -->
+<h1 class="en_tete">Affichages matriciels</h1>
+<div class="liste_demi"; style="font-size:48pt; left:35cm; width:24.0cm; top:8cm;">
+* Notion de pixel
 * Caractéristique des afficheurs
 * Matrices de LED
 * Programmation
 * Génération et rafraîchissement
 </div>
-<!-- 2 --><div class="liste_demi"; style="font-size:48pt; left:35cm; width:26.0cm; top:27cm;">
-<!-- 2 -->* De nombreuses librairies !
-<!-- 2 --></div>
 </section>
 
 

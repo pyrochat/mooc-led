@@ -128,7 +128,13 @@ Dr. Yves Tiecoura
 <!-- A -->
 <h1 class="en_tete">Nombres entiers modulaires</h1>
 <img src="./images/nombres-pos-neg-cercle.png" style="top:7cm; left:2.65cm; width:56cm;" />
-<!-- 2 --><img src="./images/nombres-pos-neg.png" style="top:7cm; left:2.65cm; width:56cm;" />
+</section>
+
+<!-- Page roue pos-neg -->
+<section>
+<!-- A -->
+<h1 class="en_tete">Nombres entiers modulaires</h1>
+<img src="./images/nombres-pos-neg.png" style="top:7cm; left:2.65cm; width:56cm;" />
 </section>
 
 <section>

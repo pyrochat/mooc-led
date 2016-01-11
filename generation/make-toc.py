@@ -17,6 +17,23 @@
 
 import glob
 import yaml
+import os
+
+
+def executeSystemCmd( cmd ):
+    u"""
+    executeSystemCmd
+    """
+
+    cmd = " ".join( cmd )
+
+    if os.name in [ 'posix' ]:
+        cmd = "TIMEFORMAT='time : %3R s'; time( " + cmd + " )"
+    elif os.name in [ 'nt' ]:
+        pass
+
+    print "\n%s\n" % cmd
+    os.system( cmd )
 
 
 def main():
@@ -72,7 +89,7 @@ Version de travail du 2016/01/02
         else:
             TOC = '%s\n**%d.%d** %s**%s** %s' % ( TOC, nbsemaine, nbchapitre, NIVEAU, dataMap[ "titre" ][ 0 ], AUTEUR )
 
-        if( dataMap[ "code" ] not in [ "codeduchapitre" ] ):
+        if( dataMap[ "statut" ] not in [ u"Pas publié" ] ):
             LINKS = []
             for key, URL in dataMap[ "url" ].iteritems():
                 LINKS += [ "[%s](%s)" % ( key, URL ) ]
@@ -81,14 +98,23 @@ Version de travail du 2016/01/02
         TOC = '%s %s' % ( TOC, '  ' )
 
     tocfilename = "../cours/000/plan-mooc-led.md"
+    htmltocfilename = "../cours/000/plan-mooc-led.html"
     tocfile = open( tocfilename, 'w' )
     tocfile.write( TOC.encode( 'utf-8' ) )
     tocfile.close
-
     print( "\nTable des matières générée dans le fichier " + tocfilename )
-
-
-
+    pandocCmd = [
+        "pandoc"                              ,
+            "--standalone"                    ,
+            "--normalize"                     ,
+            "--email-obfuscation references"  ,
+            "--css ../../statiques/style.css" ,
+            "--output " + htmltocfilename     ,
+            tocfilename + " &" # Signe & ⇒ exécution asynchrone sinon Pandoc ne génère que la moitié du fichier.
+        ]
+    executeSystemCmd( pandocCmd )
+    print( "\nTable des matières générée dans le fichier " + htmltocfilename )
+    # executeSystemCmd( [ "rm " + tocfilename ] ) # À cause de l’exécution asynchrone de Pandoc, c’est mieux de ne pas effacer le fichier md tout de suite.
 
 if __name__ == '__main__':
 

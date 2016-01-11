@@ -2,9 +2,9 @@ titre:
     - "Synthèse de circuits combinatoires"
 type:             Théorie
 niveau:           base
-auteur:          
+auteur:
     - MLN
-statut:           Relecture
+statut:           Pas publié
 code:             synth-combi
 url:
     cours-html:   synth-combi.html

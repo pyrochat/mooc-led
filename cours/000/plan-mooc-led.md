@@ -18,12 +18,12 @@ Version de travail du 2016/01/02
 **1.2** **Présentation de la LED** (?)   
 **1.3** *Pratique :* Montages sur Breadboard (YT)   
 **1.4** **Représentation binaire** (YT) [dias-video](../104/binaire-dia.pdf) | [cours-html](../104/binaire.html) | [cours-pdf](../104/binaire.pdf) | [dias-compact](../104/binaire-dia-compact.pdf)   
-**1.5** **Circuits logiques combinatoires** (MLN) [dias-video](sys-combi-dia.pdf) | [cours-html](sys-combi.html) | [cours-pdf](sys-combi.pdf) | [dias-compact](sys-combi-dia-compact.pdf)   
+**1.5** **Circuits logiques combinatoires** (MLN)   
 **1.6** *Pratique sur PC :* Simulateur logique (?)   
 **1.7** **Introduction au microcontrôleur** (PYR)   
 **1.8** **Cartes à microcontrôleurs** (PYR)   
 **1.9** *Pratique sur PC :* Programmation avec Energia (?)   
-**1.10** **Synthèse de circuits combinatoires** (MLN) [dias-video](synth-combi-dia.pdf) | [cours-html](synth-combi.html) | [cours-pdf](synth-combi.pdf) | [dias-compact](synth-combi-dia-compact.pdf)   
+**1.10** **Synthèse de circuits combinatoires** (MLN)   
 **1.11** *Pratique :* Montages logiques combinatoires (?)   
 **1.12** *[avancé]* **Introduction au VHD** (MLN)   
 
@@ -40,12 +40,12 @@ Version de travail du 2016/01/02
 
 
 
-**2.1** **Le transistor** (YT) [dias-video](../201transistor-dia.pdf) | [cours-html](../201/transistor.html) | [cours-pdf](../201transistor.pdf) | [dias-compact](../201transistor-dia-compact.pdf)   
+**2.1** **Le transistor** (YT) [dias-video](../201/transistor-dia.pdf) | [cours-html](../201/transistor.html) | [cours-pdf](../201/transistor.pdf) | [dias-compact](../201/transistor-dia-compact.pdf)   
 **2.2** *Pratique :* Montages à transistor <!-- (2 segments de 4 LED) --> (?)   
 **2.3** **Enseignes à motifs fixes** (PYR) [dias-video](../203/enseignes-fixes-dia.pdf) | [cours-html](../203/enseignes-fixes.html) | [cours-pdf](../203/enseignes-fixes.pdf) | [dias-compact](../203/enseignes-fixes-dia-compact.pdf)   
 **2.4** **Circuits logiques séquentiels** (MLN)   
 **2.5** *Pratique :* Bascule D (?)   
-**2.6** **Programmation en C-Arduino** (PYR) [dias-video](../206/C-Arduino-dia.pdf) | [cours-html](../206/C-Arduino.html) | [cours-pdf](../206/C-Arduino.pdf) | [dias-compact](../206/C-Arduino-dia-compact.pdf)   
+**2.6** **Programmation en C-Arduino** (PYR)   
 **2.7** *Pratique :* Microcontrôleur sur Breadboard (?)   
 **2.8** *[avancé]* **Physique des semi-conducteurs** (AT)   
 **2.9** *[avancé]* **Séquenceurs à compteurs** (YT) [dias-video](../209/seq-compteur-dia.pdf) | [cours-html](../209/seq-compteur.html) | [cours-pdf](../209/seq-compteur.pdf) | [dias-compact](../209/seq-compteur-dia-compact.pdf)   

@@ -124,6 +124,18 @@ li:before
 	width: 1em;
 }
 
+.footnote, sup, sub
+{
+	height: 0;
+	line-height: 1;
+	vertical-align: baseline;
+	position: relative;
+	font-size: 0.65em;
+}
+sub { top: 0.5ex; }
+.footnote, sup { bottom: 1ex; }
+
+
 div.figure
 {
 	page-break-inside: avoid;
@@ -214,9 +226,9 @@ div.sourceCode code
 }
 
 
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) 
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px)
 {
 
 	body

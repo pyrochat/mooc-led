@@ -33,7 +33,7 @@
 <p class="caption">Graphe d'état d'une séquence pour une enseigne</p>
 </div>
 <p>Remarquons qu'il n'y a aucune condition pour passer d'un état à l'autre : le système change d'état à chaque coup d'horloge.</p>
-<p>Nous avons volontairement utilisé des durées constantes pour chaque état, pour simplifier la réalisation. Nous remarquons que la séquence choisie a 8 valeurs. On un compteur binaire de 3 bits passe aussi par 8 valeurs.</p>
+<p>Nous avons volontairement utilisé des durées constantes pour chaque état, pour simplifier la réalisation. Nous remarquons que la séquence choisie a 8 valeurs. Or un compteur binaire de 3 bits passe aussi par 8 valeurs.</p>
 <h2 id="compteur-binaire">Compteur binaire</h2>
 <p>Un compteur binaire est un système séquentiel qui va fournir sur ses sorties les valeurs binaires successives. Voici le symbole d'un compteur par 8, ou compteur 3 bits.</p>
 <div class="figure">
@@ -86,7 +86,7 @@
 <p class="caption">Mémoire morte</p>
 </div>
 <p>On remarque des entrées, qui sont les adresse (&quot;Address&quot; en anglais), ainsi que des sorties, qui sont les données (<em>Data</em> en anglais). Des entrées de sélections sont généralement disponibles, comme le signal OE (<em>Output Enable</em> = sélection des sorties). Pour chaque combinaison des adresses, une valeur particulière est présente sur les sorties.</p>
-<p>Dans le cas simple de notre enseigne, il faudrait une ROM munie de seulement 3 bits d'adresse et de 6 bits de donnée. Bien entendu, il suffira de laisser à zéro les adresses non utilisées d'une ROM comportant davantage d'adresse.</p>
+<p>Dans le cas simple de notre enseigne, il faudrait une ROM munie de seulement 3 bits d'adresse et de 6 bits de donnée. Bien entendu, il suffira de laisser à zéro les adresses non utilisées d'une ROM comportant davantage d'adresses.</p>
 <p>Voici le schéma complet de notre commande d'enseigne :</p>
 <div class="figure">
 <img src="images/schema-seq-rom-180dpi.png" title="Schéma du séquenceur à ROM" alt="Schéma du séquenceur à ROM" />
@@ -107,7 +107,7 @@
 </div>
 <p>Pour ne pas devoir utiliser les coûteux boîtiers avec une fenêtre, les fabricants sont parvenus dans les années 1990 à produire des mémoires EEPROM : Electricaly Erasable Programmable Read Only Memory. A noter que cette technologie est souvent présente dans les microcontrôleurs.</p>
 <h2 id="solution-plus-simple">Solution plus simple</h2>
-<p>Aujourd'hui, il est plus infiniment plus simple de réaliser des commandes d'enseignes avec avec un microcontrôleur. Non seulement, le schéma est beaucoup plus simple, basé sur un seul circuit intégré. Mais le coût des composants est nettement plus faible.</p>
+<p>Aujourd'hui, il est nettement plus simple de réaliser des commandes d'enseignes avec avec un microcontrôleur. Non seulement, le schéma est beaucoup plus simple, basé sur un seul circuit intégré. Mais le coût des composants est nettement plus faible.</p>
 <p>D'autre part, un plus grande flexibilité peut être obtenue :</p>
 <ul>
 <li>le temps peut être divisé en durées variables</li>

@@ -9,7 +9,7 @@ Pour réaliser des enseignes et afficheurs à LED, il est très souvent nécessa
 
 La mise au point de ce dispositif à semi-conducteur a marqué une étape importante dans l’évolution de l’électronique  et de l’humanité en général. Bien que son invention date de 1948, ses inventeurs, William Schockley, John Bardeen et Walter Houster Brattain ont reçu en 1956 le prix Nobel de physique pour leurs travaux.
 
-Le transistor est utilisé en électronique comme amplificateur ou comme interrupteur. Les premiers transistors étaient fabriqués avec du Germanium, mais par la suite, c'est le Silicium qui a été principalement utilisé. D'autre matériaux semi-conducteurs sont utilisée pour certaines applications, tels l'Arsenure de Galium (GaAs).
+Le transistor est utilisé en électronique comme amplificateur ou comme interrupteur. Les premiers transistors étaient fabriqués avec du Germanium, mais par la suite, c'est le Silicium qui a été principalement utilisé. D'autres matériaux semi-conducteurs sont utilisée pour certaines applications, tels l'Arsenure de Galium (GaAs).
 
 ## Présentation ##
 
@@ -95,7 +95,7 @@ En effet, même lorsqu'il est saturé, la résistance entre le collecteur et l'�
 
 #### La fréquence maximale de fonctionnement
 
-Le fabricant indique également la fréquence maximale de fonctionnement du transistor. Elle est s'exprime généralement en Mhz, voire davantage.
+Le fabricant indique également la fréquence maximale de fonctionnement du transistor. Elle s'exprime généralement en Mhz, voire davantage.
 
 
 

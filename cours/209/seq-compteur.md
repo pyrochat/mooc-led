@@ -20,7 +20,7 @@ Une autre manière de représenter cette séquence est un graphe d'état :
 
 Remarquons qu'il n'y a aucune condition pour passer d'un état à l'autre : le  système change d'état à chaque coup d'horloge.
 
-Nous avons volontairement utilisé des durées constantes pour chaque état, pour simplifier la réalisation. Nous remarquons que la séquence choisie a 8 valeurs. On un compteur binaire de 3 bits passe aussi par 8 valeurs.
+Nous avons volontairement utilisé des durées constantes pour chaque état, pour simplifier la réalisation. Nous remarquons que la séquence choisie a 8 valeurs. Or un compteur binaire de 3 bits passe aussi par 8 valeurs.
 
 ## Compteur binaire ##
 
@@ -72,7 +72,7 @@ On appelle *mémoire morte* ou ROM (Read Only Memory), un circuit mémoire à co
 
 On remarque des entrées, qui sont les adresse ("Address" en anglais), ainsi que des sorties, qui sont les données (*Data* en anglais). Des entrées de sélections sont généralement disponibles, comme le signal OE (*Output Enable* = sélection des sorties). Pour chaque combinaison des adresses, une valeur particulière est présente sur les sorties.
 
-Dans le cas simple de notre enseigne, il faudrait une ROM munie de seulement 3 bits d'adresse et de 6 bits de donnée. Bien entendu, il suffira de laisser à zéro les adresses non utilisées d'une ROM comportant davantage d'adresse.
+Dans le cas simple de notre enseigne, il faudrait une ROM munie de seulement 3 bits d'adresse et de 6 bits de donnée. Bien entendu, il suffira de laisser à zéro les adresses non utilisées d'une ROM comportant davantage d'adresses.
 
 Voici le schéma complet de notre commande d'enseigne :
 
@@ -99,7 +99,7 @@ Pour ne pas devoir utiliser les coûteux boîtiers avec une fenêtre, les fabric
 
 ## Solution plus simple ##
 
-Aujourd'hui, il est plus infiniment plus simple de réaliser des commandes d'enseignes avec avec un microcontrôleur. Non seulement, le schéma est beaucoup plus simple, basé sur un seul circuit intégré. Mais le coût des composants est nettement plus faible.
+Aujourd'hui, il est nettement plus simple de réaliser des commandes d'enseignes avec avec un microcontrôleur. Non seulement, le schéma est beaucoup plus simple, basé sur un seul circuit intégré. Mais le coût des composants est nettement plus faible.
 
 D'autre part, un plus grande flexibilité peut être obtenue :
 

@@ -117,7 +117,7 @@ const uint8_t GenCar [] { // tableau des pixels des caractères
 <!-- Gencar -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Affichage d'un texte</h1>
+<h1 class="en_tete">Affichage d’un texte</h1>
 <div style="top: 6cm; left: 4cm; font-size: 37pt; line-height: 2;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 char *Texte = "ABC\0"; // texte, terminé par le caractère nul
@@ -129,7 +129,7 @@ const char *ptTexte; // pointeur vers le texte à afficher
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Affichage d'un texte</h1>
+<h1 class="en_tete">Affichage d’un texte</h1>
 <div style="top: 5.5cm; left: 4cm; font-size: 36pt; line-height: 2;">
 ~~~~~~~ { .c .numberLines startFrom="3" }
 int main(void) {
@@ -271,7 +271,7 @@ void AfficheMatrice() {
 * préparer une image en mémoire,
 <!-- 2345 -->* envoyer son contenu sur l'afficheur,
 <!-- 345 -->* attendre le temps nécessaire,
-<!-- 45 -->* préparer une autre image 
+<!-- 45 -->* préparer une autre image
 <!-- 5 -->* ...
 </div>
 </section>
@@ -319,6 +319,6 @@ void Ping() {
 
 
 
- 
 
- 
+
+

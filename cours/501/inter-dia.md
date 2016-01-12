@@ -52,7 +52,7 @@ De manière générale un microcontrôleur doit être programmé pour :
 <!-- 4567 -->Dans les enseignes et afficheurs à LED :
 <!-- 4567 --></div>
 <!-- 567 --><div style="font-size:55pt; left:2.65cm; top:20.5cm;">
-<!-- 567 -->* Le système n'a souvent que des sorties...
+<!-- 567 -->* Le système n’a souvent que des sorties...
 <!-- 67 -->* Dans certains cas, il doit réagir à des entrées (ex : télécommande)
 <!-- 7 -->* Il doit exécuter des tâches à des instants précis (ex : matrices multiplexées)
 <!-- 567 --></div>
@@ -63,7 +63,7 @@ De manière générale un microcontrôleur doit être programmé pour :
 <!-- A -->
 <h1 class="en_tete">Définition</h1>
 <div style="font-size:55pt; left:2.65cm; top:5.5cm; width:55cm">
-On appelle interruption, l'arrêt temporaire d'un programme au profit d'un autre programme, jugé à cet instant plus important.
+On appelle interruption, l’arrêt temporaire d’un programme au profit d’un autre programme, jugé à cet instant plus important.
 </div>
 <!-- 23456 --><div style="font-size:55pt; left:2.65cm; top:14.5cm;">
 <!-- 23456 -->Dans la vie courante :
@@ -72,7 +72,7 @@ On appelle interruption, l'arrêt temporaire d'un programme au profit d'un autre
 <!-- 3456 -->* Je suis en train de travailler
 <!-- 456 -->* Le téléphone sonne
 <!-- 56 -->* Je vais répondre au téléphone
-<!-- 6 -->* Après la conversation, je reprends mon travail là où je l'avais laissé.
+<!-- 6 -->* Après la conversation, je reprends mon travail là où je l’avais laissé.
 <!-- 3456 --></div>
 <!-- 3456 --><img src="./images/dring-allo-g1.png" style="top:11cm; left:30cm; width:27cm;" />
 <!-- 456 --><img src="./images/dring-allo-g2.png" style="top:11cm; left:30cm; width:27cm;" />
@@ -93,7 +93,7 @@ On appelle interruption, l'arrêt temporaire d'un programme au profit d'un autre
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Routine d'interruption</h1>
+<h1 class="en_tete">Routine d’interruption</h1>
 <img src="./images/inter-principe8.png" style="top:4.3cm; left:15cm; width:26cm;" />
 <!-- 2 --><img src="./images/inter-principe9.png" style="top:4.3cm; left:15cm; width:26cm;" />
 <!-- 3 --><img src="./images/inter-principe.png" style="top:4.3cm; left:15cm; width:26cm;" />
@@ -104,7 +104,7 @@ On appelle interruption, l'arrêt temporaire d'un programme au profit d'un autre
 <!-- A -->
 <h1 class="en_tete">Événements produisant des interruption</h1>
 <div style="font-size:55pt; left:2.65cm; top:7cm; width:55cm">
-Deux sortes d'événements produisant des interruptions :
+Deux sortes d’événements produisant des interruptions :
 
 <!-- 234 -->* Les événements __extérieurs__ au microcontrôleur
 <!-- 34 -->* Les événements __intérieurs__ au microcontrôleur
@@ -116,21 +116,21 @@ Deux sortes d'événements produisant des interruptions :
 <!-- Page Discrimintation, 4 entrées-->
 <section>
 <!-- A -->
-<h1 class="en_tete">Discrimintation des sources d'interruption</h1>
+<h1 class="en_tete">Discrimintation des sources d’interruption</h1>
 <div style="font-size:55pt; left:2.65cm; top:7cm; width:55cm">
-Il y a plusieurs sources d'interruptions sur un microcontrôleur.
+Il y a plusieurs sources d’interruptions sur un microcontrôleur.
 
-<!-- 234 -->Le système doit être capable d'en connaître la source. 
+<!-- 234 -->Le système doit être capable d’en connaître la source.
 <!-- 234 -->
 <!-- 34 -->* En consultant les fanions correspondant à chaque interruption
-<!-- 4 -->* Grâce aux __vecteurs d'interruption__ *(interrupt vectors)*
+<!-- 4 -->* Grâce aux __vecteurs d’interruption__ *(interrupt vectors)*
 </div>
 </section>
 
 <!-- Page vecteur -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Vecteurs d'interruption sur un MSP430G</h1>
+<h1 class="en_tete">Vecteurs d’interruption sur un MSP430G</h1>
 <div style="font-size:48pt; left:2.65cm; top:8cm; width:55cm">
 * 0xFFFE : Reset
 * 0xFFFC : NMI
@@ -154,13 +154,13 @@ Il y a plusieurs sources d'interruptions sur un microcontrôleur.
 <!-- Page Mise en oeuvre, 3 entrées + 1 image -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Mise en œuvre d'une interruption</h1>
+<h1 class="en_tete">Mise en œuvre d’une interruption</h1>
 <div style="font-size:55pt; left:2.65cm; top:4.5cm; width:55cm">
 Trois étapes pour mettre en œuvre une interruption :
 </div>
 <div style="font-size:55pt; left:2.65cm; top:9.5cm; width:55cm">
 
-<!-- 2345 -->* Autoriser l'interruption qui nous intéresse
+<!-- 2345 -->* Autoriser l’interruption qui nous intéresse
 <!-- 345 -->* Préciser comment cette interruption doit fonctionner
 <!-- 45 -->* Autoriser globalement les interruptions
 </div>
@@ -170,15 +170,15 @@ Trois étapes pour mettre en œuvre une interruption :
 <!-- Page syntaxe, entrée + soft-->
 <section>
 <!-- A -->
-<h1 class="en_tete">Syntaxe des routines d'interruptions en C</h1>
+<h1 class="en_tete">Syntaxe des routines d’interruptions en C</h1>
 <div style="font-size:55pt; left:2.65cm; top:7cm; width:55cm">
 ~~~~~~~ { .c }
  #pragma vector=NUMERO_DU_VECTEUR
- 
+
  __interrupt void Nom_de_la_routine (void) {
- 
+
   ...
- 
+
  }
 ~~~~~~~
 </div>
@@ -195,9 +195,9 @@ Trois étapes pour mettre en œuvre une interruption :
 * **`P1REN`** résistance de tirage *(pull-up ou pull-down)*
 </div>
 <!-- 2 --><div style="font-size:55pt; left:2.65cm; top:22cm; width:55cm">
-<!-- 2 -->* **`P1IE`** *Interrupt Enable* : autorisation de l'interruption
+<!-- 2 -->* **`P1IE`** *Interrupt Enable* : autorisation de l’interruption
 <!-- 2 -->* **`P1IES`** *Interrupt Edge Select* : choix du flanc
-<!-- 2 -->* **`P1IFG`** *Interrupt FlaG* : les **fanions d'interruption**
+<!-- 2 -->* **`P1IFG`** *Interrupt FlaG* : les **fanions d’interruption**
 <!-- 2 --></div>
 </section>
 
@@ -206,9 +206,9 @@ Trois étapes pour mettre en œuvre une interruption :
 <h1 class="en_tete">Interruption sur une entrée</h1>
 <img src="./images/decodage-inter.png" style="top:7.5cm; left:3cm; width:50cm;" />
 <div style="font-size:55pt; left:2.65cm; top:22cm; width:55cm">
-* **`P1IE`** *Interrupt Enable* : autorisation de l'interruption
+* **`P1IE`** *Interrupt Enable* : autorisation de l’interruption
 * **`P1IES`** *Interrupt Edge Select* : choix du flanc
-* **`P1IFG`** *Interrupt FlaG* : les **fanions d'interruption**
+* **`P1IFG`** *Interrupt FlaG* : les **fanions d’interruption**
 </div>>
 </section>
 
@@ -243,7 +243,7 @@ Trois étapes pour mettre en œuvre une interruption :
  // Routine d'interruption associée au Port P1
 
  // Syntaxe spécifique pour les interruptions :
- #pragma vector=PORT1_VECTOR  
+ #pragma vector=PORT1_VECTOR
  __interrupt void Port1_ISR(void) {
 
    // Fanion d'interruption correspondant au bit 3 remis à 0 :
@@ -343,6 +343,6 @@ Trois étapes pour mettre en œuvre une interruption :
 
 
 
- 
 
- 
+
+

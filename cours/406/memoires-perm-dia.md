@@ -57,10 +57,10 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">EEPROM</h1>
 <div style="top:9cm; left:2.65cm; line-height:1.2; font-size:50pt;">
-* Certains microcontrôleurs disposent d'une mémoire du type EEPROM
+* Certains microcontrôleurs disposent d’une mémoire du type EEPROM
 <br>*Electrically-Erasable Programmable Read-Only Memory*
 <br><br>
-<!-- 23 -->* Par exemple, l'ATmega328<br> dispose de 1 kB d'EEPROM
+<!-- 23 -->* Par exemple, l’ATmega328<br> dispose de 1 kB d’EEPROM
 </div>
 <!-- 3 --><img src="./images/eeprom-avr.png" style="top:15cm; left:30cm; width:15cm;" />
 </section>
@@ -92,12 +92,12 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">FLASH</h1>
 <div style="top:9cm; left:2.65cm; line-height:1.2; font-size:50pt; width:53cm">
-* Il est généralement possible d'accéder à la mémoire flash d'un microcontrôleur
+* Il est généralement possible d’accéder à la mémoire flash d’un microcontrôleur
 <!-- 234 --><br>... en faisant attention à ne pas détruire le programme !
 <!-- 34 --><br><br>
-<!-- 34 -->* C'est un peu plus difficile sur des microcontrôleurs dont l'architecture n'est pas du type Von Neumann
+<!-- 34 -->* C’est un peu plus difficile sur des microcontrôleurs dont l’architecture n’est pas du type Von Neumann
 <!-- 4 --><br><br>
-<!-- 4 -->* Dans tous les cas, l'effacement s'effectue par bloc
+<!-- 4 -->* Dans tous les cas, l’effacement s’effectue par bloc
 </div>
 </section>
 
@@ -131,11 +131,11 @@ Pierre-Yves Rochat
 <!-- Page limite cycles, 3 entrées -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Limite du nombre de cycles d'écriture</h1>
+<h1 class="en_tete">Limite du nombre de cycles d’écriture</h1>
 <div style="top:9cm; left:2.65cm; line-height:1.2; font-size:50pt;line-height: 1.5;">
 * Pour chaque type de mémoire non-volatile, un nombre de cycles limité
-<!-- 23 -->* Typiquement 10'000 pour une FLASH
-<!-- 3 -->* 100'000 pour une EEPROM
+<!-- 23 -->* Typiquement 10’000 pour une FLASH
+<!-- 3 -->* 100’000 pour une EEPROM
 </div>
 </section>
 
@@ -147,7 +147,7 @@ Pierre-Yves Rochat
 </div>
 <!-- Contenu : -->
 <div style="top:9cm; left:2.65cm; line-height:1.2; font-size:50pt;line-height: 1.5;">
-* Il est possible d'ajouter des mémoires non-volatiles externes :
+* Il est possible d’ajouter des mémoires non-volatiles externes :
 <!-- 234 -->* RAM secourues
 <!-- 34 -->* EEPROM série (I2C ou SPI)
 </div>
@@ -162,7 +162,7 @@ Pierre-Yves Rochat
 </div>
 <!-- Contenu : -->
 <div style="top:9cm; left:2.65cm; line-height:1.2; font-size:50pt;line-height: 1.5;">
-* Il est possible d'ajouter des mémoires non-volatiles externes :
+* Il est possible d’ajouter des mémoires non-volatiles externes :
 * RAM secourues
 * EEPROM série
 * Cartes SD
@@ -175,8 +175,8 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Système de fichier</h1>
 <div style="top:9cm; left:2.65cm; line-height:1.2; font-size:50pt;line-height: 1.5;">
-* Compliqué de gérer les données d'une carte SD
-<!-- 234 -->* Pratique d'utiliser un système de fichier : par exemple FAT 32
+* Compliqué de gérer les données d’une carte SD
+<!-- 234 -->* Pratique d’utiliser un système de fichier : par exemple FAT 32
 <!-- 34 -->* Des librairies sont disponibles
 <!-- 4 --><br>PetitFat :
 <!-- 4 --></div>
@@ -198,9 +198,9 @@ Pierre-Yves Rochat
 <!-- 4 -->`Ouvrir un fichier`<br>
 <!-- 4 -->`Lire des données dans un fichier`<br>
 <!-- 4 -->`Écrire des données dans un fichier`<br>
-<!-- 4 -->`Déplacer le pointeur de lecture ou d'écriture`<br>
+<!-- 4 -->`Déplacer le pointeur de lecture ou d’écriture`<br>
 <!-- 4 -->`Ouvrir un dossier`<br>
-<!-- 4 -->`Lire le contenu d'un dossier`
+<!-- 4 -->`Lire le contenu d’un dossier`
 </div>
 </section>
 
@@ -219,6 +219,6 @@ Pierre-Yves Rochat
 
 
 
- 
 
- 
+
+

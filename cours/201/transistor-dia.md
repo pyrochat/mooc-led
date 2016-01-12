@@ -73,7 +73,7 @@ Dr. Yves Tiecoura
 <!-- 3456 -->* Transistor ~ *Trans-résistance*
 <!-- 456 -->* I~b~ << I~c~ <!-- -->
 <!-- 56 -->* Une variation de I~b~ provoque une variation de I~c~
-<!-- 6 -->* **I~c~ = &beta; • I~b~**, avec &beta; : facteur d'amplification, &beta; > 100
+<!-- 6 -->* **I~c~ = &beta; • I~b~**, avec &beta; : facteur d’amplification, &beta; > 100
 </div>
 <!-- 23456 --><img src="./images/transistor-tripol1.png" style="top:6.5cm; left:35cm; width:22cm;" />
 </section>
@@ -92,7 +92,7 @@ Dr. Yves Tiecoura
 <!-- Page Structure   arrivées -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Structure d'un transistor</h1>
+<h1 class="en_tete">Structure d’un transistor</h1>
 <div style="font-size:51pt; left:2.65cm; top:8.5cm; line-height:1.8">
 * Silicium
 <!-- 234 -->* Dopé P, dopé N
@@ -105,7 +105,7 @@ Dr. Yves Tiecoura
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Structure d'un transistor</h1>
+<h1 class="en_tete">Structure d’un transistor</h1>
 <div style="font-size:51pt; left:2.65cm; top:8.5cm; line-height:1.8">
 * Silicium
 * Dopé P, dopé N
@@ -143,7 +143,7 @@ Dr. Yves Tiecoura
 <!-- Page commande LED, -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Commande d'une LED</h1>
+<h1 class="en_tete">Commande d’une LED</h1>
 <img src="./images/transistor-res-led.png" style="top:7.5cm; left:21cm; width:16cm;" />
 </section>
 

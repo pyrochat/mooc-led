@@ -67,7 +67,7 @@ Regrouper les LED en motifs.
 <div style="top: 7.5cm; left: 2.65cm; font-size: 53pt; line-height: 1.5;">
 * Une LED consomme 10 mA
 <!-- 23 -->* Un microcontrôleur peut fournir<br> environ 10 à 20 mA
-<!-- 3 -->* Utilisation d'un transistor
+<!-- 3 -->* Utilisation d’un transistor
 </div>
 <!-- 3 --><img src="./images/transistor-res-leds.png" style="top:8cm; left:26cm; width:32cm;" />
 </div>
@@ -107,7 +107,7 @@ Regrouper les LED en motifs.
 <h1 class="en_tete">Programmation des animations</h1>
 <div style="top:5.5cm; left:2cm; font-size:36pt;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
-void setup() { 
+void setup() {
   P2DIR |= 0xFF; // P2.0 à P2.7 en sortie
 }
 
@@ -137,7 +137,7 @@ void loop() { // Boucle infinie, correspond à toute l'animation
 <h1 class="en_tete">Programmation des animations</h1>
 <div style="top:7cm; left:2cm; font-size:36pt;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
-void ChenillardAjoute(uint16_t attente) { 
+void ChenillardAjoute(uint16_t attente) {
   unit16_t i;
   for (i=0; i<8; i++) {
     P2OUT |=(1<<i);
@@ -166,7 +166,7 @@ void loop() { // Boucle infinie, correspond à toute l'animation
 <!-- 234 --><br> ... et dépasser même la taille mémoire du microcontrôleur
 </div>
 <!-- 34 --><div style="top: 15cm; left: 2.65cm; font-size: 53pt;">
-<!-- 34 -->* Langages spécifiques, qu'il faudra interpréter
+<!-- 34 -->* Langages spécifiques, qu’il faudra interpréter
 <!-- 34 --></div>
 <!-- 4 --><div style="top: 20cm; left: 2.65cm; font-size: 53pt;">
 <!-- 4 -->* Intensité variable des LED : PWM, BCM
@@ -189,6 +189,6 @@ void loop() { // Boucle infinie, correspond à toute l'animation
 
 
 
- 
 
- 
+
+

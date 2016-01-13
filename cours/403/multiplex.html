@@ -34,8 +34,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Document en cours de relecture, rév du 2015/07/16</p>
 </blockquote>
 <h2 id="commander-deux-led-indépendantes-avec-une-broche">Commander deux LED indépendantes avec une broche</h2>
-<p>Nous allons nous poser une question un peu curieuse. Est-ce possible de commander deux LED avec une seule broche d'entrée-sortie d'un microcontrôleur ? Bien entendu, il ne s'agit pas ici que les deux LED s'allument et s'éteignent en même temps. On a déjà vu comment commander même des milliers de LED avec une seule broche. On cherche bien ici à les commander indépendemment l'une de l'autre.</p>
-<p>En considérant qu'une sortie peut prendre l'état <em>0</em> et l'état <em>1</em>, on voit mal comment le faire... Mais souvenons-nous qu'une broche d'un microcontrôleur peut aussi être une entrée. Or une entrée, c'est une broche qui n'impose ni un <em>0</em>, ni un <em>1</em>. On parle d'une broche à <em>haute impédance</em>. On utilise même parfois l'expression <em>logique à 3 états</em> (tri-state): l'état <em>0</em>, l'état <em>1</em> et l'état <em>H</em> (haute impédance).</p>
+<p>Nous allons nous poser une question un peu curieuse. Est-ce possible de commander deux LED avec une seule broche d’entrée-sortie d’un microcontrôleur ? Bien entendu, il ne s’agit pas ici que les deux LED s’allument et s’éteignent en même temps. On a déjà vu comment commander même des milliers de LED avec une seule broche. On cherche bien ici à les commander indépendemment l’une de l’autre.</p>
+<p>En considérant qu’une sortie peut prendre l’état <em>0</em> et l’état <em>1</em>, on voit mal comment le faire... Mais souvenons-nous qu’une broche d’un microcontrôleur peut aussi être une entrée. Or une entrée, c’est une broche qui n’impose ni un <em>0</em>, ni un <em>1</em>. On parle d’une broche à <em>haute impédance</em>. On utilise même parfois l’expression <em>logique à 3 états</em> (tri-state): l’état <em>0</em>, l’état <em>1</em> et l’état <em>H</em> (haute impédance).</p>
 <p>Regardons ce schéma, où une LED est reliée entre la broche et la <em>Masse</em> (avec sa résistance de protection en série) et une autre LED est reliée entre la broche et le <em>Plus</em> (Vcc 3.3V).</p>
 <div class="figure">
 <img src="images/led2-patte1-150dpi.png" title="Deux LED sur une broche" alt="Figure : deux LED sur une broche" />
@@ -43,14 +43,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </div>
 <p>Il est possible avec ce montage :</p>
 <ul>
-<li>d'allumer la LED1 (sortie à <em>1</em>)</li>
-<li>d'allumer la LED2 (sortie à <em>0</em>)</li>
-<li>de n'allumer aucune des deux LED (sortie à haute impédance).</li>
+<li>d’allumer la LED1 (sortie à <em>1</em>)</li>
+<li>d’allumer la LED2 (sortie à <em>0</em>)</li>
+<li>de n’allumer aucune des deux LED (sortie à haute impédance).</li>
 </ul>
-<p>Mais comment allumer les deux LED en même temps ? C'est évidemment impossible !</p>
-<p>Notez qu'une contrainte électronique existe avec ce montage. La tension Vcc doit être inférieure à deux fois la tension de seuil des LED utilisées. Il ne fonctionne pas à 5V, les LED s'allumeraient alors en permanence, la tension d'alimentation étant suffisante pour dépasser les seuils des deux LED. Ce montage fonctionne bien à 3.3V, avec des LED vertes ou bleues. La tension de seuil des LED rouges est généralement trop faible.</p>
+<p>Mais comment allumer les deux LED en même temps ? C’est évidemment impossible !</p>
+<p>Notez qu’une contrainte électronique existe avec ce montage. La tension Vcc doit être inférieure à deux fois la tension de seuil des LED utilisées. Il ne fonctionne pas à 5V, les LED s’allumeraient alors en permanence, la tension d’alimentation étant suffisante pour dépasser les seuils des deux LED. Ce montage fonctionne bien à 3.3V, avec des LED vertes ou bleues. La tension de seuil des LED rouges est généralement trop faible.</p>
 <h2 id="multiplexage-temporel">Multiplexage temporel</h2>
-<p>En allumant successivement la LED1 puis la LED2 à une fréquence supérieure à la fréquence maximale de sensibilité de l'oeil, on va donner l'impression que les deux LED sont allumées en même temps.</p>
+<p>En allumant successivement la LED1 puis la LED2 à une fréquence supérieure à la fréquence maximale de sensibilité de l’œil, on va donner l’impression que les deux LED sont allumées en même temps.</p>
 <p>Examinons ce programme :</p>
 <table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2
@@ -83,7 +83,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
   }
 }</code></pre></td></tr></table>
 <!-- retour au mode normal pour l'éditeur -->
-<p>On voit que tous les états possibles pour 2 LED sont affichés (00, 01, 10, 11). Il a toutefois un défaut : lorsqu'elles sont allumées ensemble, chaque LED donne l'impression d'être allumée plus faiblement. En effet, on a généré un PWM de 50%. Ce défaut peut être corrigé en ne dépassant jamais les 50% pour chaque LED :</p>
+<p>On voit que tous les états possibles pour 2 LED sont affichés (00, 01, 10, 11). Il a toutefois un défaut : lorsqu’elles sont allumées ensemble, chaque LED donne l’impression d’être allumée plus faiblement. En effet, on a généré un PWM de 50%. Ce défaut peut être corrigé en ne dépassant jamais les 50% pour chaque LED :</p>
 <table class="sourceCode c numberLines" startFrom="6"><tr class="sourceCode"><td class="lineNumbers"><pre>6
 7
 8
@@ -99,8 +99,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
   }
   ...</code></pre></td></tr></table>
 <!-- retour au mode normal pour l'éditeur -->
-<p>L'affaiblissement de l'intensité peut être partiellement compensé dans ce cas. En effet, le courant nominal d'une LED (donné par le fabricant) ne doit pas être dépassé en continu. Mais lorsque l'allumage n'est jamais continu, c'est le courant maximal de la LED (également donné par le fabricant), qui ne doit pas être dépassé. Or le courant maximal (typiquement 20mA) est supérieur au courant nominal (typiquement 10mA). On va donc pouvoir utiliser une résistance de limitation plus petite pour atteindre ce courant maximal, pour autant que la contrainte de ne jamais allumer la LED plus de 50% du temps soit respectée par le programme.</p>
-<p>Cette technique a comme principal désavantage la complexité de sa programmation. L'utilisation d'un Timer et d'une interruption va la simplifier. Le sujet sera abordé plus tard dans ce cours.</p>
+<p>L’affaiblissement de l’intensité peut être partiellement compensé dans ce cas. En effet, le courant nominal d’une LED (donné par le fabricant) ne doit pas être dépassé en continu. Mais lorsque l’allumage n’est jamais continu, c’est le courant maximal de la LED (également donné par le fabricant), qui ne doit pas être dépassé. Or le courant maximal (typiquement 20mA) est supérieur au courant nominal (typiquement 10mA). On va donc pouvoir utiliser une résistance de limitation plus petite pour atteindre ce courant maximal, pour autant que la contrainte de ne jamais allumer la LED plus de 50% du temps soit respectée par le programme.</p>
+<p>Cette technique a comme principal désavantage la complexité de sa programmation. L’utilisation d’un Timer et d’une interruption va la simplifier. Le sujet sera abordé plus tard dans ce cours.</p>
 <h2 id="charlieplexing">Charlieplexing</h2>
 <p>Une technique similaire peut être utilisée avec un nombre quelconque de LED en plaçant deux LED (une dans chaque sens) entre chaque broche utilisée. On parle alors de <em><em>Charlieplexing</em></em>. Voici le schéma pour 3 broches, avec 6 LED :</p>
 <div class="figure">
@@ -113,18 +113,18 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li>mettre à <em>0</em> la broche qui commande sa cathode</li>
 <li>mettre en entrée (sortie à haute impédance) les broches restantes (une seule dans ce cas).</li>
 </ul>
-<p>Ce montage est parfait lorsqu'il y a besoin d'allumer une seule LED parmi plusieurs. Si toutes les LED doivent pouvoir être allumées <em>en même temps</em>, il faut les allumer successivement à une fréquence suffisante, comme le montre la figure suivante :</p>
+<p>Ce montage est parfait lorsqu’il y a besoin d’allumer une seule LED parmi plusieurs. Si toutes les LED doivent pouvoir être allumées <em>en même temps</em>, il faut les allumer successivement à une fréquence suffisante, comme le montre la figure suivante :</p>
 <div class="figure">
 <img src="images/chrono-charlie.png" title="Chronogramme du Charlieplexing" alt="Figure : Chronogramme du Charlieplexing" />
 <p class="caption">Figure : Chronogramme du Charlieplexing</p>
 </div>
-<p>C'est le principe même du <strong>multiplexage temporel</strong> !</p>
-<p>Remarquez la manière de dessiner. A chaque cycle, chaque LED peut être individuellement allumée ou non. La luminosité va diminuer par rapport à l'intensité maximale d'une LED. Dans ce cas, ce sera d'un facteur 6, partiellement compensable par l'usage du courant maximal des LED.</p>
+<p>C’est le principe même du <strong>multiplexage temporel</strong> !</p>
+<p>Remarquez la manière de dessiner. A chaque cycle, chaque LED peut être individuellement allumée ou non. La luminosité va diminuer par rapport à l’intensité maximale d’une LED. Dans ce cas, ce sera d’un facteur 6, partiellement compensable par l’usage du courant maximal des LED.</p>
 <h2 id="usage-du-multiplexage-temporel">Usage du multiplexage temporel</h2>
-<p>Si cette technique permettant de commander plusieurs LED avec un petit nombre de broches vous permet de <em>sauver</em> un projet où une broche manque sur votre microcontrôleur, tant mieux. Les amateurs de prouesses réalisées avec de petits microcontrôleurs à 8 ou même à 6 broches vont se régaler ! Ils vont, par exemple, commander tous les feux tricolores d'un carrefour sur une maquette miniature avec un microcontrôleur à 8 broches. Les familles PIC (Microchip) et les AVR (Atmel) offrent de nombreux microcontrôleurs dans cette gamme. Par exemple, l'ATtiny85 a son <em>fan-club</em> sur Internet.</p>
-<p>Beaucoup plus sérieusement, la commande des afficheurs matriciels peut être simplifiée de manière très significative par le multiplexage temporel. Ce sujet sera étudié en détail, tant au niveau de l'architecture matérielle qu'au niveau de la commande logicielle.</p>
+<p>Si cette technique permettant de commander plusieurs LED avec un petit nombre de broches vous permet de <em>sauver</em> un projet où une broche manque sur votre microcontrôleur, tant mieux. Les amateurs de prouesses réalisées avec de petits microcontrôleurs à 8 ou même à 6 broches vont se régaler ! Ils vont, par exemple, commander tous les feux tricolores d’un carrefour sur une maquette miniature avec un microcontrôleur à 8 broches. Les familles PIC (Microchip) et les AVR (Atmel) offrent de nombreux microcontrôleurs dans cette gamme. Par exemple, l’ATtiny85 a son fan-club sur Internet.</p>
+<p>Beaucoup plus sérieusement, la commande des afficheurs matriciels peut être simplifiée de manière très significative par le multiplexage temporel. Ce sujet sera étudié en détail, tant au niveau de l’architecture matérielle qu’au niveau de la commande logicielle.</p>
 <h2 id="afficheurs-7-segments-multiplexés">Afficheurs 7 segments multiplexés</h2>
-<p>Voici encore un usage très pratique du multiplexage temporel : la commande d'afficheurs 7 segments à plusieurs digits. Même sous forme de modules comportant un seul digit, les fabricants choisissent généralement, pour limiter le nombre de broches, de regrouper les anodes (montage à <em>anode commune</em>) ou les cathodes (montage à <em>cathode commune</em>) :</p>
+<p>Voici encore un usage très pratique du multiplexage temporel : la commande d’afficheurs 7 segments à plusieurs digits. Même sous forme de modules comportant un seul digit, les fabricants choisissent généralement, pour limiter le nombre de broches, de regrouper les anodes (montage à <em>anode commune</em>) ou les cathodes (montage à <em>cathode commune</em>) :</p>
 <div class="figure">
 <img src="images/segment7-150dpi.png" title="Afficheurs 7 segments, anode ou cathode commune" alt="Figure : Afficheurs 7 segments" />
 <p class="caption">Figure : Afficheurs 7 segments</p>
@@ -139,20 +139,20 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>En plaçant une résistance du côté du digit, son courant varierait en fonction du nombre de segments concernés. La chute de tension aux borne de la résistance serait donc variable, entraînant une luminosité changeante selon le motif affiché (le chiffre 1 serait plus lumineux que le chiffre 8). Par contre, en plaçant une résistance du côté des segments, un seul segment peut être affiché à la fois. Le courant sera donc constant (ou nul si le segment est éteint).</p>
 <p>Le programme de commande doit produire des signaux comme le montre la figure suivante :</p>
 <div class="figure">
-<img src="images/chrono7x4.png" title="Diagramme des temps de la commande d&#39;un afficheur 7 segments à 4 digits" alt="Figure : Diagramme des temps de la commande d&#39;un afficheur 7 segments à 4 digits" />
-<p class="caption">Figure : Diagramme des temps de la commande d'un afficheur 7 segments à 4 digits</p>
+<img src="images/chrono7x4.png" title="Diagramme des temps de la commande d’un afficheur 7 segments à 4 digits" alt="Figure : Diagramme des temps de la commande d’un afficheur 7 segments à 4 digits" />
+<p class="caption">Figure : Diagramme des temps de la commande d’un afficheur 7 segments à 4 digits</p>
 </div>
 <p>Remarques :</p>
 <ul>
-<li>Les anodes sont actives à l'état 1.</li>
-<li>Les cathodes sont actives à l'état 0.</li>
-<li>Le courant dans les cathodes est limité au courant d'une LED. Une broche d'un microcontrôleur peut les commander directement.</li>
-<li>Le courant dans les anodes peut atteindre le courant de sept LED à un instant donné. Il faut donc un élément d'amplification. On utilisera généralement un transistor PNP :</li>
+<li>Les anodes sont actives à l’état 1.</li>
+<li>Les cathodes sont actives à l’état 0.</li>
+<li>Le courant dans les cathodes est limité au courant d’une LED. Une broche d’un microcontrôleur peut les commander directement.</li>
+<li>Le courant dans les anodes peut atteindre le courant de sept LED à un instant donné. Il faut donc un élément d’amplification. On utilisera généralement un transistor PNP :</li>
 </ul>
 <div class="figure">
-<img src="images/schema7x4.png" title="Schéma de commande d&#39;un afficheur à 7 segments de 4 digits" alt="Figure : Schéma de commande d&#39;un afficheur à 7 segments de 4 digits" />
-<p class="caption">Figure : Schéma de commande d'un afficheur à 7 segments de 4 digits</p>
+<img src="images/schema7x4.png" title="Schéma de commande d’un afficheur à 7 segments de 4 digits" alt="Figure : Schéma de commande d’un afficheur à 7 segments de 4 digits" />
+<p class="caption">Figure : Schéma de commande d’un afficheur à 7 segments de 4 digits</p>
 </div>
-<p>Le transistor PNP va conduire et allumer le digit concerné lorsqu'une tension négative est appliquée entre sa base et son collecteur. La commande est donc active à l'état 0.</p>
+<p>Le transistor PNP va conduire et allumer le digit concerné lorsqu’une tension négative est appliquée entre sa base et son collecteur. La commande est donc active à l’état 0.</p>
 </body>
 </html>

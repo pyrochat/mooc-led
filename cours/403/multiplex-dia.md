@@ -127,7 +127,7 @@ void loop() {
 <!-- 2 --><div style="top:24cm; left:35cm; font-size:50pt;">
 <!-- 2 -->* **Multiplexage temporel**
 <!-- 2 -->* 1 / 6 du temps
-<!-- 2 -->* 1 / 6 de l'intensité lumineuse
+<!-- 2 -->* 1 / 6 de l’intensité lumineuse
 <!-- 2 --></div>
 </section>
 
@@ -139,7 +139,7 @@ void loop() {
 <div style="top:24cm; left:35cm; font-size:50pt;">
 * Multiplexage temporel
 * 1 / 6 du temps
-* 1 / 6 de l'intensité lumineuse
+* 1 / 6 de l’intensité lumineuse
 </div>
 </section>
 
@@ -203,6 +203,6 @@ void loop() {
 
 
 
- 
 
- 
+
+

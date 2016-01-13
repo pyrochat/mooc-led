@@ -30,7 +30,7 @@ Pierre-Yves Rochat
 <h1 class="en_tete">Programmation en C-Arduino</h1>
 <div class="liste_demi"; style="font-size:48pt; left:35cm; width:26.0cm; top:8cm;">
 * Les 3 significations du mot Arduino
-* Structure d'un programme
+* Structure d’un programme
 * Entrées-sorties
 * Gestion du temps
 </div>
@@ -41,8 +41,8 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Significations du mot Arduino</h1>
 <div style="top: 5cm; left: 6cm; font-size: 53pt; line-height: 1.5;">
-L'Arduino a participé à rendre populaires les microcontrôleurs de manière extraordinaire.
-<!-- 2345 --><br/>Qu'est-ce qui se cache derrière ce nom ?
+L’Arduino a participé à rendre populaires les microcontrôleurs de manière extraordinaire.
+<!-- 2345 --><br/>Qu’est-ce qui se cache derrière ce nom ?
 </div>
 <!-- 345 --><div style="top: 18cm; left: 6cm; font-size: 53pt; line-height: 1.5;">
 <!-- 345 -->* une carte à microcontrôleurs
@@ -92,7 +92,7 @@ L'Arduino a participé à rendre populaires les microcontrôleurs de manière ex
 <!-- 45 -->* Apporter une certaine compatibilité entre différents microcontôleurs
 <!-- 2345 --></div>
 <!-- 5 --><div style="top: 21cm; left: 4cm; font-size: 48pt; line-height: 1.3;">
-<!-- 5 -->* La structure générale d'un programme
+<!-- 5 -->* La structure générale d’un programme
 <!-- 5 -->* Les entrées-sorties
 <!-- 5 -->* La gestion du temps
 <!-- 5 --></div>
@@ -101,7 +101,7 @@ L'Arduino a participé à rendre populaires les microcontrôleurs de manière ex
 <!-- Struct gén -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Structure générale d'un programme</h1>
+<h1 class="en_tete">Structure générale d’un programme</h1>
 <div style="top: 9cm; left: 4cm; font-size: 53pt; line-height: 2;">
 * *pas de* &nbsp; `main()` !
 <!-- 23 -->* `void setup()`
@@ -127,7 +127,7 @@ void loop() {
 <!-- Organigr. -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Organigramme d'un programme Arduino</h1>
+<h1 class="en_tete">Organigramme d’un programme Arduino</h1>
 <!-- 1 --><img src="./images/organi-arduino-1-300dpi.png" style="top:6cm; left:6cm; width:34cm;" />
 <!-- 2 --><img src="./images/organi-arduino-12-300dpi.png" style="top:6cm; left:6cm; width:34cm;" />
 </section>
@@ -200,7 +200,7 @@ void loop() {
 <img src="./images/coin-ide.png" style="top:6.5cm; left:47cm; width:7cm;" />
 <div class="liste_demi"; style="font-size:48pt; left:35cm; width:26.0cm; top:13cm;">
 * Les 3 significations du mot Arduino
-* Structure d'un programme
+* Structure d’un programme
 * Entrées-sorties
 * Gestion du temps
 </div>
@@ -211,6 +211,6 @@ void loop() {
 
 
 
- 
 
- 
+
+

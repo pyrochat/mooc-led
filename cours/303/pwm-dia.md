@@ -5,7 +5,7 @@
 <img src="../../statiques/images/epfl-logo-pp.png" style="top:1.05cm; left:1.95cm; width:5.87cm" />
 <img src="../../statiques/images/rescif-trait.png" style="top:5.07cm; left:0cm; width:60.02cm; height:0.23cm" />
 <div style="top:11cm; left:5.65cm; font-size:50pt; font-family: Arial Narrow, sans-serif; color: #e2001a; ">Enseignes et afficheurs à LED</div>
-<div style="top:20cm; left:5.65cm; font-size:70pt; font-family: Impact, sans-serif;">PWM : Modulation de Largeur d'Impulsion</div>
+<div style="top:20cm; left:5.65cm; font-size:70pt; font-family: Impact, sans-serif;">PWM : Modulation de Largeur d’Impulsion</div>
 <img src="../../statiques/images/epfl-logo-pp.png" style="top:27.69cm; left:5.65cm; width:4.34cm" />
 <div style="top:27.7cm; left:10.8cm; font-size:47pt; font-family: Arial Narrow, sans-serif;">Pierre-Yves Rochat</div>
 </section>
@@ -18,7 +18,7 @@
 <!-- def A -->**Enseignes et afficheurs à LED** |  PWM
 <!-- def A --></div>
 <!-- A -->
-<h1 class="en_tete">PWM : Modulation de Largeur d'Impulsion</h1>
+<h1 class="en_tete">PWM : Modulation de Largeur d’Impulsion</h1>
 <div style="top:6.5cm; left:35cm; width:23cm; text-align: right;  font-size:48pt; font-family: Impact, sans-serif;">
 Pierre-Yves Rochat
 </div>
@@ -27,7 +27,7 @@ Pierre-Yves Rochat
 <!-- Page bienvenue, demi-->
 <section>
 <!-- A -->
-<h1 class="en_tete">PWM : Modulation de Largeur d'Impulsion</h1>
+<h1 class="en_tete">PWM : Modulation de Largeur d’Impulsion</h1>
 <div class="liste_demi"; style="font-size:48pt; left:33cm; width:26.0cm; top:8cm;">
 * Principe
 * Fréquence
@@ -42,7 +42,7 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Intensité variable</h1>
 <div style="font-size:60pt; left:2.65cm; top:6cm;">
-Comment faire varier l'intensité d'une LED ?
+Comment faire varier l’intensité d’une LED ?
 </div>
 <img src="./images/intens-3led-100dpi.png" style="top:13cm; left:6cm; width:31cm;" />
 </section>
@@ -51,7 +51,7 @@ Comment faire varier l'intensité d'une LED ?
 <!-- A -->
 <h1 class="en_tete">Intensité variable</h1>
 <div style="font-size:60pt; left:2.65cm; top:6cm;">
-Comment faire varier l'intensité d'une LED ?
+Comment faire varier l’intensité d’une LED ?
 </div>
 <img src="./images/varie-intens-300dpi.png" style="top:13cm; left:6cm; width:31cm;" />
 </section>
@@ -67,12 +67,12 @@ Comment faire varier l'intensité d'une LED ?
 <!-- A -->
 <h1 class="en_tete">Intensité variable</h1>
 <div style="font-size:60pt; left:6cm; top:6cm;">
-Clignotement 
+Clignotement
 </div>
 <img src="./images/clign-vite-a-300dpi.png" style="top:12cm; left:6cm; width:35cm;" />
 <!-- 2 --><img src="./images/clign-vite-b-300dpi.png" style="top:12cm; left:6cm; width:35cm;" />
 <!-- 2 --><div style="font-size:60pt; left:6cm; top:15cm;">
-<!-- 2 -->... plus rapide 
+<!-- 2 -->... plus rapide
 <!-- 2 --></div>
 </section>
 
@@ -82,7 +82,7 @@ Clignotement
 <h1 class="en_tete">PWM : principe</h1>
 <img src="./images/pwm-300dpi.png" style="top:12cm; left:3cm; width:54cm;" />
 <!-- 2 --><div style="font-size:48pt; left:5cm; top:25cm; width:55cm">
-<!-- 2 -->_**P**ulse **W**idth **M**odulation_ = Modulation de Largeur d'Impulsion
+<!-- 2 -->_**P**ulse **W**idth **M**odulation_ = Modulation de Largeur d’Impulsion
 <!-- 2 --></div>
 </section>
 
@@ -96,16 +96,16 @@ Clignotement
 <!-- 2345 --><div style="font-size:60pt; left:2.65cm; top:14cm;">
 <!-- 2345 -->Pour des applications visuelles :
 <!-- 2345 -->
-<!-- 345 -->* L'œil a une fréquence limite de perception du clignotement
+<!-- 345 -->* L’œil a une fréquence limite de perception du clignotement
 <!-- 45 -->* On ne voit pas clignoter un tube fluorescent, à 100 Hz (2 x 50 Hz)
-<!-- 5 -->* Les cônes et les bâtonnets n'ont pas la même fréquence limite
+<!-- 5 -->* Les cônes et les bâtonnets n’ont pas la même fréquence limite
 <!-- 2345 --></div>
 </section>
 
 <!-- Page programmation, demi, 3 arrivées -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Programmation d'un signal PWM</h1>
+<h1 class="en_tete">Programmation d’un signal PWM</h1>
 <div class="liste_demi"; style="font-size:56pt; left:36cm; width:21.0cm; top:6cm; line-height: 1.2;">
 Comment programmer des signaux PWM avec un microcontrôleur ?
 </div>
@@ -130,7 +130,7 @@ uint16_t pwmLed; // valeur du PWM, 0 à 100
 
 void setup() { // Initialisations
   pinMode(P1_0, OUTPUT); // LED en sortie
-  pwmLed = 25; // valeur du PWM. 
+  pwmLed = 25; // valeur du PWM.
 }
 
 void loop() { // Boucle infinie, durée 10ms => un cycle du PWM à 100 Hz
@@ -229,7 +229,7 @@ void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
     }
   }
   if ((cptPwm==0) && (pwmLed>0)) LedOn; // LED allumée si la valeur est positive
-  if (cptPwm==pwmLed) LedOff;  
+  if (cptPwm==pwmLed) LedOff;
   cptPwm++; // passe automatiquement de 255 à 0 (overflow)
   delayMicroseconds(39);
 }
@@ -242,7 +242,7 @@ void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
 <!-- A -->
 <h1 class="en_tete">Convertisseur numérique-analogique en PWM</h1>
 <div class="liste_demi"; style="font-size:52pt; left:33cm; width:25.0cm; top:8cm; line-height: 1.2;">
-* Transmettre une information variable vers l'extérieur
+* Transmettre une information variable vers l’extérieur
 </div>
 <!-- 2 --><div class="liste_demi"; style="font-size:52pt; left:33cm; width:25.0cm; top:15cm; line-height: 1.2;">
 <!-- 2 -->* Conversion Numérique-Analogique DAC  Digital to Analog Converter
@@ -277,17 +277,17 @@ void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
 <!-- Page pleine Timer uC, petite image -->
 <section>
 <!-- A -->
-<h1 class="en_tete">C'est le Timer d'un microcontrôleur</h1>
+<h1 class="en_tete">C’est le Timer d’un microcontrôleur</h1>
 <img src="./images/compteur-pwm-300dpi.png" style="top:7cm; left:36cm; width:21cm;" />
 </section>
 
 <!-- Page conclusion, demi-->
 <section>
 <!-- A -->
-<h1 class="en_tete">PWM : Modulation de Largeur d'Impulsion</h1>
+<h1 class="en_tete">PWM : Modulation de Largeur d’Impulsion</h1>
 <div class="liste_demi"; style="font-size:43pt; width:23.0cm; top:7.5cm;">
 * Principe :
-* Fréquence :    > 100 Hz pour l'oeil
+* Fréquence :    > 100 Hz pour l’oeil
 * Programmer un PWM (occupe le proc.)
 * Convertisseur DAC (+ filtre)
 * Réalisation par des circuits logiques, inclus dans les microcontrôleurs
@@ -297,6 +297,6 @@ void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
 
 
 
- 
 
- 
+
+

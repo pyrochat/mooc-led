@@ -37,7 +37,7 @@ Dr. Yves Tiecoura
 * Nombres signés
 * Types en C
 * Hexadécimal
-* Codage des caractères 
+* Codage des caractères
 </div>
 </section>
 
@@ -49,10 +49,10 @@ Dr. Yves Tiecoura
 <!-- 12345 -->* LED éteinte ou allumée
 <!-- 2345 -->* Faux ou Vrai
 <!-- 345 -->* 0 ou 1
-<!-- 45 -->* 0 V ou + 5 V 
+<!-- 45 -->* 0 V ou + 5 V
 </div>
 <!-- 5 --><div class="liste_demi"; style="font-size:48pt; left:2.65cm; width:26.0cm; top:21cm;">
-<!-- 5 -->* Ex :  1 0 0 1 0 0 1 0 
+<!-- 5 -->* Ex :  1 0 0 1 0 0 1 0
 <!-- 5 --></div>
 </section>
 
@@ -83,7 +83,7 @@ Dr. Yves Tiecoura
 <h1 class="en_tete">Nombres entiers modulaires</h1>
 <img src="./images/numeration-bin-mod.png" style="top:5.5cm; left:2.65cm; width:33cm;" />
 <!-- 2345 --><div class="liste_demi"; style="font-size:40pt; left:18cm; width:13cm; top:8.4cm; line-height:1.2; border-width: 0.8mm; border-style: solid;">
-<!-- 2345 -->&nbsp;&nbsp;&nbsp;&nbsp;Table de l'addition :<br>
+<!-- 2345 -->&nbsp;&nbsp;&nbsp;&nbsp;Table de l’addition :<br>
 <!-- 2345 -->&nbsp;&nbsp;&nbsp;&nbsp;0 + 0 = 0, retenue 0<br>
 <!-- 2345 -->&nbsp;&nbsp;&nbsp;&nbsp;0 + 1 = 1, retenue 0<br>
 <!-- 2345 -->&nbsp;&nbsp;&nbsp;&nbsp;1 + 0 = 1, retenue 0<br>
@@ -200,10 +200,10 @@ nombre de 32 bits signé
 *Magnitude :*<br><br>
 0 … 255<br>
 -128 … +127<br>
-0 … 65'635<br>
--32'768 … +32'767<br>
-0 … 4'294'967'295<br>
--2'147'483'648 … +2'147'483'647 
+0 … 65’635<br>
+-32’768 … +32’767<br>
+0 … 4’294’967’295<br>
+-2’147’483’648 … +2’147’483’647
 </div>
 </section>
 
@@ -214,7 +214,7 @@ nombre de 32 bits signé
 <div class="liste_demi"; style="font-size:48pt; left:28cm; width:31.0cm; top:7cm; line-height:1.2">
 * Le binaire est parfait pour les machines
 <!-- 23 -->* …mais malcommode pour les humains !
-<!-- 3 -->* L'hexadécimal est plus pratique.
+<!-- 3 -->* L’hexadécimal est plus pratique.
 </div>
 </section>
 
@@ -252,12 +252,12 @@ Le nombre décimal 23456 :
 * Nombres signés
 * Types en C
 * Hexadécimal
-* Codage des caractères 
+* Codage des caractères
 </div>
 </section>
 
 
 
- 
 
- 
+
+

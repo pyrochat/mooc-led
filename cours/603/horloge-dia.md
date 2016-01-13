@@ -29,12 +29,12 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Horloges temps réel</h1>
 <div class="liste_demi"; style="font-size:44pt;">
-* Principe d'une horloge électronique
+* Principe d’une horloge électronique
 * Alimentation permanente
 * Programmation avec un microcontrôleur
 * Circuits spécialisés
 * Horloges internes
-* L'heure d'Internet
+* L’heure d’Internet
 </div>
 </section>
 
@@ -44,15 +44,15 @@ Pierre-Yves Rochat
 <h1 class="en_tete">Base de temps et division</h1>
 <div style="top:9cm; left:2.65cm; line-height:1.2; font-size:50pt;">
 * Les montres mécaniques utilisent un mouvement oscillant aussi stable que possible
-<!-- 23456 -->* Des engrenages permettent ensuite d'obtenir les secondes, les minutes et les heures
+<!-- 23456 -->* Des engrenages permettent ensuite d’obtenir les secondes, les minutes et les heures
 </div>
 <!-- 3456 --><div style="top:17cm; left:2.65cm; line-height:1.2; font-size:50pt;">
 <!-- 3456 -->* Une montre électronique utilise un oscillateur à **quartz** comme base de temps
-<!-- 456 -->* Généralement à 32'768 Hz
+<!-- 456 -->* Généralement à 32’768 Hz
 <!-- 3456 --></div>
 <!-- 56 --><img src="./images/quartz.png" style="top:21cm; left:27cm; width:12cm;" />
 <!-- 6 --><div style="top:27cm; left:2.65cm; line-height:1.2; font-size:50pt;">
-<!-- 6 -->* 15 diviseurs par 2 vont permettre d'obtenir un signal de 1 Hz 
+<!-- 6 -->* 15 diviseurs par 2 vont permettre d’obtenir un signal de 1 Hz
 <!-- 6 --></div>
 </section>
 
@@ -68,7 +68,7 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Alimentation</h1>
 <div style="top:7cm; left:2.65cm; line-height:2.5; font-size:50pt;">
-* Une alimentation doit être prévue lorsque le dispositif n'est pas sous tension
+* Une alimentation doit être prévue lorsque le dispositif n’est pas sous tension
 <!-- 234567 -->* On utilise souvent des piles au Lithium
 <!-- 576 -->* Des super-condensateurs *Supercap* peuvent aussi être utilisés
 </div>
@@ -83,7 +83,7 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Programmation sur un microcontrôleur</h1>
 <div style="top:9cm; left:2.65cm; line-height:2.5; font-size:50pt;">
-* Beaucoup de microcontrôleurs prévoient l'usage d'un quartz à 32 kHz
+* Beaucoup de microcontrôleurs prévoient l’usage d’un quartz à 32 kHz
 <!-- 23 -->* Il va falloir mettre le microcontrôleur en veille un maximum de temps
 <!-- 3 -->* Le code va fortement dépendre de la famille du microcontrôleur utilisé
 </div>
@@ -112,7 +112,7 @@ int main () {
   TCCR2B=0b101; // prédivision par 128
   TIMSK2=(1<<TOIE2); // interruption Timer2 Overflow autorisée
   sei(); // toutes les interruptions autorisées
-  while (1) { // boucle correspondant à tous les réveils dus à l'interruption
+  while (1) { // boucle correspondant à tous les réveils dus à l’interruption
     set_sleep_mode(SLEEP_MODE_PWR_SAVE); // mise en veille
     sleep_enable();
     sleep_mode(); // mode normal après un réveil
@@ -139,7 +139,7 @@ int main () {
         heures++;
       if (heures == 24) {
         heures = 0;
-        ... 
+        ...
       }
     }
     ...
@@ -175,12 +175,12 @@ int main () {
 <!-- A -->
 <h1 class="en_tete">Horloges temps réel</h1>
 <div class="liste_demi"; style="font-size:44pt;">
-* Principe d'une horloge électronique
+* Principe d’une horloge électronique
 * Alimentation permanente
 * Programmation avec un microcontrôleur
 * Circuits spécialisés
 * Horloges internes
-* L'heure d'Internet
+* L’heure d’Internet
 </div>
 </div>
 </section>

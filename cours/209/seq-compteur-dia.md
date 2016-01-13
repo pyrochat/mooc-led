@@ -29,7 +29,7 @@ Dr. Yves Tiecoura
 <!-- A -->
 <h1 class="en_tete">Séquenceur à compteur</h1>
 <div class="liste_demi"; style="font-size:48pt; left:33cm; width:26.0cm; top:8cm;">
-* Animation d'une enseigne
+* Animation d’une enseigne
 * Compteur binaire
 * Logique de décodage des séquences
 * Mémoire morte (ROM)
@@ -42,7 +42,7 @@ Dr. Yves Tiecoura
 <!-- A -->
 <h1 class="en_tete">Une enseigne attrayante</h1>
 <div style="font-size:60pt; left:2.65cm; top:7.5cm;">
-* Qu'est-ce qui fait qu'une enseigne à LED attire l'oeil ?
+* Qu’est-ce qui fait qu’une enseigne à LED attire l’œil ?
 <!-- 23456789 -->* Sa forme, les couleurs des LED
 <!-- 456789 -->* Mais surtout les animations !
 </div>
@@ -59,13 +59,13 @@ Dr. Yves Tiecoura
 <!-- Page séquence 2 images -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Séquence d'animation</h1>
+<h1 class="en_tete">Séquence d’animation</h1>
 <div style="font-size:60pt; left:2.65cm; top:7cm;">
 * Diagramme des temps :
 </div>
 <!-- 234 --><img src="./images/chrono-enseigne.png" style="top:11cm; left:3cm; width:29cm;" />
 <div style="font-size:60pt; left:36cm; top:7cm;">
-<!-- 34 -->* Graphe d'états :
+<!-- 34 -->* Graphe d’états :
 </div>
 <!-- 4 --><img src="./images/graphe-enseigne.png" style="top:11cm; left:36cm; width:18cm;" />
 </section>
@@ -80,7 +80,7 @@ Dr. Yves Tiecoura
 <!-- 23 --></div>
 <!-- 23 --><img src="./images/chrono-compteur.png" style="top:23cm; left:3cm; width:29cm;" />
 <!-- 3 --><div style="font-size:60pt; left:36cm; top:7cm;">
-<!-- 3 -->* Graphe d'états :
+<!-- 3 -->* Graphe d’états :
 <!-- 3 --></div>
 <!-- 3 --><img src="./images/graphe-compteur.png" style="top:11cm; left:36cm; width:18cm;" />
 </section>
@@ -176,7 +176,7 @@ Dr. Yves Tiecoura
 <!-- A -->
 <h1 class="en_tete">Séquenceur à compteur</h1>
 <div class="liste_demi"; style="font-size:48pt; left:33cm; width:26.0cm; top:8cm;">
-* Animation d'une enseigne
+* Animation d’une enseigne
 * Compteur binaire
 * Logique de décodage des séquences
 * Mémoire morte (ROM)
@@ -186,6 +186,6 @@ Dr. Yves Tiecoura
 
 
 
- 
 
- 
+
+

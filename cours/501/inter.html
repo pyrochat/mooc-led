@@ -31,7 +31,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <body>
 <div id="header">
 <h1 class="title">Les interruptions</h1>
-<h2 class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#116;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#x79;&#64;&#x79;&#x61;&#104;&#x6f;&#x6f;&#46;&#102;&#114;" class="email">&#x59;&#118;&#x65;&#x73;&#32;&#84;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;</a>, INP-HB Yamoussoukro</h2>
+<h2 class="author"><script type="text/javascript">
+<!--
+h='&#x79;&#x61;&#104;&#x6f;&#x6f;&#46;&#102;&#114;';a='&#64;';n='&#116;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#x79;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Yves Tiecoura'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#x59;&#118;&#x65;&#x73;&#32;&#84;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#32;&#40;&#116;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#x79;&#32;&#x61;&#116;&#32;&#x79;&#x61;&#104;&#x6f;&#x6f;&#32;&#100;&#x6f;&#116;&#32;&#102;&#114;&#x29;</noscript>, INP-HB Yamoussoukro</h2>
 <h3 class="date">rév 2015/12/13</h3>
 </div>
 <p>Version provisoire. Nous travaillons sur ce document, mais les remarques sont les bienvenues !</p>
@@ -182,7 +187,7 @@ __interrupt <span class="dt">void</span> Port1_ISR(<span class="dt">void</span>)
 <p>La première remarque, c’est que la boucle principale <code>while(1)...</code> ne fait rien ! En plus des initialisations classique des entrées et des sorties, trois instructions ont été ajoutées, correspondant aux étapes de mise en œuvre d’une interruption :</p>
 <ul>
 <li>L’activation d’un bit dans <code>P1IES</code> sélectionne le flanc descendant</li>
-<li>L’activation d’un bit dans <code>P1IE</code> autorise l’interruptions sur l’entrée <code>P1.3</code></li>
+<li>L’activation d’un bit dans <code>P1IE</code> autorise l’interruption sur l’entrée <code>P1.3</code></li>
 <li>L’appel de la procédure <code>__enable_interrupt()</code> autorise globalement les interruptions sélectionnées</li>
 </ul>
 <p>La mise à 0 du bit 3 dans le registre des fanions d’interruption <code>P1IFG</code> évite qu’un flanc sur l’entrée <code>P1.3</code> pouvant s’être produit avant l’autorisation des interruptions ne cause une interruption.</p>

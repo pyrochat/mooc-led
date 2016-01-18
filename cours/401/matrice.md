@@ -30,7 +30,7 @@ La taille de l’afficheur est évidemment aussi un paramètre important, sa *ha
 À partir de la taille et du nombre de pixels, on peut calculer deux autres caractéristiques d’un afficheur :
 
 * Sa *résolution* : C’est la distance entre un pixel et son plus proche voisin. On l’exprime généralement en millimètre. Les fabricants donnent souvent une expression comme P6 ou P10. La lettre P vient du mot *Pitch* (le pas). Il s’agit de la distance entre chaque pixel exprimée en millimètre (mm).
-* Sa *densité* : C’est le nombre de pixels par unité de surface. L’unité est généralement exprimée en pixels par mètres carrés (px/m²).
+* Sa *densité* : C’est le nombre de pixels par unité de surface. L’unité est généralement exprimée en pixels par mètre carrés (px/m²).
 
 Prenons l’exemple d’un afficheur P6. La distance entre chaque pixel est de 6 mm. On peut donc aligner environ 167 LED sur un mètre. Il faut donc plus de 27’800 LED pour remplir un mètre carré ! En l’absence d’indication contraire, on considère que les résolutions horizontales et verticales sont identiques.
 

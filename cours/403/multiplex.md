@@ -8,7 +8,7 @@
 
 ##  Commander deux LED indépendantes avec une broche ##
 
-Nous allons nous poser une question un peu curieuse. Est-ce possible de commander deux LED avec une seule broche d’entrée-sortie d’un microcontrôleur ? Bien entendu, il ne s’agit pas ici que les deux LED s’allument et s’éteignent en même temps. On a déjà vu comment commander même des milliers de LED avec une seule broche. On cherche bien ici à les commander indépendemment l’une de l’autre.
+Nous allons nous poser une question un peu curieuse. Est-ce possible de commander deux LED avec une seule broche d’entrée-sortie d’un microcontrôleur ? Bien entendu, il ne s’agit pas ici que les deux LED s’allument et s’éteignent en même temps. On a déjà vu comment commander même des milliers de LED avec une seule broche. On cherche bien ici à les commander indépendamment l’une de l’autre.
 
 En considérant qu’une sortie peut prendre l’état _0_ et l’état _1_, on voit mal comment le faire... Mais souvenons-nous qu’une broche d’un microcontrôleur peut aussi être une entrée. Or une entrée, c’est une broche qui n’impose ni un _0_, ni un _1_. On parle d’une broche à _haute impédance_. On utilise même parfois l’expression _logique à 3 états_ (tri-state): l’état _0_, l’état _1_ et l’état _H_ (haute impédance).
 
@@ -110,7 +110,7 @@ Le multiplexage temporel convient très bien pour commander plusieurs digits, sa
 
 Les résistances de limitation doivent impérativement être placées du côté des segments. En effet, le multiplexage temporel va consister à allumer les segments concernés du premier digit, puis du deuxième, etc. À chaque instant, le courant concernant le digit sélectionné peut correspondre à un nombre compris entre 0 et 7. Par contre, du côté des segments, un seul peut être allumé à un instant donné.
 
-En plaçant une résistance du côté du digit, son courant varierait en fonction du nombre de segments concernés. La chute de tension aux borne de la résistance serait donc variable, entraînant une luminosité changeante selon le motif affiché (le chiffre 1 serait plus lumineux que le chiffre 8). Par contre, en plaçant une résistance du côté des segments, un seul segment peut être affiché à la fois. Le courant sera donc constant (ou nul si le segment est éteint).
+En plaçant une résistance du côté du digit, son courant varierait en fonction du nombre de segments concernés. La chute de tension aux bornes de la résistance serait donc variable, entraînant une luminosité changeante selon le motif affiché (le chiffre 1 serait plus lumineux que le chiffre 8). Par contre, en plaçant une résistance du côté des segments, un seul segment peut être affiché à la fois. Le courant sera donc constant (ou nul si le segment est éteint).
 
 Le programme de commande doit produire des signaux comme le montre la figure suivante :
 

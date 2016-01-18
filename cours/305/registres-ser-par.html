@@ -31,7 +31,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <body>
 <div id="header">
 <h1 class="title">Registre d’extension série-parallèle</h1>
-<h2 class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
+<h2 class="author"><script type="text/javascript">
+<!--
+h='&#112;&#x79;&#114;&#46;&#x63;&#104;';a='&#64;';n='&#112;&#x79;&#114;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Pierre-Yves Rochat'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;&#32;&#40;&#112;&#x79;&#114;&#32;&#x61;&#116;&#32;&#112;&#x79;&#114;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#104;&#x29;</noscript>, EPFL</h2>
 <h3 class="date">rév 2015/09/18</h3>
 </div>
 <h2 id="besoin-de-broches">Besoin de broches</h2>
@@ -78,7 +83,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <img src="images/reg-595-cascade.png" title="Registre série 16 bits utilisant 2 registres 74HC595 en cascade" alt="Registre série 16 bits utilisant 2 registres 74HC595 en cascade" />
 <p class="caption">Registre série 16 bits utilisant 2 registres 74HC595 en cascade</p>
 </div>
-<p>Pour ce faire, les horloges doivent être communes à tous les registres : l’horloge série, notée <strong><em>Sck</em></strong> et l’horloge parallèle, notée <strong><em>PCk</em></strong>. La sortie du premier registre est reliée à l’entrée du deuxième et ainsi de suite. Il est possible de créer de très longs registres. Quelle que soit la longueur du registre, seules trois sorties du microcontrôleur sont nécessaires pour le commander. Si le nombre de registre est vraiment important, il sera judicieux de placer un amplificateur sur les horloges avant de les transmettre au registre suivant. Dans beaucoup d’afficheurs à LED, on trouve des 74HC245 qui jouent ce rôle. Il s’agit de passeurs bi-directionnels, qui ne sont utilisés dans ce cas que dans un sens.</p>
+<p>Pour ce faire, les horloges doivent être communes à tous les registres : l’horloge série, notée <strong><em>Sck</em></strong> et l’horloge parallèle, notée <strong><em>Pck</em></strong>. La sortie du premier registre est reliée à l’entrée du deuxième et ainsi de suite. Il est possible de créer de très longs registres. Quelle que soit la longueur du registre, seules trois sorties du microcontrôleur sont nécessaires pour le commander. Si le nombre de registre est vraiment important, il sera judicieux de placer un amplificateur sur les horloges avant de les transmettre au registre suivant. Dans beaucoup d’afficheurs à LED, on trouve des 74HC245 qui jouent ce rôle. Il s’agit de passeurs bi-directionnels, qui ne sont utilisés dans ce cas que dans un sens.</p>
 <h2 id="registres-à-sorties-à-courant-constant">Registres à sorties à courant constant</h2>
 <p>Bien entendu, les sorties du 74HC595 sont des sorties C-MOS normales. Pour les utiliser pour commander des LED, il faut ajouter en série avec chaque LED la traditionnelle résistance pour limiter le courant.</p>
 <p>Il existe plusieurs circuits registres série-parallèles dont les sorties incorporent des sources de courant. Il est ainsi possible de brancher des LED sans la résistance série, ce qui simplifie le schéma :</p>

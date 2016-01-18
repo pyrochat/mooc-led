@@ -163,7 +163,7 @@ __interrupt void Port1_ISR(void) {
 La première remarque, c’est que la boucle principale `while(1)...` ne fait rien ! En plus des initialisations classique des entrées et des sorties, trois instructions ont été ajoutées, correspondant aux étapes de mise en œuvre d’une interruption :
 
 * L’activation d’un bit dans `P1IES` sélectionne le flanc descendant
-* L’activation d’un bit dans `P1IE` autorise l’interruptions sur l’entrée `P1.3`
+* L’activation d’un bit dans `P1IE` autorise l’interruption sur l’entrée `P1.3`
 * L’appel de la procédure `__enable_interrupt()` autorise globalement les interruptions sélectionnées
 
 La mise à 0 du bit 3 dans le registre des fanions d’interruption `P1IFG` évite qu’un flanc sur l’entrée `P1.3` pouvant s’être produit avant l’autorisation des interruptions ne cause une interruption.

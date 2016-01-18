@@ -29,12 +29,17 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </head>
 <body>
 <h1 id="le-multiplexage-temporel"><strong>Le multiplexage temporel</strong></h1>
-<h2 id="pierre-yves-rochat-epfl"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
+<h2 id="pierre-yves-rochat-epfl"><script type="text/javascript">
+<!--
+h='&#112;&#x79;&#114;&#46;&#x63;&#104;';a='&#64;';n='&#112;&#x79;&#114;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Pierre-Yves Rochat'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;&#32;&#40;&#112;&#x79;&#114;&#32;&#x61;&#116;&#32;&#112;&#x79;&#114;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#104;&#x29;</noscript>, EPFL</h2>
 <blockquote>
 <p>Document en cours de relecture, rév du 2015/07/16</p>
 </blockquote>
 <h2 id="commander-deux-led-indépendantes-avec-une-broche">Commander deux LED indépendantes avec une broche</h2>
-<p>Nous allons nous poser une question un peu curieuse. Est-ce possible de commander deux LED avec une seule broche d’entrée-sortie d’un microcontrôleur ? Bien entendu, il ne s’agit pas ici que les deux LED s’allument et s’éteignent en même temps. On a déjà vu comment commander même des milliers de LED avec une seule broche. On cherche bien ici à les commander indépendemment l’une de l’autre.</p>
+<p>Nous allons nous poser une question un peu curieuse. Est-ce possible de commander deux LED avec une seule broche d’entrée-sortie d’un microcontrôleur ? Bien entendu, il ne s’agit pas ici que les deux LED s’allument et s’éteignent en même temps. On a déjà vu comment commander même des milliers de LED avec une seule broche. On cherche bien ici à les commander indépendamment l’une de l’autre.</p>
 <p>En considérant qu’une sortie peut prendre l’état <em>0</em> et l’état <em>1</em>, on voit mal comment le faire... Mais souvenons-nous qu’une broche d’un microcontrôleur peut aussi être une entrée. Or une entrée, c’est une broche qui n’impose ni un <em>0</em>, ni un <em>1</em>. On parle d’une broche à <em>haute impédance</em>. On utilise même parfois l’expression <em>logique à 3 états</em> (tri-state): l’état <em>0</em>, l’état <em>1</em> et l’état <em>H</em> (haute impédance).</p>
 <p>Regardons ce schéma, où une LED est reliée entre la broche et la <em>Masse</em> (avec sa résistance de protection en série) et une autre LED est reliée entre la broche et le <em>Plus</em> (Vcc 3.3V).</p>
 <div class="figure">
@@ -136,7 +141,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p class="caption">Figure : Afficheurs 7 segments à 4 digits</p>
 </div>
 <p>Les résistances de limitation doivent impérativement être placées du côté des segments. En effet, le multiplexage temporel va consister à allumer les segments concernés du premier digit, puis du deuxième, etc. À chaque instant, le courant concernant le digit sélectionné peut correspondre à un nombre compris entre 0 et 7. Par contre, du côté des segments, un seul peut être allumé à un instant donné.</p>
-<p>En plaçant une résistance du côté du digit, son courant varierait en fonction du nombre de segments concernés. La chute de tension aux borne de la résistance serait donc variable, entraînant une luminosité changeante selon le motif affiché (le chiffre 1 serait plus lumineux que le chiffre 8). Par contre, en plaçant une résistance du côté des segments, un seul segment peut être affiché à la fois. Le courant sera donc constant (ou nul si le segment est éteint).</p>
+<p>En plaçant une résistance du côté du digit, son courant varierait en fonction du nombre de segments concernés. La chute de tension aux bornes de la résistance serait donc variable, entraînant une luminosité changeante selon le motif affiché (le chiffre 1 serait plus lumineux que le chiffre 8). Par contre, en plaçant une résistance du côté des segments, un seul segment peut être affiché à la fois. Le courant sera donc constant (ou nul si le segment est éteint).</p>
 <p>Le programme de commande doit produire des signaux comme le montre la figure suivante :</p>
 <div class="figure">
 <img src="images/chrono7x4.png" title="Diagramme des temps de la commande d’un afficheur 7 segments à 4 digits" alt="Figure : Diagramme des temps de la commande d’un afficheur 7 segments à 4 digits" />

@@ -49,7 +49,7 @@ Sa sortie série permet de cascader les circuits, c’est-à-dire les placer les
 
 ![Registre série 16 bits utilisant 2 registres 74HC595 en cascade](images/reg-595-cascade.png "Registre série 16 bits utilisant 2 registres 74HC595 en cascade")
 
-Pour ce faire, les horloges doivent être communes à tous les registres : l’horloge série, notée __*Sck*__ et l’horloge parallèle, notée __*PCk*__. La sortie du premier registre est reliée à l’entrée du deuxième et ainsi de suite. Il est possible de créer de très longs registres. Quelle que soit la longueur du registre, seules trois sorties du microcontrôleur sont nécessaires pour le commander. Si le nombre de registre est vraiment important, il sera judicieux de placer un amplificateur sur les horloges avant de les transmettre au registre suivant. Dans beaucoup d’afficheurs à LED, on trouve des 74HC245 qui jouent ce rôle. Il s’agit de passeurs bi-directionnels, qui ne sont utilisés dans ce cas que dans un sens.
+Pour ce faire, les horloges doivent être communes à tous les registres : l’horloge série, notée __*Sck*__ et l’horloge parallèle, notée __*Pck*__. La sortie du premier registre est reliée à l’entrée du deuxième et ainsi de suite. Il est possible de créer de très longs registres. Quelle que soit la longueur du registre, seules trois sorties du microcontrôleur sont nécessaires pour le commander. Si le nombre de registre est vraiment important, il sera judicieux de placer un amplificateur sur les horloges avant de les transmettre au registre suivant. Dans beaucoup d’afficheurs à LED, on trouve des 74HC245 qui jouent ce rôle. Il s’agit de passeurs bi-directionnels, qui ne sont utilisés dans ce cas que dans un sens.
 
 ## Registres à sorties à courant constant ##
 

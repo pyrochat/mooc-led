@@ -37,7 +37,7 @@ Dans divers domaines de l’électronique, les fréquences des signaux PWM peuve
 
 L’œil a une fréquence limite de perception du clignotement. Par exemple, on sait qu’un tube fluorescent (Néon) clignote à 100 Hz, vu qu’il est commandé par du courant alternatif à 50 Hz, et que chaque période a une alternance positive et une alternance négative. Les cellules sensibles de notre œil (les cônes pour la vision en couleur et les batonnets pour la vision périphérique et à faible intensité) n’ont pas la même limite de perception du clignotement.
 
-Pour les enseignes et afficheurs à LED, on vise généralement de fréquences de l’ordre de 100 à 200 Hz. Il’est déjà souvent extrêmement difficile d’envoyer à ces fréquences toutes les informations à l’ensemble des LED, qui peuvent être très nombreuses. Par exemple, les murs de LED capables d’afficher de la vidéo nécessitent des circuits électroniques complexes, qui seront étudiés plus tard dans ce cours.
+Pour les enseignes et afficheurs à LED, on vise généralement des fréquences de l’ordre de 100 à 200 Hz. Il est déjà souvent extrêmement difficile d’envoyer à ces fréquences toutes les informations à l’ensemble des LED, qui peuvent être très nombreuses. Par exemple, les murs de LED capables d’afficher de la vidéo nécessitent des circuits électroniques complexes, qui seront étudiés plus tard dans ce cours.
 
 ## Programmation d’un PWM ##
 

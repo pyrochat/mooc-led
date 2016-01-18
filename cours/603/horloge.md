@@ -5,7 +5,7 @@
 
 ## Afficher l’heure ###
 
-Les LED se prêtent très bien à afficher l’heure. Que ce soit pour de petits réveils ou pour des horloges géantes, l’heure est souvent affichée au moyen de LED. Une zone avec une horloge peut très bien être ajoutée à une enseigne à motifs fixes pour la rendre plus attrayante. Un journal lumineux peux compléter les informations qu’il affiche en donnant de temps en temps l’heure et la date.
+Les LED se prêtent très bien à afficher l’heure. Que ce soit pour de petits réveils ou pour des horloges géantes, l’heure est souvent affichée au moyen de LED. Une zone avec une horloge peut très bien être ajoutée à une enseigne à motifs fixes pour la rendre plus attrayante. Un journal lumineux peut compléter les informations qu’il affiche en donnant de temps en temps l’heure et la date.
 
 Encore faut-il que l’heure indiquée soit juste ! Rien de plus désagréable qu’une horloge affichant une heure fausse... Il faut donc disposer d’un moyen de connaître l’heure de manière fiable.
 
@@ -29,7 +29,7 @@ Il est presque impossible d’assurer qu’un dispositif soit en permanence conn
 
 __*Anecdote :*__ On trouve une telle pile dans tous les ordinateurs. Elle est souvent désignée par l’expression *pile C-MOS*. Est-ce à dire qu’une pile est fabriquée en technologie C-MOS ? Évidemment non ! Cette expression date du temps où les premiers circuits C-MOS étaient utilisés pour réaliser des horloges, qu’il était alors possible de faire fonctionner en permanence grâce à une pile de taille modeste, vu que la technologie C-MOS consomme un minimum de courant. Aujourd’hui, tous les microprocesseurs et microcontrôleurs sont basés sur la technologie C-MOS. Mais l’expression *pile C-MOS* est encore usitée de nos jours.
 
-Les piles utilisées pour maintenir l’heure sont souvent des piles au lithium. Pourquoi les piles rechargeables ne sont-elles que peu utilisées dans ce domaine ? La raison est la suivante : la capacité d’une pile au lithium est suffisante pour maintenir une horloge temps réel pendant d’environ 10 ans. C’est aussi l’ordre de grandeur de la durée de vie de cette pile. Or les piles rechargeables ont une durée de vie généralement plus faible, elle ne sont donc pas particulièrement intéressantes pour cette application.
+Les piles utilisées pour maintenir l’heure sont souvent des piles au lithium. Pourquoi les piles rechargeables ne sont-elles que peu utilisées dans ce domaine ? La raison est la suivante : la capacité d’une pile au lithium est suffisante pour maintenir une horloge temps réel pendant environ 10 ans. C’est aussi l’ordre de grandeur de la durée de vie de cette pile. Or les piles rechargeables ont une durée de vie généralement plus faible, elle ne sont donc pas particulièrement intéressantes pour cette application.
 
 ## Supercap ##
 

@@ -88,7 +88,7 @@ Souvent, des librairies sont disponibles pour faciliter ce travail. Pour les AVR
 
 ## Limite du nombre de cycles d’écriture ##
 
-Toutes les mémoires non-volatiles ont une limite dans le nombre d’écriture ou d’effacements. Pour les Flash, la limite est souvent de 10’000 cycles. S’il ne s’agit que de programmer le microcontrôleur, ce nombre semble très grand : qui va programmer 10’000 fois un même microcontrôleur ?
+Toutes les mémoires non-volatiles ont une limite dans le nombre d’écritures ou d’effacements. Pour les Flash, la limite est souvent de 10’000 cycles. S’il ne s’agit que de programmer le microcontrôleur, ce nombre semble très grand : qui va programmer 10’000 fois un même microcontrôleur ?
 
 Toutefois... à l’occasion du MOOC Comprendre les microcontrôleurs, proposé par l’EPFL sur Coursera dès 2013, nous avons mis au point un système de correction de devoirs. Il a corrigé à ce jour plus de 70’000 devoirs. Les microcontrôleurs ont donc été changés de temps en temps, pour éviter des pannes.
 

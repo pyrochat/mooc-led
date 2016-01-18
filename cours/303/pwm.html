@@ -29,7 +29,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </head>
 <body>
 <h1 id="pwm-modulation-de-largeur-dimpulsion"><strong>PWM : Modulation de Largeur d’Impulsion</strong></h1>
-<h2 id="pierre-yves-rochat-epfl"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
+<h2 id="pierre-yves-rochat-epfl"><script type="text/javascript">
+<!--
+h='&#112;&#x79;&#114;&#46;&#x63;&#104;';a='&#64;';n='&#112;&#x79;&#114;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Pierre-Yves Rochat'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;&#32;&#40;&#112;&#x79;&#114;&#32;&#x61;&#116;&#32;&#112;&#x79;&#114;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#104;&#x29;</noscript>, EPFL</h2>
 <blockquote>
 <p>Document en cours de relecture, version du 2015/07/19</p>
 </blockquote>
@@ -54,7 +59,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Dans le cas de la commande de diodes lumineuses, le temps d’allumage et d’extinction est très court. La LED continue à &quot;clignoter&quot; jusqu’à plusieurs dizaines de mégahertz. C’est l’œil humain qui ne voit pas le clignotement. L’œil a une fréquence de perception maximale située vers 75 Hz. C’est bien lui qui effectue l’intégration du signal pour en percevoir une valeur moyenne.</p>
 <p>Dans divers domaines de l’électronique, les fréquences des signaux PWM peuvent aller couramment jusqu’à des dizaines de mégahertz. Mais plus la fréquence est élevée, plus les pertes électriques à l’instant des changements de valeurs sont importantes et peuvent conduire à une dissipation importante d’énergie dans les éléments de commutation.</p>
 <p>L’œil a une fréquence limite de perception du clignotement. Par exemple, on sait qu’un tube fluorescent (Néon) clignote à 100 Hz, vu qu’il est commandé par du courant alternatif à 50 Hz, et que chaque période a une alternance positive et une alternance négative. Les cellules sensibles de notre œil (les cônes pour la vision en couleur et les batonnets pour la vision périphérique et à faible intensité) n’ont pas la même limite de perception du clignotement.</p>
-<p>Pour les enseignes et afficheurs à LED, on vise généralement de fréquences de l’ordre de 100 à 200 Hz. Il’est déjà souvent extrêmement difficile d’envoyer à ces fréquences toutes les informations à l’ensemble des LED, qui peuvent être très nombreuses. Par exemple, les murs de LED capables d’afficher de la vidéo nécessitent des circuits électroniques complexes, qui seront étudiés plus tard dans ce cours.</p>
+<p>Pour les enseignes et afficheurs à LED, on vise généralement des fréquences de l’ordre de 100 à 200 Hz. Il est déjà souvent extrêmement difficile d’envoyer à ces fréquences toutes les informations à l’ensemble des LED, qui peuvent être très nombreuses. Par exemple, les murs de LED capables d’afficher de la vidéo nécessitent des circuits électroniques complexes, qui seront étudiés plus tard dans ce cours.</p>
 <h2 id="programmation-dun-pwm">Programmation d’un PWM</h2>
 <p>Voici un programme très simple qui génère un signal PWM sur une sortie d’un microcontrôleur :</p>
 <table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1

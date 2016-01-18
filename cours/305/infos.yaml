@@ -4,10 +4,10 @@ type:             Théorie
 niveau:           base
 auteur:          
     - 'PYR'
-statut:           Relecture
+statut:           Pas publié
 code:             pcb-vero
-url:
-    c-html:   ../308/pcb-vero.html
-    c-pdf:    ../308/pcb-vero.pdf
-    d-video:   ../308/pcb-vero-dia.pdf
-    d-compact: ../308/pcb-vero-dia-compact.pdf
+url-todo:
+    c-html:   ../305/pcb-vero.html
+    c-pdf:    ../305/pcb-vero.pdf
+    d-video:   ../305/pcb-vero-dia.pdf
+    d-compact: ../305/pcb-vero-dia-compact.pdf

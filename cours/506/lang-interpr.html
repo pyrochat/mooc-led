@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<p>Langage interprété spécialisé</p>
+<p>Introduction</p>
+<p>Animer une enseigne à LED consiste en une suite d'opérations sur les groupes LED. Animer un afficheur matriciel consiste aussi à envoyer des séquences graphiques. Dans les deux cas, une jolie animation ne se limitera pas à quelques étapes, mais pourra vite devenir longue. Les programmes correspondant vont donc avoir tendance à devenir longs, ce qui va rendre leur lecture fastidieuse et qui risque aussi de remplir rapidement la mémoire du microcontrôleur.</p>
+<p>Une technique souvent utilisée consiste à inventer un <em>langage</em> pour décrire ce qui se passe sur l'enseigne ou l'afficheur et programmer les animations dans ce langage.</p>
+<p>Langage Arduino</p>
+<p>Prenons l'exemple très simple. Pour décrire une animation sur une enseigne, deux ordres suffisent pour décrire les actions :</p>
+<ul>
+<li>mettre un groupe de LED à une certaine intensité</li>
+<li>attendre un certain temps.</li>
+</ul>
+<p>Dans le cas simple de sorties tout-ou-rien, voici les procédures Arduino qui vont suffire :</p>
+<ul>
+<li>digitalWrite() de l'Arduino convient pour donner un état à une sortie</li>
+<li>delay() pour une attente.</li>
+</ul>
+<p>En observant la taille d'un petit programme sur Energia et en ajoutant des appels à ces procédures, on constate que :</p>
+<ul>
+<li>digitalWrite() prend 8 octets en mémoire</li>
+<li>delay() prend 10 octets en mémoire.</li>
+</ul>
+<p>En prenant par exemple un microcontrôleur MSP430G2213, disposant d'une mémoire flash de 2kB (2048 octets), on sera limité à moins de 80 pas de programme, constitué de paires digitalWrite() - delay(). En constatant qu'un simple chenillard dans les deux sens sur 8 bits en prend déjà 16, c'est réellement limitatif !</p>
+<p>loop() { digitalWrite (P2_0, 1); delay (100); digitalWrite (P2_1, 1); delay (100); digitalWrite (P2_2, 1); delay (100); digitalWrite (P2_3, 1); delay (100); digitalWrite (P2_4, 1); delay (100); digitalWrite (P2_5, 1); delay (100); digitalWrite (P2_6, 1); delay (100); digitalWrite (P2_7, 1); delay (200); digitalWrite (P2_7, 0); delay (100); digitalWrite (P2_6, 0); delay (100); digitalWrite (P2_5, 0); delay (100); digitalWrite (P2_4, 0); delay (100); digitalWrite (P2_3, 0); delay (100); digitalWrite (P2_2, 0); delay (100); digitalWrite (P2_1, 0); delay (100); digitalWrite (P2_0, 0); delay (300); }</p>
+<p>Bien entendu, les instructions permettant l'accès direct aux registres du microcontrôleur permettent d'économiser la place en mémoire. L'instruction P1OUT |= (1&lt;&lt;0); &lt;--- --- &gt; prend 4 octets. C'est déja mieux ! Mais cherchons une autre solution.</p>
+<p>Inventer un langage</p>
+<p>Une solution élégante est d'inventer un langage. Il aura les deux même instructions :</p>
+<ul>
+<li>Met une intensité sur une sortie. Paramètres : numéro de la sorte et intensité (0 ou 1)</li>
+<li>Attend. Paramètre : durée de l'attente</li>
+</ul>
+<p>Le programme pourrait alors se présenter sous forme d'un tableau. Nous avons utilisé ici un tableau d'octets. Le programme pour notre chenillard se présenterai alors de la manière suivante :</p>
+<p>uint8_t Animation[] = { // définition d'un tableau d'octets Sortie0+On, Attente+10, Sortie1+On, Attente+10, Sortie2+On, Attente+10, Sortie3+On, Attente+10, Sortie4+On, Attente+10, Sortie5+On, Attente+10, Sortie6+On, Attente+10, Sortie7+On, Attente+20, Sortie7+Off, Attente+10, Sortie6+Off, Attente+10, Sortie5+Off, Attente+10, Sortie4+Off, Attente+10, Sortie3+Off, Attente+10, Sortie2+Off, Attente+10, Sortie1+Off, Attente+10, Sortie0+Off, Attente+30, Fin }</p>
+<p>Sa taille n'est que de 33 octets. Voici les définitions nécessaire pour que ce tableau se compile correctement :</p>
+<h1 id="define-on-0b01000000">define On 0b01000000</h1>
+<h1 id="define-sortie0-0">define Sortie0 0</h1>
+<h1 id="define-sortie1-1">define Sortie1 1</h1>
+<h1 id="define-sortie2-2">define Sortie2 2</h1>
+<h1 id="define-sortie3-3">define Sortie3 3</h1>
+<h1 id="define-sortie4-4">define Sortie4 4</h1>
+<h1 id="define-sortie5-5">define Sortie5 5</h1>
+<h1 id="define-sortie6-6">define Sortie6 6</h1>
+<h1 id="define-sortie7-7">define Sortie7 7</h1>
+<h1 id="define-attente-0b10000000">define Attente 0b10000000</h1>
+<h1 id="define-fin-0b1111111">define Fin 0b1111111</h1>
+<p>Langage binaire</p>
+<p>Voici la description binaire de notre langage :</p>
+<p>// Description des instructions : // b7 b6 b5 b4 b3 b2 b1 b0 : instructions sur 8 bits // ----------------------- // 0 i0 s5-s4-s3-s2-s1-s0 : met une intensité sur une sortie // 1 d6-d5-d4-d3-d2-d1-d0 : attente // ----------------------- // // Sorties sur 6 bits (maximum 64 sorties) // Intensité sur 1 bit (On ou OFF) // Durée sur 7 bits, exprimée en dixième de seconde (0 à 12.6 secondes)</p>
+<p>Ceux qui ont déjà programmé en assembleur trouveront une grande similitude avec la description des instruction en binaire !</p>
+<p>On voit que des choix ont été faits pour utiliser au mieux les instructions, qui sont des champs de 8 bits. Le bit de poids fort b7 détermine s'il s'agit d'une instruction pour définit l'intensité ou pour l'attente. Ensuite, les 7 bits restant se répartissent selon l'instruction : une intensité et un numéro de sortie pour l'action sur une sortie, une valeur en dixième de seconde pour l'attente. L'usage de la milliseconde comme unité aurait été trop limitative, étant donné que seuls 7 bits sont à disposition.</p>
+<p>Interpréteur</p>
+<p>Il reste à écrire une procédure qui va interpréter notre langage et le traduire en instructions pour notre microcontrôleur.</p>
+<p>La voici :</p>
+</body>
+</html>

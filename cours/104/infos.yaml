@@ -1,13 +1,13 @@
 titre:
-    - "Représentation binaire"
+    - "Circuits logiques combinatoires"
 type:             Théorie
 niveau:           base
 auteur:          
-    - YT
-statut:           Relecture
-code:             binaire
+    - MLN
+statut:           Pas publié
+code:             sys-combi
 url:
-    cours-html:   ../104/binaire.html
-    cours-pdf:    ../104/binaire.pdf
-    dias-video:   ../104/binaire-dia.pdf
-    dias-compact: ../104/binaire-dia-compact.pdf
+    cours-html:   sys-combi.html
+    cours-pdf:    sys-combi.pdf
+    dias-video:   sys-combi-dia.pdf
+    dias-compact: sys-combi-dia-compact.pdf

@@ -1,13 +1,13 @@
 titre:
-    - "Mise en oeuvre d’un ruban de LED"
-type:             Pratique
-niveau:           base
+    - "Langages interprétés spécialisés"
+type:             Théorie
+niveau:           avancé
 auteur:          
-    - '?'
+    - PYR
 statut:           Pas publié
-code:             codeduchapitre
+code:             lang-interpr
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   ../509/lang-interpr.html
+    cours-pdf:    ../509/lang-interpr.pdf
+    dias-video:   ../509/lang-interpr-dia.pdf
+    dias-compact: ../509/lang-interpr-dia-compact.pdf

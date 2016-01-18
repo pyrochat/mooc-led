@@ -1,13 +1,13 @@
 titre:
-    - "Montages à transistor <!-- (2 segments de 4 LED) -->"
-type:             Pratique
+    - "Enseignes à motifs fixes"
+type:             Théorie
 niveau:           base
 auteur:          
-    - '?'
-statut:           Pas publié
-code:             codeduchapitre
+    - PYR
+statut:           Relecture
+code:             enseignes-fixes
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   ../203/enseignes-fixes.html
+    cours-pdf:    ../203/enseignes-fixes.pdf
+    dias-video:   ../203/enseignes-fixes-dia.pdf
+    dias-compact: ../203/enseignes-fixes-dia-compact.pdf

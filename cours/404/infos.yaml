@@ -1,9 +1,9 @@
 titre:
-    - "Les afficheurs matriciels multiplexés"
+    - "Microcontrôleurs ARM"
 type:             Théorie
-niveau:           base
+niveau:           avancé
 auteur:          
-    - PYR
+    - 'PYR'
 statut:           Pas publié
 code:             codeduchapitre
 url:

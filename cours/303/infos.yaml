@@ -1,13 +1,13 @@
 titre:
-    - "PWM"
+    - "Registre d’extension série-parallèle"
 type:             Théorie
 niveau:           base
 auteur:          
     - PYR
 statut:           Relecture
-code:             pwm
+code:             registres-ser-par
 url:
-    cours-html:   ../303/pwm.html
-    cours-pdf:    ../303/pwm.pdf
-    dias-video:   ../303/pwm-dia.pdf
-    dias-compact: ../303/pwm-dia-compact.pdf
+    c-html:   ../305/registres-ser-par.html
+    c-pdf:    ../305/registres-ser-par.pdf
+    d-video:   ../305/registres-ser-par-dia.pdf
+    d-compact: ../305/registres-ser-par-dia-compact.pdf

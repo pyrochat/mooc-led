@@ -1,13 +1,13 @@
 titre:
-    - "Circuit imprimé 16x16 LED"
-type:             Pratique
+    - "Le multiplexage temporel"
+type:             Théorie
 niveau:           base
 auteur:          
-    - '?'
-statut:           Pas publié
-code:             codeduchapitre
+    - PYR
+statut:           Relecture
+code:             multiplex
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   ../403/multiplex.html
+    cours-pdf:    ../403/multiplex.pdf
+    dias-video:   ../403/multiplex-dia.pdf
+    dias-compact: ../403/multiplex-dia-compact.pdf

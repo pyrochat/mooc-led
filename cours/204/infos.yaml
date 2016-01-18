@@ -1,13 +1,14 @@
 titre:
-    - "Circuits logiques séquentiels"
+    - "Programmation en C-Arduino"
 type:             Théorie
 niveau:           base
 auteur:          
-    - MLN
-statut:           Pas publié
-code:             codeduchapitre
+    - PYR
+statut:           Relecture
+code:             C-Arduino
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   ../206/C-Arduino.html
+    cours-pdf:    ../206/C-Arduino.pdf
+url-to-do:
+    dias-video:   ../206/C-Arduino-dia.pdf
+    dias-compact: ../206/C-Arduino-dia-compact.pdf

@@ -1,13 +1,13 @@
 titre:
-    - "Registre d’extension série-parallèle"
+    - "Réalisation de montages électroniques"
 type:             Théorie
 niveau:           base
 auteur:          
-    - PYR
+    - 'PYR'
 statut:           Relecture
-code:             registres-ser-par
+code:             pcb-vero
 url:
-    cours-html:   ../305/registres-ser-par.html
-    cours-pdf:    ../305/registres-ser-par.pdf
-    dias-video:   ../305/registres-ser-par-dia.pdf
-    dias-compact: ../305/registres-ser-par-dia-compact.pdf
+    c-html:   ../308/pcb-vero.html
+    c-pdf:    ../308/pcb-vero.pdf
+    d-video:   ../308/pcb-vero-dia.pdf
+    d-compact: ../308/pcb-vero-dia-compact.pdf

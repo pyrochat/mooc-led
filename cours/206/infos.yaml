@@ -1,13 +1,13 @@
 titre:
-    - "Programmation en C-Arduino"
+    - "Séquenceurs à compteurs"
 type:             Théorie
-niveau:           base
+niveau:           avancé
 auteur:          
-    - PYR
-statut:           Pas publié
-code:             C-Arduino
+    - YT
+statut:           Relecture
+code:             seq-compteur
 url:
-    cours-html:   ../206/C-Arduino.html
-    cours-pdf:    ../206/C-Arduino.pdf
-    dias-video:   ../206/C-Arduino-dia.pdf
-    dias-compact: ../206/C-Arduino-dia-compact.pdf
+    cours-html:   ../209/seq-compteur.html
+    cours-pdf:    ../209/seq-compteur.pdf
+    dias-video:   ../209/seq-compteur-dia.pdf
+    dias-compact: ../209/seq-compteur-dia-compact.pdf

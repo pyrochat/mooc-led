@@ -1,13 +1,13 @@
 titre:
-    - "Montages sur Breadboard"
-type:             Pratique
+    - "Représentation binaire"
+type:             Théorie
 niveau:           base
 auteur:          
     - YT
-statut:           Pas publié
-code:             codeduchapitre
+statut:           Relecture
+code:             binaire
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   ../104/binaire.html
+    cours-pdf:    ../104/binaire.pdf
+    dias-video:   ../104/binaire-dia.pdf
+    dias-compact: ../104/binaire-dia-compact.pdf

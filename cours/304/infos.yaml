@@ -1,13 +1,13 @@
 titre:
-    - "Programmation de deux PWM"
-type:             Pratique sur PC
+    - "Mémoires permanentes"
+type:             Théorie
 niveau:           base
 auteur:          
-    - '?'
-statut:           Pas publié
-code:             codeduchapitre
+    - PYR
+statut:           Relecture
+code:             memoires-perm
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   ../406/memoires-perm.html
+    cours-pdf:    ../406/memoires-perm.pdf
+    dias-video:   ../406/memoires-perm-dia.pdf
+    dias-compact: ../406/memoires-perm-dia-compact.pdf

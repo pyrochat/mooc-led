@@ -1,13 +1,13 @@
 titre:
-    - "Afficheur matriciel commandé en DMA"
-type:             Pratique
+    - "Horloges temps réel"
+type:             Théorie
 niveau:           base
 auteur:          
-    - '?'
-statut:           Pas publié
-code:             codeduchapitre
+    - PYR
+statut:           Relecture
+code:             horloge
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   ../603/horloge.html
+    cours-pdf:    ../603/horloge.pdf
+    dias-video:   ../603/horloge-dia.pdf
+    dias-compact: ../603/horloge-dia-compact.pdf

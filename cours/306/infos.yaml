@@ -1,9 +1,9 @@
 titre:
-    - "Microcontrôleurs ARM"
+    - "Introduction à la colorimétrie et aux LED RGB"
 type:             Théorie
-niveau:           avancé
+niveau:           base
 auteur:          
-    - '?'
+    - AT
 statut:           Pas publié
 code:             codeduchapitre
 url:

@@ -13,7 +13,8 @@
 #
 ###
 # Pierre-Yves Rochat :
-# 2015/01/02 : Modifications mineures
+# 2016/01/02 : Modifications mineures
+# 2016/01/18 : Modifications de la présentation
 
 import glob
 import yaml
@@ -28,7 +29,8 @@ def executeSystemCmd( cmd ):
     cmd = " ".join( cmd )
 
     if os.name in [ 'posix' ]:
-        cmd = "TIMEFORMAT='time : %3R s'; time( " + cmd + " )"
+#        cmd = "TIMEFORMAT='time : %3R s'; time( " + cmd + " )"
+        pass
     elif os.name in [ 'nt' ]:
         pass
 
@@ -87,13 +89,12 @@ Version de travail du 2016/01/02
         elif( dataMap[ "type" ] in [ u"Pratique sur PC", u"Pratique" ] ):
             TOC = '%s\n**%d.%d** *%s :* %s %s' % ( TOC, nbsemaine, nbchapitre, dataMap[ "type" ], dataMap[ "titre" ][ 0 ], AUTEUR )
         else:
-            TOC = '%s\n**%d.%d** %s**%s** %s' % ( TOC, nbsemaine, nbchapitre, NIVEAU, dataMap[ "titre" ][ 0 ], AUTEUR )
-
+            TOC = '%s\n**%d.%d** **%s** %s %s' % ( TOC, nbsemaine, nbchapitre, dataMap[ "titre" ][ 0 ], NIVEAU, AUTEUR )
         if( dataMap[ "statut" ] not in [ u"Pas publié" ] ):
             LINKS = []
-            for key, URL in dataMap[ "url" ].iteritems():
+            for key, URL in sorted(dataMap[ "url" ].iteritems()):
                 LINKS += [ "[%s](%s)" % ( key, URL ) ]
-            TOC = '%s %s' % ( TOC, ' | '.join( LINKS ) )
+            TOC = '%s %s' % ( TOC, ' '.join( LINKS ) )
 
         TOC = '%s %s' % ( TOC, '  ' )
 

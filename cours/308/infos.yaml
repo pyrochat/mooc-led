@@ -1,13 +1,13 @@
 titre:
-    - "Réalisation de montages électoniques"
-type:             Pratique
-niveau:           base
+    - "Spectre de la lumière"
+type:             Théorie
+niveau:           avancé
 auteur:          
-    - '?'
+    - AT
 statut:           Pas publié
 code:             codeduchapitre
 url:
-    cours-html:   ../308/pcb-vero.html
-    cours-pdf:    ../308/pcb-vero.pdf
-    dias-video:   ../308/pcb-vero-dia.pdf
-    dias-compact: ../308/pcb-vero-dia-compact.pdf
+    cours-html:   codeduchapitre.html
+    cours-pdf:    codeduchapitre.pdf
+    dias-video:   codeduchapitre-dia.pdf
+    dias-compact: codeduchapitre-dia-compact.pdf

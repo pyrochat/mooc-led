@@ -1,9 +1,9 @@
 titre:
-    - "Microcontrôleur sur Breadboard"
-type:             Pratique
-niveau:           base
+    - "Circuits séquentiels en VHDL"
+type:             Théorie
+niveau:           avancé
 auteur:          
-    - '?'
+    - MLN
 statut:           Pas publié
 code:             codeduchapitre
 url:

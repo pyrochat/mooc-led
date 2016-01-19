@@ -1,4 +1,10 @@
-Réalisation de cartes électroniques
+**Réalisation de cartes électroniques**
+===========================================
+
+## [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
+
+> Document en cours de relecture, version du 2016/071/19
+
 
 ## Montages définitifs ##
 
@@ -12,6 +18,7 @@ Mais nous souhaitons aller plus loin et être capable de concevoir et réaliser 
 
 La technique universellement utilisée pour assembler des composants électroniques est celle des **circuits imprimés** (*Printed Circuit Board*, *PCB*). Son principe est simple : des pistes en cuivres sont déposées sur une plaque isolante, généralement en Epoxy. Des trous entourés de pastilles de cuivre permettent de placer les composants, qui sont soudés sur les pastilles.
 
+![Circuit imprimé](images/de-rouge.jpg "Circuit imprimé")
 image circuit imprimé
 
 Sans entrer en détail dans les techniques de fabrication des circuits imprimés, disons simplement qu’il s’agit de *photo-lithographie*. La plaque d’époxy est recouverte d’une fine couche de cuivre (généralement 35 microns)
@@ -28,7 +35,7 @@ Tous les logiciels de conception de circuits imprimés produisent des fichiers s
 
 Ainsi, il est aujourd’hui à la portés d’un amateur de concevoir un circuit imprimé, d’envoyer les fichiers Gerber à un fabricant et d’obtenir des circuits de très bonne qualité à un prix raisonnable. Il faut noter que le prix dépend principalement de la quantité produite et également du délai de livraison demandé. Trois circuits en production express coûteront plus cher que 100 pièces avec un délai de production de deux semaines.
 
-image Circuit imprimé pour un dé électronique
+
 ![Circuit imprimé pour un dé électronique](images/de-el-pcb.jpg "Circuit imprimé pour un dé électronique")
 
 Les étapes successives pour la conception d’un circuit imprimé sont les suivantes :
@@ -60,11 +67,11 @@ Pour utiliser de manière optimale ces plaques, on va :
 
 Pour faciliter la coupure des piste là où c’est nécessaire, on fera la coupire au niveau d’un trou, en utilisant une mèche comme fraise conique :
 
-image coupure d’une piste par image fraisage d’un trou
+![Coupure d’une piste par image fraisage d’un trou](images/vero-trous.jpg "Coupure d’une piste par image fraisage d’un trou")
 
 ## Conception d’un circuit veroboard ##
 
-J’ai souvent remarqué que la réalisation sur veroboard se fait souvent un peu par dépit : *je ne peux pas tirer de circuits imprimés, je bricole un veroboard, vite fait - mal fait...* Or le veroboard permet de réaliser des cartes très propres si la conception du circuit passe par la même logique que pour un circuit imprimé : l’utilisation d’un logiciel de conception de circuits imprimés.
+J’ai souvent remarqué que la réalisation sur veroboard se fait souvent un peu par dépit : *je ne peux pas tirer de circuits imprimés, je bricole un veroboard, vite fait - mal fait...*. Or le veroboard permet de réaliser des cartes très propres si la conception du circuit passe par la même logique que pour un circuit imprimé : l’utilisation d’un logiciel de conception de circuits imprimés.
 
 On va donc dessiner un *circuit imprimé* qui obéit à des règles très précise, correspondant à la géométrie des plaques veroboard :
 
@@ -82,6 +89,7 @@ Une fois la conception faite, la réalisation devient simple :
 
 Voici en image la réalisation d’un circuit de commande sur veroboard d’une enseigne à trois groupes de LED, avec un MSP430G2231 et les transistors de commande.
 
+![veroboard](images/vero-ens3.jpg "veroboard")
 
 
 

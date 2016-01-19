@@ -52,7 +52,7 @@ La procédure `void loop()` est appelée à la suite de `setup()`. Mais, contrai
 Une des manière de représenter le déroulement d’un programme est l’organigramme.
 Voici donc l’organigramme général d’un programme Arduino :
 
-![Organigramme d’un programme Arduino](images/organi-arduino-120dpi.png "Organigramme d’un programme Arduino")
+![Organigramme d’un programme Arduino](images/organi-arduino-120dpi.png "Organigramme d’un programme Arduino"){ width=7cm }
 
 L’organigramme à gauche de la figure correspond à ce que voit l’utilisateur. Mais en fait, derrière l’usage de`setup()` et `loop()` proposé par Arduino, des instructions cachées s’exécutent avant chacune de ces procédures, comme le montre l’organigramme de droite. C’est dans la procédure `main()` que produit l’environnement Arduino qui ajoute ces instructions.
 

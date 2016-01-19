@@ -41,7 +41,7 @@ Un afficheur à LED est donc un ensemble de LED dont il est possible de choisir 
 
 Les LED sont généralement disposées en lignes et en colonnes : on obtient un afficheur orthogonal.
 
-![Afficheur de 10x24 LED](images/aff-10x24-120dpi.png "Afficheur de 10x24 LED")
+![Afficheur de 10x24 LED](images/aff-10x24-120dpi.png "Afficheur de 10x24 LED"){ width=13cm }
 
 Si la distance est la même horizontalement et verticalement (en x et y), l’afficheur est orthonormé. La géométrie des LED permet de réaliser toutes sortes d’afficheurs, sans se limiter à une grille orthonormée. Il existe des afficheurs cylindriques, sphériques ou en forme de pyramide ! Plus couramment, on trouve des afficheurs qui prennent une forme dont la signification est connue, comme les afficheurs en forme de croix de pharmacie, très répandus depuis quelques années.
 
@@ -64,7 +64,7 @@ Une fois les 16 valeurs introduites dans les registres séries, elles sont trans
 Sur le schéma, pour les 3 registres, la 5e LED depuis la gauche est cul-de-jatte.
 Je corrige...
 -->
-![Schéma d’un afficheur comportant 8 lignes de 16 LED](images/aff-8x16-120dpi.png "Schéma d’un afficheur comportant 8 lignes de 16 LED")
+![Schéma d’un afficheur comportant 8 lignes de 16 LED](images/aff-8x16-120dpi.png "Schéma d’un afficheur comportant 8 lignes de 16 LED"){ width=14cm }
 
 Remarquez que les LED n’ont pas de résistances série. Les registres utilisés contiennent des sources de courant ajustables au moyen d’une seule résistance pour tout le registre.
 
@@ -184,7 +184,7 @@ uint16_t Matrice[NbLignes]; // mots de 16 bits, correspondant à une ligne
 
 Nous choissons de placer les axes x et y de la manière suivante :
 
-![Organisation de l’afficheur 8x16 pixels](images/organisation-aff-8x16-120dpi.png "Organisation de l’afficheur 8x16 pixels")
+![Organisation de l’afficheur 8x16 pixels](images/organisation-aff-8x16-120dpi.png "Organisation de l’afficheur 8x16 pixels"){ width=11cm }
 
 Les procédures permettant d’allumer et d’éteindre un pixel, désigné par ses coordonnées, sont particulièrement simples dans ce cas :
 
@@ -233,7 +233,7 @@ void AfficheMatrice() {
 
 Cette procédure semble compliquée. Une organisation optimisée des données en mémoire pourrait la simplifier :
 
-![Organisation plus optimale des pixels en mémoire](images/organisation-aff-8x16-byte-120dpi.png "Organisation plus optimale des pixels en mémoire")
+![Organisation plus optimale des pixels en mémoire](images/organisation-aff-8x16-byte-120dpi.png "Organisation plus optimale des pixels en mémoire"){ width=9cm }
 
 Voici la définition et la procédure correspondante :
 

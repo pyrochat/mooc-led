@@ -8,23 +8,41 @@
   <title>Horloges temps réel</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
@@ -41,12 +59,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Une montre mécanique est réalisée sur la base d’un mouvement oscillant, dont la fréquence est aussi stable que possible. Une chaîne de diviseurs mécaniques, basés sur des engrenages, permet ensuite d’afficher les secondes, les minutes et les heures au moyen d’aiguilles.</p>
 <p>Une montre électronique utilise un principe similaire. La différence est que le système oscillant est un cristal de quartz. La fréquence la plus couramment utilisée est 32’768 Hz. Pourquoi cette valeur ? Parce que c’est une puissance de 2, très exactement 2 à la puissance 15. Il va donc suffire de diviser la fréquence produite par l’oscillateur à quartz par une chaîne de 15 diviseurs par 2 pour obtenir un signal de 1 Hz. Un diviseur par deux, appelé aussi compteur binaire, peut être réalisé avec une bascule, comme le montrent le schéma, les équations et le diagramme des temps de la figure suivante :</p>
 <div class="figure">
-<img src="images/div2.png" title="Diviseur par 2" alt="Diviseur par 2" />
+<img src="images/div2.png" title="Diviseur par 2" alt="Diviseur par 2" width="566" />
 <p class="caption">Diviseur par 2</p>
 </div>
 <p>Ensuite, des diviseurs successifs vont produire les secondes, les minutes, les heures, etc, comme l’indique la figure ci-dessous :</p>
 <div class="figure">
-<img src="images/horloge-32k-div.png" title="Principe d’une horloge électronique" alt="Principe d’une horloge électronique" />
+<img src="images/horloge-32k-div.png" title="Principe d’une horloge électronique" alt="Principe d’une horloge électronique" width="566" />
 <p class="caption">Principe d’une horloge électronique</p>
 </div>
 <p>Les circuits logiques qui composent une horloge électronique s’appellent souvent Real Time Clock, abrégé RTC (Horloge en Temps Réel).</p>
@@ -59,7 +77,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>La capacité de la supercap est généralement dimensionnée pour assurer à l’horloge une autonomie de quelques jours ou quelques semaines. Dès que l’appareil est relié au réseau électrique, la supercap est rapidement rechargée. Le nombre de cycles charge-décharge peut être très grand, de l’ordre de 100’000 cycles. Pour comparaison, la durée de vie d’un accumulateur est limité à environ 1’000 cycles. Mais celle d’un condensateur traditionnel, même électrolytique est encore bien supérieure.</p>
 <h2 id="programmation-dune-horloge-avec-un-microcontrôleur">Programmation d’une horloge avec un microcontrôleur</h2>
 <p>La programmation d’une horloge temps réel va beaucoup dépendre du microcontrôleur utilisé pour ce qui concerne la production d’un événement toutes les secondes. Voici un exemple applicable à un ATmega328 :</p>
-<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+<div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2
 3
 4
@@ -99,21 +117,21 @@ ISR (TIMER2_OVF_vect) {
 <span class="dt">int</span> main () {
   Temps=<span class="dv">0</span>;
   ASSR=(<span class="dv">1</span>&lt;&lt;AS2); <span class="co">// oscillateur quartz 32 khz</span>
-  TCCR2B=0b101; <span class="co">// prédivision par 128</span>
-  TIMSK2=(1&lt;&lt;TOIE2); <span class="co">// interruption Timer2 Overflow autorisée</span>
+  TCCR2B=<span class="bn">0b101</span>; <span class="co">// prédivision par 128</span>
+  TIMSK2=(<span class="dv">1</span>&lt;&lt;TOIE2); <span class="co">// interruption Timer2 Overflow autorisée</span>
   sei(); <span class="co">// toutes les interruptions autorisées</span>
-  <span class="kw">while</span> (1) { <span class="co">// boucle correspondant à tous les réveils dus à l&#39;interruption</span>
+  <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// boucle correspondant à tous les réveils dus à l&#39;interruption</span>
     set_sleep_mode(SLEEP_MODE_PWR_SAVE); <span class="co">// mise en veille</span>
     sleep_enable();
     sleep_mode(); <span class="co">// mode normal après un réveil</span>
     sleep_disable();
   }
-}</code></pre></td></tr></table>
+}</code></pre></td></tr></table></div>
 <!-- retour au mode normal -->
 <p>Un quartz va être branché sur les broches prévues à cet effet. L’oscillateur correspondant va être mis en œuvre à l’intérieur du microcontrôleur. Son signal de sortie va actionner directement le Timer2, à travers un pré-diviseur de 128 (7 bits). Le Timer2 est un timer 8 bits, ce qui correspond à un diviseur par 256. Or 128 × 256 est justement égal à 32’768 (15 bits). En autorisant une interruption sur le dépassement de capacité (Overflow) du Timer2, on obtient bien une interruption à chaque seconde.</p>
 <p>Au moment de l’interruption, le microcontrôleur va se remettre à fonctionner. Dans la routine d’interruption, il va prendre en compte dans une variable le passage à la seconde suivante. Cette variable sera conservée en mémoire vive : le bon mode de sommeil du microcontrôleur doit être choisi pour cela. Le microcontrôleur va ensuite repasser en mode sommeil (sleep), pour minimiser sa consommation.</p>
 <p>La partie qui compte les secondes, les minutes et les heures est par contre applicable à tous microcontrôleurs :</p>
-<table class="sourceCode c numberLines" startFrom="8"><tr class="sourceCode"><td class="lineNumbers"><pre>8
+<div class="sourceCode" startFrom="8"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>8
 9
 10
 11
@@ -140,19 +158,19 @@ ISR (TIMER2_OVF_vect) {
         ...
       }
     }
-    ...</code></pre></td></tr></table>
+    ...</code></pre></td></tr></table></div>
 <!-- retour au mode normal -->
 <h2 id="circuits-rtc-spécialisés">Circuits RTC spécialisés</h2>
 <p>Pour décharger le microcontrôleur de la tâche de maintenir l’horloge temps réel, mais surtout pour éviter de devoir maintenir en fonctionnement le microcontrôleur au moyen d’une pile, on utilise souvent des circuits intégrés spécialisés. Plusieurs fabricants offrent de tels circuit, comme Maxim Integrated avec le DS1307, NXP (anciennement Philips) avec les PFC8523 ou PFC8536 ou encore Texas Instrument avec le bq32000.</p>
 <p>Pour communiquer avec un microcontrôleur, ces circuits utilisent généralement les protocoles I2C ou SPI. Voici un schéma de mise en œuvre d’un bq32000 :</p>
 <div class="figure">
-<img src="images/bq32000.png" title="Schéma de la mise en œuvre d’un circuit horloge temps réel" alt="Schéma de la mise en œuvre d’un circuit horloge temps réel" />
+<img src="images/bq32000.png" title="Schéma de la mise en œuvre d’un circuit horloge temps réel" alt="Schéma de la mise en œuvre d’un circuit horloge temps réel" width="415" />
 <p class="caption">Schéma de la mise en œuvre d’un circuit horloge temps réel</p>
 </div>
 <h2 id="rtc-dans-le-microcontrôleur">RTC dans le microcontrôleur</h2>
 <p>Certains microcontrôleurs comportent des circuits logiques qui permettent d’avoir très facilement une horloge en temps réel. L’alimentation de cette partie du circuit intégré est complètement séparée du reste du microcontrôleur. Une entrée permet de brancher directement une pile 3 Volt. C’est le cas par exemple du microcontrôleur STM32F051. La figure montre un extrait de son architecture.</p>
 <div class="figure">
-<img src="images/STM32F051-RTC.png" title="RTC du microcontrôleur STM32f051" alt="RTC du microcontrôleur STM32f051" />
+<img src="images/STM32F051-RTC.png" title="RTC du microcontrôleur STM32f051" alt="RTC du microcontrôleur STM32f051" width="415" />
 <p class="caption">RTC du microcontrôleur STM32f051</p>
 </div>
 <p>Entourée de rouge se trouve une zone isolée, avec son alimentation. Elle comporte une oscillateur à quartz, un diviseur 32 bits, ainsi que quelques positions mémoire RAM, rendues permanentes lorsqu’une pile alimente cette partie du circuit.</p>

@@ -21,7 +21,7 @@ Certains microcontrôleurs disposent d’un troisième type de mémoire, en plus
 
 L’accès à l’EEPROM interne d’un microcontrôleur est généralement très simple. Des registres sont prévus pour l’adresse (EEAR) et pour la donnée (EEDR), en lecture ou en écriture. Sur les AVR, deux registres donnent l’accès aux adresses et aux données :
 
-![Accès à l’EEPROM sur les AVR](images/eeprom-avr.png "Accès à l’EEPROM sur les AVR")
+![Accès à l’EEPROM sur les AVR](images/eeprom-avr.png "Accès à l’EEPROM sur les AVR"){ width=5cm }
 
 Voici les instructions pour lire et écrire dans la mémoire :
 
@@ -111,7 +111,7 @@ Plusieurs fabricants proposent des familles de mémoires EEPROM, tels que Microc
 
 Par exemple, la mémoire M95256 de STmicro a une capacité de 256 kb. Attention, la lettre b est en minuscule, ce qui signifie bit. En d’autre termes, c’est une mémoire de 32 kB (kilo Bytes). Elle utilise les signaux SPI. Voici un schéma de mise en œuvre :
 
-![Mise en œuvre d’une EEPROM](images/m95256.png "Mise en œuvre d’une EEPROM")
+![Mise en œuvre d’une EEPROM](images/m95256.png "Mise en œuvre d’une EEPROM"){ width=9cm }
 
 Pour dialoguer avec ces circuits pour lire ou écrire des valeurs en mémoire, on trouve facilement sur Internet des librairies prêtes à l’emploi. La lecture des sources permet d’en comprendre le fonctionnement.
 

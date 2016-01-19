@@ -15,11 +15,11 @@ Une montre mécanique est réalisée sur la base d’un mouvement oscillant, don
 
 Une montre électronique utilise un principe similaire. La différence est que le système oscillant est un cristal de quartz. La fréquence la plus couramment utilisée est 32’768 Hz. Pourquoi cette valeur ? Parce que c’est une puissance de 2, très exactement 2 à la puissance 15. Il va donc suffire de diviser la fréquence produite par l’oscillateur à quartz par une chaîne de 15 diviseurs par 2 pour obtenir un signal de 1 Hz. Un diviseur par deux, appelé aussi compteur binaire, peut être réalisé avec une bascule, comme le montrent le schéma, les équations et le diagramme des temps de la figure suivante :
 
-![Diviseur par 2](images/div2.png "Diviseur par 2")
+![Diviseur par 2](images/div2.png "Diviseur par 2"){ width=15cm }
 
 Ensuite, des diviseurs successifs vont produire les secondes, les minutes, les heures, etc, comme l’indique la figure ci-dessous :
 
-![Principe d’une horloge électronique](images/horloge-32k-div.png "Principe d’une horloge électronique")
+![Principe d’une horloge électronique](images/horloge-32k-div.png "Principe d’une horloge électronique"){ width=15cm }
 
 Les circuits logiques qui composent une horloge électronique s’appellent souvent Real Time Clock, abrégé RTC (Horloge en Temps Réel).
 
@@ -100,13 +100,13 @@ Pour décharger le microcontrôleur de la tâche de maintenir l’horloge temps 
 
 Pour communiquer avec un microcontrôleur, ces circuits utilisent généralement les protocoles I2C ou SPI. Voici un schéma de mise en œuvre d’un bq32000 :
 
-![Schéma de la mise en œuvre d’un circuit horloge temps réel](images/bq32000.png "Schéma de la mise en œuvre d’un circuit horloge temps réel")
+![Schéma de la mise en œuvre d’un circuit horloge temps réel](images/bq32000.png "Schéma de la mise en œuvre d’un circuit horloge temps réel"){ width=11cm }
 
 ## RTC dans le microcontrôleur ##
 
 Certains microcontrôleurs comportent des circuits logiques qui permettent d’avoir très facilement une horloge en temps réel. L’alimentation de cette partie du circuit intégré est complètement séparée du reste du microcontrôleur. Une entrée permet de brancher directement une pile 3 Volt. C’est le cas par exemple du microcontrôleur STM32F051. La figure montre un extrait de son architecture.
 
-![RTC du microcontrôleur STM32f051](images/STM32F051-RTC.png "RTC du microcontrôleur STM32f051")
+![RTC du microcontrôleur STM32f051](images/STM32F051-RTC.png "RTC du microcontrôleur STM32f051"){ width=11cm }
 
 Entourée de rouge se trouve une zone isolée, avec son alimentation. Elle comporte une oscillateur à quartz, un diviseur 32 bits, ainsi que quelques positions mémoire RAM, rendues permanentes lorsqu’une pile alimente cette partie du circuit.
 

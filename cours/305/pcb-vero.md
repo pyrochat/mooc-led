@@ -18,8 +18,13 @@ Mais nous souhaitons aller plus loin et être capable de concevoir et réaliser 
 
 La technique universellement utilisée pour assembler des composants électroniques est celle des **circuits imprimés** (*Printed Circuit Board*, *PCB*). Son principe est simple : des pistes en cuivres sont déposées sur une plaque isolante, généralement en Epoxy. Des trous entourés de pastilles de cuivre permettent de placer les composants, qui sont soudés sur les pastilles.
 
-![Circuit imprimé](images/de-rouge.jpg "Circuit imprimé")
-image circuit imprimé
+![Circuit imprimé](images/de-rouge.jpg "Circuit imprimé"){ width=50% }
+
+![Circuit imprimé](images/de-rouge.jpg){ width=50% }
+
+![](images/de-rouge.jpg){ width=50% }
+
+
 
 Sans entrer en détail dans les techniques de fabrication des circuits imprimés, disons simplement qu’il s’agit de *photo-lithographie*. La plaque d’époxy est recouverte d’une fine couche de cuivre (généralement 35 microns)
 
@@ -36,7 +41,13 @@ Tous les logiciels de conception de circuits imprimés produisent des fichiers s
 Ainsi, il est aujourd’hui à la portés d’un amateur de concevoir un circuit imprimé, d’envoyer les fichiers Gerber à un fabricant et d’obtenir des circuits de très bonne qualité à un prix raisonnable. Il faut noter que le prix dépend principalement de la quantité produite et également du délai de livraison demandé. Trois circuits en production express coûteront plus cher que 100 pièces avec un délai de production de deux semaines.
 
 
-![Circuit imprimé pour un dé électronique](images/de-el-pcb.jpg "Circuit imprimé pour un dé électronique")
+![Circuit imprimé pour un dé électronique](images/de-el-pcb.jpg "Circuit imprimé pour un dé électronique"){ width=50% }
+
+![](images/de-el-pcb.jpg){ width=50% }
+
+![](images/de-el-pcb.jpg){ width=75% }
+
+xxxxx
 
 Les étapes successives pour la conception d’un circuit imprimé sont les suivantes :
 

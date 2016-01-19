@@ -11,7 +11,7 @@
 
 Beaucoup d’enseignes à LED se contentent d’allumer et d’éteindre des LED ou des groupes de LED. On pourrait obtenir des effets beaucoup plus intéressants et variés en ayant la possibilité de changer leurs intensités lumineuses.
 
-![Figure : Varier l’intensité d’une LED](images/led3-varie-intens.svg "Varier l’intensité d’une LED")
+![Figure : Varier l’intensité d’une LED](images/led3-varie-intens.svg "Varier l’intensité d’une LED"){ width=15cm }
 
 Comment faire varier l’intensité d’une LED ? On sait que c’est le courant qui la traverse qui produit de la lumière. Faire varier ce courant n’est généralement pas facile. On peut faire varier la tension qui alimente la LED, ou encore la résistance qui limite son courant. Il est aussi possible de  piloter le courant par un transistor, avec un montage adéquat.
 
@@ -21,7 +21,7 @@ Mais il existe une solution très différente et généralement beaucoup plus si
 
 À l’idée de faire clignoter rapidement la LED, ajoutons l’idée de faire varier le temps pendant lequel elle est allumée. On obtient alors la Modulation de Largeur d’Impulsion (MLI) ou Pulse Width Modulation (PWM) en anglais. Regardons la figure suivante :
 
-![Figure : signal PWM](images/pwm.svg "Signal PWM")
+![Figure : signal PWM](images/pwm.svg "Signal PWM"){ width=15cm }
 
 Le signal a une période constante (donc une fréquence constante). La durée de la partie active du signal varie. Dans la première partie du tracé, 25% de la puissance disponible peut être envoyée à la charge, vu que le signal est à *1* durant 25% du temps alors qu’il est à *0* le reste du temps. De même, la puissance passe à 50% au milieu du tracé et à 75% dans la dernière partie. Il est aussi possible de n’envoyer aucune puissance (0%) en laissant la sortie à *0*, ou toute la puissance (100%) en laissant la sortie à *1*.
 
@@ -130,7 +130,7 @@ Dans le cas des enseignes et afficheurs à LED, les valeurs sont calculées en f
 
 Prenons un exemple. Pour donner l’impression qu’un appareil est en mode "repos", une LED va avoir son intensité qui varie de la manière suivante :
 
-![Figure : diagramme des temps de la LED suggérant le repos](images/chrono-repos.svg "diagramme des temps de la LED suggérant le repos")
+![Figure : diagramme des temps de la LED suggérant le repos](images/chrono-repos.svg "diagramme des temps de la LED suggérant le repos"){ width=15cm }
 
 La séquence est cyclique et dure 4 s. Il imite la respiration d’une personne qui dort. Durant la première seconde, l’intensité augmente jusqu’au maximum. Durant la deuxième seconde, elle diminue jusqu’à zéro, valeur qui reste jusqu’à la fin du cycle.
 
@@ -168,7 +168,7 @@ Il est important de contrôler que les variables utilisées ne produisent pas de
 
 Bien que le signal PWM soit un signal binaire (il est soit à *0* soit à *1* à un instant donné), il est porteur d’une valeur analogique. Il suffit en effet de faire l’intégrale du signal pour s’en rendre compte. Il faut pondérer le *1* logique comme la valeur +1 et le *0* logique comme la valeur -1, comme le montre la figure suivante :
 
-![Figure : signal PWM intégré](images/pwm-dac.svg "Signal PWM intégré")
+![Figure : signal PWM intégré](images/pwm-dac.svg "Signal PWM intégré"){ width=15cm }
 
 Il est donc possible de réaliser un convertisseur numérique-analogique (Digital to Analog Converter, DAC) basé sur un signal PWM. Il doit être suivi par un filtre passe-bas adapté à la fréquence du PWM. Ce filtre peut être un simple filtre R-C.
 
@@ -177,7 +177,7 @@ Il est donc possible de réaliser un convertisseur numérique-analogique (Digita
 
 Comment générer un signal en PWM avec des circuits logiques ? Il faut utiliser un compteur, piloté par une horloge de fréquence fixe. Un détecteur de 0 permet de signaler le début du cycle. Un comparateur, connecté à un registre qui contient la valeur du PWM, permet de détecter la fin de l’impulsion. Une bascule *Set-Reset* génère le signal.
 
-![Figure : génération d’un PWM avec un système logique](images/compteur-pwm.svg "Génération d’un PWM avec un système logique]")
+![Figure : génération d’un PWM avec un système logique](images/compteur-pwm.svg "Génération d’un PWM avec un système logique]"){ width=10cm }
 
 Les microcontrôleurs contiennent des circuits logiques supplémentaires ressemblant beaucoup à ce schéma. On les appelle des *Timers*. Complétés de circuits logiques dédiés, ils peuvent générer du PWM sans autre programmation que l’initialisation des registres de contrôle qui leur sont associés. Nous en parlerons plus tard dans ce cours.
 

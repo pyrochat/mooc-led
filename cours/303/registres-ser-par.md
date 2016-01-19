@@ -19,7 +19,7 @@ On y trouve 8 bascules D. Les horloges des 8 bascules sont reliées ensemble. L�
 
 Voici un diagramme des temps qui permet de comprendre comment fonctionne ce registre. Pour chaque bascule D, la valeur de l’entrée est copiée sur la sortie au moment du flanc montant de l’horloge.
 
-![Exemple de diagramme des temps d’un registre série](images/reg-ser-timing.png "Exemple de diagramme des temps d’un registre série")
+![Exemple de diagramme des temps d’un registre série](images/reg-ser-timing.png "Exemple de diagramme des temps d’un registre série"){ width=10cm }
 
 Les valeurs notées 0,1,2..7 correspondent à des valeurs binaires 0 ou 1 placées successivement sur l’entrée. Ces valeurs vont se décaler d’une bascule vers la suivante, à chaque coup d’horloge. Après 8 coups d’horloge, les 8 valeurs envoyées en série vont se retrouver sur les sorties. Il est donc possible par ce moyen de placer n’importe quelle valeur sur les 8 sorties.
 
@@ -33,7 +33,7 @@ Ajoutons 8 bascules D supplémentaires à notre montage. Ces 8 bascules forment 
 
 Sur ce diagramme des temps, on voit que les données transmises en série sont ensuite copiées sur les sorties du registre parallèle.
 
-![Diagramme des temps d’un registre série-parallèle](images/reg-ser-par-timing.png "Diagramme des temps d’un registre série-parallèle")
+![Diagramme des temps d’un registre série-parallèle](images/reg-ser-par-timing.png "Diagramme des temps d’un registre série-parallèle"){ width=9cm }
 
 Les 8 valeurs arrivent en même temps sur les sorties du registre parallèle. Les anciennes valeurs sont présentes sur toutes les sorties durant le transfert série et sont mises à jour en même temps. Il n’y a donc pas de risque d’artefacts.
 
@@ -41,9 +41,9 @@ Les 8 valeurs arrivent en même temps sur les sorties du registre parallèle. Le
 
 Le circuit 74HC595 est très souvent présent dans des afficheurs à LED. C’est un circuit C-MOS, de la série 74HCxx. Il comporte un registre série-parallèle de 8 bits. Ses sorties sont à *trois états*, commandées par le signal Output Enable. Une entrée Reset permet de forcer les valeurs du registre de sortie à zéro.
 
-![Registre 74HC595](images/reg-595.png "Registre 74HC595")
+![Registre 74HC595](images/reg-595.png "Registre 74HC595"){ width=10cm }
 
-![Brochage du 74HC595](images/pin-595-ti.png "Brochage du 74HC595")
+![Brochage du 74HC595](images/pin-595-ti.png "Brochage du 74HC595"){ width=4cm }
 
 Sa sortie série permet de cascader les circuits, c’est-à-dire les placer les uns à la suites des autres, comme le montre la figure suivante :
 
@@ -57,7 +57,7 @@ Bien entendu, les sorties du 74HC595 sont des sorties C-MOS normales. Pour les u
 
 Il existe plusieurs circuits registres série-parallèles dont les sorties incorporent des sources de courant. Il est ainsi possible de brancher des LED sans la résistance série, ce qui simplifie le schéma :
 
-![Registre 16 bits avec sources de courant](images/reg-16bits-sc.png "Registre 16 bits avec sources de courant")
+![Registre 16 bits avec sources de courant](images/reg-16bits-sc.png "Registre 16 bits avec sources de courant"){ width=13cm }
 
 La valeur du courant dans toutes les sorties est fixé par une seule résistance, notée R sur le schéma.
 

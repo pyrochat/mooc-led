@@ -5,9 +5,9 @@ niveau:           base
 auteur:          
     - PYR
 statut:           Pas publié
-code:             codeduchapitre
+code:             electric
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   ../101/electric.html
+    cours-pdf:    ../101/electric.pdf
+    dias-video:   ../101/electric-dia.pdf
+    dias-compact: ../101/electric-dia-compact.pdf

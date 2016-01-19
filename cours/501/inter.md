@@ -17,7 +17,7 @@ Il existe toutefois des cas où une enseigne ou un afficheur doit réagir à des
 
 On appelle **interruption** dans un système informatique l’arrêt temporaire d’un programme au profit d’un autre programme, jugé à cet instant plus important. L’interruption correspond au sens qu’on donne à ce mot dans nos vies courantes. Prenons un exemple : je suis en train de travailler à mon bureau. Le téléphone sonne. Je vais répondre au téléphone. Après la conversation, je reprends mon travail là où je l’avais laissé.
 
-![Interruption dans la vie courante](images/dring-allo-90dpi.png "Interruption dans la vie courante")
+![Interruption dans la vie courante](images/dring-allo-90dpi.png "Interruption dans la vie courante"){ width=14cm }
 
 C’est toujours un *événement* qui va produire une interruption. Cet événement a un caractère imprévisible, le programme ne sais pas quand il va se produire.
 
@@ -27,7 +27,7 @@ Pour utiliser les interruptions, il n’est pas indispensable de comprendre en d
 
 Toutefois, nous allons ici faire une petite incursion dans le monde de la programmation en assembleur, pour mieux comprendre les interruptions. La figure ci-dessous montre un programme, dont les instructions successives sont notées en bleu. Dans le cas où une fraction du programme doit s’exécuter plusieurs fois, on a l’habitude de grouper ses instructions, notées ici en vert. On appelle ce morceau de programme une *routine* ou *sous-routine*. Ce concept correspond aux procédures et aux fonctions dans les langages évolués comme le C.
 
-![Appel d’une routine](images/inter-principe7-court.png "Appel d’une routines")
+![Appel d’une routine](images/inter-principe7-court.png "Appel d’une routines"){ width=7cm }
 
 L’appel de la routine se fait par une instruction **Call** dans le programme principal. A la fin de l’exécution de la routine, une instruction **Ret** (return = retour) permet de revenir au programme appelant, juste après l’instruction *Call*. La routine peut être appelée plusieurs fois dans le programme principal.
 
@@ -35,7 +35,7 @@ Notons que l’adresse de retour doit être mémorisée pour que le retour soit 
 
 Regardons maintenant la figure suivante. Un nouvelle routine, appelée **Routine d’interruption** est représentée en rouge. On voit qu’elle va aussi s’exécuter. Mais son exécution n’est pas la conséquence d’une instruction *Call*.
 
-![Principe des interruptions](images/inter-principe.png "Principe des interruptions")
+![Principe des interruptions](images/inter-principe.png "Principe des interruptions"){ width=7cm }
 
 Rien dans le programme principal ne permet de savoir que cette routine va s’exécuter. C’est un **événement** qui est la cause de son exécution. C’est ce qu’on appelle un interruption.
 
@@ -91,7 +91,7 @@ Plusieurs étapes sont nécessaire pour mettre en œuvre une routine d’interru
 
 Le schéma logique ci-dessous montre la logique qui permet de générer les interruptions et les fanions qu’il faut ajuster.
 
-![Logique de génération des interruptions](images/decodage-inter.png "Logique de génération des interruptions")
+![Logique de génération des interruptions](images/decodage-inter.png "Logique de génération des interruptions"){ width=17cm }
 
 On y trouve :
 

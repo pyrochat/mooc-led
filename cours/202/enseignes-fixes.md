@@ -13,9 +13,9 @@ Une des applications les plus simples des LED est la réalisation d’enseignes 
 
 Voici deux exemples très simples :
 
-![Figure : Exemple d’enseigne à motifs fixes](images/hotel.png "Exemple d’enseigne à motifs fixes")
+![Figure : Exemple d’enseigne à motifs fixes](images/hotel.png "Exemple d’enseigne à motifs fixes"){ width=10cm }
 
-![Figure : Autre exemple](images/croix-pharma.png "Autre exemple")
+![Figure : Autre exemple](images/croix-pharma.png "Autre exemple"){ width=7cm }
 
 La première enseigne affiche un mot lisible : HOTEL. Ce mot ne peut être changé, car les LED sont disposées de façon à former le mot HOTEL. La seconde enseigne affiche un motif géométrique qui fait penser à une croix de pharmacie.
 
@@ -27,7 +27,7 @@ Mais on peut aller plus loin en découpant les motifs en différentes parties. L
 
 Voici comment l’enseigne de pharmacie peut être découpée en segments :
 
-![Figure : Découpage du motif en segments](images/croix-pharma-seg.png "Découpage du motif en segments")
+![Figure : Découpage du motif en segments](images/croix-pharma-seg.png "Découpage du motif en segments"){ width=7cm }
 
 Il y a neuf segments dans cet exemple, huit verts et un rouge.
 
@@ -39,7 +39,7 @@ Le courant consommé par une LED standard est d’environ 10 mA, bien qu’il e
 
 Voici le schéma utilisé, comportant un transistor NPN :
 
-![Figure : Transistor commandant plusieurs LED](images/transistor-res-leds-50dpi.png "Transistor commandant plusieurs LED")
+![Figure : Transistor commandant plusieurs LED](images/transistor-res-leds-50dpi.png "Transistor commandant plusieurs LED"){ width=8cm }
 
 Une sortie du microcontrôleur va commander la base du transistor à travers une résistance. Lorsque la sortie est à l’état 0, aucun courant ne peut circuler dans la base du transistor, qui est alors bloqué : aucun courant ne peut circuler entre le collecteur et l’émetteur, toutes les LED seront donc éteintes.
 
@@ -54,7 +54,7 @@ Il est possible d’augmenter la tension d’alimentation et de placer plusieurs
 
 Ce schéma montre comment commander plusieurs LED en série avec un transistor, avec une ou plusieurs branches :
 
-![Figure : Utilisation de plusieurs LED en série](images/transistor-serie-led-40dpi.png "Utilisation de plusieurs LED en série")
+![Figure : Utilisation de plusieurs LED en série](images/transistor-serie-led-40dpi.png "Utilisation de plusieurs LED en série"){ width=7cm }
 
 Il faut connaître la tension de chaque LED pour choisir le nombre optimal de LED dans chaque branche. Les LED rouges ont en général une tension d’environ 2 V, alors que les vertes ou les bleues ont plutôt 3 V. Mais il existe plusieurs technologies pour produire des LED et il faut bien se renseigner concernant les LED choisies... ou simplement les mesurer !
 
@@ -70,7 +70,7 @@ En pratique, on réalisera un montage de test avec les 5 LED et une résistance,
 
 Il est même possible de commander un segment contenant des LED de plusieurs couleurs. Voici un schéma correspondant :
 
-![Figure : Utilisation simultanée de plusieurs types de LED](images/transistor-3-5led-30dpi.png "Utilisation simultanée de plusieurs types de LED")
+![Figure : Utilisation simultanée de plusieurs types de LED](images/transistor-3-5led-30dpi.png "Utilisation simultanée de plusieurs types de LED"){ width=9cm }
 
 ## Courants importants ##
 
@@ -82,7 +82,7 @@ Comme il y a en général un nombre important de segments, ce sont surtout les c
 
 La figure suivante montre l’importance des courants :
 
-![Figure : Courants dans les fils des segments](images/transistor-courants.png "Courants dans les fils des segments")
+![Figure : Courants dans les fils des segments](images/transistor-courants.png "Courants dans les fils des segments"){ width=15cm }
 
 ## Programmation d’animations ##
 

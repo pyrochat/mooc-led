@@ -39,9 +39,9 @@ Examinons ce programme :
 
 void loop() {
   uint8_t i;
-  SORTIE_HI_Z; delay (1000); // LED1 et LED2 éteintes pendant 1 seconde
-  SORTIE_1; delay (1000); // LED1 allumée pendant 1 seconde
-  SORTIE_0; delay (1000); // LED2 allumée pendant 1 seconde
+  SORTIE_HI_Z; delay (1000); // LED1 et LED2 éteintes pendant 1 s
+  SORTIE_1; delay (1000); // LED1 allumée pendant 1 s
+  SORTIE_0; delay (1000); // LED2 allumée pendant 1 s
 
   for (i=0; i<250; i++) { // 250 x 4ms = 1 s
     SORTIE_1; delay (2); // LED1 allumée
@@ -55,7 +55,7 @@ On voit que tous les états possibles pour 2 LED sont affichés (00, 01, 10, 11)
 
 ~~~~~~~ { .c .numberLines startFrom="6" }
   ...
-  SORTIE_HI_Z; delay (1000); // LED1 et LED2 éteintes pendant 1 seconde
+  SORTIE_HI_Z; delay (1000); // LED1 et LED2 éteintes pendant 1 s
   for (i=0; i<250; i++) { // 250 x 4ms = 1 s
     SORTIE_1; delay (2); // LED1 allumée
     SORTIE_HI_Z; delay (2); // LED1 et LED2 éteintes

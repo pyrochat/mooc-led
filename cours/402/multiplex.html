@@ -73,9 +73,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <span class="dt">void</span> loop() {
   <span class="dt">uint8_t</span> i;
-  SORTIE_HI_Z; delay (1000); <span class="co">// LED1 et LED2 éteintes pendant 1 seconde</span>
-  SORTIE_1; delay (1000); <span class="co">// LED1 allumée pendant 1 seconde</span>
-  SORTIE_0; delay (1000); <span class="co">// LED2 allumée pendant 1 seconde</span>
+  SORTIE_HI_Z; delay (1000); <span class="co">// LED1 et LED2 éteintes pendant 1 s</span>
+  SORTIE_1; delay (1000); <span class="co">// LED1 allumée pendant 1 s</span>
+  SORTIE_0; delay (1000); <span class="co">// LED2 allumée pendant 1 s</span>
 
   <span class="kw">for</span> (i=<span class="dv">0</span>; i&lt;<span class="dv">250</span>; i++) { <span class="co">// 250 x 4ms = 1 s</span>
     SORTIE_1; delay (2); <span class="co">// LED1 allumée</span>
@@ -92,7 +92,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 11
 12
 </pre></td><td class="sourceCode"><pre><code class="sourceCode c">  ...
-  SORTIE_HI_Z; delay (1000); <span class="co">// LED1 et LED2 éteintes pendant 1 seconde</span>
+  SORTIE_HI_Z; delay (1000); <span class="co">// LED1 et LED2 éteintes pendant 1 s</span>
   <span class="kw">for</span> (i=<span class="dv">0</span>; i&lt;<span class="dv">250</span>; i++) { <span class="co">// 250 x 4ms = 1 s</span>
     SORTIE_1; delay (2); <span class="co">// LED1 allumée</span>
     SORTIE_HI_Z; delay (2); <span class="co">// LED1 et LED2 éteintes</span>

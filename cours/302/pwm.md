@@ -87,7 +87,7 @@ void setup() { // Initialisations
 }
 
 void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
-  if ((cptPwm==0) && (pwmLed>0)) LedOn; // seulement pour une valeur positive
+  if ((cptPwm==0) && (pwmLed>0)) LedOn; // pour une valeur positive
   if (cptPwm==pwmLed) LedOff;
 
   cptPwm++; // passe automatiquement de 255 à 0 (overflow)
@@ -137,8 +137,8 @@ La séquence est cyclique et dure 4 s. Il imite la respiration d’une personne
 La courbe se divise en 3 parties. Il est facile d’exprimer l’intensité en fonction du temps dans chacune des parties. Voici comment compléter le programme :
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
-uint16_t pwmLed; // valeur du PWM, 0 à 255 (8 bits, dans une variable 16 bits pour les calculs)
-uint16_t cpt10ms = 0; // compteur des cycles, de 0 à 400 (par 10ms, total 4s)
+uint16_t pwmLed; // valeur du PWM, 0 à 255, 16 bits pour les calculs
+uint16_t cpt10ms = 0; // compteur des cycles de 0 à 400, par 10ms, total 4s
 ...
 void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
   if (cptPwm==0) {

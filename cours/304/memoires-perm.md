@@ -32,7 +32,7 @@ Voici les instructions pour lire et écrire dans la mémoire :
   valeur = EEDR; // lecture de la valeur
 
   // Ecriture en EEPROM :
-  while (EECR & (1<<EEPE)) {} // attente de la fin d'une éventuelle écriture précédente
+  while (EECR & (1<<EEPE)) {} // attend la fin d'une écriture précédente
   EEAR = adresse; // l'adresse est donnée
   EEDR = valeur; // la valeur est donnée
   EECR = (1<<EEMPE); // autorise une écriture (Master Write Enable)
@@ -77,7 +77,7 @@ L’effacement s’effectue par bloc. Il s’effectue lorsqu’une écriture est
   // Effacement d'un bloc de la mémoire Flash
   FCTL1 = FWKEY + ERASE; // Set Erase bit
   FCTL3 = FWKEY; // Clear Lock bit
-  *pointeur = 0; // lance un cycle d'effacement du bloc, la valeur donnée n'a pas d'importance
+  *pointeur = 0; // lance l'effacement du bloc, valeur sans importance
   FCTL3 = FWKEY + LOCK; // Set LOCK bit
   FCTL1 = FWKEY; // Clear WRT bit
 ~~~~~~~

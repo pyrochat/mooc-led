@@ -56,7 +56,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
   valeur = EEDR; <span class="co">// lecture de la valeur</span>
 
   <span class="co">// Ecriture en EEPROM :</span>
-  <span class="kw">while</span> (EECR &amp; (1&lt;&lt;EEPE)) {} <span class="co">// attente de la fin d&#39;une éventuelle écriture précédente</span>
+  <span class="kw">while</span> (EECR &amp; (1&lt;&lt;EEPE)) {} <span class="co">// attend la fin d&#39;une écriture précédente</span>
   EEAR = adresse; <span class="co">// l&#39;adresse est donnée</span>
   EEDR = valeur; <span class="co">// la valeur est donnée</span>
   EECR = (1&lt;&lt;EEMPE); <span class="co">// autorise une écriture (Master Write Enable)</span>
@@ -83,7 +83,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Effacement d&#39;un bloc de la mémoire Flash</span>
   FCTL1 = FWKEY + ERASE; <span class="co">// Set Erase bit</span>
   FCTL3 = FWKEY; <span class="co">// Clear Lock bit</span>
-  *pointeur = 0; <span class="co">// lance un cycle d&#39;effacement du bloc, la valeur donnée n&#39;a pas d&#39;importance</span>
+  *pointeur = <span class="dv">0</span>; <span class="co">// lance l&#39;effacement du bloc, valeur sans importance</span>
   FCTL3 = FWKEY + LOCK; <span class="co">// Set LOCK bit</span>
   FCTL1 = FWKEY; <span class="co">// Clear WRT bit</span></code></pre>
 <!-- retour au mode normal pour l'éditeur -->

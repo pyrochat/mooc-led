@@ -124,7 +124,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 }
 
 <span class="dt">void</span> loop() { <span class="co">// Boucle infinie, durée 39us (256 * 39us = ~10ms)</span>
-  <span class="kw">if</span> ((cptPwm==<span class="dv">0</span>) &amp;&amp; (pwmLed&gt;<span class="dv">0</span>)) LedOn; <span class="co">// seulement pour une valeur positive</span>
+  <span class="kw">if</span> ((cptPwm==<span class="dv">0</span>) &amp;&amp; (pwmLed&gt;<span class="dv">0</span>)) LedOn; <span class="co">// pour une valeur positive</span>
   <span class="kw">if</span> (cptPwm==pwmLed) LedOff;
 
   cptPwm++; <span class="co">// passe automatiquement de 255 à 0 (overflow)</span>
@@ -202,8 +202,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 20
 21
 22
-</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="dt">uint16_t</span> pwmLed; <span class="co">// valeur du PWM, 0 à 255 (8 bits, dans une variable 16 bits pour les calculs)</span>
-<span class="dt">uint16_t</span> cpt10ms = 0; <span class="co">// compteur des cycles, de 0 à 400 (par 10ms, total 4s)</span>
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="dt">uint16_t</span> pwmLed; <span class="co">// valeur du PWM, 0 à 255, 16 bits pour les calculs</span>
+<span class="dt">uint16_t</span> cpt10ms = 0; <span class="co">// compteur des cycles de 0 à 400, par 10ms, total 4s</span>
 ...
 <span class="dt">void</span> loop() { <span class="co">// Boucle infinie, durée 39us (256 * 39us = ~10ms)</span>
   <span class="kw">if</span> (cptPwm==<span class="dv">0</span>) {

@@ -2,12 +2,12 @@ titre:
     - "Registre d’extension série-parallèle"
 type:             Théorie
 niveau:           base
-auteur:          
+auteur:
     - PYR
 statut:           Relecture
 code:             registres-ser-par
 url:
-    c-html:   ../303/registres-ser-par.html
-    c-pdf:    ../303/registres-ser-par.pdf
-    d-video:   ../303/registres-ser-par-dia.pdf
-    d-compact: ../303/registres-ser-par-dia-compact.pdf
+    c-html:    registres-ser-par.html
+    c-pdf:     registres-ser-par.pdf
+    d-video:   registres-ser-par-dia.pdf
+    d-compact: registres-ser-par-dia-compact.pdf

@@ -2,12 +2,12 @@ titre:
     - "PWM"
 type:             Théorie
 niveau:           base
-auteur:          
+auteur:
     - PYR
 statut:           Relecture
 code:             pwm
 url:
-    cours-html:   ../302/pwm.html
-    cours-pdf:    ../302/pwm.pdf
-    dias-video:   ../302/pwm-dia.pdf
-    dias-compact: ../302/pwm-dia-compact.pdf
+    cours-html:   pwm.html
+    cours-pdf:    pwm.pdf
+    dias-video:   pwm-dia.pdf
+    dias-compact: pwm-dia-compact.pdf

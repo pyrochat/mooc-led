@@ -2,12 +2,12 @@ titre:
     - "Le multiplexage temporel"
 type:             Théorie
 niveau:           base
-auteur:          
+auteur:
     - PYR
 statut:           Relecture
 code:             multiplex
 url:
-    cours-html:   ../402/multiplex.html
-    cours-pdf:    ../402/multiplex.pdf
-    dias-video:   ../402/multiplex-dia.pdf
-    dias-compact: ../402/multiplex-dia-compact.pdf
+    cours-html:   multiplex.html
+    cours-pdf:    multiplex.pdf
+    dias-video:   multiplex-dia.pdf
+    dias-compact: multiplex-dia-compact.pdf

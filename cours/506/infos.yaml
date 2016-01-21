@@ -2,12 +2,12 @@ titre:
     - "Langages interprétés spécialisés"
 type:             Théorie
 niveau:           avancé
-auteur:          
+auteur:
     - PYR
 statut:           Pas publié
 code:             lang-interpr
 url:
-    cours-html:   ../506/lang-interpr.html
-    cours-pdf:    ../506/lang-interpr.pdf
-    dias-video:   ../506/lang-interpr-dia.pdf
-    dias-compact: ../506/lang-interpr-dia-compact.pdf
+    cours-html:   lang-interpr.html
+    cours-pdf:    lang-interpr.pdf
+    dias-video:   lang-interpr-dia.pdf
+    dias-compact: lang-interpr-dia-compact.pdf

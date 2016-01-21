@@ -2,12 +2,12 @@ titre:
     - "Base des circuits électriques"
 type:             Théorie
 niveau:           base
-auteur:          
+auteur:
     - PYR
 statut:           Pas publié
 code:             electric
 url:
-    cours-html:   ../101/electric.html
-    cours-pdf:    ../101/electric.pdf
-    dias-video:   ../101/electric-dia.pdf
-    dias-compact: ../101/electric-dia-compact.pdf
+    cours-html:   electric.html
+    cours-pdf:    electric.pdf
+    dias-video:   electric-dia.pdf
+    dias-compact: electric-dia-compact.pdf

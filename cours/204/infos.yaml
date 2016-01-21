@@ -2,13 +2,13 @@ titre:
     - "Programmation en C-Arduino"
 type:             Théorie
 niveau:           base
-auteur:          
+auteur:
     - PYR
 statut:           Relecture
 code:             C-Arduino
 url:
-    cours-html:   ../204/C-Arduino.html
-    cours-pdf:    ../204/C-Arduino.pdf
+    cours-html:   C-Arduino.html
+    cours-pdf:    C-Arduino.pdf
 url-to-do:
-    dias-video:   ../204/C-Arduino-dia.pdf
-    dias-compact: ../204/C-Arduino-dia-compact.pdf
+    dias-video:   C-Arduino-dia.pdf
+    dias-compact: C-Arduino-dia-compact.pdf

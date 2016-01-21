@@ -92,9 +92,10 @@ Version de travail du 2016/01/02
             TOC = '%s\n**%d.%d** **%s** %s %s' % ( TOC, nbsemaine, nbchapitre, dataMap[ "titre" ][ 0 ], NIVEAU, AUTEUR )
         if( dataMap[ "statut" ] not in [ u"Pas publié" ] ):
             LINKS = []
-            for key, URL in sorted(dataMap[ "url" ].iteritems()):
-                LINKS += [ "[%s](%s)" % ( key, URL ) ]
-            TOC = '%s %s' % ( TOC, ' '.join( LINKS ) )
+            for key, URL in sorted( dataMap[ "url" ].iteritems() ):
+                LINKS += [ "[%s](../%d%0.2d/%s)" % ( key, nbsemaine, nbchapitre, URL ) ]
+            LINKS = ' '.join( LINKS )
+            TOC = '%s %s' % ( TOC, LINKS )
 
         TOC = '%s %s' % ( TOC, '  ' )
 

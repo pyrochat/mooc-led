@@ -2,12 +2,12 @@ titre:
     - "Mémoires permanentes"
 type:             Théorie
 niveau:           base
-auteur:          
+auteur:
     - PYR
 statut:           Relecture
 code:             memoires-perm
 url:
-    cours-html:   ../304/memoires-perm.html
-    cours-pdf:    ../304/memoires-perm.pdf
-    dias-video:   ../304/memoires-perm-dia.pdf
-    dias-compact: ../304/memoires-perm-dia-compact.pdf
+    cours-html:   memoires-perm.html
+    cours-pdf:    memoires-perm.pdf
+    dias-video:   memoires-perm-dia.pdf
+    dias-compact: memoires-perm-dia-compact.pdf

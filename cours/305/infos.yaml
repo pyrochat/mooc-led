@@ -2,12 +2,12 @@ titre:
     - "Réalisation de montages électroniques"
 type:             Théorie
 niveau:           base
-auteur:          
+auteur:
     - 'PYR'
 statut:           Pas publié
 code:             pcb-vero
 url-todo:
-    c-html:   ../305/pcb-vero.html
-    c-pdf:    ../305/pcb-vero.pdf
-    d-video:   ../305/pcb-vero-dia.pdf
-    d-compact: ../305/pcb-vero-dia-compact.pdf
+    c-html:    pcb-vero.html
+    c-pdf:     pcb-vero.pdf
+    d-video:   pcb-vero-dia.pdf
+    d-compact: pcb-vero-dia-compact.pdf

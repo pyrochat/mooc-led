@@ -2,12 +2,12 @@ titre:
     - "Les Interruptions"
 type:             Théorie
 niveau:           base
-auteur:          
+auteur:
     - YT
 statut:           Relecture
 code:             inter
 url:
-    cours-html:   ../501/inter.html
-    cours-pdf:    ../501/inter.pdf
-    dias-video:   ../501/inter-dia.pdf
-    dias-compact: ../501/inter-dia-compact.pdf
+    cours-html:   inter.html
+    cours-pdf:    inter.pdf
+    dias-video:   inter-dia.pdf
+    dias-compact: inter-dia-compact.pdf

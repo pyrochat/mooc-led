@@ -92,9 +92,13 @@ Version de travail du 2016/01/02
             TOC = '%s\n**%d.%d** **%s** %s %s' % ( TOC, nbsemaine, nbchapitre, dataMap[ "titre" ][ 0 ], NIVEAU, AUTEUR )
         if( dataMap[ "statut" ] not in [ u"Pas publié" ] ):
             LINKS = []
-            for key, URL in sorted( dataMap[ "url" ].iteritems() ):
-                LINKS += [ "[%s](../%d%0.2d/%s)" % ( key, nbsemaine, nbchapitre, URL ) ]
+            fileTypes = [ "cours-html", "cours-pdf", "dias-compact" ]
+            for fileType in fileTypes:
+                if fileType in dataMap[ "url" ]:
+                    fileName = dataMap[ "url" ][ fileType ]
+                    LINKS += [ "[%s](../%d%0.2d/%s)" % ( fileType, nbsemaine, nbchapitre, fileName ) ]
             LINKS = ' '.join( LINKS )
+            print "⇒ " + LINKS
             TOC = '%s %s' % ( TOC, LINKS )
 
         TOC = '%s %s' % ( TOC, '  ' )

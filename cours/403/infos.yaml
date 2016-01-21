@@ -1,13 +1,13 @@
 titre:
-    - "Les afficheurs matriciels multiplexés"
+    - "Mémoires permanentes"
 type:             Théorie
 niveau:           base
-auteur:          
+auteur:
     - PYR
-statut:           Pas publié
-code:             codeduchapitre
+statut:           Relecture
+code:             memoires-perm
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   memoires-perm.html
+    cours-pdf:    memoires-perm.pdf
+    dias-video:   memoires-perm-dia.pdf
+    dias-compact: memoires-perm-dia-compact.pdf

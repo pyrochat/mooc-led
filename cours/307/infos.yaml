@@ -1,13 +1,13 @@
 titre:
-    - "Introduction aux FPGA"
+    - "[Physique] La couleur"
 type:             Théorie
-niveau:           avancé
+niveau:           base
 auteur:          
-    - MLN
+    - AT
 statut:           Pas publié
-code:             codeduchapitre
+code:             couleur
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   couleur.html
+    cours-pdf:    couleur.pdf
+    dias-video:   couleur-dia.pdf
+    dias-compact: couleur-dia-compact.pdf

@@ -1,13 +1,13 @@
 titre:
-    - "Introduction au microcontrôleur"
+    - "[Logique] Circuits logiques combinatoires"
 type:             Théorie
 niveau:           base
 auteur:          
-    - PYR
+    - MLN
 statut:           Pas publié
-code:             codeduchapitre
+code:             sys-combi
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   sys-combi.html
+    cours-pdf:    sys-combi.pdf
+    dias-video:   sys-combi-dia.pdf
+    dias-compact: sys-combi-dia-compact.pdf

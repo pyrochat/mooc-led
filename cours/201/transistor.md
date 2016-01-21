@@ -22,7 +22,7 @@ Dans un transistor, la valeur de la résistance `Rce` entre le collecteur et l�
 
 Cette similitude avec un système hydraulique aide à comprendre le principe :
 
-![Analogie hydraulique](images/transistor-robinet-150dpi.png "Analogie hydraulique"){width=35%}
+![Analogie hydraulique](images/transistor-robinet-150dpi.png "Analogie hydraulique"){ width=35% }
 
 On sait que `U = R × I` (Loi d’Ohm). Une variation du petit courant `Ib` provoque une variation du grand courant `Ic`.
 

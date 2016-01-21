@@ -1,13 +1,13 @@
 titre:
-    - "Séquenceurs à compteurs"
+    - "[Physique] Les semi-conducteurs"
 type:             Théorie
 niveau:           avancé
-auteur:
-    - YT
-statut:           Relecture
-code:             seq-compteur
+auteur:          
+    - AT
+statut:           Pas publié
+code:             semicond
 url:
-    cours-html:   seq-compteur.html
-    cours-pdf:    seq-compteur.pdf
-    dias-video:   seq-compteur-dia.pdf
-    dias-compact: seq-compteur-dia-compact.pdf
+    cours-html:   semicond.html
+    cours-pdf:    semicond.pdf
+    dias-video:   semicond-dia.pdf
+    dias-compact: semicond-dia-compact.pdf

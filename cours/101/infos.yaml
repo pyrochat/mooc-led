@@ -1,13 +1,13 @@
 titre:
-    - "Base des circuits électriques"
+    - "Introduction aux enseignes et afficheurs à LED"
 type:             Théorie
 niveau:           base
-auteur:
-    - PYR
+auteur:          
+    - 'PYR'
 statut:           Pas publié
-code:             electric
+code:             introduction
 url:
-    cours-html:   electric.html
-    cours-pdf:    electric.pdf
-    dias-video:   electric-dia.pdf
-    dias-compact: electric-dia-compact.pdf
+    cours-html:   introduction.html
+    cours-pdf:    introduction.pdf
+    dias-video:   introduction-dia.pdf
+    dias-compact: introduction-dia-compact.pdf

@@ -1,13 +1,13 @@
 titre:
-    - "Présentation de la LED"
+    - "LED et électricité"
 type:             Théorie
 niveau:           base
-auteur:          
-    - '?'
+auteur:
+    - PYR
 statut:           Pas publié
-code:             codeduchapitre
+code:             electric
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   electric.html
+    cours-pdf:    electric.pdf
+    dias-video:   electric-dia.pdf
+    dias-compact: electric-dia-compact.pdf

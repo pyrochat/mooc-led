@@ -1,14 +1,13 @@
 titre:
-    - "Programmation en C-Arduino"
+    - "[Logique] Introduction au VHD"
 type:             Théorie
-niveau:           base
-auteur:
-    - PYR
-statut:           Relecture
-code:             C-Arduino
+niveau:           avancé
+auteur:          
+    - MLN
+statut:           Pas publié
+code:             vhdl
 url:
-    cours-html:   C-Arduino.html
-    cours-pdf:    C-Arduino.pdf
-url-to-do:
-    dias-video:   C-Arduino-dia.pdf
-    dias-compact: C-Arduino-dia-compact.pdf
+    cours-html:   vhdl.html
+    cours-pdf:    vhdl.pdf
+    dias-video:   vhdl-dia.pdf
+    dias-compact: vhdl-dia-compact.pdf

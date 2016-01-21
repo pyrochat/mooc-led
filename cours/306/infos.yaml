@@ -1,13 +1,13 @@
 titre:
-    - "Introduction à la colorimétrie et aux LED RGB"
+    - "Montages électroniques"
 type:             Théorie
 niveau:           base
-auteur:          
-    - AT
+auteur:
+    - 'PYR'
 statut:           Pas publié
-code:             codeduchapitre
-url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+code:             montages
+url-todo:
+    c-html:    montages.html
+    c-pdf:     montages.pdf
+    d-video:   montages-dia.pdf
+    d-compact: montages-dia-compact.pdf

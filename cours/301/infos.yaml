@@ -1,5 +1,5 @@
 titre:
-    - "Entrées-sorties et manipulation de champs de bits"
+    - "Entrées-sorties"
 type:             Théorie
 niveau:           base
 auteur:          
@@ -7,7 +7,7 @@ auteur:
 statut:           Pas publié
 code:             codeduchapitre
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   io.html
+    cours-pdf:    io.pdf
+    dias-video:   io-dia.pdf
+    dias-compact: io-dia-compact.pdf

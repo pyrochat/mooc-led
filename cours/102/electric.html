@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<h1 id="circuits-électriques"><strong>Circuits électriques</strong></h1>
+<h2 id="pierre-yves-rochat-epfl"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
+<blockquote>
+<p>Document en cours de relecture, rév du 2016/06/19</p>
+</blockquote>
+<h2 id="électrons-libres-et-courant-électrique">Électrons libres et courant électrique</h2>
+<p>On se souvient que la matière est composée d’<strong>atomes</strong>. Les atomes ont un noyau, composé de protons et de neutrons, ainsi qu’un nuage d’électrons, constitués en couches successives.</p>
+<div class="figure">
+<img src="images/atome.png" title="Structure d’un atome" alt="Structure d’un atome" width="302" />
+<p class="caption">Structure d’un atome</p>
+</div>
+<p>Dans certains les matériaux, les électrons de la dernière couche sont capables de se déplacer d’un atome à l’autre. On parle d’<strong>électrons libres</strong>. Ce mouvement est généralement désordonné. Lors qu’il est ordonné, on parle de <strong>courant électrique</strong>.</p>
+<p>Les électrons ayant une charge négative, ils se <strong>déplacent</strong> du <em>moins</em> vers le <em>plus</em>. Ils se déplacent lentement, de l’ordre de quelques centimètres par heure.</p>
+<p>Le courant électrique se déplace conventionnellement du <em>plus</em> vers le <em>moins</em> : on a découvert le courant électrique avant de connaître l’existence des atomes et des électrons ! Le courant électrique se <strong>propage</strong> très rapidement, à une vitesse proche de la vitesse de la lumière, qui est de 300’000 km par seconde.</p>
+<p>Les matériaux qui permettent ce phénomène du courant électrique sont appelés <strong>conducteurs</strong>. Il s’agit principalement des métaux, dont le cuivre et l’aluminium sont les plus couramment utilisés.</p>
+<h2 id="tension-électrique">Tension électrique</h2>
+<p>En présence d’une <em>force électromotrice</em>, appelée aussi <strong>tension électrique</strong>, un courant va se produire dans un conducteur. Par exemple, on trouve une tension entre les deux bornes d’une pile électrique. En établissant un <strong>circuit électrique</strong>, du courant va pouvoir circuler.</p>
+<p>Nous verrons plus tard ce qu’est une LED (Light-Emitting Diode, diode électroluminescente ou <em>diode lumineuse</em>). En attendant, réalisons le montage ci-dessous. Le courant électrique produit par la pile va circuler à travers la résistance et la LED, qui va émettre alors de la lumière.</p>
+<div class="figure">
+<img src="images/pile-led.png" title="Circuit électrique" alt="Circuit électrique" width="340" />
+<p class="caption">Circuit électrique</p>
+</div>
+<p>Les électriciens et les électroniciens ont l’habitude de dessiner des <strong>schémas</strong> en utilisant des symboles. Ils ne ressemblent pas toujours à la forme des composants utilisés ! Voici le schéma correspondant au montage ci-dessus :</p>
+<div class="figure">
+<img src="images/schema-pile-led.png" title="Schéma électronique" alt="Schéma électronique" width="340" />
+<p class="caption">Schéma électronique</p>
+</div>
+<h2 id="unités-électriques">Unités électriques</h2>
+<p>La <strong>tension électrique</strong> s’exprime en <strong>Volt</strong>, noté V. Une pile ordinaire a une tension d’environ 1,5 V. Dans beaucoup de pays, la tension fournie dans les maisons est de 230 V. Elle est de 115 V aux USA. Notons qu’il ne s’agit pas d’une tension continue, mais d’une tension alternative, dont la fréquence est de 50 alternances par seconde (50 Hz, 60 Hz aux USA).</p>
+<p>En dessus de 25 V, une tension électrique est <strong>dangereuse</strong> pour le corps humain. En effet, l’eau se trouvant le corps est légèrement conductrice, vu qu’elle n’est pas pure. Or le cœur est très sensible aux courants électriques qui le traverse.</p>
+<p>Dans les enseignes et afficheurs à LED, la tension est généralement inférieure à 25 V, sauf bien entendu au niveau de l’alimentation électrique. Toutes les précautions doivent donc être prises dans ce cas.</p>
+<p>La tension électrique se mesure toujours entre deux points. Souvent, un point est considéré comme un point de référence. Il s’appelle la <strong>masse</strong> (<em>ground</em>). On peut alors dire, par abus de langage, que la tension <em>en un point</em> à telle valeur : c’est en fait la tension entre ce point et la masse.</p>
+<p>Comme la tension se mesure entre deux point, c’est facile de la mesurer sans modifier le circuit. L’appareil s’appelle un voltmètre. Les multi-mètres proposent toujours cette fonction.</p>
+<p>Le <strong>courant électrique</strong> s’exprime en <strong>Ampère</strong>, noté A.</p>
+<p>Le courant qui traverse une LED ne dépasse généralement pas 10 mA. Mais une enseigne composée de plusieurs milliers de LED peux nécessiter des courants importants de quelques dizaines d’Ampère.</p>
+<p>Le diamètre d’un fil électrique ne dépend pas de la tension, mais du courant qui le traverse. Il faudra donc dimensionner correctement les fils. Par exemple, un fils de cuivre de 1 mm2 de section n’est pas prévu pour un courant dépassant 16 A.</p>
+<p>La mesure du courant nécessite de couper le circuit et d’y insérer l’appareil de mesure. C’est la raison pour laquelle la mesure directe du courant est beaucoup plus rare. On préférera une mesure indirecte.</p>
+<h2 id="résistance-électrique">Résistance électrique</h2>
+<p>Dans le schéma ci-dessous, on voit un circuit électrique réalisé avec une source de tension et une <strong>résistance</strong>.</p>
+<div class="figure">
+<img src="images/schema-pile-res.png" title="Source de tension et résistance" alt="Source de tension et résistance" width="453" />
+<p class="caption">Source de tension et résistance</p>
+</div>
+<p>Le courant électrique est le même en tout point de ce circuit : I<sub>1</sub> = I<sub>2</sub>. Ce courant est d’autant plus grand que la résistance est petite : c’est la loi d’Ohm.</p>
+<p><strong>I = U / R</strong> , avec :</p>
+<ul>
+<li>U : la tension électrique, exprimée en Volt [V]</li>
+<li>I : le courant électrique, exprimé en Ampère [A]</li>
+<li>R : la résistance électrique, exprimée en Ohm [Ω]</li>
+</ul>
+<p>Voici les deux autres expressions de la loi d’Ohm :</p>
+<ul>
+<li><strong>U = R × I</strong></li>
+<li><strong>R = U / I</strong></li>
+</ul>
+<p>On utilisera très souvent cette loi, par exemple pour calculer les résistances qui sont presque toujours associées aux LED.</p>
+<h2 id="énergie-et-puissance">Énergie et puissance</h2>
+<p>On comprend intuitivement qu’une pile contient de l’<strong>énergie</strong> électrique. Une certaine quantité de cette énergie va être transformée en chaleur dans la résistance. Notons que le rendement est alors de 100% ! La <strong>puissance</strong> est la quantité d’énergie par unité de temps :</p>
+<p><strong>P = U × I</strong> , avec P : la puissance, exprimée en Watt [W]</p>
+<p>Dans notre premier montage avec la LED, une partie de l’énergie électrique est transformée en énergie lumineuse, le reste étant transformé en chaleur. Mais alors qu’une ampoule à incandescence a un rendement qui dépasse rarement 2%, une LED peut avoir un rendement qui approche les 30%.</p>
+<h2 id="montage-en-parallèle">Montage en parallèle</h2>
+<p>Dans le schéma ci-dessous, deux résistances ont été montée <em>en parallèle</em>. La tension aux bornes de chaque résistance est la tension de la pile :</p>
+<p>U = U<sub>1</sub> = U<sub>2</sub> = R<sub>1</sub> × I<sub>1</sub> = R<sub>2</sub> × I<sub>2</sub></p>
+<p>Quel est alors la valeur du courant I ? On admet facilement que les électrons ne peuvent pas <em>sortir</em> du fils. On a donc I = I<sub>1</sub> + I<sub>2</sub></p>
+<p>...</p>
+<div class="figure">
+<img src="images/schema-pile-res2p.png" title="Résistances en parallèle" alt="Résistances en parallèle" width="453" />
+<p class="caption">Résistances en parallèle</p>
+</div>
+<h2 id="montage-en-série">Montage en série</h2>
+<p>Dans le schéma ci-dessous, deux résistances ont été montée <em>en série</em> : le courant passe pas R<sub>1</sub>, puis par R<sub>2</sub>.</p>
+<div class="figure">
+<img src="images/schema-pile-res2s.png" title="Résistances en série" alt="Résistances en série" width="453" />
+<p class="caption">Résistances en série</p>
+</div>
+<p>Le courant à travers les deux résistances est le même. I<sub>1</sub> = I<sub>2</sub> = I. On peut calculer la tension aux bornes de chaque résistance :</p>
+<p>U<sub>1</sub> = R<sub>1</sub> × I<sub>1</sub> et U<sub>2</sub> = R<sub>2</sub> × I<sub>2</sub></p>
+<p>...</p>
+</body>
+</html>

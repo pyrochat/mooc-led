@@ -1,13 +1,13 @@
 titre:
-    - "Circuits logiques combinatoires"
+    - "Le microcontrôleur"
 type:             Théorie
 niveau:           base
 auteur:          
-    - MLN
+    - PYR
 statut:           Pas publié
-code:             sys-combi
+code:             microcontroleur
 url:
-    cours-html:   sys-combi.html
-    cours-pdf:    sys-combi.pdf
-    dias-video:   sys-combi-dia.pdf
-    dias-compact: sys-combi-dia-compact.pdf
+    cours-html:   microcontroleur.html
+    cours-pdf:    microcontroleur.pdf
+    dias-video:   microcontroleur-dia.pdf
+    dias-compact: microcontroleur-dia-compact.pdf

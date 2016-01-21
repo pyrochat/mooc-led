@@ -1,13 +1,13 @@
 titre:
-    - "Circuits logiques séquentiels"
+    - "Enseignes à motifs fixes"
 type:             Théorie
 niveau:           base
-auteur:          
-    - MLN
-statut:           Pas publié
-code:             codeduchapitre
+auteur:
+    - PYR
+statut:           Relecture
+code:             enseignes-fixes
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   enseignes-fixes.html
+    cours-pdf:    enseignes-fixes.pdf
+    dias-video:   enseignes-fixes-dia.pdf
+    dias-compact: enseignes-fixes-dia-compact.pdf

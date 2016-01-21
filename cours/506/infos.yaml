@@ -1,13 +1,13 @@
 titre:
-    - "Langages interprétés spécialisés"
+    - "[Logique] Les FPGA"
 type:             Théorie
 niveau:           avancé
-auteur:
-    - PYR
+auteur:          
+    - MLN
 statut:           Pas publié
-code:             lang-interpr
+code:             fpga
 url:
-    cours-html:   lang-interpr.html
-    cours-pdf:    lang-interpr.pdf
-    dias-video:   lang-interpr-dia.pdf
-    dias-compact: lang-interpr-dia-compact.pdf
+    cours-html:   fpga.html
+    cours-pdf:    fpga.pdf
+    dias-video:   fpga-dia.pdf
+    dias-compact: fpga-dia-compact.pdf

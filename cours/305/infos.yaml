@@ -1,13 +1,13 @@
 titre:
-    - "Réalisation de montages électroniques"
+    - "Séquenceurs à compteurs"
 type:             Théorie
-niveau:           base
+niveau:           avancé
 auteur:
-    - 'PYR'
-statut:           Pas publié
-code:             pcb-vero
-url-todo:
-    c-html:    pcb-vero.html
-    c-pdf:     pcb-vero.pdf
-    d-video:   pcb-vero-dia.pdf
-    d-compact: pcb-vero-dia-compact.pdf
+    - YT
+statut:           Relecture
+code:             seq-compteur
+url:
+    cours-html:   seq-compteur.html
+    cours-pdf:    seq-compteur.pdf
+    dias-video:   seq-compteur-dia.pdf
+    dias-compact: seq-compteur-dia-compact.pdf

@@ -1,13 +1,13 @@
 titre:
-    - "Correction Gamma"
+    - "[Logique] Circuits séquentiels en VHDL"
 type:             Théorie
 niveau:           avancé
 auteur:          
-    - AT
+    - MLN
 statut:           Pas publié
-code:             codeduchapitre
+code:             seq-vhdl
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   seq-vhdl.html
+    cours-pdf:    seq-vhdl.pdf
+    dias-video:   seq-vhdl-dia.pdf
+    dias-compact: seq-vhdl-dia-compact.pdf

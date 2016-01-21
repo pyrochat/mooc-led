@@ -1,13 +1,13 @@
 titre:
-    - "Le multiplexage temporel"
+    - "Les afficheurs matriciels multiplexés"
 type:             Théorie
 niveau:           base
-auteur:
+auteur:          
     - PYR
-statut:           Relecture
-code:             multiplex
+statut:           Pas publié
+code:             codeduchapitre
 url:
-    cours-html:   multiplex.html
-    cours-pdf:    multiplex.pdf
-    dias-video:   multiplex-dia.pdf
-    dias-compact: multiplex-dia-compact.pdf
+    cours-html:   codeduchapitre.html
+    cours-pdf:    codeduchapitre.pdf
+    dias-video:   codeduchapitre-dia.pdf
+    dias-compact: codeduchapitre-dia-compact.pdf

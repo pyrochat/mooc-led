@@ -1,13 +1,13 @@
 titre:
-    - "Commande d’un afficheur matriciel multiplexé avec une FPGA"
+    - "[Physique] Correction Gamma"
 type:             Théorie
 niveau:           avancé
 auteur:          
-    - MLN
+    - AT
 statut:           Pas publié
-code:             codeduchapitre
+code:             gamma
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   gamma.html
+    cours-pdf:    gamma.pdf
+    dias-video:   gamma-dia.pdf
+    dias-compact: gamma-dia-compact.pdf

@@ -1,0 +1,13 @@
+titre:
+    - "[Logique] Commande d’un afficheur avec une FPGA"
+type:             Théorie
+niveau:           avancé
+auteur:          
+    - MLN
+statut:           Pas publié
+code:             commande-fpga
+url:
+    cours-html:   commande-fpga.html
+    cours-pdf:    commande-fpga.pdf
+    dias-video:   commande-fpga-dia.pdf
+    dias-compact: commande-fpga-dia-compact.pdf

@@ -4,16 +4,40 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title></title>
+  <meta name="author" content="Pierre-Yves Rochat, EPFL" />
+  <title>Langage interprété spécialisé</title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
 <body>
-<p>Langage interprété spécialisé</p>
-<p>Introduction</p>
+<div id="header">
+<h1 class="title">Langage interprété spécialisé</h1>
+<h2 class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
+<h3 class="date">rév 2016/01/22</h3>
+</div>
+<h2 id="introduction">Introduction</h2>
 <p>Animer une enseigne à LED consiste en une suite d'opérations sur les groupes LED. Animer un afficheur matriciel consiste aussi à envoyer des séquences graphiques. Dans les deux cas, une jolie animation ne se limitera pas à quelques étapes, mais pourra vite devenir longue. Les programmes correspondant vont donc avoir tendance à devenir longs, ce qui va rendre leur lecture fastidieuse et qui risque aussi de remplir rapidement la mémoire du microcontrôleur.</p>
 <p>Une technique souvent utilisée consiste à inventer un <em>langage</em> pour décrire ce qui se passe sur l'enseigne ou l'afficheur et programmer les animations dans ce langage.</p>
-<p>Langage Arduino</p>
+<h2 id="langage-arduino">Langage Arduino</h2>
 <p>Prenons l'exemple très simple. Pour décrire une animation sur une enseigne, deux ordres suffisent pour décrire les actions :</p>
 <ul>
 <li>mettre un groupe de LED à une certaine intensité</li>
@@ -30,7 +54,44 @@
 <li>delay() prend 10 octets en mémoire.</li>
 </ul>
 <p>En prenant par exemple un microcontrôleur MSP430G2213, disposant d'une mémoire flash de 2kB (2048 octets), on sera limité à moins de 80 pas de programme, constitué de paires digitalWrite() - delay(). En constatant qu'un simple chenillard dans les deux sens sur 8 bits en prend déjà 16, c'est réellement limitatif !</p>
-<p>loop() { digitalWrite (P2_0, 1); delay (100); digitalWrite (P2_1, 1); delay (100); digitalWrite (P2_2, 1); delay (100); digitalWrite (P2_3, 1); delay (100); digitalWrite (P2_4, 1); delay (100); digitalWrite (P2_5, 1); delay (100); digitalWrite (P2_6, 1); delay (100); digitalWrite (P2_7, 1); delay (200); digitalWrite (P2_7, 0); delay (100); digitalWrite (P2_6, 0); delay (100); digitalWrite (P2_5, 0); delay (100); digitalWrite (P2_4, 0); delay (100); digitalWrite (P2_3, 0); delay (100); digitalWrite (P2_2, 0); delay (100); digitalWrite (P2_1, 0); delay (100); digitalWrite (P2_0, 0); delay (300); }</p>
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c">loop() {
+  digitalWrite (P2_0, <span class="dv">1</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_1, <span class="dv">1</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_2, <span class="dv">1</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_3, <span class="dv">1</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_4, <span class="dv">1</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_5, <span class="dv">1</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_6, <span class="dv">1</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_7, <span class="dv">1</span>); delay (<span class="dv">200</span>);
+  digitalWrite (P2_7, <span class="dv">0</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_6, <span class="dv">0</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_5, <span class="dv">0</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_4, <span class="dv">0</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_3, <span class="dv">0</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_2, <span class="dv">0</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_1, <span class="dv">0</span>); delay (<span class="dv">100</span>);
+  digitalWrite (P2_0, <span class="dv">0</span>); delay (<span class="dv">300</span>);
+}</code></pre></td></tr></table>
+<!-- retour au mode normal -->
+
 <p>Bien entendu, les instructions permettant l'accès direct aux registres du microcontrôleur permettent d'économiser la place en mémoire. L'instruction P1OUT |= (1&lt;&lt;0); &lt;--- --- &gt; prend 4 octets. C'est déja mieux ! Mais cherchons une autre solution.</p>
 <p>Inventer un langage</p>
 <p>Une solution élégante est d'inventer un langage. Il aura les deux même instructions :</p>
@@ -39,25 +100,100 @@
 <li>Attend. Paramètre : durée de l'attente</li>
 </ul>
 <p>Le programme pourrait alors se présenter sous forme d'un tableau. Nous avons utilisé ici un tableau d'octets. Le programme pour notre chenillard se présenterai alors de la manière suivante :</p>
-<p>uint8_t Animation[] = { // définition d'un tableau d'octets Sortie0+On, Attente+10, Sortie1+On, Attente+10, Sortie2+On, Attente+10, Sortie3+On, Attente+10, Sortie4+On, Attente+10, Sortie5+On, Attente+10, Sortie6+On, Attente+10, Sortie7+On, Attente+20, Sortie7+Off, Attente+10, Sortie6+Off, Attente+10, Sortie5+Off, Attente+10, Sortie4+Off, Attente+10, Sortie3+Off, Attente+10, Sortie2+Off, Attente+10, Sortie1+Off, Attente+10, Sortie0+Off, Attente+30, Fin }</p>
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="dt">uint8_t</span> Animation[] = { <span class="co">// définition d&#39;un tableau d&#39;octets</span>
+  Sortie0+On, Attente<span class="dv">+10</span>,
+  Sortie1+On, Attente<span class="dv">+10</span>,
+  Sortie2+On, Attente<span class="dv">+10</span>,
+  Sortie3+On, Attente<span class="dv">+10</span>,
+  Sortie4+On, Attente<span class="dv">+10</span>,
+  Sortie5+On, Attente<span class="dv">+10</span>,
+  Sortie6+On, Attente<span class="dv">+10</span>,
+  Sortie7+On, Attente<span class="dv">+20</span>,
+  Sortie7+Off, Attente<span class="dv">+10</span>,
+  Sortie6+Off, Attente<span class="dv">+10</span>,
+  Sortie5+Off, Attente<span class="dv">+10</span>,
+  Sortie4+Off, Attente<span class="dv">+10</span>,
+  Sortie3+Off, Attente<span class="dv">+10</span>,
+  Sortie2+Off, Attente<span class="dv">+10</span>,
+  Sortie1+Off, Attente<span class="dv">+10</span>,
+  Sortie0+Off, Attente<span class="dv">+30</span>,
+  Fin
+}</code></pre></td></tr></table>
+<!-- retour au mode normal -->
+
 <p>Sa taille n'est que de 33 octets. Voici les définitions nécessaire pour que ce tableau se compile correctement :</p>
-<h1 id="define-on-0b01000000">define On 0b01000000</h1>
-<h1 id="define-sortie0-0">define Sortie0 0</h1>
-<h1 id="define-sortie1-1">define Sortie1 1</h1>
-<h1 id="define-sortie2-2">define Sortie2 2</h1>
-<h1 id="define-sortie3-3">define Sortie3 3</h1>
-<h1 id="define-sortie4-4">define Sortie4 4</h1>
-<h1 id="define-sortie5-5">define Sortie5 5</h1>
-<h1 id="define-sortie6-6">define Sortie6 6</h1>
-<h1 id="define-sortie7-7">define Sortie7 7</h1>
-<h1 id="define-attente-0b10000000">define Attente 0b10000000</h1>
-<h1 id="define-fin-0b1111111">define Fin 0b1111111</h1>
-<p>Langage binaire</p>
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="ot">#define On 0b01000000</span>
+<span class="ot">#define Sortie0 0</span>
+<span class="ot">#define Sortie1 1</span>
+<span class="ot">#define Sortie2 2</span>
+<span class="ot">#define Sortie3 3</span>
+<span class="ot">#define Sortie4 4</span>
+<span class="ot">#define Sortie5 5</span>
+<span class="ot">#define Sortie6 6</span>
+<span class="ot">#define Sortie7 7</span>
+
+<span class="ot">#define Attente 0b10000000</span>
+<span class="ot">#define Fin 0b1111111</span></code></pre></td></tr></table>
+<!-- retour au mode normal -->
+
+<h2 id="langage-binaire">Langage binaire</h2>
 <p>Voici la description binaire de notre langage :</p>
-<p>// Description des instructions : // b7 b6 b5 b4 b3 b2 b1 b0 : instructions sur 8 bits // ----------------------- // 0 i0 s5-s4-s3-s2-s1-s0 : met une intensité sur une sortie // 1 d6-d5-d4-d3-d2-d1-d0 : attente // ----------------------- // // Sorties sur 6 bits (maximum 64 sorties) // Intensité sur 1 bit (On ou OFF) // Durée sur 7 bits, exprimée en dixième de seconde (0 à 12.6 secondes)</p>
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="co">// Description des instructions :</span>
+<span class="co">// b7 b6 b5 b4 b3 b2 b1 b0  : instructions sur 8 bits</span>
+<span class="co">// -----------------------</span>
+<span class="co">//  0 i0 s5-s4-s3-s2-s1-s0  : met une intensité sur une sortie</span>
+<span class="co">//  1 d6-d5-d4-d3-d2-d1-d0  : attente</span>
+<span class="co">// -----------------------</span>
+<span class="co">// </span>
+<span class="co">// Sorties sur 6 bits (maximum 64 sorties)</span>
+<span class="co">// Intensité sur 1 bit (On ou OFF)</span>
+<span class="co">// Durée sur 7 bits, exprimée en dixième de seconde (0 à 12.6 secondes)</span></code></pre></td></tr></table>
+<!-- retour au mode normal -->
+
 <p>Ceux qui ont déjà programmé en assembleur trouveront une grande similitude avec la description des instruction en binaire !</p>
 <p>On voit que des choix ont été faits pour utiliser au mieux les instructions, qui sont des champs de 8 bits. Le bit de poids fort b7 détermine s'il s'agit d'une instruction pour définit l'intensité ou pour l'attente. Ensuite, les 7 bits restant se répartissent selon l'instruction : une intensité et un numéro de sortie pour l'action sur une sortie, une valeur en dixième de seconde pour l'attente. L'usage de la milliseconde comme unité aurait été trop limitative, étant donné que seuls 7 bits sont à disposition.</p>
-<p>Interpréteur</p>
+<h2 id="interpréteur">Interpréteur</h2>
 <p>Il reste à écrire une procédure qui va interpréter notre langage et le traduire en instructions pour notre microcontrôleur.</p>
 <p>La voici :</p>
 </body>

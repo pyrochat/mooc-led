@@ -27,11 +27,32 @@ body
 	display: table;
 	width: 17cm;
 	font-size: 12pt;
+	/*font-weight: 400; */ /* 400 = défaut */
 	string-set: strMOOC    "EPFL — MOOC AFFICHAGES À LED"
 				strPage_nb "–  " counter( page ) "  –"
 				strSEPARATOR " •";
 }
 
+div#header {
+	text-align: center;
+}
+div#header a {
+	color: navy;
+	text-decoration: none;
+}
+div#header h1 {
+	background-image: url( "images/epfl_small_x2.png" );
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center 0px;
+	background-attachment: scroll;
+	padding: 150px 0 0;
+	margin: 0;
+}
+div#header h2, div#header h3 {
+	margin: 20px 0 ;
+	padding: 0;
+}
 
 hr
 {
@@ -47,22 +68,14 @@ hr + h2
 h1, h2, h3, h4, h5, h6
 {
 	page-break-after: avoid;
-}
-
-h1:first-child
-{
-	background-image: url( "images/epfl_small_x2.png" );
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: center 0px;
-	background-attachment: scroll;
-	padding-top: 150px;
+	font-weight: 500;
 }
 
 h1
 {
 	font-family: "Ubuntu Condensed";
 	font-size: 300%;
+	font-weight: 600;
 	text-transform: uppercase;
 	margin: 50px 0 50px;
 	text-align: center;
@@ -135,6 +148,29 @@ li:before
 sub { top: 0.5ex; }
 .footnote, sup { bottom: 1ex; }
 
+sup.align {
+	width: 1.5em;
+	display: inline-table;
+	text-align: left;
+}
+
+table {
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+thead tr {
+	border-bottom: 2px solid;
+}
+th {
+	font-weight: 500;
+}
+th, td {
+	padding: 5px 10px;
+	vertical-align: middle;
+}
+tbody tr:nth-child( odd ) {
+	background-color: rgb( 240, 240, 240 );
+}
 
 div.figure
 {
@@ -155,9 +191,16 @@ div.figure p.caption
 	font-size: 90%;
 }
 
-div.sourceCode code
+code
 {
 	font-family: "Ubuntu Mono";
+}
+p code, table code, li code {
+	font-style: italic;
+}
+
+div.sourceCode code
+{
 	font-size: 99%;
 }
 

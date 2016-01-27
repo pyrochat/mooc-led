@@ -13,11 +13,11 @@ Il faut différencier trois significations différentes du mot Arduino :
 * un environnement de développement
 * une librairie pour microcontrôleurs.
 
-`1.` L’Arduino est une **carte à microcontrôleurs**, plus exactement une famille de cartes. L’**Arduino UNO** est la plus connue. Elle contient un microcontrôleur AVR du fabricant Atmel, le modèle ATmega328. Un câble USB permet de la brancher sur un PC, principalement pour déposer un programme dans le microcontrôleur. Les cartes Arduino sont *open hardware* : leurs plans son publiques. Comme elles sont produites par de nombreux fabricants, leur prix est très favorable.
+`1.` L’Arduino est une **carte à microcontrôleurs**, plus exactement une famille de cartes. L’**Arduino UNO** est la plus connue. Elle contient un microcontrôleur AVR du fabricant Atmel, le modèle ATmega328. Un câble USB permet de la brancher sur un PC, principalement pour déposer un programme dans le microcontrôleur. Les cartes Arduino sont *open hardware* : leurs plans sont publiques. Comme elles sont produites par de nombreux fabricants, leur prix est très favorable.
 
 ![Exemple de carte Arduino](images/Uno.jpg "Exemple de carte Arduino")
 
-`2.` Le **programme Arduino** environnement de développement (IDE = Integrated Developpement Environnement). C’est donc un logiciel qui s’exécute sur un PC. Il fonctionne sur les principaux systèmes d’exploitation courant : Windows, Linux et MacOS. Il associe principalement un éditeur et un compilateur C. Il permet d’écrire un programme, de le compiler et de l’envoyer sur une carte Arduino. C’est un logiciel libre, écrit en Java, inspiré de l’environnement *Processing*.
+`2.` Le **programme Arduino** est aussi environnement de développement (IDE = Integrated Developpement Environnement). C’est donc un logiciel qui s’exécute sur un PC. Il fonctionne sur les principaux systèmes d’exploitation courant : Windows, Linux et MacOS. Il associe principalement un éditeur et un compilateur C. Il permet d’écrire un programme, de le compiler et de l’envoyer sur une carte Arduino. C’est un logiciel libre, écrit en Java, inspiré de l’environnement *Processing*.
 
 On voit sur cette copie d’écran que l’interface est très simple :
 
@@ -27,11 +27,11 @@ Plusieurs programmes similaires au programme Arduino existent pour supporter d�
 
 `3.` Finalement, on utilise souvent le mot Arduino pour désigner un **langage de programmation**. Il ne s’agit pas à proprement parlé d’un langage, mais plutôt d’un ensemble de procédures. Rappelons qu’une procédure est un ensemble d’instructions, écrites dans un langage de programmation. Ces procédures sont groupées dans une *librairie* (traduction abusive du mot anglais *library*). Ces procédures permettent de mettre en œuvre un microcontrôleur de manière très simple. Elles sont écrites en C, plus exactement en C++.
 
-Ces procédures sont similaires au langage *Wiring*, qui a précédé l’Arduino. Ce terme serait plus correct, mais il est moins connu. Nous utiliserons dans ce cours l’expression **programmation en C-Arduino** pour désigner le fait de développer des programmes pour microcontrôleurs avec le langage C et les procédure Arduino. C’est le sujet de cette leçon. Plus exactement, nous allons décrire un minimum de procédures qui vont nous permettre de programmer nos premières enseignes à LED.
+Ces procédures sont similaires au langage *Wiring*, qui a précédé l’Arduino. Ce terme serait plus correct, mais il est moins connu. Nous utiliserons dans ce cours l’expression **programmation en C-Arduino** pour désigner le fait de développer des programmes pour microcontrôleurs avec le langage C et les procédures Arduino. C’est le sujet de cette leçon. Plus exactement, nous allons décrire un minimum de procédures qui vont nous permettre de programmer nos premières enseignes à LED.
 
 ## Cacher la complexité du microcontrôleur ##
 
-Le but du C-Arduino est de cacher une partie la complexité du microcontrôleur. Accessoirement, c’est un moyen d’écrire des programmes qui peuvent, dans une certaine mesure, s’exécuter sur plusieurs modèles de microcontrôleurs.
+Le but du C-Arduino est de cacher en partie la complexité du microcontrôleur. Accessoirement, c’est un moyen d’écrire des programmes qui peuvent, dans une certaine mesure, s’exécuter sur plusieurs modèles de microcontrôleurs.
 
 Nous allons présenter ici :
 
@@ -43,7 +43,7 @@ Nous allons présenter ici :
 
 Plutôt que d’écrire un programme complet, avec sa procédure `main()`, Arduino nous propose d’écrire deux procédures : `setup()` et `loop()`.
 
-La procédure `void setup()` s’exécute une seule fois au début de l’exécution du programme, qui correspond au *Reset* du microcontrôleur. Notons qu’un *Reset* se produit automatiquement lorsqu’on applique la tension d’alimentation sur un microcontrôleur. La procédure `setup()` s’exécute donc lorsqu’on allume notre dispositif. Elle contient généralement toutes les initialisations matérielles et logicielles nécessaire pour la suite du programme.
+La procédure `void setup()` s’exécute une seule fois au début de l’exécution du programme, qui correspond au *Reset* du microcontrôleur. Notons qu’un *Reset* se produit automatiquement lorsqu’on applique la tension d’alimentation sur un microcontrôleur. La procédure `setup()` s’exécute donc lorsqu’on allume notre dispositif. Elle contient généralement toutes les initialisations matérielles et logicielles nécessaires pour la suite du programme.
 
 La procédure `void loop()` est appelée à la suite de `setup()`. Mais, contrairement au `setup()` qui n’est appelé qu’une fois, elle est appelée en permanence. Elle correspond donc à la boucle principale du programme, d’où son nom. Rappelons que les programmes pour microcontrôleur n’ont généralement pas de fin : l’exécution se poursuit jusqu’à ce que le microcontrôleur ne soit plus alimenté ou jusqu’à un *Reset*.
 
@@ -54,9 +54,9 @@ Voici donc l’organigramme général d’un programme Arduino :
 
 ![Organigramme d’un programme Arduino](images/organi-arduino-120dpi.png "Organigramme d’un programme Arduino"){ width=7cm }
 
-L’organigramme à gauche de la figure correspond à ce que voit l’utilisateur. Mais en fait, derrière l’usage de`setup()` et `loop()` proposé par Arduino, des instructions cachées s’exécutent avant chacune de ces procédures, comme le montre l’organigramme de droite. C’est dans la procédure `main()` que produit l’environnement Arduino qui ajoute ces instructions.
+L’organigramme à gauche de la figure correspond à ce que voit l’utilisateur. Mais en fait, derrière l’usage de `setup()` et `loop()` proposé par Arduino, des instructions cachées s’exécutent avant chacune de ces procédures, comme le montre l’organigramme de droite. C’est dans la procédure `main()` produite par l’environnement Arduino que ces instructions sont ajoutées.
 
-Il faut noter que la procédure `loop()` a une durée d’exécution qui peut varier considérablement d’un programme à un autre. Pour une enseigne ou un afficheur à LED, elle pourrait par exemple durer le temps d’un cycle complet de l’animation. Mais elle pourrait tout aussi bien durer un temps très court, par exemple un temps fixe de 10 micro-seconde. Tout dépendra de la manière de programmer.
+Il faut noter que la procédure `loop()` a une durée d’exécution qui peut varier considérablement d’un programme à un autre. Pour une enseigne ou un afficheur à LED, elle pourrait par exemple durer le temps d’un cycle complet de l’animation. Mais elle pourrait tout aussi bien durer un temps très court, par exemple un temps fixe de 10 microsecondes. Tout dépendra de la manière de programmer.
 
 ### Exemple ###
 
@@ -71,7 +71,7 @@ void loop() {
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
 
-Il est possible de le compiler de de l’exécuter... mais il ne fait rien !
+Il est possible de le compiler et de l’exécuter... mais il ne fait rien !
 
 ## Les entrées-sorties ##
 
@@ -130,7 +130,7 @@ En permanence, il écrit sur la broche P1_0, qui est la LED rouge du Launchpad, 
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
 
-C’est une raison électrique qui oblige l’utilisation du mode `INPUT_PULLUP`. Elle sera expliquée en détail dans une prochaine leçon. On apprendra aussi pourquoi ce programme à l’inverse de ce qu’on avait imaginé : la LED sera allumée tant qu’on ne presse pas sur le bouton-poussoir et s’éteindra lorsqu’on le presse.
+C’est une raison électrique qui oblige l’utilisation du mode `INPUT_PULLUP`. Elle sera expliquée en détail dans une prochaine leçon. On apprendra aussi pourquoi ce programme fait l’inverse de ce qu’on avait imaginé : la LED sera allumée tant qu’on ne presse pas sur le bouton-poussoir et s’éteindra lorsqu’on le presse.
 
 
 ## La gestion du temps ##
@@ -158,7 +158,7 @@ void loop() {
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
 
-On y trouve la procédure `setup()` qui met en sortie la broche sur laquelle la LED rouge du LanuchPad est branchée.
+On y trouve la procédure `setup()` qui met en sortie la broche sur laquelle la LED rouge du LaunchPad est branchée.
 
 La procédure `loop()` allume la LED, puis attend une demi-seconde, puis éteint la LED et attend à nouveau une demi-seconde. Tout le cycle dure une seconde. On a donc produit un *signal carré* de 1 Hz.
 

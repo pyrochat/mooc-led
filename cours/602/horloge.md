@@ -33,7 +33,7 @@ Les piles utilisées pour maintenir l’heure sont souvent des piles au lithium.
 
 ## Supercap ##
 
-Il existe un autre système d’accumulation d’énergie, qui peut être utilisé pour des horloges temps réel. Ce sont les *supercap*. Il d’agit de condensateurs électrolytiques basés sur une technologie à double couche électrochimique. Il est courant d’obtenir des capacités de plusieurs Farad, pour une taille similaire à une pile au lithium.
+Il existe un autre système d’accumulation d’énergie, qui peut être utilisé pour des horloges temps réel. Ce sont les *supercap*. Il s’agit de condensateurs électrolytiques basés sur une technologie à double couche électrochimique. Il est courant d’obtenir des capacités de plusieurs Farad, pour une taille similaire à une pile au lithium.
 
 La capacité de la supercap est généralement dimensionnée pour assurer à l’horloge une autonomie de quelques jours ou quelques semaines. Dès que l’appareil est relié au réseau électrique, la supercap est rapidement rechargée. Le nombre de cycles charge-décharge peut être très grand, de l’ordre de 100’000 cycles. Pour comparaison, la durée de vie d’un accumulateur est limité à environ 1’000 cycles. Mais celle d’un condensateur traditionnel, même électrolytique est encore bien supérieure.
 

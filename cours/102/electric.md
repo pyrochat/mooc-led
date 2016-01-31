@@ -1,14 +1,11 @@
+% Circuits électriques
+% [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
+% rév 2016/01/20
 
-**Circuits électriques**
-==================================
-
-## [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
-
-> Document en cours de relecture, rév du 2016/01/20
 
 ##  Électrons libres et courant électrique ##
 
-On se souvient que la matière est composée d’**atomes**. Les atomes ont un noyau, composé de protons et de neutrons, ainsi qu’un nuage d’électrons, constitués en couches successives. 
+On se souvient que la matière est composée d’**atomes**. Les atomes ont un noyau, composé de protons et de neutrons, ainsi qu’un nuage d’électrons, constitués en couches successives.
 
 ![Structure d’un atome](images/atome.png "Structure d’un atome"){ width=8cm }
 

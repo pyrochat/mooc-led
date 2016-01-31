@@ -1,10 +1,7 @@
+% Le multiplexage temporel
+% [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
+% rév 2015/07/16
 
-**Le multiplexage temporel**
-==================================
-
-## [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
-
-> Document en cours de relecture, rév du 2015/07/16
 
 ##  Commander deux LED indépendantes avec une broche ##
 

@@ -1,10 +1,6 @@
-
-**Enseignes à motifs fixes**
-===========================================
-
-## [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
-
-> Document en cours de relecture, version du 2015/09/15
+% Enseignes à motifs fixes
+% [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
+% rév 2015/09/15
 
 
 ## Placer des LED fixes pour former une enseigne ##
@@ -13,9 +9,9 @@ Une des applications les plus simples des LED est la réalisation d’enseignes 
 
 Voici deux exemples très simples :
 
-![Figure : Exemple d’enseigne à motifs fixes](images/hotel.png "Exemple d’enseigne à motifs fixes"){ width=10cm }
+![Figure : Exemple d’enseigne à motifs fixes](images/hotel.png "Exemple d’enseigne à motifs fixes"){ width=4.5cm }
 
-![Figure : Autre exemple](images/croix-pharma.png "Autre exemple"){ width=7cm }
+![Figure : Autre exemple](images/croix-pharma.png "Autre exemple"){ width=4.5cm }
 
 La première enseigne affiche un mot lisible : HOTEL. Ce mot ne peut être changé, car les LED sont disposées de façon à former le mot HOTEL. La seconde enseigne affiche un motif géométrique qui fait penser à une croix de pharmacie.
 

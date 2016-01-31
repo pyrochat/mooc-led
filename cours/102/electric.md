@@ -1,14 +1,11 @@
+% Circuits électriques
+% [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
+% rév 2016/01/20
 
-**Circuits électriques**
-==================================
-
-## [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
-
-> Document en cours de relecture, rév du 2016/01/20
 
 ##  Électrons libres et courant électrique ##
 
-On se souvient que la matière est composée d’**atomes**. Les atomes ont un noyau, composé de protons et de neutrons, ainsi qu’un nuage d’électrons, constitués en couches successives. 
+On se souvient que la matière est composée d’**atomes**. Les atomes ont un noyau, composé de protons et de neutrons, ainsi qu’un nuage d’électrons, constitués en couches successives.
 
 ![Structure d’un atome](images/atome.png "Structure d’un atome"){ width=8cm }
 
@@ -16,7 +13,7 @@ Dans certains les matériaux, les électrons de la dernière couche sont capable
 
 Les électrons ayant une charge négative, ils se **déplacent** du *moins* vers le *plus*. Ils se déplacent lentement, de l’ordre de quelques centimètres par heure.
 
-Le courant électrique se déplace conventionnellement du *plus* vers le *moins* : on a découvert le courant électrique avant de connaître l’existence des atomes et des électrons ! Le courant électrique se **propage** très rapidement, à une vitesse proche de la vitesse de la lumière, qui est de 300’000 km par seconde.
+Le courant électrique se déplace conventionnellement du *plus* vers le *moins* : on a découvert le courant électrique avant de connaître l’existence des atomes et des électrons ! Le courant électrique se **propage** très rapidement, à une vitesse proche de la vitesse de la lumière, qui est de 300’000 km par seconde.
 
 Les matériaux qui permettent ce phénomène du courant électrique sont appelés **conducteurs**.  Il s’agit principalement des métaux, dont le cuivre et l’aluminium sont les plus couramment utilisés.
 
@@ -28,7 +25,7 @@ Nous verrons plus tard ce qu’est une LED (Light-Emitting Diode, diode électro
 
 ![Circuit électrique](images/pile-led.png "Circuit électrique"){ width=9cm }
 
-Les électriciens et les électroniciens ont l’habitude de dessiner des **schémas** en utilisant des symboles. Ils ne ressemblent pas toujours à la forme des composants utilisés !  Voici le schéma correspondant au montage ci-dessus :
+Les électriciens et les électroniciens ont l’habitude de dessiner des **schémas** en utilisant des symboles. Ils ne ressemblent pas toujours à la forme des composants utilisés !  Voici le schéma correspondant au montage ci-dessus :
 
  ![Schéma électronique](images/schema-pile-led.png "Schéma électronique"){ width=9cm }
 
@@ -75,7 +72,7 @@ On utilisera très souvent cette loi, par exemple pour calculer les résistances
 
 ## Énergie et puissance ##
 
-On comprend intuitivement qu’une pile contient de l’**énergie** électrique. Une certaine quantité de cette énergie va être transformée en chaleur dans la résistance. Notons que le rendement est alors de 100% ! La **puissance** est la quantité d’énergie par unité de temps :
+On comprend intuitivement qu’une pile contient de l’**énergie** électrique. Une certaine quantité de cette énergie va être transformée en chaleur dans la résistance. Notons que le rendement est alors de 100% ! La **puissance** est la quantité d’énergie par unité de temps :
 
 **P = U × I** , avec  P : la puissance, exprimée en Watt [W]
 
@@ -87,7 +84,7 @@ Dans le schéma ci-dessous, deux résistances ont été montée *en parallèle*.
 
 U = U~1~ = U~2~ = R~1~ × I~1~ = R~2~ × I~2~
 
-Quel est alors la valeur du courant I ? On admet facilement que les électrons ne peuvent pas *sortir* du fils. On a donc I = I~1~ + I~2~
+Quel est alors la valeur du courant I ? On admet facilement que les électrons ne peuvent pas *sortir* du fils. On a donc I = I~1~ + I~2~
 
 ...
 

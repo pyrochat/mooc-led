@@ -1,6 +1,5 @@
 % Séquenceurs à compteurs
-% [Yves Tiecoura](mailto:tiecouray@yahoo.fr), INP-HB Yamoussoukro
-% et [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
+% [Yves Tiecoura](mailto:tiecouray@yahoo.fr), INP-HB Yamoussoukro<br/>et [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
 % rév 2015/11/11
 
 

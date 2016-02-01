@@ -1,10 +1,6 @@
-
-**Enseignes à motifs fixes**
-===========================================
-
-## [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
-
-> Document en cours de relecture, version du 2015/09/15
+% Enseignes à motifs fixes
+% [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
+% rév 2015/09/15
 
 
 ## Placer des LED fixes pour former une enseigne ##

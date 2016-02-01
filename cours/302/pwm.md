@@ -1,10 +1,6 @@
-
-**PWM : Modulation de Largeur d’Impulsion**
-===========================================
-
-## [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
-
-> Document en cours de relecture, version du 2015/07/19
+% PWM : Modulation de Largeur d’Impulsion
+% [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
+% rév 2015/07/19
 
 
 ## Varier l’intensité d’une LED ##

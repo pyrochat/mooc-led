@@ -1,0 +1,524 @@
+
+// (vitre cassés, Cotonou, avril 2015)
+//               ___
+//  OE        1 |o o| 2  A
+//  Gnd       2 |o o| 4  B
+//  Gnd       5 |o o| 6  -
+//  Gnd       7 |o o| 8  Ck
+//  Gnd       9 |o o| 10 Load
+//  Gnd      11 |o o| 12 Data
+//  Gnd      13 |o o| 14 -
+//  Gnd      15 |o o| 16 -
+
+Semble correspondre au HUB12, dual  16  :
+2 A B C S L R G D 16 
+1 O N N N N N N N 15 
+
+
+// Connecteur câble plat, 10 pin:
+//         ___
+//  A   1 |o o| 2  B
+//  B   2 |o o| 4  D
+//  Ck  5[|o o| 6  Gnd
+//  G   7 |o o| 8  R
+//  OE  9 |o o| 10 Gnd
+
+
+=====================================================================
+
+
+Most led display modules' interface define: 
+Note:N=(GND),   L=(LAT or ST),   S=(Clk),   O=(OE),   E=(/OE)   R=red color signal 
+G=Green signal,   U=blue signal,   A,B,C,D=row signal,   H=the signal afer row signal compile,   F=NC,   V=VCC 
+order 
+type 
+color 
+Pin number 
+Interface define 
+
+Linsn HUB, dual 20 
+2 A B C D L S R G O N 20 
+1 N N N N N N N N N N 19 
+
+Lantong HUB, dual 20 
+2 A B C D L S R G O N 20 
+1 A B C D L S R G O N 19 
+
+HUB04, dual , 20 
+2 N N N N N N N N N N 20 
+1 S L R G O A B C D N 19 
+
+HUB05, dual 16 
+2 G R B C D A L S 16 
+1 N N O N N N N N 15 
+
+HUB06, dual 16 
+2 N N N N N N N D 16 
+1 S L R G O A B C 15 
+
+HUB07, dual 20 
+2 N N N N N N N N N N 20 
+1 G S L R D C B A O N 19 
+
+HUB08, dual 16 
+2 A B C D G1 G2 L S 16 
+1 N N N O R1 R2 N N 15 
+
+HUB09, dual 16 
+2 A S O L G1 G2 R1 R2 16 
+1 B C D N N  N  N  N 15 
+
+HUB10, dual 20 
+2 R1 G1 R2 G2 A C L O S1 S2 20 
+1 N  N  N  N  B D N E N  N 19 
+
+HUB11, dual 16 
+2 G1 G2 N D N N N B 16 
+1 R1 R2 N C O S L A 15 
+
+HUB12, dual 16 
+2 A B C S L R G D 16 
+1 O N N N N N N N 15 
+
+HUB13, dual 20 
+2 N  N  N  N  N N B D N N 20 
+1 R1 G1 R2 G2 S L A C O O 19 
+
+HUB14, dual 16 
+2 N  N  N  N  N A B C 16 
+1 R1 G1 R2 G2 S L O D 15 
+
+HUB15, dual 16 
+2 N  N  N  N  S A B C 16 
+1 R1 G1 R2 G2 S L O D 15 
+
+HUB16, dual 20 
+2 N  N  N  N  N B D N N 20 
+1 R1 G1 R2 G2 S A C O F  19 
+
+HUB18, dual 16 
+2 N N G2 R2 N N N D 16 
+1 S L R1 G1 O A B C 15 
+
+HUB19, dual 20 
+2 N N N N N N N N N N 20 
+1 S L A B C D O O G R 19 
+
+HUB20, dual 26 
+2R G N S N V L A B C D O N 26 
+1N N N N N N N N N N N N N 25 
+
+HUB21, dual 20 
+2H2 H4 H6 H8 N R2 G2 O L S2 20 
+1H1 H3 H5 H7 N R1 G1 N F S1 19 
+
+HUB22, dual 20 
+2 S L A C N N N  N  N  N  20 
+1 N N N B D O R1 G1 R2 G2 19 
+
+HUB23, dual 20 
+2 A- B- C- D- R- G- N O- L- S- 20 
+1 A+ B+ C+ D+ R+ G+ N O+ L+ S+ 19 
+
+HUB24, dual 16 
+2 A S O L F G F  R 16 
+1 B C D N N N N N 15 
+
+HUB25, dual 10 
+2 R1 G1 N N N 10 
+1 R2 G2 L O S 9 
+
+HUB26, dual 16 
+2 G1 G2 A C N O S S 16 
+1 R1 R2 N B D L N N 8 
+
+HUB27, dual 10 
+1 N L F O A G R F S F 10 
+
+HUB28, dual 20 
+2 N N N N N N N N N N 20 
+1 G S L R D C B A O E 19 
+
+HUB29, dual 26 
+2N N N N N G1 G2 G3 G4 G5 G6 G7 G8 26 
+1S L O A B R1 R2 R3 R4 R5 R6 R7 R8 25 
+
+HUB30, dual 26 
+2N  N  N  N  N  N  N  N  S2 S4 F B F 26 
+1R1 R2 R3 R4 G1 G2 G3 G4 S1 S3 L A O 25 
+
+HUB31, dual 16 
+2S L R1 R2 R3 R4 O N 16 
+1N N N  N  N  N  N N 15 
+
+HUB32, dual 16 
+2A  B  C  D  N N N N16 
+1G2 G1 R2 R1 O S L N15 
+
+HUB33, dual 26 
+2N  N  N  N  N  N  N  N  N N N N N26 
+1R1 R2 R3 R4 G1 G2 G3 G4 S L F F O25 
+
+HUB34, dual 20 
+2R  G  S  N  L O A B C D 20 
+1R G S N L O A B C D 19 
+
+HUB35, dual 16 
+2N  N  R2  G2  N N C O 16 
+1S L R1 G1 N A B D 15 
+
+HUB36, RGB
+2 R U G S L 10 
+1 N N N N O 5 
+
+HUB37, RGB
+2 N N N N N N N N N N 20 
+1 G S L R D C B A O U 19 
+
+HUB38, RGB
+2 U1 G1 R1 S L O O O F U2 G2 R2 F 26 
+1 N  N  N  N N N N N N N  N  N  N 25 
+
+HUB39, RGB
+2 N N R2 G2 N N N N N U2 20 
+1 S  L R1 G1 O  A B C S U1 19 
+
+HUB40, RGB
+2 R2 U1 R4 U2 N N N N 16 
+1 R1 G1 R3 G2 S L O N 15 
+
+HUB41, RGB
+2 G2 N N R2 N N N N N U2 20 
+1 G1 S L R1 D C B A O U1 19 
+
+HUB42, RGB
+2 N  N  N  N  N N N A B C 20 
+1 R1 G1 U1 R2 S L O O O D 19 
+
+HUB43, single 
+2 N N N  N  N N N N N  N 20 
+1 S L R1 R2 O A B C R3 N 19 
+
+HUB44, RGB
+2 G1 N  N A B  G2 N  N A B 20 
+1 R1 U1 S L O R2 U1 S L O 19 
+
+HUB45, RGB
+2 O S R1 G1 U1 L R2 G2 U2 F 20 
+1 N N N  N  N  N N  N  N  N 19 
+
+HUB46, RGB
+2 R1 G1 U1 R2 G2 U2 L O S N 10 
+
+HUB47, RGB
+2 N N N N N N N N N N N N N N N N N N N N 40 
+1 G S L R D C B A O U G S L R D C B A O U 39 
+
+HUB48, RGB
+2 S L O R N 10 
+1 N N N N N 5 
+
+HUB49, RGB
+2 N N N N N N N N N N 20 
+1 S L R G O A B C D U 19 
+
+HUB50, RGB
+2 N N G N N N N G N N 20 
+1 S L R U O S L R U O 19 
+
+HUB51, RGB
+2 N N G Rb N N N G Rb N 20 
+1 S L Ra U O S L Ra U O 19 
+
+HUB52, RGB
+2 S L O R B 10 
+1 N N N N G 5 
+
+HUB53, dual 20 
+2 R1 R2 S L F R2 O G2 A B 20 
+1 N  N  N N N N  N N  D C 19 
+
+HUB55, dual 20 
+2 N  N  N  N  N N B D N N 20 
+1 R1 G1 R2 G2 S L A C O E 19 
+
+HUB56, RGB
+2 B N N N R2 G2 B2 N 16 
+1 A  C S L R1 G1 B1  O 15 
+
+HUB57, RGB
+2 SR L B2 R6 G6 R5 B6 B8 SB R8 R3 G2 G7 G5 O 30 
+1 N  SG B1 B7 R2 R1 R7 B4 B5 B3 R4 G4 G8 G1 G329 
+
+HUB58, RGB
+2 B N N N N B N N N N 20 
+1 R G S L O R G S L O 19 
+
+HUB59, dual 20 
+2 A B C D S L R O G O 20 
+1 N N N N N N N N N N 19 
+
+HUB60, RGB
+2 A B C D S L R O G O B O F 26 
+1 N N N N N N N N N N N N N 25 
+
+HUB62, RGB
+2 G1 U1 R1A R2A S L O G2 U2 R2A 20 
+1 N  N  N   N   N N N N  N  R2B 19 
+
+HUB63, dual 20 
+2 N N N N N N N N N N 20 
+1 A B C O L S R G D N 19 
+
+HUB64, RGB
+2 SR L B2 R6 G6 R5 B6 B8 SB R8 R3 G2 G7 G5 O 30 
+1 N  SG B1 B7 R2 R1 R7 B4 B5 B3 R4 G4 G8 G1 G329 
+
+HUB66, RGB
+2 N N N  B1 N N N N  N  N  20 
+1 S L R1 G1 O A B R2 G2 B2 19 
+
+HUB67, dual 16 
+2 G1 G2 G3 G4 N B L O 16 
+1 R1 R2 R3 R4 N A S O 15 
+
+HUB68, dual 20 
+2 A B C D L S R G O N 20 
+1 N N N N N N N N N N 19 
+
+HUB69, dual 16 
+2 A C L S R1 G1 O N 16 
+1 B D L S R2 G2 O N 15 
+
+HUB70, RGB
+2 B N N N R2 G2 B2 O 16 
+1 A C S L R1 G1 B1 N 15 
+
+HUB71, RGB
+2 U1 G1 R1 L S O F F F U2 G2 R2 F 26 
+1 N  N  N  N N N N N N N  N  N  N 25 
+
+HUB72, RGB
+2 A B C L N S N R1 R2 G1 U1 N O 26 
+1 A B C L N S N R1 R2 G1 U1 N O 25 
+
+HUB73, RGB
+2 G1 R2 B2 G3 R4 B4 A C L N  20 
+1 R1 B1 G2 R3 B3 G4 N B S O  19 
+
+HUB74, RGB
+2 N  BD N N N N N B  16 
+1 RD GD N N S L O A  15 
+
+HUB75, RGB
+2 GD1 N   GD2 N   B N L N  16 
+1 RD1 BD1 RD2 BD2 A C S O  15 
+
+HUB76, dual 16 
+2 F  F  F  F  N N N N  16 
+1 R1 G1 R2 G2 S L O N  15 
+
+HUB77, dual 20 
+2 N N G1 G2 O N N N G3 N 16 
+1 L S R1 R2 O A B C R3 N 15 
+
+HUB78, dual 34 
+2 N   N   G2 R2 N N N D N   N   G2 R2 N N N D F 34 
+1 CLK LAT R1 G1 O A B C CLK LAT R1 G1 O A B C F33 
+
+HUB79, dual 16 
+2 N N N N N   N   N O 16 
+1 D C B A CLK LAT G R 15 
+
+HUB80, dual 16 
+2 RD2 GD2 F F N   N   N A 16 
+1 RD1 GD1 F F CLK LAT O B 15 
+
+HUB81, dual 26 
+2 N  N  N  N  N  N  N  N  N   N  N  N N 26 
+1 R1 R2 R3 R4 G1 G2 G3 G4 CLK LAT F F O 25 
+
+HUB82, RGB
+2 F  BD F F N   N   N A 16 
+1 RD GD F F CLK LAT O B 15 
+
+HUB83, RGB
+2 N   N   N   N   N   N   N   N   C B 20 
+1 RD1 GD1 BD1 RD2 GD2 BD2 CLK LAT O A 19 
+
+HUB84, RGB
+2 CLK LAT OE RD GD BD N N 16 
+1 N   N   N  N  N  N  N N 15 
+
+HUB85, RGB
+2 Ri Gi Bi CLK LAT OE A 14 
+1 N  N  N  N   N   N  B 13 
+
+HUB86, RGB
+2 CLK LAT R OE G OE B OE 16 
+1 N   N   N N  N N  N N  15 
+
+HUB88, RGB
+2 OE CLK LAT R1 R2 G B F 16 
+1 N  N   N   N  N  N N N 15 
+
+HUB89, RGB
+2 G1 B1 R1 F CLK LAT OE G2 B2 R2 20 
+1 N  N  N  N N   N   N  N  N  N  19 
+
+HUB90, RGB
+2 G1 F  G2 F  F   F   F  N  16 
+1 R1 B1 R2 B2 CLK LAT OE F  15 
+
+HUB92, RGB
+2 G1 R2 B2 F F F A C L N  20 
+1 R1 B1 G2 F F F N B S O  19 
+
+HUB93, dual 20 
+2 S L R1 G1 O A B C D S 20 
+1 F F R2 G2 N N N F N N 19 
+
+HUB94, RGB
+2 G1 R2 B2 G3 R4 B4 L N  16 
+1 R1 B1 G2 R3 B3 G4 S O  15 
+
+HUB94A, RGB
+2 G1 R2 B2 G3 R4 B4 L N  16 
+1 R1 B1 G2 R3 B3 G4 S O  15 
+
+HUB95, RGB
+2 R2 R4 F F G2 G4 B2 B4 N F F F N  26 
+1 R1 R3 F F G1 G3 B1 B3 N CLK LAT O N 25 
+
+HUB96, RGB
+1 L N BD O GD N S RD  8 
+
+HUB97, RGB
+2 G N N A B  10 
+1 R B S L O  9 
+
+HUB98, RGB
+2 G1 R2 G2 R3 N N N N   N   N 20 
+1 R1 U1 R2 U2 A B C CLK LAT O 19 
+
+HUB99, RGB
+2 B N N N R2 G2 U2 N B N N N R2 G2 U2 N 32 
+1 A C S L R1 G1 U1 O A C D L R1 G1 U1 O 31 
+
+HUB100, RGB
+2 B N N N R2 G2 U2 N 16 
+1 A C S L R1 G1 U1 O 15 
+
+HUB101, single 
+2 O S R F F F F L 16 
+1 F F N F F F F F 15 
+
+HUB102, RGB
+2 R2 R4 N G2 G4 N B2 B4 CLK LAT O A B  26 
+1 R1 R3 N G1 G3 N B1 B3 N N  N N N 25 
+
+HUB103, RGB
+2 GD N  F N B N LAT N 16 
+1 RD BD F F A C CLK OE 8 
+
+HUB104, RGB
+2 LAT CLK OE RA GD BD RB 14 
+1 N   N   N  N  N  N  N  7 
+
+HUB105, RGB
+2 GD RB N  N   N   N N N 16 
+1 RA BD OE LAT CLK A B C 8 
+100 
+HUB106, RGB
+2 LAT CLK BD GD RD 10 
+1 OE  N   N  N  N  5 
+101 
+HUB107, RGB
+2 S L O R B 10 
+1 N N N N G 5 
+102 
+HUB108, RGB
+2 RD1 GD1 BD1 RD2 GD2 BD2 CLK LAT OE A B C D26 
+1 N   N   N   N   N   N   N   N    N  N N N N 13 
+103 
+HUB109, RGB
+2 F   BD1 N   N   N  N   N   N   16 
+1 RD1 GD1 LAT CLK OE RD2 GD2 BD2 8 
+104 
+HUB110, RGB
+2 R2 N  N  R4 N  N  N   A   B  C   26 
+1 R1 G1 B1 R3 G2 B2 CLK LAT OE D 13 
+105 
+HUB111, RGB
+2 N N  N  N N  N  N N  B3 B1 G3 G1 R3 R1 26 
+1 F A CLK LAT OE OE OE B4 B2 G4 G2 R4 R2 13 
+106 
+HUB112, dual 26 
+2 R1 G1 R2 G2 R3 G3 R4 G4 A B CLK OE LAT 26 
+1 N  N  N  N  N  N  N  N  N N N  N   N 13 
+107 
+HUB113, RGB
+2 N   N   N  N  N  N N N N N  20 
+1 CLK LAT DR DG OE A B C D DB 10 
+108 
+HUB114, RGB
+2 N  DB N   N   N  N N N 16 
+1 DR DG LAT CLK OE N N N 8 
+109 
+HUB115, RGB
+2 G N C A B  10 
+1 R B S L O  9 
+110 
+HUB116, RGB
+2 R2 R4 R6 R8 R10 R12 R14 R16 G2 G4 G6 G8 G10 G12 G14 G16 B2 B4 B6 B8 B10 B12 B14 B16 O O O LAT CLK N  60 
+1 R1 R3 R5 R7 R9 R11 R13 R15 G1 G3 G5 G7 G9 G11 G13 G15 B1 B3 B5 B7 B9 B11 B13 B15 N N N N N N  59 
+111 
+HUB117, RGB
+2 N LAT N O N R2 R4 G2 G4 B2 B4 N F  26 
+1 N CLK N O O R1 R3 G1 G3 B1 B3 N F  25 
+112 
+HUB118, RGB
+2 RB1 B1 RB2 B2 N   N   N B  16 
+1 RA1 G1 RA2 G2 CLK LAT O A  15 
+113 
+HUB119, RGB
+2 N O L R1 G1 U1 A  C 16 
+1 N O O S  R2 G2 U2 B 15 
+114 
+HUB120, RGB
+2 G1  R2A B2 R2B F F LAT N  16 
+1 R1A B1  G2 R1B F F CLK OE 15 
+115 
+HUB121, RGB
+2 RB1 U1 RB2 U2 N N N N 16 
+1 RA1 G1 RA2 G2 S L O A 15 
+116 
+HUB122, RGB
+2 RB1 U1 RB2 U2 N RB3 U3 RB4 U4 N L A B 26 
+1 RA1 G1 RA2 G2 N RA3 G3 RA4 G4 N S O N 25 
+117 
+HUB123, RGB
+2 RB1 U1 RA2 G2 N F S S L L O O A F B 30 
+1 RA1 G1 N RB2 U2 F N N N N N N N B A 29 
+118 
+HUB124, RGB
+2 N N N N N N N O B D 20 
+1 S S L L R G U O A C 19 
+119 
+HUB125, RGB
+2 G F F F F F L N 20 
+1 R B F F F F S O 19 
+120 
+HUB127, RGB
+2 R2 R4 G2 G4 B2 B4 B N N N 20 
+1 R1 B3 G1 G3 B1 B3 A S L O 19 
+121 
+HUB127, RGB
+2 GD N  F N B N L N 16 
+1 RD BD F F A C S O 159 
+
+
+
+
+
+

@@ -1,13 +1,13 @@
 titre:
-    - "Microcontrôleurs ARM"
+    - "BCM"
 type:             Théorie
 niveau:           avancé
 auteur:          
     - 'PYR'
 statut:           Pas publié
-code:             codeduchapitre
+code:             bcm
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   bcm.html
+    cours-pdf:    bcm.pdf
+    dias-video:   bcm-dia.pdf
+    dias-compact: bcm-dia-compact.pdf

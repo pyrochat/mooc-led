@@ -8,41 +8,23 @@
   <title>Programmation en C-Arduino</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
-div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
   </style>
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
@@ -88,15 +70,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>La procédure <code>void loop()</code> est appelée à la suite de <code>setup()</code>. Mais, contrairement au <code>setup()</code> qui n’est appelé qu’une fois, elle est appelée en permanence. Elle correspond donc à la boucle principale du programme, d’où son nom. Rappelons que les programmes pour microcontrôleur n’ont généralement pas de fin : l’exécution se poursuit jusqu’à ce que le microcontrôleur ne soit plus alimenté ou jusqu’à un <em>Reset</em>.</p>
 <h2 id="organigramme">Organigramme</h2>
 <p>Une des manière de représenter le déroulement d’un programme est l’organigramme. Voici donc l’organigramme général d’un programme Arduino :</p>
-<div class="figure">
-<img src="images/organi-arduino-120dpi.png" title="Organigramme d’un programme Arduino" alt="Organigramme d’un programme Arduino" width="264" />
-<p class="caption">Organigramme d’un programme Arduino</p>
-</div>
+<p><img src="images/organi-arduino-120dpi.png" title="Organigramme d’un programme Arduino" alt="Organigramme d’un programme Arduino" />{ width=7cm }</p>
 <p>L’organigramme à gauche de la figure correspond à ce que voit l’utilisateur. Mais en fait, derrière l’usage de <code>setup()</code> et <code>loop()</code> proposé par Arduino, des instructions cachées s’exécutent avant chacune de ces procédures, comme le montre l’organigramme de droite. C’est dans la procédure <code>main()</code> produite par l’environnement Arduino que ces instructions sont ajoutées.</p>
 <p>Il faut noter que la procédure <code>loop()</code> a une durée d’exécution qui peut varier considérablement d’un programme à un autre. Pour une enseigne ou un afficheur à LED, elle pourrait par exemple durer le temps d’un cycle complet de l’animation. Mais elle pourrait tout aussi bien durer un temps très court, par exemple un temps fixe de 10 microsecondes. Tout dépendra de la manière de programmer.</p>
 <h3 id="exemple">Exemple</h3>
 <p>Le programme suivant est un programme Arduino correct :</p>
-<div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2
 3
 4
@@ -105,7 +84,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 }
 
 <span class="dt">void</span> loop() {
-}</code></pre></td></tr></table></div>
+}</code></pre></td></tr></table>
 <!-- retour au mode normal pour l'éditeur -->
 <p>Il est possible de le compiler et de l’exécuter... mais il ne fait rien !</p>
 <h2 id="les-entrées-sorties">Les entrées-sorties</h2>
@@ -137,7 +116,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>La procédure <code>digitalWrite()</code> rend à la fin de son exécution la valeur lue. Ce sera un 0 ou un 1.</p>
 <h3 id="exemple-1">Exemple</h3>
 <p>Voici un programme qui utilise les instructions que nous venons de voir. Il semble correct :</p>
-<div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2
 3
 4
@@ -152,11 +131,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="dt">void</span> loop() {
   digitalWrite(P1_0, (digitalRead(P1_3));
-}</code></pre></td></tr></table></div>
+}</code></pre></td></tr></table>
 <!-- retour au mode normal pour l'éditeur -->
 <p>En permanence, il écrit sur la broche P1_0, qui est la LED rouge du Launchpad, la valeur lue sur P1_3, qui est le bouton-poussoir. On devrait donc voir la LED rouge s’allumer lorsque le bouton-poussoir est pressé et s’éteindre lorsqu’il est relâché. Malheureusement... il ne fonctionne pas ! Il faut modifier la ligne d’initialisation de la manière suivante pour qu’il fonctionne un peu mieux :</p>
-<div class="sourceCode" startFrom="3"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>3
-</pre></td><td class="sourceCode"><pre><code class="sourceCode c">  pinMode(P1_3, INPUT_PULLUP);</code></pre></td></tr></table></div>
+<table class="sourceCode c numberLines" startFrom="3"><tr class="sourceCode"><td class="lineNumbers"><pre>3
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c">  pinMode(P1_3, INPUT_PULLUP);</code></pre></td></tr></table>
 <!-- retour au mode normal pour l'éditeur -->
 <p>C’est une raison électrique qui oblige l’utilisation du mode <code>INPUT_PULLUP</code>. Elle sera expliquée en détail dans une prochaine leçon. On apprendra aussi pourquoi ce programme fait l’inverse de ce qu’on avait imaginé : la LED sera allumée tant qu’on ne presse pas sur le bouton-poussoir et s’éteindra lorsqu’on le presse.</p>
 <h2 id="la-gestion-du-temps">La gestion du temps</h2>
@@ -164,7 +143,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>La procédure <code>void delay(ms)</code> permet d’attendre un temps donné. Ce temps est exprimé en ms (milliseconde). Elle ne rend rien à la fin de son exécution.</p>
 <h2 id="programme-blink">Programme <em>blink</em></h2>
 <p>Prenons quelques-unes des procédures que nous venons de présenter pour écrire un programme tout simple, qui fait clignoter une LED (<em>blink</em> en anglais).</p>
-<div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2
 3
 4
@@ -183,7 +162,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   delay(<span class="dv">500</span>);
   digitalWrite(P1_0, <span class="dv">0</span>);
   delay(<span class="dv">500</span>);
-}</code></pre></td></tr></table></div>
+}</code></pre></td></tr></table>
 <!-- retour au mode normal pour l'éditeur -->
 <p>On y trouve la procédure <code>setup()</code> qui met en sortie la broche sur laquelle la LED rouge du LaunchPad est branchée.</p>
 <p>La procédure <code>loop()</code> allume la LED, puis attend une demi-seconde, puis éteint la LED et attend à nouveau une demi-seconde. Tout le cycle dure une seconde. On a donc produit un <em>signal carré</em> de 1 Hz.</p>

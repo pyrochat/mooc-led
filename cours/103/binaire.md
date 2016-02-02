@@ -1,10 +1,8 @@
 % Nombres et champs de bits
-% [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
-% et [Yves Tiecoura](mailto:tiecouray@yahoo.fr), INP-HB
+% [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL<br/>et [Yves Tiecoura](mailto:tiecouray@yahoo.fr), INP-HB
 % rév 2015/12/25
 
-Document en cours de relecture, rév du 2015/12/13
-Ce document n’est pas à jour, il n’a pas encore été adapté aux modifications des diapositives pour la vidéo.
+> Ce document n’est pas à jour, il n’a pas encore été adapté aux modifications des diapositives pour la vidéo.
 
 
 ## Bascules et registres ##

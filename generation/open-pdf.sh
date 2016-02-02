@@ -2,49 +2,20 @@
 
 # ##########
 #
-# md2pdf.sh ⇒ transforme les fichiers Markdown en fichiers PDF
+# open-pdf.sh ⇒ ouvre les fichiers PDF des cours pour vérifier qu’ils sont OK manuellement
 #
-# Usage :
-# ./md2pdf.sh # Traverse tous les chapitres, vérifie que leur statut est différent de “Pas publié” avant de faire la conversion
-# ./md2pdf.sh 203 # Ne transforme que le chapitre 203
 #
-# Nicolas Jeanmonod, janvier 2016
+# Nicolas Jeanmonod, février 2016
 #
 # ##########
 
-function MD2HTML
+
+function OPENPDF
 {
-    pandoc                              \
-        --standalone                    \
-        --from markdown                 \
-        --to html                       \
-        --highlight-style pygments      \
-        --email-obfuscation references  \
-        --normalize                     \
-        --mathjax                       \
-        --css=$CSS_FILE                 \
-        --output $CODE.html             \
-        $CODE.md
-}
-
-function HTML2PDF
-{
-
-    prince $HTML_FILE -o $PDF_FILE #--javascript
-
     if [[ "$OSTYPE" == darwin14 ]]; then
         open $PDF_FILE
     elif [[ "$OSTYPE" == linux-gnu ]]; then
         xdg-open $PDF_FILE
-    fi
-}
-
-function HTML2PDFweasyprint
-{
-    weasyprint $HTML_FILE $PDF_FILE
-
-    if [[ "$OSTYPE" == darwin14 ]]; then
-        open $PDF_FILE
     fi
 }
 
@@ -55,9 +26,8 @@ function DO_ALL
     MD_FILE=$CODE.md
     HTML_FILE=$CODE.html
     PDF_FILE=$CODE.pdf
-    echo "Génération de $PDF_FILE"
-    MD2HTML
-    HTML2PDF
+    echo "ouverture de $PDF_FILE"
+    OPENPDF
 }
 
 

@@ -1,13 +1,11 @@
-**Introduction au microcontrôleur**
-==================================
+% Introduction au microcontrôleur
+% [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
+% rév 2016/01/30
 
-## [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
-
-> Document en cours de relecture, rév du 2016/01/30
 
 ## Système informatique dans un circuit intégré ##
 
-Pour commander des enseignes ou des afficheurs à LED, c'est très souvent un **microcontrôleur** qui est utilisé. 
+Pour commander des enseignes ou des afficheurs à LED, c'est très souvent un **microcontrôleur** qui est utilisé.
 
 Nous somme tous familier avec les systèmes informatique, à commencer par nos ordinateurs de bureau et nos *smartphones*. A l'intérieur de tout système informatique se trouvent a moins :
 
@@ -25,7 +23,7 @@ Un microcontrôleur est aussi un système informatique. Sa particularité est qu
 * la mémoire morte contient généralement de 1 kB à quelques centaines de kB.
 * le processeur est cadencé à des fréquences de quelques MHz ou dizaines de MHz. Il ne consomme généralement qu'une fraction de Watt. Son jeu d'instructions est plus simple.
 * la mémoire vivre est généralement très limitée : de quelques centaines de Bytes à quelques dizaines de kB, selon les modèles.
-* les circuits d'entrée-sortie sont simplement des entrées logiques (pour lire une valeur binaire, par exemple un interrupteur) et des sorties logiques (capables de fournir quelques mA, par exemple pour commander une LED). 
+* les circuits d'entrée-sortie sont simplement des entrées logiques (pour lire une valeur binaire, par exemple un interrupteur) et des sorties logiques (capables de fournir quelques mA, par exemple pour commander une LED).
 
 L'intérêt des microcontrôleurs est leur coût très faible (parfois moins d'un Euro), leur consommation de courant très limitée (quelques dizaines de mA) et leur taille très réduite (un seul circuit intégré). Ils sont donc utilisés dans de très nombreuses applications.
 

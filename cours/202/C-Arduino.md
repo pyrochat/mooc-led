@@ -1,7 +1,7 @@
 % Programmation en C-Arduino
 % [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
+% rév 2016/01/04
 
-Document en cours de relecture, version du 2016/01/04
 
 ## Différentes significations du mot Arduino ##
 

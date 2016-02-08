@@ -1,13 +1,13 @@
 titre:
-    - "BCM"
+    - "Séquenceurs à compteurs"
 type:             Théorie
 niveau:           avancé
-auteur:          
-    - 'PYR'
-statut:           Pas publié
-code:             bcm
+auteur:
+    - YT
+statut:           Relecture
+code:             seq-compteur
 url:
-    cours-html:   bcm.html
-    cours-pdf:    bcm.pdf
-    dias-video:   bcm-dia.pdf
-    dias-compact: bcm-dia-compact.pdf
+    cours-html:   seq-compteur.html
+    cours-pdf:    seq-compteur.pdf
+    dias-video:   seq-compteur-dia.pdf
+    dias-compact: seq-compteur-dia-compact.pdf

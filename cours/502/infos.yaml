@@ -5,9 +5,9 @@ niveau:           base
 auteur:          
     - YT
 statut:           Pas publié
-code:             codeduchapitre
+code:             timers
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   timers.html
+    cours-pdf:    timers.pdf
+    dias-video:   timers-dia.pdf
+    dias-compact: timers-dia-compact.pdf

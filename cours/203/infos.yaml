@@ -1,13 +1,14 @@
 titre:
-    - "Enseignes à motifs fixes"
+    - "Programmation en C-Arduino"
 type:             Théorie
 niveau:           base
 auteur:
     - PYR
 statut:           Relecture
-code:             enseignes-fixes
+code:             C-Arduino
 url:
-    cours-html:   enseignes-fixes.html
-    cours-pdf:    enseignes-fixes.pdf
-    dias-video:   enseignes-fixes-dia.pdf
-    dias-compact: enseignes-fixes-dia-compact.pdf
+    cours-html:   C-Arduino.html
+    cours-pdf:    C-Arduino.pdf
+url-to-do:
+    dias-video:   C-Arduino-dia.pdf
+    dias-compact: C-Arduino-dia-compact.pdf

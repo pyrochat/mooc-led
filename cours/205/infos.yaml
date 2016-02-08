@@ -1,13 +1,13 @@
 titre:
-    - "[Logique] Circuits logiques séquentiels"
+    - "[Logique] Introduction au VHD"
 type:             Théorie
-niveau:           base
+niveau:           avancé
 auteur:          
     - MLN
 statut:           Pas publié
-code:             codeduchapitre
+code:             vhdl
 url:
-    cours-html:   seq.html
-    cours-pdf:    seq.pdf
-    dias-video:   seq-dia.pdf
-    dias-compact: seq-dia-compact.pdf
+    cours-html:   vhdl.html
+    cours-pdf:    vhdl.pdf
+    dias-video:   vhdl-dia.pdf
+    dias-compact: vhdl-dia-compact.pdf

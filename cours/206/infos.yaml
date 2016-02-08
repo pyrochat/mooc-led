@@ -1,13 +1,13 @@
 titre:
-    - "[Physique] Les semi-conducteurs"
+    - "[Logique] Circuits logiques séquentiels"
 type:             Théorie
-niveau:           avancé
+niveau:           base
 auteur:          
-    - AT
+    - MLN
 statut:           Pas publié
-code:             semicond
+code:             codeduchapitre
 url:
-    cours-html:   semicond.html
-    cours-pdf:    semicond.pdf
-    dias-video:   semicond-dia.pdf
-    dias-compact: semicond-dia-compact.pdf
+    cours-html:   seq.html
+    cours-pdf:    seq.pdf
+    dias-video:   seq-dia.pdf
+    dias-compact: seq-dia-compact.pdf

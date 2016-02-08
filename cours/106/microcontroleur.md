@@ -10,15 +10,15 @@ Pour commander des enseignes ou des afficheurs à LED, c'est très souvent un **
 Nous somme tous familier avec les systèmes informatique, à commencer par nos ordinateurs de bureau et nos *smartphones*. A l'intérieur de tout système informatique se trouvent a moins :
 
 * un **processeur**, qui exécute les instructions. Il est cadencé par une horloge (H).
-* une **mémoire morte** (ROM = Read Only Memory) qui contient les instructions. Son contenu est permanent : il reste intact lorsque le système n'est plus alimenté.
-* une **mémoire vivre** (RAM= Random Access Memory), qui permet de stocker des données. Son contenu est perdu lorsque le courant est coupé.
-* des circuits d'Entrée-Sortie (I/O=Input/Output). Ce sont les circuits qui permettent l'interaction avec l'extérieur : clavier, souris, écran, mémoires externes, imprimante, etc.
+* une **mémoire morte** (ROM : *Read Only Memory*) qui contient les instructions. Son contenu est permanent : il reste intact lorsque le système n'est plus alimenté.
+* une **mémoire vivre** (RAM : *Random Access Memory*, qui permet de stocker des données. Son contenu est perdu lorsque le courant est coupé.
+* des circuits d'**Entrée-Sortie** (I/O : *Input/Output*). Ce sont les circuits qui permettent l'interaction avec l'extérieur : clavier, souris, écran, mémoires externes, imprimante, etc.
 
 Des lignes électriques, appelées *bus* relient ensemble ces éléments.
 
-![Architecture d'un système informatique](images/archi-sys-info.png "Architecture d'un système informatique"){ width=15cm }
+![Architecture d'un système informatique](images/architecture-sys-info.png "Architecture d'un système informatique"){ width=15cm }
 
-Un microcontrôleur est aussi un système informatique. Sa particularité est qu'il est contenu dans un seul circuit intégré. L'architecture est la même que celle présentée sur la figure. Par rapport à une carte-mère de PC, les éléments qui constituent un microcontrôleur sont plus simples, moins puissants, leur capacité est plus limitée :
+Un **microcontrôleur** est aussi un système informatique. Sa particularité est qu'il est contenu dans un seul circuit intégré. L'architecture est la même que celle présentée sur la figure. Par rapport à une carte-mère de PC, les éléments qui constituent un microcontrôleur sont généralement plus simples, moins puissants, leur capacité est plus limitée :
 
 * la mémoire morte contient généralement de 1 kB à quelques centaines de kB.
 * le processeur est cadencé à des fréquences de quelques MHz ou dizaines de MHz. Il ne consomme généralement qu'une fraction de Watt. Son jeu d'instructions est plus simple.

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="svg.css" version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="884"
+  height="314"
+  viewBox="-2 -2 882 312"
+  preserveAspectRatio="xMidYMid meet"
+  >
+
+<!--
+
+Auteurs : Pierre-Yves Rochat, Nicolas Jeanmonod
+
+-->
+
+
+  <title>Chrono-repos</title>
+
+  <desc>Chrono-repos</desc>
+
+
+
+  <style type="text/css">
+
+svg
+{
+   background-color: transparent;
+}
+
+circle, path
+{
+  display: inline;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-opacity: 1;
+  stroke-width: 0.5mm;
+  stroke: black;
+}
+
+text
+{
+  fill-opacity: 1;
+  fill: black;
+  font-family: "Courier";
+  font-size: 16pt;
+  font-stretch: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  stroke: none;
+  text-align: middle;
+  text-anchor: middle;
+}
+
+.cadre_image
+{
+  fill-opacity: 0;
+  fill:none;
+  stroke-opacity:1;
+  stroke-width:1;
+  stroke:none;
+  /*
+  stroke:#000000;
+  */
+}
+
+.signal
+{
+  fill:none;
+  stroke-dasharray:none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit:4;
+  stroke-opacity:1;
+  stroke-width:1mm;
+  stroke:blue;
+}
+
+.signal_dot
+{
+  stroke-dasharray:1,7;
+  stroke-dashoffset:10;
+  stroke-miterlimit:4;
+}
+  </style>
+
+  <defs>
+
+    <!-- Flèches -->
+    <g id="fleche"><path style="fill:black;stroke-miterlimit:4;" d="m 0,0  -18,-3  0,6 z" /></g>
+
+    <!-- Graduation -->
+    <g id="graduation"><path style="fill:black;stroke-miterlimit:4;" d="m 0,0  0,10" /></g>
+
+  </defs>
+
+
+
+  <g id="final_display">
+
+    <!-- Cadre de l’image. On peut l’afficher en changeant le stroke (stroke:#000000;) dans le CSS -->
+    <g>
+      <rect class="cadre_image" x="0" y="0" width="880" height="310" />
+    </g>
+
+    <g id="dessin" transform="translate( 145,15 ) rotate( 0 )">
+
+      <g id="axe-X" transform="translate( 10,10 ) rotate( 0 )">
+        <path class="" d="M -20,210 702,210" />
+        <g transform="translate( 720,210 ) rotate( 0 )"><use xlink:href="#fleche"/></g>
+        <g transform="translate(   0,200 )"><use xlink:href="#graduation"/></g>
+        <g transform="translate( 100,200 )"><use xlink:href="#graduation"/></g>
+        <g transform="translate( 200,200 )"><use xlink:href="#graduation"/></g>
+        <g transform="translate( 300,200 )"><use xlink:href="#graduation"/></g>
+        <g transform="translate( 400,200 )"><use xlink:href="#graduation"/></g>
+        <g transform="translate( 500,200 )"><use xlink:href="#graduation"/></g>
+        <g transform="translate( 600,200 )"><use xlink:href="#graduation"/></g>
+        <g>
+          <text style="text-anchor:middle" x="0"   y="235">0 s</text>
+          <text style="text-anchor:middle" x="100" y="235">1 s</text>
+          <text style="text-anchor:middle" x="200" y="235">2 s</text>
+          <text style="text-anchor:middle" x="300" y="235">3 s</text>
+          <text style="text-anchor:middle" x="400" y="235">4 s</text>
+          <text style="text-anchor:middle" x="500" y="235">5 s</text>
+          <text style="text-anchor:middle" x="600" y="235">6 s</text>
+          <text style="text-anchor:end"    x="720" y="235">Temps</text>
+        </g>
+        <g id="fleche_periode">
+          <g transform="translate(   0,280 ) rotate( 180 )"><use xlink:href="#fleche"/></g>
+          <g transform="translate( 400,280 ) rotate( 0 )"><use xlink:href="#fleche"/></g>
+          <path d="M 18,280 382,280" />
+          <text style="text-anchor:middle" x="200" y="270">Période = 4 s</text>
+        </g>
+      </g>
+
+      <g id="axe-Y" transform="translate( -10,0 ) rotate( 0 )">
+        <g transform="translate( 0,10 ) rotate( 270 )"><use xlink:href="#fleche"/></g>
+        <path class="" d="M 0,220 0,28" />
+        <text  style="text-anchor:end" x="-10"  y="25">Intensité</text>
+        <text  style="text-anchor:end" x="-10" y="205">0 %</text>
+        <text  style="text-anchor:end" x="-10"  y="55">100 %</text>
+        <g transform="translate( 10,200 ) rotate( 90 )"><use xlink:href="#graduation"/></g>
+        <g transform="translate( 10, 50 ) rotate( 90 )"><use xlink:href="#graduation"/></g>
+        <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.25mm;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:10,10;stroke-dashoffset:10"
+         d="M 10,50 110,50" />
+      </g>
+
+      <g id="signal" transform="translate( 10,0 ) rotate( 0 )">
+        <path class="signal" d="M 0,200 100,50 200,200 400,200 500,50 600,200 620,200" />
+        <path class="signal signal_dot" d="M 620,200 670,200" />
+      </g>
+
+    </g>
+
+  </g>
+</svg>
+

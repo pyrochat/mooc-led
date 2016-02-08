@@ -4,28 +4,29 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title></title>
+  <meta name="author" content="Pierre-Yves Rochat, EPFL" />
+  <title>Introduction au microcontrôleur</title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
 <body>
-<h1 id="introduction-au-microcontrôleur"><strong>Introduction au microcontrôleur</strong></h1>
-<h2 id="pierre-yves-rochat-epfl"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
-<blockquote>
-<p>Document en cours de relecture, rév du 2016/01/30</p>
-</blockquote>
+<div id="header">
+<h1 class="title">Introduction au microcontrôleur</h1>
+<h2 class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
+<h3 class="date">rév 2016/01/30</h3>
+</div>
 <h2 id="système-informatique-dans-un-circuit-intégré">Système informatique dans un circuit intégré</h2>
 <p>Pour commander des enseignes ou des afficheurs à LED, c'est très souvent un <strong>microcontrôleur</strong> qui est utilisé.</p>
 <p>Nous somme tous familier avec les systèmes informatique, à commencer par nos ordinateurs de bureau et nos <em>smartphones</em>. A l'intérieur de tout système informatique se trouvent a moins :</p>
 <ul>
 <li>un <strong>processeur</strong>, qui exécute les instructions. Il est cadencé par une horloge (H).</li>
-<li>une <strong>mémoire morte</strong> (ROM = Read Only Memory) qui contient les instructions. Son contenu est permanent : il reste intact lorsque le système n'est plus alimenté.</li>
-<li>une <strong>mémoire vivre</strong> (RAM= Random Access Memory), qui permet de stocker des données. Son contenu est perdu lorsque le courant est coupé.</li>
-<li>des circuits d'Entrée-Sortie (I/O=Input/Output). Ce sont les circuits qui permettent l'interaction avec l'extérieur : clavier, souris, écran, mémoires externes, imprimante, etc.</li>
+<li>une <strong>mémoire morte</strong> (ROM : <em>Read Only Memory</em>) qui contient les instructions. Son contenu est permanent : il reste intact lorsque le système n'est plus alimenté.</li>
+<li>une <strong>mémoire vivre</strong> (RAM : <em>Random Access Memory</em>, qui permet de stocker des données. Son contenu est perdu lorsque le courant est coupé.</li>
+<li>des circuits d'<strong>Entrée-Sortie</strong> (I/O : <em>Input/Output</em>). Ce sont les circuits qui permettent l'interaction avec l'extérieur : clavier, souris, écran, mémoires externes, imprimante, etc.</li>
 </ul>
 <p>Des lignes électriques, appelées <em>bus</em> relient ensemble ces éléments.</p>
 <p><img src="images/archi-sys-info.png" title="Architecture d&#39;un système informatique" alt="Architecture d&#39;un système informatique" />{ width=15cm }</p>
-<p>Un microcontrôleur est aussi un système informatique. Sa particularité est qu'il est contenu dans un seul circuit intégré. L'architecture est la même que celle présentée sur la figure. Par rapport à une carte-mère de PC, les éléments qui constituent un microcontrôleur sont plus simples, moins puissants, leur capacité est plus limitée :</p>
+<p>Un <strong>microcontrôleur</strong> est aussi un système informatique. Sa particularité est qu'il est contenu dans un seul circuit intégré. L'architecture est la même que celle présentée sur la figure. Par rapport à une carte-mère de PC, les éléments qui constituent un microcontrôleur sont généralement plus simples, moins puissants, leur capacité est plus limitée :</p>
 <ul>
 <li>la mémoire morte contient généralement de 1 kB à quelques centaines de kB.</li>
 <li>le processeur est cadencé à des fréquences de quelques MHz ou dizaines de MHz. Il ne consomme généralement qu'une fraction de Watt. Son jeu d'instructions est plus simple.</li>

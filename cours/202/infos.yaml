@@ -1,14 +1,13 @@
 titre:
-    - "Programmation en C-Arduino"
+    - "Le transistor"
 type:             Théorie
 niveau:           base
 auteur:
-    - PYR
+    - YT
 statut:           Relecture
-code:             C-Arduino
+code:             transistor
 url:
-    cours-html:   C-Arduino.html
-    cours-pdf:    C-Arduino.pdf
-url-to-do:
-    dias-video:   C-Arduino-dia.pdf
-    dias-compact: C-Arduino-dia-compact.pdf
+    cours-html:   transistor.html
+    cours-pdf:    transistor.pdf
+    dias-video:   transistor-dia.pdf
+    dias-compact: transistor-dia-compact.pdf

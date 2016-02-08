@@ -1,13 +1,13 @@
 titre:
-    - "Séquenceurs à compteurs"
+    - "Montages électroniques"
 type:             Théorie
-niveau:           avancé
+niveau:           base
 auteur:
-    - YT
-statut:           Relecture
-code:             seq-compteur
-url:
-    cours-html:   seq-compteur.html
-    cours-pdf:    seq-compteur.pdf
-    dias-video:   seq-compteur-dia.pdf
-    dias-compact: seq-compteur-dia-compact.pdf
+    - 'PYR'
+statut:           Pas publié
+code:             montages
+url-todo:
+    c-html:    montages.html
+    c-pdf:     montages.pdf
+    d-video:   montages-dia.pdf
+    d-compact: montages-dia-compact.pdf

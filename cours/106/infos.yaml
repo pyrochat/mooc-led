@@ -1,13 +1,13 @@
 titre:
-    - "[Logique] Synthèse de circuits combinatoires"
+    - "Le microcontrôleur"
 type:             Théorie
 niveau:           base
-auteur:
-    - MLN
+auteur:          
+    - PYR
 statut:           Pas publié
-code:             synth-combi
+code:             microcontroleur
 url:
-    cours-html:   synth-combi.html
-    cours-pdf:    synth-combi.pdf
-    dias-video:   synth-combi-dia.pdf
-    dias-compact: synth-combi-dia-compact.pdf
+    cours-html:   microcontroleur.html
+    cours-pdf:    microcontroleur.pdf
+    dias-video:   microcontroleur-dia.pdf
+    dias-compact: microcontroleur-dia-compact.pdf

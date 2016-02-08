@@ -32,11 +32,6 @@ function HTML2PDF
 
     prince $HTML_FILE -o $PDF_FILE #--javascript
 
-    if [[ "$OSTYPE" == darwin14 ]]; then
-        open $PDF_FILE
-    elif [[ "$OSTYPE" == linux-gnu ]]; then
-        xdg-open $PDF_FILE
-    fi
 }
 
 function HTML2PDFweasyprint

@@ -1,13 +1,13 @@
 titre:
-    - "Les afficheurs matriciels multiplexés"
+    - "BCM : la modulation codée binaire"
 type:             Théorie
-niveau:           base
+niveau:           avancé
 auteur:          
-    - PYR
+    - 'PYR'
 statut:           Pas publié
-code:             codeduchapitre
+code:             bcm
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   bcm.html
+    cours-pdf:    bcm.pdf
+    dias-video:   bcm-dia.pdf
+    dias-compact: bcm-dia-compact.pdf

@@ -1,13 +1,13 @@
 titre:
-    - "Le transistor"
+    - "[Physique] La jonction PN"
 type:             Théorie
-niveau:           base
-auteur:
-    - YT
-statut:           Relecture
-code:             transistor
+niveau:           avancé
+auteur:          
+    - AT
+statut:           Pas publié
+code:             jonction-pn
 url:
-    cours-html:   transistor.html
-    cours-pdf:    transistor.pdf
-    dias-video:   transistor-dia.pdf
-    dias-compact: transistor-dia-compact.pdf
+    cours-html:   jonction-pn.html
+    cours-pdf:    jonction-pn.pdf
+    dias-video:   jonction-pn-dia.pdf
+    dias-compact: jonction-pn-dia-compact.pdf

@@ -15,6 +15,7 @@
 # Pierre-Yves Rochat :
 # 2016/01/02 : Modifications mineures
 # 2016/01/18 : Modifications de la présentation
+# 2016/02/08 : n'affiche plus les niveaux
 
 import glob
 import yaml
@@ -72,10 +73,10 @@ Version de travail du 2016/01/21
             prevnbsemaine = nbsemaine
             TOC = '%s\n\n## Semaine %d ##\n\n\n' % ( TOC, nbsemaine )
 
-        if( dataMap[ "niveau" ] in [ u"avancé" ] ):
-            NIVEAU = u"*[avancé]* "
-        else:
-            NIVEAU = ""
+        ## if( dataMap[ "niveau" ] in [ u"avancé" ] ):
+        ##   NIVEAU = u"*[avancé]* "
+        ## else:
+        NIVEAU = "" ## on n'affiche plus le niveau
 
         AUTEUR = "(" + dataMap[ "auteur" ][ 0 ] + ")"
 

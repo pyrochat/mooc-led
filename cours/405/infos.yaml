@@ -6,8 +6,9 @@ auteur:
     - MLN
 statut:           Pas publié
 code:             seq-vhdl
-url:
+url1:
     cours-html:   seq-vhdl.html
     cours-pdf:    seq-vhdl.pdf
+url:
     dias-video:   seq-vhdl-dia.pdf
     dias-compact: seq-vhdl-dia-compact.pdf

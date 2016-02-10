@@ -1,13 +1,13 @@
 titre:
-    - "Montages électroniques"
+    - "Registre d’extension série-parallèle"
 type:             Théorie
 niveau:           base
 auteur:
-    - 'PYR'
-statut:           Pas publié
-code:             montages
-url-todo:
-    c-html:    montages.html
-    c-pdf:     montages.pdf
-    d-video:   montages-dia.pdf
-    d-compact: montages-dia-compact.pdf
+    - PYR
+statut:           Relecture
+code:             registres-ser-par
+url:
+    cours-html:    registres-ser-par.html
+    cours-pdf:     registres-ser-par.pdf
+    dias-video:   registres-ser-par-dia.pdf
+    dias-compact: registres-ser-par-dia-compact.pdf

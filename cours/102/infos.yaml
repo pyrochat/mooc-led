@@ -1,13 +1,14 @@
 titre:
-    - "LED et électricité"
+    - "Électricité et LED"
 type:             Théorie
 niveau:           base
 auteur:
     - PYR
-statut:           Pas publié
+statut:           Relectureé
 code:             electric
 url:
     cours-html:   electric.html
     cours-pdf:    electric.pdf
+url1:
     dias-video:   electric-dia.pdf
     dias-compact: electric-dia-compact.pdf

@@ -1,13 +1,14 @@
 titre:
-    - "[Physique] Led : principes physiques et caractéristiques"
+    - "[Physique] Caractéristiques des LED"
 type:             Théorie
 niveau:           avancé
 auteur:          
     - AT
-statut:           Pas publié
-code:             phys-caract
+statut:           Relecture
+code:             caract
+url1:
+    cours-html:  caract.html
+    cours-pdf:    caract.pdf
 url:
-    cours-html:  phys-caract.html
-    cours-pdf:    phys-caract.pdf
-    dias-video:   phys-caract-dia.pdf
-    dias-compact: phys-caract-dia-compact.pdf
+    dias-video:   caract-dia.pdf
+    dias-compact: caract-dia-compact.pdf

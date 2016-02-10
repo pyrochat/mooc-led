@@ -4,10 +4,11 @@ type:             Théorie
 niveau:           base
 auteur:
     - MLN
-statut:           Pas publié
+statut:           Relecture
 code:             synth-combi
-url:
+url1:
     cours-html:   synth-combi.html
     cours-pdf:    synth-combi.pdf
+url:
     dias-video:   synth-combi-dia.pdf
     dias-compact: synth-combi-dia-compact.pdf

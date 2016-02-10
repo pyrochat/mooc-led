@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+<h1 id="circuits-logiques-combinatoires"><strong>Circuits logiques combinatoires</strong></h1>
+<h2 id="mamadou-lamine-ndiaye-esp-dakar"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x6d;&#x61;&#x6d;&#x61;&#100;&#x6f;&#x75;&#108;&#x61;&#x6d;&#x69;&#110;&#x65;&#46;&#110;&#100;&#x69;&#x61;&#x79;&#x65;&#64;&#x75;&#x63;&#x61;&#100;&#46;&#x65;&#100;&#x75;&#46;&#x73;&#110;" class="email">&#x4d;&#x61;&#x6d;&#x61;&#100;&#x6f;&#x75;&#32;&#76;&#x61;&#x6d;&#x69;&#110;&#x65;&#32;&#78;&#100;&#x69;&#x61;&#x79;&#x65;</a>, ESP Dakar</h2>
+<blockquote>
+<p>Document en cours de relecture, version du 2016/01/25</p>
+</blockquote>
+<h2 id="éléments-de-base-des-systèmes-logiques">Éléments de base des systèmes logiques</h2>
+<p>Dans les circuits logiques, le codage des informations utilise deux niveaux de tension et un état logique est associé à chaque niveau de tension. Les systèmes numériques (logiques) fonctionnement en binaire c’est à dire que les variables discrètes (entrées ou sorties) du système ne prennent que deux valeurs <em>0</em> ou <em>1</em>. L’état d’une variable logique peut être <em>faux</em> ou <em>vrai</em>. On représente l’état faux par <em>0</em> et l’état vrai par <em>1</em>.</p>
+<p>Par exemple, pour la technologie électrique TTL, le <em>0</em> logique correspond à une tension entre 0 et 0,8V, alors que le <em>1</em> logique correspond à une tension entre 2,4 et 5V.</p>
+<p>Si nous prenons l’exemple d’un moteur électrique, le <em>0</em> logique peut correspondre à l’état <em>Arrêt</em>, alors que le <em>1</em> logique peut correspondre à l’état <em>Marche</em>.</p>
+<h2 id="algèbre-de-boole">Algèbre de BOOLE</h2>
+<p>La logique binaire peut être représentée par l’Algèbre de BOOLE, qui permet de décrire dans un modèle mathématique le traitement et le fonctionnement des systèmes binaires. L’Algèbre de BOOLE est conçue autour d’opérations logiques de base :</p>
+<ul>
+<li>le complément logique : NON, représenté par un surligné</li>
+<li>l'addition logique : OU, représenté par le signe <strong>+</strong></li>
+<li>produit logique : ET, représenté par le signe <strong>•</strong></li>
+<li>et leurs dérivés (XOR, NAND, NOR, etc)</li>
+</ul>
+<h2 id="portes-logiques">Portes logiques</h2>
+<p>Les éléments de base des systèmes logiques sont des portes logiques que l’on peut assembler pour réaliser des fonctions logiques qui peuvent à leur tour êtres assemblées pour construire des machines numériques.</p>
+<p>La seule porte intéressante à une entrée est l'inverseur :</p>
+<div class="figure">
+<img src="images/non.png" title="Inverseur" alt="Figure : Inverseur" />
+<p class="caption">Figure : Inverseur</p>
+</div>
+<p>La table de vérité qui est un tableau qui indique la valeur de la sortie pour toutes les combinaisons des entrées. Chaque ligne correspond à une combinaison des variables. Ici, elle n'a que deux lignes.</p>
+<p>Les deux portes de base à 2 entrées sont la porte OU et la porte ET :</p>
+<div class="figure">
+<img src="images/ou.png" title="Porte OU" alt="Figure : Porte OU" />
+<p class="caption">Figure : Porte OU</p>
+</div>
+<div class="figure">
+<img src="images/et.png" title="Porte ET" alt="Figure : Porte ET" />
+<p class="caption">Figure : Porte ET</p>
+</div>
+<p>Les tables de vérité ont alors 4 lignes.</p>
+<p>Les autres portes logiques à deux entrées sont des dérivées des éléments de base troisième élément de base :</p>
+<div class="figure">
+<img src="images/nor.png" title="Porte NOR" alt="Figure : Porte NOR" />
+<p class="caption">Figure : Porte NOR</p>
+</div>
+<div class="figure">
+<img src="images/nand.png" title="Porte NAND" alt="Figure : Porte NAND" />
+<p class="caption">Figure : Porte NAND</p>
+</div>
+<div class="figure">
+<img src="images/xor.png" title="Porte Ou exclusif" alt="Figure : Porte Ou exclusif" />
+<p class="caption">Figure : Porte Ou exclusif</p>
+</div>
+<h2 id="expression-mathématique-dune-fonction-logique">Expression mathématique d’une fonction logique</h2>
+<p>Tout système logique peut être défini à l’aide d’une fonction logique (ou expression logique) qui représente les relations entre les variables de sortie en fonction des variables d’entrée.</p>
+<div class="figure">
+<img src="images/fonction-logique.png" title="Fonction logique" alt="Figure : Fonction logique" />
+<p class="caption">Figure : Fonction logique</p>
+</div>
+<p>La représentation des fonctions logiques se fait:</p>
+<ul>
+<li>de manière algébrique (représentation mathématique), déjà utilisé la représentation algébrique avec les équations logiques. Exemple :<br />
+</li>
+<li>de manière tabulaire (table de vérité), une table de vérité est un tableau à 2<sup>N</sup> lignes et N+1 colonnes. Chaque ligne correspond à une combinaison des N variables. Les N premières colonnes contiennent les variables et la colonne N+1 contient la valeur de la fonction</li>
+<li>de manière graphique avec un logigramme qui est un schéma illustrant l’expression d’une fonction logique avec les portes logiques (Exemple du schéma de la porte XOR).</li>
+<li>avec des diagrammes, plusieurs diagrammes existent, nous présenterons celui de Karnaugh lors de la leçon sur la synthèse des circuits logiques combinatoires.</li>
+</ul>
+<p>L’expression en algèbre de Boole d’une fonction logique peut être faite sous deux formes : la forme <em>somme de produits</em> et la forme <em>produit de sommes</em>. L’expression sous la forme somme de produit est obtenue à partir de la somme de tous les lignes de la table de vérité où la fonction vaut 1. On appelle ces lignes <em>mintermes</em>.</p>
+<div class="figure">
+<img src="images/fonc-3e.png" title="Fontion à 3 entrées" alt="Figure : Fontion à 3 entrées" />
+<p class="caption">Figure : Fontion à 3 entrées</p>
+</div>
+<p>L’expression sous la forme <em>produit de sommes</em> est obtenue en multipliant tous les <em>maxtermes</em> pour lesquels la fonction vaut 0.</p>
+<h2 id="propriétés-de-lalgèbre-de-boole">Propriétés de l’Algèbre de BOOLE</h2>
+<p>Il est souvent utile de simplifier ces expressions pour réduire le nombre de portes logiques et par conséquent le coût du matériel ou le temps de câblage. On utilise alors les propriétés de l’Algèbre de BOOLE.</p>
+<p>Commutativité :</p>
+<p><span class="math inline">\(\mathrm{A\bullet B=B\bullet A}\)</span></p>
+<p><span class="math inline">\(\mathrm{A+B=B+A}\)</span></p>
+<p>Idempotence :</p>
+<p><span class="math inline">\(\mathrm{A\bullet A=A}\)</span></p>
+<p><span class="math inline">\(\mathrm{A+A=A}\)</span></p>
+<p>Constantes :</p>
+<p><span class="math inline">\(\mathrm{A\bullet 0=0}\)</span></p>
+<p><span class="math inline">\(\mathrm{A\bullet 1=A}\)</span></p>
+<p><span class="math inline">\(\mathrm{A+0=A}\)</span></p>
+<p><span class="math inline">\(\mathrm{A+1=1}\)</span></p>
+<p>Complémentation :</p>
+<p><span class="math inline">\(\mathrm{A\bullet \overline{A}=0}\)</span></p>
+<p><span class="math inline">\(\mathrm{A+\overline{A}=1}\)</span></p>
+<p>Distributivité :</p>
+<p><span class="math inline">\(\mathrm{A\bullet (B+C)=(A\bullet B)+(A\bullet C)}\)</span></p>
+<p><span class="math inline">\(\mathrm{A+(B\bullet C)=(A+B)\bullet (A+C)}\)</span></p>
+<p>Associativité :</p>
+<p><span class="math inline">\(\mathrm{A\bullet (B\bullet C)=(A\bullet B)\bullet C=A\bullet B\bullet C}\)</span></p>
+<p><span class="math inline">\(\mathrm{A+(B+C)=(A+B)+C=A+B+C}\)</span></p>
+<p>De Morgan :</p>
+<p><span class="math inline">\(\mathrm{\overline{A\bullet B}=\overline{A}+\overline{B}}\)</span></p>
+<p><span class="math inline">\(\mathrm{\overline{A+B}=\overline{A}\bullet \overline{B}}\)</span></p>
+<p>Ces propriétés sont utilisées pour la simplification des fonctions logiques. Elles permettent d’obtenir une expression logique comportant un nombre minimal de termes, ainsi qu’un nombre minimal de variables dans chaque terme dans le but de simplifier la réalisation matérielle.</p>
+</body>
+</html>

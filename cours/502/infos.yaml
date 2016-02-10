@@ -4,10 +4,11 @@ type:             Théorie
 niveau:           base
 auteur:          
     - YT
-statut:           Pas publié
+statut:           Relecture
 code:             timers
 url:
     cours-html:   timers.html
     cours-pdf:    timers.pdf
+url1:
     dias-video:   timers-dia.pdf
     dias-compact: timers-dia-compact.pdf

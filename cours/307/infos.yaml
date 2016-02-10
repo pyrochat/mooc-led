@@ -1,0 +1,13 @@
+titre:
+    - "[Physique] La couleur"
+type:             Théorie
+niveau:           base
+auteur:          
+    - AT
+statut:           Pas publié
+code:             couleur
+url:
+    cours-html:   couleur.html
+    cours-pdf:    couleur.pdf
+    dias-video:   couleur-dia.pdf
+    dias-compact: couleur-dia-compact.pdf

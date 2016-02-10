@@ -1,13 +1,14 @@
 titre:
-    - "[Logique] Circuits logiques séquentiels"
+    - "[Logique] Instructions concurrentes VHDL"
 type:             Théorie
-niveau:           base
+niveau:           avancé
 auteur:          
     - MLN
-statut:           Pas publié
-code:             codeduchapitre
+statut:           Relecture
+code:             concur
+url1:
+    cours-html:   concur.html
+    cours-pdf:    concur.pdf
 url:
-    cours-html:   seq.html
-    cours-pdf:    seq.pdf
-    dias-video:   seq-dia.pdf
-    dias-compact: seq-dia-compact.pdf
+    dias-video:   concur-dia.pdf
+    dias-compact: concur-dia-compact.pdf

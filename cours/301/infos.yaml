@@ -1,13 +1,13 @@
 titre:
-    - "Entrées-sorties"
+    - "[Logique] Circuits logiques séquentiels"
 type:             Théorie
 niveau:           base
 auteur:          
-    - PYR
+    - MLN
 statut:           Pas publié
 code:             codeduchapitre
 url:
-    cours-html:   io.html
-    cours-pdf:    io.pdf
-    dias-video:   io-dia.pdf
-    dias-compact: io-dia-compact.pdf
+    cours-html:   seq.html
+    cours-pdf:    seq.pdf
+    dias-video:   seq-dia.pdf
+    dias-compact: seq-dia-compact.pdf

@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Pierre-Yves Rochat, EPFL" />
+  <title>Entrées-sorties</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Entrées-sorties</h1>
+<h2 class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
+<h3 class="date">rév 2016/02/08</h3>
+</div>
+<h2 id="champs-de-bits">Champs de bits</h2>
+<p>Les ports d'entrée-sortie des microcontrôleurs sont le plus souvent vus par l'application comme des bits séparés, alors qu'ils sont physiquement adressés par groupe de 8 bits. Il faut donc disposer des outils nécessaires pour manipuler séparément des bits à l'intérieur d'un champs de bits (bit set).</p>
+<p>Trois problèmes se posent : * mettre un ou plusieurs bits à la valeur 1 (set bit) * mettre un ou plusieurs bits à la valeur 0 (clear bit) * tester la valeur d'un bit (test bit).</p>
+<p>Prenons un exemple concret : les différents bits de P1OUT (port d'entrée sortie 1) d'un MSP430 sont utilisés à diverses fins, certains comme entrées, d'autres comme sorties. Sur la broche P1.6 se trouve une LED, qu'on souhaite allumer ou éteindre à certains moments. Sur les broches P1.2 et P1.3 se trouvent des boutons-poussoirs.</p>
+<h2 id="set-bit">Set bit</h2>
+<p>Pour mettre un bit à la valeur 1, le problème se pose de la manière suivante: P1OUT contient les valeurs: x7 x6 x5 x4 x3 x2 x1 x0, toutes inconnues à priori. Après l'opération Set Bit sur le bit P1.6, on souhaite obtenir les valeurs suivantes: x7 1 x5 x4 x3 x2 x1 x0 dans P1OUT. Les lois de l'algèbre de Boole nous affirment les égalités suivantes: A . 0 = 0 A . 1 = A (1 est l'élément neutre du ET) A + 0 = A (0 est l'élément neutre du OU) A + 1 = 1 On remarque rapidement que l'opération OU logique va nous permettre de réaliser la mise à 1 d'un bit : P1OUT x7 x6 x5 x4 x3 x2 x1 x0 Second opérande 0 1 0 0 0 0 0 0 ------------------------------ OU Résultat x7 1 x5 x4 x3 x2 x1 x0 L'opérateur OU s'appliquant à un champ de bits s'écrit | en C. Il ne faut pas le confondre avec l'opérateur || qui s'applique à deux valeurs vues comme des booléans (la valeur 0 correspondant à faux et toute valeur différente de zéro correspondant à vrai). L'opération Set Bit s'écrit donc, dans notre exemple: P1OUT = P1OUT | 0x40; La syntaxe suivante est équivalente, mais plus compacte à écrire : P1OUT|= 0x40; Noter les valeurs directement en hexa-décimal, ou encore en décimal, rend les programmes peu lisibles. On préfèrera la syntaxe suivante:</p>
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c">P1OUT|= (<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>); <span class="co">// ou P1OUT|= BIT6;</span></code></pre></td></tr></table>
+<!-- retour au mode normal pour l'éditeur -->
+<p>La constante BIT6 vaut <code>(1&lt;&lt;6)</code> dans les déclarations standard proposées pour les MSP430. C'est le rang du bit dans l'octet, ou autrement dit la puissance de 2 correspondante. L'opérateur de décalage est utilisé ici pour mettre le bit à sa place. Remarque importante: l'expression <code>(1&lt;&lt;6)</code> est évaluée à la compilation et non à l'exécution, vu qu'elle ne comporte que des constantes. Choisir d'écrire de manière lisible ne pénalise donc pas les performances du programme, ni la taille du binaire ! Clear bit De la même manière, on utilisera l'opération logique ET pour la mise à 0 d'un bit. Mais l'élément neutre est alors le 1 :</p>
+<p><code>P1OUT  x7  x6  x5  x4  x3  x2  x1  x0</code> <code>Second opérande    1   0   1   1   1   1   1   1</code> <code>------------------------------  ET</code> <code>Résultat   x7  0   x5  x4  x3  x2  x1  x0</code></p>
+<p>D'où l'expression: <code>P1OUT = P1OUT &amp; 0xBF;</code></p>
+<p>On préfèrera la notation suivante : <code>P1OUT &amp;=~(1&lt;&lt;6); // ou P1OUT &amp;=~(BIT6);</code></p>
+<p>Rappel : l'opérateur ~ effectue une inversion bit-à-bit sur un champ de bits.</p>
+<h2 id="test-bit">Test bit</h2>
+<p>L'utilisation d'un bouton-poussoir doit permettre d'effectuer un débranchement dans le cours du programme: si le bouton est pressé, alors telle action doit être réalisée. C'est la structure <code>if (condition) ...</code> du C.</p>
+<p>Une condition est simplement représentée par un nombre: la condition est fausse si le nombre vaut 0, et vraie dans le cas contraire.</p>
+<p>La lecture des valeurs se trouvant sur les broches de P1.0 à P1.7 se fait en lisant la valeur de <code>P1IN</code>. On cherche une opération logique dont le résultat sera 0 si le bit testé vaut 0 (condition fausse), alors que il sera non-nul si le bit testé vaut 1 (condition vraie). C'est la fonction ET qui va être utilisée:</p>
+<p><code>P1IN   x7   x6   x5   x4   x3   x2   x1   x0</code> <code>Second opérande    0    0    0    0    0    1    0    0</code> <code>--------------------------------------  ET</code> <code>Résultat   0    0    0    0    0    x2   0    0</code></p>
+<p>En C, on écrit : <code>if ( P1IN &amp; (1&lt;&lt;2) )...  // ou if  ( P1IN &amp; (BIT2) )</code></p>
+<p>La valeur binaire contenant le bit qu'on souhaite tester s'appelle un masque. En effet, l'opération ET entre un champ de bits et cette valeur permet de maquer les bits qui ne nous intéressent pas, afin de ne garder que le bit, ou les bits, à tester.</p>
+<h2 id="exemple">Exemple</h2>
+<p>Une pression sur les boutons-poussoirs ON et OFF doivent respectivement allumer et éteindre la LED. Le schéma n'indique que les ajouts par rapport au schéma de base, qui contient aussi les alimentation et les signaux de programmation.</p>
+<p>Voici le programme correspondant :</p>
+<table class="sourceCode c numberLines" startFrom="1"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="ot">#include &lt;MSP430G2553.h&gt;</span>
+<span class="dt">int</span> main() {
+    WDTCTL = WDTPW + WDTHOLD;     
+    P1DIR|= (<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>); <span class="co">// LED en sortie</span>
+    P1OUT|= (1&lt;&lt;2) | (1&lt;&lt;3); <span class="co">// résistances en pull-up</span>
+    P1REN|= (1&lt;&lt;2)|(1&lt;&lt;3); <span class="co">// connexion des résistances sur les entrées</span>
+    <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// boucle infinie</span>
+      <span class="kw">if</span> (!(P1IN &amp; (<span class="dv">1</span>&lt;&lt;<span class="dv">2</span>)) P1OUT |= (<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>); <span class="co">// bouton ON</span>
+      <span class="kw">if</span> (!(P1IN &amp; (<span class="dv">1</span>&lt;&lt;<span class="dv">3</span>)) P1OUT &amp;= ~(<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>); <span class="co">// bouton OFF</span>
+    }
+}</code></pre></td></tr></table>
+<!-- retour au mode normal pour l'éditeur -->
+</body>
+</html>

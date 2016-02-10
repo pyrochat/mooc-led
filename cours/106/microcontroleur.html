@@ -25,7 +25,10 @@
 <li>des circuits d'<strong>Entrée-Sortie</strong> (I/O : <em>Input/Output</em>). Ce sont les circuits qui permettent l'interaction avec l'extérieur : clavier, souris, écran, mémoires externes, imprimante, etc.</li>
 </ul>
 <p>Des lignes électriques, appelées <em>bus</em> relient ensemble ces éléments.</p>
-<p><img src="images/archi-sys-info.png" title="Architecture d&#39;un système informatique" alt="Architecture d&#39;un système informatique" />{ width=15cm }</p>
+<div class="figure">
+<img src="images/architecture-sys-info.png" title="Architecture d&#39;un système informatique" alt="Architecture d&#39;un système informatique" width="566" />
+<p class="caption">Architecture d'un système informatique</p>
+</div>
 <p>Un <strong>microcontrôleur</strong> est aussi un système informatique. Sa particularité est qu'il est contenu dans un seul circuit intégré. L'architecture est la même que celle présentée sur la figure. Par rapport à une carte-mère de PC, les éléments qui constituent un microcontrôleur sont généralement plus simples, moins puissants, leur capacité est plus limitée :</p>
 <ul>
 <li>la mémoire morte contient généralement de 1 kB à quelques centaines de kB.</li>
@@ -44,7 +47,10 @@
 <li>16 broches d'entrée-sorties. Huit d'entre elles peuvent être connectées à un convertisseur analogique-numérique de 10 bits de résolution. Certaines de ces broches ont également d'autres fonctions spécifiques (capture d'événements, utilisation d'un quartz, etc).</li>
 </ul>
 <p>Le MSP430G est disponible dans plusieurs boîtiers, dont le DIL20 (Dual-in-line 20 pins), facile à mettre en œuvre. Voici son brochage :</p>
-<p><img src="images/msp430g2553.png" title="Brochage du MSP430G2553" alt="Brochage du MSP430G2553" />{ width=15cm }</p>
+<div class="figure">
+<img src="images/msp430g2553.png" title="Brochage du MSP430G2553" alt="Brochage du MSP430G2553" width="566" />
+<p class="caption">Brochage du MSP430G2553</p>
+</div>
 <h2 id="schéma-de-mise-en-œuvre">Schéma de mise en œuvre</h2>
 <p>Chaque broche est désignée par un ou plusieurs noms. Identifions les trois groupes de broches indispensables à la réalisation d'un premier montage fonctionnel à microcontrôleur :</p>
 <ul>
@@ -57,7 +63,10 @@
 <p>La programmation des MSP430 peut se faire par l'intermédiaire de deux signaux: le <em>RST</em> et un signal nommé <em>TEST</em> (broche 17). Il n'est pas nécessaire de comprendre le rôle exact de ce signal. Il est généré par le logiciel de programmation qui s'exécute sur un PC (par exemple <em>Code Composer Studio</em> ou <em>Energia</em>). Il est transmis par un programmateur, par exemple celui inclus dans le <em>LaunchPad MSP430</em>.</p>
 <p>Les autres broches du MSP430G2553 sont des entrées-sorties. Elles sont regroupées en 2 ports: P1 et P2. Ces deux ports sont complets : ils comportent chacun 8 broches. D'autres versions du MSP430 sont proposées en boîtier à 14 broches (DIL 14). Dans ce cas, les broches P2.0 à P2.5 n'existent pas.</p>
 <p>Un microcontrôleur est un composant électronique. Il va trouver sa place dans un schéma pour sa mise en œuvre :</p>
-<p><img src="images/msp430g2553.png" title="Brochage du MSP430G2553" alt="Brochage du MSP430G2553" />{ width=15cm }</p>
+<div class="figure">
+<img src="images/msp430g2553.png" title="Brochage du MSP430G2553" alt="Brochage du MSP430G2553" width="566" />
+<p class="caption">Brochage du MSP430G2553</p>
+</div>
 <p>Ce schéma est très simple. En plus du microcontrôleur, on y trouve une LED, connectée à la broche <em>P1.0</em>, avec sa résistance de limitation du courant reliée en série vers la masse. Notez la présence d'un condensateur de découplage entre le + et le -. Les électroniciens savent qu'il est utile pour filtrer l'alimentation. On peut dire qu'il est une petite réserve de charges électriques. Sa valeur est souvent de 100 nF. Il sera placé tout près du circuit intégré.</p>
 <h2 id="réalisation-dun-montage-à-microcontrôleur">Réalisation d'un montage à microcontrôleur</h2>
 <h2 id="programmation-dun-microcontrôleur">Programmation d'un microcontrôleur</h2>

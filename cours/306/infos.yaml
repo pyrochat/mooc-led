@@ -1,13 +1,14 @@
 titre:
-    - "[Physique] La couleur"
+    - "Montages électroniques"
 type:             Théorie
 niveau:           base
-auteur:          
-    - AT
-statut:           Pas publié
-code:             couleur
+auteur:
+    - 'PYR'
+statut:           Relecture
+code:             montages
 url:
-    cours-html:   couleur.html
-    cours-pdf:    couleur.pdf
-    dias-video:   couleur-dia.pdf
-    dias-compact: couleur-dia-compact.pdf
+    c-html:    montages.html
+    c-pdf:     montages.pdf
+url1:
+    d-video:   montages-dia.pdf
+    d-compact: montages-dia-compact.pdf

@@ -4,27 +4,45 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="Pierre-Yves Rochat, EPFLet Yves Tiecoura, INP-HB" />
+  <meta name="author" content="Pierre-Yves Rochat, EPFL et Yves Tiecoura, INP-HB" />
   <title>Les timers</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
@@ -63,12 +81,24 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li>un <strong>registres de comparaison</strong>, associé à la logique de comparaison. Il y a souvent plusieurs registres de comparaison.</li>
 <li>une logique de gestion, permettant de faire interagir des <strong>entrées</strong> et des <strong>sorties</strong> avec le timer, ainsi qu'à générer des <strong>interruptions</strong> dans certaines conditions.</li>
 </ul>
+<p>Voici comment peut se présenter le choix de l'horloge et de pré-division :</p>
+<div class="figure">
+<img src="images/pre-div-90dpi.png" title="Exemple de système de choix de l&#39;horloge" alt="Exemple de système de choix de l&#39;horloge" />
+<p class="caption">Exemple de système de choix de l'horloge</p>
+</div>
+<p>Un premier multiplexeur permet de choisir entre une horloge extérieure et une horloge externe. Un compteur binaire, utilisé en diviseur de fréquence, fournit des signaux à des fréquences sous-multiples. Un second multiplexeur permet de choisir le fréquence qui commandera le Timer.</p>
+<p>Les deux multiplexeurs sont commandés par des bits d'un registre de contrôle, dont le rôle est de fixer le mode de fonctionnement du Timer.</p>
+<p>Voici comment peut se présenter la logique de gestion du Timer :</p>
+<div class="figure">
+<img src="images/logique-timer-90dpi.png" title="Exemple de logique de gestion d&#39;un timer]" alt="Exemple de logique de gestion d&#39;un timer" />
+<p class="caption">Exemple de logique de gestion d'un timer</p>
+</div>
 <h2 id="les-timers-des-microcontrôleurs">Les Timers des microcontrôleurs</h2>
 <p>Quelques années après les premiers microprocesseurs, des circuits spécialisés sont apparus sur le marché avec des Timers. C'est la cas du très célèbre <strong>8253</strong> d'Intel, datant de 1981, dont on trouve encore des descendants dans les PC modernes.</p>
 <p>Les microcontrôleurs ont eux aussi très vite été complétés par des Timers, comme le célèbre <strong>PIC16x84</strong>, qui incluait déjà un unique compteur 8 bits très simple, mais très utile.</p>
 <p>Les microcontrôleurs <strong>ARM</strong> ont tous plusieurs Timers. Le <strong>ATmega328</strong>, connu pour équiper les Arduino, a trois Timers, le Timer0 à 8 bits, le Timer 1 à 16 bits et le Timer2 à 8 bits, mais différent du Timer0. Ces Timers ont une fonctionnalité riche, permettant de nombreuses applications.</p>
 <p>Les microcontrôleurs plus modernes ont souvent de Timers très complexe. Dans les familles de microcontrôleurs <strong>ARM</strong>, les Timers diffèrent d'un fabricant à l'autre : cette partie du microcontrôleur est propriétaire, elle n'est pas développée par la société ARM.</p>
-<p>Nous étudierons ici les Timers utilisés dans les microcontrôleurs <strong>MSP430G</strong> de Texas Intrument, qui se trouvent sur la carte Launchpad.</p>
+<p>Nous étudierons ici les Timers utilisés dans les microcontrôleurs <strong>MSP430G</strong> de Texas Instrument, qui se trouvent sur la carte Launchpad.</p>
 <h2 id="timer-a-du-msp430">Timer A du MSP430</h2>
 <p>Les MPS430 de la série G disposent de Timers de 16 bits, en nombre est en configurations variables selon les modèles. Le MSP430G2231 (boîtier 14 pattes) en a un seul, disposant de deux registres de comparaison. Le MSP430G2553 en a deux, chacun disposant de trois registres de comparaisons.</p>
 <p>Le fonctionnement des ces registres est très bien documenté : 20 pages de documentation, bien évidemment en anglais. Voici les références du document : MSP430x2xx Family User's Guide, literature Number: SLAU144H. On le trouve facilement sur Internet.</p>
@@ -96,7 +126,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h2 id="premier-programme-avec-le-timer-a">Premier programme avec le Timer A</h2>
 <p>Voilà un premier programme... qui va faire clignoter une LED !</p>
 <p>Il débute comme toujours par l'instruction de mise hors-service du compteur <em>Watchdog</em>, mais aussi par deux instructions permettant de choisir une des fréquences calibrées d'usine, ici 1 MHz :</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
     WDTCTL = WDTPW + WDTHOLD;
     BCSCTL1 = CALBC1_1MHZ;
     DCOCTL = CALDCO_1MHZ; <span class="co">// Fréquence CPU</span>
@@ -108,7 +138,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
             P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Toggle Led</span>
         }
     }
-}</code></pre>
+}</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
 <p>Comment fonctionne la boucle principale ? Chaque fois que le fanion TAIFG passe à 1, la LED est inversée. Le fanion TAIF (qui se trouve aussi dans le registre TACTL) signale un dépassement de capacité, c'est-à-dire le retour à zéro du compteur. Il doit être remis à zéro en vue du prochain cycle. Calculons la période de clignotement : l'horloge de 1 MHz est divisée par 8 par le pré-diviseur. Le Timer reçoit donc 125 kHz (période : 8 µs). Le Timer a 16 bits, il va donc faire un cycle complet en 65'536 coups d'horloge, soit 524 ms.</p>
 <h2 id="les-registres-de-comparaison">Les registres de comparaison</h2>
@@ -121,7 +151,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p class="caption">Registre TACCRx</p>
 </div>
 <p>Modifions notre programme de la manière suivante :</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
     ...
     TACCR0 = <span class="dv">62500</span>; <span class="co">// * 8us = 500ms</span>
     <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// boucle infinie</span>
@@ -131,13 +161,13 @@ code > span.er { color: #ff0000; font-weight: bold; }
             P1OUT ^⁼ (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Toggle Led</span>
         }
     }
-}</code></pre>
+}</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
 <p>Au début du programme, le registre de comparaison a été initialisé à 62500, une valeur qui correspond à une demi-seconde dans notre cas : 62500 * 8 µs = 500 mS. Une fois cette valeur atteinte, il faut ajouter 62500 à la valeur courant du registre de comparaison. On va dépasser la capacité du registre, qui a 16 bits. On obtiendra : (62500 + 62500) modulo 65536 = 59464 ! Mais comme le Timer augmente toujours et qu'il a lui aussi 16 bits, cette valeur est bien la bonne valeur pour la prochaine comparaison.</p>
 <p>Si vous avez des doutes, imaginez qu'il est 9h50 et que vous voulez faire sonner votre réveil dans 30 minutes. Vous devez le régler sur 10h20. En ne tenant compte que des minutes, on a bien : (50 + 30) modulo 60 = 20</p>
 <h2 id="les-interruption-associées-aux-timers">Les interruption associées aux Timers</h2>
 <p>L'intérêt principal des Timers est de les associer à des interruptions. Modifions le programme de la manière suivante :</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
     ...  
     TACTL |= TAIE; <span class="co">// interruption de l&#39;overflow</span>
     _BIS_SR(GIE); <span class="co">// autorisation générale des interruptions</span>
@@ -158,13 +188,13 @@ __interrupt <span class="dt">void</span> Timer_A1(<span class="dt">void</span>) 
            Led1Toggle;
            <span class="kw">break</span>;
   }
-}</code></pre>
+}</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
 <p>Notez le nom de la routine d'interruption. Elle ne concerne par le Timer1 ! Elle est la seconde routine d'interruption du Timer0, la première étant présentée dans le prochain exemple.</p>
 <p>L'interruption associée au Timer lui-même correspond à un <em>overflow</em> (dépassement de capacité, c'est le passage de la plus grande valeur à zéro). La syntaxe de la routine d'interruption est un peu compliquée. Il faut la copier et non pas chercher à la comprendre ! Notez qu'elle varie selon les compilateurs : il ne s'agit pas d'une norme du C. Dans ce cas, trois sources différentes d'interruption (overflow, comparaison 1 et comparaison2) sont regroupées dans une même routine d'interruption. Un registre appelé TAIV permet de connaître dans chaque cas la cause de l'interruption). Les valeurs 2 4 et 10 sont le choix arbitraire du fabricant : il faut respecter scrupuleusement la syntaxe du switch TAIV... case... Il n'a pas été nécessaire de remettre à zéro le fanion TAIFG : c'est la gestion matérielle des interruptions qui le fait automatiquement au moment de l'appel de la routine d'interruption.</p>
 <h2 id="interruption-de-comparaison">Interruption de comparaison</h2>
 <p>De même, une interruption peut être associée à chaque registre de comparaison. Cette fois, c'est dans le registre TACCTLx (x valant 0, 1 ou 2) qu'il faut activer le fanion d'interruption.</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
     ...  
     TACCTL0 |= CCIE; <span class="co">// interruption de la comparaison</span>
     _BIS_SR(GIE); <span class="co">// autorisation générale des interruptions</span>
@@ -176,7 +206,7 @@ __interrupt <span class="dt">void</span> Timer_A1(<span class="dt">void</span>) 
 __interrupt <span class="dt">void</span> Timer_A0(<span class="dt">void</span>) {
     CCR0 += <span class="dv">62500</span>; 
     P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Toggle Led</span>
-}</code></pre>
+}</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
 <p>Les Timers offrent de très nombreuses possibilités. L'étude détaillée de la documentation peut prendre du temps. De nombreux exemples sont fournis par les fabricants, pour en illustrer divers usages.</p>
 </body>

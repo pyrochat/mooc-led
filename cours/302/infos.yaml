@@ -1,13 +1,14 @@
 titre:
-    - "PWM : modulation de largeur d'impulsion"
+    - "Entrées-sorties"
 type:             Théorie
 niveau:           base
-auteur:
+auteur:          
     - PYR
-statut:           Relecture
-code:             pwm
+statut:           Pas publié
+code:             io
 url:
-    cours-html:   pwm.html
-    cours-pdf:    pwm.pdf
-    dias-video:   pwm-dia.pdf
-    dias-compact: pwm-dia-compact.pdf
+    cours-html:   io.html
+    cours-pdf:    io.pdf
+url1:
+    dias-video:   io-dia.pdf
+    dias-compact: io-dia-compact.pdf

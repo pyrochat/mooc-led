@@ -8,23 +8,41 @@
   <title>Mémoires permanentes</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
@@ -45,44 +63,47 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h2 id="les-mémoires-eeprom">Les mémoires EEPROM</h2>
 <p>Certains microcontrôleurs disposent d’un troisième type de mémoire, en plus de la Flash et de la RAM. Il s’agit de mémoires EEPROM. Ce sont aussi des mémoires non-volatiles, mais chaque position mémoire peut être écrite et effacée indépendamment des autres. On trouve ce type de mémoire dans les microcontrôleurs AVR, dont l’ATmega328, bien connu pour être utilisé dans les Arduino.</p>
 <p>L’accès à l’EEPROM interne d’un microcontrôleur est généralement très simple. Des registres sont prévus pour l’adresse (EEAR) et pour la donnée (EEDR), en lecture ou en écriture. Sur les AVR, deux registres donnent l’accès aux adresses et aux données :</p>
-<p><img src="images/eeprom-avr.png" title="Accès à l’EEPROM sur les AVR" alt="Accès à l’EEPROM sur les AVR" />{ width=5cm }</p>
+<div class="figure">
+<img src="images/eeprom-avr.png" title="Accès à l’EEPROM sur les AVR" alt="Accès à l’EEPROM sur les AVR" width="188" />
+<p class="caption">Accès à l’EEPROM sur les AVR</p>
+</div>
 <p>Voici les instructions pour lire et écrire dans la mémoire :</p>
-<pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Lecture en EEPROM :</span>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Lecture en EEPROM :</span>
   EEAR = adresse; <span class="co">// l&#39;adresse est donnée</span>
-  EECR = (1&lt;&lt;EERE); <span class="co">// le fanion de lecture est activé</span>
+  EECR = (<span class="dv">1</span>&lt;&lt;EERE); <span class="co">// le fanion de lecture est activé</span>
   valeur = EEDR; <span class="co">// lecture de la valeur</span>
 
   <span class="co">// Ecriture en EEPROM :</span>
-  <span class="kw">while</span> (EECR &amp; (1&lt;&lt;EEPE)) {} <span class="co">// attend la fin d&#39;une écriture précédente</span>
+  <span class="kw">while</span> (EECR &amp; (<span class="dv">1</span>&lt;&lt;EEPE)) {} <span class="co">// attend la fin d&#39;une écriture précédente</span>
   EEAR = adresse; <span class="co">// l&#39;adresse est donnée</span>
   EEDR = valeur; <span class="co">// la valeur est donnée</span>
-  EECR = (1&lt;&lt;EEMPE); <span class="co">// autorise une écriture (Master Write Enable)</span>
-  EECR = (1&lt;&lt;EEPE); <span class="co">// lance le cycle d&#39;écriture (Write Enable)</span></code></pre>
+  EECR = (<span class="dv">1</span>&lt;&lt;EEMPE); <span class="co">// autorise une écriture (Master Write Enable)</span>
+  EECR = (<span class="dv">1</span>&lt;&lt;EEPE); <span class="co">// lance le cycle d&#39;écriture (Write Enable)</span></code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
 <p>Le fanion EEMPE signifiait EEprom Master Program Enable. Mais les lettres PE sont traduites dans la documentation actuelle par Write Enable. EEMPE doit être activé juste avant l’activation du fanion EEPE (EEprom Write Enable) qui lance le cycle d’écriture. Son activation ne dure que quelques cycles d’horloge : il est automatiquement remis à zéro. Aucune écriture n’est possible s’il n’est pas actif. Son but est de rendre improbable une écriture accidentelle en EEPROM. L’activation des EEMPE et de EEPE doivent en effet se suivre de près pour qu’une écriture soit possible.</p>
 <p>Le fanion EEPE est remis à zéro automatiquement par le microcontrôleur lorsque le cycle d’écriture est terminé. Alors que la lecture est immédiate, il faut se souvenir que l’écriture prend un temps relativement long, de l’ordre de quelques millisecondes.</p>
 <h2 id="accès-à-la-mémoire-flash-par-programmation">Accès à la mémoire Flash par programmation</h2>
 <p>Pour y placer le programme, la mémoire Flash du microcontrôleur est accédée de l’extérieur, au moyen d’un programmateur. S’il reste de la place dans la mémoire Flash, il est possible de l’utiliser depuis le programme pour y placer des données. La manière de le faire dépend de l’architecture du microcontrôleur. Il faut se référer à la documentation du microcontrôleur pour avoir les détails.</p>
 <p>Sur les MSP430, l’architecture de Von Neumann rend facile l’accès à la mémoire Flash. La lecture se fait simplement en indiquant l’adresse de la position mémoire :</p>
-<pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Lecture en Flash :</span>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Lecture en Flash :</span>
   <span class="dt">uint8_t</span> *pointeur; <span class="co">// pointeur dans la Flash</span>
   pointeur = (<span class="dt">uint8_t</span> *) <span class="bn">0x1040</span>; <span class="co">//place l&#39;adresse dans le pointeur</span>
-  <span class="dt">uint8_t</span> valeur = *pointeur;</code></pre>
+  <span class="dt">uint8_t</span> valeur = *pointeur;</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
 <p>On remarque le trans-typage de l’adresse, indiquée ici en hexadécimal, vers le type du pointeur, qui est dans ce cas un pointeur vers des valeurs 8 bits non-signées <code>(uint8_t *)</code>.</p>
 <p>L’écriture se fait de la même manière. Il faut toutefois précéder l’écriture par la désactivation du fanion qui bloque l’écriture en mémoire Flash. Son rôle est de rendre improbable des effacements accidentels de la mémoire.</p>
-<pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Ecriture en Flash :</span>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Ecriture en Flash :</span>
   FCTL3 = FWKEY; <span class="co">// Clear Lock bit</span>
   *pointeur = valeur; <span class="co">// écrit la valeur dans la Flash</span>
-  FCTL3 = FWKEY + LOCK; <span class="co">// Set LOCK bit</span></code></pre>
+  FCTL3 = FWKEY + LOCK; <span class="co">// Set LOCK bit</span></code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
 <p>L’effacement s’effectue par bloc. Il s’effectue lorsqu’une écriture est faite dans la zone du bloc alors que le fanion d’effacement est activé. Mais il est nécessaire de désactiver au préalable le fanion qui bloque toute écriture en mémoire Flash.</p>
-<pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Effacement d&#39;un bloc de la mémoire Flash</span>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Effacement d&#39;un bloc de la mémoire Flash</span>
   FCTL1 = FWKEY + ERASE; <span class="co">// Set Erase bit</span>
   FCTL3 = FWKEY; <span class="co">// Clear Lock bit</span>
   *pointeur = <span class="dv">0</span>; <span class="co">// lance l&#39;effacement du bloc, valeur sans importance</span>
   FCTL3 = FWKEY + LOCK; <span class="co">// Set LOCK bit</span>
-  FCTL1 = FWKEY; <span class="co">// Clear WRT bit</span></code></pre>
+  FCTL1 = FWKEY; <span class="co">// Clear WRT bit</span></code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
 <p>Souvent, des librairies sont disponibles pour faciliter ce travail. Pour les AVR, construits sur une architecture de Harvard, la librairie <code>Pgmspace.h</code> est utilisée.</p>
 <h2 id="limite-du-nombre-de-cycles-décriture">Limite du nombre de cycles d’écriture</h2>
@@ -99,7 +120,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h2 id="eeprom-i2c-ou-spi">EEPROM I2C ou SPI</h2>
 <p>Plusieurs fabricants proposent des familles de mémoires EEPROM, tels que Microchip, Atmel, STmicro, Winbond, etc. Le dialogue entre ces mémoires et le microcontrôleur se fait en série, le plus souvent par des signaux aux normes I2C ou SPI.</p>
 <p>Par exemple, la mémoire M95256 de STmicro a une capacité de 256 kb. Attention, la lettre b est en minuscule, ce qui signifie bit. En d’autre termes, c’est une mémoire de 32 kB (kilo Bytes). Elle utilise les signaux SPI. Voici un schéma de mise en œuvre :</p>
-<p><img src="images/m95256.png" title="Mise en œuvre d’une EEPROM" alt="Mise en œuvre d’une EEPROM" />{ width=9cm }</p>
+<div class="figure">
+<img src="images/m95256.png" title="Mise en œuvre d’une EEPROM" alt="Mise en œuvre d’une EEPROM" width="340" />
+<p class="caption">Mise en œuvre d’une EEPROM</p>
+</div>
 <p>Pour dialoguer avec ces circuits pour lire ou écrire des valeurs en mémoire, on trouve facilement sur Internet des librairies prêtes à l’emploi. La lecture des sources permet d’en comprendre le fonctionnement.</p>
 <p>Il faut être attentif à un point important. Presque tous les microcontrôleurs sont équipés de contrôleurs spécialisés pour I2C ou pour SPI. Pour pouvoir utiliser ces contrôleurs, il faut impérativement utiliser les broches choisies à cet effet par le fabricant. On n’est donc pas libre de choisir les broches.</p>
 <p>Bien entendu, il est possible de programmer les procédures I2C ou SPI en <em>bit banging</em>, c’est-à-dire en agissant directement sur les broches d’entrée-sortie. Dans ce cas, on a toute liberté dans le choix des broches. L’usage des contrôleurs intégrés a deux avantages. D’une part, le travail de programmation est simplifié. Mais surtout, ces contrôleurs permettent d’atteindre des vitesses de transfert plus élevées. Pour les afficheurs à LED de grande taille, c’est un aspect très important.</p>

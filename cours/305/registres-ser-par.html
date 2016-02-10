@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Pierre-Yves Rochat, EPFL" />
+  <title>Registre d’extension série-parallèle</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Registre d’extension série-parallèle</h1>
+<h2 class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
+<h3 class="date">rév 2015/09/18</h3>
+</div>
+<h2 id="besoin-de-broches">Besoin de broches</h2>
+<p>Les enseignes et surtout les afficheurs à LED nécessitent beaucoup de broches dont on peut commander l’état. Les microcontrôleurs n’ont généralement pas assez de broches d’entrées-sorties pour faire face à ce besoin. Plusieurs circuits logiques classiques offrent la fonctionnalité de fournir des sorties supplémentaires. Notons par exemple les <em>latch adressables</em>, qui sont très pratiques. Le circuit 74HC259 est un latch adressable à 8 sorties.</p>
+<p>Mais le composant le plus souvent utilisé dans le domaine des afficheurs à LED est le <em>registre série-parallèle</em>.</p>
+<h2 id="registre-série">Registre série</h2>
+<p>Les registres à décalage sont réalisés avec des bascules. Voici le schéma d’un registre série 8 bits :</p>
+<div class="figure">
+<img src="images/reg-ser.png" title="Registre série" alt="Registre série" />
+<p class="caption">Registre série</p>
+</div>
+<p>On y trouve 8 bascules D. Les horloges des 8 bascules sont reliées ensemble. L’entrée D de la première bascule est l’entrée de notre registre. Sa sortie est reliée à l’entrée de la seconde bascule et ainsi de suite. Le système a 8 sorties.</p>
+<p>Voici un diagramme des temps qui permet de comprendre comment fonctionne ce registre. Pour chaque bascule D, la valeur de l’entrée est copiée sur la sortie au moment du flanc montant de l’horloge.</p>
+<div class="figure">
+<img src="images/reg-ser-timing.png" title="Exemple de diagramme des temps d’un registre série" alt="Exemple de diagramme des temps d’un registre série" width="377" />
+<p class="caption">Exemple de diagramme des temps d’un registre série</p>
+</div>
+<p>Les valeurs notées 0,1,2..7 correspondent à des valeurs binaires 0 ou 1 placées successivement sur l’entrée. Ces valeurs vont se décaler d’une bascule vers la suivante, à chaque coup d’horloge. Après 8 coups d’horloge, les 8 valeurs envoyées en série vont se retrouver sur les sorties. Il est donc possible par ce moyen de placer n’importe quelle valeur sur les 8 sorties.</p>
+<p>Ce dispositif permet donc de disposer 8 sorties, tout en ne monopolisant que 2 broches du microcontrôleur. Mais il a un problème majeur : durant le transfert des données, des valeurs non désirées vont apparaître sur les sorties. Dans certains cas particuliers, ce n’est pas grave. Mais c’est souvent inacceptable. Dans le cas de la commande de LED, l’œil est très sensible et des artefacts sur les LED deviennent vite gênants.</p>
+<h2 id="registre-série-parallèle">Registre série-parallèle</h2>
+<p>Ajoutons 8 bascules D supplémentaires à notre montage. Ces 8 bascules forment cette fois un registre parallèle, avec 8 entrées et 8 sorties. Comme pour le registre série, les horloges des 8 bascules sont reliées ensemble.</p>
+<div class="figure">
+<img src="images/reg-ser-par.png" title="Registre série-parallèle" alt="Registre série-parallèle" />
+<p class="caption">Registre série-parallèle</p>
+</div>
+<p>Sur ce diagramme des temps, on voit que les données transmises en série sont ensuite copiées sur les sorties du registre parallèle.</p>
+<div class="figure">
+<img src="images/reg-ser-par-timing.png" title="Diagramme des temps d’un registre série-parallèle" alt="Diagramme des temps d’un registre série-parallèle" width="340" />
+<p class="caption">Diagramme des temps d’un registre série-parallèle</p>
+</div>
+<p>Les 8 valeurs arrivent en même temps sur les sorties du registre parallèle. Les anciennes valeurs sont présentes sur toutes les sorties durant le transfert série et sont mises à jour en même temps. Il n’y a donc pas de risque d’artefacts.</p>
+<h2 id="le-circuit-74hc595">Le circuit 74HC595</h2>
+<p>Le circuit 74HC595 est très souvent présent dans des afficheurs à LED. C’est un circuit C-MOS, de la série 74HCxx. Il comporte un registre série-parallèle de 8 bits. Ses sorties sont à <em>trois états</em>, commandées par le signal Output Enable. Une entrée Reset permet de forcer les valeurs du registre de sortie à zéro.</p>
+<div class="figure">
+<img src="images/reg-595.png" title="Registre 74HC595" alt="Registre 74HC595" width="377" />
+<p class="caption">Registre 74HC595</p>
+</div>
+<div class="figure">
+<img src="images/pin-595-ti.png" title="Brochage du 74HC595" alt="Brochage du 74HC595" width="151" />
+<p class="caption">Brochage du 74HC595</p>
+</div>
+<p>Sa sortie série permet de cascader les circuits, c’est-à-dire les placer les uns à la suites des autres, comme le montre la figure suivante :</p>
+<div class="figure">
+<img src="images/reg-595-cascade.png" title="Registre série 16 bits utilisant 2 registres 74HC595 en cascade" alt="Registre série 16 bits utilisant 2 registres 74HC595 en cascade" />
+<p class="caption">Registre série 16 bits utilisant 2 registres 74HC595 en cascade</p>
+</div>
+<p>Pour ce faire, les horloges doivent être communes à tous les registres : l’horloge série, notée <strong><em>Sck</em></strong> et l’horloge parallèle, notée <strong><em>Pck</em></strong>. La sortie du premier registre est reliée à l’entrée du deuxième et ainsi de suite. Il est possible de créer de très longs registres. Quelle que soit la longueur du registre, seules trois sorties du microcontrôleur sont nécessaires pour le commander. Si le nombre de registre est vraiment important, il sera judicieux de placer un amplificateur sur les horloges avant de les transmettre au registre suivant. Dans beaucoup d’afficheurs à LED, on trouve des 74HC245 qui jouent ce rôle. Il s’agit de passeurs bi-directionnels, qui ne sont utilisés dans ce cas que dans un sens.</p>
+<h2 id="registres-à-sorties-à-courant-constant">Registres à sorties à courant constant</h2>
+<p>Bien entendu, les sorties du 74HC595 sont des sorties C-MOS normales. Pour les utiliser pour commander des LED, il faut ajouter en série avec chaque LED la traditionnelle résistance pour limiter le courant.</p>
+<p>Il existe plusieurs circuits registres série-parallèles dont les sorties incorporent des sources de courant. Il est ainsi possible de brancher des LED sans la résistance série, ce qui simplifie le schéma :</p>
+<div class="figure">
+<img src="images/reg-16bits-sc.png" title="Registre 16 bits avec sources de courant" alt="Registre 16 bits avec sources de courant" width="491" />
+<p class="caption">Registre 16 bits avec sources de courant</p>
+</div>
+<p>La valeur du courant dans toutes les sorties est fixé par une seule résistance, notée R sur le schéma.</p>
+<p>Plusieurs fabricants proposent différents modèles de registres série-parallèle avec sources de courant. Parmi les circuits 16 bits, on en trouve un bon nombre dont les noms sont différents, mais qui ont en commun leur brochage. Toshiba propose le TB62701, Texas Instrument le TLC5905, Allegro le A6276, etc. Un fabricant chinois propose le SUM2016, dont je n’ai trouvé la documentation... qu’en chinois !</p>
+<h2 id="programmation">Programmation</h2>
+<p>La procédure pour envoyer 8 bits dans notre registre série parallèle est constituée d’une boucle <code>for</code>, répétée autant de fois qu’il y a de bits dans le registre. La valeur binaire à transmettre est d’abord placée sur une sortie, puis un flanc montant est produit sur l’horloge. L’horloge repasse ensuite à 0 pour être prête pour l’envoi de la valeur suivante. Tout à la fin, une impulsion est envoyée sur l’horloge parallèle.</p>
+<div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="ot">#define SortieSerieOn P1OUT |= (1&lt;&lt;0)</span>
+<span class="ot">#define SortieSerieOff P1OUT &amp;=~(1&lt;&lt;0)</span>
+
+<span class="ot">#define ClockSerHaut P1OUT |= (1&lt;&lt;1)</span>
+<span class="ot">#define ClockSerBas P1OUT &amp;=~(1&lt;&lt;1)</span>
+
+<span class="ot">#define ClockParHaut P1OUT |= (1&lt;&lt;2)</span>
+<span class="ot">#define ClockParBas P1OUT &amp;=~(1&lt;&lt;2)</span>
+
+<span class="dt">void</span> Envoie8bitsSerie (<span class="dt">uint8_t</span> valeur) {
+  <span class="dt">uint16_t</span> i;
+  <span class="kw">for</span> (i=<span class="dv">0</span>; i&lt;<span class="dv">8</span>; i++) {
+    <span class="kw">if</span> (valeur &amp; (<span class="dv">1</span>&lt;&lt;i)) {
+      SortieSerieOn;
+    } <span class="kw">else</span> {
+      SortieSerieOff;
+    }
+    ClockSerHaut; ClockSerBas;
+  }
+  ClockParHaut; ClockParBas;
+}</code></pre></td></tr></table></div>
+<!-- retour au mode normal pour l'éditeur -->
+<p>Cette procédure devient souvent la procédure centrale dans un programme qui gère un afficheur à LED, celle qui consomme le plus de temps . Il faut l’écrire avec soin, en allant même jusqu’à regarder comment le compilateur l’a traduite en instructions assembleur, pour chercher à optimiser le code pour une exécution aussi rapide que possible.</p>
+<p>Voici par exemple une version plus optimisée de l’envoi des bits :</p>
+<div class="sourceCode" startFrom="11"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c">...
+  <span class="kw">for</span> (i=<span class="dv">0</span>; i&lt;<span class="dv">8</span>; i++) {
+    <span class="kw">if</span> (valeur &amp; (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>)) {
+      SortieSerieOn;
+    } <span class="kw">else</span> {
+      SortieSerieOff;
+    }
+    ClockSerHaut; ClockSerBas;
+    valeur = valeur &gt;&gt; <span class="dv">1</span>;
+...</code></pre></td></tr></table></div>
+<!-- retour au mode normal pour l'éditeur -->
+<p>Cette version supprime l’opération <code>valeur &amp; (1&lt;&lt;i)</code>, qui prend davantage de cycles d’horloge du microprocesseur que l’instruction <code>valeur &amp; (1&lt;&lt;0)</code>.</p>
+<p>Ce n’est qu’un petit exemple d’optimisation. Une autre technique sera décrite plus loin dans ce cours : il s’agit de l’Accès Direct en Mémoire (Direct Memory Access = DMA). Dans ce cas, ce n’est plus le microcontrôleur qui va effectuer le travail d’envoi des bits, mais un contrôleur spécialisé, disponible dans certains microcontrôleurs comme les ARM.</p>
+</body>
+</html>

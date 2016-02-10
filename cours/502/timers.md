@@ -34,6 +34,18 @@ On y trouve :
 * un **registres de comparaison**, associé à la logique de comparaison. Il y a souvent plusieurs registres de comparaison.
 * une logique de gestion, permettant de faire interagir des **entrées** et des **sorties** avec le timer, ainsi qu'à générer des **interruptions** dans certaines conditions.
 
+Voici comment peut se présenter le choix de l'horloge et de pré-division :
+
+![Exemple de système de choix de l'horloge](images/pre-div-90dpi.png "Exemple de système de choix de l'horloge")
+
+Un premier multiplexeur permet de choisir entre une horloge extérieure et une horloge externe. Un compteur binaire, utilisé en diviseur de fréquence, fournit des signaux à des fréquences sous-multiples. Un second multiplexeur permet de choisir le fréquence qui commandera le Timer.
+
+Les deux multiplexeurs sont commandés par des bits d'un registre de contrôle, dont le rôle est de fixer le mode de fonctionnement du Timer.
+
+Voici comment peut se présenter la logique de gestion du Timer :
+
+![Exemple de logique de gestion d'un timer](images/logique-timer-90dpi.png "Exemple de logique de gestion d'un timer]")
+
 ## Les Timers des microcontrôleurs ##
 
 Quelques années après les premiers microprocesseurs, des circuits spécialisés sont apparus sur le marché avec des Timers. C'est la cas du très célèbre **8253** d'Intel, datant de 1981, dont on trouve encore des descendants dans les PC modernes.
@@ -44,7 +56,7 @@ Les microcontrôleurs **ARM** ont tous plusieurs Timers. Le **ATmega328**, connu
 
 Les microcontrôleurs plus modernes ont souvent de Timers très complexe. Dans les familles de microcontrôleurs **ARM**, les Timers diffèrent d'un fabricant à l'autre : cette partie du microcontrôleur est propriétaire, elle n'est pas développée par la société ARM.
 
-Nous étudierons ici les Timers utilisés dans les microcontrôleurs **MSP430G** de Texas Intrument, qui se trouvent sur la carte Launchpad.
+Nous étudierons ici les Timers utilisés dans les microcontrôleurs **MSP430G** de Texas Instrument, qui se trouvent sur la carte Launchpad.
 
 ## Timer A du MSP430 ##
 

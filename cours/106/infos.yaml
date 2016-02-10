@@ -4,10 +4,11 @@ type:             Théorie
 niveau:           base
 auteur:          
     - PYR
-statut:           Pas publié
+statut:           Relecture
 code:             microcontroleur
 url:
     cours-html:   microcontroleur.html
     cours-pdf:    microcontroleur.pdf
+url1:
     dias-video:   microcontroleur-dia.pdf
     dias-compact: microcontroleur-dia-compact.pdf

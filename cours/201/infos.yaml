@@ -4,10 +4,11 @@ type:             Théorie
 niveau:           avancé
 auteur:          
     - AT
-statut:           Pas publié
+statut:           Relecture
 code:             jonction-pn
-url:
+url1:
     cours-html:   jonction-pn.html
     cours-pdf:    jonction-pn.pdf
+url:
     dias-video:   jonction-pn-dia.pdf
     dias-compact: jonction-pn-dia-compact.pdf

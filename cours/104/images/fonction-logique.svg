@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="2161.3772"
-   height="946.21124"
+   width="209.5555"
+   height="64.149612"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="1223.7538"
-     inkscape:cy="463.83141"
+     inkscape:zoom="2.8"
+     inkscape:cx="73.798597"
+     inkscape:cy="-18.291126"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -37,10 +37,10 @@
      fit-margin-left="5"
      fit-margin-right="5"
      fit-margin-bottom="5"
-     inkscape:window-width="1152"
-     inkscape:window-height="640"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="1393"
+     inkscape:window-height="876"
+     inkscape:window-x="47"
+     inkscape:window-y="24"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
@@ -51,8 +51,8 @@
        visible="true"
        enabled="true"
        snapvisiblegridlinesonly="true"
-       originx="1007.8025"
-       originy="-86.730681" />
+       originx="-48.694586mm"
+       originy="-148.44778mm" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -62,7 +62,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -70,61 +70,58 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(1007.8025,-19.420266)">
+     transform="translate(-172.53987,-462.21651)">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:177.80975342px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="-1277.703"
-       y="218.48924"
+       style="font-size:13px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="177.16536"
+       y="481.88974"
        id="text2987"
-       sodipodi:linespacing="125%"
-       transform="scale(0.78800709,1.2690241)"><tspan
+       sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan2989"
-         x="-1277.703"
-         y="218.48924">x</tspan></text>
+         x="177.16536"
+         y="481.88974">x</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:177.80975342px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="-1277.703"
-       y="654.66663"
+       style="font-size:13px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="177.16536"
+       y="513.77948"
        id="text2991"
-       sodipodi:linespacing="125%"
-       transform="scale(0.78800709,1.2690241)"><tspan
+       sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan2993"
-         x="-1277.703"
-         y="654.66663">y</tspan></text>
+         x="177.16536"
+         y="513.77948">y</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:177.80975342px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="515.47241"
-       y="412.34592"
+       style="font-size:13px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="308.26773"
+       y="496.06296"
        id="text2995"
-       sodipodi:linespacing="125%"
-       transform="scale(0.78800709,1.2690241)"><tspan
+       sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan2997"
-         x="515.47241"
-         y="412.34592">S = f (x, y)</tspan></text>
+         x="308.26773"
+         y="496.06296">S = f (x, y)</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:13.67767334px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 138.8649,953.79266 0,-922.533557 -763.80264,0 0,922.533557 z"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 283.46457,520.86612 0,-53.14961 -70.86614,0 0,53.14961 z"
        id="path2999"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:13.67767334px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 138.8649,461.77474 190.95059,0"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 283.46457,492.51966 17.71653,0"
        id="path3001"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:13.67767334px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m -624.93774,215.7658 -190.95072,0"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 212.59843,478.34643 -17.71654,0"
        id="path3003"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:13.67767334px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m -624.93774,769.28596 -190.95072,0"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 212.59843,510.2362 -17.71654,0"
        id="path3005"
        inkscape:connector-curvature="0" />
   </g>

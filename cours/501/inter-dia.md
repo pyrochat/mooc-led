@@ -29,7 +29,7 @@ Dr. Yves Tiecoura
 <section>
 <!-- A -->
 <h1 class="en_tete">Les interruptions</h1>
-<div class="liste_demi"; style="font-size:48pt; left:32cm; width:27.0cm; top:9cm;">
+<div style="font-size:48pt; left:32cm; width:27.0cm; top:9cm;">
 * Principe des interruptions
 * Événements produisant des interruptions
 * Mise en œuvre
@@ -118,9 +118,9 @@ Deux sortes d’événements produisant des interruptions :
 <!-- A -->
 <h1 class="en_tete">Discrimintation des sources d’interruption</h1>
 <div style="font-size:55pt; left:2.65cm; top:7cm; width:55cm">
-Il y a plusieurs sources d’interruptions sur un microcontrôleur.
+Il y a plusieurs sources d’interruptions sur un microcontrôleur
 
-<!-- 234 -->Le système doit être capable d’en connaître la source.
+<!-- 234 -->Le système doit être capable d’en connaître la source
 <!-- 234 -->
 <!-- 34 -->* En consultant les fanions correspondant à chaque interruption
 <!-- 4 -->* Grâce aux __vecteurs d’interruption__ *(interrupt vectors)*
@@ -333,7 +333,7 @@ Trois étapes pour mettre en œuvre une interruption :
 <section>
 <!-- A -->
 <h1 class="en_tete">Les interruptions</h1>
-<div class="liste_demi"; style="font-size:48pt; left:33cm; width:26.0cm; top:7cm;">
+<div style="font-size:48pt; left:33cm; width:26.0cm; top:7cm;">
 * Principe des interruptions
 * Événements produisant des interruptions (externes ou internes)
 * Mise en œuvre

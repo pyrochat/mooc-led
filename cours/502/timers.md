@@ -21,30 +21,42 @@ Le terme anglais *timer* désigne le compteur binaire, mais aussi souvent l'ense
 
 Le PWM n'est pas la seule application des Timers. Beaucoup de tâches liées le plus souvent à la gestion du temps ou au comptage d'événements peuvent lui être confiées.
 
+## Les Timers ##
+
 La figure ci-dessous généralise ce concept :
 
 ![Timer](images/timer-base-90dpi.png "Timer")
 
 On y trouve :
 
-* un **compteur binaire**. Il peut être de 8 bits, 16 bits, parfois même de 32 bits.
+* un **compteur binaire**. Il peut être de 8 bits, 16 bits, parfois même de 32 bits. C'est le Timer proprement dit.
 * un **horloge**, c'est à dire un oscillateur (Osc). Il s'agit généralement de l'horloge également utilisée pour le processeur.
 * un système de **choix d'horloge et de pré-division**, qui permet de choisir une fréquence d'horloge bien adaptée au problème à résoudre.
 * un logique de **comparaison** (par exemple l'égalité)
-* un **registres de comparaison**, associé à la logique de comparaison. Il y a souvent plusieurs registres de comparaison.
-* une logique de gestion, permettant de faire interagir des **entrées** et des **sorties** avec le timer, ainsi qu'à générer des **interruptions** dans certaines conditions.
+* un **registres de comparaison**, associé à la logique de comparaison. Plusieurs registres de comparaison sont souvent présents.
+* une logique de gestion, permettant de faire interagir des **entrées** et des **sorties** avec le Timer, ainsi qu'à générer des **interruptions** dans certaines conditions.
+
+## Prédivision ##
 
 Voici comment peut se présenter le choix de l'horloge et de pré-division :
 
 ![Exemple de système de choix de l'horloge](images/pre-div-90dpi.png "Exemple de système de choix de l'horloge")
 
-Un premier multiplexeur permet de choisir entre une horloge extérieure et une horloge externe. Un compteur binaire, utilisé en diviseur de fréquence, fournit des signaux à des fréquences sous-multiples. Un second multiplexeur permet de choisir le fréquence qui commandera le Timer.
+Un premier multiplexeur permet de choisir entre une horloge extérieure et une horloge externe. Un compteur binaire, utilisé en diviseur de fréquence, fournit des signaux à des fréquences sous-multiples. Un second multiplexeur permet de choisir le fréquence qui commande le Timer.
 
 Les deux multiplexeurs sont commandés par des bits d'un registre de contrôle, dont le rôle est de fixer le mode de fonctionnement du Timer.
 
-Voici comment peut se présenter la logique de gestion du Timer :
+## Logique de gestion ##
+
+La logique de permet de
+
+En voici un exemple très simple :
 
 ![Exemple de logique de gestion d'un timer](images/logique-timer-90dpi.png "Exemple de logique de gestion d'un timer]")
+
+On y trouve une bascule qui détecte le dépassement de capacité du Timer. C'est le moment où le compteur binaire repasse à la valeur zéro. La bascule est mise à *1* à ce moment. Elle fait généralement partie d'un registre et peut être lue à tout moment.
+
+....
 
 ## Les Timers des microcontrôleurs ##
 

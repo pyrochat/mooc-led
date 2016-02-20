@@ -4,10 +4,10 @@ type:             Théorie
 niveau:           base
 auteur:          
     - PYR
-statut:           Pas publié
-code:             codeduchapitre
+statut:           non publié
+code:             distance
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   distance.html
+    cours-pdf:    distance.pdf
+    dias-video:   distance-dia.pdf
+    dias-compact: distance-dia-compact.pdf

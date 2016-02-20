@@ -67,6 +67,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <p>Le terme anglais <em>timer</em> désigne le compteur binaire, mais aussi souvent l'ensemble du montage. La traduction française, <em>minuterie</em>, n'est que rarement utilisé. C'est la raison pour laquelle nous utiliserons ici plutôt l'anglicisme <em>Timer</em>, comme s'il s'agissait d'un nom propre. Que les puristes nous pardonnent !</p>
 <p>Le PWM n'est pas la seule application des Timers. Beaucoup de tâches liées le plus souvent à la gestion du temps ou au comptage d'événements peuvent lui être confiées.</p>
+<h2 id="les-timers">Les Timers</h2>
 <p>La figure ci-dessous généralise ce concept :</p>
 <div class="figure">
 <img src="images/timer-base-90dpi.png" title="Timer" alt="Timer" />
@@ -74,25 +75,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <p>On y trouve :</p>
 <ul>
-<li>un <strong>compteur binaire</strong>. Il peut être de 8 bits, 16 bits, parfois même de 32 bits.</li>
+<li>un <strong>compteur binaire</strong>. Il peut être de 8 bits, 16 bits, parfois même de 32 bits. C'est le Timer proprement dit.</li>
 <li>un <strong>horloge</strong>, c'est à dire un oscillateur (Osc). Il s'agit généralement de l'horloge également utilisée pour le processeur.</li>
 <li>un système de <strong>choix d'horloge et de pré-division</strong>, qui permet de choisir une fréquence d'horloge bien adaptée au problème à résoudre.</li>
 <li>un logique de <strong>comparaison</strong> (par exemple l'égalité)</li>
-<li>un <strong>registres de comparaison</strong>, associé à la logique de comparaison. Il y a souvent plusieurs registres de comparaison.</li>
-<li>une logique de gestion, permettant de faire interagir des <strong>entrées</strong> et des <strong>sorties</strong> avec le timer, ainsi qu'à générer des <strong>interruptions</strong> dans certaines conditions.</li>
+<li>un <strong>registres de comparaison</strong>, associé à la logique de comparaison. Plusieurs registres de comparaison sont souvent présents.</li>
+<li>une logique de gestion, permettant de faire interagir des <strong>entrées</strong> et des <strong>sorties</strong> avec le Timer, ainsi qu'à générer des <strong>interruptions</strong> dans certaines conditions.</li>
 </ul>
+<h2 id="prédivision">Prédivision</h2>
 <p>Voici comment peut se présenter le choix de l'horloge et de pré-division :</p>
 <div class="figure">
 <img src="images/pre-div-90dpi.png" title="Exemple de système de choix de l&#39;horloge" alt="Exemple de système de choix de l&#39;horloge" />
 <p class="caption">Exemple de système de choix de l'horloge</p>
 </div>
-<p>Un premier multiplexeur permet de choisir entre une horloge extérieure et une horloge externe. Un compteur binaire, utilisé en diviseur de fréquence, fournit des signaux à des fréquences sous-multiples. Un second multiplexeur permet de choisir le fréquence qui commandera le Timer.</p>
+<p>Un premier multiplexeur permet de choisir entre une horloge extérieure et une horloge externe. Un compteur binaire, utilisé en diviseur de fréquence, fournit des signaux à des fréquences sous-multiples. Un second multiplexeur permet de choisir le fréquence qui commande le Timer.</p>
 <p>Les deux multiplexeurs sont commandés par des bits d'un registre de contrôle, dont le rôle est de fixer le mode de fonctionnement du Timer.</p>
-<p>Voici comment peut se présenter la logique de gestion du Timer :</p>
+<h2 id="logique-de-gestion">Logique de gestion</h2>
+<p>La logique de permet de</p>
+<p>En voici un exemple très simple :</p>
 <div class="figure">
 <img src="images/logique-timer-90dpi.png" title="Exemple de logique de gestion d&#39;un timer]" alt="Exemple de logique de gestion d&#39;un timer" />
 <p class="caption">Exemple de logique de gestion d'un timer</p>
 </div>
+<p>On y trouve une bascule qui détecte le dépassement de capacité du Timer. C'est le moment où le compteur binaire repasse à la valeur zéro. La bascule est mise à <em>1</em> à ce moment. Elle fait généralement partie d'un registre et peut être lue à tout moment.</p>
+<p>....</p>
 <h2 id="les-timers-des-microcontrôleurs">Les Timers des microcontrôleurs</h2>
 <p>Quelques années après les premiers microprocesseurs, des circuits spécialisés sont apparus sur le marché avec des Timers. C'est la cas du très célèbre <strong>8253</strong> d'Intel, datant de 1981, dont on trouve encore des descendants dans les PC modernes.</p>
 <p>Les microcontrôleurs ont eux aussi très vite été complétés par des Timers, comme le célèbre <strong>PIC16x84</strong>, qui incluait déjà un unique compteur 8 bits très simple, mais très utile.</p>

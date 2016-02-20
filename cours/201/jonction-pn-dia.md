@@ -13,6 +13,7 @@
 
 <!-- Page bienvenue plein écran-->
 <section>
+<!-- I -->
 <h1 class="en_tete">La diode à jonction : principes physiques</h1>
 <!-- def A --><img src="../../statiques/images/logo-enspy.png" style="top:0.8cm; left:54.41cm; width:3.6cm" />
 <!-- def A --><img src="../../statiques/images/rescif-trait.png" style="top:5.07cm; left:0cm; width:60.02cm; height:0.23cm" />
@@ -29,10 +30,10 @@ Prof. Alain Tiedeu
 <section>
 <!-- A -->
 <h1 class="en_tete">La diode à jonction : principes physiques</h1>
-<div class="liste_demi"; style="font-size:48pt; left:33cm; width:26.0cm; top:6cm;">
+<div style="top: 7.5cm; left: 33.5cm; font-size: 53pt; line-height: 1.2;">
 * Modèle de Bohr
 * Niveaux d'énergie
-* Semi-conducteurs intrinsèque
+* Semi-conducteurs intrinsèques
 * Dopage N et P
 * Jonction PN
 * La diode à jonction
@@ -43,7 +44,7 @@ Prof. Alain Tiedeu
 <!-- Page Bohr, 6 entrées -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Modèle simplifié de l’atome: modèle de Bohr</h1>
+<h1 class="en_tete">Modèle simplifié de l’atome : modèle de Bohr</h1>
 <div style="font-size:45pt; left:2.65cm; top:6.5cm; line-height:0.9; width:30cm">
 * Noyau central
 </div>
@@ -57,12 +58,12 @@ Prof. Alain Tiedeu
 <!-- 456 -->* Distribution des électrons de l’intérieur vers l’extérieur (n croissant)
 <!-- 456 --></div>
 <!-- 56 --><div style="font-size:45pt; left:2.65cm; top:23.1cm; line-height:0.9; width:40cm">
-<!-- 56 -->* Couche la plus externe est appelée **couche valence**.<br> Elle contient les électrons qui participent aux liaisons
+<!-- 56 -->* Couche la plus externe est appelée **couche de valence**.<br> Elle contient les électrons qui participent aux liaisons
 <!-- 56 --></div>
 <!-- 6 --><div style="font-size:45pt; left:2.65cm; top:28.4cm; line-height:0.9; width:50cm">
-<!-- 6 -->* Si électron quitte l’atome et devient libre, il passe dans la couche de conduction
+<!-- 6 -->* Si électron quitte l’atome et devient **libre**, il passe dans la couche de conduction
 <!-- 6 --></div>
-<img src="./images/bohr-120dpi.png" style="top:7cm; left:36cm; width:23cm" />
+<img src="./images/bohr-300dpi.png" style="top:7cm; left:36cm; width:23cm" />
 </section>
 
 
@@ -85,7 +86,7 @@ Prof. Alain Tiedeu
 <!-- 5 --><div style="font-size:45pt; left:2.65cm; top:25cm; line-height:1.2; width:30cm">
 <!-- 5 -->* Énergie peut être émise par l’électron ou donnée à l’électron sous plusieurs formes
 <!-- 5 --></div>
-<img src="./images/energie-niveaux-60dpi.png" style="top:6cm; left:34cm; width:23cm" />
+<img src="./images/energie-niveaux-200dpi.png" style="top:6cm; left:34cm; width:23cm" />
 </section>
 
 
@@ -102,7 +103,7 @@ Prof. Alain Tiedeu
 <!-- 3 --><div style="font-size:45pt; left:2.65cm; top:14.5cm; line-height:1.2; width:28cm">
 <!-- 3 -->* 4 électrons de valence
 <!-- 3 --></div>
-<!-- 3 --><img src="./images/valence-120dpi.png" style="top:8cm; left:36cm; width:11cm" />
+<!-- 3 --><img src="./images/valence-200dpi.png" style="top:8cm; left:36cm; width:11cm" />
 </section>
 
 
@@ -126,7 +127,7 @@ Prof. Alain Tiedeu
 <!-- 2-->* Il n’y a donc pas d’électron libre et par conséquent pas de courant électrique
 <!-- 2 --></div>
 
-<img src="./images/SC-base-60dpi.png" style="top:5.2cm; left:35cm; width:22cm" />
+<img src="./images/SC-base-200dpi.png" style="top:5.2cm; left:35cm; width:22cm" />
 </section>
 
 <!-- Page Intrinsèque 2, 6 entrées -->
@@ -137,21 +138,21 @@ Prof. Alain Tiedeu
 * Communiquer de l’énergie à l’atome par un moyen quelconque (lumière, élévation de  la température, etc…)
 </div>
 <!-- 23456 --><div style="font-size:40pt; left:2.65cm; top:11cm; line-height:1.2; width:32cm">
-<!-- 23456 -->* Électrons de couche de valence s’en échappent,  passent dans la couche de conduction et deviennent libres
+<!-- 23456 -->* Électrons de couche de valence s’en échappent,  passent dans la couche de conduction et deviennent **libres**
 <!-- 23456 --></div>
 <!-- 3456 --><div style="font-size:40pt; left:2.65cm; top:15.5cm; line-height:1.2; width:32cm">
-<!-- 3456 -->* Leur départ laisse une charge positive de même valeur absolue appelée trou
+<!-- 3456 -->* Leur départ laisse une charge positive de même valeur absolue appelée **trou**
 <!-- 3456 --></div>
 <!-- 456 --><div style="font-size:40pt; left:2.65cm; top:20cm; line-height:1.2; width:32cm">
-<!-- 456 -->* Une paire électron-trou libre est née !
+<!-- 456 -->* Une **paire électron-trou libre** est née !
 <!-- 456 --></div>
 <!-- 56 --><div style="font-size:40pt; left:2.65cm; top:22.5cm; line-height:1.2; width:31cm">
-<!-- 56 -->* Charges positives et négatives se déplacent et créent un courant électrique dans le cristal
+<!-- 56 -->* Charges positives et négatives se déplacent et créent un **courant électrique** dans le cristal
 <!-- 56 --></div>
 <!-- 6 --><div style="font-size:40pt; left:2.65cm; top:27cm; line-height:1.2; width:37cm">
-<!-- 6 -->* Nombre de paires électron-trou : 10^-13^ par atome (très faible)
+<!-- 6 -->* Nombre de paires électron-trou : 10^-13^ par atome *(très faible)*
 <!-- 6 --></div>
-<img src="./images/elec-trou-60dpi.png" style="top:5.2cm; left:35cm; width:22cm" />
+<img src="./images/elec-trou-200dpi.png" style="top:5.2cm; left:35cm; width:22cm" />
 </section>
 
 
@@ -186,7 +187,7 @@ Prof. Alain Tiedeu
 <!-- 9 --><div style="font-size:45pt; left:2.65cm; top:29.5cm; line-height:1.2; width:30cm">
 <!-- 9 -->* Conduction extrinsèque **largement dominante** !
 <!-- 9 --></div>
-<img src="./images/dopeN-60dpi.png" style="top:5.2cm; left:35cm; width:22cm" />
+<img src="./images/dopeN-200dpi.png" style="top:5.2cm; left:35cm; width:22cm" />
 </section>
 
 
@@ -221,7 +222,7 @@ Prof. Alain Tiedeu
 <!-- 9 --><div style="font-size:45pt; left:2.65cm; top:29.5cm; line-height:1.2; width:30cm">
 <!-- 9 -->* Conduction extrinsèque **largement dominante** !
 <!-- 9 --></div>
-<img src="./images/dopeP-60dpi.png" style="top:5.2cm; left:35cm; width:22cm" />
+<img src="./images/dopeP-200dpi.png" style="top:5.2cm; left:35cm; width:22cm" />
 </section>
 
 
@@ -237,16 +238,16 @@ Prof. Alain Tiedeu
 <!-- 5678 -->* Zones de **déplétion**
 <!-- 678 -->* **Champ électrique** (barrière de potentiel)
 <!-- 78 -->* Champ **opposé** au passage des porteurs majoritaires
-<!-- 8 -->* MAIS : **favorise** passage des porteurs minoritaires
+<!-- 8 -->* MAIS : **favorise** le passage des porteurs minoritaires
 </div>
-<img src="./images/jonction-120dpi.png" style="top:11cm; left:33cm; width:25cm" />
+<img src="./images/jonction-200dpi.png" style="top:11cm; left:33cm; width:25cm" />
 </section>
 
 
 <!-- Page Diode, 2 entrées -->
 <section>
 <!-- A -->
-<h1 class="en_tete">La diode à joinction</h1>
+<h1 class="en_tete">La diode à jonction</h1>
 <div style="font-size:45pt; left:2.65cm; top:9cm; line-height:1.2; width:25cm">
 * Lorsqu’on soumet la jonction PN à une différence de potentiel, on réalise une **diode à jonction**
 </div>
@@ -274,7 +275,7 @@ Prof. Alain Tiedeu
 <!-- 4567 --><div style="font-size:45pt; left:4cm; top:16.0cm; line-height:1.2; width:30cm">
 <!-- 4567 -->La loi de conservation de l’énergie
 <!-- 4567 --></div>
-<!-- 4567 --><img src="./images/formule2.jpg" style="top:20.5cm; left:11.5cm; width:10cm" />
+<!-- 567 --><img src="./images/formule2.jpg" style="top:20.5cm; left:11.5cm; width:10cm" />
 <!-- 567 --><div style="font-size:45pt; left:4cm; top:19.0cm; line-height:1.2; width:30cm">
 <!-- 567 -->La relation
 <!-- 567 --></div>
@@ -285,7 +286,16 @@ Prof. Alain Tiedeu
 <!-- 7 -->* La  résolution de l’équation donne :
 <!-- 7 --></div>
 <!-- 7 --><img src="./images/formule3.jpg" style="top:26.0cm; left:24cm; width:11cm" />
-<img src="./images/carac-diode-1a.jpg" style="top:10cm; left:36cm; width:22cm" />
+<!-- 7 --><img src="./images/theo-caract-1.png" style="top:9cm; left:35cm; width:23cm" />
+</section>
+
+<!-- Page Caractéristique, 4 entrées -->
+<section>
+<!-- A -->
+<h1 class="en_tete">Caractéristique de la diode à jonction</h1>
+<div style="font-size:45pt; left:2.65cm; top:6.5cm; line-height:1.2; width:30cm">
+* Avec la partie négative :
+<img src="./images/theo-caract-2.png" style="top:4cm; left:0cm; width:56cm" />
 </section>
 
 
@@ -314,22 +324,23 @@ Prof. Alain Tiedeu
 <!-- 7 --><div style="font-size:45pt; left:5cm; top:26.0cm; line-height:1.2; width:30cm">
 <!-- 7 -->* Notions de **Passante** et **Non passante**
 <!-- 7 --></div>
-<img src="./images/test-diode-120dpi.png" style="top:6cm; left:35cm; width:21cm" />
-<!-- 34567 --><img src="./images/carac-prat-60dpi.png" style="top:15cm; left:36cm; width:19cm" />
+<img src="./images/test-diode-200dpi.png" style="top:6cm; left:35cm; width:21cm" />
+<!-- 34567 --><img src="./images/carac-prat-200dpi.png" style="top:15cm; left:36cm; width:19cm" />
 </section>
 
 
-<!-- Page conclusion, demi-->
+<!-- Page conclusion demi-->
 <section>
 <!-- A -->
 <h1 class="en_tete">La diode à jonction : principes physiques</h1>
-<div class="liste_demi"; style="font-size:48pt; left:33cm; width:26.0cm; top:6cm;">
+<div style="top: 7.5cm; left: 33.5cm; font-size: 53pt; line-height: 1.2;">
 * Modèle de Bohr
 * Niveaux d'énergie
-* Semi-conducteurs intrinsèque
+* Semi-conducteurs intrinsèques
 * Dopage N et P
 * Jonction PN
 * La diode à jonction
 </div>
 </section>
+
 

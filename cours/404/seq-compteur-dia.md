@@ -28,7 +28,7 @@ Dr. Yves Tiecoura
 <section>
 <!-- A -->
 <h1 class="en_tete">Séquenceur à compteur</h1>
-<div class="liste_demi"; style="font-size:48pt; left:33cm; width:26.0cm; top:8cm;">
+<div style="font-size:48pt; left:33cm; width:26.0cm; top:8cm;">
 * Animation d’une enseigne
 * Compteur binaire
 * Logique de décodage des séquences
@@ -46,13 +46,13 @@ Dr. Yves Tiecoura
 <!-- 23456789 -->* Sa forme, les couleurs des LED
 <!-- 456789 -->* Mais surtout les animations !
 </div>
-<!-- 39 --><img src="./images/ouvert.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
-<!-- 4 --><img src="./images/ouvert0.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
-<!-- 5 --><img src="./images/ouvert1.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
-<!-- 6 --><img src="./images/ouvert2.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
-<!-- 7 --><img src="./images/ouvert3.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
-<!-- 8 --><img src="./images/ouvert4.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
-<!-- 9 --><img src="./images/ouvert5.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
+<!-- 39 --><img src="./images/ouvert-400dpi.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
+<!-- 4 --><img src="./images/ouvert0-400dpi.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
+<!-- 5 --><img src="./images/ouvert1-400dpi.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
+<!-- 6 --><img src="./images/ouvert2-400dpi.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
+<!-- 7 --><img src="./images/ouvert3-400dpi.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
+<!-- 8 --><img src="./images/ouvert4-400dpi.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
+<!-- 9 --><img src="./images/ouvert5-400dpi.png" style="top:21cm; left:12cm; width:35cm; border-style: solid;" />
 </section>
 
 
@@ -63,75 +63,75 @@ Dr. Yves Tiecoura
 <div style="font-size:60pt; left:2.65cm; top:7cm;">
 * Diagramme des temps :
 </div>
-<!-- 234 --><img src="./images/chrono-enseigne.png" style="top:11cm; left:3cm; width:29cm;" />
+<!-- 234 --><img src="./images/chrono-enseigne-400dpi.png" style="top:11cm; left:3cm; width:29cm;" />
 <div style="font-size:60pt; left:36cm; top:7cm;">
 <!-- 34 -->* Graphe d’états :
 </div>
-<!-- 4 --><img src="./images/graphe-enseigne.png" style="top:11cm; left:36cm; width:18cm;" />
+<!-- 4 --><img src="./images/graphe-enseigne-400dpi.png" style="top:11cm; left:36cm; width:18cm;" />
 </section>
 
 <!-- Page compteur binaire, 3 images -->
 <section>
 <!-- A -->
 <h1 class="en_tete">Compteur par 8</h1>
-<img src="./images/compteur8.png" style="top:6cm; left:3cm; width:19cm;" />
+<img src="./images/compteur8-400dpi.png" style="top:6cm; left:3cm; width:19cm;" />
 <!-- 23 --><div style="font-size:60pt; left:2.65cm; top:19cm;">
 <!-- 23 -->* Diagramme des temps :
 <!-- 23 --></div>
-<!-- 23 --><img src="./images/chrono-compteur.png" style="top:23cm; left:3cm; width:29cm;" />
+<!-- 23 --><img src="./images/chrono-compteur-400dpi.png" style="top:23cm; left:3cm; width:29cm;" />
 <!-- 3 --><div style="font-size:60pt; left:36cm; top:7cm;">
 <!-- 3 -->* Graphe d’états :
 <!-- 3 --></div>
-<!-- 3 --><img src="./images/graphe-compteur.png" style="top:11cm; left:36cm; width:18cm;" />
+<!-- 3 --><img src="./images/graphe-compteur-400dpi.png" style="top:11cm; left:36cm; width:18cm;" />
 </section>
 
 <!-- Page Compteur binaire3 images -->
 <section>
 <!-- A -->
 <h1 class="en_tete">Compteur binaire</h1>
-<img src="./images/div2.png" style="top:7cm; left:3cm; width:48cm;" />
-<!-- 23 --><img src="./images/div2n.png" style="top:20cm; left:3cm; width:30cm;" />
-<!-- 3 --><img src="./images/compteur8.png" style="top:20cm; left:38cm; width:17cm;" />
+<img src="./images/div2-400dpi.png" style="top:7cm; left:3cm; width:48cm;" />
+<!-- 23 --><img src="./images/div2n-400dpi.png" style="top:20cm; left:3cm; width:30cm;" />
+<!-- 3 --><img src="./images/compteur8-400dpi.png" style="top:20cm; left:38cm; width:17cm;" />
 </section>
 
 <!-- Page séquenceur binaire, 2 images -->
 <section>
 <!-- A -->
 <h1 class="en_tete">Séquenceur binaire</h1>
-<img src="./images/compteur8-osc.png" style="top:14cm; left:3cm; width:18cm;" />
-<!-- 2 --><img src="./images/chrono-compteur.png" style="top:14.5cm; left:30cm; width:28cm;" />
+<img src="./images/compteur8-osc-400dpi.png" style="top:14cm; left:3cm; width:18cm;" />
+<!-- 2 --><img src="./images/chrono-compteur-400dpi.png" style="top:14.5cm; left:30cm; width:28cm;" />
 </section>
 
 <!-- Page décodage, 4 images -->
 <section>
 <!-- A -->
 <h1 class="en_tete">Séquenceur complet</h1>
-<img src="./images/chrono-enseigne.png" style="top:6.5cm; left:3cm; width:23cm;" />
-<!-- 234 --><img src="./images/chrono-compteur.png" style="top:6.5cm; left:33cm; width:22cm;" />
-<!-- 34 --><img src="./images/compteur8-osc-log.png" style="top:20cm; left:4cm; width:16cm;" />
-<!-- 4 --><img src="./images/table-enseigne.png" style="top:15cm; left:40cm; width:16cm;" />
+<img src="./images/chrono-enseigne-400dpi.png" style="top:6.5cm; left:3cm; width:23cm;" />
+<!-- 234 --><img src="./images/chrono-compteur-400dpi.png" style="top:6.5cm; left:33cm; width:22cm;" />
+<!-- 34 --><img src="./images/compteur8-osc-log-400dpi.png" style="top:20cm; left:4cm; width:16cm;" />
+<!-- 4 --><img src="./images/table-enseigne-400dpi.png" style="top:15cm; left:40cm; width:16cm;" />
 </section>
 
 <!-- Page transition-ROM, demi-->
 <section>
 <!-- A -->
 <h1 class="en_tete">Séquenceur complet</h1>
-<img src="./images/table-enseigne.png" style="top:15cm; left:40cm; width:16cm;" />
+<img src="./images/table-enseigne-400dpi.png" style="top:15cm; left:40cm; width:16cm;" />
 </section>
 
 <!-- Page ROM -->
 <section>
 <!-- A -->
 <h1 class="en_tete">Mémoire morte comme système combinatoire</h1>
-<img src="./images/rom.png" style="top:8cm; left:2.65cm; width:24cm;" />
-<!-- 2 --><img src="./images/rom-int.png" style="top:6cm; left:33cm; width:20cm;" />
+<img src="./images/rom-400dpi.png" style="top:8cm; left:2.65cm; width:24cm;" />
+<!-- 2 --><img src="./images/rom-int-400dpi.png" style="top:6cm; left:33cm; width:20cm;" />
 </section>
 
 <!-- Page séq ROM -->
 <section>
 <!-- A -->
 <h1 class="en_tete">Séquenceur à compteur et ROM</h1>
-<img src="./images/schema-seq-rom.png" style="top:8cm; left:11cm; width:38cm;" />
+<img src="./images/schema-seq-rom-400dpi.png" style="top:8cm; left:11cm; width:38cm;" />
 </section>
 
 <!-- Page technologie ROM, 4 arrivées + 2 image -->
@@ -165,7 +165,7 @@ Dr. Yves Tiecoura
 <section>
 <!-- A -->
 <h1 class="en_tete">Séquenceur à compteur et ROM</h1>
-<img src="./images/schema-seq-rom-det.png" style="top:6cm; left:2.65cm; width:38cm;" />
+<img src="./images/schema-seq-rom-det-400dpi.png" style="top:6cm; left:2.65cm; width:38cm;" />
 <!-- 2 --><div style="font-size:55pt; left:43cm; top:21cm;">
 <!-- 2 -->* Microcontrôleur !
 <!-- 2 --></div>
@@ -175,7 +175,7 @@ Dr. Yves Tiecoura
 <section>
 <!-- A -->
 <h1 class="en_tete">Séquenceur à compteur</h1>
-<div class="liste_demi"; style="font-size:48pt; left:33cm; width:26.0cm; top:8cm;">
+<div style="font-size:48pt; left:33cm; width:26.0cm; top:8cm;">
 * Animation d’une enseigne
 * Compteur binaire
 * Logique de décodage des séquences

@@ -14,6 +14,7 @@
 
 <!-- Page bienvenue plein écran-->
 <section>
+<!-- I -->
 <h1 class="en_tete">Circuits logiques combinatoires</h1>
 <!-- def A --><img src="../../statiques/images/logo-esp.png" style="top:0.8cm; left:54.41cm; width:3.6cm" />
 <!-- def A --><img src="../../statiques/images/rescif-trait.png" style="top:5.07cm; left:0cm; width:60.02cm; height:0.23cm" />
@@ -62,8 +63,8 @@ Codage des informations dans les circuits numériques :
 <!-- 2 --><div style="top: 19cm; left: 2.65cm; font-size: 53pt; line-height: 1.2;">
 <!-- 2 -->*Exemple en technologie TTL :*
 <!-- 2 -->
-<!-- 2 -->* 0 correspond à une tension entre 0 et 0,8 Volt 
-<!-- 2 -->* 1 correspond à une tension entre 2,4 et 5 Volt 
+<!-- 2 -->* 0 correspond à une tension entre 0 et 0,8 V
+<!-- 2 -->* 1 correspond à une tension entre 2,4 et 5 V
 <!-- 2 --></div>
 </section>
 
@@ -73,12 +74,12 @@ Codage des informations dans les circuits numériques :
 <h1 class="en_tete">Algèbre de BOOLE</h1>
 <div style="top: 8cm; left: 2.65cm; font-size: 53pt; line-height: 2.0;">
 * Outil mathématique pour représenter les systèmes logiques 
-* Conçue autour d'**opérateurs logiques** :
+* Conçue autour d'**opérateurs logiques** de base:
 </div>
 <!-- 2 --><div style="top: 17cm; left: 5cm; font-size: 53pt; line-height: 1.5;">
-<!-- 2 -->* Le complément logique : **NON**
-<!-- 2 -->* Le **OU** logique
-<!-- 2 -->* Le **ET** logique
+<!-- 2 -->* Le **NON** logique *(complément logique)*
+<!-- 2 -->* Le **OU** logique *(addition logique)*
+<!-- 2 -->* Le **ET** logique *(multiplication logique)*
 <!-- 2 --></div>
 </section>
 
@@ -150,22 +151,26 @@ Codage des informations dans les circuits numériques :
 <!-- Page vide, pour éventuelle plein écran-->
 <section>
 <!-- A -->
+<!-- I -->
 <h1 class="en_tete">Expression mathématique d’une fonction logique</h1>
 </section>
 
 <!-- Page table vérité, 4 arrivée -->
 <section>
 <!-- A -->
+<!-- I -->
 <h1 class="en_tete">Expression mathématique d’une fonction logique</h1>
 <img src="./images/fonc-3e-0-300dpi.png" style="top:9cm; left:2.0cm; width:57.5cm;" />
 </section>
 <section>
 <!-- A -->
+<!-- I -->
 <h1 class="en_tete">Expression mathématique d’une fonction logique</h1>
 <img src="./images/fonc-3e-a-300dpi.png" style="top:9cm; left:2.0cm; width:57.5cm;" />
 </section>
 <section>
 <!-- A -->
+<!-- I -->
 <h1 class="en_tete">Expression mathématique d’une fonction logique</h1>
 <img src="./images/fonc-3e-b-300dpi.png" style="top:9cm; left:2.0cm; width:57.5cm;" />
 </section>
@@ -179,6 +184,7 @@ Codage des informations dans les circuits numériques :
 <!-- Page vide, pour éventuelle plein écran-->
 <section>
 <!-- A -->
+<!-- I -->
 <h1 class="en_tete">Propriété de l'algèbre de Boole</h1>
 </section>
 

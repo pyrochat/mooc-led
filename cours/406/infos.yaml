@@ -4,10 +4,11 @@ type:             Théorie
 niveau:           avancé
 auteur:          
     - AT
-statut:           Pas publié
+statut:           Relecture
 code:             gamma
-url:
+url1:
     cours-html:   gamma.html
     cours-pdf:    gamma.pdf
+url:
     dias-video:   gamma-dia.pdf
     dias-compact: gamma-dia-compact.pdf

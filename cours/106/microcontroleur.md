@@ -16,7 +16,9 @@ Nous somme tous familier avec les systèmes informatique, à commencer par nos o
 
 Des lignes électriques, appelées *bus* relient ensemble ces éléments.
 
-![Architecture d'un système informatique](images/architecture-sys-info.png "Architecture d'un système informatique"){ width=15cm }
+![Architecture d'un système informatique](images/architecture-sys-info-200dpi.png "Architecture d'un système informatique"){ width=90% }
+
+## Microcontrôleur ##
 
 Un **microcontrôleur** est aussi un système informatique. Sa particularité est qu'il est contenu dans un seul circuit intégré. L'architecture est la même que celle présentée sur la figure. Par rapport à une carte-mère de PC, les éléments qui constituent un microcontrôleur sont généralement plus simples, moins puissants, leur capacité est plus limitée :
 
@@ -27,7 +29,9 @@ Un **microcontrôleur** est aussi un système informatique. Sa particularité es
 
 L'intérêt des microcontrôleurs est leur coût très faible (parfois moins d'un Euro), leur consommation de courant très limitée (quelques dizaines de mA) et leur taille très réduite (un seul circuit intégré). Ils sont donc utilisés dans de très nombreuses applications.
 
-Bien que des microcontrôleurs existent depuis les années 1970, ils se sont développés de manière spectaculaire depuis quelques années. Alors qu'il était encore complexe et coûteux de mettre en œuvre un microcontrôleur au début des années 2000, cette tâche est maintenant beaucoup plus simple et ne nécessite que du matériel très peu coûteux, en plus d'un simple PC utilisé comme système de développement. Les microcontrôleurs sont donc devenus des composants électronique incontournables, modifiant profondément la manière de concevoir les circuits électroniques.
+Bien que des microcontrôleurs existent depuis les années 1970, ils se sont développés de manière spectaculaire depuis quelques années. Alors qu'il était encore complexe et coûteux de mettre en œuvre un microcontrôleur au début des années 2000, cette tâche est maintenant beaucoup plus simple et ne nécessite que du matériel très peu coûteux. Les microcontrôleurs sont donc devenus des composants électronique incontournables, modifiant profondément la manière de concevoir les circuits électroniques.
+
+## De nombreuses familles ##
 
 Plusieurs fabricants proposent des microcontrôleurs (Microchip, Atmel, Texas-Instrument, NXP-FreeScale, ST-micro, Cypress, etc). Chaque fabricant propose souvent plusieurs familles de microcontrôleurs (PIC et dsPIC chez Microchip; AVR, AVR32 et ARM chez Atmel; MSP430, MSP432 chez Texas Intrument, etc). Chaque famille comporte souvent des dizaines de modèles, qui diffèrent principalement par les tailles mémoires (RAM et ROM) et le nombre de broches d'entrée-sortie.
 
@@ -41,6 +45,10 @@ A titre d'exemple, le processeur MSP430G2253 de Texas Instrument contient :
 Le MSP430G est disponible dans plusieurs boîtiers, dont le DIL20 (Dual-in-line 20 pins), facile à mettre en œuvre. Voici son brochage :
 
 ![Brochage du MSP430G2553](images/msp430g2553.png "Brochage du MSP430G2553"){ width=15cm }
+
+## Mise en oeuvre matérielle et logicielle ##
+
+Un microcontrôleur est donc à la fois un composant électronique et un système informatique. Il nécessite donc une mise en œuvre matérielle et une mise en œuvre logicielle. En d'autres termes, il est à la frontière entre l'électronique et l'informatique. Il nécessite donc les compétences d'un électronicien et d'un informaticien !
 
 ## Schéma de mise en œuvre ##
 
@@ -58,19 +66,29 @@ La programmation des MSP430 peut se faire par l'intermédiaire de deux signaux: 
 
 Les autres broches du MSP430G2553 sont des entrées-sorties. Elles sont regroupées en 2 ports: P1 et P2. Ces deux ports sont complets : ils comportent chacun 8 broches. D'autres versions du MSP430 sont proposées en boîtier à 14 broches (DIL 14). Dans ce cas, les broches P2.0 à P2.5 n'existent pas.
 
-Un microcontrôleur est un composant électronique. Il va trouver sa place dans un schéma pour sa mise en œuvre :
+Un microcontrôleur est un composant électronique. Il va trouver sa place dans un schéma électronique pour sa mise en œuvre :
 
-![Brochage du MSP430G2553](images/msp430g2553.png "Brochage du MSP430G2553"){ width=15cm }
+![Schéma de mise en œuvre d'un microcontrôleur](images/schema-msp430-200dpi.png "Schéma de mise en œuvre d'un microcontrôleur"){ width=50% } 
 
 Ce schéma est très simple. En plus du microcontrôleur, on y trouve une LED, connectée à la broche *P1.0*, avec sa résistance de limitation du courant reliée en série vers la masse. Notez la présence d'un condensateur de découplage entre le + et le -. Les électroniciens savent qu'il est utile pour filtrer l'alimentation. On peut dire qu'il est une petite réserve de charges électriques. Sa valeur est souvent de 100 nF. Il sera placé tout près du circuit intégré.
 
+L'entrée Reset est maintenue à l'état logique *1* par une résistance reliés à l'alimentation positive. Les signaux Reset et Test sont reliés à un connecteur, comportant aussi des broches pour l'alimentation. C'est par ce connecteur que le microcontrôleur pourra être programmé.
+
 ## Réalisation d'un montage à microcontrôleur ##
 
+L'assemblage de composants électroniques se fait le plus souvent sur un circuit imprimé (**PBC** : *Printed Circuit Board*). Pour des montages de test, il est possible d'utiliser des techniques de montage sans soudure, tels que les plaques t'expérimentation, appelées en anglais *breadboard*. Voici comment le...
 
 ## Programmation d'un microcontrôleur ##
 
+La programmation d'un microcontrôleur se fait à travers ses broches de programmation. Un **programmateur** est généralement utilisé, au moins pour la première programmation.
+
+Dans le cas du MSP430G, la carte LaunchPad contient un programmateur capable de générer les signaux Reset et Test nécessaires à la programmation.
+
+
 ## Cartes à microcontrôleur ##
 
+Tout le monde n'étant pas électronicien, les cartes à microcontrôleur facilitent la mise en œuvre des microcontrôleurs. Les cartes **Arduino** ont rendu très populaires les microcontrôleurs.
 
+Contrairement au Launchpad MSP430, elle ne contient pas de programmateur. Il est donc nécessaire qu'elle dispose d'un microcontrôleur déjà programmé. Par contre, il est possible de changer le programme du microcontrôleur par une ligne série
 
 

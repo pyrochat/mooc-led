@@ -1,13 +1,14 @@
 titre:
-    - "[Physique] La couleur"
+    - "[Physique] LED, lumière et couleur"
 type:             Théorie
 niveau:           base
 auteur:          
     - AT
-statut:           Pas publié
+statut:           Relecture
 code:             couleur
-url:
+url1:
     cours-html:   couleur.html
     cours-pdf:    couleur.pdf
+url:
     dias-video:   couleur-dia.pdf
     dias-compact: couleur-dia-compact.pdf

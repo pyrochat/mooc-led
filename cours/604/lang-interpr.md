@@ -3,11 +3,11 @@
 % rév 2016/01/22
 
 
-## Introduction ##
+## Motivation ##
 
 Animer une enseigne à LED consiste en une suite d'opérations sur les groupes LED. Animer un afficheur matriciel consiste aussi à envoyer des séquences graphiques. Dans les deux cas, une jolie animation ne se limitera pas à quelques étapes, mais pourra vite devenir longue. Les programmes correspondant vont donc avoir tendance à devenir longs, ce qui va rendre leur lecture fastidieuse et qui risque aussi de remplir rapidement la mémoire du microcontrôleur.
 
-Une technique souvent utilisée consiste à inventer un *langage* pour décrire ce qui se passe sur l'enseigne ou l'afficheur et programmer les animations dans ce langage. 
+Une technique souvent utilisée consiste à **inventer** un *langage* pour décrire ce qui se passe sur l'enseigne ou l'afficheur et programmer les animations dans ce langage. 
 
 ## Langage Arduino ##
 
@@ -53,12 +53,12 @@ loop() {
 Bien entendu, les instructions permettant l'accès direct aux registres du microcontrôleur permettent d'économiser la place en mémoire.
 L'instruction P1OUT |= (1<<0); <--- --- > prend 4 octets. C'est déja mieux ! Mais cherchons une autre solution.
 
-Inventer un langage
+## Inventer un langage ##
 
 Une solution élégante est d'inventer un langage. Il aura les deux même instructions :
 
-* Met une intensité sur une sortie. Paramètres : numéro de la sorte et intensité (0 ou 1)
-* Attend. Paramètre : durée de l'attente
+* **Mettre une intensité sur une sortie**. Paramètres : numéro de la sorte et intensité (0 ou 1)
+* **Attendre**. Paramètre : durée de l'attente
 
 Le programme pourrait alors se présenter sous forme d'un tableau. Nous avons utilisé ici un tableau d'octets. Le programme pour notre chenillard se présenterai alors de la manière suivante :
 
@@ -124,19 +124,19 @@ Voici la description binaire de notre langage :
 
 Ceux qui ont déjà programmé en assembleur trouveront une grande similitude avec la description des instruction en binaire !
 
-On voit que des choix ont été faits pour utiliser au mieux les instructions, qui sont des champs de 8 bits. Le bit de poids fort b7 détermine s'il s'agit d'une instruction pour définit l'intensité ou pour l'attente. Ensuite, les 7 bits restant se répartissent selon l'instruction : une intensité et un numéro de sortie pour l'action sur une sortie, une valeur en dixième de seconde pour l'attente. L'usage de la milliseconde comme unité aurait été trop limitative, étant donné que seuls 7 bits sont à disposition.
+On voit que des choix ont été faits pour utiliser au mieux les instructions, qui sont des champs de 8 bits. Le bit de poids fort b7 détermine s'il s'agit d'une instruction pour définir l'intensité ou pour l'attente. Ensuite, les 7 bits restant se répartissent selon l'instruction : une intensité et un numéro de sortie pour l'action sur une sortie, une valeur en dixième de seconde pour l'attente. L'usage de la milliseconde comme unité aurait été trop limitative, étant donné que seuls 7 bits sont à disposition.
 
 
 ## Interpréteur ##
 
-Il reste à écrire une procédure qui va interpréter notre langage et le traduire en instructions pour notre microcontrôleur.
+Il reste à écrire une procédure qui va interpréter notre langage et le traduire en instructions pour un microcontrôleur. En voici un exemple :
 
-La voici :
+~~~~~~~ { .c .numberLines startFrom="1" }
 
+~~~~~~~
+<!-- retour au mode normal -->
 
-
-
-
+## Exemple plus complexe ##
 
 
 

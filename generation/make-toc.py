@@ -41,6 +41,9 @@ def executeSystemCmd( cmd ):
 
 def main():
 
+    BASEPATH = os.getcwd() + "/../cours"
+    BROKENLINKS = []
+
     INFOs = glob.glob( "../cours/*/infos.yaml" )
 
     TOC = u"""% Enseignes et afficheurs à LED
@@ -100,7 +103,11 @@ Version de travail du 2016/01/21
             for fileType in fileTypes:
                 if fileType in dataMap[ "url" ]:
                     fileName = dataMap[ "url" ][ fileType ]
-                    LINKS += [ "[%s](../%d%0.2d/%s)" % ( fileType, nbsemaine, nbchapitre, fileName ) ]
+                    LINKPath = "%s/%d%0.2d/%s" % ( BASEPATH, nbsemaine, nbchapitre, fileName )
+                    if( not os.path.isfile( LINKPath ) ):
+                        BROKENLINKS.append( LINKPath )
+                    else:
+                        LINKS += [ "[%s](../%d%0.2d/%s)" % ( fileType, nbsemaine, nbchapitre, fileName ) ]
             LINKS = ' '.join( LINKS )
             print "⇒ " + LINKS
             TOC = '%s %s' % ( TOC, LINKS )
@@ -125,6 +132,13 @@ Version de travail du 2016/01/21
     executeSystemCmd( pandocCmd )
     print( "\nTable des matières générée dans le fichier " + htmltocfilename )
     # executeSystemCmd( [ "rm " + tocfilename ] ) # À cause de l’exécution asynchrone de Pandoc, c’est mieux de ne pas effacer le fichier md tout de suite.
+
+    if( len( BROKENLINKS ) ):
+        print u"\n###\n!!! LISTE DES LIENS CASSÉS !!!"
+        for BROKENLINK in BROKENLINKS:
+            print BROKENLINK
+        print u"###\n"
+
 
 if __name__ == '__main__':
 

@@ -5,10 +5,10 @@ niveau:           avancé
 auteur:          
     - AT
 statut:           Relecture
-code:             caract
+code:             carac
 url1:
-    cours-html:  caract.html
-    cours-pdf:    caract.pdf
+    cours-html:  caracthtml
+    cours-pdf:    caractpdf
 url:
-    dias-video:   caract-dia.pdf
-    dias-compact: caract-dia-compact.pdf
+    dias-video:   carac-dia.pdf
+    dias-compact: carac-dia-compact.pdf

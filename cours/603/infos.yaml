@@ -4,9 +4,9 @@ type:             Théorie
 niveau:           base
 auteur:          
     - PYR
-statut:           non publié
+statut:           Pas publié
 code:             distance
-url:
+url1:
     cours-html:   distance.html
     cours-pdf:    distance.pdf
     dias-video:   distance-dia.pdf

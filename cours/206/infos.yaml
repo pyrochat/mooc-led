@@ -9,6 +9,7 @@ code:             concur
 url1:
     cours-html:   concur.html
     cours-pdf:    concur.pdf
+    dias-compact: concur-dia-compact.pdf
 url:
     dias-video:   concur-dia.pdf
-    dias-compact: concur-dia-compact.pdf
+

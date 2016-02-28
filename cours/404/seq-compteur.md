@@ -7,7 +7,7 @@
 
 Une enseigne peut être jolie simplement par sa forme et les couleurs des LED. Mais des animations la rendent encore plus attrayante. Une animation, c’est une séquence, ce sont des états qui se succèdent, avec des valeurs pour chaque groupe de LED.
 
-![Enseigne à animer](images/ouvert.png "Enseigne à animer")
+![Enseigne à animer](images/ouvert-220dpi.png "Enseigne à animer")
 
 Prenons un exemple : pour attirer l’œil, une enseigne avec le mot OUVERT va être animée avec la séquence dont voici le diagramme des temps :
 

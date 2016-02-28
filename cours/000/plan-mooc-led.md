@@ -22,7 +22,7 @@ Version de travail du 2016/01/21
 **1.3** **Représentation binaire**  (YT) [cours-html](../103/binaire.html) [cours-pdf](../103/binaire.pdf) [dias-compact](../103/binaire-dia-compact.pdf)   
 **1.4** **[Logique] Circuits logiques combinatoires**  (MLN) [dias-compact](../104/sys-combi-dia-compact.pdf)   
 **1.5** **[Logique] Synthèse de circuits combinatoires**  (MLN) [dias-compact](../105/synth-combi-dia-compact.pdf)   
-**1.6** **Le microcontrôleur**  (PYR) [cours-html](../106/microcontroleur.html) [cours-pdf](../106/microcontroleur.pdf)   
+**1.6** **Le microcontrôleur**  (PYR)   
 **1.21** *Pratique :* Montages sur Breadboard (YT)   
 **1.22** *Pratique sur PC :* Simulateur logique (?)   
 **1.23** *Pratique sur PC :* Programmation avec Energia (?)   
@@ -118,7 +118,7 @@ Version de travail du 2016/01/21
 
 
 **5.1** **Les Interruptions**  (YT) [cours-html](../501/inter.html) [cours-pdf](../501/inter.pdf) [dias-compact](../501/inter-dia-compact.pdf)   
-**5.2** **Les timers**  (YT) [cours-html](../502/timers.html) [cours-pdf](../502/timers.pdf)   
+**5.2** **Les timers**  (YT)   
 **5.3** **Programmation multi-tâche**  (PYR)   
 **5.4** **Rubans de LEDs**  (PYR)   
 **5.5** **Les afficheurs matriciels multiplexés**  (PYR)   

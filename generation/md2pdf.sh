@@ -67,16 +67,17 @@ if [[ "$#" == "0" ]]; then
     INFOS=(${INFOS//:/ })
     for INFO in "${INFOS[@]}"
     do
-        echo $INFO
+        echo "INFO   = $INFO"
         STATUT=`awk -F 'statut:[ ]+' '{ print $2 }' $INFO`
-        echo $STATUT
+        STATUT=`echo $STATUT`
+        echo "STATUT = $STATUT"
         if [[ "$STATUT" == *"Pas publié"* ]]; then
             :
         else
             CODE=`awk -F 'code:[ ]+' '{ print $2 }' $INFO`
-            echo $CODE
+            CODE=`echo $CODE`
+            echo "CODE   = $CODE"
             DIR=$(dirname "${INFO}")
-            echo "${DIR}"
             cd ${DIR}
             DO_ALL
             cd ..
@@ -89,7 +90,8 @@ else
     CHAP_NB=$1
     cd ../cours/$CHAP_NB
     CODE=`awk -F 'code:[ ]+' '{ print $2 }' infos.yaml`
-    echo $CODE
+    CODE=`echo $CODE`
+    echo "CODE = $CODE"
     DO_ALL
 fi
 

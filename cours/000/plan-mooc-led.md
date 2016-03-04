@@ -11,7 +11,7 @@ Version de travail du 2016/01/21
 **Documents** : Les notes de cours sont disponibles en HTML et en PDF. Les dispositives sont en PDF, avec une version complète utilisée pour les vidéos, ainsi qu'une version compacte qui sera mise à disposition des participants du MOOC.
 
 **Domaines** : Le cours introduit progressivement des sujets en *électronique* et en *microcontrôleur*, pour apprendre à concevoir des enseignes et des afficheurs à LED. En parallèle, des sujets de *circuits logiques* sont introduits, pour mener à la réalisation de commande d'afficheurs complexes utilisant des FPGA. En plus, quelques sujets de *physique* sont proposés.
-   
+
 
 ## Semaine 1 ##
 
@@ -118,7 +118,7 @@ Version de travail du 2016/01/21
 
 
 **5.1** **Les Interruptions**  (YT) [cours-html](../501/inter.html) [cours-pdf](../501/inter.pdf) [dias-compact](../501/inter-dia-compact.pdf)   
-**5.2** **Les timers**  (YT)   
+**5.2** **Les timers**  (YT) [cours-html](../502/timers.html) [cours-pdf](../502/timers.pdf)   
 **5.3** **Programmation multi-tâche**  (PYR)   
 **5.4** **Rubans de LEDs**  (PYR)   
 **5.5** **Les afficheurs matriciels multiplexés**  (PYR)   

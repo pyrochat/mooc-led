@@ -11,13 +11,13 @@ Il est souvent difficile d'assurer correctement cette gestion du temps en utilis
 
 Dans le chapitre sur la Modulation de Largeur d'Impulsion (PWM), nous avions suggéré le montage suivant, pour faciliter la génération de signaux PWM :
 
-![Compteur générant du PWM](images/compteur-pwm-90dpi.png "Compteur générant du PWM")
+![Compteur générant du PWM](images/compteur-pwm-300dpi.png "Compteur générant du PWM"){ width=70% }
 
 Ce montage est basé sur un compteur binaire, qu'on appelle aussi un diviseur de fréquence. Rappelons qu'à chaque flanc montant de l'horloge, le compteur passe à la valeur binaire suivante. On peut observer que, lorsqu'un signal de fréquence fixe F~0~ est placé sur l'entrée, les sorties successives prennent des fréquences sous-multiples : la fréquence est divisée par 2, par 4, par 8, etc.
 
-![Chronogramme d'un compteur binaire](images/chrono-compteur-150dpi.png "Chronogramme d'un compteur binaire")
+![Chronogramme d'un compteur binaire](images/chrono-compteur-150dpi.png "Chronogramme d'un compteur binaire"){ width=50% }
 
-Le terme anglais *timer* désigne le compteur binaire, mais aussi souvent l'ensemble du montage. La traduction française, *minuterie*, n'est que rarement utilisé. C'est la raison pour laquelle nous utiliserons ici plutôt l'anglicisme *Timer*, comme s'il s'agissait d'un nom propre. Que les puristes nous pardonnent !
+Le terme anglais *timer* désigne le compteur binaire, mais aussi souvent l'ensemble du montage. Les traductions françaises, *minuterie* ou *temporisateur", ne sont que rarement utilisées. C'est la raison pour laquelle nous utiliserons ici plutôt l'anglicisme *Timer*, comme s'il s'agissait d'un nom propre. Que les puristes nous pardonnent !
 
 Le PWM n'est pas la seule application des Timers. Beaucoup de tâches liées le plus souvent à la gestion du temps ou au comptage d'événements peuvent lui être confiées.
 
@@ -25,7 +25,7 @@ Le PWM n'est pas la seule application des Timers. Beaucoup de tâches liées le 
 
 La figure ci-dessous généralise ce concept :
 
-![Timer](images/timer-base-90dpi.png "Timer")
+![Timer](images/timer-base-300dpi.png "Timer"){ width=90% }
 
 On y trouve :
 
@@ -33,14 +33,14 @@ On y trouve :
 * un **horloge**, c'est à dire un oscillateur (Osc). Il s'agit généralement de l'horloge également utilisée pour le processeur.
 * un système de **choix d'horloge et de pré-division**, qui permet de choisir une fréquence d'horloge bien adaptée au problème à résoudre.
 * un logique de **comparaison** (par exemple l'égalité)
-* un **registres de comparaison**, associé à la logique de comparaison. Plusieurs registres de comparaison sont souvent présents.
+* un **registre de comparaison**, associé à la logique de comparaison. Plusieurs registres de comparaison sont souvent présents.
 * une logique de gestion, permettant de faire interagir des **entrées** et des **sorties** avec le Timer, ainsi qu'à générer des **interruptions** dans certaines conditions.
 
 ## Prédivision ##
 
 Voici comment peut se présenter le choix de l'horloge et de pré-division :
 
-![Exemple de système de choix de l'horloge](images/pre-div-90dpi.png "Exemple de système de choix de l'horloge")
+![Exemple de système de choix de l'horloge](images/pre-div-300dpi.png "Exemple de système de choix de l'horloge"){ width=70% }
 
 Un premier multiplexeur permet de choisir entre une horloge extérieure et une horloge externe. Un compteur binaire, utilisé en diviseur de fréquence, fournit des signaux à des fréquences sous-multiples. Un second multiplexeur permet de choisir le fréquence qui commande le Timer.
 
@@ -48,15 +48,23 @@ Les deux multiplexeurs sont commandés par des bits d'un registre de contrôle, 
 
 ## Logique de gestion ##
 
-La logique de permet de
+Une logique permet de mettre en oeuvre le Timer. Elle diffère beaucoup d'un microcontrôleur à l'autre. En voici un exemple très simple :
 
-En voici un exemple très simple :
+![Exemple de logique de gestion d'un timer](images/logique-timer-300dpi.png "Exemple de logique de gestion d'un timer]"){ width=90% }
 
-![Exemple de logique de gestion d'un timer](images/logique-timer-90dpi.png "Exemple de logique de gestion d'un timer]")
+On y trouve une bascule qui détecte le dépassement de capacité du Timer. C'est le moment où le compteur binaire repasse à la valeur zéro. La bascule est mise à *1* à ce moment. Elle fait généralement partie d'un registre de contrôle et peut donc être lue à tout moment.
 
-On y trouve une bascule qui détecte le dépassement de capacité du Timer. C'est le moment où le compteur binaire repasse à la valeur zéro. La bascule est mise à *1* à ce moment. Elle fait généralement partie d'un registre et peut être lue à tout moment.
+Il faut pouvoir remettre ce fanion à zéro lors qu'i a été pris en compte. Parfois, il faut écrire un *0* dans le bit correspondant du registre. Mais sur certains microcontrôleurs, c'est l'écriture de la valeur "1" qui met ce fanion à *0*. C'est le cas des Timer des AVR.
 
-....
+La génération d'interruptions est très importante dans l'utilisation des Timers. Ici, on voit un Fanion __*IE*__ *Interrupt Enable* qui permet de générer une interruption. En effet, la porte **ET** nécessite que *IE* soit à *1* pour que l'interruption soit transmise. Elle ne sera effective que si l'autorisation générale des interruptions est activée (GIE : *General Interrupt Enable*), comme toutes les autres interruptions.
+
+## Registres de comparaison ##
+
+La présence d'un ou de plusieurs registres de comparaison associé à un Timer le rend beaucoup plus intéressant. En voici un exemple simple :
+
+![Exemple de registre de comparaison](images/registre-comp-300dpi.png "Exemple de registre de comparaison]"){ width=70% }
+
+Un comparateur d'égalité est placé entre le Timer et un registre, dont il est possible à tout moment de modifier la valeur. Chaque fois que le Timer a la même valeur que le registre de comparaison, le fanion pass à *1*. Le nouveau, il est possible de générer une interruption, avec un mécanisme similaire à celui du dépassement de capacité.
 
 ## Les Timers des microcontrôleurs ##
 

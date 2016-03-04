@@ -138,8 +138,8 @@ Voici un programme qui affiche un texte :
 <!-- Est-ce que tu expliques le concept de pointeur dans le cours ? PYR : Pas prévu... à réfléchir ! -->
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
-char *Texte = "ABC\0"; // texte, terminé par le caractère nul
-const char *ptTexte; // pointeur vers le texte à afficher
+const char *Texte = "ABC\0"; // texte, terminé par le caractère nul
+char *ptTexte; // pointeur vers le texte à afficher
 
 int main(void) {
   init(); // initialisations...

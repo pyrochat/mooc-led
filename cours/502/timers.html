@@ -52,78 +52,78 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2 class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL<br/>et <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#116;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;&#x79;&#64;&#x79;&#x61;&#104;&#x6f;&#x6f;&#46;&#102;&#114;" class="email">&#x59;&#118;&#x65;&#x73;&#32;&#84;&#x69;&#x65;&#x63;&#x6f;&#x75;&#114;&#x61;</a>, INP-HB</h2>
 <h3 class="date">rév 2016/02/02</h3>
 </div>
-<h2 id="gestion-précise-du-temps">Gestion précise du temps</h2>
-<p>Les enseignes et afficheurs à LED, comme beaucoup d'applications des microcontrôleurs, nécessitent souvent une gestion précise du temps qui s'écoule. Les animations doivent être correctement cadencées. Plus difficile encore, la gestion des afficheurs matriciels multiplexés exigent un <em>timing</em> précis.</p>
-<p>Il est souvent difficile d'assurer correctement cette gestion du temps en utilisant uniquement les instructions du processeur. C'est la raison pour laquelle les microcontrôleur offrent presque toujours des circuits spécialisés dans le comptage et la gestion du temps, appelés les <strong>timers</strong>.</p>
-<p>Dans le chapitre sur la Modulation de Largeur d'Impulsion (PWM), nous avions suggéré le montage suivant, pour faciliter la génération de signaux PWM :</p>
+<h2 id="gestion-exacte-du-temps">Gestion exacte du temps</h2>
+<p>Les enseignes et afficheurs à LED, comme beaucoup d’applications des microcontrôleurs, nécessitent souvent une gestion exacte du temps. Les animations doivent être correctement cadencées et, plus difficile encore, la gestion des afficheurs matriciels multiplexés exige une gestion du temps (<em>timing</em>) exacte.</p>
+<p>Il est souvent difficile d’assurer correctement cette gestion du temps en utilisant uniquement les instructions du processeur. C’est la raison pour laquelle les microcontrôleurs offrent presque toujours des circuits spécialisés dans le comptage et la gestion du temps, appelés les <em>timers</em>.</p>
+<p>Dans le chapitre sur la modulation de largeur d’impulsion (PWM), nous avions proposé le montage suivant, pour faciliter la génération de signaux PWM :</p>
 <div class="figure">
-<img src="images/compteur-pwm-300dpi.png" title="Compteur générant du PWM" alt="Compteur générant du PWM" style="width:70.0%" />
+<img src="images/compteur-pwm-300dpi.png" title="Compteur générant du PWM" alt="Compteur générant du PWM" style="width:47.0%" />
 <p class="caption">Compteur générant du PWM</p>
 </div>
-<p>Ce montage est basé sur un compteur binaire, qu'on appelle aussi un diviseur de fréquence. Rappelons qu'à chaque flanc montant de l'horloge, le compteur passe à la valeur binaire suivante. On peut observer que, lorsqu'un signal de fréquence fixe F<sub>0</sub> est placé sur l'entrée, les sorties successives prennent des fréquences sous-multiples : la fréquence est divisée par 2, par 4, par 8, etc.</p>
+<p>Ce montage est basé sur un compteur binaire, qu’on appelle aussi un <em>diviseur de fréquence</em>. Rappelons qu’à chaque flanc montant de l’horloge, le compteur passe à la valeur binaire suivante. On peut observer que lorsqu’un signal de fréquence fixe F<sub>0</sub> est placé sur l’entrée, les sorties successives prennent des fréquences sous-multiples : la fréquence est divisée par <code>2</code>, par <code>4</code>, par <code>8</code>, etc.</p>
 <div class="figure">
-<img src="images/chrono-compteur-150dpi.png" title="Chronogramme d&#39;un compteur binaire" alt="Chronogramme d&#39;un compteur binaire" style="width:50.0%" />
-<p class="caption">Chronogramme d'un compteur binaire</p>
+<img src="images/chrono-compteur-150dpi.png" title="Chronogramme d’un compteur binaire" alt="Chronogramme d’un compteur binaire" style="width:50.0%" />
+<p class="caption">Chronogramme d’un compteur binaire</p>
 </div>
-<p>Le terme anglais <em>timer</em> désigne le compteur binaire, mais aussi souvent l'ensemble du montage. Les traductions françaises, <em>minuterie</em> ou <em>temporisateur&quot;, ne sont que rarement utilisées. C'est la raison pour laquelle nous utiliserons ici plutôt l'anglicisme</em>Timer*, comme s'il s'agissait d'un nom propre. Que les puristes nous pardonnent !</p>
-<p>Le PWM n'est pas la seule application des Timers. Beaucoup de tâches liées le plus souvent à la gestion du temps ou au comptage d'événements peuvent lui être confiées.</p>
-<h2 id="les-timers">Les Timers</h2>
-<p>La figure ci-dessous généralise ce concept :</p>
+<p>Le terme anglais <em>timer</em> désigne non seulement le compteur binaire, mais aussi souvent l’ensemble du montage. Les traductions françaises, <em>minuterie</em> ou <em>temporisateur</em>, ne sont que rarement utilisées. C’est la raison pour laquelle nous utiliserons ici plutôt l’anglicisme <em>timer</em>, que nous considérerons comme un néologisme.</p>
+<p>Le PWM n’est pas la seule application des timers. Beaucoup de tâches — liées le plus souvent à la gestion du temps ou au comptage d’événements — peuvent lui être confiées.</p>
+<h2 id="les-timers">Les timers</h2>
+<p>La figure ci-dessous généralise ce concept :</p>
 <div class="figure">
 <img src="images/timer-base-300dpi.png" title="Timer" alt="Timer" style="width:90.0%" />
 <p class="caption">Timer</p>
 </div>
-<p>On y trouve :</p>
+<p>On y trouve :</p>
 <ul>
-<li>un <strong>compteur binaire</strong>. Il peut être de 8 bits, 16 bits, parfois même de 32 bits. C'est le Timer proprement dit.</li>
-<li>un <strong>horloge</strong>, c'est à dire un oscillateur (Osc). Il s'agit généralement de l'horloge également utilisée pour le processeur.</li>
-<li>un système de <strong>choix d'horloge et de pré-division</strong>, qui permet de choisir une fréquence d'horloge bien adaptée au problème à résoudre.</li>
-<li>un logique de <strong>comparaison</strong> (par exemple l'égalité)</li>
-<li>un <strong>registre de comparaison</strong>, associé à la logique de comparaison. Plusieurs registres de comparaison sont souvent présents.</li>
-<li>une logique de gestion, permettant de faire interagir des <strong>entrées</strong> et des <strong>sorties</strong> avec le Timer, ainsi qu'à générer des <strong>interruptions</strong> dans certaines conditions.</li>
+<li>Un <strong>compteur binaire</strong>. Il peut être de 8 bits, 16 bits, parfois même de 32 bits. C’est le timer proprement dit.</li>
+<li>Une <strong>horloge</strong>, c’est-à-dire un oscillateur (OSC). Il s’agit généralement de l’horloge également utilisée pour le processeur.</li>
+<li>Un système de <strong>choix de l’horloge et du prédiviseur</strong>, qui permet de choisir une fréquence d’horloge bien adaptée au problème à résoudre.</li>
+<li>Une logique de <strong>comparaison</strong>, par exemple pour tester l’égalité.</li>
+<li>Un <strong>registre de comparaison</strong>, associé à la logique de comparaison. Plusieurs registres de comparaison sont souvent présents.</li>
+<li>Une logique de gestion, permettant de faire interagir des <strong>entrées</strong> et des <strong>sorties</strong> avec le timer, ainsi qu’à générer des <strong>interruptions</strong> dans certaines conditions.</li>
 </ul>
 <h2 id="prédivision">Prédivision</h2>
-<p>Voici comment peut se présenter le choix de l'horloge et de pré-division :</p>
+<p>Voici comment peut se présenter le choix de l’horloge et du prédiviseur :</p>
 <div class="figure">
-<img src="images/pre-div-300dpi.png" title="Exemple de système de choix de l&#39;horloge" alt="Exemple de système de choix de l&#39;horloge" style="width:70.0%" />
-<p class="caption">Exemple de système de choix de l'horloge</p>
+<img src="images/pre-div-300dpi.png" title="Exemple de système de choix de l’horloge" alt="Exemple de système de choix de l’horloge" style="width:70.0%" />
+<p class="caption">Exemple de système de choix de l’horloge</p>
 </div>
-<p>Un premier multiplexeur permet de choisir entre une horloge extérieure et une horloge externe. Un compteur binaire, utilisé en diviseur de fréquence, fournit des signaux à des fréquences sous-multiples. Un second multiplexeur permet de choisir le fréquence qui commande le Timer.</p>
-<p>Les deux multiplexeurs sont commandés par des bits d'un registre de contrôle, dont le rôle est de fixer le mode de fonctionnement du Timer.</p>
+<p>Un premier multiplexeur permet de choisir entre une horloge interne ou externe. Un compteur binaire, utilisé en diviseur de fréquence, fournit des signaux à des fréquences sous-multiples de celle de l’horloge. Un second multiplexeur permet de choisir la fréquence qui commande le timer.</p>
+<p>Les deux multiplexeurs sont commandés par des bits d’un registre de contrôle, dont le rôle est de fixer le mode de fonctionnement du timer.</p>
 <h2 id="logique-de-gestion">Logique de gestion</h2>
-<p>Une logique permet de mettre en oeuvre le Timer. Elle diffère beaucoup d'un microcontrôleur à l'autre. En voici un exemple très simple :</p>
+<p>Une logique permet de mettre en œuvre le timer. Elle diffère beaucoup d’un microcontrôleur à l’autre. En voici un exemple très simple :</p>
 <div class="figure">
-<img src="images/logique-timer-300dpi.png" title="Exemple de logique de gestion d&#39;un timer]" alt="Exemple de logique de gestion d&#39;un timer" style="width:90.0%" />
-<p class="caption">Exemple de logique de gestion d'un timer</p>
+<img src="images/logique-timer-300dpi.png" title="Exemple de logique de gestion d’un timer" alt="Exemple de logique de gestion d’un timer" style="width:90.0%" />
+<p class="caption">Exemple de logique de gestion d’un timer</p>
 </div>
-<p>On y trouve une bascule qui détecte le dépassement de capacité du Timer. C'est le moment où le compteur binaire repasse à la valeur zéro. La bascule est mise à <em>1</em> à ce moment. Elle fait généralement partie d'un registre de contrôle et peut donc être lue à tout moment.</p>
-<p>Il faut pouvoir remettre ce fanion à zéro lors qu'i a été pris en compte. Parfois, il faut écrire un <em>0</em> dans le bit correspondant du registre. Mais sur certains microcontrôleurs, c'est l'écriture de la valeur &quot;1&quot; qui met ce fanion à <em>0</em>. C'est le cas des Timer des AVR.</p>
-<p>La génération d'interruptions est très importante dans l'utilisation des Timers. Ici, on voit un Fanion <strong><em>IE</em></strong> <em>Interrupt Enable</em> qui permet de générer une interruption. En effet, la porte <strong>ET</strong> nécessite que <em>IE</em> soit à <em>1</em> pour que l'interruption soit transmise. Elle ne sera effective que si l'autorisation générale des interruptions est activée (GIE : <em>General Interrupt Enable</em>), comme toutes les autres interruptions.</p>
+<p>On y trouve une bascule qui détecte le dépassement de capacité du timer. C’est le moment où le compteur binaire repasse à la valeur <code>0</code>. La bascule est mise à <code>1</code> à cet instant. Elle fait généralement partie d’un registre de contrôle et peut donc être lue en tout temps.</p>
+<p>Il faut pouvoir remettre ce fanion à zéro lors qu’il a été pris en compte. Parfois, il faut écrire un <code>0</code> dans le bit correspondant du registre. Mais sur certains microcontrôleurs, c’est l’écriture de la valeur <code>1</code> qui met ce fanion à <code>0</code>. C’est le cas des timers des AVR.</p>
+<p>La génération d’interruptions est très importante dans l’utilisation des timers. Ici, on voit un fanion IE (<em>Interrupt Enable</em>) qui permet de générer une interruption. En effet, la porte logique <code>ET</code> nécessite qu’IE soit à <code>1</code> pour que l’interruption soit transmise. Elle ne sera effective que si l’autorisation générale des interruptions est activée (GIE ou <em>General Interrupt Enable</em>), comme toutes les autres interruptions.</p>
 <h2 id="registres-de-comparaison">Registres de comparaison</h2>
-<p>La présence d'un ou de plusieurs registres de comparaison associé à un Timer le rend beaucoup plus intéressant. En voici un exemple simple :</p>
+<p>La présence d’un ou de plusieurs registres de comparaison associés à un timer le rend beaucoup plus intéressant. En voici un exemple simple :</p>
 <div class="figure">
-<img src="images/registre-comp-300dpi.png" title="Exemple de registre de comparaison]" alt="Exemple de registre de comparaison" style="width:70.0%" />
+<img src="images/registre-comp-300dpi.png" title="Exemple de registre de comparaison" alt="Exemple de registre de comparaison" style="width:70.0%" />
 <p class="caption">Exemple de registre de comparaison</p>
 </div>
-<p>Un comparateur d'égalité est placé entre le Timer et un registre, dont il est possible à tout moment de modifier la valeur. Chaque fois que le Timer a la même valeur que le registre de comparaison, le fanion pass à <em>1</em>. Le nouveau, il est possible de générer une interruption, avec un mécanisme similaire à celui du dépassement de capacité.</p>
-<h2 id="les-timers-des-microcontrôleurs">Les Timers des microcontrôleurs</h2>
-<p>Quelques années après les premiers microprocesseurs, des circuits spécialisés sont apparus sur le marché avec des Timers. C'est la cas du très célèbre <strong>8253</strong> d'Intel, datant de 1981, dont on trouve encore des descendants dans les PC modernes.</p>
-<p>Les microcontrôleurs ont eux aussi très vite été complétés par des Timers, comme le célèbre <strong>PIC16x84</strong>, qui incluait déjà un unique compteur 8 bits très simple, mais très utile.</p>
-<p>Les microcontrôleurs <strong>ARM</strong> ont tous plusieurs Timers. Le <strong>ATmega328</strong>, connu pour équiper les Arduino, a trois Timers, le Timer0 à 8 bits, le Timer 1 à 16 bits et le Timer2 à 8 bits, mais différent du Timer0. Ces Timers ont une fonctionnalité riche, permettant de nombreuses applications.</p>
-<p>Les microcontrôleurs plus modernes ont souvent de Timers très complexe. Dans les familles de microcontrôleurs <strong>ARM</strong>, les Timers diffèrent d'un fabricant à l'autre : cette partie du microcontrôleur est propriétaire, elle n'est pas développée par la société ARM.</p>
-<p>Nous étudierons ici les Timers utilisés dans les microcontrôleurs <strong>MSP430G</strong> de Texas Instrument, qui se trouvent sur la carte Launchpad.</p>
-<h2 id="timer-a-du-msp430">Timer A du MSP430</h2>
-<p>Les MPS430 de la série G disposent de Timers de 16 bits, en nombre est en configurations variables selon les modèles. Le MSP430G2231 (boîtier 14 pattes) en a un seul, disposant de deux registres de comparaison. Le MSP430G2553 en a deux, chacun disposant de trois registres de comparaisons.</p>
-<p>Le fonctionnement des ces registres est très bien documenté : 20 pages de documentation, bien évidemment en anglais. Voici les références du document : MSP430x2xx Family User's Guide, literature Number: SLAU144H. On le trouve facilement sur Internet.</p>
-<p>Afin de se familiariser avec la lecture de la documentation, nous allons partir des documents fournis par Texas Instrument pour tenter de comprendre le minimum vital pour mettre en œuvre un de ces Timers. Nous allons aussi respecter la syntaxe proposée pour l'accès aux registres.</p>
-<p>La figure ci-dessous donne la vue d'ensemble du Timer A :</p>
+<p>Un comparateur d’égalité est placé entre le timer et un registre dont il est possible à tout moment de modifier la valeur. Chaque fois que le timer a la même valeur que le registre de comparaison, le fanion passe à <code>1</code>. À nouveau, il est possible de générer une interruption, avec un mécanisme similaire à celui du dépassement de capacité.</p>
+<h2 id="les-timers-des-microcontrôleurs">Les timers des microcontrôleurs</h2>
+<p>Quelques années après l’apparition des premiers microprocesseurs, des circuits spécialisés incorporants des timers sont apparus sur le marché. C’est le cas du très célèbre 8253 d’Intel, datant de 1981, dont on trouve encore des descendants dans les PC modernes.</p>
+<p>Les microcontrôleurs ont eux aussi très vite été complétés par des timers, comme le célèbre PIC16x84, qui incluait déjà un unique compteur 8 bits très simple, mais très utile.</p>
+<p>Les microcontrôleurs ARM ont tous plusieurs timers. L’ATmega328, connu pour équiper les Arduino, a trois timers, le TIMER 0 de 8 bits, le TIMER 1 de 16 bits et le TIMER 2 de 8 bits, mais différent du TIMER 0. Ces timers sont riches en fonctionnalités permettant de nombreuses applications.</p>
+<p>Les microcontrôleurs plus modernes ont souvent des timers très complexes. Dans les familles de microcontrôleurs ARM, les timers diffèrent d’un fabricant à l’autre : cette partie du microcontrôleur est propriétaire, elle n’est pas développée par la société ARM.</p>
+<p>Nous étudierons ici les timers utilisés dans les microcontrôleurs MSP430G de Texas Instruments, qui se trouvent sur la carte Launchpad.</p>
+<h2 id="timer-a-du-msp430">TIMER A du MSP430</h2>
+<p>Les MPS430 de la série G disposent de timers de 16 bits, en nombre et en configurations variables selon les modèles. Le MSP430G2231 avec un boîtier de 14 pattes en a un seul, disposant de deux registres de comparaison. Le MSP430G2553 en a deux, disposant chacun de trois registres de comparaison.</p>
+<p>Le fonctionnement de ces registres est très bien documenté : 20 pages, bien évidemment en anglais. Voici les références du document : <em>MSP430x2xx Family User’s Guide, literature Number: SLAU144H</em>. On le trouve facilement sur internet.</p>
+<p>Afin de nous familiariser avec la lecture de la documentation, nous allons nous baser sur les documents fournis par Texas Instruments pour comprendre le minimum nécessaire à la mise en œuvre d’un de ces timers. Nous allons aussi respecter la syntaxe proposée pour l’accès aux registres.</p>
+<p>La figure ci-dessous donne la vue d’ensemble du TIMER A :</p>
 <div class="figure">
-<img src="images/timer-a.jpg" title="Timer A du MSP430" alt="Timer A du MSP430" />
-<p class="caption">Timer A du MSP430</p>
+<img src="images/timer-a.jpg" title="TIMER A du MSP430" alt="TIMER A du MSP430" style="width:68.0%" />
+<p class="caption">TIMER A du MSP430</p>
 </div>
-<p>Ce schéma n'est pas simple, mais il est clair et complet. On y trouve un compteur 16 bits appelé <em><strong>TAR</strong></em>. Il est possible à tout moment de lire sa valeur. Il est aussi possible d'écrire une nouvelle valeur, mais nous n'utiliserons pas cette possibilité ici.</p>
-<p>Ce compteur reçoit une horloge qu'il est possible de sélectionner parmi plusieurs sources. Un pré-diviseur peut être utilisé, qui donne le choix entre la fréquence d'origine et des divisions par 2, 4 ou 8. Le compteur peut compter selon plusieurs modes de comptage.</p>
-<p>Un registre de contrôle de 16 bits est associé à chaque Timer, appelé <strong>TACTL</strong>. Il peut aussi apparaître sous le nom <em>TA0CTL</em>, pour les microcontrôleurs qui ont plusieurs Timers A (le deuxième s'appelant alors TA1CTL). Il n'apparaît pas explicitement dans le schéma, mais c'est de lui que proviennent plusieurs signaux (TASSETx, IDx, TACLR, etc). Ce sont les différents bits de ce registre qui vont permettre de choisir l'horloge, les pré-diviseurs, le mode de comptage, etc.</p>
+<p>Ce schéma n’est pas simple, mais il est clair et complet. On y trouve un compteur 16 bits appelé TAR. Il est possible à tout moment de lire sa valeur. Il est aussi possible d’écrire une nouvelle valeur, mais nous n’utiliserons pas cette possibilité ici.</p>
+<p>Ce compteur reçoit un signal d’horloge qu’il est possible de sélectionner parmi plusieurs sources. Un prédiviseur peut être utilisé, qui donne le choix entre la fréquence d’origine et des divisions par <code>2</code>, <code>4</code> ou <code>8</code>. Le compteur peut compter selon plusieurs modes.</p>
+<p>Un registre de contrôle de 16 bits appelé TACTL est associé à chaque timer. Il peut aussi apparaître sous le nom TA0CTL, pour les microcontrôleurs qui ont plusieurs TIMER A (le deuxième s’appelant alors TA1CTL). Il n’apparaît pas explicitement dans le schéma, mais c’est de lui que proviennent plusieurs signaux (TASSETx, IDx, TACLR, etc.) Ce sont les différents bits de ce registre qui vont permettre de choisir l’horloge, les prédiviseurs, le mode de comptage, etc.</p>
 <p>Voici comment la documentation le décrit ce registre TACTL :</p>
 <div class="figure">
 <img src="images/tactl.jpg" title="Registre TACLT" alt="Registre TACLT" />
@@ -131,96 +131,94 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <p>Parcourons quelques bits de ce registre de contrôle pour choisir les valeurs pour notre premier exemple :</p>
 <ul>
-<li>TASSELx permet de choisir l'horloge. Utilisons l'horloge du processeur : SMCLK. Les deux bits correspondants doivent prendre la valeur binaire 10. Texas Instrument utilise la syntaxe suivante : TASSEL_2 (valeur 2 pour les bits TASSEL).</li>
-<li>IDx permet de choisit la pré-division. Choisissons une division par 8. La valeur est ID_3.</li>
+<li>TASSELx permet de choisir l’horloge. Utilisons l’horloge du processeur : SMCLK. Les deux bits correspondants doivent prendre la valeur binaire <code>10</code>. Texas Instruments utilise la syntaxe suivante : TASSEL_2 (valeur 2 pour les bits TASSEL).</li>
+<li>IDx permet de choisit la prédivision. Choisissons une division par <code>8</code>. La valeur est ID_3.</li>
 <li>MCx permet de choisir le mode de comptage. Choisissons le mode continu. La valeur est MC_2.</li>
 </ul>
-<p>L'instruction d'initialisation de notre timer sera donc : TACTL = TASSEL_2 + ID_3 + MC_2;</p>
-<h2 id="premier-programme-avec-le-timer-a">Premier programme avec le Timer A</h2>
+<p>L’instruction d’initialisation de notre timer sera donc : <code>TACTL = TASSEL_2 + ID_3 + MC_2;</code></p>
+<h2 id="premier-programme-avec-le-timer-a">Premier programme avec le TIMER A</h2>
 <p>Voilà un premier programme... qui va faire clignoter une LED !</p>
-<p>Il débute comme toujours par l'instruction de mise hors-service du compteur <em>Watchdog</em>, mais aussi par deux instructions permettant de choisir une des fréquences calibrées d'usine, ici 1 MHz :</p>
+<p>Il commence comme toujours par l’instruction de mise hors service du compteur <em>watchdog</em>, mais aussi par deux instructions permettant de choisir une des fréquences calibrées d’usine, ici 1 MHz :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
-    WDTCTL = WDTPW + WDTHOLD;
-    BCSCTL1 = CALBC1_1MHZ;
-    DCOCTL = CALDCO_1MHZ; <span class="co">// Fréquence CPU</span>
-    P1DIR |= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Led en P1.0 </span>
-    TACTL0 = TASSEL_2 + ID_3 + MC_2;  
-    <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// boucle infinie</span>
-        <span class="kw">if</span> (TACTL0 &amp; TAIFG) {
-            TACTL0 &amp;=~TAIFG;
-            P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Toggle Led</span>
-        }
+  WDTCTL = WDTPW + WDTHOLD; <span class="co">// Watchdog hors service</span>
+  BCSCTL1 = CALBC1_1MHZ;
+  DCOCTL = CALDCO_1MHZ; <span class="co">// Fréquence CPU</span>
+  P1DIR |= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// P1.0 en sortie pour la LED</span>
+  TACTL0 = TASSEL_2 + ID_3 + MC_2;
+  <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// Boucle infinie</span>
+    <span class="kw">if</span> (TACTL0 &amp; TAIFG) {
+      TACTL0 &amp;=~TAIFG;
+      P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Inversion LED</span>
     }
+  }
 }</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
-<p>Comment fonctionne la boucle principale ? Chaque fois que le fanion TAIFG passe à 1, la LED est inversée. Le fanion TAIF (qui se trouve aussi dans le registre TACTL) signale un dépassement de capacité, c'est-à-dire le retour à zéro du compteur. Il doit être remis à zéro en vue du prochain cycle. Calculons la période de clignotement : l'horloge de 1 MHz est divisée par 8 par le pré-diviseur. Le Timer reçoit donc 125 kHz (période : 8 µs). Le Timer a 16 bits, il va donc faire un cycle complet en 65'536 coups d'horloge, soit 524 ms.</p>
+<p>Comment fonctionne la boucle principale ? Chaque fois que le fanion TAIFG passe à <code>1</code>, l’alimentation de la LED est inversée. Le fanion TAIF (qui se trouve aussi dans le registre TACTL) signale un dépassement de capacité, c’est-à-dire le retour à zéro du compteur. Il doit être remis à zéro en vue du prochain cycle. Calculons la période de clignotement : l’horloge de 1 MHz est divisée par <code>8</code> par le prédiviseur. Le timer est donc commandé à une fréquence de 125 kHz ce qui correspond à une période de 8 µs. Le timer a 16 bits, il va donc faire un cycle complet en 65’536 coups d’horloge, soit environ 524 ms.</p>
 <h2 id="les-registres-de-comparaison">Les registres de comparaison</h2>
-<p>L'intérêt principal des Timers réside dans les registres de comparaison qui leur sont associés. Dans le schéma de la page 1, on voit qu'il y a trois registres de comparaison, notés 0, 1 et 2. Le détail est donné pour le groupe 2.</p>
-<p>Ces trois registres de comparaison se nomment CCR0, CCR1 et CCR2. Ces registres permettent de mémoriser une valeur qui va être en permanence comparée avec la valeur du Timer TAR.</p>
-<p>A chacun de ces registres de comparaison est associé un registre de contrôle, appelés TACCLT0, TACCLT1 et TACCTL2.</p>
-<p>La figure suivante donne la description de ce registre. Elle n'est pas simple :</p>
+<p>L’intérêt principal des timers réside dans les registres de comparaison qui leur sont associés. Dans le schéma de la page 1, on voit qu’il y a trois registres de comparaison, notés <code>0</code>, <code>1</code> et <code>2</code>. Le détail est donné pour le groupe 2.</p>
+<p>Ces trois registres de comparaison se nomment CCR0, CCR1 et CCR2. Ces registres permettent de mémoriser une valeur qui va être en permanence comparée avec la valeur du timer TAR.</p>
+<p>À chacun de ces registres de comparaison est associé un registre de contrôle, appelé respectivement TACCLT0, TACCLT1 et TACCTL2.</p>
+<p>La figure suivante donne la description de ce registre. Elle n’est pas simple :</p>
 <div class="figure">
-<img src="images/tacctl.jpg" title="Registre TACCRx" alt="Registre TACCRx" />
+<img src="images/tacctl.jpg" title="Registre TACCRx" alt="Registre TACCRx" style="width:66.0%" />
 <p class="caption">Registre TACCRx</p>
 </div>
 <p>Modifions notre programme de la manière suivante :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
-    ...
-    TACCR0 = <span class="dv">62500</span>; <span class="co">// * 8us = 500ms</span>
-    <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// boucle infinie</span>
-        <span class="kw">if</span> (TACCTL0 &amp; CCIFG) {
-            TACCTL0 &amp;=~CCIFG;
-            TACCR0 += <span class="dv">62500</span>; 
-            P1OUT ^⁼ (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Toggle Led</span>
-        }
+  ...
+  TACCR0 = <span class="dv">62500</span>; <span class="co">// 62500 * 8 us = 500 ms</span>
+  <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// Boucle infinie</span>
+    <span class="kw">if</span> (TACCTL0 &amp; CCIFG) {
+      TACCTL0 &amp;=~CCIFG;
+      TACCR0 += <span class="dv">62500</span>;
+      P1OUT ^⁼ (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Inversion LED</span>
     }
+  }
 }</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
-<p>Au début du programme, le registre de comparaison a été initialisé à 62500, une valeur qui correspond à une demi-seconde dans notre cas : 62500 * 8 µs = 500 mS. Une fois cette valeur atteinte, il faut ajouter 62500 à la valeur courant du registre de comparaison. On va dépasser la capacité du registre, qui a 16 bits. On obtiendra : (62500 + 62500) modulo 65536 = 59464 ! Mais comme le Timer augmente toujours et qu'il a lui aussi 16 bits, cette valeur est bien la bonne valeur pour la prochaine comparaison.</p>
-<p>Si vous avez des doutes, imaginez qu'il est 9h50 et que vous voulez faire sonner votre réveil dans 30 minutes. Vous devez le régler sur 10h20. En ne tenant compte que des minutes, on a bien : (50 + 30) modulo 60 = 20</p>
-<h2 id="les-interruption-associées-aux-timers">Les interruption associées aux Timers</h2>
-<p>L'intérêt principal des Timers est de les associer à des interruptions. Modifions le programme de la manière suivante :</p>
+<p>Au début du programme, le registre de comparaison a été initialisé à 62’500, une valeur qui correspond à une demi-seconde dans notre cas : <code>62’500 × 8 µs = 500 ms</code>. Une fois cette valeur atteinte, il faut ajouter 62’500 à la valeur courant du registre de comparaison. On va dépasser la capacité du registre, qui a 16 bits. On obtiendra : <code>(62’500 + 62’500) % 65’536 = 59’464</code> où le signe <code>%</code> représente l’opération de modulo, c’est-à-dire le reste de la division entière. Mais comme le timer augmente toujours et qu’il a lui aussi 16 bits, cette valeur est effectivement la bonne pour la prochaine comparaison.</p>
+<p>Si vous avez des doutes, imaginez qu’il est 9 h 50 et que vous voulez faire sonner votre réveil dans 30 minutes. Vous devez le régler sur 10 h 20. En ne tenant compte que des minutes, on a bien : <code>(50 + 30) % 60 = 20</code>.</p>
+<h2 id="les-interruptions-associées-aux-timers">Les interruptions associées aux timers</h2>
+<p>L’intérêt principal des timers est de les associer à des interruptions. Modifions le programme de la manière suivante :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
-    ...  
-    TACTL |= TAIE; <span class="co">// interruption de l&#39;overflow</span>
-    _BIS_SR(GIE); <span class="co">// autorisation générale des interruptions</span>
- 
-    <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// boucle infinie</span>
-    }
+  ...
+  TACTL |= TAIE; <span class="co">// Interruption de l&#39;overflow</span>
+  _BIS_SR (GIE); <span class="co">// Autorisation générale des interruptions</span>
+  <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// Boucle infinie vide</span>
+  }
 }
 
 <span class="co">// Timer_A1 Interrupt Vector (TAIV) handler</span>
 <span class="ot">#pragma vector=TIMER0_A1_VECTOR</span>
-__interrupt <span class="dt">void</span> Timer_A1(<span class="dt">void</span>) {
-  <span class="kw">switch</span>(TAIV) {
+__interrupt <span class="dt">void</span> Timer_A1 (<span class="dt">void</span>) {
+  <span class="kw">switch</span> (TAIV) {
   <span class="kw">case</span>  <span class="dv">2</span>: <span class="co">// CCR1 : not used</span>
-           <span class="kw">break</span>; 
+    <span class="kw">break</span>;
   <span class="kw">case</span>  <span class="dv">4</span>: <span class="co">// CCR2 : not used</span>
-           <span class="kw">break</span>;
+    <span class="kw">break</span>;
   <span class="kw">case</span> <span class="dv">10</span>: <span class="co">// Overflow</span>
-           Led1Toggle;
-           <span class="kw">break</span>;
+    Led1Toggle;
+    <span class="kw">break</span>;
   }
 }</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
-<p>Notez le nom de la routine d'interruption. Elle ne concerne par le Timer1 ! Elle est la seconde routine d'interruption du Timer0, la première étant présentée dans le prochain exemple.</p>
-<p>L'interruption associée au Timer lui-même correspond à un <em>overflow</em> (dépassement de capacité, c'est le passage de la plus grande valeur à zéro). La syntaxe de la routine d'interruption est un peu compliquée. Il faut la copier et non pas chercher à la comprendre ! Notez qu'elle varie selon les compilateurs : il ne s'agit pas d'une norme du C. Dans ce cas, trois sources différentes d'interruption (overflow, comparaison 1 et comparaison2) sont regroupées dans une même routine d'interruption. Un registre appelé TAIV permet de connaître dans chaque cas la cause de l'interruption). Les valeurs 2 4 et 10 sont le choix arbitraire du fabricant : il faut respecter scrupuleusement la syntaxe du switch TAIV... case... Il n'a pas été nécessaire de remettre à zéro le fanion TAIFG : c'est la gestion matérielle des interruptions qui le fait automatiquement au moment de l'appel de la routine d'interruption.</p>
+<p>Notez le nom de la routine d’interruption. Elle ne concerne pas le TIMER 1 ! Elle est la seconde routine d’interruption du TIMER 0, la première étant présentée dans le prochain exemple.</p>
+<p>L’interruption associée au timer lui-même correspond à un <em>overflow</em> (dépassement de capacité, c’est le passage de la plus grande valeur à <code>0</code>). La syntaxe de la routine d’interruption est un peu compliquée. Il faut la copier et non pas chercher à la comprendre ! Notez qu’elle varie selon les compilateurs : il ne s’agit pas d’une norme du C. Dans ce cas, trois sources différentes d’interruption (OVERFLOW, COMPARAISON 1 et COMPARAISON 2) sont regroupées dans une même routine d’interruption. Un registre appelé TAIV permet de connaître dans chaque cas la cause de l’interruption. Les valeurs <code>2</code>, <code>4</code> et <code>10</code> sont le choix arbitraire du fabricant : il faut respecter scrupuleusement la syntaxe des instructions <code>switch TAIV... case...</code> Il n’a pas été nécessaire de remettre à zéro le fanion TAIFG, car c’est la gestion matérielle des interruptions qui le fait automatiquement au moment de l’appel de la routine d’interruption.</p>
 <h2 id="interruption-de-comparaison">Interruption de comparaison</h2>
-<p>De même, une interruption peut être associée à chaque registre de comparaison. Cette fois, c'est dans le registre TACCTLx (x valant 0, 1 ou 2) qu'il faut activer le fanion d'interruption.</p>
+<p>De même, une interruption peut être associée à chaque registre de comparaison. Cette fois, c’est dans le registre TACCTLx (<code>x</code> valant <code>0</code>, <code>1</code> ou <code>2</code>) qu’il faut activer le fanion d’interruption.</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
-    ...  
-    TACCTL0 |= CCIE; <span class="co">// interruption de la comparaison</span>
-    _BIS_SR(GIE); <span class="co">// autorisation générale des interruptions</span>
- 
-    <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// boucle infinie</span>
-    }
+  ...
+  TACCTL0 |= CCIE; <span class="co">// Interruption de la comparaison</span>
+  _BIS_SR (GIE); <span class="co">// Autorisation générale des interruptions</span>
+  <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// Boucle infinie vide</span>
+  }
 }
 <span class="ot">#pragma vector=TIMER0_A0_VECTOR</span>
-__interrupt <span class="dt">void</span> Timer_A0(<span class="dt">void</span>) {
-    CCR0 += <span class="dv">62500</span>; 
-    P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Toggle Led</span>
+__interrupt <span class="dt">void</span> Timer_A0 (<span class="dt">void</span>) {
+  CCR0 += <span class="dv">62500</span>;
+  P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Inversion LED</span>
 }</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
-<p>Les Timers offrent de très nombreuses possibilités. L'étude détaillée de la documentation peut prendre du temps. De nombreux exemples sont fournis par les fabricants, pour en illustrer divers usages.</p>
+<p>Les timers offrent de très nombreuses possibilités. L’étude détaillée de la documentation peut prendre du temps. De nombreux exemples sont fournis par les fabricants pour en illustrer les divers usages.</p>
 </body>
 </html>

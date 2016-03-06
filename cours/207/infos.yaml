@@ -7,8 +7,8 @@ auteur:
 statut:           Relecture
 code:             carac
 url1:
-    cours-html:  caracthtml
-    cours-pdf:    caractpdf
+    cours-html:  carac.html
+    cours-pdf:    carac.pdf
 url:
     dias-video:   carac-dia.pdf
     dias-compact: carac-dia-compact.pdf

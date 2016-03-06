@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+<h1 id="synthèse-de-circuits-combinatoires"><strong>Synthèse de circuits combinatoires</strong></h1>
+<h2 id="mamadou-lamine-ndiaye-esp-dakar"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x6d;&#x61;&#x6d;&#x61;&#100;&#x6f;&#x75;&#108;&#x61;&#x6d;&#x69;&#110;&#x65;&#46;&#110;&#100;&#x69;&#x61;&#x79;&#x65;&#64;&#x75;&#x63;&#x61;&#100;&#46;&#x65;&#100;&#x75;&#46;&#x73;&#110;" class="email">&#x4d;&#x61;&#x6d;&#x61;&#100;&#x6f;&#x75;&#32;&#76;&#x61;&#x6d;&#x69;&#110;&#x65;&#32;&#78;&#100;&#x69;&#x61;&#x79;&#x65;</a>, ESP Dakar</h2>
+<blockquote>
+<p>Document en cours de relecture, version du 2015/01/25</p>
+</blockquote>
+<h2 id="système-combinatoire">Système combinatoire</h2>
+<p>C’est un système où chacune des sorties est une combinaison logique des entrées à l’instant seulement. Une sortie ne dépend que des combinaisons d’entrée. Pour une combinaison des variables d’entrée, l’état de la sortie est unique.</p>
+<div class="figure">
+<img src="images/systeme-combinatoire.png" title="Système combinatoire" alt="Figure : Système combinatoire" />
+<p class="caption">Figure : Système combinatoire</p>
+</div>
+<h2 id="méthodologie-de-synthèse-des-circuits-combinatoires">Méthodologie de synthèse des circuits combinatoires</h2>
+<p>La méthodologie de synthèse des circuits combinatoires se fait en en plusieurs étapes:</p>
+<ul>
+<li>Analyse du cahier des charges</li>
+<li>Identification des variables d’entrées et de sorties</li>
+<li>Représentation du problème sous forme de table de vérité</li>
+<li>Établissement de la ou des fonctions fonctions résultantes</li>
+<li>Simplification et établissement de logigramme</li>
+<li>Prototypage d’essai et réalisation finale</li>
+</ul>
+<p>A partir d’un cahier des charges, il faut analyser le problème pour une bonne compréhension permettant sa traduction en circuit logique. L’étude du cahier des charges permet d’identifier les variables du système (entrée, sortie). Lorsque le nombre de variables est faible, on peut utiliser directement la table de vérité. Dans le cas contraire le circuit est décomposé en différents blocs fonctionnels que l’on peut étudier séparément. Dans tous les cas il est nécessaire d’établir la ou les fonctions logiques et éventuellement procéder à leur simplifications avant d’envisager le prototype et la réalisation finale.</p>
+<h2 id="simplification-des-fonctions-logiques">Simplification des fonctions logiques</h2>
+<p>La simplification des fonctions logique cherche à obtenir une expression logique comportant un nombre minimal de termes, ainsi qu’un nombre minimal de variables dans chaque terme dans le but de simplifier et de réduire le coût de la réalisation matérielle. Plusieurs méthodes existent ;</p>
+<h2 id="simplification-algébrique">Simplification Algébrique</h2>
+<p>Elle utilise les théorèmes généraux de l’Algèbre de BOOLE et aux identités remarquables (formules élémentaires) que nous avons vu lors de la leçon précédente.</p>
+<p>Le principe consiste à :</p>
+<ul>
+<li>Regroupement des termes ayant des variables communes et mises en facteur</li>
+<li>Réplication de termes existants</li>
+<li>Suppression de termes superflus</li>
+</ul>
+<p>Exemple :<br />
+<img src="images/exemple-synthese1.png" title="Exemple de simplification" /></p>
+<p>En factorisant et en utilisant les propriétés de BOOLE on a :</p>
+<div class="figure">
+<img src="images/exemple-synthese2.png" title="Exemple de simplification algébrique" />
+
+</div>
+<h2 id="simplification-par-tableau-de-karnaugh">Simplification par Tableau de KARNAUGH</h2>
+<p>Le tableau de Karnaugh est une forme particulière de la table de vérité. Il comprend 2<sup>N</sup> cases, N étant le nombre de variables d'entrées de la fonction considérée. Dans chaque case est inscrite la valeur de la sortie. Les variables sont disposées selon le code GRAY ou code binaire réfléchi. Lorsque l'on passe d'une case à la case adjacente, une seule variable change. Simplification : Pour exprimer la sortie S:</p>
+<ul>
+<li>Effectuer des groupements de cases adjacentes successivement contenant des 1.</li>
+<li>La taille d’un groupe est une puissance de 2<sup>k</sup> (8,4,2,1...). On cherche toujours le groupement maximal.</li>
+<li>Le résultat d’un groupement est le produit des variables constantes (qui ne changent pas).</li>
+<li>Le résultat final est la somme des résultats des groupements.</li>
+<li>Une même case peut appartenir à deux groupements différents.</li>
+</ul>
+<p>Exemple: Considérons l’exemple de la table de vérité suivante :</p>
+<div class="figure">
+<img src="images/simplification-Karnaugh.png" title="Table de vérité" />
+
+</div>
+<div class="figure">
+<img src="images/simplification-expression.png" title="Simplification Expression" />
+
+</div>
+<p>Tableau de Karnaugh</p>
+<div class="figure">
+<img src="images/table-Karnaugh.png" title="Tableau de Karnaugh" />
+
+</div>
+<p>En regroupant les 1, on a <span class="math inline">\(\mathrm{S=A.\overline{C} + B.C}\)</span></p>
+<div class="figure">
+<img src="images/table-Karnaugh2.png" title="Tableau de Karnaugh" />
+
+</div>
+<p>Schéma logique</p>
+<div class="figure">
+<img src="images/logigramme-SP.png" title="Logigramme" />
+
+</div>
+<p>En utilisant l’expression sous forme de produit de somme on regroupe les 0 et on a :</p>
+<div class="figure">
+<img src="images/expression-PS.png" title="Logigramme PS" />
+
+</div>
+<p>Schéma logique</p>
+<div class="figure">
+<img src="images/logigramme-PS.png" title="Logigramme SP" />
+
+</div>
+<h2 id="diagramme-temporel">Diagramme temporel</h2>
+<p>Tracez les formes d’onde de sortie pour la sortie X pour la figure ci-dessous.</p>
+<div class="figure">
+<img src="images/diagramme-temporel1.png" title="Logigramme" />
+
+</div>
+<div class="figure">
+<img src="images/diagramme-temporel2.png" title="Expression" />
+
+</div>
+<div class="figure">
+<img src="images/diagr-temp.png" title="Diagramme-temporel" />
+
+</div>
+<p>Dans un système numérique de traitement d’informations plusieurs opérations sont nécessaires : le codage et le décodage (transposition de données d’un code à un autre), le multiplexage (aiguillage des données) etc., Ces opérations sont effectuées par des circuits combinatoires spécialisés. Nous allons maintenant regarder comment synthétiser un décodeur 7 segments.</p>
+<h3 id="décodeur-7-segments">Décodeur 7 segments</h3>
+<p>Un décodeur est un circuit qui permet de passer d’un code à un autre. Il comporte N entrées et M sorties. Le décodeur 7 segments permet de transcoder chaque chiffre séparément :unité, dizaine centaine etc. Il s’appuie sur le codage BCD (Décimal codé en Binaire) qui transforme les nombres décimaux en remplaçant chacun des chiffres décimaux par 4 chiffres binaires. Chaque chiffre (de 0 à 9) est codé en binaire sur 4 bits (E1, E2, E3 et E4). Pour un nombre à 3 chiffres (ex : 123), on aura 4 valeurs binaires pour chaque chiffre : centaines, dizaines et unités : 0001 0010 0011. Le décodeur permet de transformer ces 4 bits provenant des 4 fils en entrée (E1, E2, E3, E4) du décodeur en 7 bits à la sortie du décodeur. Chaque fil de la sortie du décodeur est connecté à une LED de l’afficheur (a, b, c, d, e, f, g).</p>
+<div class="figure">
+<img src="images/decodeur-7segment.png" title="Afficheurs 7 segment" />
+
+</div>
+<p>Chaque afficheur alimente ses 7 segments (leds) en fonction du code binaire à la sortie du décodeur correspondant aux chiffres de 0 à 9 ainsi que les lettres de A à F.</p>
+<div class="figure">
+<img src="images/decodeur-7segment2.png" title="Decodeur 7 segment" />
+
+</div>
+<h4 id="table-de-vérité-du-décodeur-7-segments-en-décimal">Table de vérité du Décodeur 7 Segments en décimal</h4>
+<p>Avec les 4 variables d’entrée on a 24 soit 16 cases dans la table de vérité mais nous n’avons besoin que des dix premières valeurs (0 à 9). Il y a donc 6 valeurs à éliminer 10, 11, 12,13,14 et 15. On mettre un x (x = 0 ou 1) au niveau des sorties pour ces différentes valeurs.</p>
+<div class="figure">
+<img src="images/table-verite-decodeur.png" title="Decodeur 7 segment" />
+
+</div>
+<h4 id="equations-logiques-des-7-sorties-en-décimal">Equations logiques des 7 sorties en décimal</h4>
+<p>Segment Sa</p>
+<div class="figure">
+<img src="images/segment-Sa-Karnaugh.png" title="Sa Table de Karnaugh" />
+
+</div>
+<div class="figure">
+<img src="images/segment-Sa-Karnaugh2.png" title="Sa Table de Karnaugh" />
+
+</div>
+<div class="figure">
+<img src="images/expression-Sa.png" title="Sa Expression logique" />
+
+</div>
+<h4 id="simplification-des-équations-logiques-des-7-segments">Simplification des équations logiques des 7 segments</h4>
+<div class="figure">
+<img src="images/simplification-Sa-Sb.png" title="Simplification-Sa-Sb" />
+
+</div>
+<div class="figure">
+<img src="images/simplification-Sc-Sd.png" title="Simplification-Sc-Sd" />
+
+</div>
+<div class="figure">
+<img src="images/simplification-Se-Sf.png" title="Simplification-Se-Sf" />
+
+</div>
+<div class="figure">
+<img src="images/simplification-Sg.png" title="Simplification-Sg" />
+
+</div>
+<p>Le logigramme du décodeur pourra être réalisé à partir de ces équations.</p>
+</body>
+</html>

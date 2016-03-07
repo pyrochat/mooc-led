@@ -123,7 +123,7 @@ int main() {
   TACTL0 = TASSEL_2 + ID_3 + MC_2;
   while (1) { // Boucle infinie
     if (TACTL0 & TAIFG) {
-      TACTL0 &=~TAIFG;
+      TACTL0 &= ~TAIFG;
       P1OUT ^= (1<<0); // Inversion LED
     }
   }
@@ -156,9 +156,9 @@ int main() {
   TACCR0 = 62500; // 62500 * 8 us = 500 ms
   while (1) { // Boucle infinie
     if (TACCTL0 & CCIFG) {
-      TACCTL0 &=~CCIFG;
+      TACCTL0 &= ~CCIFG;
       TACCR0 += 62500;
-      P1OUT ^⁼ (1<<0); // Inversion LED
+      P1OUT ^= (1<<0); // Inversion LED
     }
   }
 }

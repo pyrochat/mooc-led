@@ -44,11 +44,13 @@ if [[ "$#" == "0" ]]; then
     do
         echo $INFO
         STATUT=`awk -F 'statut:[ ]+' '{ print $2 }' $INFO`
+        STATUT=`echo $STATUT`
         echo $STATUT
         if [[ "$STATUT" == *"Pas publié"* ]]; then
             :
         else
             CODE=`awk -F 'code:[ ]+' '{ print $2 }' $INFO`
+            CODE=`echo $CODE`
             echo $CODE
             DIR=$(dirname "${INFO}")
             echo "${DIR}"
@@ -64,6 +66,7 @@ else
     CHAP_NB=$1
     cd ../cours/$CHAP_NB
     CODE=`awk -F 'code:[ ]+' '{ print $2 }' infos.yaml`
+    CODE=`echo $CODE`
     echo $CODE
     DO_ALL
 fi

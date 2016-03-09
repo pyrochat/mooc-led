@@ -180,5 +180,4 @@ int main () {
 * Circuits spécialisés
 * Horloges internes
 </div>
-</div>
 </section>

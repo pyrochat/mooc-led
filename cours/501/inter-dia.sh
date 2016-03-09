@@ -1,12 +1,31 @@
 #!/bin/bash
 
-python ../../generation/pre-dia.py inter-dia.md inter-dia-pre.md
+CODE=inter
+MD_FILE_IN=$CODE-dia.md
+MD_FILE_PRE=$CODE-dia-pre.md
+HTML_FILE=$CODE-dia.html
+PDF_FILE=$CODE-dia.pdf
+CSS_FILE=../../statiques/diaporama.css
 
-pandoc  --standalone --from markdown --to html --highlight-style pygments --email-obfuscation references \
---normalize --css=../../statiques/diaporama.css --output inter-dia.html inter-dia-pre.md
+python                          \
+	../../generation/pre-dia.py \
+	$MD_FILE_IN                 \
+	$MD_FILE_PRE
 
-weasyprint inter-dia.html inter-dia.pdf
+pandoc                             \
+	--standalone                   \
+	--from markdown                \
+	--to html                      \
+	--highlight-style pygments     \
+	--email-obfuscation references \
+	--normalize                    \
+	--css=$CSS_FILE                \
+	--output $HTML_FILE            \
+	$MD_FILE_PRE
 
-rm inter-dia.html
-rm inter-dia-pre.md
+weasyprint     \
+	$HTML_FILE \
+	$PDF_FILE
 
+rm $HTML_FILE
+rm $MD_FILE_PRE

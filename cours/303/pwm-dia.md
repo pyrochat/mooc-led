@@ -28,7 +28,7 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">PWM : Modulation de Largeur d’Impulsion</h1>
-<div class="liste_demi"; style="font-size:48pt; left:33cm; width:26.0cm; top:8cm;">
+<div class="liste_demi" style="font-size:48pt; left:33cm; width:26.0cm; top:8cm;">
 * Principe
 * Fréquence
 * Programmer un PWM
@@ -106,14 +106,14 @@ Clignotement
 <section>
 <!-- A -->
 <h1 class="en_tete">Programmation d’un signal PWM</h1>
-<div class="liste_demi"; style="font-size:56pt; left:36cm; width:21.0cm; top:6cm; line-height: 1.2;">
+<div class="liste_demi" style="font-size:56pt; left:36cm; width:21.0cm; top:6cm; line-height: 1.2;">
 Comment programmer des signaux PWM avec un microcontrôleur ?
 </div>
-<!-- 234 --><div class="liste_demi"; style="font-size:56pt; left:36cm; width:21.0cm; top:18cm;">
+<!-- 234 --><div class="liste_demi" style="font-size:56pt; left:36cm; width:21.0cm; top:18cm;">
 <!-- 234 -->* Allumer – attendre
 <!-- 34 -->* éteindre – attendre
 <!-- 234 --></div>
-<!-- 4 --><div class="liste_demi"; style="font-size:56pt; left:36cm; width:21.0cm; top:25.0cm; color: #e2001a;">
+<!-- 4 --><div class="liste_demi" style="font-size:56pt; left:36cm; width:21.0cm; top:25.0cm; color: #e2001a;">
 <!-- 4 -->* et répéter !
 <!-- 4 --></div>
 </section>
@@ -121,7 +121,7 @@ Comment programmer des signaux PWM avec un microcontrôleur ?
 <!-- Page programme par période -->
 <section>
 <!-- A -->
-<h1 class="en_tete";>Programmation par période</h1>
+<h1 class="en_tete">Programmation par période</h1>
 <div style="top:6.5cm; left:2cm; width: 5cm; font-size:41pt;">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines}
 #define LedOn digitalWrite(P1_0, 1)
@@ -158,7 +158,7 @@ Comment programmer plusieurs signaux PWM en même temps ?
 <!-- Page programme plusieurs PWM -->
 <section>
 <!-- A -->
-<h1 class="en_tete";>Programmer plusieurs PW</h1>
+<h1 class="en_tete">Programmer plusieurs PW</h1>
 <div style="top:6.5cm; left:2cm; width: 5cm; font-size:41pt;">
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines}
@@ -187,11 +187,11 @@ void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
 <section>
 <!-- A -->
 <h1 class="en_tete">Séquences en PWM</h1>
-<div class="liste_demi"; style="font-size:52pt; left:33cm; width:23.0cm; top:8cm;">
+<div class="liste_demi" style="font-size:52pt; left:33cm; width:23.0cm; top:8cm;">
 * Comment utiliser ce PWM ?
 <!-- 23 -->* Sur des enseignes et afficheurs, on peut créer des séquences.
 </div>
-<!-- 3 --><div class="liste_demi"; style="font-size:52pt; left:33cm; width:26.0cm; top:19cm;">
+<!-- 3 --><div class="liste_demi" style="font-size:52pt; left:33cm; width:26.0cm; top:19cm;">
 <!-- 3 -->* Exemple : LED imitant le repos.
 <!-- 3 --></div>
 </section>
@@ -211,7 +211,7 @@ void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
 <!-- Page séquence PWM -->
 <section>
 <!-- A -->
-<h1 class="en_tete";>Séquences en PWM</h1>
+<h1 class="en_tete">Séquences en PWM</h1>
 <div style="top:5.4cm; left:2cm; width: 5cm; font-size:38pt;">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines}
 uint16_t pwmLed; // valeur du PWM, 0 à 255 (8 bits,16 bits pour les calculs)
@@ -241,10 +241,10 @@ void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
 <section>
 <!-- A -->
 <h1 class="en_tete">Convertisseur numérique-analogique en PWM</h1>
-<div class="liste_demi"; style="font-size:52pt; left:33cm; width:25.0cm; top:8cm; line-height: 1.2;">
+<div class="liste_demi" style="font-size:52pt; left:33cm; width:25.0cm; top:8cm; line-height: 1.2;">
 * Transmettre une information variable vers l’extérieur
 </div>
-<!-- 2 --><div class="liste_demi"; style="font-size:52pt; left:33cm; width:25.0cm; top:15cm; line-height: 1.2;">
+<!-- 2 --><div class="liste_demi" style="font-size:52pt; left:33cm; width:25.0cm; top:15cm; line-height: 1.2;">
 <!-- 2 -->* Conversion Numérique-Analogique DAC  Digital to Analog Converter
 <!-- 2 --></div>
 </section>
@@ -258,10 +258,10 @@ void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
 <!-- Page logique, demi, 2 arrivées -->
 <section>
 <h1 class="en_tete">PWM réalisé avec des circuits logiques</h1>
-<div class="liste_demi"; style="font-size:52pt; left:31cm; width:28.0cm; top:8cm; line-height: 1.2;">
+<div class="liste_demi" style="font-size:52pt; left:31cm; width:28.0cm; top:8cm; line-height: 1.2;">
 * Comment soulager le microcontrôleur de la génération du PWM ?
 </div>
-<!-- 2 --><div class="liste_demi"; style="font-size:52pt; left:31cm; width:28.0cm; top:16cm; line-height: 1.2;">
+<!-- 2 --><div class="liste_demi" style="font-size:52pt; left:31cm; width:28.0cm; top:16cm; line-height: 1.2;">
 <!-- 2 -->* En utilisant des circuits logiques spécialisés !
 <!-- 2 --></div>
 </section>
@@ -285,7 +285,7 @@ void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
 <section>
 <!-- A -->
 <h1 class="en_tete">PWM : Modulation de Largeur d’Impulsion</h1>
-<div class="liste_demi"; style="font-size:43pt; width:23.0cm; top:7.5cm;">
+<div class="liste_demi" style="font-size:43pt; width:23.0cm; top:7.5cm;">
 * Principe :
 * Fréquence :    > 100 Hz pour l’oeil
 * Programmer un PWM (occupe le proc.)

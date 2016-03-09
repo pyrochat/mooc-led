@@ -23,6 +23,7 @@
 <!-- A -->
 <div style="top:6.5cm; left:35cm; width:23cm; text-align: right;  font-size:48pt; font-family: Impact, sans-serif;">
 Prof. Alain Tiedeu
+</div>
 </section>
 
 
@@ -52,13 +53,13 @@ Prof. Alain Tiedeu
 <!-- 23456 -->* Électrons  sur trajectoires circulaires formant des couches autour du noyau
 <!-- 23456 --></div>
 <!-- 3456 --><div style="font-size:45pt; left:2.65cm; top:13.3cm; line-height:0.6; width:30cm">
-<!-- 3456 -->* Nombre  maximal d’électrons sur une couche<br> de numéro n = 2n^2^
+<!-- 3456 -->* Nombre  maximal d’électrons sur une couche<br/> de numéro n = 2n^2^
 <!-- 3456 --></div>
 <!-- 456 --><div style="font-size:45pt; left:2.65cm; top:18.6cm; line-height:0.9; width:30cm">
 <!-- 456 -->* Distribution des électrons de l’intérieur vers l’extérieur (n croissant)
 <!-- 456 --></div>
 <!-- 56 --><div style="font-size:45pt; left:2.65cm; top:23.1cm; line-height:0.9; width:40cm">
-<!-- 56 -->* Couche la plus externe est appelée **couche de valence**.<br> Elle contient les électrons qui participent aux liaisons
+<!-- 56 -->* Couche la plus externe est appelée **couche de valence**.<br/> Elle contient les électrons qui participent aux liaisons
 <!-- 56 --></div>
 <!-- 6 --><div style="font-size:45pt; left:2.65cm; top:28.4cm; line-height:0.9; width:50cm">
 <!-- 6 -->* Si électron quitte l’atome et devient **libre**, il passe dans la couche de conduction
@@ -164,7 +165,7 @@ Prof. Alain Tiedeu
 * Injecter un élément de **valence 5** en faible quantité (10^-6^ par atome)
 </div>
 <!-- 23456789 --><div style="font-size:45pt; left:2.65cm; top:11.5cm; line-height:1.2; width:30cm">
-<!-- 23456789 -->* Le cristal est **dopé N** 
+<!-- 23456789 -->* Le cristal est **dopé N**
 <!-- 23456789 --></div>
 <!-- 3456789 --><div style="font-size:45pt; left:2.65cm; top:14cm; line-height:0.8; width:28cm">
 <!-- 3456789 -->* Surplus d’électrons : certains sont d’office libres (10^-6^ /atome)
@@ -199,7 +200,7 @@ Prof. Alain Tiedeu
 * Injecter un élément de **valence 3** en faible quantité (10^-6^ par atome)
 </div>
 <!-- 23456789 --><div style="font-size:45pt; left:2.65cm; top:11.5cm; line-height:1.2; width:30cm">
-<!-- 23456789 -->* Le cristal est **dopé P** 
+<!-- 23456789 -->* Le cristal est **dopé P**
 <!-- 23456789 --></div>
 <!-- 3456789 --><div style="font-size:45pt; left:2.65cm; top:14cm; line-height:0.8; width:28cm">
 <!-- 3456789 -->* Surplus de trous : certains sont d’office libres (10^-6^ /atome)
@@ -233,7 +234,7 @@ Prof. Alain Tiedeu
 <div style="font-size:45pt; left:2.65cm; top:6.5cm; line-height:1.5; width:33cm">
 * **Mise en contact** de semi-conducteurs dopés P et N
 <!-- 2345678 -->* Porteurs de charges de natures différentes **s’attirent**
-<!-- 345678 -->* **Diffusion** de porteurs de charges 
+<!-- 345678 -->* **Diffusion** de porteurs de charges
 <!-- 45678 -->* **Neutralisation** mutuelle
 <!-- 5678 -->* Zones de **déplétion**
 <!-- 678 -->* **Champ électrique** (barrière de potentiel)
@@ -296,6 +297,7 @@ Prof. Alain Tiedeu
 <div style="font-size:45pt; left:2.65cm; top:6.5cm; line-height:1.2; width:30cm">
 * Avec la partie négative :
 <img src="./images/theo-caract-2.png" style="top:4cm; left:0cm; width:56cm" />
+</div>
 </section>
 
 

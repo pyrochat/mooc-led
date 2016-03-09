@@ -22,6 +22,7 @@
 <!-- A -->
 <div style="top:6.5cm; left:35cm; width:23cm; text-align: right;  font-size:48pt; font-family: Impact, sans-serif;">
 Prof. Alain Tiedeu
+</div>
 </section>
 
 
@@ -31,7 +32,7 @@ Prof. Alain Tiedeu
 <h1 class="en_tete">Caractéristiques des LED</h1>
 <div style="font-size:52pt; left:34cm; width:26.0cm; top:8cm">
 * Polarisation des diodes et LED
-* Caractéristiques électriques<br>et lumineuses
+* Caractéristiques électriques<br/>et lumineuses
 </div>
 <div style="font-size:52pt; left:34cm; width:26.0cm; top:16cm">
 * Efficacité
@@ -72,16 +73,16 @@ Prof. Alain Tiedeu
 <!-- A -->
 <h1 class="en_tete">Caractéristiques électriques</h1>
 <div style="font-size:45pt; left:2.65cm; top:7cm; line-height:1.2; width:50cm">
-* **Caractéristique Courant-tension**<br> Courant qui traverse la LED en fonction de la tension à ses bornes<br>
+* **Caractéristique Courant-tension**<br/> Courant qui traverse la LED en fonction de la tension à ses bornes<br/>
  Semblable à celle que nous avons vue dans la leçon Jonction PN
 </div>
 <img src="./images/carac-prat-150dpi.png" style="top:7cm; left:43cm; width:15cm" />
 <!-- 2 --><div style="font-size:45pt; left:2.65cm; top:16cm; line-height:1.2; width:57cm">
-<!-- 2 -->* **Tension de seuil direct**<br> La tension aux bornes d'une LED<br>polarisée en direct dépend :
+<!-- 2 -->* **Tension de seuil direct**<br/> La tension aux bornes d'une LED<br/>polarisée en direct dépend :
 <!-- 2 --></div>
 <!-- 2 --><div style="font-size:45pt; left:4cm; top:23cm; line-height:1.2; width:57cm">
-<!-- 2 -->* du composé utilisé (couleur de la LED)<br>
-<!-- 2 -->* de la température de la jonction<br> (coefficient de température négatif)
+<!-- 2 -->* du composé utilisé (couleur de la LED)<br/>
+<!-- 2 -->* de la température de la jonction<br/> (coefficient de température négatif)
 <!-- 2 --></div>
 <!-- 2 --><img src="./images/coul-tension-150dpi.png" style="top:21cm; left:37cm; width:21cm" />
 </section>
@@ -93,16 +94,16 @@ Prof. Alain Tiedeu
 <h1 class="en_tete">Caractéristiques électriques</h1>
 <img src="./images/carac-max-150dpi.png" style="top:6.5cm; left:41cm; width:17cm" />
 <div style="font-size:45pt; left:2.65cm; top:7cm; line-height:1.2; width:50cm">
-* **Courants directs nominal et maximal**<br> **Nominal** : prescrit par le fabricant<br>
- **Maximal** : qui peut traverser la diode sans la détruire<br>
+* **Courants directs nominal et maximal**<br/> **Nominal** : prescrit par le fabricant<br/>
+ **Maximal** : qui peut traverser la diode sans la détruire<br/>
  Variable selon la LED,  couramment 20 à 25 mA
 </div>
 <!-- 23 --><div style="font-size:45pt; left:2.65cm; top:17cm; line-height:1.2; width:50cm">
-<!-- 23 -->* **Puissance maximale**<br> Liée à la **tension de seuil** et au **courant** qui traverse la diode <br> Ne doit jamais être dépassée, sinon destruction du composant
+<!-- 23 -->* **Puissance maximale**<br/> Liée à la **tension de seuil** et au **courant** qui traverse la diode <br/> Ne doit jamais être dépassée, sinon destruction du composant
 <!-- 23 --></div>
 <!-- 23 --><img src="./images/p-ui.png" style="top:16.8cm; left:20cm; width:11cm" />
 <!-- 3 --><div style="font-size:45pt; left:2.65cm; top:25cm; line-height:1.2; width:50cm">
-<!-- 3 -->* **Tension inverse maximale**<br> Tension inverse maximale applicable aux bornes de la diode sans la détruire<br>
+<!-- 3 -->* **Tension inverse maximale**<br/> Tension inverse maximale applicable aux bornes de la diode sans la détruire<br/>
 <!-- 3 --> Faible, de l’ordre de -5V
 <!-- 3 --></div>
 </section>
@@ -116,7 +117,7 @@ Prof. Alain Tiedeu
 * Exprimée en **Watt**
 </div>
 <!-- 234 --><div style="font-size:45pt; left:2.65cm; top:11cm; line-height:1.2; width:50cm">
-<!-- 234 -->* Relativement faible, typiquement **1/10** de l’énergie consommée <br>
+<!-- 234 -->* Relativement faible, typiquement **1/10** de l’énergie consommée <br/>
 <!-- 234 --> par ampoule à  incandescence pour même intensité lumineuse émise
 <!-- 234 --></div>
 <!-- 34 --><div style="font-size:45pt; left:2.65cm; top:17cm; line-height:1.2; width:50cm">
@@ -133,11 +134,11 @@ Prof. Alain Tiedeu
 <!-- A -->
 <h1 class="en_tete">Caractéristiques lumineuses</h1>
 <div style="font-size:45pt; left:2.65cm; top:7cm; line-height:1.2; width:50cm">
-* **Longueur d’onde ** <br> Détermine la couleur de la lumière émise<br> Ensemble de longueurs d’onde très proches émises<br> Faisceau presque monochromatique<br> Longueur d’onde centrale considérée comme longueur d’onde émise
+* **Longueur d’onde ** <br/> Détermine la couleur de la lumière émise<br/> Ensemble de longueurs d’onde très proches émises<br/> Faisceau presque monochromatique<br/> Longueur d’onde centrale considérée comme longueur d’onde émise
 </div>
 <img src="./images/longueur-onde-300dpi.png" style="top:7cm; left:46cm; width:9cm" />
 <!-- 2 --><div style="font-size:45pt; left:2.65cm; top:20cm; line-height:1.2; width:50cm">
-<!-- 2 -->* **Flux lumineux**<br> Exprimé en **lumen**. Dépend : 
+<!-- 2 -->* **Flux lumineux**<br/> Exprimé en **lumen**. Dépend :
 <!-- 2 --></div>
 <!-- 2 --><div style="font-size:45pt; left:4cm; top:25cm; line-height:1.2; width:55cm">
 <!-- 2 -->* du courant qui traverse la LED
@@ -147,7 +148,7 @@ Prof. Alain Tiedeu
 <!-- 2 --><img src="./images/flux-temp-300dpi.png" style="top:20cm; left:42cm; width:12cm" />
 </section>
 
- 
+
 <!-- Page Luminosité, 4 entrées -->
 <section>
 <!-- A -->
@@ -173,7 +174,7 @@ Prof. Alain Tiedeu
 <!-- A -->
 <h1 class="en_tete">Efficacité</h1>
 <div style="font-size:45pt; left:2.65cm; top:7cm; line-height:1.2; width:50cm">
-* η = rapport de l’énergie rayonnée sous forme de lumière à l’énergie 
+* η = rapport de l’énergie rayonnée sous forme de lumière à l’énergie
 </div>
 <div style="font-size:45pt; left:3.65cm; top:7.8cm; line-height:1.2; width:40cm">
  électrique consommée : **efficacité énergétique**
@@ -193,7 +194,7 @@ Prof. Alain Tiedeu
 <!-- 34 -->* Énergie manquante dissipée sous **forme de chaleur** et évacuée par conduction
 <!-- 34 --></div>
 <!-- 4 --><div style="font-size:45pt; left:2.65cm; top:24cm; line-height:1.2; width:55cm">
-<!-- 4 -->* Efficacité variable selon la température de la jonction, le courant et la teinte de la LED<br>
+<!-- 4 -->* Efficacité variable selon la température de la jonction, le courant et la teinte de la LED<br/>
 <!-- 4 --></div>
 
 <!-- 4 --><img src="./images/t-e-i-e-300dpi.png" style="top:27cm; left:4cm; width:22cm" />
@@ -214,7 +215,7 @@ Prof. Alain Tiedeu
 <!-- 34 -->*  *Pour comparaison* : durée de vie des ampoules à incandescence  de 300 à 1'000 h.
 <!-- 34 --></div>
 <!-- 4 --><div style="font-size:45pt; left:2.65cm; top:20cm; line-height:1.2; width:50cm">
-<!-- 4 -->* **MAIS** la durée de vie est réduite par :<br> - Courant élevé utilisé (donc forte luminosité)<br> - Variation de température
+<!-- 4 -->* **MAIS** la durée de vie est réduite par :<br/> - Courant élevé utilisé (donc forte luminosité)<br/> - Variation de température
 <!-- 4 --></div>
 </section>
 
@@ -225,7 +226,7 @@ Prof. Alain Tiedeu
 <h1 class="en_tete">Caractéristiques des LED</h1>
 <div style="font-size:52pt; left:34cm; width:26.0cm; top:8cm">
 * Polarisation des diodes et LED
-* Caractéristiques électriques<br>et lumineuses
+* Caractéristiques électriques<br/>et lumineuses
 </div>
 <div style="font-size:52pt; left:34cm; width:26.0cm; top:16cm">
 * Efficacité

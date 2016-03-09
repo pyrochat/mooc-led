@@ -33,7 +33,7 @@ Pierre-Yves Rochat
 Étude du multiplexage temporel
 à partir de 3 exemples simples :
 
-* Deux LED commandées par <br>une seule broche
+* Deux LED commandées par <br/>une seule broche
 * Charlieplexing
 * Afficheurs 7 segments
 </div>
@@ -42,7 +42,7 @@ Pierre-Yves Rochat
 <!-- Page : 2 led 1 broche, 5 arrivées-->
 <section>
 <!-- A -->
-<h1 class="en_tete";>Commander 2 LED avec 1 broche</h1>
+<h1 class="en_tete">Commander 2 LED avec 1 broche</h1>
 <img src="./images/led2-patte1-300dpi.png" style="top:8cm; left:2.65cm; width:25cm;" />
 <div style="top:9cm; left:32cm; line-height:2; font-size:50pt;">
 <!-- 2345 -->* Allumer LED1
@@ -55,7 +55,7 @@ Pierre-Yves Rochat
 <!-- Page : 2 led 1 broche, programme, def + 2 arrivées -->
 <section>
 <!-- A -->
-<h1 class="en_tete";>Commander 2 LED avec 1 broche</h1>
+<h1 class="en_tete">Commander 2 LED avec 1 broche</h1>
 <div style="top:7cm; left:2cm; font-size:50pt;">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines}
  #define SORTIE_1 pinMode(P1_4, OUTPUT); digitalWrite(P1_4, 1)
@@ -68,7 +68,7 @@ Pierre-Yves Rochat
 
 <section>
 <!-- A -->
-<h1 class="en_tete";>Commander 2 LED avec 1 broche</h1>
+<h1 class="en_tete">Commander 2 LED avec 1 broche</h1>
 <div style="top:7cm; left:2cm; width: 5cm; font-size:53pt;">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C .numberLines startFrom="4"}
 void loop() {
@@ -94,7 +94,7 @@ void loop() {
 <div class="liste_demi"> >
 * Utile ?
 <!-- 234 -->* Sauver un projet où il manque une broche...
-<!-- 34 -->* Petits microcontrôleurs<br> (PIC, AVR, …)
+<!-- 34 -->* Petits microcontrôleurs<br/> (PIC, AVR, …)
 <!-- 4 -->* ATtiny85
 </div>
 </section>
@@ -191,14 +191,14 @@ void loop() {
 <section>
 <!-- A -->
 <h1 class="en_tete">Multiplexage temporel</h1>
-<div class="liste_demi"; style="font-size:42pt; width:23.0cm; top:8cm;">
+<div class="liste_demi" style="font-size:42pt; width:23.0cm; top:8cm;">
 * 2 LED commandées par une broche
 * Charlieplexing
 * Afficheurs 7 segments
 </div>
-<!-- 2 --><div class="liste_demi"; style="font-size:42pt; width:23.0cm; top:16cm;">
+<!-- 2 --><div class="liste_demi" style="font-size:42pt; width:23.0cm; top:16cm;">
 <!-- 2 -->* … dans le but de comprendre le principe du **multiplexage temporel**, qui sera utilisé intensivement sur les afficheurs matriciels à LED.
-<!-- 2--></div>
+<!-- 2 --></div>
 </section>
 
 

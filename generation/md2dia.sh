@@ -58,12 +58,21 @@ function HTML2PDFweasyprint
         $PDF_FILE
 }
 
+function HTML2PDF
+{
+    if [ -f $PDF_FILE ]; then
+        rm $PDF_FILE
+    fi
+    # HTML2PDFprince
+    HTML2PDFweasyprint
+}
+
 function CLEANUP
 {
     if [ -f $PDF_FILE ]; then
-        echo $'\360\237\215\272' " ⇒ $PDF_FILE créé avec succès"
+        echo -e "\xE2\x9C\x94 ⇒ $PDF_FILE créé avec succès"
     else
-        echo $'\xF0\x9F\x98\xA1' " ⇒ $PDF_FILE n’a pas été créé"
+        echo -e "\xE2\x9C\x96 ⇒ $PDF_FILE N’A PAS ÉTÉ CRÉÉ"
     fi
     rm $HTML_FILE
     rm $MD_FILE_PRE
@@ -78,7 +87,7 @@ function OPENPDF
             xdg-open $PDF_FILE
         fi
     else
-        echo $'\xF0\x9F\x98\xA1' " ⇒ $PDF_FILE n’existe pas"
+        echo -e "\xE2\x9C\x96 ⇒ $PDF_FILE N’EXISTE PAS"
     fi
 }
 
@@ -92,10 +101,10 @@ function MD2DIA-NORMAL
     if [ -f $MD_FILE_IN ]; then
         MD2MDpre
         MD2HTML
-        HTML2PDFweasyprint
+        HTML2PDF
         CLEANUP
     else
-        echo $'\xF0\x9F\x98\xA1' " ⇒ $MD_FILE_IN n’existe pas"
+        echo -e "\xE2\x9C\x96 ⇒ $MD_FILE_IN N’EXISTE PAS"
     fi
 }
 
@@ -109,17 +118,17 @@ function MD2DIA-COMPACT
     if [ -f $MD_FILE_IN ]; then
         MD2MDprecompact
         MD2HTML
-        HTML2PDFweasyprint
+        HTML2PDF
         CLEANUP
     else
-        echo $'\xF0\x9F\x98\xA1' " ⇒ $MD_FILE_IN n’existe pas"
+        echo -e "\xE2\x9C\x96 ⇒ $MD_FILE_IN N’EXISTE PAS"
     fi
 }
 
 if [[ "$#" == "0" ]]; then
 
     # Si aucun argument n’est indiqué, on transforme tous les chapitres.
-    echo -e "Pas d’arguments fourni ⇒ Création des diapositives pour tous les chapitres. Patience... !\n*****"
+    echo -e "\n*****\n\xF0\x9F\x98\x83   Création des diapositives pour tous les chapitres. Patience... !  \xF0\x9F\x98\x83\n*****\n"
     cd ../cours/
     INFOS=`find . -name infos.yaml`
     INFOS=(${INFOS//:/ })

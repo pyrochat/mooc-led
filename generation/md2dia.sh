@@ -136,7 +136,7 @@ if [[ "$#" == "0" ]]; then
             DIR=$(dirname "${INFO}")
             cd ${DIR}
             MD2DIA-NORMAL
-            MD2DIA-COMPACT
+            # MD2DIA-COMPACT
             cd ..
         fi
         echo "*****"
@@ -153,6 +153,6 @@ else
     echo "CODE = $CODE"
     MD2DIA-NORMAL
     OPENPDF
-    MD2DIA-COMPACT
-    OPENPDF
+    # MD2DIA-COMPACT
+    # OPENPDF
 fi

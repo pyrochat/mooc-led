@@ -5,9 +5,9 @@ niveau:           base
 auteur:          
     - PYR
 statut:           Pas publié
-code:             codeduchapitre
+code:             matrice-mux
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   matrice-mux.html
+    cours-pdf:    matrice-mux.pdf
+    dias-video:   matrice-mux-dia.pdf
+    dias-compact: matrice-mux-dia-compact.pdf

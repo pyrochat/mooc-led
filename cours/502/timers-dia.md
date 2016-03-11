@@ -30,10 +30,10 @@ Dr. Yves Tiecoura
 <!-- A -->
 <h1 class="en_tete">Les timers</h1>
 <div style="font-size:48pt; left:32cm; width:27.0cm; top:9cm;">
-* Principe des interruptions
-* Événements produisant des interruptions
+* Gestion précise du temps
+* Timers : prédivision, logique de gestion registres de comparaison
 * Mise en œuvre
-* Deux exemples
+* Timers du MSP430
 </div>
 </section>
 

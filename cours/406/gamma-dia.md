@@ -23,6 +23,7 @@
 <!-- A -->
 <div style="top:6.5cm; left:35cm; width:23cm; text-align: right;  font-size:48pt; font-family: Impact, sans-serif;">
 Prof. Alain Tiedeu
+</div>
 </section>
 
 <!-- Page bienvenue, demi-->
@@ -45,15 +46,15 @@ Prof. Alain Tiedeu
 * Une bonne image est bien **contrastée** et bien **illuminée**
 </div>
 <!-- 234 --><div style="font-size:45pt; left:2.65cm; top:10cm; line-height:1.2; width:35cm">
-<!-- 234 -->* Le contraste permet à l’œil humain de bien<br> **discerner les détails** de l’image
+<!-- 234 -->* Le contraste permet à l’œil humain de bien<br/> **discerner les détails** de l’image
 <!-- 234 --></div>
 <!-- 34 --><div style="font-size:45pt; left:2.65cm; top:15cm; line-height:1.2; width:35cm">
-<!-- 34 -->* L’illumination correcte permet d’avoir une image<br> **ni trop sombre ni trop claire**
+<!-- 34 -->* L’illumination correcte permet d’avoir une image<br/> **ni trop sombre ni trop claire**
 <!-- 34 --></div>
 <!-- 34 --><img src="./images/syst-image-100dpi.png" style="top:6.5cm; left:45cm; width:10.0cm" />
 <!-- 4 --><div style="font-size:45pt; left:2.65cm; top:20cm; line-height:1.2; width:35cm">
-<!-- 4 -->* Schéma bloc d’un système  de formation et d’affichage :<br>
-<!-- 4 --> Le faisceau lumineux provient de l’objet à imager 
+<!-- 4 -->* Schéma bloc d’un système  de formation et d’affichage :<br/>
+<!-- 4 --> Le faisceau lumineux provient de l’objet à imager
 <!-- 4 --></div>
 </section>
 
@@ -62,7 +63,7 @@ Prof. Alain Tiedeu
 <!-- A -->
 <h1 class="en_tete">Nécessité de la correction Gamma</h1>
 <div style="font-size:45pt; left:2.65cm; top:7cm; line-height:1.2; width:35cm">
-* Par sa nature, l’oeil humain distingue mieux les détails de l’objet à imager s’il existe une **relation linéaire** entre la luminance du faisceau lumineux et celle de l’écran d’affichage. 
+* Par sa nature, l’oeil humain distingue mieux les détails de l’objet à imager s’il existe une **relation linéaire** entre la luminance du faisceau lumineux et celle de l’écran d’affichage.
 </div>
 <img src="./images/faisceau-ecran-60dpi.png" style="top:10cm; left:40cm; width:15cm" />
 <!-- 2 --><div style="font-size:45pt; left:2.65cm; top:17cm; line-height:1.2; width:35cm">
@@ -75,15 +76,15 @@ Prof. Alain Tiedeu
 <!-- A -->
 <h1 class="en_tete">Mécanisme de la déformation Gamma</h1>
 <div style="font-size:45pt; left:2.65cm; top:7cm; line-height:1.0; width:32cm">
-*  Le capteur fournit bien souvent une relation **linéaire** entre la luminance du faisceau et la tension générée 
+*  Le capteur fournit bien souvent une relation **linéaire** entre la luminance du faisceau et la tension générée
 </div>
 <img src="./images/faisceau-tension-60dpi.png" style="top:6.0cm; left:37cm; width:11.0cm" />
 <!-- 234 --><div style="font-size:45pt; left:2.65cm; top:12cm; line-height:1.0; width:32cm">
-<!-- 234 -->* Mais le système d’affichage fournit une relation **non-linéaire** entre la luminance de l’écran et la tension reçue 
+<!-- 234 -->* Mais le système d’affichage fournit une relation **non-linéaire** entre la luminance de l’écran et la tension reçue
 <!-- 234 --></div>
 <!-- 234 --><img src="./images/ecran-tension-60dpi.png" style="top:6.0cm; left:49cm; width:11.0cm" />
 <!-- 34 --><div style="font-size:45pt; left:2.65cm; top:19cm; line-height:1.0; width:32cm">
-<!-- 34 -->* Et finalement la relation entre la luminance du faisceau et celle de l’écran est **non-linéaire** 
+<!-- 34 -->* Et finalement la relation entre la luminance du faisceau et celle de l’écran est **non-linéaire**
 <!-- 34 --></div>
 <!-- 34 --><div style="font-size:45pt; left:2.65cm; top:23.5cm; line-height:1.0; width:32cm">
 <!-- 34 -->* Ceci n’est pas bon pour la perception visuelle
@@ -99,7 +100,7 @@ Prof. Alain Tiedeu
 <!-- A -->
 <h1 class="en_tete">Déformation Gamma : expression mathématique et effets</h1>
 <div style="font-size:45pt; left:2.65cm; top:7cm; line-height:1.1; width:35cm">
-* L’expression mathématique de la déformation apportée<br>sur l’image est de la forme :
+* L’expression mathématique de la déformation apportée<br/>sur l’image est de la forme :
 </div>
 <img src="./images/form-lum.png" style="top:10.0cm; left:22cm; width:9cm" />
 <div style="font-size:45pt; left:2.65cm; top:12.5cm; line-height:1.2; width:55cm">
@@ -123,7 +124,7 @@ L~i~ : Luminance initiale, L~f~ : Luminance finale, γ : facteur de déformation
 * La correction gamma est un procédé qui permet simplement de compenser dans le système de formation de l’image, ces effets non désirés
 </div>
 <!-- 23 --><div style="font-size:45pt; left:2.65cm; top:12.0cm; line-height:1.2; width:55cm">
-<!-- 23 -->* La courbe inverse gamma (ou courbe de transfert) appliquée aux images va donc éclaircir 
+<!-- 23 -->* La courbe inverse gamma (ou courbe de transfert) appliquée aux images va donc éclaircir
 <!-- 23 -->et étaler la gamme tonale de façon à produire une image plus ou moins linéaire visuellement
 <!-- 23 --></div>
 <!-- 23 --><img src="./images/form-lum-inv.png" style="top:16.0cm; left:15cm; width:9cm" />
@@ -143,26 +144,26 @@ L~i~ : Luminance initiale, L~f~ : Luminance finale, γ : facteur de déformation
 <!-- A -->
 <h1 class="en_tete">Correction Gamma : Méthode</h1>
 <div style="font-size:45pt; left:2.65cm; top:7cm; line-height:1.0; width:55cm">
-* Connaissant le facteur Gamma, la correction est effectuée<br> avant l’affichage de l’image
+* Connaissant le facteur Gamma, la correction est effectuée<br/> avant l’affichage de l’image
 </div>
 <div style="font-size:45pt; left:2.65cm; top:11.5cm; line-height:1.0; width:55cm">
-* Dans le dispositif de formation d’images, on insère un correcteur<br>
+* Dans le dispositif de formation d’images, on insère un correcteur<br/>
  qui permet de redresser les valeurs avant de les afficher
 </div>
 <img src="./images/syst-gamma-100dpi.png" style="top:6.5cm; left:46cm; width:10.0cm" />
 <!-- 234 --><div style="font-size:45pt; left:2.65cm; top:16.5cm; line-height:1.1; width:55cm">
-<!-- 234 -->* La fonction de transfert du correcteur<br> est de forme concave :
+<!-- 234 -->* La fonction de transfert du correcteur<br/> est de forme concave :
 <!-- 234 --></div>
 <!-- 234 --><img src="./images/entree-sortie-60dpi.png" style="top:15.5cm; left:31cm; width:13.0cm" />
 <!-- 34 --><div style="font-size:45pt; left:2.65cm; top:21.0cm; line-height:1.0; width:35cm">
-<!-- 34 -->* Lorsque le système est numérique, on utilise<br> souvent des tables de transcodage<br> *(**LUT** = Look Up Table)*
+<!-- 34 -->* Lorsque le système est numérique, on utilise<br/> souvent des tables de transcodage<br/> *(**LUT** = Look Up Table)*
 <!-- 34 --></div>
 <!-- 4 --><div style="font-size:45pt; left:2.65cm; top:27.0cm; line-height:1.0; width:35cm">
-<!-- 4 -->* <span style="color: #f00;">Systématiquement utilisée avec les afficheurs<br> matriciels à **LED** qui affichent des images</span>
+<!-- 4 -->* <span style="color: #f00;">Systématiquement utilisée avec les afficheurs<br/> matriciels à **LED** qui affichent des images</span>
 <!-- 4 --></div>
 </section>
 
- 
+
 <section>
 <!-- A -->
 <h1 class="en_tete">Exemple de correction Gamma : Niveau de gris</h1>

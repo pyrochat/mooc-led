@@ -28,7 +28,7 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">Programmation en C-Arduino</h1>
-<div class="liste_demi"; style="font-size:48pt; left:35cm; width:26.0cm; top:8cm;">
+<div class="liste_demi" style="font-size:48pt; left:35cm; width:26.0cm; top:8cm;">
 * Les 3 significations du mot Arduino
 * Structure d’un programme
 * Entrées-sorties
@@ -40,15 +40,15 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">Significations du mot Arduino</h1>
-<div style="top: 5cm; left: 6cm; font-size: 53pt; line-height: 1.5;">
-L’Arduino a participé à rendre populaires les microcontrôleurs de manière extraordinaire.
+<!-- 2345 --><div style="top: 5cm; left: 6cm; font-size: 53pt; line-height: 1.5;">
+<!-- 2345 -->L’Arduino a participé à rendre populaires les microcontrôleurs de manière extraordinaire.
 <!-- 2345 --><br/>Qu’est-ce qui se cache derrière ce nom ?
-</div>
+<!-- 2345 --></div>
 <!-- 345 --><div style="top: 18cm; left: 6cm; font-size: 53pt; line-height: 1.5;">
 <!-- 345 -->* une carte à microcontrôleurs
 <!-- 45 -->* un environnement de développement
 <!-- 5 -->* une librairie pour microcontrôleurs (un ensemble de procédures)
-<!-- 234 --></div>
+<!-- 345 --></div>
 </section>
 
 <!-- Carte Arduino. -->
@@ -85,8 +85,8 @@ L’Arduino a participé à rendre populaires les microcontrôleurs de manière 
 <section>
 <!-- A -->
 <h1 class="en_tete">La librairie Arduino</h1>
-<div style="top: 7.5cm; left: 4cm; font-size: 48pt; line-height: 1.3;">
-* Un ensemble de procédures (librairie)
+<!-- 2345 --><div style="top: 7.5cm; left: 4cm; font-size: 48pt; line-height: 1.3;">
+<!-- 2345 -->* Un ensemble de procédures (librairie)
 <!-- 2345 -->* *Wiring*
 <!-- 345 -->* Cacher le complexité du microcontrôleur
 <!-- 45 -->* Apporter une certaine compatibilité entre différents microcontôleurs
@@ -198,13 +198,13 @@ void loop() {
 <h1 class="en_tete">Programmation en C-Arduino</h1>
 <img src="./images/Uno.jpg" style="top:6cm; left:35cm; width:10cm;" />
 <img src="./images/coin-ide.png" style="top:6.5cm; left:47cm; width:7cm;" />
-<div class="liste_demi"; style="font-size:48pt; left:35cm; width:26.0cm; top:13cm;">
+<div class="liste_demi" style="font-size:48pt; left:35cm; width:26.0cm; top:13cm;">
 * Les 3 significations du mot Arduino
 * Structure d’un programme
 * Entrées-sorties
 * Gestion du temps
 </div>
-<!-- 2 --><div class="liste_demi"; style="font-size:48pt; left:35cm; width:26.0cm; top:27cm;">
+<!-- 2 --><div class="liste_demi" style="font-size:48pt; left:35cm; width:26.0cm; top:27cm;">
 <!-- 2 -->* De nombreuses librairies !
 <!-- 2 --></div>
 </section>

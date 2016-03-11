@@ -329,7 +329,7 @@ Trois étapes pour mettre en œuvre une interruption :
 </section>
 
 <!-- Page conclusion, demi-->
-<!-- -------------------- -->
+<!-- ******************** -->
 <section>
 <!-- A -->
 <h1 class="en_tete">Les interruptions</h1>

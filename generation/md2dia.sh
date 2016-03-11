@@ -19,7 +19,15 @@ function MD2MDpre
     python                          \
         ../../generation/pre-dia.py \
         $MD_FILE_IN                 \
-        $MD_FILE_PRE
+        $MD_FILE_PRE &>/dev/null
+}
+
+function MD2MDprecompact
+{
+    python                             \
+        ../../generation/pre-dia.py -c \
+        $MD_FILE_IN                    \
+        $MD_FILE_PRE &>/dev/null
 }
 
 function MD2HTML
@@ -40,7 +48,7 @@ function HTML2PDFprince
 {
     prince           \
         $HTML_FILE   \
-        -o $PDF_FILE #--javascript
+        -o $PDF_FILE
 }
 
 function HTML2PDFweasyprint
@@ -50,44 +58,77 @@ function HTML2PDFweasyprint
         $PDF_FILE
 }
 
+function HTML2PDF
+{
+    if [ -f $PDF_FILE ]; then
+        rm $PDF_FILE
+    fi
+    # HTML2PDFprince
+    HTML2PDFweasyprint
+}
+
 function CLEANUP
 {
+    if [ -f $PDF_FILE ]; then
+        echo -e "\xE2\x9C\x94 ⇒ $PDF_FILE créé avec succès"
+    else
+        echo -e "\xE2\x9C\x96 ⇒ $PDF_FILE N’A PAS ÉTÉ CRÉÉ"
+    fi
     rm $HTML_FILE
     rm $MD_FILE_PRE
 }
 
 function OPENPDF
 {
-    if [[ "$OSTYPE" == darwin14 ]]; then
-        open $PDF_FILE
-    elif [[ "$OSTYPE" == linux-gnu ]]; then
-        xdg-open $PDF_FILE
+    if [ -f $PDF_FILE ]; then
+        if [[ "$OSTYPE" == darwin14 ]]; then
+            open $PDF_FILE
+        elif [[ "$OSTYPE" == linux-gnu ]]; then
+            xdg-open $PDF_FILE
+        fi
+    else
+        echo -e "\xE2\x9C\x96 ⇒ $PDF_FILE N’EXISTE PAS"
     fi
 }
 
-function DO_ALL
+function MD2DIA-NORMAL
 {
+    CSS_FILE=../../statiques/diaporama.css
     MD_FILE_IN=$CODE-dia.md
     MD_FILE_PRE=$CODE-dia-pre.md
     HTML_FILE=$CODE-dia.html
     PDF_FILE=$CODE-dia.pdf
-    CSS_FILE=../../statiques/diaporama.css
-
     if [ -f $MD_FILE_IN ]; then
         MD2MDpre
         MD2HTML
-        HTML2PDFweasyprint
+        HTML2PDF
         CLEANUP
-        OPENPDF
     else
-        echo "$MD_FILE_IN n’existe pas"
+        echo -e "\xE2\x9C\x96 ⇒ $MD_FILE_IN N’EXISTE PAS"
+    fi
+}
+
+function MD2DIA-COMPACT
+{
+    CSS_FILE=../../statiques/diaporama.css
+    MD_FILE_IN=$CODE-dia.md
+    MD_FILE_PRE=$CODE-dia-pre-compact.md
+    HTML_FILE=$CODE-dia-compact.html
+    PDF_FILE=$CODE-dia-compact.pdf
+    if [ -f $MD_FILE_IN ]; then
+        MD2MDprecompact
+        MD2HTML
+        HTML2PDF
+        CLEANUP
+    else
+        echo -e "\xE2\x9C\x96 ⇒ $MD_FILE_IN N’EXISTE PAS"
     fi
 }
 
 if [[ "$#" == "0" ]]; then
 
     # Si aucun argument n’est indiqué, on transforme tous les chapitres.
-    echo "Pas d’arguments donné. On process tous les chapitres !"
+    echo -e "\n*****\n\xF0\x9F\x98\x83   Création des diapositives pour tous les chapitres. Patience... !  \xF0\x9F\x98\x83\n*****\n"
     cd ../cours/
     INFOS=`find . -name infos.yaml`
     INFOS=(${INFOS//:/ })
@@ -97,19 +138,19 @@ if [[ "$#" == "0" ]]; then
         STATUT=`awk -F 'statut:[ ]+' '{ print $2 }' $INFO`
         STATUT=`echo $STATUT`
         echo "STATUT = $STATUT"
-        if [[ "$STATUT" == *"Pas publié"* ]]; then
-            :
-        else
+        if [[ ! "$STATUT" == *"Pas publié"* ]]; then
             CODE=`awk -F 'code:[ ]+' '{ print $2 }' $INFO`
             CODE=`echo $CODE`
             echo "CODE   = $CODE"
             DIR=$(dirname "${INFO}")
             cd ${DIR}
-            DO_ALL
+            MD2DIA-NORMAL
+            # MD2DIA-COMPACT
             cd ..
         fi
         echo "*****"
     done
+
 else
 
     # Si un argument est indiqué, on ne transforme que ce chapitre.
@@ -119,5 +160,8 @@ else
     CODE=`awk -F 'code:[ ]+' '{ print $2 }' infos.yaml`
     CODE=`echo $CODE`
     echo "CODE = $CODE"
-    DO_ALL
+    MD2DIA-NORMAL
+    OPENPDF
+    # MD2DIA-COMPACT
+    # OPENPDF
 fi

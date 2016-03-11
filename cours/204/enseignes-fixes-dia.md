@@ -44,7 +44,6 @@ Pierre-Yves Rochat
 <h1 class="en_tete">Enseignes à motifs fixes</h1>
 <img src="./images/hotel.png" style="top:15cm; left:3cm; width:28cm;" />
 <!-- 2 --><img src="./images/croix-pharma.png" style="top:10cm; left:36cm; width:20cm;" />
-</div>
 </section>
 
 <!-- Page segments, 2 arrivées    -->
@@ -57,7 +56,6 @@ Regrouper les LED en motifs.
 <img src="./images/hotel.png" style="top:15cm; left:3cm; width:28cm;" />
 <img src="./images/croix-pharma.png" style="top:10cm; left:36cm; width:20cm;" />
 <!-- 2 --><img src="./images/croix-pharma-seg.png" style="top:10cm; left:36cm; width:20cm;" />
-</div>
 </section>
 
 <!-- Page commande segments, 2 arrivées, 1 image -->
@@ -66,11 +64,10 @@ Regrouper les LED en motifs.
 <h1 class="en_tete">Commande des LED</h1>
 <div style="top: 7.5cm; left: 2.65cm; font-size: 53pt; line-height: 1.5;">
 * Une LED consomme 10 mA
-<!-- 23 -->* Un microcontrôleur peut fournir<br> environ 10 à 20 mA
+<!-- 23 -->* Un microcontrôleur peut fournir<br/> environ 10 à 20 mA
 <!-- 3 -->* Utilisation d’un transistor
 </div>
 <!-- 3 --><img src="./images/transistor-res-leds.png" style="top:8cm; left:26cm; width:32cm;" />
-</div>
 </section>
 
 <!-- Page commande série, 2 images-->
@@ -78,18 +75,16 @@ Regrouper les LED en motifs.
 <!-- A -->
 <h1 class="en_tete">Montage en série</h1>
 <img src="./images/transistor-3-5led-0.png" style="top:6cm; left:4cm; width:36cm;" />
-</div>
 <!-- 23 --><div style="top: 7.5cm; left: 35cm; font-size: 53pt; line-height: 1.5;">
 <!-- 23 -->BC337 : 500 mA
-<!-- 3 --><br>50 × 5 LED
-<<!-- 23 --></div>
+<!-- 3 --><br/>50 × 5 LED
+<!-- 23 --></div>
 </section>
 
 <section>
 <!-- A -->
 <h1 class="en_tete">Montage en série</h1>
 <img src="./images/transistor-3-5led.png" style="top:6cm; left:4cm; width:36cm;" />
-</div>
 </section>
 
 <!-- Page commande courant, 2 entrées-->
@@ -98,7 +93,6 @@ Regrouper les LED en motifs.
 <h1 class="en_tete">Courant importants</h1>
 <!-- Contenu : -->
 <img src="./images/transistor-courants.png" style="top:11cm; left:1.5cm; width:57cm;" />
-</div>
 </section>
 
 <!-- Page animations, entrées-->
@@ -163,7 +157,7 @@ void loop() { // Boucle infinie, correspond à toute l'animation
 <h1 class="en_tete">Programmation des animations</h1>
 <div style="top: 8cm; left: 2.65cm; font-size: 53pt; line-height: 1.2;">
 * Les programmes peuvent devenir très longs, peu lisibles
-<!-- 234 --><br> ... et dépasser même la taille mémoire du microcontrôleur
+<!-- 234 --><br/> ... et dépasser même la taille mémoire du microcontrôleur
 </div>
 <!-- 34 --><div style="top: 15cm; left: 2.65cm; font-size: 53pt;">
 <!-- 34 -->* Langages spécifiques, qu’il faudra interpréter

@@ -44,11 +44,11 @@ Pierre-Yves Rochat
 * Principalement deux mémoires dans un microcontrôleur :
 </div>
 <!-- 234 --><div style="top:11cm; left:3.65cm; line-height:1.2; font-size:50pt;">
-<!-- 234 -->`1.` Mémoire Flash, pour les programmes<br>
+<!-- 234 -->`1.` Mémoire Flash, pour les programmes<br/>
 <!-- 34 -->`2.` Mémoire vive (RAM) pour les données
 <!-- 234 --></div>
 <!-- 4 --><div style="top:20cm; left:2.65cm; line-height:1.2; font-size:50pt;">
-<!-- 4 -->* Comment conserver des données ?<br> Par exemple les textes défilant sur un afficheur à LED...
+<!-- 4 -->* Comment conserver des données ?<br/> Par exemple les textes défilant sur un afficheur à LED...
 <!-- 4 --></div>
 </section>
 
@@ -58,9 +58,9 @@ Pierre-Yves Rochat
 <h1 class="en_tete">EEPROM</h1>
 <div style="top:9cm; left:2.65cm; line-height:1.2; font-size:50pt;">
 * Certains microcontrôleurs disposent d’une mémoire du type EEPROM
-<br>*Electrically-Erasable Programmable Read-Only Memory*
-<br><br>
-<!-- 23 -->* Par exemple, l’ATmega328<br> dispose de 1 kB d’EEPROM
+<br/>*Electrically-Erasable Programmable Read-Only Memory*
+<br/><br/>
+<!-- 23 -->* Par exemple, l’ATmega328<br/> dispose de 1 kB d’EEPROM
 </div>
 <!-- 3 --><img src="./images/eeprom-avr.png" style="top:15cm; left:30cm; width:15cm;" />
 </section>
@@ -93,10 +93,10 @@ Pierre-Yves Rochat
 <h1 class="en_tete">FLASH</h1>
 <div style="top:9cm; left:2.65cm; line-height:1.2; font-size:50pt; width:53cm">
 * Il est généralement possible d’accéder à la mémoire flash d’un microcontrôleur
-<!-- 234 --><br>... en faisant attention à ne pas détruire le programme !
-<!-- 34 --><br><br>
+<!-- 234 --><br/>... en faisant attention à ne pas détruire le programme !
+<!-- 34 --><br/><br/>
 <!-- 34 -->* C’est un peu plus difficile sur des microcontrôleurs dont l’architecture n’est pas du type Von Neumann
-<!-- 4 --><br><br>
+<!-- 4 --><br/><br/>
 <!-- 4 -->* Dans tous les cas, l’effacement s’effectue par bloc
 </div>
 </section>
@@ -151,6 +151,7 @@ Pierre-Yves Rochat
 <!-- 234 -->* RAM secourues
 <!-- 34 -->* EEPROM série (I2C ou SPI)
 </div>
+<div>
 <!-- 4 --><img src="./images/m95256.png" style="top:13cm; left:26cm; width:28cm;" />
 </div>
 </section>
@@ -178,28 +179,28 @@ Pierre-Yves Rochat
 * Compliqué de gérer les données d’une carte SD
 <!-- 234 -->* Pratique d’utiliser un système de fichier : par exemple FAT 32
 <!-- 34 -->* Des librairies sont disponibles
-<!-- 4 --><br>PetitFat :
+<!-- 4 --><br/>PetitFat :
 <!-- 4 --></div>
 <!-- 4 --><div style="top:15cm; left:13cm; line-height:1.2; font-size:40pt;line-height: 1;">
-<!-- 4 --><br><br>
-<!-- 4 -->*Procédure*<br>
-<!-- 4 -->`pf_mount:`<br>
-<!-- 4 -->`pf_open:`<br>
-<!-- 4 -->`pf_read:`<br>
-<!-- 4 -->`pf_write:`<br>
-<!-- 4 -->`pf_lseek:`<br>
-<!-- 4 -->`pf_opendir:`<br>
+<!-- 4 --><br/><br/>
+<!-- 4 -->*Procédure*<br/>
+<!-- 4 -->`pf_mount:`<br/>
+<!-- 4 -->`pf_open:`<br/>
+<!-- 4 -->`pf_read:`<br/>
+<!-- 4 -->`pf_write:`<br/>
+<!-- 4 -->`pf_lseek:`<br/>
+<!-- 4 -->`pf_opendir:`<br/>
 <!-- 4 -->`pf_readdir:`
 <!-- 4 --></div>
 <!-- 4 --><div style="top:15cm; left:23cm; line-height:1.2; font-size:40pt;line-height: 1;">
-<!-- 4 --><br><br>
-<!-- 4 -->*Rôle*<br>
-<!-- 4 -->`Monter un volume`<br>
-<!-- 4 -->`Ouvrir un fichier`<br>
-<!-- 4 -->`Lire des données dans un fichier`<br>
-<!-- 4 -->`Écrire des données dans un fichier`<br>
-<!-- 4 -->`Déplacer le pointeur de lecture ou d’écriture`<br>
-<!-- 4 -->`Ouvrir un dossier`<br>
+<!-- 4 --><br/><br/>
+<!-- 4 -->*Rôle*<br/>
+<!-- 4 -->`Monter un volume`<br/>
+<!-- 4 -->`Ouvrir un fichier`<br/>
+<!-- 4 -->`Lire des données dans un fichier`<br/>
+<!-- 4 -->`Écrire des données dans un fichier`<br/>
+<!-- 4 -->`Déplacer le pointeur de lecture ou d’écriture`<br/>
+<!-- 4 -->`Ouvrir un dossier`<br/>
 <!-- 4 -->`Lire le contenu d’un dossier`
 </div>
 </section>
@@ -209,7 +210,7 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Mémoires permanentes</h1>
 <img src="./images/microsd.png" style="top:5cm; left:26cm;" />
-<div class="liste_demi";>
+<div class="liste_demi">
 * Type de mémoires sur les microcontrôleurs
 * EEPROM
 * Programmation des mémoires Flash

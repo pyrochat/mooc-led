@@ -21,13 +21,14 @@
 <!-- A -->
 <div style="top:6.5cm; left:35cm; width:23cm; text-align: right;  font-size:48pt; font-family: Impact, sans-serif;">
 Dr. Yves Tiecoura
+</div>
 </section>
 
 <!-- Page bienvenue, demi-->
 <section>
 <!-- A -->
 <h1 class="en_tete">Le transistor</h1>
-<div class="liste_demi"; style="font-size:48pt; left:33cm; width:26.0cm; top:6cm;">
+<div class="liste_demi" style="font-size:48pt; left:33cm; width:26.0cm; top:6cm;">
 * Une invention de premier plan
 * Présentation du transistor
 * Structure du transistor
@@ -99,8 +100,6 @@ Dr. Yves Tiecoura
 </div>
 <!-- 3 --><img src="./images/transistor-npn0.png" style="top:7.5cm; left:28cm; width:30cm;" />
 <!-- 4 --><img src="./images/transistor-npn.png" style="top:7.5cm; left:28cm; width:30cm;" />
-
-</div>
 </section>
 
 <section>
@@ -112,7 +111,6 @@ Dr. Yves Tiecoura
 * Transistors NPN et PNP
 </div>
 <img src="./images/transistor-pnp.png" style="top:7.5cm; left:28cm; width:30cm;" />
-</div>
 </section>
 
 <!-- Page Jonction, -->
@@ -189,7 +187,7 @@ Dr. Yves Tiecoura
 <section>
 <!-- A -->
 <h1 class="en_tete">Le transistor</h1>
-<div class="liste_demi"; style="font-size:48pt; left:33cm; width:26.0cm; top:6cm;">
+<div class="liste_demi" style="font-size:48pt; left:33cm; width:26.0cm; top:6cm;">
 * Une invention de premier plan
 * Présentation du transistor
 * Structure du transistor

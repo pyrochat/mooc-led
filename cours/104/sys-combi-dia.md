@@ -73,7 +73,7 @@ Codage des informations dans les circuits numériques :
 <!-- A -->
 <h1 class="en_tete">Algèbre de BOOLE</h1>
 <div style="top: 8cm; left: 2.65cm; font-size: 53pt; line-height: 2.0;">
-* Outil mathématique pour représenter les systèmes logiques 
+* Outil mathématique pour représenter les systèmes logiques
 * Conçue autour d'**opérateurs logiques** de base:
 </div>
 <!-- 2 --><div style="top: 17cm; left: 5cm; font-size: 53pt; line-height: 1.5;">
@@ -197,7 +197,6 @@ Codage des informations dans les circuits numériques :
 * Commutativité
 </div>
 <img src="./images/commu.png" style="top:10.5cm; left:2.85cm; width:15cm;" />
-</div>
 <!-- 234 --><div style="top: 17cm; left: 2.65cm; font-size: 53pt; line-height: 2;">
 <!-- 234 -->* Idempotence
 <!-- 234 --></div>
@@ -206,7 +205,6 @@ Codage des informations dans les circuits numériques :
 <!-- 34 -->* Constantes
 <!-- 34 --></div>
 <!-- 34 --><img src="./images/const.png" style="top:10.5cm; left:22cm; width:11cm;" />
-<!-- 34 --></div>
 <!-- 4 --><div style="top: 7cm; left: 40cm; font-size: 53pt; line-height: 2;">
 <!-- 4 -->* Complémentation
 <!-- 4 --></div>
@@ -255,6 +253,6 @@ Codage des informations dans les circuits numériques :
 
 
 
- 
 
- 
+
+

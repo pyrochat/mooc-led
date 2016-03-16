@@ -11,6 +11,7 @@
 <div style="top:27.7cm; left:10.8cm; font-size:47pt; font-family: Arial Narrow, sans-serif;">Dr. Yves Tiecoura</div>
 </section>
 
+
 <!-- Page bienvenue plein écran-->
 <section>
 <h1 class="en_tete">Les timers</h1>
@@ -25,99 +26,305 @@ Dr. Yves Tiecoura
 </div>
 </section>
 
+
 <!-- Page bienvenue, demi-->
 <section>
 <!-- A -->
 <h1 class="en_tete">Les timers</h1>
+<div style="font-size:48pt; left:33cm; width:25.0cm; top:9cm;">
+* Gestion du temps
+</div>
+<div style="font-size:48pt; left:33cm; width:25.0cm; top:12cm;">
+* Timers, prédivision, logique de gestion 
+</div>
+<div style="font-size:48pt; left:34.5cm; width:25.0cm; top:12.5cm;">
+et registres de comparaison
+</div>
+<div style="font-size:48pt; left:33cm; width:25.0cm; top:17cm;">
+* Mise en œuvre : exemple du MSP430
+</div>
+<div style="font-size:48pt; left:33cm; width:25.0cm; top:20cm;">
+* Interruptions des timers
+</div>
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Gestion précise du temps</h1>
+<div style="font-size:50pt; left:2.65cm; top:6.5cm; width:55cm">
+* Gérer le temps en jouant avec le temps d'exécution des instructions est compliqué
+<!-- 23 -->* Des circuits spécialisés vont nous aider
+<!-- 3 -->* Par exemple pour générer un PWM :
+</div>
+<!-- 3 --><img src="./images/compteur-pwm-300dpi.png" style="top:15cm; left:15cm; width:29cm;" />
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Compteur binaire</h1>
+<div style="font-size:50pt; left:2.65cm; top:6.5cm; width:55cm">
+* La base d'un timer est un compteur binaire :
+</div>
+<img src="./images/div2-150dpi.png" style="top:11cm; left:10cm; width:39cm;" />
+<!-- 23 --><img src="./images/div2n-150dpi.png" style="top:22cm; left:2.65cm; width:25cm;" />
+<!-- 3 --><img src="./images/chrono-compteur-300dpi.png" style="top:22cm; left:32cm; width:23cm;" />
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Les timers</h1>
+<img src="./images/timer-base-300dpi.png" style="top:10cm; left:10cm; width:42cm;" />
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Prédivision</h1>
+<img src="./images/timer-base-150dpi.png" style="top:7cm; left:36cm; width:22cm;" />
+<img src="./images/pre-div-300dpi.png" style="top:14cm; left:3cm; width:33cm;" />
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Logique de gestion</h1>
+<img src="./images/timer-base-150dpi.png" style="top:7cm; left:36cm; width:22cm;" />
+<img src="./images/logique-timer-300dpi.png" style="top:19cm; left:3cm; width:45cm;" />
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Registres de comparaison</h1>
+<img src="./images/registre-comp-300dpi.png" style="top:9cm; left:10cm; width:40cm;" />
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Les timers de microcontrôleurs</h1>
 <div style="font-size:48pt; left:32cm; width:27.0cm; top:9cm;">
-* Gestion précise du temps
-* Timers : prédivision, logique de gestion registres de comparaison
-* Mise en œuvre
-* Timers du MSP430
+* Intel 8253 comme complément aux microprocesseurs
 </div>
-</section>
-
-<!-- Page Motivation, 9 arrivées-->
-<section>
-<!-- A -->
-<h1 class="en_tete">Motivation des interruptions</h1>
-<div style="font-size:55pt; left:2.65cm; top:5.5cm; width:55cm">
-De manière générale un microcontrôleur doit être programmé pour :
+<div style="font-size:48pt; left:32cm; width:27.0cm; top:14cm;">
+* Le timer très simple des premiers PIC
+* Les AVR et leurs timers 8 et 16 bits
+* Des timers 32 bits très complexes sur les ARM
+* Timers 16 bits du MSP430
 </div>
-<!-- 234567 --><div style="font-size:55pt; left:2.65cm; top:10.5cm; width:55cm">
-<!-- 234567 -->* détecter des changements sur ses entrées
-<!-- 34567 -->* agir en conséquence sur ses sorties
-<!-- 234567 --></div>
-<!-- 4567 --><div style="font-size:55pt; left:2.65cm; top:15.5cm;">
-<!-- 4567 -->Dans les enseignes et afficheurs à LED :
-<!-- 4567 --></div>
-<!-- 567 --><div style="font-size:55pt; left:2.65cm; top:20.5cm;">
-<!-- 567 -->* Le système n’a souvent que des sorties...
-<!-- 67 -->* Dans certains cas, il doit réagir à des entrées (ex : télécommande)
-<!-- 7 -->* Il doit exécuter des tâches à des instants précis (ex : matrices multiplexées)
-<!-- 567 --></div>
-</section>
-
-<!-- Page définition, n images-->
-<section>
-<!-- A -->
-<h1 class="en_tete">Définition</h1>
-<div style="font-size:55pt; left:2.65cm; top:5.5cm; width:55cm">
-On appelle interruption, l’arrêt temporaire d’un programme au profit d’un autre programme, jugé à cet instant plus important.
-</div>
-<!-- 23456 --><div style="font-size:55pt; left:2.65cm; top:14.5cm;">
-<!-- 23456 -->Dans la vie courante :
-<!-- 23456 --></div>
-<!-- 3456 --><div style="font-size:55pt; left:2.65cm; top:20.5cm;">
-<!-- 3456 -->* Je suis en train de travailler
-<!-- 456 -->* Le téléphone sonne
-<!-- 56 -->* Je vais répondre au téléphone
-<!-- 6 -->* Après la conversation, je reprends mon travail là où je l’avais laissé.
-<!-- 3456 --></div>
-<!-- 3456 --><img src="./images/dring-allo-g1.png" style="top:11cm; left:30cm; width:27cm;" />
-<!-- 456 --><img src="./images/dring-allo-g2.png" style="top:11cm; left:30cm; width:27cm;" />
-<!-- 56 --><img src="./images/dring-allo-g3.png" style="top:11cm; left:30cm; width:27cm;" />
-<!-- 6 --><img src="./images/dring-allo-g4.png" style="top:11cm; left:30cm; width:27cm;" />
 </section>
 
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Interruption sur une fin de conversion AD</h1>
+<h1 class="en_tete">Le timer A du MSP430</h1>
+<img src="./images/timer-a.jpg" style="top:6cm; left:10cm; width:26.5cm;" />
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Le timer A du MSP430</h1>
+<img src="./images/timer-a1.jpg" style="top:12cm; left:5cm; width:50cm;" />
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Le registre de contrôle</h1>
+<img src="./images/tactl-1.jpg" style="top:6cm; left:6cm; width:43cm;" />
+<img src="./images/tactl-2.jpg" style="top:15.5cm; left:6cm; width:50cm;" />
+</section>
+
+
+<section>
+<h1 class="en_tete">Le registre de contrôle</h1>
+<img src="./images/tactl-1.jpg" style="top:6cm; left:6cm; width:43cm;" />
+<img src="./images/tactl-3.jpg" style="top:15.5cm; left:6cm; width:50cm;" />
+<!-- A -->
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Programme de mise en oeuvre</h1>
 <div style="top:6.5cm; left:1.5cm; width: 56cm; font-size:45pt;">
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines startFrom="14"}
- // Routine d'interruption associée à la fin de conversion ADC
- #pragma vector=ADC10_VECTOR
- __interrupt void ADC10_ISR(void) {
-
-   uint16_t val = ADC10MEM; // lit le résultat de la conversion
-   ADC10CTL0 |= ENC + ADC10SC; // lance la conversion suivante
-
-   if (val > 511) { // La LED verte montre si la valeur dépasse Vcc/2
-     P1OUT |= (1<<6); // LED verte On
-   } else {
-     P1OUT &=~(1<<6); // LED verte Off
-   }
- }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines startFrom="1"}
+int main() {
+  WDTCTL = WDTPW + WDTHOLD; // Watchdog hors service
+  BCSCTL1 = CALBC1_1MHZ;
+  DCOCTL = CALDCO_1MHZ;     // Fréquence CPU
+  P1DIR |= (1<<0); // P1.0 en sortie pour la LED
+  TACTL0 = TASSEL_2 + ID_3 + MC_2;
+  while (1) {               // Boucle infinie
+    if (TACTL0 & TAIFG) {
+      TACTL0 &= ~TAIFG;
+      P1OUT ^= (1<<0);      // Inversion LED
+    }
+  }
+}
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 </div>
 </section>
 
-<!-- Page conclusion, demi-->
+
 <section>
 <!-- A -->
-<h1 class="en_tete">Les timers</h1>
-<div style="font-size:48pt; left:33cm; width:26.0cm; top:7cm;">
-* Principe des interruptions
-* Événements produisant des interruptions (externes ou internes)
-* Mise en œuvre
-* Deux exemples (interruption sur une entrée et sur une fin de conversion)
+<h1 class="en_tete">Les registres de comparaison</h1>
+<img src="./images/timer-a2.jpg" style="top:7cm; left:8cm; width:36cm;" />
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Les registres de comparaison</h1>
+<img src="./images/tacctl-1.jpg" style="top:6cm; left:10cm; width:30cm;" />
+<img src="./images/tacctl-4.jpg" style="top:15.5cm; left:6cm; width:50cm;" />
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Les registres de comparaison</h1>
+<div style="top:6.5cm; left:1.5cm; width: 56cm; font-size:45pt;">
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines startFrom="14"}
+int main() {
+  ...
+  TACCR0 = 62500; // 62500 * 8 us = 500 ms
+  while (1) {     // Boucle infinie
+    if (TACCTL0 & CCIFG) {
+      TACCTL0 &= ~CCIFG;
+      TACCR0 += 62500;
+      P1OUT ^= (1<<0); // Inversion LED
+    }
+  }
+}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 </div>
 </section>
 
 
+<section>
+<!-- A -->
+<h1 class="en_tete">Les interruptions associées aux timers</h1>
+<div style="font-size:48pt; left:2.65cm; width:57.0cm; top:9cm;">
+* Les timers deviennent très intéressant lorsqu'ils sont associés à des interruptions
+<!-- 234 -->* Une interruption peur être générée au dépassement de capacité du compteur
+<!-- 34 -->* Des interruptions peuvent se produire par les registres de comparaison
+<!-- 4 -->* Bien d'autres modes sont disponibles
+</div>
+</section>
 
 
+<section>
+<!-- A -->
+<h1 class="en_tete">L'interruptions de dépassement de capacité</h1>
+<div style="top:5.3cm; left:1.5cm; width: 56cm; font-size:38pt;">
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines startFrom="14"}
+int main() {
+  ...
+  TACTL |= TAIE; // Interruption de l'overflow
+  _BIS_SR (GIE); // Autorisation générale des interruptions
+  while (1) {    // Boucle infinie vide
+  }
+}
+// Timer_A1 Interrupt Vector (TAIV) handler
+#pragma vector=TIMER0_A1_VECTOR
+__interrupt void Timer_A1 (void) {
+  switch (TAIV) {    // discrimination des sources d'interruption
+  case  2:           // CCR1 : not used
+    break;
+  case  4:           // CCR2 : not used
+    break;
+  case 10:           // Overflow
+    P1OUT ^= (1<<0); // Inversion LED
+    break;
+  }
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</div>
+</section>
 
+
+<section>
+<!-- A -->
+<h1 class="en_tete">L'interruption de comparaison</h1>
+<div style="top:6.5cm; left:1.5cm; width: 56cm; font-size:45pt;">
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines startFrom="14"}
+int main() {
+  ...
+  TACCTL0 |= CCIE; // Interruption de la comparaison
+  _BIS_SR (GIE);   // Autorisation générale des interruptions
+  while (1) {      // Boucle infinie vide
+  }
+}
+#pragma vector=TIMER0_A0_VECTOR
+__interrupt void Timer_A0 (void) {
+  CCR0 += 62500;
+  P1OUT ^= (1<<0); // Inversion LED
+}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</div>
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">PWM par interruption</h1>
+<div style="top:5.3cm; left:1.5cm; width: 56cm; font-size:31pt;">
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines startFrom="14"}
+int main() {
+  ...
+  TACTL |= TAIE;   // Interruption de l'overflow
+  TACCTL0 |= CCIE; // Interruption de la comparaison
+  _BIS_SR (GIE);   // Autorisation générale des interruptions
+  while (1) {      // Boucle infinie vide
+  }
+}
+#pragma vector=TIMER0_A1_VECTOR
+__interrupt void Timer_A1 (void) {
+  switch (TAIV) {    // discrimination des sources d'interruption
+  case  2:           // CCR1 : not used
+    break;
+  case  4:           // CCR2 : not used
+    break;
+  case 10:           // Overflow
+    P1OUT |= (1<<0); // Activer le signal au début du cycle
+    break;
+  }
+}
+#pragma vector=TIMER0_A0_VECTOR
+__interrupt void Timer_A0 (void) {
+  P1OUT &=~(1<<0); // Désactiver le signal au moment donné 
+}                  // par le registre de comparaison
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</div>
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Les timers</h1>
+<div style="font-size:48pt; left:33cm; width:25.0cm; top:9cm;">
+* Gestion du temps
+</div>
+<div style="font-size:48pt; left:33cm; width:25.0cm; top:12cm;">
+* Timers, prédivision, logique de gestion 
+</div>
+<div style="font-size:48pt; left:34.5cm; width:25.0cm; top:12.5cm;">
+et registres de comparaison
+</div>
+<div style="font-size:48pt; left:33cm; width:25.0cm; top:17cm;">
+* Mise en œuvre : exemple du MSP430
+</div>
+<div style="font-size:48pt; left:33cm; width:25.0cm; top:20cm;">
+* Interruptions des timers
+</div>
+</section>
 

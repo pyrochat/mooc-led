@@ -113,10 +113,10 @@ Deux sortes d’événements produisant des interruptions :
 </div>
 </section>
 
-<!-- Page Discrimintation, 4 entrées-->
+<!-- Page Discrimination, 4 entrées-->
 <section>
 <!-- A -->
-<h1 class="en_tete">Discrimintation des sources d’interruption</h1>
+<h1 class="en_tete">Discrimination des sources d’interruption</h1>
 <div style="font-size:55pt; left:2.65cm; top:7cm; width:55cm">
 Il y a plusieurs sources d’interruptions sur un microcontrôleur
 

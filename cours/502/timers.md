@@ -13,7 +13,15 @@ Dans le chapitre sur la modulation de largeur d’impulsion (PWM), nous avions p
 
 ![Compteur générant du PWM](images/compteur-pwm-300dpi.png "Compteur générant du PWM"){ width=47% }
 
-Ce montage est basé sur un compteur binaire, qu’on appelle aussi un *diviseur de fréquence*. Rappelons qu’à chaque flanc montant de l’horloge, le compteur passe à la valeur binaire suivante. On peut observer que lorsqu’un signal de fréquence fixe F~0~ est placé sur l’entrée, les sorties successives prennent des fréquences sous-multiples : la fréquence est divisée par `2`, par `4`, par `8`, etc.
+Ce montage est basé sur un compteur binaire, qu’on appelle aussi un *diviseur de fréquence*. Rappelons qu’à chaque flanc montant de l’horloge, le compteur passe à la valeur binaire suivante.
+
+![Diviseur par 2](images/div2-150dpi.png "Diviseur par 2"){ width=80% }
+
+En ajoutant bout à bout plusieurs diviseurs par 2, on obtient un compteur binaire :
+
+![Compteur binaire](images/div2n-150dpi.png "Compteur par 2"){ width=50% }
+
+On peut observer que lorsqu’un signal de fréquence fixe F~0~ est placé sur l’entrée, les sorties successives prennent des fréquences sous-multiples : la fréquence est divisée par `2`, par `4`, par `8`, etc.
 
 ![Chronogramme d’un compteur binaire](images/chrono-compteur-150dpi.png "Chronogramme d’un compteur binaire"){ width=50% }
 
@@ -118,7 +126,7 @@ Il commence comme toujours par l’instruction de mise hors service du compteur 
 int main() {
   WDTCTL = WDTPW + WDTHOLD; // Watchdog hors service
   BCSCTL1 = CALBC1_1MHZ;
-  DCOCTL = CALDCO_1MHZ; // Fréquence CPU
+  DCOCTL = CALDCO_1MHZ;     // Fréquence CPU
   P1DIR |= (1<<0); // P1.0 en sortie pour la LED
   TACTL0 = TASSEL_2 + ID_3 + MC_2;
   while (1) { // Boucle infinie
@@ -154,7 +162,7 @@ Modifions notre programme de la manière suivante :
 int main() {
   ...
   TACCR0 = 62500; // 62500 * 8 us = 500 ms
-  while (1) { // Boucle infinie
+  while (1) {     // Boucle infinie
     if (TACCTL0 & CCIFG) {
       TACCTL0 &= ~CCIFG;
       TACCR0 += 62500;
@@ -182,20 +190,20 @@ int main() {
   ...
   TACTL |= TAIE; // Interruption de l'overflow
   _BIS_SR (GIE); // Autorisation générale des interruptions
-  while (1) { // Boucle infinie vide
+  while (1) {    // Boucle infinie vide
   }
 }
 
 // Timer_A1 Interrupt Vector (TAIV) handler
 #pragma vector=TIMER0_A1_VECTOR
 __interrupt void Timer_A1 (void) {
-  switch (TAIV) {
-  case  2: // CCR1 : not used
+  switch (TAIV) {    // discrimination des sources d'interruption
+  case  2:           // CCR1 : not used
     break;
-  case  4: // CCR2 : not used
+  case  4:           // CCR2 : not used
     break;
-  case 10: // Overflow
-    Led1Toggle;
+  case 10:           // Overflow
+    P1OUT ^= (1<<0); // Inversion LED
     break;
   }
 }
@@ -216,17 +224,53 @@ De même, une interruption peut être associée à chaque registre de comparaiso
 int main() {
   ...
   TACCTL0 |= CCIE; // Interruption de la comparaison
-  _BIS_SR (GIE); // Autorisation générale des interruptions
-  while (1) { // Boucle infinie vide
+  _BIS_SR (GIE);   // Autorisation générale des interruptions
+  while (1) {      // Boucle infinie vide
   }
 }
+
 #pragma vector=TIMER0_A0_VECTOR
 __interrupt void Timer_A0 (void) {
   CCR0 += 62500;
   P1OUT ^= (1<<0); // Inversion LED
 }
-
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
+
+## PWM par interruption ##
+
+En combinant les interruptions du dépassement de capacité et de la comparaison, on peut produire un signal PWM sur n'importe quelle broche du microcontrôleur :
+
+~~~~~~~ { .c }
+
+int main() {
+  ...
+  TACTL |= TAIE;   // Interruption de l'overflow
+  TACCTL0 |= CCIE; // Interruption de la comparaison
+  _BIS_SR (GIE);   // Autorisation générale des interruptions
+  while (1) {      // Boucle infinie vide
+  }
+}
+
+#pragma vector=TIMER0_A1_VECTOR
+__interrupt void Timer_A1 (void) {
+  switch (TAIV) {    // discrimination des sources d'interruption
+  case  2:           // CCR1 : not used
+    break;
+  case  4:           // CCR2 : not used
+    break;
+  case 10:           // Overflow
+    P1OUT |= (1<<0); // Activer le signal au début du cycle
+    break;
+  }
+}
+
+#pragma vector=TIMER0_A0_VECTOR
+__interrupt void Timer_A0 (void) {
+  P1OUT &=~(1<<0); // Désactiver le signal au moment donné par le registre de comparaison
+}
+~~~~~~~
+<!-- retour au mode normal pour l'éditeur -->
+
 
 Les timers offrent de très nombreuses possibilités. L’étude détaillée de la documentation peut prendre du temps. De nombreux exemples sont fournis par les fabricants pour en illustrer les divers usages.

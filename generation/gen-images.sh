@@ -245,7 +245,10 @@ inkscape -z -C images/dring-allo.svg -e=images/dring-allo-g4.png -i g4 -j -d=90
 cd $CUR_DIR/../cours/502/
 inkscape -z -C images/compteur-pwm.svg -e=images/compteur-pwm-300dpi.png -d=300
 inkscape -z -C images/timer-base.svg -e=images/timer-base-300dpi.png -d=300
-inkscape -z -C images/chrono-compteur.svg -e=images/chrono-compteur-150dpi.png -d=150
+inkscape -z -C images/timer-base.svg -e=images/timer-base-150dpi.png -d=150
+inkscape -z -C images/div2.svg -e=images/div2-150dpi.png -d=150
+inkscape -z -C images/div2n.svg -e=images/div2n-150dpi.png -d=150
+inkscape -z -C images/chrono-compteur.svg -e=images/chrono-compteur-300dpi.png -d=300
 
 inkscape -z -C images/pre-div.svg -e=images/pre-div-300dpi.png -d=300
 inkscape -z -C images/logique-timer.svg -e=images/logique-timer-300dpi.png -d=300

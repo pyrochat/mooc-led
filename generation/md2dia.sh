@@ -161,7 +161,7 @@ else
     CODE=`echo $CODE`
     echo "CODE = $CODE"
     MD2DIA-NORMAL
-    OPENPDF
+    # OPENPDF
     # MD2DIA-COMPACT
     # OPENPDF
 fi

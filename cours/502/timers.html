@@ -60,7 +60,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <img src="images/compteur-pwm-300dpi.png" title="Compteur générant du PWM" alt="Compteur générant du PWM" style="width:47.0%" />
 <p class="caption">Compteur générant du PWM</p>
 </div>
-<p>Ce montage est basé sur un compteur binaire, qu’on appelle aussi un <em>diviseur de fréquence</em>. Rappelons qu’à chaque flanc montant de l’horloge, le compteur passe à la valeur binaire suivante. On peut observer que lorsqu’un signal de fréquence fixe F<sub>0</sub> est placé sur l’entrée, les sorties successives prennent des fréquences sous-multiples : la fréquence est divisée par <code>2</code>, par <code>4</code>, par <code>8</code>, etc.</p>
+<p>Ce montage est basé sur un compteur binaire, qu’on appelle aussi un <em>diviseur de fréquence</em>. Rappelons qu’à chaque flanc montant de l’horloge, le compteur passe à la valeur binaire suivante.</p>
+<div class="figure">
+<img src="images/div2-150dpi.png" title="Diviseur par 2" alt="Diviseur par 2" style="width:80.0%" />
+<p class="caption">Diviseur par 2</p>
+</div>
+<p>En ajoutant bout à bout plusieurs diviseurs par 2, on obtient un compteur binaire :</p>
+<div class="figure">
+<img src="images/div2n-150dpi.png" title="Compteur par 2" alt="Compteur binaire" style="width:50.0%" />
+<p class="caption">Compteur binaire</p>
+</div>
+<p>On peut observer que lorsqu’un signal de fréquence fixe F<sub>0</sub> est placé sur l’entrée, les sorties successives prennent des fréquences sous-multiples : la fréquence est divisée par <code>2</code>, par <code>4</code>, par <code>8</code>, etc.</p>
 <div class="figure">
 <img src="images/chrono-compteur-150dpi.png" title="Chronogramme d’un compteur binaire" alt="Chronogramme d’un compteur binaire" style="width:50.0%" />
 <p class="caption">Chronogramme d’un compteur binaire</p>
@@ -142,12 +152,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
   WDTCTL = WDTPW + WDTHOLD; <span class="co">// Watchdog hors service</span>
   BCSCTL1 = CALBC1_1MHZ;
-  DCOCTL = CALDCO_1MHZ; <span class="co">// Fréquence CPU</span>
+  DCOCTL = CALDCO_1MHZ;     <span class="co">// Fréquence CPU</span>
   P1DIR |= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// P1.0 en sortie pour la LED</span>
   TACTL0 = TASSEL_2 + ID_3 + MC_2;
   <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// Boucle infinie</span>
     <span class="kw">if</span> (TACTL0 &amp; TAIFG) {
-      TACTL0 &amp;=~TAIFG;
+      TACTL0 &amp;= ~TAIFG;
       P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Inversion LED</span>
     }
   }
@@ -167,11 +177,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
   ...
   TACCR0 = <span class="dv">62500</span>; <span class="co">// 62500 * 8 us = 500 ms</span>
-  <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// Boucle infinie</span>
+  <span class="kw">while</span> (<span class="dv">1</span>) {     <span class="co">// Boucle infinie</span>
     <span class="kw">if</span> (TACCTL0 &amp; CCIFG) {
-      TACCTL0 &amp;=~CCIFG;
+      TACCTL0 &amp;= ~CCIFG;
       TACCR0 += <span class="dv">62500</span>;
-      P1OUT ^⁼ (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Inversion LED</span>
+      P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Inversion LED</span>
     }
   }
 }</code></pre></div>
@@ -184,20 +194,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   ...
   TACTL |= TAIE; <span class="co">// Interruption de l&#39;overflow</span>
   _BIS_SR (GIE); <span class="co">// Autorisation générale des interruptions</span>
-  <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// Boucle infinie vide</span>
+  <span class="kw">while</span> (<span class="dv">1</span>) {    <span class="co">// Boucle infinie vide</span>
   }
 }
 
 <span class="co">// Timer_A1 Interrupt Vector (TAIV) handler</span>
 <span class="ot">#pragma vector=TIMER0_A1_VECTOR</span>
 __interrupt <span class="dt">void</span> Timer_A1 (<span class="dt">void</span>) {
-  <span class="kw">switch</span> (TAIV) {
-  <span class="kw">case</span>  <span class="dv">2</span>: <span class="co">// CCR1 : not used</span>
+  <span class="kw">switch</span> (TAIV) {    <span class="co">// discrimination des sources d&#39;interruption</span>
+  <span class="kw">case</span>  <span class="dv">2</span>:           <span class="co">// CCR1 : not used</span>
     <span class="kw">break</span>;
-  <span class="kw">case</span>  <span class="dv">4</span>: <span class="co">// CCR2 : not used</span>
+  <span class="kw">case</span>  <span class="dv">4</span>:           <span class="co">// CCR2 : not used</span>
     <span class="kw">break</span>;
-  <span class="kw">case</span> <span class="dv">10</span>: <span class="co">// Overflow</span>
-    Led1Toggle;
+  <span class="kw">case</span> <span class="dv">10</span>:           <span class="co">// Overflow</span>
+    P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Inversion LED</span>
     <span class="kw">break</span>;
   }
 }</code></pre></div>
@@ -209,14 +219,45 @@ __interrupt <span class="dt">void</span> Timer_A1 (<span class="dt">void</span>)
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main() {
   ...
   TACCTL0 |= CCIE; <span class="co">// Interruption de la comparaison</span>
-  _BIS_SR (GIE); <span class="co">// Autorisation générale des interruptions</span>
-  <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// Boucle infinie vide</span>
+  _BIS_SR (GIE);   <span class="co">// Autorisation générale des interruptions</span>
+  <span class="kw">while</span> (<span class="dv">1</span>) {      <span class="co">// Boucle infinie vide</span>
   }
 }
+
 <span class="ot">#pragma vector=TIMER0_A0_VECTOR</span>
 __interrupt <span class="dt">void</span> Timer_A0 (<span class="dt">void</span>) {
   CCR0 += <span class="dv">62500</span>;
   P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Inversion LED</span>
+}</code></pre></div>
+<!-- retour au mode normal pour l'éditeur -->
+<h2 id="pwm-par-interruption">PWM par interruption</h2>
+<p>En combinant les interruptions du dépassement de capacité et de la comparaison, on peut produire un signal PWM sur n'importe quelle broche du microcontrôleur :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">
+<span class="dt">int</span> main() {
+  ...
+  TACTL |= TAIE;   <span class="co">// Interruption de l&#39;overflow</span>
+  TACCTL0 |= CCIE; <span class="co">// Interruption de la comparaison</span>
+  _BIS_SR (GIE);   <span class="co">// Autorisation générale des interruptions</span>
+  <span class="kw">while</span> (<span class="dv">1</span>) {      <span class="co">// Boucle infinie vide</span>
+  }
+}
+
+<span class="ot">#pragma vector=TIMER0_A1_VECTOR</span>
+__interrupt <span class="dt">void</span> Timer_A1 (<span class="dt">void</span>) {
+  <span class="kw">switch</span> (TAIV) {    <span class="co">// discrimination des sources d&#39;interruption</span>
+  <span class="kw">case</span>  <span class="dv">2</span>:           <span class="co">// CCR1 : not used</span>
+    <span class="kw">break</span>;
+  <span class="kw">case</span>  <span class="dv">4</span>:           <span class="co">// CCR2 : not used</span>
+    <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="dv">10</span>:           <span class="co">// Overflow</span>
+    P1OUT |= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Activer le signal au début du cycle</span>
+    <span class="kw">break</span>;
+  }
+}
+
+<span class="ot">#pragma vector=TIMER0_A0_VECTOR</span>
+__interrupt <span class="dt">void</span> Timer_A0 (<span class="dt">void</span>) {
+  P1OUT &amp;=~(<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); <span class="co">// Désactiver le signal au moment donné par le registre de comparaison</span>
 }</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
 <p>Les timers offrent de très nombreuses possibilités. L’étude détaillée de la documentation peut prendre du temps. De nombreux exemples sont fournis par les fabricants pour en illustrer les divers usages.</p>

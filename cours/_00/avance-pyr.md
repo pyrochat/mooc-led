@@ -6,13 +6,13 @@
 2.4 C D V  Enseignes à motifs fixes
 
 3.2 c      Entrées-sorties
-3.3 C D V  PWM : modulation de largeur d'impulsion
+3.3 C D V  PWM : modulation de largeur d’impulsion
 3.4 C D V  Le multiplexage temporel
 3.5 C D V  Registre d’extension série-parallèle
 3.6 c      Montages électroniques
 
 4.1 C D    Les afficheurs matriciels
-4.2 c      BCM : la modulation codée binaire
+4.2 c      BCM : la modulation codée binaire
 4.3 C D V  Mémoires permanentes
 
 5.3        Programmation multi-tâche

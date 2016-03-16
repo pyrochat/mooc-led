@@ -17,7 +17,7 @@ Ce montage est basé sur un compteur binaire, qu’on appelle aussi un *diviseur
 
 ![Diviseur par 2](images/div2-150dpi.png "Diviseur par 2"){ width=80% }
 
-En ajoutant bout à bout plusieurs diviseurs par 2, on obtient un compteur binaire :
+En ajoutant bout à bout plusieurs diviseurs par 2, on obtient un compteur binaire :
 
 ![Compteur binaire](images/div2n-150dpi.png "Compteur par 2"){ width=50% }
 
@@ -37,7 +37,7 @@ La figure ci-dessous généralise ce concept :
 
 On y trouve :
 
-* Un **compteur binaire**. Il peut être de 8 bits, 16 bits, parfois même de 32 bits. C’est le timer proprement dit.
+* Un **compteur binaire**. Il peut être de 8 bits, 16 bits, parfois même de 32 bits. C’est le timer proprement dit.
 * Une **horloge**, c’est-à-dire un oscillateur (OSC). Il s’agit généralement de l’horloge également utilisée pour le processeur.
 * Un système de **choix de l’horloge et du prédiviseur**, qui permet de choisir une fréquence d’horloge bien adaptée au problème à résoudre.
 * Une logique de **comparaison**, par exemple pour tester l’égalité.
@@ -78,9 +78,9 @@ Un comparateur d’égalité est placé entre le timer et un registre dont il es
 
 Quelques années après l’apparition des premiers microprocesseurs, des circuits spécialisés incorporants des timers sont apparus sur le marché. C’est le cas du très célèbre 8253 d’Intel, datant de 1981, dont on trouve encore des descendants dans les PC modernes.
 
-Les microcontrôleurs ont eux aussi très vite été complétés par des timers, comme le célèbre PIC16x84, qui incluait déjà un unique compteur 8 bits très simple, mais très utile.
+Les microcontrôleurs ont eux aussi très vite été complétés par des timers, comme le célèbre PIC16x84, qui incluait déjà un unique compteur 8 bits très simple, mais très utile.
 
-Les microcontrôleurs ARM ont tous plusieurs timers. L’ATmega328, connu pour équiper les Arduino, a trois timers, le TIMER 0 de 8 bits, le TIMER 1 de 16 bits et le TIMER 2 de 8 bits, mais différent du TIMER 0. Ces timers sont riches en fonctionnalités permettant de nombreuses applications.
+Les microcontrôleurs ARM ont tous plusieurs timers. L’ATmega328, connu pour équiper les Arduino, a trois timers, le TIMER 0 de 8 bits, le TIMER 1 de 16 bits et le TIMER 2 de 8 bits, mais différent du TIMER 0. Ces timers sont riches en fonctionnalités permettant de nombreuses applications.
 
 Les microcontrôleurs plus modernes ont souvent des timers très complexes. Dans les familles de microcontrôleurs ARM, les timers diffèrent d’un fabricant à l’autre : cette partie du microcontrôleur est propriétaire, elle n’est pas développée par la société ARM.
 
@@ -98,7 +98,7 @@ La figure ci-dessous donne la vue d’ensemble du TIMER A :
 
 ![TIMER A du MSP430](images/timer-a.jpg "TIMER A du MSP430"){ width=68% }
 
-Ce schéma n’est pas simple, mais il est clair et complet. On y trouve un compteur 16 bits appelé TAR. Il est possible à tout moment de lire sa valeur. Il est aussi possible d’écrire une nouvelle valeur, mais nous n’utiliserons pas cette possibilité ici.
+Ce schéma n’est pas simple, mais il est clair et complet. On y trouve un compteur 16 bits appelé TAR. Il est possible à tout moment de lire sa valeur. Il est aussi possible d’écrire une nouvelle valeur, mais nous n’utiliserons pas cette possibilité ici.
 
 Ce compteur reçoit un signal d’horloge qu’il est possible de sélectionner parmi plusieurs sources. Un prédiviseur peut être utilisé, qui donne le choix entre la fréquence d’origine et des divisions par `2`, `4` ou `8`. Le compteur peut compter selon plusieurs modes.
 
@@ -141,7 +141,7 @@ int main() {
 
 Comment fonctionne la boucle principale ? Chaque fois que le fanion TAIFG passe à `1`, l’alimentation de la LED est inversée. Le fanion TAIF (qui se trouve aussi dans le registre TACTL) signale un dépassement de capacité, c’est-à-dire le retour à zéro du compteur. Il doit être remis à zéro en vue du prochain cycle.
 Calculons la période de clignotement : l’horloge de 1 MHz est divisée par `8` par le prédiviseur. Le timer est donc commandé à une fréquence de 125 kHz ce qui correspond à une période de 8 µs.
-Le timer a 16 bits, il va donc faire un cycle complet en 65’536 coups d’horloge, soit environ 524 ms.
+Le timer a 16 bits, il va donc faire un cycle complet en 65’536 coups d’horloge, soit environ 524 ms.
 
 
 ## Les registres de comparaison ##
@@ -174,7 +174,7 @@ int main() {
 <!-- retour au mode normal pour l'éditeur -->
 
 Au début du programme, le registre de comparaison a été initialisé à 62’500, une valeur qui correspond à une demi-seconde dans notre cas : `62’500 × 8 µs = 500 ms`.
-Une fois cette valeur atteinte, il faut ajouter 62’500 à la valeur courant du registre de comparaison. On va dépasser la capacité du registre, qui a 16 bits. On obtiendra :
+Une fois cette valeur atteinte, il faut ajouter 62’500 à la valeur courant du registre de comparaison. On va dépasser la capacité du registre, qui a 16 bits. On obtiendra :
 `(62’500 + 62’500) % 65’536 = 59’464` où le signe `%` représente l’opération de modulo, c’est-à-dire le reste de la division entière.
 Mais comme le timer augmente toujours et qu’il a lui aussi 16 bits, cette valeur est effectivement la bonne pour la prochaine comparaison.
 
@@ -239,7 +239,7 @@ __interrupt void Timer_A0 (void) {
 
 ## PWM par interruption ##
 
-En combinant les interruptions du dépassement de capacité et de la comparaison, on peut produire un signal PWM sur n'importe quelle broche du microcontrôleur :
+En combinant les interruptions du dépassement de capacité et de la comparaison, on peut produire un signal PWM sur n’importe quelle broche du microcontrôleur :
 
 ~~~~~~~ { .c }
 

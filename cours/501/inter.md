@@ -2,7 +2,7 @@
 % [Yves Tiecoura](mailto:tiecouray@yahoo.fr), INP-HB Yamoussoukro
 % rév 2015/12/13
 
-Version provisoire. Nous travaillons sur ce document, mais les remarques sont les bienvenues !
+Version provisoire. Nous travaillons sur ce document, mais les remarques sont les bienvenues !
 
 ## Motivation ##
 
@@ -10,12 +10,12 @@ Un système à microcontrôleur est généralement pourvu d’entrées et de sor
 
 Les enseignes et afficheurs à LED sont plutôt une exception dans ce domaine. Beaucoup d’enseignes ou d’afficheurs n’ont aucune entrée et ne font que faire évoluer les sorties selon un ordre prédéfini.
 
-Il existe toutefois des cas où une enseigne ou un afficheur doit réagir à des entrées. Par exemple, une télécommande peut être utilisée pour allumer et éteindre un afficheur, changer sa luminosité ou le texte qu’il doit afficher. Un autre cas où le système doit réagir à un événement est la gestion du temps dans un afficheur multiplexé : à des instants précis, il faut envoyer de nouvelles valeurs sur les LED.
+Il existe toutefois des cas où une enseigne ou un afficheur doit réagir à des entrées. Par exemple, une télécommande peut être utilisée pour allumer et éteindre un afficheur, changer sa luminosité ou le texte qu’il doit afficher. Un autre cas où le système doit réagir à un événement est la gestion du temps dans un afficheur multiplexé : à des instants précis, il faut envoyer de nouvelles valeurs sur les LED.
 
 
 ## Définition ##
 
-On appelle **interruption** dans un système informatique l’arrêt temporaire d’un programme au profit d’un autre programme, jugé à cet instant plus important. L’interruption correspond au sens qu’on donne à ce mot dans nos vies courantes. Prenons un exemple : je suis en train de travailler à mon bureau. Le téléphone sonne. Je vais répondre au téléphone. Après la conversation, je reprends mon travail là où je l’avais laissé.
+On appelle **interruption** dans un système informatique l’arrêt temporaire d’un programme au profit d’un autre programme, jugé à cet instant plus important. L’interruption correspond au sens qu’on donne à ce mot dans nos vies courantes. Prenons un exemple : je suis en train de travailler à mon bureau. Le téléphone sonne. Je vais répondre au téléphone. Après la conversation, je reprends mon travail là où je l’avais laissé.
 
 ![Interruption dans la vie courante](images/dring-allo-90dpi.png "Interruption dans la vie courante"){ width=14cm }
 
@@ -44,7 +44,7 @@ La routine d’interruption se termine aussi par une instruction de retour, appe
 
 ## Nature des événements ##
 
-Quels sont ces événements qui vont produire une interruption ? Il en existe principalement deux sortes :
+Quels sont ces événements qui vont produire une interruption ? Il en existe principalement deux sortes :
 
 * Les événements **extérieurs** au microcontrôleur. Il s’agit par exemple d’un changement sur une entrée.
 * Les événements **intérieurs** au microcontrôleur. Par exemple, beaucoup de microcontrôleurs sont pourvus d’un convertisseur analogique-numérique (*ADC = Analog to Digital Converter*). La conversion est déclenchée par un fanion et dure un certain temps. Plutôt que d’attendre la fin de la conversion, le programme principal peut continuer, puis être interrompu au moment de la fin de la conversion.
@@ -56,11 +56,13 @@ Dans cette catégorie des interruptions intérieures au microcontrôleur, les pl
 
 Il existe généralement plusieurs sources interruptions sur un microcontrôleur. Lorsqu’une interruption se produit, le système doit être capable d’en savoir la source. Si rien n’est prévu au niveau matériel, la routine d’interruption doit consulter les registres pour chaque interruption, pour connaître celle qui a été activée.
 
-Les **vecteurs d’interruption** (*interrupt vectors*) permettent d’être plus efficace : une adresse différente est réservée pour le début de la routine de chaque interruption.
+Les **vecteurs d’interruption** (*interrupt vectors*) permettent d’être plus efficace : une adresse différente est réservée pour le début de la routine de chaque interruption.
 
 Souvent ces deux mécanismes vont être utilisés successivement, comme nous le verrons plus bas lors d’une interruption produite par une entrée sur un MSP430.
 
-Voici la table résumée des vecteurs d’interruption pour un MSP430G, y compris l’adresse pour le Reset :
+Voici la table résumée des vecteurs d’interruption pour un MSP430G, y compris l’adresse pour le Reset :
+
+<!-- NJD ⇒ Transformer cette liste en tableau ??? -->
 
 * 0xFFFE : Reset
 * 0xFFFC : NMI
@@ -77,13 +79,13 @@ Voici la table résumée des vecteurs d’interruption pour un MSP430G, y compri
 * 0xFFE6 : Port P2
 * 0xFFE4 : Port P1
 
-Les adresses se trouvent en mémoire flash, ce sont les dernières adresses de l’espace d’adressage de 16 bits.
+Les adresses se trouvent en mémoire flash, ce sont les dernières adresses de l’espace d’adressage de 16 bits.
 
-Plusieurs sources d’interruptions nécessitent la scrutation pour déterminer la cause exacte de l’interruption. C’est le cas par exemple des interruptions sur les ports : chaque bit peut produire une interruption. C’est aussi le cas d’une des interruptions des Timers : les registre de comparaison 1 et 2, ainsi que l’interruption générale du Timer sont regroupés sur un vecteur unique.
+Plusieurs sources d’interruptions nécessitent la scrutation pour déterminer la cause exacte de l’interruption. C’est le cas par exemple des interruptions sur les ports : chaque bit peut produire une interruption. C’est aussi le cas d’une des interruptions des Timers : les registre de comparaison 1 et 2, ainsi que l’interruption générale du Timer sont regroupés sur un vecteur unique.
 
 ## Mise en œuvre d’une interruption  ##
 
-Plusieurs étapes sont nécessaire pour mettre en œuvre une routine d’interruption :
+Plusieurs étapes sont nécessaire pour mettre en œuvre une routine d’interruption :
 
 1. Enclencher l’interruption qui nous intéresse. Par exemple une interruption sur une entrée.
 1. Préciser comment cette interruption doit fonctionner. Par exemple dire sur quel flanc l’interruption doit se produire.
@@ -93,7 +95,7 @@ Le schéma logique ci-dessous montre la logique qui permet de générer les inte
 
 ![Logique de génération des interruptions](images/decodage-inter.png "Logique de génération des interruptions"){ width=17cm }
 
-On y trouve :
+On y trouve :
 
 * la logique qui permet de saisir un événement
 * les fanions qui règlent la manière dont l’événement est décodé
@@ -120,18 +122,18 @@ La première ligne indique au compilateur à quel vecteur d’interruption la ro
 
 ## Interruption produite par une entrée ##
 
-Sur les microcontrôleurs MSP430, plusieurs registres permettent de définir la manière dont une broche d’entrée-sortie est utilisée. Ils sont associés à un Port, composé de 8 broches. Sur le MSP430G2553 du Launchpad, deux ports sont disponibles : P1 et P2. On connaît déjà les registres suivant :
+Sur les microcontrôleurs MSP430, plusieurs registres permettent de définir la manière dont une broche d’entrée-sortie est utilisée. Ils sont associés à un Port, composé de 8 broches. Sur le MSP430G2553 du Launchpad, deux ports sont disponibles : P1 et P2. On connaît déjà les registres suivant :
 
-* **`P1DIR`** : détermine le rôle de la broche (entrée ou sortie)
-* **`P1OUT`** : donne la valeur pour les broches de sortie
-* **`P1IN`** : permet de lire la valeur des entrées
-* **`P1REN`** : permet d’enclencher une résistance de tirage (pull-up ou pull-down, selon l’état de bit de P1OUT correspondant
+* **`P1DIR`** : détermine le rôle de la broche (entrée ou sortie)
+* **`P1OUT`** : donne la valeur pour les broches de sortie
+* **`P1IN`** : permet de lire la valeur des entrées
+* **`P1REN`** : permet d’enclencher une résistance de tirage (pull-up ou pull-down, selon l’état de bit de P1OUT correspondant
 
-Pour mettre en œuvre les interruptions sur des broches du port P1, trois registres supplémentaires sont disponibles :
+Pour mettre en œuvre les interruptions sur des broches du port P1, trois registres supplémentaires sont disponibles :
 
-* **`P1IE`** : (*Interrupt Enable*) permet l’enclenchement de l’interruption pour chaque bit. L’usage habituel est d’écrire dans ce registre pour choisir quels bits vont causer une interruption.
-* **`P1IES`** : (*Interrupt Edge Select*) permet de choisir pour chaque bit le flanc qui va produire l’interruption. Lorsque le bit est à 0, l’interruption va se produire lors d’une transition de 0 vers 1 (*low-to-high transition*). L’usage habituel est d’écrire dans ce registre pour choisir quel flanc va causer une interruption, pour chaque bit.
-* **`P1IFG`** : (*Interrupt FlaG*) les **fanions d’interruption**. Lorsque qu’un transition telle qu’elle est spécifiée dans un bit de `P1E`, le bit correspondant s’active dans P1IFG. C’est son activation qui produit l’interruption elle-même.
+* **`P1IE`** : (*Interrupt Enable*) permet l’enclenchement de l’interruption pour chaque bit. L’usage habituel est d’écrire dans ce registre pour choisir quels bits vont causer une interruption.
+* **`P1IES`** : (*Interrupt Edge Select*) permet de choisir pour chaque bit le flanc qui va produire l’interruption. Lorsque le bit est à 0, l’interruption va se produire lors d’une transition de 0 vers 1 (*low-to-high transition*). L’usage habituel est d’écrire dans ce registre pour choisir quel flanc va causer une interruption, pour chaque bit.
+* **`P1IFG`** : (*Interrupt FlaG*) les **fanions d’interruption**. Lorsque qu’un transition telle qu’elle est spécifiée dans un bit de `P1E`, le bit correspondant s’active dans P1IFG. C’est son activation qui produit l’interruption elle-même.
 
 Voici un programme qui met en œuvre une interruption sur l’entrée `P1.3` (le poussoir du Launchpad) et qui change d’état `P1.6` (la LED verte) à chaque flanc descendant.
 
@@ -160,7 +162,7 @@ __interrupt void Port1_ISR(void) {
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
 
-La première remarque, c’est que la boucle principale `while(1)...` ne fait rien ! En plus des initialisations classique des entrées et des sorties, trois instructions ont été ajoutées, correspondant aux étapes de mise en œuvre d’une interruption :
+La première remarque, c’est que la boucle principale `while(1)...` ne fait rien ! En plus des initialisations classique des entrées et des sorties, trois instructions ont été ajoutées, correspondant aux étapes de mise en œuvre d’une interruption :
 
 * L’activation d’un bit dans `P1IES` sélectionne le flanc descendant
 * L’activation d’un bit dans `P1IE` autorise l’interruption sur l’entrée `P1.3`
@@ -174,7 +176,7 @@ La routine d’interruption a été placée à la suite du programme principal, 
 
 Dans notre exemple, seul le bit 3 est concerné par les interruptions. Dans la routine d’interruption, il n’y a donc pas besoin de regarder quel bit a produit l’interruption et c’est systématiquement le fanion 3 qui est remis à 0.
 
-Lorsque l’interruption peut provenir de plusieurs entrées, il est alors nécessaire de scruter le registre pour connaître le bit qui a causé l’interruption, comme le montre cet exemple :
+Lorsque l’interruption peut provenir de plusieurs entrées, il est alors nécessaire de scruter le registre pour connaître le bit qui a causé l’interruption, comme le montre cet exemple :
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
 int main() {

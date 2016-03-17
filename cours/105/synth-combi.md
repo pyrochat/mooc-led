@@ -8,7 +8,7 @@
 
 ## Système combinatoire ##
 
-C’est un système où chacune des sorties est une combinaison logique des entrées à l’instant seulement. 
+C’est un système où chacune des sorties est une combinaison logique des entrées à l’instant seulement.
 Une sortie ne dépend que des combinaisons d’entrée. Pour une combinaison des variables d’entrée, l’état de la sortie est unique.
 
 ![Figure : Système combinatoire](images/systeme-combinatoire.png "Système combinatoire")
@@ -24,7 +24,7 @@ La méthodologie de synthèse des circuits combinatoires se fait en en plusieurs
 * Simplification et établissement de logigramme
 * Prototypage d’essai et réalisation finale
 
-A partir d’un cahier des charges, il faut analyser le problème pour une bonne compréhension permettant sa traduction en circuit logique. 
+A partir d’un cahier des charges, il faut analyser le problème pour une bonne compréhension permettant sa traduction en circuit logique.
 L’étude du cahier des charges permet d’identifier les variables du système (entrée, sortie). Lorsque le nombre de variables est faible, on peut utiliser directement la table de vérité. Dans le cas contraire le circuit est décomposé en différents blocs fonctionnels que l’on peut étudier séparément. Dans tous les cas il est nécessaire d’établir la ou les fonctions logiques et éventuellement procéder à leur simplifications avant d’envisager le prototype et la réalisation finale.
 
 
@@ -41,7 +41,7 @@ Le principe consiste à :
 * Réplication de termes existants
 * Suppression de termes superflus
 
-Exemple :  
+Exemple :
 ![](images/exemple-synthese1.png "Exemple de simplification ")
 
 En factorisant et en utilisant les propriétés de BOOLE on a :
@@ -57,10 +57,10 @@ Simplification : Pour exprimer la sortie S:
 
 * Effectuer des groupements de cases adjacentes successivement contenant des 1.
 * La taille d’un groupe est une puissance de 2^k^     (8,4,2,1...). On cherche toujours le groupement maximal.
-* Le résultat d’un groupement est le produit des variables constantes (qui ne changent pas). 
+* Le résultat d’un groupement est le produit des variables constantes (qui ne changent pas).
 * Le résultat final est la somme des résultats  des groupements.
 * Une même case peut appartenir à deux groupements différents.
- 
+
 Exemple:
 Considérons l’exemple de la table de vérité suivante :
 
@@ -68,7 +68,7 @@ Considérons l’exemple de la table de vérité suivante :
 
 ![](images/simplification-expression.png "Simplification Expression ")
 
-Tableau de Karnaugh 
+Tableau de Karnaugh
 
 ![](images/table-Karnaugh.png "Tableau de Karnaugh ")
 
@@ -118,7 +118,7 @@ Chaque afficheur alimente ses 7 segments (leds) en fonction du code binaire à l
 
 #### Table de vérité du Décodeur 7 Segments en décimal ####
 
-Avec les 4 variables d’entrée on a 24 soit 16 cases dans la table de vérité mais nous n’avons besoin que des dix premières valeurs (0 à 9). Il y a donc 6 valeurs à éliminer 10, 11, 12,13,14 et 15. On mettre un x  (x = 0 ou 1) au niveau des sorties pour ces différentes valeurs. 
+Avec les 4 variables d’entrée on a 24 soit 16 cases dans la table de vérité mais nous n’avons besoin que des dix premières valeurs (0 à 9). Il y a donc 6 valeurs à éliminer 10, 11, 12,13,14 et 15. On mettre un x  (x = 0 ou 1) au niveau des sorties pour ces différentes valeurs.
 
 ![](images/table-verite-decodeur.png "Decodeur 7 segment")
 

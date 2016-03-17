@@ -3,28 +3,28 @@ Langage interprété spécialisé
 
 Introduction
 
-Animer une enseigne à LED consiste en une suite d'opérations sur les groupes LED. Animer un afficheur matriciel consiste aussi à envoyer des séquences graphiques. Dans les deux cas, une jolie animation ne se limitera pas à quelques étapes, mais pourra vite devenir longue. Les programmes correspondant vont donc avoir tendance à devenir longs, ce qui va rendre leur lecture fastidieuse et qui risque aussi de remplir rapidement la mémoire du microcontrôleur.
+Animer une enseigne à LED consiste en une suite d’opérations sur les groupes LED. Animer un afficheur matriciel consiste aussi à envoyer des séquences graphiques. Dans les deux cas, une jolie animation ne se limitera pas à quelques étapes, mais pourra vite devenir longue. Les programmes correspondant vont donc avoir tendance à devenir longs, ce qui va rendre leur lecture fastidieuse et qui risque aussi de remplir rapidement la mémoire du microcontrôleur.
 
-Une technique souvent utilisée consiste à inventer un *langage* pour décrire ce qui se passe sur l'enseigne ou l'afficheur et programmer les animations dans ce langage. 
+Une technique souvent utilisée consiste à inventer un *langage* pour décrire ce qui se passe sur l’enseigne ou l’afficheur et programmer les animations dans ce langage.
 
 Langage Arduino
 
-Prenons l'exemple très simple. Pour décrire une animation sur une enseigne, deux ordres suffisent pour décrire les actions : 
+Prenons l’exemple très simple. Pour décrire une animation sur une enseigne, deux ordres suffisent pour décrire les actions :
 
 * mettre un groupe de LED à une certaine intensité
 * attendre un certain temps.
 
-Dans le cas simple de sorties tout-ou-rien, voici les procédures Arduino qui vont suffire :
+Dans le cas simple de sorties tout-ou-rien, voici les procédures Arduino qui vont suffire :
 
-* digitalWrite() de l'Arduino convient pour donner un état à une sortie
+* digitalWrite() de l’Arduino convient pour donner un état à une sortie
 * delay() pour une attente.
 
-En observant la taille d'un petit programme sur Energia et en ajoutant des appels à ces procédures, on constate que :
+En observant la taille d’un petit programme sur Energia et en ajoutant des appels à ces procédures, on constate que :
 
 * digitalWrite() prend 8 octets en mémoire
 * delay() prend 10 octets en mémoire.
 
-En prenant par exemple un microcontrôleur MSP430G2213, disposant d'une mémoire flash de 2kB (2048 octets), on sera limité à moins de 80 pas de programme, constitué de paires digitalWrite() - delay(). En constatant qu'un simple chenillard dans les deux sens sur 8 bits en prend déjà 16, c'est réellement limitatif !
+En prenant par exemple un microcontrôleur MSP430G2213, disposant d’une mémoire flash de 2 kB (2048 octets), on sera limité à moins de 80 pas de programme, constitué de paires digitalWrite() - delay(). En constatant qu’un simple chenillard dans les deux sens sur 8 bits en prend déjà 16, c’est réellement limitatif !
 
 loop() {
   digitalWrite (P2_0, 1); delay (100);
@@ -45,17 +45,17 @@ loop() {
   digitalWrite (P2_0, 0); delay (300);
 }
 
-Bien entendu, les instructions permettant l'accès direct aux registres du microcontrôleur permettent d'économiser la place en mémoire.
-L'instruction P1OUT |= (1<<0); <--- --- > prend 4 octets. C'est déja mieux ! Mais cherchons une autre solution.
+Bien entendu, les instructions permettant l’accès direct aux registres du microcontrôleur permettent d’économiser la place en mémoire.
+L’instruction P1OUT |= (1<<0); <--- --- > prend 4 octets. C’est déja mieux ! Mais cherchons une autre solution.
 
 Inventer un langage
 
-Une solution élégante est d'inventer un langage. Il aura les deux même instructions :
+Une solution élégante est d’inventer un langage. Il aura les deux même instructions :
 
-* Met une intensité sur une sortie. Paramètres : numéro de la sorte et intensité (0 ou 1)
-* Attend. Paramètre : durée de l'attente
+* Met une intensité sur une sortie. Paramètres : numéro de la sorte et intensité (0 ou 1)
+* Attend. Paramètre : durée de l’attente
 
-Le programme pourrait alors se présenter sous forme d'un tableau. Nous avons utilisé ici un tableau d'octets. Le programme pour notre chenillard se présenterai alors de la manière suivante :
+Le programme pourrait alors se présenter sous forme d’un tableau. Nous avons utilisé ici un tableau d’octets. Le programme pour notre chenillard se présenterai alors de la manière suivante :
 
 uint8_t Animation[] = { // définition d'un tableau d'octets
   Sortie0+On, Attente+10,
@@ -77,8 +77,8 @@ uint8_t Animation[] = { // définition d'un tableau d'octets
   Fin
 }
 
-Sa taille n'est que de 33 octets.
-Voici les définitions nécessaire pour que ce tableau se compile correctement :
+Sa taille n’est que de 33 octets.
+Voici les définitions nécessaire pour que ce tableau se compile correctement :
 
 #define On 0b01000000
 #define Sortie0 0
@@ -95,7 +95,7 @@ Voici les définitions nécessaire pour que ce tableau se compile correctement :
 
 Langage binaire
 
-Voici la description binaire de notre langage :
+Voici la description binaire de notre langage :
 
 // Description des instructions :
 // b7 b6 b5 b4 b3 b2 b1 b0  : instructions sur 8 bits
@@ -103,22 +103,22 @@ Voici la description binaire de notre langage :
 //  0 i0 s5-s4-s3-s2-s1-s0  : met une intensité sur une sortie
 //  1 d6-d5-d4-d3-d2-d1-d0  : attente
 // -----------------------
-// 
+//
 // Sorties sur 6 bits (maximum 64 sorties)
 // Intensité sur 1 bit (On ou OFF)
 // Durée sur 7 bits, exprimée en dixième de seconde (0 à 12.6 secondes)
 
 
-Ceux qui ont déjà programmé en assembleur trouveront une grande similitude avec la description des instruction en binaire !
+Ceux qui ont déjà programmé en assembleur trouveront une grande similitude avec la description des instruction en binaire !
 
-On voit que des choix ont été faits pour utiliser au mieux les instructions, qui sont des champs de 8 bits. Le bit de poids fort b7 détermine s'il s'agit d'une instruction pour définit l'intensité ou pour l'attente. Ensuite, les 7 bits restant se répartissent selon l'instruction : une intensité et un numéro de sortie pour l'action sur une sortie, une valeur en dixième de seconde pour l'attente. L'usage de la milliseconde comme unité aurait été trop limitative, étant donné que seuls 7 bits sont à disposition.
+On voit que des choix ont été faits pour utiliser au mieux les instructions, qui sont des champs de 8 bits. Le bit de poids fort b7 détermine s’il s’agit d’une instruction pour définit l’intensité ou pour l’attente. Ensuite, les 7 bits restant se répartissent selon l’instruction : une intensité et un numéro de sortie pour l’action sur une sortie, une valeur en dixième de seconde pour l’attente. L’usage de la milliseconde comme unité aurait été trop limitative, étant donné que seuls 7 bits sont à disposition.
 
 
 Interpréteur
 
 Il reste à écrire une procédure qui va interpréter notre langage et le traduire en instructions pour notre microcontrôleur.
 
-La voici :
+La voici :
 
 
 Interpréteur graphique
@@ -127,9 +127,9 @@ Pour un afficheur matriciel, des instructions nécessaires pour créer une anima
 
 Langage minimaliste
 
-Pour piloter des enseignes de 16 x 16 pixels avec un microcontrôleur, nous avons imaginé un langage minimaliste. Alors que le programme existant prenait 7 kB de mémoire flash, nous avons réussi produire autant d'animations avec un microcontrôleur de 2 kB.
+Pour piloter des enseignes de 16 x 16 pixels avec un microcontrôleur, nous avons imaginé un langage minimaliste. Alors que le programme existant prenait 7 kB de mémoire flash, nous avons réussi produire autant d’animations avec un microcontrôleur de 2 kB.
 
-Voici les instructions qui ont été choisies :
+Voici les instructions qui ont été choisies :
 - Avance le curseur en X
 - Recule le curseur en X
 - Dessine une droite horizontale
@@ -138,25 +138,25 @@ Voici les instructions qui ont été choisies :
 - Dessine une droite verticale
 - Attente
 
-Il manquait encore deux concepts, qu'on trouve dans les langages de programmation : 
+Il manquait encore deux concepts, qu’on trouve dans les langages de programmation :
 - une boucle itérative, pour répéter plusieurs fois une opération
 - le concept de routine ou de procédure, pour pouvoir réutiliser des morceaux de code.
 
-Voici les instructions qui ont été ajoutées :
-- label : indique le début d'une routine
-- ret : retour au programme appelant
-- call : l'appel d'une routine, en donnant son label
-- répète : répète n fois l'instruction suivante
+Voici les instructions qui ont été ajoutées :
+- label : indique le début d’une routine
+- ret : retour au programme appelant
+- call : l’appel d’une routine, en donnant son label
+- répète : répète n fois l’instruction suivante
 
-Le faite de ne répéter que l'instruction suivante semble très limitatif. Mais lorsqu'il est associé à une routine......
-Pour coder les instructions sur 8 bits, il a fallu être un peu astucieux. Les paramètres ont été limités au strict minimum. Pour les délais, des valeurs exponentielles ont permis de choisir des atttentes entre xx ms et bxx s avec seulement xxx bits.
+Le faite de ne répéter que l’instruction suivante semble très limitatif. Mais lorsqu’il est associé à une routine......
+Pour coder les instructions sur 8 bits, il a fallu être un peu astucieux. Les paramètres ont été limités au strict minimum. Pour les délais, des valeurs exponentielles ont permis de choisir des atttentes entre xx ms et bxx s avec seulement xxx bits.
 
-Voici la table de codage du langage :
+Voici la table de codage du langage :
 
-La procédure qui interprète ce langage n'est pas très longue :
+La procédure qui interprète ce langage n’est pas très longue :
 
 
-- 
+-
 
 
 

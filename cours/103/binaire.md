@@ -28,8 +28,8 @@ On désigne par mot binaire, ou champ de bits, un ensemble de bits. Des opérat
 Un champ de bit peut aussi représenter un nombre. La numération binaire est bien connue :
 
 <div class="figure">
-<img src="images/numeration-bin.png" title="Nombres positifs sur 3 bits" alt="Figure : Numération binaire" style="width:15cm" />
-<p class="caption">Figure : Numération binaire</p>
+<img src="images/numeration-bin.png" title="Nombres positifs sur 3 bits" alt="Figure : Numération binaire" style="width:15cm" />
+<p class="caption">Figure : Numération binaire</p>
 </div>
 
 ... poids...
@@ -52,11 +52,11 @@ On peut utiliser ces nombres pour des calculs. Mais il faut être attentif au fa
 
 Pour bien la comprendre, prenons l’exemple des nombres représentés par 3 bits. Ils peuvent prendre 8 valeurs (8 = 2³).
 
-![Figure : Nombres positifs sur 3 bits](images/nombres-pos.png "Nombres positifs sur 3 bits")
+![Figure : Nombres positifs sur 3 bits](images/nombres-pos.png "Nombres positifs sur 3 bits")
 
 On voit qu’il n’est possible de représenter qu’un nombre limité de valeurs. S’il s’agissait de nombres de 8 bits, on aurait un choix de 256 valeurs (de 0 à 255). Pour des nombres de 16 bits, on aurait 65’536 valeurs (de 0 à 65’535).
 
-Sur le cercle qui représente l’ensemble des valeurs possibles, l’incrémentation (addition de _1_) correspond à une avance dans un sens.  Lorsqu’on dépasse la valeur la plus grande (_7_ dans le cas de 3 bits), on retrouve la valeur _0_. On a franchi la limite du dépassement de capacité (_overflow_ en anglais).
+Sur le cercle qui représente l’ensemble des valeurs possibles, l’incrémentation (addition de _1_) correspond à une avance dans un sens. Lorsqu’on dépasse la valeur la plus grande (_7_ dans le cas de 3 bits), on retrouve la valeur _0_. On a franchi la limite du dépassement de capacité (_overflow_ en anglais).
 
 La décrémentation (soustraction de _1_) correspond au sens contraire. Un dépassement de capacité se produit aussi lors du passage de _0_ à la valeur la plus grande.
 
@@ -64,17 +64,17 @@ Les opérations arithmétiques classiques sur les nombres entiers doivent donc t
 
 Prenons quelques exemples :
 
-![Figure : Opérations sur des nombres de 3 bits](images/oper-3bits-pos.png "Opérations sur des nombres de 3 bits")
+![Figure : Opérations sur des nombres de 3 bits](images/oper-3bits-pos.png "Opérations sur des nombres de 3 bits")
 
 
 ## Nombres signés ##
 
-Dans l’usage courant, les nombres peuvent être positifs ou négatifs. Est-ce possible de les représenter en binaire ?
+Dans l’usage courant, les nombres peuvent être positifs ou négatifs. Est-ce possible de les représenter en binaire ?
 Il existe beaucoup de manières de le faire et plusieurs d’entre elles ont été utilisées au cours de l’histoire de l’informatique. Mais c’est la représentation appelée _en complément à 2_ qui est de loin la plus utilisée actuellement.
 
 Voici une figure qui en explique le principe, appliqué à des nombres de 3 bits :
 
-![Figure : Nombres positifs et négatifs sur 3 bits](images/nombres-pos-neg.png "Nombres positifs et négatifs sur 3 bits")
+![Figure : Nombres positifs et négatifs sur 3 bits](images/nombres-pos-neg.png "Nombres positifs et négatifs sur 3 bits")
 
 On remarque que le nombre est négatif lorsque le bit de poids fort (celui de gauche) a pour valeur _1_.
 
@@ -128,7 +128,7 @@ Les opérations arithmétiques disponibles pour ces types sont :
 
 ## Hexadécimal ##
 
-Dans notre exemple précédent, le nombre 2345, qui est composé de quatre chiffres en décimal, nécessite déjà 12 bits en binaire. L’écriture dans cette base est fastidieuse pour l’être humain !
+Dans notre exemple précédent, le nombre 2345, qui est composé de quatre chiffres en décimal, nécessite déjà 12 bits en binaire. L’écriture dans cette base est fastidieuse pour l’être humain !
 
 En utilisant une autre base qui est aussi une puissance de 2, on bénéficie d’une conversion très simple en base 2. La base la plus couramment utilisée est la base 16, appelée “hexadécimal”.
 

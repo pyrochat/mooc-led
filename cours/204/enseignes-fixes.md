@@ -54,7 +54,7 @@ Ce schéma montre comment commander plusieurs LED en série avec un transistor, 
 
 Il faut connaître la tension de chaque LED pour choisir le nombre optimal de LED dans chaque branche. Les LED rouges ont en général une tension d’environ 2 V, alors que les vertes ou les bleues ont plutôt 3 V. Mais il existe plusieurs technologies pour produire des LED et il faut bien se renseigner concernant les LED choisies... ou simplement les mesurer !
 
-Avec une tension d’alimentation de 12 V, on peut alimenter par exemple 5 LED rouges ou 3 LED vertes. Notez qu’avec un seul transistor faible signal, il est possible de commander un grand nombre de LED. Par exemple, un BC337, dont le courant maximal est d’environ 500 mA (cette valeur varie selon les fabricants) permet de commander jusqu’à environ 250 LED rouges avec cette technique : chaque groupe de 5 LED en série reçoit 10 mA et il est possible de placer 50 branches.
+Avec une tension d’alimentation de 12 V, on peut alimenter par exemple 5 LED rouges ou 3 LED vertes. Notez qu’avec un seul transistor faible signal, il est possible de commander un grand nombre de LED. Par exemple, un BC337, dont le courant maximal est d’environ 500 mA (cette valeur varie selon les fabricants) permet de commander jusqu’à environ 250 LED rouges avec cette technique : chaque groupe de 5 LED en série reçoit 10 mA et il est possible de placer 50 branches.
 
 Prenons un autre exemple. Avec une alimentation de PC portable, fournissant 16 V et un maximum de 4.5 A, combien de LED vertes est-il possible de commander ? La tension aux bornes de chaque LED doit être d’environ 3 V, pour un courant de 10 mA.
 

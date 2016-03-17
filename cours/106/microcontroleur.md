@@ -22,7 +22,7 @@ Des lignes électriques, appelées *bus* relient ces éléments entre eux.
 
 Un **microcontrôleur** est aussi un système informatique. Sa particularité est qu’il est contenu dans un seul circuit intégré. L’architecture est la même que celle présentée sur la figure. Par rapport à une carte mère de PC, les éléments qui constituent un microcontrôleur sont généralement plus simples, moins performants, leur capacité est plus limitée :
 
-* La mémoire morte contient généralement de 1 kB à quelques centaines de kilobytes.
+* La mémoire morte contient généralement de 1 kB à quelques centaines de kilobytes.
 * Le processeur est cadencé à des fréquences de quelques mégahertz ou dizaines de mégahertz. Il ne consomme généralement qu’une fraction de watt. Son jeu d’instructions est plus simple.
 * La mémoire vive est généralement très limitée : de quelques centaines de bytes à quelques dizaines de kilobytes selon les modèles.
 * Les circuits d’entrée-sortie sont simplement des entrées logiques (pour lire une valeur binaire, par exemple un interrupteur) et des sorties logiques (capables de fournir quelques milliampères, par exemple pour commander une LED).
@@ -42,7 +42,7 @@ Plusieurs fabricants proposent des microcontrôleurs (Microchip, Atmel, Texas-In
 * Une mémoire vive de 512 B.
 * 16 broches d’entrée-sorties. Huit d’entres-elles peuvent être connectées à un convertisseur analogique-numérique de 10 bits de résolution. Certaines de ces broches ont également d’autres fonctions spécifiques (capture d’événements, utilisation d’un quartz, etc.)
 
-Le MSP430G est disponible dans plusieurs boîtiers, dont le DIL20 (Dual-In-Line 20 pins), facile à mettre en œuvre. Voici son brochage :
+Le MSP430G est disponible dans plusieurs boîtiers, dont le DIL20 (Dual-In-Line 20 pins), facile à mettre en œuvre. Voici son brochage :
 
 ![Brochage du MSP430G2553](images/msp430g2553.png "Brochage du MSP430G2553"){ width=15cm }
 
@@ -58,13 +58,13 @@ Chaque broche est désignée par un ou plusieurs noms. Identifions les trois gro
 * les broches de programmation (RST et TEST)
 * les broches d’entrées-sorties pour l’application proprement dite (toutes les autres broches)
 
-Les microcontrôleurs sont presque toujours réalisés en technologie **CMOS** et nécessitent une alimentation unique. Les MSP430 acceptent une tension comprise entre 1.8 et 3.6 V. Deux piles AA ou AAA de 1.5 V montées en série peuvent donc convenir. La borne négative de l’alimentation est souvent désignée par *Gnd* (*Ground* : masse). C’est la broche 14 du MSP430G2302, notée ici *DVSS*. La borne positive est notée *DVcc*, c’est la  broche 1.
+Les microcontrôleurs sont presque toujours réalisés en technologie **CMOS** et nécessitent une alimentation unique. Les MSP430 acceptent une tension comprise entre 1.8 et 3.6 V. Deux piles AA ou AAA de 1.5 V montées en série peuvent donc convenir. La borne négative de l’alimentation est souvent désignée par *Gnd* (*Ground* : masse). C’est la broche 14 du MSP430G2302, notée ici *DVSS*. La borne positive est notée *DVcc*, c’est la broche 1.
 
 La fonction *RST* ou *RESET* est câblée sur la broche 16. Ignorons pour le moment le fait que cette broche a aussi d’autres noms. Le *RST* est une entrée du circuit. Notez la barre sur son nom : cela signifie que cette entrée est active à 0. On le note aussi parfois avec le signe `/` (slash) précédent le nom. C’est une bonne habitude de mettre en évidence qu’un signal est actif à 0. Il sera nécessaire de fixer à l’état 1 la broche *RST* pour le fonctionnement normal du microcontrôleur. C’est une résistance reliée au *Vcc* qui joue ce rôle. On parle de résistance de tirage (en anglais *pull-up* : tirer vers le haut). Une valeur d’environ 47 kΩ convient dans ce cas.
 
 La programmation des MSP430 peut se faire par l’intermédiaire de deux signaux: le *RST* et un signal nommé *TEST* (broche 17). Il n’est pas nécessaire de comprendre le rôle exact de ce signal. Il est généré par le logiciel de programmation qui s’exécute sur un PC (par exemple *Code Composer Studio* ou *Energia*). Il est transmis par un programmateur, par exemple celui inclus dans le *LaunchPad MSP430*.
 
-Les autres broches du MSP430G2553 sont des entrées-sorties. Elles sont regroupées en 2 ports : P1 et P2. Ces deux ports sont complets : ils comportent chacun 8 broches. D’autres versions du MSP430 sont proposées en boîtier à 14 broches (DIL 14). Dans ce cas, les broches P2.0 à P2.5 n’existent pas.
+Les autres broches du MSP430G2553 sont des entrées-sorties. Elles sont regroupées en 2 ports : P1 et P2. Ces deux ports sont complets : ils comportent chacun 8 broches. D’autres versions du MSP430 sont proposées en boîtier à 14 broches (DIL 14). Dans ce cas, les broches P2.0 à P2.5 n’existent pas.
 
 Un microcontrôleur est un composant électronique. Il va trouver sa place dans un schéma électronique pour sa mise en œuvre :
 

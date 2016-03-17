@@ -5,7 +5,7 @@
 
 ## Types de mémoires ###
 
-Tous les microcontrôleurs disposent de deux types de mémoire :
+Tous les microcontrôleurs disposent de deux types de mémoire :
 
 * la mémoire Flash, prévue principalement pour recevoir le programme, qui est permanente
 * la mémoire vive (RAM = Random Access Memory), qui perd son contenu lorsque le circuit n’est plus alimenté.
@@ -19,11 +19,11 @@ Une particularité de la mémoire Flash est son organisation en blocs. S’il es
 
 Certains microcontrôleurs disposent d’un troisième type de mémoire, en plus de la Flash et de la RAM. Il s’agit de mémoires EEPROM. Ce sont aussi des mémoires non-volatiles, mais chaque position mémoire peut être écrite et effacée indépendamment des autres. On trouve ce type de mémoire dans les microcontrôleurs AVR, dont l’ATmega328, bien connu pour être utilisé dans les Arduino.
 
-L’accès à l’EEPROM interne d’un microcontrôleur est généralement très simple. Des registres sont prévus pour l’adresse (EEAR) et pour la donnée (EEDR), en lecture ou en écriture. Sur les AVR, deux registres donnent l’accès aux adresses et aux données :
+L’accès à l’EEPROM interne d’un microcontrôleur est généralement très simple. Des registres sont prévus pour l’adresse (EEAR) et pour la donnée (EEDR), en lecture ou en écriture. Sur les AVR, deux registres donnent l’accès aux adresses et aux données :
 
 ![Accès à l’EEPROM sur les AVR](images/eeprom-avr.png "Accès à l’EEPROM sur les AVR"){ width=5cm }
 
-Voici les instructions pour lire et écrire dans la mémoire :
+Voici les instructions pour lire et écrire dans la mémoire :
 
 ~~~~~~~ { .c }
   // Lecture en EEPROM :
@@ -40,7 +40,7 @@ Voici les instructions pour lire et écrire dans la mémoire :
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
 
-Le fanion EEMPE signifiait EEprom Master Program Enable. Mais les lettres PE sont traduites dans la documentation actuelle par Write Enable. EEMPE doit être activé juste avant l’activation du fanion EEPE (EEprom Write Enable) qui lance le cycle d’écriture. Son activation ne dure que quelques cycles d’horloge : il est automatiquement remis à zéro. Aucune écriture n’est possible s’il n’est pas actif. Son but est de rendre improbable une écriture accidentelle en EEPROM. L’activation des EEMPE et de EEPE doivent en effet se suivre de près pour qu’une écriture soit possible.
+Le fanion EEMPE signifiait EEprom Master Program Enable. Mais les lettres PE sont traduites dans la documentation actuelle par Write Enable. EEMPE doit être activé juste avant l’activation du fanion EEPE (EEprom Write Enable) qui lance le cycle d’écriture. Son activation ne dure que quelques cycles d’horloge : il est automatiquement remis à zéro. Aucune écriture n’est possible s’il n’est pas actif. Son but est de rendre improbable une écriture accidentelle en EEPROM. L’activation des EEMPE et de EEPE doivent en effet se suivre de près pour qu’une écriture soit possible.
 
 Le fanion EEPE est remis à zéro automatiquement par le microcontrôleur lorsque le cycle d’écriture est terminé. Alors que la lecture est immédiate, il faut se souvenir que l’écriture prend un temps relativement long, de l’ordre de quelques millisecondes.
 
@@ -49,7 +49,7 @@ Le fanion EEPE est remis à zéro automatiquement par le microcontrôleur lorsqu
 
 Pour y placer le programme, la mémoire Flash du microcontrôleur est accédée de l’extérieur, au moyen d’un programmateur. S’il reste de la place dans la mémoire Flash, il est possible de l’utiliser depuis le programme pour y placer des données. La manière de le faire dépend de l’architecture du microcontrôleur. Il faut se référer à la documentation du microcontrôleur pour avoir les détails.
 
-Sur les MSP430, l’architecture de Von Neumann rend facile l’accès à la mémoire Flash. La lecture se fait simplement en indiquant l’adresse de la position mémoire :
+Sur les MSP430, l’architecture de Von Neumann rend facile l’accès à la mémoire Flash. La lecture se fait simplement en indiquant l’adresse de la position mémoire :
 
 ~~~~~~~ { .c }
   // Lecture en Flash :
@@ -59,7 +59,7 @@ Sur les MSP430, l’architecture de Von Neumann rend facile l’accès à la mé
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->
 
-On remarque le trans-typage de l’adresse, indiquée ici en hexadécimal, vers le type du pointeur, qui est dans ce cas un pointeur vers des valeurs 8 bits non-signées `(uint8_t *)`.
+On remarque le trans-typage de l’adresse, indiquée ici en hexadécimal, vers le type du pointeur, qui est dans ce cas un pointeur vers des valeurs 8 bits non-signées `(uint8_t *)`.
 
 L’écriture se fait de la même manière. Il faut toutefois précéder l’écriture par la désactivation du fanion qui bloque l’écriture en mémoire Flash. Son rôle est de rendre improbable des effacements accidentels de la mémoire.
 
@@ -88,7 +88,7 @@ Souvent, des librairies sont disponibles pour faciliter ce travail. Pour les AVR
 
 ## Limite du nombre de cycles d’écriture ##
 
-Toutes les mémoires non-volatiles ont une limite dans le nombre d’écritures ou d’effacements. Pour les Flash, la limite est souvent de 10’000 cycles. S’il ne s’agit que de programmer le microcontrôleur, ce nombre semble très grand : qui va programmer 10’000 fois un même microcontrôleur ?
+Toutes les mémoires non-volatiles ont une limite dans le nombre d’écritures ou d’effacements. Pour les Flash, la limite est souvent de 10’000 cycles. S’il ne s’agit que de programmer le microcontrôleur, ce nombre semble très grand : qui va programmer 10’000 fois un même microcontrôleur ?
 
 Toutefois... à l’occasion du MOOC Comprendre les microcontrôleurs, proposé par l’EPFL sur Coursera dès 2013, nous avons mis au point un système de correction de devoirs. Il a corrigé à ce jour plus de 70’000 devoirs. Les microcontrôleurs ont donc été changés de temps en temps, pour éviter des pannes.
 
@@ -97,7 +97,7 @@ Les EEPROM sont souvent capables d’un nombre de cycles d’écriture plus gran
 
 ## Mémoires externes ##
 
-Il est possible d’ajouter de la mémoire non-volatile à un microcontrôleur en utilisant des circuits mémoire externes. On choisira un circuit en fonction de la taille des données à mémoriser. Les solutions les plus courantes sont :
+Il est possible d’ajouter de la mémoire non-volatile à un microcontrôleur en utilisant des circuits mémoire externes. On choisira un circuit en fonction de la taille des données à mémoriser. Les solutions les plus courantes sont :
 
 * les mémoires EEPROM, souvent disponibles dans des boîtier à 8 broches (DIL 8 ou modèles correspondant en SMD)
 * les cartes SD (ou microSD).
@@ -109,7 +109,7 @@ Au moyen d’une autre technologie, les circuits horloges temps réel offrent so
 
 Plusieurs fabricants proposent des familles de mémoires EEPROM, tels que Microchip, Atmel, STmicro, Winbond, etc. Le dialogue entre ces mémoires et le microcontrôleur se fait en série, le plus souvent par des signaux aux normes I2C ou SPI.
 
-Par exemple, la mémoire M95256 de STmicro a une capacité de 256 kb. Attention, la lettre b est en minuscule, ce qui signifie bit. En d’autre termes, c’est une mémoire de 32 kB (kilo Bytes). Elle utilise les signaux SPI. Voici un schéma de mise en œuvre :
+Par exemple, la mémoire M95256 de STmicro a une capacité de 256 kb. Attention, la lettre b est en minuscule, ce qui signifie bit. En d’autre termes, c’est une mémoire de 32 kB (kilo Bytes). Elle utilise les signaux SPI. Voici un schéma de mise en œuvre :
 
 ![Mise en œuvre d’une EEPROM](images/m95256.png "Mise en œuvre d’une EEPROM"){ width=9cm }
 
@@ -134,9 +134,9 @@ La capacité des cartes SD est très importante, aujourd’hui jusqu’au To (1 
 
 Pour placer ou lire des données sur une carte SD, on choisit généralement d’utiliser le format spécifique d’un système de fichiers (*file system*). On bénéficie ainsi d’un accès aux données par fichier. On peut aussi utiliser les dossiers, appelés aussi répertoires. Le standard FAT32 est le plus souvent utilisé, vu qu’il est compatible avec tous les systèmes d’exploitation.
 
-Pour faciliter l’accès aux données des fichiers en lecture ou en écriture, de nombreuses librairies sont disponibles : *FatFS*, *PetitFat*, *SdFat*, etc.
+Pour faciliter l’accès aux données des fichiers en lecture ou en écriture, de nombreuses librairies sont disponibles : *FatFS*, *PetitFat*, *SdFat*, etc.
 
-À titre d’exemple, la librairie **_PetitFat_** fournit les primitives suivantes :
+À titre d’exemple, la librairie **_PetitFat_** fournit les primitives suivantes :
 
 Procédure        Rôle
 ---------------- ----------------------------

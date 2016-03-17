@@ -16,7 +16,7 @@ Si nous prenons l’exemple d’un moteur électrique, le *0* logique peut corre
 
 ## Algèbre de BOOLE ##
 
-La logique binaire peut être représentée par l’Algèbre de BOOLE, qui permet de décrire dans un modèle mathématique le traitement et le fonctionnement des systèmes binaires. 
+La logique binaire peut être représentée par l’Algèbre de BOOLE, qui permet de décrire dans un modèle mathématique le traitement et le fonctionnement des systèmes binaires.
 L’Algèbre de BOOLE est conçue autour d’opérations logiques de base :
 
 * le complément logique : NON, représenté par un surligné
@@ -26,7 +26,7 @@ L’Algèbre de BOOLE est conçue autour d’opérations logiques de base :
 
 ## Portes logiques ##
 
-Les éléments de base des systèmes logiques sont des portes logiques que l’on peut assembler pour réaliser des fonctions logiques qui peuvent à leur tour êtres assemblées pour construire des machines numériques. 
+Les éléments de base des systèmes logiques sont des portes logiques que l’on peut assembler pour réaliser des fonctions logiques qui peuvent à leur tour êtres assemblées pour construire des machines numériques.
 
 La seule porte intéressante à une entrée est l'inverseur :
 
@@ -53,14 +53,18 @@ Les autres portes logiques à deux entrées sont des dérivées des éléments d
 ## Expression mathématique d’une fonction logique ##
 
 
-Tout système logique peut être défini à l’aide d’une fonction logique (ou expression logique) qui représente les relations entre les variables de sortie en fonction des variables d’entrée. 
+Tout système logique peut être défini à l’aide d’une fonction logique (ou expression logique) qui représente les relations entre les variables de sortie en fonction des variables d’entrée.
 
 ![Figure : Fonction logique](images/fonction-logique.png "Fonction logique")
 
 
 
 La représentation des fonctions logiques se fait:
-* de manière  algébrique (représentation mathématique), déjà utilisé la représentation algébrique avec les équations logiques. Exemple :  * de manière  tabulaire (table de vérité), une table de vérité est un tableau à 2^N^   lignes et N+1 colonnes. Chaque ligne correspond à une combinaison des N variables. Les N premières colonnes contiennent les variables  et la colonne N+1 contient la valeur de la fonction* de manière graphique avec un logigramme qui est un schéma illustrant l’expression d’une fonction logique avec les portes logiques (Exemple du schéma de la porte XOR). * avec des diagrammes, plusieurs diagrammes existent, nous présenterons celui de Karnaugh lors de la leçon sur la synthèse des circuits logiques combinatoires.
+
+* de manière  algébrique (représentation mathématique), déjà utilisé la représentation algébrique avec les équations logiques. Exemple :
+* de manière  tabulaire (table de vérité), une table de vérité est un tableau à 2^N^   lignes et N+1 colonnes. Chaque ligne correspond à une combinaison des N variables. Les N premières colonnes contiennent les variables  et la colonne N+1 contient la valeur de la fonction
+* de manière graphique avec un logigramme qui est un schéma illustrant l’expression d’une fonction logique avec les portes logiques (Exemple du schéma de la porte XOR).
+* avec des diagrammes, plusieurs diagrammes existent, nous présenterons celui de Karnaugh lors de la leçon sur la synthèse des circuits logiques combinatoires.
 
 
 
@@ -120,7 +124,7 @@ $\mathrm{\overline{A\bullet B}=\overline{A}+\overline{B}}$
 
 $\mathrm{\overline{A+B}=\overline{A}\bullet \overline{B}}$
 
-Ces propriétés sont utilisées pour la simplification des fonctions logiques. Elles permettent d’obtenir une expression logique comportant un nombre minimal de termes, ainsi qu’un nombre minimal de variables dans chaque terme dans le but de simplifier la réalisation matérielle. 
+Ces propriétés sont utilisées pour la simplification des fonctions logiques. Elles permettent d’obtenir une expression logique comportant un nombre minimal de termes, ainsi qu’un nombre minimal de variables dans chaque terme dans le but de simplifier la réalisation matérielle.
 
 
 

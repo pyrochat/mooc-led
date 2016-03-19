@@ -115,6 +115,8 @@ SCSS_FILE="../statiques/style-$CODE.scss"
 CSS_FILE="../statiques/style-$CODE.css"
 
 sass $SCSS_FILE $CSS_FILE
+NOW=`date "+%Y-%m-%d %H:%M:%S"`
+sed -i "s/DateModifParScript/$NOW/g" $CSS_FILE
 
 prince                \
 	--no-author-style \
@@ -125,7 +127,11 @@ prince                \
 
 OPENPDF
 
-# pdfjam --nup 2x1 --suffix 2up --landscape --outfile . $PDF_FILE
-# PDF_FILE=./cours-complet-2up.pdf
+echo "" | ps2pdf -sPAPERSIZE=a5 - pageblanche.pdf
+pdftk pageblanche.pdf cours-complet.pdf cat output temp.pdf
+pdfjam --nup 2x1 --suffix 2up --landscape --outfile . temp.pdf
+PDF_FILE=cours-complet-2up.pdf
+mv temp-2up.pdf cours-complet-2up.pdf
+rm pageblanche.pdf
 # OPENPDF
 

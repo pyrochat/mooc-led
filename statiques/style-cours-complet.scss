@@ -5,11 +5,11 @@
 $doc-title                     : "Enseignes et afficheurs à LED";
 $format                        : 2;
 $code-en-couleur               : true;
-$draft                         : false;
+$draft                         : true;
 
 
 @debug "****************************************";
-@debug #{unquote( '* Processing “' )}#{unquote( $doc-title )}#{unquote( "”                *" )}  ;
+@debug #{unquote( '* Processing “' )}#{unquote( $doc-title )}#{unquote( "” *" )}  ;
 @debug "****************************************";
 
 
@@ -427,14 +427,24 @@ div#s_toc
 	}
 	/* Watermark */
 	@if $draft == true {
-		@bottom-left
-		{
-			float: left;
-			margin-bottom: 0cm;
+		@bottom-center {
+			content: "DateModifParScript";
+			width: 2cm;
+			padding: 0;
+			margin-bottom: 0.25cm;
+			margin-bottom: -0.05cm;
+			line-height: 1.6em;
+			color: rgba( 0, 0, 0, 0.5 );
+			font-family: "Ubuntu Mono";
+		}
+		@bottom-left {
+			margin-bottom: 0.5cm;
+			margin-left: 3.325cm;
 			content: "DRAFT";
 			color: rgba( 0, 0, 0, 0.1 );
 			font-size: 60pt;
 			font-weight: 900;
+			font-family: "Ubuntu Mono";
 		}
 	}
 }
@@ -685,7 +695,7 @@ table {
 }
 
 @page page-de-garde {
-	margin: 1cm 0 0;
+	margin: 1cm 0 $page-margin-bottom;
 	padding: 0;
 }
 
@@ -706,7 +716,7 @@ div.page-de-garde {
 		&.nom {
 			font-size: 10pt;
 			line-height: 20pt;
-			margin-top: 2cm;
+			margin-top: 1cm;
 		}
 	}
 	img {

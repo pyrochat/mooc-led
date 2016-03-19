@@ -8,3 +8,5 @@ wget.log
 *-pre.md
 *-dia-compact.html
 *-dia-pre-compact.md
+style-cours-complet.css
+*.css.map

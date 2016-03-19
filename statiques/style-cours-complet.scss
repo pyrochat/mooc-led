@@ -222,14 +222,10 @@ h2 {
 	text-indent                : $h2-nb-width * -1;
 }
 
-// Les compteurs ne fonctionnent pas avec les xinclude !!!
+
 h1 { counter-reset: ctr-h2 ctr-h3 ctr-h4 0; }
 h2 { counter-reset:        ctr-h3 ctr-h4 0; }
 h3 { counter-reset:               ctr-h4 0; }
-
-// h1 { counter-reset: ctr-h2; }
-// h2 {                        counter-reset: ctr-h3; }
-// h3 {                                               counter-reset: ctr-h4; }
 
 
 h1:before {
@@ -240,9 +236,9 @@ h1:before {
 	position                   : relative;
 	top                        : $body-line-height * -1.5;
 }
-h2:before {	counter-increment: ctr-h2; content : counter( ctr-h1 ) "." counter( ctr-h2 ) " "; display: inline-block; width: $h2-nb-width; margin: 0; padding: 0; text-indent: 0; }
-h3:before {	counter-increment: ctr-h3; content : counter( ctr-h1 ) "." counter( ctr-h2 ) "." counter( ctr-h3 ) " "; }
-h4:before {	counter-increment: ctr-h4; content : counter( ctr-h1 ) "." counter( ctr-h2 ) "." counter( ctr-h3 ) "." counter( ctr-h4 ) " "; }
+h2:before { counter-increment: ctr-h2; content : counter( ctr-h1 ) "." counter( ctr-h2 ) " "; display: inline-block; width: $h2-nb-width; margin: 0; padding: 0; text-indent: 0; }
+h3:before { counter-increment: ctr-h3; content : counter( ctr-h1 ) "." counter( ctr-h2 ) "." counter( ctr-h3 ) " "; }
+h4:before { counter-increment: ctr-h4; content : counter( ctr-h1 ) "." counter( ctr-h2 ) "." counter( ctr-h3 ) "." counter( ctr-h4 ) " "; }
 
 h2+h3 {
 	// margin-top: $body-line-height * 6 + 0.07cm;
@@ -730,4 +726,15 @@ div.page-de-garde {
 	//     display: block;
 	//     page-break-after: left;
 	// }
+}
+
+
+div#header {
+	position: relative;
+	top: -1cm;
+	p {
+		text-indent: 0;
+		font-style: italic;
+		font-size: 80%;
+	}
 }

@@ -125,7 +125,7 @@ prince                \
 
 OPENPDF
 
-pdfjam --nup 2x1 --suffix 2up --landscape --outfile . $PDF_FILE
-PDF_FILE=./cours-complet-2up.pdf
-OPENPDF
+# pdfjam --nup 2x1 --suffix 2up --landscape --outfile . $PDF_FILE
+# PDF_FILE=./cours-complet-2up.pdf
+# OPENPDF
 

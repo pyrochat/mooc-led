@@ -520,34 +520,26 @@ div.page-noheadfoot
 
 
 
-@page page-preface:left
-{
-	@bottom-center
-	{
+@page page-preface:left {
+	@bottom-center {
 		content                : "";
 	}
 
 }
-@page page-preface:right
-{
-	@bottom-center
-	{
+@page page-preface:right {
+	@bottom-center {
 		content                : "";
 	}
 }
 
 
-@page page-toc:first
-{
-	@bottom-center
-	{
+@page page-toc:first {
+	@bottom-center {
 		content                : none;
 	}
 }
-@page page-toc:right
-{
-	@bottom-center
-	{
+@page page-toc:right {
+	@bottom-center {
 		content                : string( str-h1 );
 	}
 }
@@ -560,31 +552,29 @@ div.page-noheadfoot
 
 
 
-del
-{
-	display                    : none;
+del {
+	display : none;
 }
-ins
-{
-	text-decoration            : none;
+ins {
+	text-decoration : none;
 }
 
 
 div.figure {
-	margin-bottom: $body-line-height;
-	margin-left: 0;
-	margin-right: 0;
-	margin-top: $body-line-height;
+	margin-bottom : $body-line-height;
+	margin-left   : 0;
+	margin-right  : 0;
+	margin-top    : $body-line-height;
 	img {
-		max-width: 90%;
-		margin: 0 auto;
-		display: block;
+		max-width : 90%;
+		margin    : 0 auto;
+		display   : block;
 	}
 	p.caption {
-		font-size: 85%;
-		margin-top: $body-line-height;
-		text-indent: 0;
-		page-break-before: avoid;
+		font-size         : 85%;
+		margin-top        : $body-line-height;
+		text-indent       : 0;
+		page-break-before : avoid;
 	}
 }
 
@@ -593,35 +583,33 @@ div.figure {
 
 // CODE
 
-
-
 pre, code, code span {
-	font-family: $code-font-family;
-	line-height: $code-line-height;
+	font-family    : $code-font-family;
+	line-height    : $code-line-height;
 }
 div.sourceCode {
-	margin: $body-line-height * 1 0;
-	overflow-x: auto;
-	font-size: $code-font-size;
+	margin         : $body-line-height * 1 0;
+	overflow-x     : auto;
+	font-size      : $code-font-size;
 }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-	margin: 0;
-	padding: 0;
-	vertical-align: baseline;
-	border: none;
+	margin         : 0;
+	padding        : 0;
+	vertical-align : baseline;
+	border         : none;
 }
 table.sourceCode {
-	// width: 100%;
+	// width       : 100%;
 }
 td.lineNumbers {
-	text-align: right;
-	padding-right: 1px;
-	padding-left: 0px;
-	color: #aaaaaa;
-	border-right: 1px solid #aaaaaa;
+	text-align     : right;
+	padding-right  : 1px;
+	padding-left   : 0px;
+	color          : #aaaaaa;
+	border-right   : 1px solid #aaaaaa;
 }
 td.sourceCode {
-	padding-left: 5px;
+	padding-left   : 5px;
 }
 code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code > span.dt { color: #902000; } /* DataType */
@@ -659,33 +647,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 }
 
 section {
-	counter-increment: ctr-h1;
-	page-break-before: right;
-	page: page_section;
-	#{prince-page-group}       : start;
+	counter-increment      : ctr-h1;
+	page-break-before      : right;
+	page                   : page_section;
+	#{prince-page-group}   : start;
 }
 
 body {
 	prince-text-replace: " ?" "\2009?" ;
 	prince-text-replace: " !" "\2009!" ;
 	prince-text-replace: " :" "\2009:" ;
-
 }
 
 table {
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: $body-line-height * 1;
-	margin-bottom: $body-line-height * 1;
-	border-collapse: collapse;
-	border-top     : 0.2mm solid black;
-	border-bottom  : 0.2mm solid black;
+	margin-left     : auto;
+	margin-right    : auto;
+	margin-top      : $body-line-height * 1;
+	margin-bottom   : $body-line-height * 1;
+	border-collapse : collapse;
+	border-top      : 0.2mm solid black;
+	border-bottom   : 0.2mm solid black;
 	th, td {
-		padding: 0.2mm 5mm;
-		margin: 0;
+		padding        : 0.2mm 2mm;
+		margin         : 0;
+	}
+	th:first-child, td:first-child {
+		padding-left   : 0mm;
+	}
+	th:last-child, td:last-child {
+		padding-right  : 0mm;
 	}
 	tr:last-child td {
-		padding-bottom: 0.5mm;
+		padding-bottom : 0.5mm;
 	}
 	th {
 		border-bottom  : 0.2mm solid black;
@@ -695,56 +688,56 @@ table {
 }
 
 @page page-de-garde {
-	margin: 1cm 0 $page-margin-bottom;
-	padding: 0;
+	margin             : 1cm 0 $page-margin-bottom;
+	padding            : 0;
+	@if $draft == true {
+		@bottom-left {
+			margin-left : 3.325cm + $page-margin-inner;
+		}
+	}
 }
 
 div.page-de-garde {
-	page-break-before: always !important;
-	page-break-after: always !important;
-	padding: 0;
-	margin: 0;
-	page: page-de-garde;
+	page-break-before : always !important;
+	page-break-after  : always !important;
+	padding           : 0;
+	margin            : 0;
+	page              : page-de-garde;
 	p {
-		font-size: 20pt;
-		font-weight: bold;
-		text-align: center;
-		line-height: 30pt;
-		text-indent: 0;
-		margin: 0;
-		padding: 0;
+		font-size   : 20pt;
+		font-weight : bold;
+		text-align  : center;
+		line-height : 30pt;
+		text-indent : 0;
+		margin      : 0;
+		padding     : 0;
 		&.nom {
-			font-size: 10pt;
-			line-height: 20pt;
-			margin-top: 1cm;
+			font-size   : 10pt;
+			line-height : 20pt;
+			margin-top  : 1cm;
 		}
 	}
 	img {
 		&.logo {
-			margin: 0 auto 1cm;
-			display: block;
-			text-align: center;
-			width:3cm;
+			margin     : 0 auto 1cm;
+			display    : block;
+			text-align : center;
+			width      : 3cm;
 		}
 		&.vignette {
-			margin-top: 2cm;
-			width: 100%;
+			margin-top : 2cm;
+			width      : 100%;
 		}
 	}
-	// &::after {
-	//     content: " ";
-	//     display: block;
-	//     page-break-after: left;
-	// }
 }
 
 
 div#header {
-	position: relative;
-	top: -1cm;
+	position : relative;
+	top      : -1cm;
 	p {
-		text-indent: 0;
-		font-style: italic;
-		font-size: 80%;
+		text-indent : 0;
+		font-style  : italic;
+		font-size   : 80%;
 	}
 }

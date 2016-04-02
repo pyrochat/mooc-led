@@ -53,7 +53,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3 class="date">rév 2015/09/18</h3>
 </div>
 <h2 id="types-de-mémoires">Types de mémoires</h2>
-<p>Tous les microcontrôleurs disposent de deux types de mémoire :</p>
+<p>Tous les microcontrôleurs disposent de deux types de mémoire :</p>
 <ul>
 <li>la mémoire Flash, prévue principalement pour recevoir le programme, qui est permanente</li>
 <li>la mémoire vive (RAM = Random Access Memory), qui perd son contenu lorsque le circuit n’est plus alimenté.</li>
@@ -62,12 +62,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Une particularité de la mémoire Flash est son organisation en blocs. S’il est possible d’écrire une valeur dans une position mémoire précise, il n’est pas possible d’effacer une position mémoire seule. Les effacements se font toujours par bloc. La taille d’un bloc varie considérablement d’un microcontrôleur à un autre, parfois seulement 64 octets, jusqu’à plusieurs dizaines de kB.</p>
 <h2 id="les-mémoires-eeprom">Les mémoires EEPROM</h2>
 <p>Certains microcontrôleurs disposent d’un troisième type de mémoire, en plus de la Flash et de la RAM. Il s’agit de mémoires EEPROM. Ce sont aussi des mémoires non-volatiles, mais chaque position mémoire peut être écrite et effacée indépendamment des autres. On trouve ce type de mémoire dans les microcontrôleurs AVR, dont l’ATmega328, bien connu pour être utilisé dans les Arduino.</p>
-<p>L’accès à l’EEPROM interne d’un microcontrôleur est généralement très simple. Des registres sont prévus pour l’adresse (EEAR) et pour la donnée (EEDR), en lecture ou en écriture. Sur les AVR, deux registres donnent l’accès aux adresses et aux données :</p>
+<p>L’accès à l’EEPROM interne d’un microcontrôleur est généralement très simple. Des registres sont prévus pour l’adresse (EEAR) et pour la donnée (EEDR), en lecture ou en écriture. Sur les AVR, deux registres donnent l’accès aux adresses et aux données :</p>
 <div class="figure">
 <img src="images/eeprom-avr.png" title="Accès à l’EEPROM sur les AVR" alt="Accès à l’EEPROM sur les AVR" width="188" />
 <p class="caption">Accès à l’EEPROM sur les AVR</p>
 </div>
-<p>Voici les instructions pour lire et écrire dans la mémoire :</p>
+<p>Voici les instructions pour lire et écrire dans la mémoire :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Lecture en EEPROM :</span>
   EEAR = adresse; <span class="co">// l&#39;adresse est donnée</span>
   EECR = (<span class="dv">1</span>&lt;&lt;EERE); <span class="co">// le fanion de lecture est activé</span>
@@ -80,17 +80,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   EECR = (<span class="dv">1</span>&lt;&lt;EEMPE); <span class="co">// autorise une écriture (Master Write Enable)</span>
   EECR = (<span class="dv">1</span>&lt;&lt;EEPE); <span class="co">// lance le cycle d&#39;écriture (Write Enable)</span></code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
-<p>Le fanion EEMPE signifiait EEprom Master Program Enable. Mais les lettres PE sont traduites dans la documentation actuelle par Write Enable. EEMPE doit être activé juste avant l’activation du fanion EEPE (EEprom Write Enable) qui lance le cycle d’écriture. Son activation ne dure que quelques cycles d’horloge : il est automatiquement remis à zéro. Aucune écriture n’est possible s’il n’est pas actif. Son but est de rendre improbable une écriture accidentelle en EEPROM. L’activation des EEMPE et de EEPE doivent en effet se suivre de près pour qu’une écriture soit possible.</p>
+<p>Le fanion EEMPE signifiait EEprom Master Program Enable. Mais les lettres PE sont traduites dans la documentation actuelle par Write Enable. EEMPE doit être activé juste avant l’activation du fanion EEPE (EEprom Write Enable) qui lance le cycle d’écriture. Son activation ne dure que quelques cycles d’horloge : il est automatiquement remis à zéro. Aucune écriture n’est possible s’il n’est pas actif. Son but est de rendre improbable une écriture accidentelle en EEPROM. L’activation des EEMPE et de EEPE doivent en effet se suivre de près pour qu’une écriture soit possible.</p>
 <p>Le fanion EEPE est remis à zéro automatiquement par le microcontrôleur lorsque le cycle d’écriture est terminé. Alors que la lecture est immédiate, il faut se souvenir que l’écriture prend un temps relativement long, de l’ordre de quelques millisecondes.</p>
 <h2 id="accès-à-la-mémoire-flash-par-programmation">Accès à la mémoire Flash par programmation</h2>
 <p>Pour y placer le programme, la mémoire Flash du microcontrôleur est accédée de l’extérieur, au moyen d’un programmateur. S’il reste de la place dans la mémoire Flash, il est possible de l’utiliser depuis le programme pour y placer des données. La manière de le faire dépend de l’architecture du microcontrôleur. Il faut se référer à la documentation du microcontrôleur pour avoir les détails.</p>
-<p>Sur les MSP430, l’architecture de Von Neumann rend facile l’accès à la mémoire Flash. La lecture se fait simplement en indiquant l’adresse de la position mémoire :</p>
+<p>Sur les MSP430, l’architecture de Von Neumann rend facile l’accès à la mémoire Flash. La lecture se fait simplement en indiquant l’adresse de la position mémoire :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Lecture en Flash :</span>
   <span class="dt">uint8_t</span> *pointeur; <span class="co">// pointeur dans la Flash</span>
   pointeur = (<span class="dt">uint8_t</span> *) <span class="bn">0x1040</span>; <span class="co">//place l&#39;adresse dans le pointeur</span>
   <span class="dt">uint8_t</span> valeur = *pointeur;</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
-<p>On remarque le trans-typage de l’adresse, indiquée ici en hexadécimal, vers le type du pointeur, qui est dans ce cas un pointeur vers des valeurs 8 bits non-signées <code>(uint8_t *)</code>.</p>
+<p>On remarque le trans-typage de l’adresse, indiquée ici en hexadécimal, vers le type du pointeur, qui est dans ce cas un pointeur vers des valeurs 8 bits non-signées <code>(uint8_t *)</code>.</p>
 <p>L’écriture se fait de la même manière. Il faut toutefois précéder l’écriture par la désactivation du fanion qui bloque l’écriture en mémoire Flash. Son rôle est de rendre improbable des effacements accidentels de la mémoire.</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">  <span class="co">// Ecriture en Flash :</span>
   FCTL3 = FWKEY; <span class="co">// Clear Lock bit</span>
@@ -107,11 +107,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <!-- retour au mode normal pour l'éditeur -->
 <p>Souvent, des librairies sont disponibles pour faciliter ce travail. Pour les AVR, construits sur une architecture de Harvard, la librairie <code>Pgmspace.h</code> est utilisée.</p>
 <h2 id="limite-du-nombre-de-cycles-décriture">Limite du nombre de cycles d’écriture</h2>
-<p>Toutes les mémoires non-volatiles ont une limite dans le nombre d’écritures ou d’effacements. Pour les Flash, la limite est souvent de 10’000 cycles. S’il ne s’agit que de programmer le microcontrôleur, ce nombre semble très grand : qui va programmer 10’000 fois un même microcontrôleur ?</p>
+<p>Toutes les mémoires non-volatiles ont une limite dans le nombre d’écritures ou d’effacements. Pour les Flash, la limite est souvent de 10’000 cycles. S’il ne s’agit que de programmer le microcontrôleur, ce nombre semble très grand : qui va programmer 10’000 fois un même microcontrôleur ?</p>
 <p>Toutefois... à l’occasion du MOOC Comprendre les microcontrôleurs, proposé par l’EPFL sur Coursera dès 2013, nous avons mis au point un système de correction de devoirs. Il a corrigé à ce jour plus de 70’000 devoirs. Les microcontrôleurs ont donc été changés de temps en temps, pour éviter des pannes.</p>
 <p>Les EEPROM sont souvent capables d’un nombre de cycles d’écriture plus grand que les Flash. L’ordre de grandeur est de 100’000 cycles ou davantage. Mais attention, ce nombre est très vite atteint si certaines précautions ne sont pas prises. Remarquez par exemple qu’en écrivant une valeur chaque seconde, on atteint la limite peu après un jour de fonctionnement.</p>
 <h2 id="mémoires-externes">Mémoires externes</h2>
-<p>Il est possible d’ajouter de la mémoire non-volatile à un microcontrôleur en utilisant des circuits mémoire externes. On choisira un circuit en fonction de la taille des données à mémoriser. Les solutions les plus courantes sont :</p>
+<p>Il est possible d’ajouter de la mémoire non-volatile à un microcontrôleur en utilisant des circuits mémoire externes. On choisira un circuit en fonction de la taille des données à mémoriser. Les solutions les plus courantes sont :</p>
 <ul>
 <li>les mémoires EEPROM, souvent disponibles dans des boîtier à 8 broches (DIL 8 ou modèles correspondant en SMD)</li>
 <li>les cartes SD (ou microSD).</li>
@@ -119,7 +119,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Au moyen d’une autre technologie, les circuits horloges temps réel offrent souvent quelques positions mémoires RAM. Or celles-ci sont rendues non-volatiles par la pile qui maintient le circuit en fonctionnement permanent.</p>
 <h2 id="eeprom-i2c-ou-spi">EEPROM I2C ou SPI</h2>
 <p>Plusieurs fabricants proposent des familles de mémoires EEPROM, tels que Microchip, Atmel, STmicro, Winbond, etc. Le dialogue entre ces mémoires et le microcontrôleur se fait en série, le plus souvent par des signaux aux normes I2C ou SPI.</p>
-<p>Par exemple, la mémoire M95256 de STmicro a une capacité de 256 kb. Attention, la lettre b est en minuscule, ce qui signifie bit. En d’autre termes, c’est une mémoire de 32 kB (kilo Bytes). Elle utilise les signaux SPI. Voici un schéma de mise en œuvre :</p>
+<p>Par exemple, la mémoire M95256 de STmicro a une capacité de 256 kb. Attention, la lettre b est en minuscule, ce qui signifie bit. En d’autre termes, c’est une mémoire de 32 kB (kilo Bytes). Elle utilise les signaux SPI. Voici un schéma de mise en œuvre :</p>
 <div class="figure">
 <img src="images/m95256.png" title="Mise en œuvre d’une EEPROM" alt="Mise en œuvre d’une EEPROM" width="340" />
 <p class="caption">Mise en œuvre d’une EEPROM</p>
@@ -134,8 +134,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>La capacité des cartes SD est très importante, aujourd’hui jusqu’au To (1 tera octet = 1’000’000’000’000 octets).</p>
 <h2 id="système-de-fichier">Système de fichier</h2>
 <p>Pour placer ou lire des données sur une carte SD, on choisit généralement d’utiliser le format spécifique d’un système de fichiers (<em>file system</em>). On bénéficie ainsi d’un accès aux données par fichier. On peut aussi utiliser les dossiers, appelés aussi répertoires. Le standard FAT32 est le plus souvent utilisé, vu qu’il est compatible avec tous les systèmes d’exploitation.</p>
-<p>Pour faciliter l’accès aux données des fichiers en lecture ou en écriture, de nombreuses librairies sont disponibles : <em>FatFS</em>, <em>PetitFat</em>, <em>SdFat</em>, etc.</p>
-<p>À titre d’exemple, la librairie <strong><em>PetitFat</em></strong> fournit les primitives suivantes :</p>
+<p>Pour faciliter l’accès aux données des fichiers en lecture ou en écriture, de nombreuses librairies sont disponibles : <em>FatFS</em>, <em>PetitFat</em>, <em>SdFat</em>, etc.</p>
+<p>À titre d’exemple, la librairie <strong><em>PetitFat</em></strong> fournit les primitives suivantes :</p>
 <table>
 <thead>
 <tr class="header">

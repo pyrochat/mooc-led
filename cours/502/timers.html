@@ -65,7 +65,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <img src="images/div2-150dpi.png" title="Diviseur par 2" alt="Diviseur par 2" style="width:80.0%" />
 <p class="caption">Diviseur par 2</p>
 </div>
-<p>En ajoutant bout à bout plusieurs diviseurs par 2, on obtient un compteur binaire :</p>
+<p>En ajoutant bout à bout plusieurs diviseurs par 2, on obtient un compteur binaire :</p>
 <div class="figure">
 <img src="images/div2n-150dpi.png" title="Compteur par 2" alt="Compteur binaire" style="width:50.0%" />
 <p class="caption">Compteur binaire</p>
@@ -85,7 +85,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <p>On y trouve :</p>
 <ul>
-<li>Un <strong>compteur binaire</strong>. Il peut être de 8 bits, 16 bits, parfois même de 32 bits. C’est le timer proprement dit.</li>
+<li>Un <strong>compteur binaire</strong>. Il peut être de 8 bits, 16 bits, parfois même de 32 bits. C’est le timer proprement dit.</li>
 <li>Une <strong>horloge</strong>, c’est-à-dire un oscillateur (OSC). Il s’agit généralement de l’horloge également utilisée pour le processeur.</li>
 <li>Un système de <strong>choix de l’horloge et du prédiviseur</strong>, qui permet de choisir une fréquence d’horloge bien adaptée au problème à résoudre.</li>
 <li>Une logique de <strong>comparaison</strong>, par exemple pour tester l’égalité.</li>
@@ -118,8 +118,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Un comparateur d’égalité est placé entre le timer et un registre dont il est possible à tout moment de modifier la valeur. Chaque fois que le timer a la même valeur que le registre de comparaison, le fanion passe à <code>1</code>. À nouveau, il est possible de générer une interruption, avec un mécanisme similaire à celui du dépassement de capacité.</p>
 <h2 id="les-timers-des-microcontrôleurs">Les timers des microcontrôleurs</h2>
 <p>Quelques années après l’apparition des premiers microprocesseurs, des circuits spécialisés incorporants des timers sont apparus sur le marché. C’est le cas du très célèbre 8253 d’Intel, datant de 1981, dont on trouve encore des descendants dans les PC modernes.</p>
-<p>Les microcontrôleurs ont eux aussi très vite été complétés par des timers, comme le célèbre PIC16x84, qui incluait déjà un unique compteur 8 bits très simple, mais très utile.</p>
-<p>Les microcontrôleurs ARM ont tous plusieurs timers. L’ATmega328, connu pour équiper les Arduino, a trois timers, le TIMER 0 de 8 bits, le TIMER 1 de 16 bits et le TIMER 2 de 8 bits, mais différent du TIMER 0. Ces timers sont riches en fonctionnalités permettant de nombreuses applications.</p>
+<p>Les microcontrôleurs ont eux aussi très vite été complétés par des timers, comme le célèbre PIC16x84, qui incluait déjà un unique compteur 8 bits très simple, mais très utile.</p>
+<p>Les microcontrôleurs ARM ont tous plusieurs timers. L’ATmega328, connu pour équiper les Arduino, a trois timers, le TIMER 0 de 8 bits, le TIMER 1 de 16 bits et le TIMER 2 de 8 bits, mais différent du TIMER 0. Ces timers sont riches en fonctionnalités permettant de nombreuses applications.</p>
 <p>Les microcontrôleurs plus modernes ont souvent des timers très complexes. Dans les familles de microcontrôleurs ARM, les timers diffèrent d’un fabricant à l’autre : cette partie du microcontrôleur est propriétaire, elle n’est pas développée par la société ARM.</p>
 <p>Nous étudierons ici les timers utilisés dans les microcontrôleurs MSP430G de Texas Instruments, qui se trouvent sur la carte Launchpad.</p>
 <h2 id="timer-a-du-msp430">TIMER A du MSP430</h2>
@@ -131,7 +131,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <img src="images/timer-a.jpg" title="TIMER A du MSP430" alt="TIMER A du MSP430" style="width:68.0%" />
 <p class="caption">TIMER A du MSP430</p>
 </div>
-<p>Ce schéma n’est pas simple, mais il est clair et complet. On y trouve un compteur 16 bits appelé TAR. Il est possible à tout moment de lire sa valeur. Il est aussi possible d’écrire une nouvelle valeur, mais nous n’utiliserons pas cette possibilité ici.</p>
+<p>Ce schéma n’est pas simple, mais il est clair et complet. On y trouve un compteur 16 bits appelé TAR. Il est possible à tout moment de lire sa valeur. Il est aussi possible d’écrire une nouvelle valeur, mais nous n’utiliserons pas cette possibilité ici.</p>
 <p>Ce compteur reçoit un signal d’horloge qu’il est possible de sélectionner parmi plusieurs sources. Un prédiviseur peut être utilisé, qui donne le choix entre la fréquence d’origine et des divisions par <code>2</code>, <code>4</code> ou <code>8</code>. Le compteur peut compter selon plusieurs modes.</p>
 <p>Un registre de contrôle de 16 bits appelé TACTL est associé à chaque timer. Il peut aussi apparaître sous le nom TA0CTL, pour les microcontrôleurs qui ont plusieurs TIMER A (le deuxième s’appelant alors TA1CTL). Il n’apparaît pas explicitement dans le schéma, mais c’est de lui que proviennent plusieurs signaux (TASSETx, IDx, TACLR, etc.) Ce sont les différents bits de ce registre qui vont permettre de choisir l’horloge, les prédiviseurs, le mode de comptage, etc.</p>
 <p>Voici comment la documentation le décrit ce registre TACTL :</p>
@@ -163,7 +163,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   }
 }</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
-<p>Comment fonctionne la boucle principale ? Chaque fois que le fanion TAIFG passe à <code>1</code>, l’alimentation de la LED est inversée. Le fanion TAIF (qui se trouve aussi dans le registre TACTL) signale un dépassement de capacité, c’est-à-dire le retour à zéro du compteur. Il doit être remis à zéro en vue du prochain cycle. Calculons la période de clignotement : l’horloge de 1 MHz est divisée par <code>8</code> par le prédiviseur. Le timer est donc commandé à une fréquence de 125 kHz ce qui correspond à une période de 8 µs. Le timer a 16 bits, il va donc faire un cycle complet en 65’536 coups d’horloge, soit environ 524 ms.</p>
+<p>Comment fonctionne la boucle principale ? Chaque fois que le fanion TAIFG passe à <code>1</code>, l’alimentation de la LED est inversée. Le fanion TAIF (qui se trouve aussi dans le registre TACTL) signale un dépassement de capacité, c’est-à-dire le retour à zéro du compteur. Il doit être remis à zéro en vue du prochain cycle. Calculons la période de clignotement : l’horloge de 1 MHz est divisée par <code>8</code> par le prédiviseur. Le timer est donc commandé à une fréquence de 125 kHz ce qui correspond à une période de 8 µs. Le timer a 16 bits, il va donc faire un cycle complet en 65’536 coups d’horloge, soit environ 524 ms.</p>
 <h2 id="les-registres-de-comparaison">Les registres de comparaison</h2>
 <p>L’intérêt principal des timers réside dans les registres de comparaison qui leur sont associés. Dans le schéma de la page 1, on voit qu’il y a trois registres de comparaison, notés <code>0</code>, <code>1</code> et <code>2</code>. Le détail est donné pour le groupe 2.</p>
 <p>Ces trois registres de comparaison se nomment CCR0, CCR1 et CCR2. Ces registres permettent de mémoriser une valeur qui va être en permanence comparée avec la valeur du timer TAR.</p>
@@ -186,7 +186,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   }
 }</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
-<p>Au début du programme, le registre de comparaison a été initialisé à 62’500, une valeur qui correspond à une demi-seconde dans notre cas : <code>62’500 × 8 µs = 500 ms</code>. Une fois cette valeur atteinte, il faut ajouter 62’500 à la valeur courant du registre de comparaison. On va dépasser la capacité du registre, qui a 16 bits. On obtiendra : <code>(62’500 + 62’500) % 65’536 = 59’464</code> où le signe <code>%</code> représente l’opération de modulo, c’est-à-dire le reste de la division entière. Mais comme le timer augmente toujours et qu’il a lui aussi 16 bits, cette valeur est effectivement la bonne pour la prochaine comparaison.</p>
+<p>Au début du programme, le registre de comparaison a été initialisé à 62’500, une valeur qui correspond à une demi-seconde dans notre cas : <code>62’500 × 8 µs = 500 ms</code>. Une fois cette valeur atteinte, il faut ajouter 62’500 à la valeur courant du registre de comparaison. On va dépasser la capacité du registre, qui a 16 bits. On obtiendra : <code>(62’500 + 62’500) % 65’536 = 59’464</code> où le signe <code>%</code> représente l’opération de modulo, c’est-à-dire le reste de la division entière. Mais comme le timer augmente toujours et qu’il a lui aussi 16 bits, cette valeur est effectivement la bonne pour la prochaine comparaison.</p>
 <p>Si vous avez des doutes, imaginez qu’il est 9 h 50 et que vous voulez faire sonner votre réveil dans 30 minutes. Vous devez le régler sur 10 h 20. En ne tenant compte que des minutes, on a bien : <code>(50 + 30) % 60 = 20</code>.</p>
 <h2 id="les-interruptions-associées-aux-timers">Les interruptions associées aux timers</h2>
 <p>L’intérêt principal des timers est de les associer à des interruptions. Modifions le programme de la manière suivante :</p>
@@ -231,7 +231,7 @@ __interrupt <span class="dt">void</span> Timer_A0 (<span class="dt">void</span>)
 }</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
 <h2 id="pwm-par-interruption">PWM par interruption</h2>
-<p>En combinant les interruptions du dépassement de capacité et de la comparaison, on peut produire un signal PWM sur n'importe quelle broche du microcontrôleur :</p>
+<p>En combinant les interruptions du dépassement de capacité et de la comparaison, on peut produire un signal PWM sur n’importe quelle broche du microcontrôleur :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">
 <span class="dt">int</span> main() {
   ...

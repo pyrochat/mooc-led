@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Pierre-Yves Rochat, EPFL" />
+  <title>Afficheurs matriciels multiplexés</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Afficheurs matriciels multiplexés</h1>
+<h2 class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
+<h3 class="date">rév 2016/03/09</h3>
+</div>
+<h2 id="afficheur-matriciel-et-schéma-de-commande">Afficheur matriciel et schéma de commande</h2>
+<p>Le schéma classique d’un afficheur matriciel nécessite simplement une sortie de registre par LED, comme le rappelle ce schéma :</p>
+<p><img src="images/aff-8x16.svg" title="Organisation de l’afficheur 8×16 pixels" alt="Organisation de l’afficheur 8×16 pixels" />{ width=95% }</p>
+<p>L'envoi des données dans le registre série-parallèle se fait selon le diagramme des temps suivant :</p>
+<p><img src="images/reg-ser-par-timing-s.svg" title="Envoi des données dans un registre série-parallèle" alt="Envoi des données dans un registre série-parallèle" />{ width=60% }</p>
+<p>Lorsque le nombre de LED augmente, le nombre de registres augmente aussi. Ainsi un afficheur de 32 fois 32 pixels nécessite 1024 sorties de registre. En utilisant le registres parallèle-série classique 74HC595, il faut 128 circuits intégrés et 1024 résistances. Et ces nombres sont multipliés par 3 pour un afficheurs couleur RGB, où un pixel est formé de trois LED.</p>
+<p>Avec l’usage de registres à 16 sorties du type SUM2016, dont les sorties sont à courant constant, une matrice de 32 x 32 pixels RGB nécessitera tout de même 64 circuits intégrés et 64 résistances.</p>
+<p>Il existe une solution beaucoup plus simple du point de vue du schéma : c’est l’usage du multiplexage temporel. Notons dès maintenant que cette solution aura des conséquences sur la luminosité de l’afficheur et sur la complexité du programme de commande.</p>
+<h2 id="simplifier-lélectronique-par-le-multiplexage-temporel">Simplifier l’électronique par le multiplexage temporel</h2>
+<p>Pour illustrer plus simplement notre propos, choisissons de réaliser un petit afficheur matriciel de 4 lignes de 8 pixels.Voici comment les LED vont être connectées :</p>
+<p><img src="images/matrice-mux-4x8.svg" title="Matrice de 4x8 LED" alt="Matrice de 4x8 LED" />{ width=70% }</p>
+<p>La figure montre qu'il est impossible d'allumer en même temps certaines LED sans en allumer d'autre LED non souhaitées. Dans l'exemple suivant, on souhaite allumer les LED (1,1) et (3,2). En alimentant les lignes et colonnes correspondantes, on voit qu'on allume aussi les LED (3,1) et (1,2).</p>
+<p><img src="images/matrice-mux-4x8-2all.svg" title="Allumages non souhaités]" alt="Allumages non souhaités" />{ width=70% }</p>
+<p>Il est possible de commande cette matrice de LED selon le principe du multiplexage temporel, présenté dans une leçon précédente. Le principe du multiplexage temporel consiste à afficher successivement certaines parties de l’afficheur, à une vitesse telle que l’œil ne s’en rende pas compte. Voici le diagramme des temps correspondant :</p>
+<div class="figure">
+<img src="images/diagr-4x8-mux.svg" title="Diagramme des temps d&#39;un afficheur 4x8 multiplexé" alt="Diagramme des temps d&#39;un afficheur 4x8 multiplexé" /><p class="caption">Diagramme des temps d'un afficheur 4x8 multiplexé</p>
+</div>
+<p>Voici un schéma permettant de réaliser notre afficheur multiplexé :</p>
+<div class="figure">
+<img src="images/aff-4x8-mux.svg" title="Afficheur 4x8 multiplexé" alt="Afficheur 4x8 multiplexé" /><p class="caption">Afficheur 4x8 multiplexé</p>
+</div>
+<p>Ou voit que le nombre de registre a diminué, dans ce cas, il n’en reste qu’un. Par contre, il est nécessaire de pouvoir sélectionner les lignes. Un démultiplexeur est nécessaire. Ce dispositif combinatoire est aussi souvent appelé un décodeur. Ses entrées correspondent aux valeur binaires. Une seule de ses sorties peut être activée à un instant donné. Comme chacune de ses sorties doit commander toute une ligne, ici par les anodes des LED, il est nécessaire de placer un élément d’amplification. Nous avons utilisé ici un transistors PNP.</p>
+<h2 id="comparaisons-des-architectures">Comparaisons des architectures</h2>
+<p>Le multiplexage offre une diminution du nombre de composants nécessaires à l’électronique de commande, mais il diminue l’intensité résultante de l’afficheur. Un multiplexage par 2 ne perd que très peu d’intensité. En effet, on peut jouer sur le fait que le courant nominal peut être dépassé, vu que ce courant n’est pas permanent. Le courant pouvant aller jusqu’à une valeur proche du courant maximal, l’intensité instantanée est sensiblement augmentée. Ce choix du multiplexage par 2 était très souvent utilisé par les modules constituant les panneaux utilisés pour les écran vidéos géants, allant jusqu’à plusieurs dizaines de mètres carrés.</p>
+<p>Au delà de 2, les valeurs 4, 8 et 16 se rencontrent fréquemment. Le prix d’achat d’un module diminue bien entendu lorsque le chiffre du multiplexage augmente, mais il faut bien être conscient de l’incidence sur la luminosité de l’afficheur.</p>
+<p>Un module RGB multiplexé par 16 a été rendu très populaire parmi les <em>hacker</em> par le site Adafruit. Ce module est disponible en 32 x 16 et en 32 x 32. Nous l’utiliserons pour illustrer notre sujet.</p>
+<h2 id="programmation">Programmation</h2>
+<p><sub><sub><sub>~</sub></sub></sub></p>
+</body>
+</html>

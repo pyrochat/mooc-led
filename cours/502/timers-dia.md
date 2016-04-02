@@ -52,12 +52,12 @@ et registres de comparaison
 <section>
 <!-- A -->
 <h1 class="en_tete">Gestion précise du temps</h1>
-<div style="font-size:50pt; left:2.65cm; top:6.5cm; width:55cm">
-* Gérer le temps en jouant avec le temps d'exécution des instructions est compliqué
-<!-- 23 -->* Des circuits spécialisés vont nous aider
+<div style="font-size:50pt; left:2.65cm; top:6.5cm; width:57cm">
+* Gérer le temps en jouant avec le temps d'exécution des instructions est compliqué...
+<!-- 23 -->* Des circuits spécialisés vont nous aider !
 <!-- 3 -->* Par exemple pour générer un PWM :
 </div>
-<!-- 3 --><img src="./images/compteur-pwm-300dpi.png" style="top:15cm; left:15cm; width:29cm;" />
+<!-- 3 --><img src="./images/compteur-pwm.svg" style="top:15cm; left:15cm; width:29cm;" />
 </section>
 
 
@@ -67,52 +67,52 @@ et registres de comparaison
 <div style="font-size:50pt; left:2.65cm; top:6.5cm; width:55cm">
 * La base d'un timer est un compteur binaire :
 </div>
-<img src="./images/div2-150dpi.png" style="top:11cm; left:10cm; width:39cm;" />
-<!-- 23 --><img src="./images/div2n-150dpi.png" style="top:22cm; left:2.65cm; width:25cm;" />
-<!-- 3 --><img src="./images/chrono-compteur-300dpi.png" style="top:22cm; left:32cm; width:23cm;" />
+<img src="./images/div2-200dpi.png" style="top:11cm; left:10cm; width:39cm;" />
+<!-- 23 --><img src="./images/div2n.svg" style="top:22cm; left:2.65cm; width:25cm;" />
+<!-- 3 --><img src="./images/chrono-compteur.svg" style="top:22cm; left:32cm; width:23cm;" />
 </section>
 
 
 <section>
 <!-- A -->
 <h1 class="en_tete">Les timers</h1>
-<img src="./images/timer-base-300dpi.png" style="top:10cm; left:10cm; width:42cm;" />
+<img src="./images/timer-base.svg" style="top:10cm; left:10cm; width:42cm;" />
 </section>
 
 
 <section>
 <!-- A -->
 <h1 class="en_tete">Prédivision</h1>
-<img src="./images/timer-base-150dpi.png" style="top:7cm; left:36cm; width:22cm;" />
-<img src="./images/pre-div-300dpi.png" style="top:14cm; left:3cm; width:33cm;" />
+<img src="./images/timer-base.svg" style="top:7cm; left:36cm; width:22cm;" />
+<img src="./images/pre-div.svg" style="top:14cm; left:3cm; width:33cm;" />
 </section>
 
 
 <section>
 <!-- A -->
 <h1 class="en_tete">Logique de gestion</h1>
-<img src="./images/timer-base-150dpi.png" style="top:7cm; left:36cm; width:22cm;" />
-<img src="./images/logique-timer-300dpi.png" style="top:19cm; left:3cm; width:45cm;" />
+<img src="./images/timer-base.svg" style="top:7cm; left:36cm; width:22cm;" />
+<img src="./images/logique-timer.svg" style="top:19cm; left:3cm; width:45cm;" />
 </section>
 
 
 <section>
 <!-- A -->
 <h1 class="en_tete">Registres de comparaison</h1>
-<img src="./images/registre-comp-300dpi.png" style="top:9cm; left:10cm; width:40cm;" />
+<img src="./images/registre-comp.svg" style="top:9cm; left:10cm; width:40cm;" />
 </section>
 
 
 <section>
 <!-- A -->
 <h1 class="en_tete">Les timers de microcontrôleurs</h1>
-<div style="font-size:48pt; left:32cm; width:27.0cm; top:9cm;">
+<div style="font-size:48pt; left:31cm; width:28.0cm; top:9cm;">
 * Intel 8253 comme complément aux microprocesseurs
 </div>
-<div style="font-size:48pt; left:32cm; width:27.0cm; top:14cm;">
+<div style="font-size:48pt; left:31cm; width:28.0cm; top:14cm;line-height:1.5">
 * Le timer très simple des premiers PIC
 * Les AVR et leurs timers 8 et 16 bits
-* Des timers 32 bits très complexes sur les ARM
+* Des timers 32 bits complexes sur les ARM
 * Timers 16 bits du MSP430
 </div>
 </section>
@@ -182,8 +182,8 @@ int main() {
 <section>
 <!-- A -->
 <h1 class="en_tete">Les registres de comparaison</h1>
-<img src="./images/tacctl-1.jpg" style="top:6cm; left:10cm; width:30cm;" />
-<img src="./images/tacctl-4.jpg" style="top:15.5cm; left:6cm; width:50cm;" />
+<img src="./images/tacctl-1.jpg" style="top:6cm; left:6cm; width:43cm;" />
+<img src="./images/tacctl-4.jpg" style="top:15.6cm; left:6cm; width:50cm;" />
 </section>
 
 
@@ -214,7 +214,7 @@ int main() {
 <h1 class="en_tete">Les interruptions associées aux timers</h1>
 <div style="font-size:48pt; left:2.65cm; width:57.0cm; top:9cm;">
 * Les timers deviennent très intéressant lorsqu'ils sont associés à des interruptions
-<!-- 234 -->* Une interruption peur être générée au dépassement de capacité du compteur
+<!-- 234 -->* Une interruption peut être générée au dépassement de capacité du compteur
 <!-- 34 -->* Des interruptions peuvent se produire par les registres de comparaison
 <!-- 4 -->* Bien d'autres modes sont disponibles
 </div>

@@ -53,20 +53,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3 class="date">rév 2016/01/04</h3>
 </div>
 <h2 id="différentes-significations-du-mot-arduino">Différentes significations du mot Arduino</h2>
-<p>L’<strong>Arduino</strong> a participé à rendre populaires les microcontrôleurs de manière extraordinaire. Qu’est-ce qui se cache derrière ce nom ?</p>
-<p>Il faut différencier trois significations différentes du mot Arduino :</p>
+<p>L’<strong>Arduino</strong> a participé à rendre populaires les microcontrôleurs de manière extraordinaire. Qu’est-ce qui se cache derrière ce nom ?</p>
+<p>Il faut différencier trois significations différentes du mot Arduino :</p>
 <ul>
 <li>une carte à microcontrôleurs</li>
 <li>un environnement de développement</li>
 <li>une librairie pour microcontrôleurs.</li>
 </ul>
-<p><code>1.</code> L’Arduino est une <strong>carte à microcontrôleurs</strong>, plus exactement une famille de cartes. L’<strong>Arduino UNO</strong> est la plus connue. Elle contient un microcontrôleur AVR du fabricant Atmel, le modèle ATmega328. Un câble USB permet de la brancher sur un PC, principalement pour déposer un programme dans le microcontrôleur. Les cartes Arduino sont <em>open hardware</em> : leurs plans sont publiques. Comme elles sont produites par de nombreux fabricants, leur prix est très favorable.</p>
+<p><code>1.</code> L’Arduino est une <strong>carte à microcontrôleurs</strong>, plus exactement une famille de cartes. L’<strong>Arduino UNO</strong> est la plus connue. Elle contient un microcontrôleur AVR du fabricant Atmel, le modèle ATmega328. Un câble USB permet de la brancher sur un PC, principalement pour déposer un programme dans le microcontrôleur. Les cartes Arduino sont <em>open hardware</em> : leurs plans sont publiques. Comme elles sont produites par de nombreux fabricants, leur prix est très favorable.</p>
 <div class="figure">
 <img src="images/Uno.jpg" title="Exemple de carte Arduino" alt="Exemple de carte Arduino" />
 <p class="caption">Exemple de carte Arduino</p>
 </div>
-<p><code>2.</code> Le <strong>programme Arduino</strong> est aussi environnement de développement (IDE = Integrated Developpement Environnement). C’est donc un logiciel qui s’exécute sur un PC. Il fonctionne sur les principaux systèmes d’exploitation courant : Windows, Linux et MacOS. Il associe principalement un éditeur et un compilateur C. Il permet d’écrire un programme, de le compiler et de l’envoyer sur une carte Arduino. C’est un logiciel libre, écrit en Java, inspiré de l’environnement <em>Processing</em>.</p>
-<p>On voit sur cette copie d’écran que l’interface est très simple :</p>
+<p><code>2.</code> Le <strong>programme Arduino</strong> est aussi environnement de développement (IDE = Integrated Developpement Environnement). C’est donc un logiciel qui s’exécute sur un PC. Il fonctionne sur les principaux systèmes d’exploitation courant : Windows, Linux et MacOS. Il associe principalement un éditeur et un compilateur C. Il permet d’écrire un programme, de le compiler et de l’envoyer sur une carte Arduino. C’est un logiciel libre, écrit en Java, inspiré de l’environnement <em>Processing</em>.</p>
+<p>On voit sur cette copie d’écran que l’interface est très simple :</p>
 <div class="figure">
 <img src="images/arduino-ide.png" title="Logiciel Arduino" alt="Logiciel Arduino" />
 <p class="caption">Logiciel Arduino</p>
@@ -76,26 +76,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Ces procédures sont similaires au langage <em>Wiring</em>, qui a précédé l’Arduino. Ce terme serait plus correct, mais il est moins connu. Nous utiliserons dans ce cours l’expression <strong>programmation en C-Arduino</strong> pour désigner le fait de développer des programmes pour microcontrôleurs avec le langage C et les procédures Arduino. C’est le sujet de cette leçon. Plus exactement, nous allons décrire un minimum de procédures qui vont nous permettre de programmer nos premières enseignes à LED.</p>
 <h2 id="cacher-la-complexité-du-microcontrôleur">Cacher la complexité du microcontrôleur</h2>
 <p>Le but du C-Arduino est de cacher en partie la complexité du microcontrôleur. Accessoirement, c’est un moyen d’écrire des programmes qui peuvent, dans une certaine mesure, s’exécuter sur plusieurs modèles de microcontrôleurs.</p>
-<p>Nous allons présenter ici :</p>
+<p>Nous allons présenter ici :</p>
 <ul>
 <li>la structure générale d’un programme</li>
 <li>les entrées-sorties</li>
 <li>la gestion du temps.</li>
 </ul>
 <h2 id="la-structure-générale-dun-programme">La structure générale d’un programme</h2>
-<p>Plutôt que d’écrire un programme complet, avec sa procédure <code>main()</code>, Arduino nous propose d’écrire deux procédures : <code>setup()</code> et <code>loop()</code>.</p>
+<p>Plutôt que d’écrire un programme complet, avec sa procédure <code>main()</code>, Arduino nous propose d’écrire deux procédures : <code>setup()</code> et <code>loop()</code>.</p>
 <p>La procédure <code>void setup()</code> s’exécute une seule fois au début de l’exécution du programme, qui correspond au <em>Reset</em> du microcontrôleur. Notons qu’un <em>Reset</em> se produit automatiquement lorsqu’on applique la tension d’alimentation sur un microcontrôleur. La procédure <code>setup()</code> s’exécute donc lorsqu’on allume notre dispositif. Elle contient généralement toutes les initialisations matérielles et logicielles nécessaires pour la suite du programme.</p>
-<p>La procédure <code>void loop()</code> est appelée à la suite de <code>setup()</code>. Mais, contrairement au <code>setup()</code> qui n’est appelé qu’une fois, elle est appelée en permanence. Elle correspond donc à la boucle principale du programme, d’où son nom. Rappelons que les programmes pour microcontrôleur n’ont généralement pas de fin : l’exécution se poursuit jusqu’à ce que le microcontrôleur ne soit plus alimenté ou jusqu’à un <em>Reset</em>.</p>
+<p>La procédure <code>void loop()</code> est appelée à la suite de <code>setup()</code>. Mais, contrairement au <code>setup()</code> qui n’est appelé qu’une fois, elle est appelée en permanence. Elle correspond donc à la boucle principale du programme, d’où son nom. Rappelons que les programmes pour microcontrôleur n’ont généralement pas de fin : l’exécution se poursuit jusqu’à ce que le microcontrôleur ne soit plus alimenté ou jusqu’à un <em>Reset</em>.</p>
 <h2 id="organigramme">Organigramme</h2>
-<p>Une des manière de représenter le déroulement d’un programme est l’organigramme. Voici donc l’organigramme général d’un programme Arduino :</p>
+<p>Une des manière de représenter le déroulement d’un programme est l’organigramme. Voici donc l’organigramme général d’un programme Arduino :</p>
 <div class="figure">
 <img src="images/organi-arduino-120dpi.png" title="Organigramme d’un programme Arduino" alt="Organigramme d’un programme Arduino" width="264" />
 <p class="caption">Organigramme d’un programme Arduino</p>
 </div>
 <p>L’organigramme à gauche de la figure correspond à ce que voit l’utilisateur. Mais en fait, derrière l’usage de <code>setup()</code> et <code>loop()</code> proposé par Arduino, des instructions cachées s’exécutent avant chacune de ces procédures, comme le montre l’organigramme de droite. C’est dans la procédure <code>main()</code> produite par l’environnement Arduino que ces instructions sont ajoutées.</p>
-<p>Il faut noter que la procédure <code>loop()</code> a une durée d’exécution qui peut varier considérablement d’un programme à un autre. Pour une enseigne ou un afficheur à LED, elle pourrait par exemple durer le temps d’un cycle complet de l’animation. Mais elle pourrait tout aussi bien durer un temps très court, par exemple un temps fixe de 10 microsecondes. Tout dépendra de la manière de programmer.</p>
+<p>Il faut noter que la procédure <code>loop()</code> a une durée d’exécution qui peut varier considérablement d’un programme à un autre. Pour une enseigne ou un afficheur à LED, elle pourrait par exemple durer le temps d’un cycle complet de l’animation. Mais elle pourrait tout aussi bien durer un temps très court, par exemple un temps fixe de 10 µs. Tout dépendra de la manière de programmer.</p>
 <h3 id="exemple">Exemple</h3>
-<p>Le programme suivant est un programme Arduino correct :</p>
+<p>Le programme suivant est un programme Arduino correct :</p>
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2
 3
@@ -107,36 +107,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="dt">void</span> loop() {
 }</code></pre></td></tr></table></div>
 <!-- retour au mode normal pour l'éditeur -->
-<p>Il est possible de le compiler et de l’exécuter... mais il ne fait rien !</p>
+<p>Il est possible de le compiler et de l’exécuter... mais il ne fait rien !</p>
 <h2 id="les-entrées-sorties">Les entrées-sorties</h2>
-<p>L’usage des broches du microcontrôleur comme entrée ou comme sortie se fait par l’intermédiaire de registres spécialisés. Leurs noms et leurs rôle exacts varient d’un microcontrôleur à l’autre. Pour faciliter l’utilisation des broches comme entrées ou comme sorties, trois procédures sont proposées :</p>
+<p>L’usage des broches du microcontrôleur comme entrée ou comme sortie se fait par l’intermédiaire de registres spécialisés. Leurs noms et leurs rôle exacts varient d’un microcontrôleur à l’autre. Pour faciliter l’utilisation des broches comme entrées ou comme sorties, trois procédures sont proposées :</p>
 <ul>
 <li><code>void pinMode(pin, mode)</code></li>
 <li><code>void digitalWrite(pin, value)</code></li>
 <li><code>value digitalRead(pin)</code></li>
 </ul>
 <h3 id="pinmode">pinMode()</h3>
-<p>La procédure <code>void pinMode(pin, mode)</code> est une procédure d’initialisation. Elle permet de placer une broche du microcontrôleur en entrée ou en sortie. Elle reçoit deux paramètres :</p>
+<p>La procédure <code>void pinMode(pin, mode)</code> est une procédure d’initialisation. Elle permet de placer une broche du microcontrôleur en entrée ou en sortie. Elle reçoit deux paramètres :</p>
 <ul>
-<li><code>pin</code> : c’est le numéro logique de la broche. Attention, c’est un numéro qui a été arbitrairement choisi. Sur les cartes Arduino, c’est le numéro qui est noté sur la carte. Sur Energia, c’est le numéro de la broche sur le boîtier du microcontrôleur. Il s’agit d’un boîtier à 20 broches (DIL20).</li>
-<li><code>mode</code> : la valeur INPUT place la broche en entrée, la valeur OUTPUT place la broche en sortie.</li>
+<li><code>pin</code> : c’est le numéro logique de la broche. Attention, c’est un numéro qui a été arbitrairement choisi. Sur les cartes Arduino, c’est le numéro qui est noté sur la carte. Sur Energia, c’est le numéro de la broche sur le boîtier du microcontrôleur. Il s’agit d’un boîtier à 20 broches (DIL20).</li>
+<li><code>mode</code> : la valeur INPUT place la broche en entrée, la valeur OUTPUT place la broche en sortie.</li>
 </ul>
 <p>La procédure <code>pinMode()</code> ne rend rien à la fin de son exécution, d’où le mot <code>void</code> qui précède sa définition.</p>
 <h3 id="digitalwrite">digitalWrite()</h3>
-<p>La procédure <code>void digitalWrite(pin, value)</code> permet d’agir sur une broche qui a été programmée en sortie. C’est une écriture. Elle permet de placer un 0 ou un 1 sur la sortie. Elle reçoit deux paramètres :</p>
+<p>La procédure <code>void digitalWrite(pin, value)</code> permet d’agir sur une broche qui a été programmée en sortie. C’est une écriture. Elle permet de placer un 0 ou un 1 sur la sortie. Elle reçoit deux paramètres :</p>
 <ul>
-<li><code>pin</code> : c’est le numéro logique de la broche.</li>
-<li><code>value</code> : la valeur à donner à la sortie, 0 ou 1. Les symboles LOW (bas, 0) et HIGH (haut, 1) peuvent aussi être utilisés.</li>
+<li><code>pin</code> : c’est le numéro logique de la broche.</li>
+<li><code>value</code> : la valeur à donner à la sortie, 0 ou 1. Les symboles LOW (bas, 0) et HIGH (haut, 1) peuvent aussi être utilisés.</li>
 </ul>
 <p>La procédure <code>digitalWrite()</code> ne rend rien à la fin de son exécution.</p>
 <h3 id="digitalread">digitalRead()</h3>
-<p>La procédure <code>value digitalRead(pin)</code> permet de lire le niveau logique sur une broche qui a été programmée en entrée. La valeur rendue sera 0 ou 1 (<code>LOW</code> ou <code>HIGH</code>). Elle reçoit un seul paramètre :</p>
+<p>La procédure <code>value digitalRead(pin)</code> permet de lire le niveau logique sur une broche qui a été programmée en entrée. La valeur rendue sera 0 ou 1 (<code>LOW</code> ou <code>HIGH</code>). Elle reçoit un seul paramètre :</p>
 <ul>
-<li><code>pin</code> : le numéro logique de la broche.</li>
+<li><code>pin</code> : le numéro logique de la broche.</li>
 </ul>
 <p>La procédure <code>digitalWrite()</code> rend à la fin de son exécution la valeur lue. Ce sera un 0 ou un 1.</p>
 <h3 id="exemple-1">Exemple</h3>
-<p>Voici un programme qui utilise les instructions que nous venons de voir. Il semble correct :</p>
+<p>Voici un programme qui utilise les instructions que nous venons de voir. Il semble correct :</p>
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2
 3
@@ -154,11 +154,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   digitalWrite(P1_0, (digitalRead(P1_3));
 }</code></pre></td></tr></table></div>
 <!-- retour au mode normal pour l'éditeur -->
-<p>En permanence, il écrit sur la broche P1_0, qui est la LED rouge du Launchpad, la valeur lue sur P1_3, qui est le bouton-poussoir. On devrait donc voir la LED rouge s’allumer lorsque le bouton-poussoir est pressé et s’éteindre lorsqu’il est relâché. Malheureusement... il ne fonctionne pas ! Il faut modifier la ligne d’initialisation de la manière suivante pour qu’il fonctionne un peu mieux :</p>
+<p>En permanence, il écrit sur la broche P1_0, qui est la LED rouge du Launchpad, la valeur lue sur P1_3, qui est le bouton-poussoir. On devrait donc voir la LED rouge s’allumer lorsque le bouton-poussoir est pressé et s’éteindre lorsqu’il est relâché. Malheureusement... il ne fonctionne pas ! Il faut modifier la ligne d’initialisation de la manière suivante pour qu’il fonctionne un peu mieux :</p>
 <div class="sourceCode" startFrom="3"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>3
 </pre></td><td class="sourceCode"><pre><code class="sourceCode c">  pinMode(P1_3, INPUT_PULLUP);</code></pre></td></tr></table></div>
 <!-- retour au mode normal pour l'éditeur -->
-<p>C’est une raison électrique qui oblige l’utilisation du mode <code>INPUT_PULLUP</code>. Elle sera expliquée en détail dans une prochaine leçon. On apprendra aussi pourquoi ce programme fait l’inverse de ce qu’on avait imaginé : la LED sera allumée tant qu’on ne presse pas sur le bouton-poussoir et s’éteindra lorsqu’on le presse.</p>
+<p>C’est une raison électrique qui oblige l’utilisation du mode <code>INPUT_PULLUP</code>. Elle sera expliquée en détail dans une prochaine leçon. On apprendra aussi pourquoi ce programme fait l’inverse de ce qu’on avait imaginé : la LED sera allumée tant qu’on ne presse pas sur le bouton-poussoir et s’éteindra lorsqu’on le presse.</p>
 <h2 id="la-gestion-du-temps">La gestion du temps</h2>
 <p>L’utilisation d’un microcontrôleur et d’un programme pour commander une enseigne à LED est motivée par l’envie de produire des animations visuelles. Ces animations sont des variations au cours du temps de l’état des LED. Il nous faut donc la possibilité de maîtriser le temps qui passe. Nous allons le faire avec la procédure <code>delay()</code>.</p>
 <p>La procédure <code>void delay(ms)</code> permet d’attendre un temps donné. Ce temps est exprimé en ms (milliseconde). Elle ne rend rien à la fin de son exécution.</p>
@@ -186,13 +186,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 }</code></pre></td></tr></table></div>
 <!-- retour au mode normal pour l'éditeur -->
 <p>On y trouve la procédure <code>setup()</code> qui met en sortie la broche sur laquelle la LED rouge du LaunchPad est branchée.</p>
-<p>La procédure <code>loop()</code> allume la LED, puis attend une demi-seconde, puis éteint la LED et attend à nouveau une demi-seconde. Tout le cycle dure une seconde. On a donc produit un <em>signal carré</em> de 1 Hz.</p>
-<p>Voici un chronogramme qui montre l’évolution de la sortie en fonction du temps :</p>
+<p>La procédure <code>loop()</code> allume la LED, puis attend une demi-seconde, puis éteint la LED et attend à nouveau une demi-seconde. Tout le cycle dure une seconde. On a donc produit un <em>signal carré</em> de 1 Hz.</p>
+<p>Voici un chronogramme qui montre l’évolution de la sortie en fonction du temps :</p>
 <div class="figure">
 <img src="images/chrono-blink-300dpi.png" title="Chronogramme du programme Blink" alt="Chronogramme du programme Blink" />
 <p class="caption">Chronogramme du programme Blink</p>
 </div>
-<p>Ce programme est un <em>classique</em> dans le monde des microcontrôleurs. Presque tous les projets commencent par lui ! En effet, on essaie presque toujours d’avoir au moins une LED dans un montage à microcontrôleurs. Au moment des premiers tests, ce programme va permettre de s’assurer que le microcontrôleur est bien fonctionnel et que l’environnement utilisé permet de le programmer.</p>
+<p>Ce programme est un <em>classique</em> dans le monde des microcontrôleurs. Presque tous les projets commencent par lui ! En effet, on essaie presque toujours d’avoir au moins une LED dans un montage à microcontrôleurs. Au moment des premiers tests, ce programme va permettre de s’assurer que le microcontrôleur est bien fonctionnel et que l’environnement utilisé permet de le programmer.</p>
 <h2 id="une-riche-librairie">Une riche librairie</h2>
 <p>La librairie Arduino contient de nombreuses autres procédures. Elles sont bien documentées.</p>
 <p>Elle est complétée par d’innombrables autres librairies, souvent développées pour l’usage d’un matériel particulier, comme les cartes-filles (<em>shields</em>) qu’on peut placer sur les cartes de base (Arduino, Launchpad, etc).</p>

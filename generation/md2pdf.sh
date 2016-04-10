@@ -14,6 +14,7 @@
 
 function MD2HTML
 {
+    TEMPLATE=pandoc-html-template.html
     pandoc                              \
         --standalone                    \
         --from markdown                 \
@@ -22,6 +23,8 @@ function MD2HTML
         --email-obfuscation references  \
         --normalize                     \
         --mathjax                       \
+        --template=$TEMPLATE            \
+        --data-dir=$CUR_DIR             \
         --css=$CSS_FILE                 \
         --output $CODE.html             \
         $CODE.md
@@ -30,7 +33,7 @@ function MD2HTML
 function HTML2PDF
 {
 
-    prince $HTML_FILE -o $PDF_FILE #--javascript
+    prince $HTML_FILE -o $PDF_FILE --javascript
 
 }
 
@@ -57,6 +60,8 @@ function DO_ALL
 
 
 
+SCRIPT=`realpath $0`
+CUR_DIR=`dirname $SCRIPT`
 
 
 if [[ "$#" == "0" ]]; then

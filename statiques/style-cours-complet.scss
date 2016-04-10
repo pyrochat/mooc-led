@@ -1,0 +1,743 @@
+@charset "utf-8";
+
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic|Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic|Ubuntu+Condensed&subset=greek-ext);
+
+$doc-title                     : "Enseignes et afficheurs à LED";
+$format                        : 2;
+$code-en-couleur               : true;
+$draft                         : true;
+
+
+@debug "****************************************";
+@debug #{unquote( '* Processing “' )}#{unquote( $doc-title )}#{unquote( "” *" )}  ;
+@debug "****************************************";
+
+
+
+
+@if $format == 1
+{
+	// PPUR 16 × 24 cm
+	$body-font-family          : "Times New Roman" !global;
+	$headings-font-family      : $body-font-family !global;
+	$page-width                : 16cm !global;
+	$page-height               : 24cm !global;
+	$page-inner-width          : 12cm !global;
+	$page-inner-height         : 19.5cm !global;
+	$page-margin-top           : 2cm !global;
+	$page-margin-bottom        : $page-height - $page-inner-height - $page-margin-top !global;
+	$page-margin-bottom        : 2cm;
+	$page-margin-inner         : 2cm !global;
+	$page-margin-outer         : $page-width - $page-inner-width -$page-margin-inner !global;
+	$body-font-size            : 10.5pt !global;
+	$body-line-height          : 1.2em !global;
+	$body-text-indent          : 1.45em !global;
+	$page-nb-lines             : 46.5 !global;
+	$code-font-family          : 'Ubuntu Mono' !global;
+	$code-font-size            : 8.5pt !global;
+	$code-line-height          : $body-line-height * 1 !global;
+}
+@else if $format == 2
+{
+	// PPUR A5
+	$body-font-family          : "Times New Roman" !global;
+	$headings-font-family      : $body-font-family !global;
+	$page-width                : 14.8cm !global;
+	$page-height               : 21cm !global;
+	$page-inner-width          : 12cm !global;
+	$page-inner-height         : 19.5cm !global;
+	$page-margin-top           : 2cm !global;
+	$page-margin-bottom        : $page-height - $page-inner-height - $page-margin-top !global;
+	$page-margin-bottom        : 2cm;
+	$page-margin-inner         : 1.4cm !global;
+	$page-margin-outer         : $page-width - $page-inner-width -$page-margin-inner !global;
+	$body-font-size            : 10.5pt !global;
+	$body-line-height          : 1.2em !global;
+	$body-text-indent          : 1.45em !global;
+	$page-nb-lines             : 46.5 !global;
+	$code-font-family          : 'Ubuntu Mono' !global;
+	$code-font-size            : 8.5pt !global;
+	$code-line-height          : $body-line-height * 1 !global;
+}
+@else
+{
+	@warn "Format non définit";
+}
+
+
+
+$page-inner-width              : $page-width - $page-margin-outer - $page-margin-inner;
+$page-inner-height             : $page-height - $page-margin-top - $page-margin-bottom;
+
+// $body-line-height              : ( ( $page-height - $page-margin-top - $page-margin-bottom ) / $page-nb-lines ) + 0.002cm;
+$body-line-height              : 0.42135cm;
+
+$prince-hyphenate-after        : "prince-hyphenate-after";
+$prince-hyphenate-before       : "prince-hyphenate-before";
+$prince-page-group             : "prince-page-group";
+
+
+@debug #{unquote( "$page-margin-bottom     =" )} $page-margin-bottom;
+@debug #{unquote( "$page-margin-outer      =" )} $page-margin-outer;
+@debug #{unquote( "$page-width             =" )} $page-width;
+@debug #{unquote( "$page-inner-width       =" )} $page-inner-width;
+@debug #{unquote( "$page-inner-height      =" )} $page-inner-height;
+@debug #{unquote( "$body-line-height       =" )} $body-line-height;
+@debug #{unquote( "$body-text-indent       =" )} $body-text-indent;
+@debug "***************************************";
+@debug "*                                     *";
+@debug "***************************************";
+
+
+
+
+@mixin page-noheadfoot
+{
+	@top-left-corner    { content: "" !important; }
+	@top-left           { content: "" !important; }
+	@top-center         { content: "" !important; }
+	@top-right          { content: "" !important; }
+	@top-right-corner   { content: "" !important; }
+	@right-top          { content: "" !important; }
+	@right-middle       { content: "" !important; }
+	@right-bottom       { content: "" !important; }
+	@bottom-right-corner{ content: "" !important; }
+	@bottom-right       { content: "" !important; }
+	@bottom-center      { content: "" !important; }
+	@bottom-left        { content: "" !important; }
+	@bottom-left-corner { content: "" !important; }
+	@left-bottom        { content: "" !important; }
+	@left-middle        { content: "" !important; }
+	@left-top           { content: "" !important; }
+}
+
+body
+{
+	font-family                : $body-font-family;
+	font-size                  : $body-font-size;
+	font-weight                : normal;
+	hyphenate-lines            : 1;
+	hyphens                    : auto;
+	letter-spacing             : 0;
+	line-height                : $body-line-height;
+	margin                     : 0;
+	orphans                    : 2;
+	padding                    : 0;
+	#{$prince-hyphenate-after} : 3;
+	#{$prince-hyphenate-before}: 3;
+	string-set                 : doc-title $doc-title,
+								 ctr-page-nb counter( page );
+	text-align                 : justify;
+	text-indent                : 0;
+	word-spacing               : 0;
+	widows                     : 2;
+}
+
+sup, sub
+{
+	height                     : 0;
+	line-height                : 1;
+	vertical-align             : baseline;
+	position                   : relative;
+	font-size                  : 0.65em;
+}
+
+sub { top                      : 0.5ex; }
+sup { bottom                   : 1ex; }
+
+a {
+	text-decoration            : none;
+	color                      : inherit;
+}
+
+
+p {
+	margin-top                 : $body-line-height * 0;
+	margin-bottom              : $body-line-height * 0;
+	text-indent                : $body-text-indent;
+}
+
+
+h1 {
+	color                      : inherit;
+	font-family                : $headings-font-family;
+	font-size                  : 160%;
+	font-variant               : normal;
+	font-weight                : bold;
+	hyphens                    : none;
+	letter-spacing             : normal;
+	line-height                : $body-line-height * 1.5;
+	margin-bottom              : $body-line-height * 5;
+	margin-left                : 0;
+	margin-right               : 0;
+	margin-top                 : $body-line-height * 2;
+	orphans                    : 1;
+	padding                    : 0;
+	// page-break-after           : auto;
+	// page-break-before          : right;
+	page-break-inside          : auto;
+	string-set                 : str-h1 content();
+	text-align                 : left;
+	text-transform             : uppercase;
+	widows                     : 1;
+	word-spacing               : normal;
+}
+
+h2, h3, h4, h5, h6
+{
+	color                      : inherit;
+	font-family                : $headings-font-family;
+	font-size                  : $body-font-size * 1;
+	font-stretch               : normal;
+	font-variant               : normal;
+	font-weight                : bold;
+	hyphens                    : none;
+	letter-spacing             : normal;
+	line-height                : $body-line-height * 1;
+	margin-bottom              : $body-line-height * 1;
+	margin-left                : 0;
+	margin-right               : 0;
+	margin-top                 : $body-line-height * 1;
+	orphans                    : 1;
+	padding-bottom             : 0;
+	padding-left               : 0;
+	padding-right              : 0;
+	padding-top                : $body-line-height * 1;
+	page-break-after           : avoid;
+	// page-break-before          : auto;
+	page-break-inside          : auto;
+	text-align                 : left;
+	text-transform             : none;
+	widows                     : 1;
+	word-spacing               : normal;
+}
+
+$h2-nb-width: 0.9cm;
+h2 {
+	font-weight                : 100;
+	text-transform             : uppercase;
+	margin-top                 : 0;
+	margin-right               : 30%;
+	margin-left                : $h2-nb-width;
+	text-indent                : $h2-nb-width * -1;
+}
+
+
+h1 { counter-reset: ctr-h2 ctr-h3 ctr-h4 0; }
+h2 { counter-reset:        ctr-h3 ctr-h4 0; }
+h3 { counter-reset:               ctr-h4 0; }
+
+
+h1:before {
+	content                    : "Chapitre " counter( ctr-h1 ) "\A";
+	white-space                : pre-wrap;
+	font-weight                : 100;
+	font-size                  : 10pt;
+	position                   : relative;
+	top                        : $body-line-height * -1.5;
+}
+h2:before { counter-increment: ctr-h2; content : counter( ctr-h1 ) "." counter( ctr-h2 ) " "; display: inline-block; width: $h2-nb-width; margin: 0; padding: 0; text-indent: 0; }
+h3:before { counter-increment: ctr-h3; content : counter( ctr-h1 ) "." counter( ctr-h2 ) "." counter( ctr-h3 ) " "; }
+h4:before { counter-increment: ctr-h4; content : counter( ctr-h1 ) "." counter( ctr-h2 ) "." counter( ctr-h3 ) "." counter( ctr-h4 ) " "; }
+
+h2+h3 {
+	// margin-top: $body-line-height * 6 + 0.07cm;
+}
+
+
+
+$decalage: $body-text-indent;
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	li {
+		margin: 0 0 0 $decalage;
+		padding: 0;
+		text-indent: $decalage * -1;
+	}
+	li:before {
+		content: "•";
+		display: inline-block;
+		font-size: inherit;
+		margin: 0;
+		padding: 0;
+		text-indent: 0;
+		vertical-align: middle;
+		width: $decalage;
+	}
+}
+
+ol {
+ 	margin: $decalage;
+// 	padding: 0;
+// 	li {
+// 		margin: 0 0 0 $decalage;
+// 		padding: 0;
+// 		text-indent: $decalage * -1;
+// 	}
+// 	li:before {
+// 		display: inline-block;
+// 		font-size: inherit;
+// 		margin: 0;
+// 		padding: 0;
+// 		text-indent: 0;
+// 		vertical-align: middle;
+// 		width: $decalage;
+// 	}
+}
+
+
+
+
+
+
+div.s1
+{
+	#{prince-page-group}       : start;
+	page                       : page-s1;
+}
+.empty_page
+{
+	display                    : none;
+}
+
+
+.page-break-before-avoid
+{
+	page-break-before          : avoid;
+}
+.page-break-inside-avoid
+{
+	page-break-inside          : avoid;
+}
+.page-break-after-avoid
+{
+	page-break-after           : avoid;
+}
+.page-break-before-auto
+{
+	page-break-before          : auto;
+}
+.page-break-inside-auto
+{
+	page-break-inside          : auto;
+}
+.page-break-after-auto
+{
+	page-break-after           : auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+div#s_toc
+{
+	counter-reset              : ctr-ph1 0;
+	margin                     : 0;
+	padding                    : 0;
+	page-break-before          : left;
+	page                       : page-toc;
+	& h1:before
+	{
+		content                : none;
+	}
+	& a
+	{
+		color                  : black;
+		text-decoration        : none;
+	}
+	& a::after
+	{
+		content                : ' ' leader( '. ' ) target-counter( attr( href ), page );
+		font-style             : normal;
+	}
+	& p
+	{
+		font-family            : "Avenir Next";
+		font-size              : $body-font-size * 0.9;
+		font-weight            : 400;
+		margin                 : 0;
+		font-variant           : small-caps;
+		line-height            : $body-line-height;
+		text-indent            : 0;
+	}
+	& p.h1:before
+	{
+		content                : counter( ctr-ph1 ) " — ";
+	}
+	& p.h1
+	{
+		counter-increment      : ctr-ph1;
+		font-weight            : 600;
+		margin-left            : -0.5cm;
+		margin-top             : $body-line-height;
+		page-break-after       : avoid;
+		text-transform         : uppercase;
+	}
+	& p#s_toc_no_nb:before
+	{
+		content                : none;
+	}
+}
+
+
+
+
+
+
+@mixin page-headfoot
+{
+	font-family                : $body-font-family;
+	margin                     : 0;
+	padding-top                : $body-line-height * 2;
+}
+@mixin page-headfoot-pagenb
+{
+	@include page-headfoot;
+}
+
+@page {
+	size                       : $page-width $page-height;
+	// margin                     : $page-margin-top $page-margin-right $page-margin-bottom $page-margin-left;
+	margin-top                 : $page-margin-top;
+	margin-bottom              : $page-margin-bottom;
+	font-family                : $body-font-family;
+	font-weight                : normal;
+	font-size                  : 70%;
+//	marks                      : crop;
+	@top {
+		@include page-headfoot;
+	}
+	@top-left {
+		@include page-headfoot;
+	}
+	@top-right {
+		@include page-headfoot;
+	}
+	/* Watermark */
+	@if $draft == true {
+		@bottom-center {
+			content: "DateModifParScript";
+			width: 2cm;
+			padding: 0;
+			margin-bottom: 0.25cm;
+			margin-bottom: -0.05cm;
+			line-height: 1.6em;
+			color: rgba( 0, 0, 0, 0.5 );
+			font-family: "Ubuntu Mono";
+		}
+		@bottom-left {
+			margin-bottom: 0.5cm;
+			margin-left: 3.325cm;
+			content: "DRAFT";
+			color: rgba( 0, 0, 0, 0.1 );
+			font-size: 60pt;
+			font-weight: 900;
+			font-family: "Ubuntu Mono";
+		}
+	}
+}
+@page page_section:left {
+	margin-left                : $page-margin-outer;
+	margin-right               : $page-margin-inner;
+	@top-center {
+		content                : string( doc-title );
+	}
+	@top-left {
+		content                : string( ctr-page-nb );
+		font-size              : $body-font-size;
+	}
+}
+@page page_section:right {
+	margin-left                : $page-margin-inner;
+	margin-right               : $page-margin-outer;
+	@top-center {
+		content                : string( str-h1 );
+	}
+	@top-right {
+		content                : string( ctr-page-nb );
+		font-size              : $body-font-size;
+	}
+}
+
+@page page_section:first
+{
+	@top-right { content: ""; }
+	@top-center { content: ""; }
+}
+
+@page :blank
+{
+	@include page-noheadfoot;
+}
+
+div.page-noheadfoot
+{
+	page                       : page-noheadfoot;
+}
+@page page-noheadfoot
+{
+	@include page-noheadfoot;
+}
+
+
+.page-ctr-reset
+{
+	counter-reset              : page 1;
+}
+
+.page-right
+{
+	page-break-before          : right;
+}
+.page-new
+{
+	page-break-before          : always;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@page page-preface:left {
+	@bottom-center {
+		content                : "";
+	}
+
+}
+@page page-preface:right {
+	@bottom-center {
+		content                : "";
+	}
+}
+
+
+@page page-toc:first {
+	@bottom-center {
+		content                : none;
+	}
+}
+@page page-toc:right {
+	@bottom-center {
+		content                : string( str-h1 );
+	}
+}
+
+
+
+
+
+
+
+
+
+del {
+	display : none;
+}
+ins {
+	text-decoration : none;
+}
+
+
+div.figure {
+	margin-bottom : $body-line-height;
+	margin-left   : 0;
+	margin-right  : 0;
+	margin-top    : $body-line-height;
+	img {
+		max-width : 90%;
+		margin    : 0 auto;
+		display   : block;
+	}
+	p.caption {
+		font-size         : 85%;
+		margin-top        : $body-line-height;
+		text-indent       : 0;
+		page-break-before : avoid;
+	}
+}
+
+
+
+
+// CODE
+
+pre, code, code span {
+	font-family    : $code-font-family;
+	line-height    : $code-line-height;
+}
+div.sourceCode {
+	margin         : $body-line-height * 1 0;
+	overflow-x     : auto;
+	font-size      : $code-font-size;
+}
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+	margin         : 0;
+	padding        : 0;
+	vertical-align : baseline;
+	border         : none;
+}
+table.sourceCode {
+	// width       : 100%;
+}
+td.lineNumbers {
+	text-align     : right;
+	padding-right  : 1px;
+	padding-left   : 0px;
+	color          : #aaaaaa;
+	border-right   : 1px solid #aaaaaa;
+}
+td.sourceCode {
+	padding-left   : 5px;
+}
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+
+@if $code-en-couleur == false {
+	div.sourceCode * { color: black !important; }
+	td.lineNumbers { border-right: 1px solid black; }
+}
+
+section {
+	counter-increment      : ctr-h1;
+	page-break-before      : right;
+	page                   : page_section;
+	#{prince-page-group}   : start;
+}
+
+body {
+	prince-text-replace: " ?" "\2009?" ;
+	prince-text-replace: " !" "\2009!" ;
+	prince-text-replace: " :" "\2009:" ;
+}
+
+table {
+	margin-left     : auto;
+	margin-right    : auto;
+	margin-top      : $body-line-height * 1;
+	margin-bottom   : $body-line-height * 1;
+	border-collapse : collapse;
+	border-top      : 0.2mm solid black;
+	border-bottom   : 0.2mm solid black;
+	th, td {
+		padding        : 0.2mm 2mm;
+		margin         : 0;
+	}
+	th:first-child, td:first-child {
+		padding-left   : 0mm;
+	}
+	th:last-child, td:last-child {
+		padding-right  : 0mm;
+	}
+	tr:last-child td {
+		padding-bottom : 0.5mm;
+	}
+	th {
+		border-bottom  : 0.2mm solid black;
+		margin-bottom  : 1mm;
+		padding-bottom : 1mm;
+	}
+}
+
+@page page-de-garde {
+	margin             : 1cm 0 $page-margin-bottom;
+	padding            : 0;
+	@if $draft == true {
+		@bottom-left {
+			margin-left : 3.325cm + $page-margin-inner;
+		}
+	}
+}
+
+div.page-de-garde {
+	page-break-before : always !important;
+	page-break-after  : always !important;
+	padding           : 0;
+	margin            : 0;
+	page              : page-de-garde;
+	p {
+		font-size   : 20pt;
+		font-weight : bold;
+		text-align  : center;
+		line-height : 30pt;
+		text-indent : 0;
+		margin      : 0;
+		padding     : 0;
+		&.nom {
+			font-size   : 10pt;
+			line-height : 20pt;
+			margin-top  : 1cm;
+		}
+	}
+	img {
+		&.logo {
+			margin     : 0 auto 1cm;
+			display    : block;
+			text-align : center;
+			width      : 3cm;
+		}
+		&.vignette {
+			margin-top : 2cm;
+			width      : 100%;
+		}
+	}
+}
+
+
+div#header {
+	position : relative;
+	top      : -1cm;
+	p {
+		text-indent : 0;
+		font-style  : italic;
+		font-size   : 80%;
+	}
+}

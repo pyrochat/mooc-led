@@ -8,6 +8,11 @@ wget.log
 *-pre.md
 *-dia-compact.html
 *-dia-pre-compact.md
-style-cours-complet.css
 *.css.map
+
+style-cours-complet.css
 cours-complet.html
+cours-complet.pdf
+cours-complet-2up.pdf
+
+ar/*

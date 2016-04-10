@@ -60,7 +60,7 @@ int main () {
   TCCR2B=0b101; // prédivision par 128
   TIMSK2=(1<<TOIE2); // interruption Timer2 Overflow autorisée
   sei(); // toutes les interruptions autorisées
-  while (1) { // boucle correspondant à tous les réveils dus à l'interruption
+  while (1) { //boucle correspondant à tous les réveils dus à l'interruption
     set_sleep_mode(SLEEP_MODE_PWR_SAVE); // mise en veille
     sleep_enable();
     sleep_mode(); // mode normal après un réveil

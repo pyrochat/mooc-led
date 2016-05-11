@@ -1,6 +1,6 @@
 % Circuits électriques
 % [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
-% rév 2016/01/20
+% rév 2016/05/11
 
 
 ## Électrons libres et courant électrique ##
@@ -21,7 +21,7 @@ Les matériaux qui permettent ce phénomène du courant électrique sont appelé
 
 En présence d’une *force électromotrice*, appelée aussi **tension électrique**, un courant va se produire dans un conducteur. Par exemple, on trouve une tension entre les deux bornes d’une pile électrique. En établissant un **circuit électrique**, du courant va pouvoir circuler.
 
-Nous verrons plus tard ce qu’est une LED (Light-Emitting Diode, diode électroluminescente ou *diode lumineuse*). En attendant, réalisons le montage ci-dessous. Le courant électrique produit par la pile va circuler à travers la résistance et la LED, qui va émettre alors de la lumière.
+Nous verrons plus tard ce qu’est une LED (*Light-Emitting Diode*, diode électroluminescente ou diode lumineuse). En attendant, réalisons le montage ci-dessous. Le courant électrique produit par la pile va circuler à travers la résistance et la LED, qui va émettre alors de la lumière.
 
 ![Circuit électrique](images/pile-led.png "Circuit électrique"){ width=9cm }
 
@@ -45,7 +45,7 @@ Le **courant électrique** s’exprime en **Ampère**, noté A.
 
 Le courant qui traverse une LED ne dépasse généralement pas 10 mA. Mais une enseigne composée de plusieurs milliers de LED peux nécessiter des courants importants de quelques dizaines d’Ampère.
 
-Le diamètre d’un fil électrique ne dépend pas de la tension, mais du courant qui le traverse. Il faudra donc dimensionner correctement les fils. Par exemple, un fils de cuivre de 1 mm² de section n’est pas prévu pour un courant dépassant 16 A.
+Le choix du diamètre d’un fil électrique ne dépend pas de la tension, mais du courant qui le traverse. Il faudra donc dimensionner correctement les fils. Par exemple, un fils de cuivre de 1 mm² de section n’est pas suffisant pour un courant dépassant 16 A. Sur les circuits imprimés, le cuive a une épaisseur d'environ 35 microns. Il faut donc bien dimentionner la largeur des pistes en fonction du courant.
 
 La mesure du courant nécessite de couper le circuit et d’y insérer l’appareil de mesure. C’est la raison pour laquelle la mesure directe du courant est beaucoup plus rare. On préférera une mesure indirecte.
 
@@ -84,23 +84,33 @@ Dans le schéma ci-dessous, deux résistances ont été montée *en parallèle*.
 
 U = U~1~ = U~2~ = R~1~ × I~1~ = R~2~ × I~2~
 
-Quel est alors la valeur du courant I ? On admet facilement que les électrons ne peuvent pas *sortir* du fils. On a donc I = I~1~ + I~2~
+Quel est alors la valeur du courant I ? On admet facilement que les électrons ne peuvent pas *sortir* du fils. C'est la loi des noeuds de Kirchhoff, qui dit que la somme des intensités des courants qui entrent par un nœud est égale à la somme des intensités des courants qui sortent du même nœud.
 
-...
+On a donc I = I~1~ + I~2~
+
+I~1~ et I~2~ peuvent être calculés par la loi d'Ohm.
+
+Dans un montage en parallèle, on peut donc dire que les courants s'ajoutent.
 
 ![Résistances en parallèle](images/schema-pile-res2p.png "Résistances en parallèle"){ width=10cm }
 
 ## Montage en série ##
 
-Dans le schéma ci-dessous, deux résistances ont été montée *en série* : le courant passe pas R~1~, puis par R~2~.
+Dans le schéma ci-dessous, deux résistances ont été montée *en série* : le courant passe par R~1~, puis par R~2~.
 
-![Résistances en série](images/schema-pile-res2s.png "Résistances en série"){ width=12cm }
+![Résistances en série](images/schema-pile-res2s.svg "Résistances en série"){ width=12cm }
 
 Le courant à travers les deux résistances est le même. I~1~ = I~2~ = I. On peut calculer la tension aux bornes de chaque résistance :
 
 U~1~ = R~1~ × I~1~ et U~2~ = R~2~ × I~2~
 
-...
+Or la loi des mailles de Krichhoff dit que dans une maille quelconque d'un réseau, la somme algébrique des différences de potentiel le long de la maille est nulle.
+
+On a donc U~1~ + U~2~ = 5 V
+
+La résolution de ces équations donne I~1~ = I~2~ = 5 V / (R~1~ + R~2~) = 1 mA
+
+Dans un montage en série, on peut donc dire que les tensions s'ajoutent.
 
 
 

@@ -30,7 +30,7 @@ Sans entrer en détail dans les techniques de fabrication des circuits imprimés
 
 La réalisation artisanale de circuits imprimés simples est possible. Certaines écoles sont équipées pour réaliser des circuits simple face, ou même double face.
 
-Nous déconseillons cette technique : elle produit toujours de la pollution. D’autre part, elle ne permet pas de réaliser des circuits de bonne qualité et les trous métalisés manquent. Et sou coût est souvent aussi élevé que la réalisation de circuits par des entreprises spécialisées.
+Nous déconseillons cette technique : elle produit toujours de la pollution. D’autre part, elle ne permet pas de réaliser des circuits de bonne qualité et les trous métalisés manquent. Son coût est souvent aussi élevé que la réalisation de circuits par des entreprises spécialisées.
 
 ## Logiciels de dessin de circuits imprimés ##
 

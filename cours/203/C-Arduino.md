@@ -15,9 +15,11 @@ Il faut différencier trois significations différentes du mot Arduino :
 
 `1.` L’Arduino est une **carte à microcontrôleurs**, plus exactement une famille de cartes. L’**Arduino UNO** est la plus connue. Elle contient un microcontrôleur AVR du fabricant Atmel, le modèle ATmega328. Un câble USB permet de la brancher sur un PC, principalement pour déposer un programme dans le microcontrôleur. Les cartes Arduino sont *open hardware* : leurs plans sont publiques. Comme elles sont produites par de nombreux fabricants, leur prix est très favorable.
 
+Deux rangées de connecteurs permettent d'accéder aux broches du microcontrôleur. Beaucoup de *cartes filles* ou *shields* sont proposés, pour toutes sortes d'applications. Ces connecteurs sont devenus de véritables standard *de facto*. Bien d'autres microcontrôleurs sont disponibles avec la même connectique, donnant la possibilité d'utiliser les nombreux *shields* disponibles.
+
 ![Exemple de carte Arduino](images/Uno.jpg "Exemple de carte Arduino")
 
-`2.` Le **programme Arduino** est aussi environnement de développement (IDE = Integrated Developpement Environnement). C’est donc un logiciel qui s’exécute sur un PC. Il fonctionne sur les principaux systèmes d’exploitation courant : Windows, Linux et MacOS. Il associe principalement un éditeur et un compilateur C. Il permet d’écrire un programme, de le compiler et de l’envoyer sur une carte Arduino. C’est un logiciel libre, écrit en Java, inspiré de l’environnement *Processing*.
+`2.` Le **programme Arduino** est aussi environnement de développement (IDE = Integrated Developpement Environnement). C’est donc un logiciel qui s’exécute sur un PC. Il fonctionne sur systèmes d’exploitation les plus courants : Windows, Linux et MacOS. Il associe principalement un éditeur et un compilateur C. Il permet d’écrire un programme, de le compiler et de l’envoyer sur une carte Arduino. C’est un logiciel libre, écrit en Java, inspiré de l’environnement *Processing*.
 
 On voit sur cette copie d’écran que l’interface est très simple :
 

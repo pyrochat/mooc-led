@@ -7,7 +7,7 @@
 
 Animer une enseigne à LED consiste en une suite d’opérations sur les groupes LED. Animer un afficheur matriciel consiste aussi à envoyer des séquences graphiques. Dans les deux cas, une jolie animation ne se limitera pas à quelques étapes, mais pourra vite devenir longue. Les programmes correspondant vont donc avoir tendance à devenir longs, ce qui va rendre leur lecture fastidieuse et qui risque aussi de remplir rapidement la mémoire du microcontrôleur.
 
-Une technique souvent utilisée consiste à **inventer** un *langage* pour décrire ce qui se passe sur l’enseigne ou l’afficheur et programmer les animations dans ce langage.
+Une technique souvent utilisée consiste à **inventer un langage** pour décrire ce qui se passe sur l’enseigne ou l’afficheur et programmer les animations dans ce langage.
 
 ## Langage Arduino ##
 
@@ -51,7 +51,7 @@ loop() {
 <!-- retour au mode normal -->
 
 Bien entendu, les instructions permettant l’accès direct aux registres du microcontrôleur permettent d’économiser la place en mémoire.
-L’instruction P1OUT |= (1<<0); <--- --- > prend 4 octets. C’est déja mieux ! Mais cherchons une autre solution.
+L’instruction `P1OUT |= (1<<0);` prend 4 octets. C’est déja mieux ! Mais cherchons une autre solution.
 
 ## Inventer un langage ##
 

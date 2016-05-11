@@ -126,9 +126,9 @@ Dans le cas des enseignes et afficheurs à LED, les valeurs sont calculées en f
 
 Prenons un exemple. Pour donner l’impression qu’un appareil est en mode "repos", une LED va avoir son intensité qui varie de la manière suivante :
 
-![Figure : diagramme des temps de la LED suggérant le repos](images/chrono-repos.svg "diagramme des temps de la LED suggérant le repos"){ width=15cm }
+![Figure : diagramme des temps de la LED suggérant le repos](images/chrono-repos-5c.svg "diagramme des temps de la LED suggérant le repos"){ width=15cm }
 
-La séquence est cyclique et dure 4 s. Il imite la respiration d’une personne qui dort. Durant la première seconde, l’intensité augmente jusqu’au maximum. Durant la deuxième seconde, elle diminue jusqu’à zéro, valeur qui reste jusqu’à la fin du cycle.
+La séquence est cyclique et dure 4 s. Il imite la respiration d’une personne qui dort. Durant la première seconde, l’intensité augmente jusqu’au maximum. Durant la deuxième seconde, elle diminue jusqu’à zéro, valeur qui reste jusqu’à la fin du cycle. L'intensité est générée par du PWM.
 
 La courbe se divise en 3 parties. Il est facile d’exprimer l’intensité en fonction du temps dans chacune des parties. Voici comment compléter le programme :
 

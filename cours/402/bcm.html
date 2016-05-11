@@ -3,33 +3,82 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="nico" />
   <meta name="author" content="Pierre-Yves Rochat, EPFL" />
   <title>Binary Coded Modulation</title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
 <body>
-<div id="header">
 <h1 class="title">Binary Coded Modulation</h1>
-<h2 class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
-<h3 class="date">rév 2016/01/30</h3>
+<div id="header">
+<p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
+<p class="date">rév 2016/01/30</p>
 </div>
-<p>Version provisoire. Nous travaillons sur ce document, mais les remarques sont les bienvenues !</p>
+<p>Version provisoire. Nous travaillons sur ce document, mais les remarques sont les bienvenues !</p>
 <h2 id="pwm-sur-une-matrice">PWM sur une matrice</h2>
-<p>La technique classique pour faire varier l'intensité d'une LED est la modulation de largeur d'impulsion <em>PWM</em>. Le signal se présente de la manière suivante :</p>
-<p><img src="images/pwm-50dpi.png" title="Signal PWM" alt="Signal PWM" />{ width=16.5cm }</p>
-<p>Dans un afficheur matriciel, l'intensité de chaque LED doit pouvoir être indépendante. Avec la plupart des schémas utilisés pour un afficheur matriciel, il est nécessaire re renvoyer la valeur de toutes les LED pour changer l'état d'une seule LED. C'est par exemple le cas des afficheurs basés sur des registres série-parallèles.</p>
-<p>Si la fréquence du PWM est F<sub>pwm</sub> et le nombre de valeurs possibles de l'intensité est N<sub>intens</sub>, la fréquence de rafraîchissement sera de F<sub>raf</sub> = F~pwm x N<sub>raf</sub></p>
-<p>Par exemple, pour une fréquence du PWM de 100 Hz et une intensité sur 8 bits, produisant donc 256 intensités différentes, on devra rafraîchir la matrice à une fréquence de 100 x 256 = 25'600 Hz, ce qui correspond à une période de 39 microsecondes. Si l'afficheur comporte un nombre important de LED, il n'est pas facile de parvenir à ce résultat !</p>
-<p>Or la fréquence minimale d'une afficheur est donnée par les propriétés de l'œil humain. Diminuer la fréquence du PWM de dessous de 100 Hz dégradera la qualité visuelle de l'afficheur. Il n'y a pas de marge de manœuvre de ce côté.</p>
-<h2 id="tolérence-sur-la-forme">Tolérence sur la forme</h2>
-<p>Par contre, la forme du signal qui parvient à une LED n'a pas beaucoup d'importance. Ce qui va déterminer l'intensité perçue par l'œil, c'est le rapport entre le temps pendant lequel la LED est allumée durant un cycle et le temps total du cycle. Les deux signaux de la figure ci-dessous donnent le même résultat :</p>
-<p><img src="images/forme-dif.png" title="Même intensité pour deux signaux différents" alt="Même intensité pour deux signaux différents" />{ width=14cm }</p>
-<p>Comment produire simplement un signal dont le total du temps actif est un nombre de fois le temps unitaire ? On peut utiliser les poids binaires du nombre. C'est l'idée de la <strong>Modulation Codée Binaire</strong> <em>Binary Coded Modulation</em> ou BCM.</p>
-<p>Il s'agit de découper la période du PWM en tranches dont les durées sont les poids binaires. Par exemple, un signal dont l'intensité est donnée par un nombre de 4 bits, produisant 16 intensités possibles. Les tranches du BCM auront les valeur 1, 2, 4 et 8, exprimées en seizième de la période du PWM. Pour chaque valeur d'intensité, on active la LED chaque fois que le poids binaire concerné est à 1 dans le nombre.</p>
-<p>Voici les signaux pour quelques valeurs de l'intensité :</p>
-<p><img src="images/bcm-90dpi.png" title="Signal BCM" alt="Signal BCM" />{ width=14cm }</p>
-<p>C <sub><sub><sub>~</sub></sub></sub> { .c } #pragma vector=NUMERO_DU_VECTEUR __interrupt void Nom_de_la_routine (void) { ... } <sub><sub><sub>~</sub></sub></sub></p>
+<p>La technique classique pour faire varier l’intensité d’une LED est la modulation de largeur d’impulsion <em>PWM</em>. Le signal se présente de la manière suivante :</p>
+<div class="figure">
+<img src="images/pwm-50dpi.png" title="Signal PWM" alt="Signal PWM" width="623" />
+<p class="caption">Signal PWM</p>
+</div>
+<p>Dans un afficheur matriciel, l’intensité de chaque LED doit pouvoir être indépendante. Avec la plupart des schémas utilisés pour un afficheur matriciel, il est nécessaire re renvoyer la valeur de toutes les LED pour changer l’état d’une seule LED. C’est par exemple le cas des afficheurs basés sur des registres série-parallèles.</p>
+<p>Si la fréquence du PWM est F<sub>pwm</sub> et le nombre de valeurs possibles de l’intensité est N<sub>intens</sub>, la fréquence de rafraîchissement sera de F<sub>raf</sub> = F~pwm × N<sub>raf</sub></p>
+<p>Par exemple, pour une fréquence du PWM de 100 Hz et une intensité sur 8 bits, produisant donc 256 intensités différentes, on devra rafraîchir la matrice à une fréquence de 100 × 256 = 25’600 Hz, ce qui correspond à une période de 39 µs. Si l’afficheur comporte un nombre important de LED, il n’est pas facile de parvenir à ce résultat !</p>
+<p>Or la fréquence minimale d’une afficheur est donnée par les propriétés de l’œil humain. Diminuer la fréquence du PWM de dessous de 100 Hz dégradera la qualité visuelle de l’afficheur. Il n’y a pas de marge de manœuvre de ce côté.</p>
+<h2 id="tolérance-sur-la-forme">Tolérance sur la forme</h2>
+<p>Par contre, la forme du signal qui parvient à une LED n’a pas beaucoup d’importance. Ce qui va déterminer l’intensité perçue par l’œil, c’est le rapport entre le temps pendant lequel la LED est allumée durant un cycle et le temps total du cycle. Les deux signaux de la figure ci-dessous donnent le même résultat :</p>
+<div class="figure">
+<img src="images/forme-dif.png" title="Même intensité pour deux signaux différents" alt="Même intensité pour deux signaux différents" width="529" />
+<p class="caption">Même intensité pour deux signaux différents</p>
+</div>
+<p>Comment produire simplement un signal dont le total du temps actif est un nombre de fois le temps unitaire ? On peut utiliser les poids binaires du nombre. C’est l’idée de la <strong>Modulation Codée Binaire</strong> <em>Binary Coded Modulation</em> ou BCM.</p>
+<p>Il s’agit de découper la période du PWM en tranches dont les durées sont les poids binaires. Par exemple, un signal dont l’intensité est donnée par un nombre de 4 bits, produisant 16 intensités possibles. Les tranches du BCM auront les valeur 1, 2, 4 et 8, exprimées en seizième de la période du PWM. Pour chaque valeur d’intensité, on active la LED chaque fois que le poids binaire concerné est à 1 dans le nombre.</p>
+<p>Voici les signaux pour quelques valeurs de l’intensité :</p>
+<div class="figure">
+<img src="images/bcm-90dpi.png" title="Signal BCM" alt="Signal BCM" width="529" />
+<p class="caption">Signal BCM</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#pragma vector=NUMERO_DU_VECTEUR</span>
+ __interrupt <span class="dt">void</span> Nom_de_la_routine (<span class="dt">void</span>) {
+  ...
+ }</code></pre></div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="nico" />
   <meta name="author" content="Pierre-Yves Rochat, EPFL" />
   <title>Programmation en C-Arduino</title>
   <style type="text/css">code{white-space: pre;}</style>
@@ -47,10 +47,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
 <body>
-<div id="header">
 <h1 class="title">Programmation en C-Arduino</h1>
-<h2 class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
-<h3 class="date">rév 2016/01/04</h3>
+<div id="header">
+<p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
+<p class="date">rév 2016/01/04</p>
 </div>
 <h2 id="différentes-significations-du-mot-arduino">Différentes significations du mot Arduino</h2>
 <p>L’<strong>Arduino</strong> a participé à rendre populaires les microcontrôleurs de manière extraordinaire. Qu’est-ce qui se cache derrière ce nom ?</p>
@@ -61,11 +61,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>une librairie pour microcontrôleurs.</li>
 </ul>
 <p><code>1.</code> L’Arduino est une <strong>carte à microcontrôleurs</strong>, plus exactement une famille de cartes. L’<strong>Arduino UNO</strong> est la plus connue. Elle contient un microcontrôleur AVR du fabricant Atmel, le modèle ATmega328. Un câble USB permet de la brancher sur un PC, principalement pour déposer un programme dans le microcontrôleur. Les cartes Arduino sont <em>open hardware</em> : leurs plans sont publiques. Comme elles sont produites par de nombreux fabricants, leur prix est très favorable.</p>
+<p>Deux rangées de connecteurs permettent d'accéder aux broches du microcontrôleur. Beaucoup de <em>cartes filles</em> ou <em>shields</em> sont proposés, pour toutes sortes d'applications. Ces connecteurs sont devenus de véritables standard <em>de facto</em>. Bien d'autres microcontrôleurs sot disponibles avec la même connectique, leur donnant accès aux <em>shields</em> disponibles.</p>
 <div class="figure">
 <img src="images/Uno.jpg" title="Exemple de carte Arduino" alt="Exemple de carte Arduino" />
 <p class="caption">Exemple de carte Arduino</p>
 </div>
-<p><code>2.</code> Le <strong>programme Arduino</strong> est aussi environnement de développement (IDE = Integrated Developpement Environnement). C’est donc un logiciel qui s’exécute sur un PC. Il fonctionne sur les principaux systèmes d’exploitation courant : Windows, Linux et MacOS. Il associe principalement un éditeur et un compilateur C. Il permet d’écrire un programme, de le compiler et de l’envoyer sur une carte Arduino. C’est un logiciel libre, écrit en Java, inspiré de l’environnement <em>Processing</em>.</p>
+<p><code>2.</code> Le <strong>programme Arduino</strong> est aussi environnement de développement (IDE = Integrated Developpement Environnement). C’est donc un logiciel qui s’exécute sur un PC. Il fonctionne sur systèmes d’exploitation les plus courants : Windows, Linux et MacOS. Il associe principalement un éditeur et un compilateur C. Il permet d’écrire un programme, de le compiler et de l’envoyer sur une carte Arduino. C’est un logiciel libre, écrit en Java, inspiré de l’environnement <em>Processing</em>.</p>
 <p>On voit sur cette copie d’écran que l’interface est très simple :</p>
 <div class="figure">
 <img src="images/arduino-ide.png" title="Logiciel Arduino" alt="Logiciel Arduino" />

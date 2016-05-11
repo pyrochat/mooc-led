@@ -194,10 +194,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Dans le cas des enseignes et afficheurs à LED, les valeurs sont calculées en fonction du temps qui passe, pour former des séquences. Comment connaître le temps qui s’écoule ? Une des manières consiste simplement à compter les cycles du PWM, qui ont une durée constante.</p>
 <p>Prenons un exemple. Pour donner l’impression qu’un appareil est en mode &quot;repos&quot;, une LED va avoir son intensité qui varie de la manière suivante :</p>
 <div class="figure">
-<img src="images/chrono-repos.svg" title="diagramme des temps de la LED suggérant le repos" alt="Figure : diagramme des temps de la LED suggérant le repos" width="566" />
+<img src="images/chrono-repos-5c.svg" title="diagramme des temps de la LED suggérant le repos" alt="Figure : diagramme des temps de la LED suggérant le repos" width="566" />
 <p class="caption">Figure : diagramme des temps de la LED suggérant le repos</p>
 </div>
-<p>La séquence est cyclique et dure 4 s. Il imite la respiration d’une personne qui dort. Durant la première seconde, l’intensité augmente jusqu’au maximum. Durant la deuxième seconde, elle diminue jusqu’à zéro, valeur qui reste jusqu’à la fin du cycle.</p>
+<p>La séquence est cyclique et dure 4 s. Il imite la respiration d’une personne qui dort. Durant la première seconde, l’intensité augmente jusqu’au maximum. Durant la deuxième seconde, elle diminue jusqu’à zéro, valeur qui reste jusqu’à la fin du cycle. L'intensité est générée par du PWM.</p>
 <p>La courbe se divise en 3 parties. Il est facile d’exprimer l’intensité en fonction du temps dans chacune des parties. Voici comment compléter le programme :</p>
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2

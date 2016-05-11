@@ -3,17 +3,17 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="nico" />
   <meta name="author" content="Pierre-Yves Rochat, EPFL" />
   <title>Circuits électriques</title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
 <body>
-<div id="header">
 <h1 class="title">Circuits électriques</h1>
-<h2 class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
-<h3 class="date">rév 2016/01/20</h3>
+<div id="header">
+<p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
+<p class="date">rév 2016/05/11</p>
 </div>
 <h2 id="électrons-libres-et-courant-électrique">Électrons libres et courant électrique</h2>
 <p>On se souvient que la matière est composée d’<strong>atomes</strong>. Les atomes ont un noyau, composé de protons et de neutrons, ainsi qu’un nuage d’électrons, constitués en couches successives.</p>
@@ -27,7 +27,7 @@
 <p>Les matériaux qui permettent ce phénomène du courant électrique sont appelés <strong>conducteurs</strong>. Il s’agit principalement des métaux, dont le cuivre et l’aluminium sont les plus couramment utilisés.</p>
 <h2 id="tension-électrique">Tension électrique</h2>
 <p>En présence d’une <em>force électromotrice</em>, appelée aussi <strong>tension électrique</strong>, un courant va se produire dans un conducteur. Par exemple, on trouve une tension entre les deux bornes d’une pile électrique. En établissant un <strong>circuit électrique</strong>, du courant va pouvoir circuler.</p>
-<p>Nous verrons plus tard ce qu’est une LED (Light-Emitting Diode, diode électroluminescente ou <em>diode lumineuse</em>). En attendant, réalisons le montage ci-dessous. Le courant électrique produit par la pile va circuler à travers la résistance et la LED, qui va émettre alors de la lumière.</p>
+<p>Nous verrons plus tard ce qu’est une LED (<em>Light-Emitting Diode</em>, diode électroluminescente ou diode lumineuse). En attendant, réalisons le montage ci-dessous. Le courant électrique produit par la pile va circuler à travers la résistance et la LED, qui va émettre alors de la lumière.</p>
 <div class="figure">
 <img src="images/pile-led.png" title="Circuit électrique" alt="Circuit électrique" width="340" />
 <p class="caption">Circuit électrique</p>
@@ -45,7 +45,7 @@
 <p>Comme la tension se mesure entre deux point, c’est facile de la mesurer sans modifier le circuit. L’appareil s’appelle un voltmètre. Les multi-mètres proposent toujours cette fonction.</p>
 <p>Le <strong>courant électrique</strong> s’exprime en <strong>Ampère</strong>, noté A.</p>
 <p>Le courant qui traverse une LED ne dépasse généralement pas 10 mA. Mais une enseigne composée de plusieurs milliers de LED peux nécessiter des courants importants de quelques dizaines d’Ampère.</p>
-<p>Le diamètre d’un fil électrique ne dépend pas de la tension, mais du courant qui le traverse. Il faudra donc dimensionner correctement les fils. Par exemple, un fils de cuivre de 1 mm² de section n’est pas prévu pour un courant dépassant 16 A.</p>
+<p>Le choix du diamètre d’un fil électrique ne dépend pas de la tension, mais du courant qui le traverse. Il faudra donc dimensionner correctement les fils. Par exemple, un fils de cuivre de 1 mm² de section n’est pas suffisant pour un courant dépassant 16 A. Sur les circuits imprimés, le cuive a une épaisseur d'environ 35 microns. Il faut donc bien dimentionner la largeur des pistes en fonction du courant.</p>
 <p>La mesure du courant nécessite de couper le circuit et d’y insérer l’appareil de mesure. C’est la raison pour laquelle la mesure directe du courant est beaucoup plus rare. On préférera une mesure indirecte.</p>
 <h2 id="résistance-électrique">Résistance électrique</h2>
 <p>Dans le schéma ci-dessous, on voit un circuit électrique réalisé avec une source de tension et une <strong>résistance</strong>.</p>
@@ -73,20 +73,25 @@
 <h2 id="montage-en-parallèle">Montage en parallèle</h2>
 <p>Dans le schéma ci-dessous, deux résistances ont été montée <em>en parallèle</em>. La tension aux bornes de chaque résistance est la tension de la pile :</p>
 <p>U = U<sub>1</sub> = U<sub>2</sub> = R<sub>1</sub> × I<sub>1</sub> = R<sub>2</sub> × I<sub>2</sub></p>
-<p>Quel est alors la valeur du courant I ? On admet facilement que les électrons ne peuvent pas <em>sortir</em> du fils. On a donc I = I<sub>1</sub> + I<sub>2</sub></p>
-<p>...</p>
+<p>Quel est alors la valeur du courant I ? On admet facilement que les électrons ne peuvent pas <em>sortir</em> du fils. C'est la loi des noeuds de Kirchhoff, qui dit que la somme des intensités des courants qui entrent par un nœud est égale à la somme des intensités des courants qui sortent du même nœud.</p>
+<p>On a donc I = I<sub>1</sub> + I<sub>2</sub></p>
+<p>I<sub>1</sub> et I<sub>2</sub> peuvent être calculés par la loi d'Ohm.</p>
+<p>Dans un montage en parallèle, on peut donc dire que les courants s'ajoutent.</p>
 <div class="figure">
 <img src="images/schema-pile-res2p.png" title="Résistances en parallèle" alt="Résistances en parallèle" width="377" />
 <p class="caption">Résistances en parallèle</p>
 </div>
 <h2 id="montage-en-série">Montage en série</h2>
-<p>Dans le schéma ci-dessous, deux résistances ont été montée <em>en série</em> : le courant passe pas R<sub>1</sub>, puis par R<sub>2</sub>.</p>
+<p>Dans le schéma ci-dessous, deux résistances ont été montée <em>en série</em> : le courant passe par R<sub>1</sub>, puis par R<sub>2</sub>.</p>
 <div class="figure">
-<img src="images/schema-pile-res2s.png" title="Résistances en série" alt="Résistances en série" width="453" />
+<img src="images/schema-pile-res2s.svg" title="Résistances en série" alt="Résistances en série" width="453" />
 <p class="caption">Résistances en série</p>
 </div>
 <p>Le courant à travers les deux résistances est le même. I<sub>1</sub> = I<sub>2</sub> = I. On peut calculer la tension aux bornes de chaque résistance :</p>
 <p>U<sub>1</sub> = R<sub>1</sub> × I<sub>1</sub> et U<sub>2</sub> = R<sub>2</sub> × I<sub>2</sub></p>
-<p>...</p>
+<p>Or la loi des mailles de Krichhoff dit que dans une maille quelconque d'un réseau, la somme algébrique des différences de potentiel le long de la maille est nulle.</p>
+<p>On a donc U<sub>1</sub> + U<sub>2</sub> = 5 V</p>
+<p>La résolution de ces équations donne I<sub>1</sub> = I<sub>2</sub> = 5 V / (R<sub>1</sub> + R<sub>2</sub>) = 1 mA</p>
+<p>Dans un montage en série, on peut donc dire que les tensions s'ajoutent.</p>
 </body>
 </html>

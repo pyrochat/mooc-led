@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="nico" />
   <meta name="author" content="Pierre-Yves Rochat, EPFL" />
-  <title>Binary Coded Modulation</title>
+  <title>BCM : la modulation codée binaire</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
 div.sourceCode { overflow-x: auto; }
@@ -47,38 +47,103 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
 <body>
-<h1 class="title">Binary Coded Modulation</h1>
+<h1 class="title">BCM : la modulation codée binaire</h1>
 <div id="header">
 <p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
-<p class="date">rév 2016/01/30</p>
+<p class="date">rév 2016/05/14</p>
 </div>
-<p>Version provisoire. Nous travaillons sur ce document, mais les remarques sont les bienvenues !</p>
 <h2 id="pwm-sur-une-matrice">PWM sur une matrice</h2>
 <p>La technique classique pour faire varier l’intensité d’une LED est la modulation de largeur d’impulsion <em>PWM</em>. Le signal se présente de la manière suivante :</p>
 <div class="figure">
-<img src="images/pwm-50dpi.png" title="Signal PWM" alt="Signal PWM" width="623" />
+<img src="images/pwm.svg" title="Signal PWM" alt="Signal PWM" style="width:99.0%" />
 <p class="caption">Signal PWM</p>
 </div>
-<p>Dans un afficheur matriciel, l’intensité de chaque LED doit pouvoir être indépendante. Avec la plupart des schémas utilisés pour un afficheur matriciel, il est nécessaire re renvoyer la valeur de toutes les LED pour changer l’état d’une seule LED. C’est par exemple le cas des afficheurs basés sur des registres série-parallèles.</p>
-<p>Si la fréquence du PWM est F<sub>pwm</sub> et le nombre de valeurs possibles de l’intensité est N<sub>intens</sub>, la fréquence de rafraîchissement sera de F<sub>raf</sub> = F~pwm × N<sub>raf</sub></p>
+<p>Dans un afficheur matriciel, l’intensité de chaque LED doit pouvoir être indépendante. Avec la plupart des schémas utilisés pour un afficheur matriciel, il est nécessaire de renvoyer la valeur de toutes les LED pour changer l’état d’une seule LED. C’est par exemple le cas des afficheurs basés sur des registres série-parallèles.</p>
+<p>Si la fréquence du PWM est F<sub>pwm</sub> et le nombre de valeurs possibles de l’intensité est N<sub>intens</sub>, la fréquence de rafraîchissement sera de F<sub>raf</sub> = F<sub>pwm</sub> × N<sub>intens</sub></p>
 <p>Par exemple, pour une fréquence du PWM de 100 Hz et une intensité sur 8 bits, produisant donc 256 intensités différentes, on devra rafraîchir la matrice à une fréquence de 100 × 256 = 25’600 Hz, ce qui correspond à une période de 39 µs. Si l’afficheur comporte un nombre important de LED, il n’est pas facile de parvenir à ce résultat !</p>
 <p>Or la fréquence minimale d’une afficheur est donnée par les propriétés de l’œil humain. Diminuer la fréquence du PWM de dessous de 100 Hz dégradera la qualité visuelle de l’afficheur. Il n’y a pas de marge de manœuvre de ce côté.</p>
 <h2 id="tolérance-sur-la-forme">Tolérance sur la forme</h2>
 <p>Par contre, la forme du signal qui parvient à une LED n’a pas beaucoup d’importance. Ce qui va déterminer l’intensité perçue par l’œil, c’est le rapport entre le temps pendant lequel la LED est allumée durant un cycle et le temps total du cycle. Les deux signaux de la figure ci-dessous donnent le même résultat :</p>
 <div class="figure">
-<img src="images/forme-dif.png" title="Même intensité pour deux signaux différents" alt="Même intensité pour deux signaux différents" width="529" />
+<img src="images/forme-dif.svg" title="Même intensité pour deux signaux différents" alt="Même intensité pour deux signaux différents" style="width:70.0%" />
 <p class="caption">Même intensité pour deux signaux différents</p>
 </div>
+<h2 id="principe-du-bcm">Principe du BCM</h2>
 <p>Comment produire simplement un signal dont le total du temps actif est un nombre de fois le temps unitaire ? On peut utiliser les poids binaires du nombre. C’est l’idée de la <strong>Modulation Codée Binaire</strong> <em>Binary Coded Modulation</em> ou BCM.</p>
-<p>Il s’agit de découper la période du PWM en tranches dont les durées sont les poids binaires. Par exemple, un signal dont l’intensité est donnée par un nombre de 4 bits, produisant 16 intensités possibles. Les tranches du BCM auront les valeur 1, 2, 4 et 8, exprimées en seizième de la période du PWM. Pour chaque valeur d’intensité, on active la LED chaque fois que le poids binaire concerné est à 1 dans le nombre.</p>
-<p>Voici les signaux pour quelques valeurs de l’intensité :</p>
+<p>Il s’agit de découper la période du signal en tranches dont les durées sont les poids binaires. Penons par exemple un signal dont l’intensité est donnée par un nombre de 4 bits, produisant 16 intensités possibles. Les tranches du BCM auront les valeur 1, 2, 4 et 8, divisant ainsi la période du signal en 15 tranches de durée égale : 1 + 2+ 4 + 8 = 15 = 2<sup>4</sup> - 1. Pour chaque valeur d’intensité, on active la LED chaque fois que le poids binaire concerné est à 1 dans le nombre.</p>
+<p>Voici une période du signal, à gauche pour des intensités correspondant aux poids binaires, à droite pour d'autres valeur composées d'un nombre différent de bits :</p>
 <div class="figure">
-<img src="images/bcm-90dpi.png" title="Signal BCM" alt="Signal BCM" width="529" />
-<p class="caption">Signal BCM</p>
+<img src="images/bcm.svg" title="Principe du BCM" alt="Principe du BCM" style="width:80.0%" />
+<p class="caption">Principe du BCM</p>
 </div>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#pragma vector=NUMERO_DU_VECTEUR</span>
- __interrupt <span class="dt">void</span> Nom_de_la_routine (<span class="dt">void</span>) {
-  ...
- }</code></pre></div>
+<p>Voici encore les signaux pour trois autres valeurs, représentés sur plusieurs périodes :</p>
+<div class="figure">
+<img src="images/bcm-3per.svg" title="Signal BCM" alt="Exemples de signaux BCM sur 3 périodes" style="width:95.0%" />
+<p class="caption">Exemples de signaux BCM sur 3 périodes</p>
+</div>
+<h2 id="avantages-et-limites-du-bcm">Avantages et limites du BCM</h2>
+<p>La production de signaux BCM est surtout intéressante lorsque le nombre de LED à commander est important. Au lieu d'avoir 2<sup>b</sup> rafraîchissements à faire à chaque cycle, il suffit de b rafraîchissements (b est le nombre de bits de l'intensité).</p>
+<p>Mais on remarquera que le temps minimum entre deux rafraîchissements n'a pas changé par rapport au PWM. Ce temps correspond à la durée du bit de poids faible. Il reste le point critique pour l'affichage sur une matrice de LED. Par contre, la durée du bit de poids fort est égal à la moitié de la période. Souvent, on pourra utiliser cette durée pour calculer les valeurs des intensités de chaque LES en vue du prochain cycle.</p>
+<div class="figure">
+<img src="images/bcm-change.svg" title="Chargement des valeurs pour chaque bit" alt="Chargement des valeurs pour chaque bit" style="width:95.0%" />
+<p class="caption">Chargement des valeurs pour chaque bit</p>
+</div>
+<h2 id="programmation-de-signaux-bcm">Programmation de signaux BCM</h2>
+<p>Voici un exemple de programme qui pilote 8 LED avec chacune une intensité de 8 bits :</p>
+<div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="ot">#define BITS_BCM 8</span>
+
+<span class="dt">void</span> Attente(<span class="dt">uint16_t</span> duree) {
+  <span class="dt">volatile</span> <span class="dt">uint16_t</span> i;
+  <span class="kw">for</span> (i=<span class="dv">0</span>; i&lt;(duree*<span class="dv">64</span>); i++) {
+  }
+}
+<span class="dt">uint8_t</span> Intens[<span class="dv">8</span>] = {<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">128</span>, <span class="dv">0</span>};
+<span class="dt">uint8_t</span> n, b;
+<span class="dt">uint8_t</span> t = <span class="dv">0</span>;
+
+<span class="dt">int</span> main() {
+  WDTCTL = WDTPW+WDTHOLD; <span class="co">// stoppe le WatchDog</span>
+  BCSCTL1 = CALBC1_16MHZ; DCOCTL = CALDCO_16MHZ;
+  P1DIR = <span class="bn">0xFF</span>; <span class="co">// toutes les broches de P1 en sortie</span>
+
+  <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// Boucle infinie :</span>
+    <span class="kw">for</span> (n=<span class="dv">0</span>; n&lt;BITS_BCM; n++) { <span class="co">// pour une période du BCM</span>
+      <span class="kw">for</span> (b=<span class="dv">0</span>; b&lt;<span class="dv">8</span>; b++) { <span class="co">// pour chaque bit de sortie</span>
+        <span class="kw">if</span> (Intens[b] &amp; (<span class="dv">1</span>&lt;&lt;n)) P1OUT|=(<span class="dv">1</span>&lt;&lt;b); <span class="kw">else</span> P1OUT&amp;=~(<span class="dv">1</span>&lt;&lt;b);
+      }
+      Attente(<span class="dv">1</span>&lt;&lt;n);
+    }
+    <span class="co">// ...calcul des prochaines valeurs des intensités</span>
+  }
+}</code></pre></td></tr></table></div>
+<!-- retour au mode normal pour Gedit -->
+<p>La première boucle for correspond à une période des signaux. Elle contient une attente dont la durée progresse selon les puissances de 2 : <code>Attente (1&lt;&lt;n);</code></p>
+<p>Il faut noter que cette manière de programmer la durée de chaque bits est imprécise, vu qu'elle ne tient pas compte du temps d'exécution des autres instructions du programme. On peut observer un certaine irrégularité de la progression des intensités, par exemple au passage de 127 à 128. Une programmation en utilisant des Timer et des interruptions résoudra ce problème.</p>
 </body>
 </html>

@@ -7,7 +7,7 @@
 
 On se souvient que la matière est composée d’**atomes**. Les atomes ont un noyau, composé de protons et de neutrons, ainsi qu’un nuage d’électrons, constitués en couches successives.
 
-![Structure d’un atome](images/atome.png "Structure d’un atome"){ width=8cm }
+![Structure d’un atome](images/atome.svg "Structure d’un atome"){ width=55% }
 
 Dans certains les matériaux, les électrons de la dernière couche sont capables de se déplacer d’un atome à l’autre. On parle d’**électrons libres**. Ce mouvement est généralement désordonné. Lors qu’il est ordonné, on parle de **courant électrique**.
 
@@ -23,11 +23,11 @@ En présence d’une *force électromotrice*, appelée aussi **tension électriq
 
 Nous verrons plus tard ce qu’est une LED (*Light-Emitting Diode*, diode électroluminescente ou diode lumineuse). En attendant, réalisons le montage ci-dessous. Le courant électrique produit par la pile va circuler à travers la résistance et la LED, qui va émettre alors de la lumière.
 
-![Circuit électrique](images/pile-led.png "Circuit électrique"){ width=9cm }
+![Circuit électrique](images/pile-led.svg "Circuit électrique"){ width=50% }
 
 Les électriciens et les électroniciens ont l’habitude de dessiner des **schémas** en utilisant des symboles. Ils ne ressemblent pas toujours à la forme des composants utilisés ! Voici le schéma correspondant au montage ci-dessus :
 
-![Schéma électronique](images/schema-pile-led.png "Schéma électronique"){ width=9cm }
+![Schéma électronique](images/schema-pile-led.svg "Schéma électronique"){ width=55% }
 
 ## Unités électriques ##
 
@@ -53,7 +53,7 @@ La mesure du courant nécessite de couper le circuit et d’y insérer l’appar
 
 Dans le schéma ci-dessous, on voit un circuit électrique réalisé avec une source de tension et une **résistance**.
 
-![Source de tension et résistance](images/schema-pile-res.png "Source de tension et résistance"){ width=12cm }
+![Source de tension et résistance](images/schema-pile-res.svg "Source de tension et résistance"){ width=75% }
 
 Le courant électrique est le même en tout point de ce circuit : I~1~ = I~2~. Ce courant est d’autant plus grand que la résistance est petite : c’est la loi d’Ohm.
 
@@ -80,7 +80,7 @@ Dans notre premier montage avec la LED, une partie de l’énergie électrique e
 
 ## Montage en parallèle ##
 
-Dans le schéma ci-dessous, deux résistances ont été montée *en parallèle*. La tension aux bornes de chaque résistance est la tension de la pile :
+Dans le schéma ci-dessous, deux résistances ont été montées *en parallèle*. La tension aux bornes de chaque résistance est la tension de la pile :
 
 U = U~1~ = U~2~ = R~1~ × I~1~ = R~2~ × I~2~
 
@@ -92,13 +92,14 @@ I~1~ et I~2~ peuvent être calculés par la loi d'Ohm.
 
 Dans un montage en parallèle, on peut donc dire que les courants s'ajoutent.
 
-![Résistances en parallèle](images/schema-pile-res2p.png "Résistances en parallèle"){ width=10cm }
+
+![Résistances en parallèle](images/schema-pile-res2p.svg "Résistances en parallèle"){ width=60% }
 
 ## Montage en série ##
 
-Dans le schéma ci-dessous, deux résistances ont été montée *en série* : le courant passe par R~1~, puis par R~2~.
+Dans le schéma ci-dessous, deux résistances ont été montées *en série* : le courant passe par R~1~, puis par R~2~.
 
-![Résistances en série](images/schema-pile-res2s.svg "Résistances en série"){ width=12cm }
+![Résistances en série](images/schema-pile-res2s.svg "Résistances en série"){ width=66% }
 
 Le courant à travers les deux résistances est le même. I~1~ = I~2~ = I. On peut calculer la tension aux bornes de chaque résistance :
 
@@ -110,7 +111,7 @@ On a donc U~1~ + U~2~ = 5 V
 
 La résolution de ces équations donne I~1~ = I~2~ = 5 V / (R~1~ + R~2~) = 1 mA
 
-Dans un montage en série, on peut donc dire que les tensions s'ajoutent.
+Dans un montage en série, on peut donc dire que les tensions s'ajoutent. Les deux résistances en série peuvent être considérée comme une seule résistance dont la valeur est la somme de deux.
 
 
 

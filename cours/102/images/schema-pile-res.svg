@@ -770,9 +770,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="278.7007"
-     inkscape:cy="151.91045"
+     inkscape:zoom="2"
+     inkscape:cx="142.30675"
+     inkscape:cy="108.86781"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -780,9 +780,9 @@
      fit-margin-left="1"
      fit-margin-right="1"
      fit-margin-bottom="1"
-     inkscape:window-width="1867"
-     inkscape:window-height="1176"
-     inkscape:window-x="53"
+     inkscape:window-width="1395"
+     inkscape:window-height="876"
+     inkscape:window-x="45"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
      inkscape:snap-global="true"
@@ -810,7 +810,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -843,7 +843,7 @@
        sodipodi:nodetypes="cccc" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
        x="12.578133"
        y="359.94031"
        id="text5216"
@@ -852,15 +852,15 @@
          id="tspan5218"
          x="12.578133"
          y="359.94031"
-         style="font-size:15px">Source de</tspan><tspan
+         style="font-size:15px;stroke-linejoin:round;stroke-linecap:round;">Source de</tspan><tspan
          sodipodi:role="line"
          x="12.578133"
          y="378.69031"
-         style="font-size:15px"
+         style="font-size:15px;stroke-linejoin:round;stroke-linecap:round;"
          id="tspan4266"> tension</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
        x="307.73438"
        y="370.01843"
        id="text5216-4"
@@ -871,15 +871,15 @@
          id="tspan5218-1"
          x="307.73438"
          y="370.01843"
-         style="font-size:15px">Résistance</tspan></text>
+         style="font-size:15px;stroke-linejoin:round;stroke-linecap:round;">Résistance</tspan></text>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 140.00001,362.36219 0,-55 145,0 0,35"
        id="path4268"
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
        x="152.38576"
        y="351.78992"
        id="text4270"
@@ -888,10 +888,10 @@
          id="tspan4272"
          x="152.38576"
          y="351.78992"
-         style="font-size:12.5px">5 V</tspan></text>
+         style="font-size:12.5px;stroke-linejoin:round;stroke-linecap:round;">5 V</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
        x="238.37805"
        y="368.20898"
        id="text4270-1"
@@ -900,15 +900,15 @@
          id="tspan4272-8"
          x="238.37805"
          y="368.20898"
-         style="font-size:12.5px">1 kΩ</tspan></text>
+         style="font-size:12.5px;stroke-linejoin:round;stroke-linecap:round;">1 kΩ</tspan></text>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        d="m 210.00001,302.36219 10,5 -10,5"
        id="path4296"
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
        x="204.60938"
        y="325.17468"
        id="text4270-3"
@@ -917,10 +917,10 @@
          id="tspan4272-7"
          x="204.60938"
          y="325.17468"
-         style="font-size:12.5px" /></text>
+         style="font-size:12.5px;stroke-linejoin:round;stroke-linecap:round;" /></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
        x="209.50366"
        y="327.00311"
        id="text4270-5"
@@ -929,12 +929,12 @@
          id="tspan4272-78"
          x="209.50366"
          y="327.00311"
-         style="font-size:12.5px">I<tspan
-   style="font-size:64.99999762%;baseline-shift:sub"
-   id="tspan4334">1</tspan></tspan></text>
+         style="font-size:12.5px;stroke-linejoin:round;stroke-linecap:round;">I<tspan
+   style="font-size:64.99999762%;baseline-shift:sub;stroke-linejoin:round;stroke-linecap:round;"
+   id="tspan4334" /></tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
        x="211.44821"
        y="404.75528"
        id="text4270-5-6"
@@ -943,13 +943,57 @@
          id="tspan4272-78-1"
          x="211.44821"
          y="404.75528"
-         style="font-size:12.5px">I<tspan
-   style="font-size:64.99999762%;baseline-shift:sub"
-   id="tspan4334-9">2</tspan></tspan></text>
+         style="font-size:12.5px;stroke-linejoin:round;stroke-linecap:round;">I<tspan
+   style="font-size:64.99999762%;baseline-shift:sub;stroke-linejoin:round;stroke-linecap:round;"
+   id="tspan4334-9" /></tspan></text>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        d="m 220.00001,412.36219 -10,5 10,5"
        id="path4357"
        inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.5px;line-height:125%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
+       x="217.00002"
+       y="406.11221"
+       id="text4900"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4902"
+         x="217.00002"
+         y="406.11221">2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.5px;line-height:125%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
+       x="213.75002"
+       y="328.61221"
+       id="text4900-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4902-9"
+         x="213.75002"
+         y="328.61221">1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
+       x="114.62501"
+       y="354.73718"
+       id="text4586"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4588"
+         x="114.62501"
+         y="354.73718">+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
+       x="119.37501"
+       y="380.11218"
+       id="text4586-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4588-3"
+         x="119.37501"
+         y="380.11218">_</tspan></text>
   </g>
 </svg>

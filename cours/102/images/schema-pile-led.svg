@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="77.168297mm"
-   height="41.298626mm"
+   width="76.565826mm"
+   height="35.020004mm"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="schema-pile-led.svg"
-   inkscape:export-filename="/home/pyr/git/mooc-led/cours/101/images/schema-pile-led.png"
+   inkscape:export-filename="/home/pyr/git/mooc-led/cours/101/images/schema-pile-res.png"
    inkscape:export-xdpi="300.13589"
    inkscape:export-ydpi="300.13589">
   <defs
@@ -770,9 +770,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.56"
-     inkscape:cx="175.21025"
-     inkscape:cy="36.61865"
+     inkscape:zoom="2"
+     inkscape:cx="136.54542"
+     inkscape:cy="126.62652"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -780,16 +780,17 @@
      fit-margin-left="1"
      fit-margin-right="1"
      fit-margin-bottom="1"
-     inkscape:window-width="1867"
-     inkscape:window-height="1176"
-     inkscape:window-x="53"
+     inkscape:window-width="1395"
+     inkscape:window-height="876"
+     inkscape:window-x="45"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
      inkscape:snap-global="true"
      inkscape:object-paths="true"
      inkscape:snap-intersection-paths="true"
      inkscape:object-nodes="true"
-     units="mm">
+     units="mm"
+     showguides="false">
     <inkscape:grid
        type="xygrid"
        id="grid2985"
@@ -799,8 +800,8 @@
        visible="true"
        enabled="true"
        snapvisiblegridlinesonly="true"
-       originx="-67.928859"
-       originy="-630.45667" />
+       originx="-68.006984"
+       originy="-630.45668" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -810,7 +811,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -818,7 +819,7 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-67.928869,-275.57181)">
+     transform="translate(-68.006994,-297.81888)">
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 110.00001,362.36221 60,0"
@@ -831,62 +832,127 @@
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 295.00001,342.36219 -20,0 0,45 20,0 z"
-       id="path4799"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 140.00001,372.36221 0,45 145,0 0,-30.00002"
+       d="m 140.00001,372.36221 0,45 145,0 0,-40.00002"
        id="path4801"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="12.578133"
-       y="359.94031"
+       x="70.078133"
+       y="371.94031"
        id="text5216"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan5218"
-         x="12.578133"
-         y="359.94031"
-         style="font-size:15px">Source de</tspan><tspan
-         sodipodi:role="line"
-         x="12.578133"
-         y="378.69031"
+         x="70.078133"
+         y="371.94031"
          style="font-size:15px"
-         id="tspan4266"> tension</tspan></text>
+         id="tspan4266">Pile</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="307.73438"
-       y="370.01843"
-       id="text5216-4"
-       sodipodi:linespacing="125%"
-       inkscape:transform-center-x="-5.46875"
-       inkscape:transform-center-y="37.499999"><tspan
+       x="204.60938"
+       y="325.17468"
+       id="text4270-3"
+       sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan5218-1"
-         x="307.73438"
-         y="370.01843"
-         style="font-size:15px">Résistance</tspan></text>
+         id="tspan4272-7"
+         x="204.60938"
+         y="325.17468"
+         style="font-size:12.5px" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="114.62501"
+       y="354.73718"
+       id="text4586"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4588"
+         x="114.62501"
+         y="354.73718">+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="119.37501"
+       y="380.11218"
+       id="text4586-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4588-3"
+         x="119.37501"
+         y="380.11218">_</tspan></text>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 140.00001,362.36219 0,-55 145,0 0,35"
-       id="path4268"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 140.00001,362.36219 0,-50 50,0"
+       id="path4608"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 190.00001,322.36219 0,-20 50,0 0,20 -50,0"
+       id="path4611"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 240.00001,312.36219 45,0 0,35"
+       id="path4613"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 265.00001,347.36219 40,0 -20,30 z"
+       id="path4617"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 265.00001,377.36219 40,0"
+       id="path4619"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 310.00001,357.36219 25,-10"
+       id="path4640"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 310.00001,372.36219 25,-10"
+       id="path4642"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 328.00001,347.36219 7,0 -5,5"
+       id="path4644"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 328.00002,362.36219 6.99999,0 -4.99999,5"
+       id="path4644-0"
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="180"
-       y="362.36218"
-       id="text4270"
+       x="305.07812"
+       y="398.94031"
+       id="text5216-7"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan4272"
-         x="180"
-         y="362.36218">5 V</tspan></text>
+         x="305.07812"
+         y="398.94031"
+         style="font-size:15px"
+         id="tspan4266-7">LED</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="175.07812"
+       y="344.94031"
+       id="text5216-6"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="175.07812"
+         y="344.94031"
+         style="font-size:15px"
+         id="tspan4266-6">Résistance</tspan></text>
   </g>
 </svg>

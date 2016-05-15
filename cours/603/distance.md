@@ -3,7 +3,7 @@
 % rév 2015/09/18
 
 
-## Changer le comportement de l’enseigne ou de l’afficheur ###
+## Changer le comportement de l’enseigne ou de l’afficheur ##
 
 Les enseignes et afficheurs fonctionnent généralement sans intervention humaine. Mais il est souvent utile de pouvoir modifier leur comportement. Pour une enseigne, on souhaitera par exemple :
 
@@ -75,8 +75,68 @@ Programmer soi-même un tel circuit est relativement complexe. Une manière beau
 
 Avec l’environnement Node-MCU, la programmation s’effectue par des scripts écrits dans le langage **Lua**. C’est un langage de haut niveau interprété, un peu similaire à Python. Il a l’avantage d’être peu gourmand en ressource.
 
-Un programme appelé Esplorer permet de charger les scripts Lua et de visualiser le dialogue avec l’ESP8266.
+Un logiciel appelé Esplorer, écrit en Java, permet de charger les scripts Lua et de visualiser le dialogue avec l’ESP8266.
 
-Nous présenterons ici un script transformant le module ESP8266 en un *access point WiFi* autonome, sur lequel une serveur offre une page Web, par laquelle il est possible de modifier les textes d’un afficheur et le remettre à l’heure.
+Nous présenterons ici un script transformant le module ESP8266 en un *access point WiFi* autonome, sur lequel une serveur offre une page Web, par laquelle il est possible de modifier les textes d’un afficheur. C'est remarquable qu'un programme si court donne lieu à une telle fonctionnalité :
 
+~~~~~~~ { .lua .numberLines startFrom="1" }
+cfg={}
+cfg.ssid="Enseigne"
+cfg.pwd="testtest"
+wifi.ap.config(cfg)
+wifi.setmode(wifi.SOFTAP)
+led_blue = 4
+gpio.mode(led_blue, gpio.OUTPUT)
+srv=net.createServer(net.TCP)
+srv:listen(80,function(conn)
+    conn:on("receive", function(client,request)
 
+        -- extract path and variables :
+        local _, _, method, path, vars = string.find(request, "([A-Z]+) (.+)?(.+) HTTP");
+        if(method == nil)then
+            _, _, method, path = string.find(request, "([A-Z]+) (.+) HTTP");
+        end
+
+        -- extract the variables passed in the url :
+        local _GET = {}
+        if (vars ~= nil)then
+            for k, v in string.gmatch(vars, "(%w+)=(%w+)&*") do
+                _GET[k] = v
+            end
+        end
+
+        -- create the webpage :
+        local buf = "";
+        buf = buf.."HTTP/1.1 200 OK\n\n<!DOCTYPE HTML>\n<html>\n"
+        buf = buf.."<head><meta  content=\"text/html; charset=utf-8\">\n"
+        buf = buf.."<title>BMDI</title></head>\n"
+        buf = buf.."<body>"
+        buf = buf.."<form>"
+        buf = buf.."<p>Texte 1 :<INPUT NAME=\"texte1\" TYPE=text SIZE=32 MAXLENGTH=30></INPUT></p>"
+        buf = buf.."<p>Texte 2 :<INPUT NAME=\"texte2\" TYPE=text SIZE=32 MAXLENGTH=30></INPUT></p>"
+        buf = buf.."<p>Texte 3 :<INPUT NAME=\"texte3\" TYPE=text SIZE=32 MAXLENGTH=30></INPUT></p>"
+        buf = buf.."<input type=\"submit\" value=\"Envoi a l'enseigne\">"
+        buf = buf.."</form>"
+        buf = buf.."</body>"
+        buf = buf.."</html>"
+
+        -- do the actions :
+        if (_GET.texte1 ~= nil) then
+          local txt = "";
+          txt = txt.._GET.texte1
+          txt = txt.."|"
+          txt = txt.._GET.texte2
+          txt = txt.."|"
+          txt = txt.._GET.texte3
+          txt = txt.."|"
+          txt = txt.."#"
+          print (txt)
+        end
+        -- send the data and close the connection :
+        client:send(buf);
+        client:close();
+        collectgarbage();
+    end)
+end)
+~~~~~~~
+<!-- retour au mode normal pour Gedit -->

@@ -1,8 +1,8 @@
 1.1        Introduction aux enseignes et afficheurs à LED
-1.2 c      Électricité et LED                                     70% (2) Terminer série-parallèle (OK), Dias
+1.2 c      Électricité et LED                                         (2) Terminer série-parallèle, Dias (OK 13 mai)
 1.6 c      Le microcontrôleur
 
-2.3 c d    Programmation en C-Arduino                             90% (1) Contrôle, compléter Dias (OK 11 mai)
+2.3 c d    Programmation en C-Arduino                                 (1) Contrôle, compléter Dias (OK 11 mai)
 2.4 C D V  Enseignes à motifs fixes
 
 3.2 c      Entrées-sorties                                        30% (5) Rédaction, figures, Dias
@@ -11,8 +11,8 @@
 3.5 C D V  Registre d’extension série-parallèle
 3.6 c      Montages électroniques                                 30% (6) Veroboard, KiCAD, Dias
 
-4.1 C D    Les afficheurs matriciels                                  (0) Voir si une vidéo existe ! sinon, contrôle -> vidéo
-4.2 c      BCM : la modulation codée binaire                      30% (4) Figures, texte, exemple pour enseigne, Dias
+4.1 C D    Les afficheurs matriciels                                      vidéo (OK)
+4.2 c      BCM : la modulation codée binaire                      60% (3) Figures (OK), texte (ok), programme (ok), Dias
 4.3 C D V  Mémoires permanentes
 
 5.3        Programmation multi-tâche
@@ -20,9 +20,9 @@
 5.5 c      Les afficheurs matriciels multiplexés
 
 6.1        Direct Memory Access
-6.2 C D V  Horloges temps réel
+6.2 C D V  Horloges temps réel                                    50% (7) Photos, programme Lua, Dias
 6.3        Commande à distance
-6.4 c      Langages interprétés spécialisés                       50% (3) Ecrire l'interpréteur simple, exemple plus complet, Dias
+6.4 c      Langages interprétés spécialisés                       50% (4) Ecrire l'interpréteur simple, exemple plus complet, Dias
 6.5        Vidéo et murs de LED
 
 3 + 2 + 5 + 3 + 3 + 5 = 21 sujets

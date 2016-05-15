@@ -44,7 +44,7 @@ Pierre-Yves Rochat
 <!-- 2345 -->* Qu’est-ce qui se cache derrière ce nom ?
 <!-- 2345 --></div>
 <!-- 345 --><div style="top: 18cm; left: 9cm; font-size: 53pt; line-height: 1.5;">
-<!-- 345 -->* une carte à microcontrôleurs
+<!-- 345 -->* une carte à microcontrôleur
 <!-- 45 -->* un environnement de développement
 <!-- 5 -->* une librairie pour microcontrôleurs (un ensemble de procédures)
 <!-- 345 --></div>
@@ -73,18 +73,19 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Le logiciel Arduino</h1>
 <img src="./images/arduino-ide.png" style="top:6cm; left:3cm; width:34cm;" />
-<!-- 2345 --><div style="top: 7cm; left: 41cm; font-size: 48pt;">
+<!-- 2345 --><div style="top: 6.5cm; left: 41cm; font-size: 48pt; line-height: 1.0;">
 <!-- 2345 -->* Ecrit en Java
+<!-- 2345 -->* Utilise le compilateur GCC
 <!-- 2345 --></div>
-<!-- 345 --><div style="top: 10.5cm; left: 41cm; font-size: 48pt; line-height: 1.0;">
+<!-- 345 --><div style="top: 12.0cm; left: 41cm; font-size: 48pt; line-height: 1.0;">
 <!-- 345 -->* Windows
 <!-- 345 -->* Linux
 <!-- 345 -->* MacOS
 <!-- 345 --></div>
-<!-- 45 --><div style="top: 18.5cm; left: 41cm; font-size: 48pt;">
+<!-- 45 --><div style="top: 19.5cm; left: 41cm; font-size: 48pt;">
 <!-- 45 -->* Logiciel libre (Open source)
 <!-- 45 --></div>
-<!-- 5 --><div style="top: 22.5cm; left: 41cm; font-size: 48pt;">
+<!-- 5 --><div style="top: 23.0cm; left: 41cm; font-size: 48pt;">
 <!-- 5 -->* Version pour d'autres microcontrôleurs
 <!-- 5 --></div>
 <!-- 5 --><div style="top: 27.5cm; left: 41cm; font-size: 48pt;">
@@ -114,17 +115,17 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Structure générale d’un programme</h1>
 <div style="top: 9cm; left: 4cm; font-size: 53pt; line-height: 2;">
-* *pas de* &nbsp; `main()` !
+* *pas de* procédure &nbsp; `main()`
 <!-- 234 -->* `void setup()`
 <!-- 34 -->* `void loop()`
 </div>
 <!-- 4 --><div style="top: 9cm; left: 35cm; font-size: 53pt; line-height: 2; width:25cm;">
 <!-- 4 -->~~~~~~~ { .c .numberLines startFrom="1" }
-<!-- 4 -->void setup() {
-<!-- 4 -->}
+<!-- 4 --> void setup() {
+<!-- 4 --> }
 <!-- 4 -->
-<!-- 4 -->void loop() {
-<!-- 4 -->}
+<!-- 4 --> void loop() {
+<!-- 4 --> }
 <!-- 4 -->~~~~~~~
 <!-- 4 --></div>
 </section>
@@ -145,7 +146,7 @@ Pierre-Yves Rochat
 <div style="top: 9cm; left: 4cm; font-size: 53pt; line-height: 2;  width:45cm;">
 * `void pinMode(pin, mode)`
 <!-- 23 -->* `void digitalWrite(pin, value)`
-<!-- 3 -->* `value digitalRead(pin)`
+<!-- 3 -->* `boolean digitalRead(pin)`
 </div>
 </section>
 
@@ -155,14 +156,14 @@ Pierre-Yves Rochat
 <h1 class="en_tete">Exemple de programme</h1>
 <div style="top: 9cm; left: 4cm; font-size: 53pt; line-height: 2; width:45cm;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
-void setup() {
-  pinMode(P1_0, OUTPUT);
-  pinMode(P1_3, INPUT);
-}
+ void setup() {
+   pinMode(P1_0, OUTPUT);
+   pinMode(P1_3, INPUT);
+ }
 
-void loop() {
-  digitalWrite(P1_0, (digitalRead(P1_3));
-}
+ void loop() {
+   digitalWrite(P1_0, (digitalRead(P1_3));
+ }
 ~~~~~~~
 </div>
 </section>
@@ -172,20 +173,20 @@ void loop() {
 <!-- A -->
 <h1 class="en_tete">Gestion du temps</h1>
 <div style="top: 9cm; left: 4cm; font-size: 53pt; line-height: 2;">
-* `void delay(ms)`
+* `int delay(ms)`
 </div>
 <!-- 23 --><div style="top: 5.3cm; left: 32cm; font-size: 50pt; line-height: 1.8; width:27cm;">
 <!-- 23 -->~~~~~~~ { .c .numberLines startFrom="1" }
-<!-- 23 -->void setup() {
-<!-- 23 -->  pinMode(P1_0, OUTPUT);
-<!-- 23 -->}
+<!-- 23 --> void setup() {
+<!-- 23 -->   pinMode(P1_0, OUTPUT);
+<!-- 23 --> }
 <!-- 23 -->
-<!-- 23 -->void loop() {
-<!-- 23 -->  digitalWrite(P1_0, 1);
-<!-- 23 -->  delay(500);
-<!-- 23 -->  digitalWrite(P1_0, 0);
-<!-- 23 -->  delay(500);
-<!-- 23 -->}
+<!-- 23 --> void loop() {
+<!-- 23 -->   digitalWrite(P1_0, 1);
+<!-- 23 -->   delay(500);
+<!-- 23 -->   digitalWrite(P1_0, 0);
+<!-- 23 -->   delay(500);
+<!-- 23 --> }
 <!-- 23 -->~~~~~~~
 <!-- 23 --></div>
 <!-- 3 --><img src="./images/chrono-blink-300dpi.png" style="top:25.1cm; left:4cm; width:41cm;" />

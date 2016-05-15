@@ -50,7 +50,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1 class="title">Programmation en C-Arduino</h1>
 <div id="header">
 <p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
-<p class="date">rév 2016/01/04</p>
+<p class="date">rév 2016/05/15</p>
 </div>
 <h2 id="différentes-significations-du-mot-arduino">Différentes significations du mot Arduino</h2>
 <p>L’<strong>Arduino</strong> a participé à rendre populaires les microcontrôleurs de manière extraordinaire. Qu’est-ce qui se cache derrière ce nom ?</p>
@@ -61,7 +61,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>une librairie pour microcontrôleurs.</li>
 </ul>
 <p><code>1.</code> L’Arduino est une <strong>carte à microcontrôleurs</strong>, plus exactement une famille de cartes. L’<strong>Arduino UNO</strong> est la plus connue. Elle contient un microcontrôleur AVR du fabricant Atmel, le modèle ATmega328. Un câble USB permet de la brancher sur un PC, principalement pour déposer un programme dans le microcontrôleur. Les cartes Arduino sont <em>open hardware</em> : leurs plans sont publiques. Comme elles sont produites par de nombreux fabricants, leur prix est très favorable.</p>
-<p>Deux rangées de connecteurs permettent d'accéder aux broches du microcontrôleur. Beaucoup de <em>cartes filles</em> ou <em>shields</em> sont proposés, pour toutes sortes d'applications. Ces connecteurs sont devenus de véritables standard <em>de facto</em>. Bien d'autres microcontrôleurs sot disponibles avec la même connectique, leur donnant accès aux <em>shields</em> disponibles.</p>
+<p>Deux rangées de connecteurs permettent d'accéder aux broches du microcontrôleur. Beaucoup de <em>cartes filles</em> ou <em>shields</em> sont proposés, pour toutes sortes d'applications. Ces connecteurs sont devenus de véritables standard <em>de facto</em>. Bien d'autres microcontrôleurs sont disponibles avec la même connectique, donnant la possibilité d'utiliser les nombreux <em>shields</em> disponibles.</p>
 <div class="figure">
 <img src="images/Uno.jpg" title="Exemple de carte Arduino" alt="Exemple de carte Arduino" />
 <p class="caption">Exemple de carte Arduino</p>
@@ -95,8 +95,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <p>L’organigramme à gauche de la figure correspond à ce que voit l’utilisateur. Mais en fait, derrière l’usage de <code>setup()</code> et <code>loop()</code> proposé par Arduino, des instructions cachées s’exécutent avant chacune de ces procédures, comme le montre l’organigramme de droite. C’est dans la procédure <code>main()</code> produite par l’environnement Arduino que ces instructions sont ajoutées.</p>
 <p>Il faut noter que la procédure <code>loop()</code> a une durée d’exécution qui peut varier considérablement d’un programme à un autre. Pour une enseigne ou un afficheur à LED, elle pourrait par exemple durer le temps d’un cycle complet de l’animation. Mais elle pourrait tout aussi bien durer un temps très court, par exemple un temps fixe de 10 µs. Tout dépendra de la manière de programmer.</p>
-<h3 id="exemple">Exemple</h3>
-<p>Le programme suivant est un programme Arduino correct :</p>
+<p>Le programme suivant est un programme Arduino correct, bien qu'il ne produire aucun effet :</p>
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2
 3
@@ -114,7 +113,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li><code>void pinMode(pin, mode)</code></li>
 <li><code>void digitalWrite(pin, value)</code></li>
-<li><code>value digitalRead(pin)</code></li>
+<li><code>boolean digitalRead(pin)</code></li>
 </ul>
 <h3 id="pinmode">pinMode()</h3>
 <p>La procédure <code>void pinMode(pin, mode)</code> est une procédure d’initialisation. Elle permet de placer une broche du microcontrôleur en entrée ou en sortie. Elle reçoit deux paramètres :</p>
@@ -131,12 +130,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>La procédure <code>digitalWrite()</code> ne rend rien à la fin de son exécution.</p>
 <h3 id="digitalread">digitalRead()</h3>
-<p>La procédure <code>value digitalRead(pin)</code> permet de lire le niveau logique sur une broche qui a été programmée en entrée. La valeur rendue sera 0 ou 1 (<code>LOW</code> ou <code>HIGH</code>). Elle reçoit un seul paramètre :</p>
+<p>La procédure <code>boolean digitalRead(pin)</code> permet de lire le niveau logique sur une broche qui a été programmée en entrée. La valeur rendue sera 0 ou 1 (<code>LOW</code> ou <code>HIGH</code>). Elle reçoit un seul paramètre :</p>
 <ul>
 <li><code>pin</code> : le numéro logique de la broche.</li>
 </ul>
 <p>La procédure <code>digitalWrite()</code> rend à la fin de son exécution la valeur lue. Ce sera un 0 ou un 1.</p>
-<h3 id="exemple-1">Exemple</h3>
+<h3 id="exemple">Exemple</h3>
 <p>Voici un programme qui utilise les instructions que nous venons de voir. Il semble correct :</p>
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2

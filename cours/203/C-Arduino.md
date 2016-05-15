@@ -1,6 +1,6 @@
 % Programmation en C-Arduino
 % [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
-% rév 2016/01/04
+% rév 2016/05/15
 
 
 ## Différentes significations du mot Arduino ##
@@ -60,9 +60,7 @@ L’organigramme à gauche de la figure correspond à ce que voit l’utilisateu
 
 Il faut noter que la procédure `loop()` a une durée d’exécution qui peut varier considérablement d’un programme à un autre. Pour une enseigne ou un afficheur à LED, elle pourrait par exemple durer le temps d’un cycle complet de l’animation. Mais elle pourrait tout aussi bien durer un temps très court, par exemple un temps fixe de 10 µs. Tout dépendra de la manière de programmer.
 
-### Exemple ###
-
-Le programme suivant est un programme Arduino correct :
+Le programme suivant est un programme Arduino correct, bien qu'il ne produire aucun effet :
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
 void setup() {
@@ -81,7 +79,7 @@ L’usage des broches du microcontrôleur comme entrée ou comme sortie se fait 
 
 * `void pinMode(pin, mode)`
 * `void digitalWrite(pin, value)`
-* `value digitalRead(pin)`
+* `boolean digitalRead(pin)`
 
 ### pinMode() ###
 
@@ -103,7 +101,7 @@ La procédure `digitalWrite()` ne rend rien à la fin de son exécution.
 
 ### digitalRead() ###
 
-La procédure `value digitalRead(pin)` permet de lire le niveau logique sur une broche qui a été programmée en entrée. La valeur rendue sera 0 ou 1 (`LOW` ou `HIGH`). Elle reçoit un seul paramètre :
+La procédure `boolean digitalRead(pin)` permet de lire le niveau logique sur une broche qui a été programmée en entrée. La valeur rendue sera 0 ou 1 (`LOW` ou `HIGH`). Elle reçoit un seul paramètre :
 
 * `pin` : le numéro logique de la broche.
 

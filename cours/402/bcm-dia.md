@@ -42,9 +42,9 @@ Pierre-Yves Rochat
 <h1 class="en_tete">PWM sur une matrice</h1>
 <img src="./images/pwm.svg" style="top:6cm; left:10cm; width:40cm; ">
 <div style="top: 17cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
-* Le PWM est la généralement utilisé pour faire varier l'intensité d'une LED
-<!-- 234 -->* Sur un afficheur matriciel l'intensité de chaque LED doit être indépendante
-<!-- 34 -->* Pour changer l'état d'une LED, il faut renvoyer l'état de toutes les LED
+* Le **PWM** est généralement utilisé pour faire varier l'intensité d'une LED
+<!-- 234 -->* Sur un afficheur matriciel, l'intensité de chaque LED doit être **indépendante**
+<!-- 34 -->* Pour changer l'état d'une LED, il faut renvoyer l'état de **toutes** les LED
 </div>
 <!-- 4 --><div style="top: 27cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
 <!-- 4 -->* Fréquence de rafraîchissement : F~raf~ = F~pwm~ × N~intens~
@@ -83,6 +83,62 @@ Pierre-Yves Rochat
 <img src="./images/bcm-3per.svg" style="top:7cm; left:6cm; width:45cm; ">
 <div style="top: 28.5cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
 * Signaux représentés sur 3 périodes
+</div>
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Avantages et limites du BCM</h1>
+<div style="top: 7cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
+* En PWM, pour une résolution de b bits, il faut 2^b^ raffraîchissements des états des LED
+<!-- 345 -->* En BCM, il en faut seulement b.
+</div>
+<img src="./images/bcm-change1.svg" style="top:12.5cm; left:6cm; width:30cm; ">
+<!-- 345 --><img src="./images/bcm-change2.svg" style="top:12.5cm; left:6cm; width:30cm; ">
+<!-- 45 --><div style="top: 26cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
+<!-- 45 -->* Le temps minimum entre deux raffraîchissements est le même
+<!-- 5 -->* Du temps libre se dégage sur les bits de poids fort, utilisable pour calculer l'état suivant
+<!-- 45 --></div>
+</section>
+
+
+<section>
+<!-- A -->
+<h1 class="en_tete">Programmation de signaux BCM</h1>
+<div style="top: 5.2cm; left: 1.5cm; font-size: 38pt; line-height: 1.6; width:58cm;">
+~~~~~~~ { .c .numberLines startFrom="8" }
+uint8_t Intens[8] = {0, 0, 0, 0, 0, 0, 128, 0};
+uint8_t n, b;
+uint8_t t = 0;
+
+int main() {
+  WDTCTL = WDTPW+WDTHOLD; // stoppe le WatchDog
+  BCSCTL1 = CALBC1_16MHZ; DCOCTL = CALDCO_16MHZ;
+  P1DIR = 0xFF; // P1 tout en sortie
+
+  while (1) { // Boucle infinie :
+    for (n=0; n<BITS_BCM; n++) { // pour une période du BCM
+      for (b=0; b<8; b++) { // pour chaque bit de sortie
+        if (Intens[b] & (1<<n)) P1OUT|=(1<<b); else P1OUT&=~(1<<b);
+      }
+      Attente(1<<n);
+    }
+    // ...calcul des prochaines valeurs des intensités
+  }
+}
+~~~~~~~
+</div>
+<div style="top: 5.3cm; left: 40cm; font-size: 36pt; line-height: 1.6; width:26cm;">
+~~~~~~~ { .c .numberLines startFrom="1" }
+#define BITS_BCM 8
+
+void Attente(uint16_t dur) {
+  volatile uint16_t i;
+  for (i=0; i<(dur*64); i++) {
+  }
+}
+~~~~~~~
 </div>
 </section>
 

@@ -20,8 +20,8 @@
 5.5 c      Les afficheurs matriciels multiplexés
 
 6.1        Direct Memory Access
-6.2 C D V  Horloges temps réel                                    50% (7) Photos, programme Lua, Dias
-6.3        Commande à distance
+6.2 C D V  Horloges temps réel
+6.3        Commande à distance                                    50% (7) Photos, programme Lua, Dias
 6.4 c      Langages interprétés spécialisés                       50% (4) Ecrire l'interpréteur simple, exemple plus complet, Dias
 6.5        Vidéo et murs de LED
 

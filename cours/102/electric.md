@@ -1,6 +1,6 @@
 % Circuits électriques
 % [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
-% rév 2016/05/11
+% rév 2016/05/23
 
 
 ## Électrons libres et courant électrique ##

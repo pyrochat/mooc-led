@@ -4,10 +4,10 @@ type:             Théorie
 niveau:           base
 auteur:          
     - 'PYR'
-statut:           Pas publié
-code:             introduction
+statut:           relecture
+code:             intro
 url:
-    cours-html:   introduction.html
-    cours-pdf:    introduction.pdf
-    dias-video:   introduction-dia.pdf
-    dias-compact: introduction-dia-compact.pdf
+    cours-html:   intro.html
+    cours-pdf:    intro.pdf
+    dias-video:   intro-dia.pdf
+    dias-compact: intro-dia-compact.pdf

@@ -99,7 +99,7 @@ Regrouper les LED en motifs.
 <section>
 <!-- A -->
 <h1 class="en_tete">Programmation des animations</h1>
-<div style="top:5.5cm; left:2cm; font-size:36pt;">
+<div style="top:5.5cm; left:2cm; font-size:36pt; width:58cm;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 void setup() {
   P2DIR |= 0xFF; // P2.0 à P2.7 en sortie
@@ -129,7 +129,7 @@ void loop() { // Boucle infinie, correspond à toute l'animation
 <section>
 <!-- A -->
 <h1 class="en_tete">Programmation des animations</h1>
-<div style="top:7cm; left:2cm; font-size:36pt;">
+<div style="top:7cm; left:2cm; font-size:36pt; width:58cm;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 void ChenillardAjoute(uint16_t attente) {
   unit16_t i;

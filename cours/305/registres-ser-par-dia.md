@@ -151,7 +151,7 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">Programmation</h1>
-<div style="top:6.5cm; left:2cm; font-size:52pt;">
+<div style="top:6.5cm; left:2cm; font-size:52pt; width:58cm;">
 ~~~~~~~ { .c .numberLines startFrom="10" }
 void Envoie8bitsSerie (uint8_t valeur) {
   uint16_t i;
@@ -173,7 +173,7 @@ void Envoie8bitsSerie (uint8_t valeur) {
 <section>
 <!-- A -->
 <h1 class="en_tete">Programmation</h1>
-<div style="top:6.5cm; left:2cm; font-size:52pt;">
+<div style="top:6.5cm; left:2cm; font-size:52pt; width:58cm;">
 ~~~~~~~ { .c .numberLines startFrom="11" }
 ...
   for (i=0; i<8; i++) {

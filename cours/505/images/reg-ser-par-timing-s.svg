@@ -686,9 +686,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.9327291"
-     inkscape:cx="209.91174"
-     inkscape:cy="92.653813"
+     inkscape:zoom="1.9663646"
+     inkscape:cx="166.2383"
+     inkscape:cy="99.511483"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -696,9 +696,9 @@
      fit-margin-left="5"
      fit-margin-right="5"
      fit-margin-bottom="5"
-     inkscape:window-width="1397"
+     inkscape:window-width="1547"
      inkscape:window-height="876"
-     inkscape:window-x="43"
+     inkscape:window-x="53"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
      inkscape:snap-nodes="true"
@@ -726,7 +726,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -885,7 +885,7 @@
        sodipodi:nodetypes="ccccccccccc" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:125%;font-family:Arial;-inkscape-font-specification:Arial;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
        x="-119.5866"
        y="29.232332"
        id="text6653"
@@ -893,7 +893,7 @@
          sodipodi:role="line"
          id="tspan6655"
          x="-119.5866"
-         y="29.232332">Entrée</tspan></text>
+         y="29.232332">Entrées (8 bits)</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
@@ -904,7 +904,8 @@
          sodipodi:role="line"
          id="tspan6659"
          x="-121.38266"
-         y="51.377987">Horloge série</tspan></text>
+         y="51.377987"
+         style="-inkscape-font-specification:Arial;font-family:Arial;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Horloge série</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:8px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -1035,7 +1036,8 @@
          sodipodi:role="line"
          id="tspan6659-1"
          x="-121.38268"
-         y="73.523636">Horloge parallèle</tspan></text>
+         y="73.523636"
+         style="-inkscape-font-specification:Arial;font-family:Arial;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Horloge parallèle</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot11475"

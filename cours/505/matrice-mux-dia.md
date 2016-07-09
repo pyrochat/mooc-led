@@ -55,7 +55,7 @@ Pierre-Yves Rochat
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Schéma d'un afficheur matriciel</h1>
+<h1 class="en_tete">Schéma d’un afficheur matriciel</h1>
 <img src="./images/aff-8x16.svg" style="top:7cm; left:1cm; width:35cm;" />
 <!-- 2 --><img src="./images/reg-ser-par-timing-s.svg" style="top:17cm; left:37cm; width:22cm;" />
 </section>
@@ -63,17 +63,17 @@ Pierre-Yves Rochat
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Conséquence de l'augmentation du nombre de LEDs</h1>
+<h1 class="en_tete">Conséquence de l’augmentation du nombre de LED</h1>
 <div style="font-size:52pt; left:3cm; width:46cm; top:7cm;">
 * 32 x 32 pixels => 1024 sorties de registre
 <!-- 2345678 -->* 128 registres 8 bits 74HC595 et 1024 résistances
 <!-- 345678 -->* Trois fois plus pour une matrice RGB !
 <!-- 45786 -->* Registres 16 bits à sortie à courant constant SUM2016
-<!-- 5786 -->*  192 circuits intégrée et 192 résistances 
+<!-- 5786 -->*  192 circuits intégrés et 192 résistances
 </div>
 <!-- 678 --><div style="font-size:52pt; left:3cm; width:46cm; top:21cm;">
 <!-- 78 -->* Peut-on obtenir des schémas plus simples ?
-<!-- 8 -->* Avec le multiplexage temporel ! 
+<!-- 8 -->* Avec le multiplexage temporel !
 <!-- 678 --></div>
 </section>
 
@@ -94,7 +94,7 @@ Pierre-Yves Rochat
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Schéma d'un afficheur matriciel multiplexé</h1>
+<h1 class="en_tete">Schéma d’un afficheur matriciel multiplexé</h1>
 <img src="./images/aff-4x8-mux.svg" style="top:6cm; left:4cm; width:35cm;" />
 <!-- 234 --><div style="font-size:52pt; left:40cm; width:18cm; top:8cm;">
 <!-- 234 --> Courants ?
@@ -134,15 +134,15 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Comparaisons des architectures</h1>
 <div style="font-size:52pt; left:3cm; width:56cm; top:7cm;">
-* Multiplexage par 2 : 
+* Multiplexage par 2 :
 <!-- 2345 -->* Multiplexage par 4 : compromis intéressant
-<!-- 345 -->* Multiplexage par 8 et 16 : afficheurs d'intérieur
+<!-- 345 -->* Multiplexage par 8 et 16 : afficheurs d’intérieur
 </div>
 <!-- 45 --><div style="font-size:52pt; left:3cm; width:56cm; top:16cm;">
 <!-- 45 -->* Facteurs de multiplexage plus importants : trop peu de luminosité
 <!-- 45 --></div>
 <!-- 5 --><div style="font-size:52pt; left:3cm; width:56cm; top:21cm;">
-<!-- 5 -->* Panne d'une LED peut entraîner des perturbations sur les LED voisines
+<!-- 5 -->* Panne d’une LED peut entraîner des perturbations sur les LED voisines
 <!-- 5 --></div>
 </section>
 
@@ -152,15 +152,15 @@ Pierre-Yves Rochat
 <h1 class="en_tete">Programme de commande</h1>
 <div style="font-size:52pt; left:3cm; width:56cm; top:7cm;">
 * Similaire à un afficheur non multiplexé
-<!-- 23 -->* Procédure pour un cycle d'affichage
-<!-- 3 -->* Base de temps donné pas cette procédure
+<!-- 23 -->* Procédure pour un cycle d’affichage
+<!-- 3 -->* Base de temps donné par cette procédure
 </div>
 </section>
 
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Cycle d'affichage</h1>
+<h1 class="en_tete">Cycle d’affichage</h1>
 <div style="top: 7cm; left: 2.65cm; font-size: 36pt; line-height: 2; width:57.0cm;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 uint8_t matrice[4];

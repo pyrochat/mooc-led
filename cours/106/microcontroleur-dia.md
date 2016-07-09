@@ -55,7 +55,7 @@ Pierre-Yves Rochat
 <h1 class="en_tete">Le microcontrôleur</h1>
 <img src="./images/uC-sys-info.svg" style="top:7cm; left:11cm; width:38cm; ">
 <div style="top: 26cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
-<!-- 2 -->* Un microcontrôleur est circuit intégré contenant un système informatique 
+<!-- 2 -->* Un microcontrôleur est un circuit intégré contenant un système informatique
 </div>
 </section>
 
@@ -64,7 +64,7 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">De nombreuses familles de microcontrôleurs</h1>
 <div style="top: 8cm; left: 3cm; font-size: 48pt;">
-* De nombreux fabricants 
+* De nombreux fabricants
 </div>
 <!-- 234567 --><img src="./images/microchip-atmel-logo.png" style="top:11cm; left:3cm; width:19cm; ">
 <!-- 234567 --><img src="./images/nxp-logo.png" style="top:11.7cm; left:20cm; width:5cm; ">
@@ -72,9 +72,9 @@ Pierre-Yves Rochat
 <!-- 234567 --><img src="./images/ti-logo.png" style="top:9.2cm; left:36cm; width:11cm; ">
 <!-- 234567 --><img src="./images/cypress-logo.png" style="top:10.8cm; left:49cm; width:8cm; ">
 <!-- 34567 --><div style="top: 16.5cm; left: 3cm; font-size: 48pt; line-height: 1.3;">
-<!-- 34567 -->* Mémoire morte de 1kB à des MB
-<!-- 4567 -->* Mémoire vive de quelques octets à des centaines de kB
-<!-- 567 -->* De quelques broches à des centaines de broches d'entrées-sorties
+<!-- 34567 -->* Mémoire morte de 1 ko à des Mo
+<!-- 4567 -->* Mémoire vive de quelques octets à des centaines de ko
+<!-- 567 -->* De quelques broches à des centaines de broches d’entrées-sorties
 <!-- 34567 --></div>
 <!-- 67 --><img src="./images/dil14.png" style="top:25.0cm; left:7cm; width:9cm; ">
 <!-- 67 --><img src="./images/smd16.png" style="top:25.0cm; left:19cm; width:7cm; ">
@@ -95,14 +95,14 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Mise en œuvre matérielle et logicielle</h1>
 <div style="top: 8cm; left: 3cm; font-size: 48pt;">
-* Un composant électronique 
-<!-- 23456 -->* => mise en œuvre matérielle
-<!-- 3456 -->* => compétence d'un électronicien !
+* Un composant électronique
+<!-- 23456 -->* ⇒ mise en œuvre matérielle
+<!-- 3456 -->* ⇒ compétence d’un électronicien !
 </div>
 <!-- 456 --><div style="top: 20cm; left: 3cm; font-size: 48pt;">
 <!-- 456 -->* Un système informatique programmable
-<!-- 56 -->* => mise en œuvre logicielle
-<!-- 6 -->* => compétence d'un informaticien !
+<!-- 56 -->* ⇒ mise en œuvre logicielle
+<!-- 6 -->* ⇒ compétence d’un informaticien !
 <!-- 456 --></div>
 </section>
 
@@ -131,7 +131,7 @@ Pierre-Yves Rochat
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Programmation d'un microcontrôleur</h1>
+<h1 class="en_tete">Programmation d’un microcontrôleur</h1>
 <img src="./images/pc-prog.svg" style="top:9.0cm; left:5cm; width:13cm; ">
 <!-- 23 --><img src="./images/launchpad.jpg" style="top:9.0cm; left:20cm; width:17cm; ">
 <!-- 3 --><img src="./images/Uno.jpg" style="top:12.0cm; left:39cm; width:19cm; ">

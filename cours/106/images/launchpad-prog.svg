@@ -16,7 +16,10 @@
    id="svg21447"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="launchpad-prog.svg">
+   sodipodi:docname="launchpad-prog.svg"
+   inkscape:export-filename="/home/pyr/git/mooc-led/cours/106/images/launchpad-prog.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs21449" />
   <sodipodi:namedview
@@ -27,7 +30,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="1174.8473"
+     inkscape:cx="527.70444"
      inkscape:cy="1271.4349"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -58,7 +61,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -70,12 +73,12 @@
     <image
        sodipodi:absref="/home/pyr/git/mooc-led/cours/106/images/launchpad.jpg"
        xlink:href="launchpad.jpg"
-       width="1225"
-       height="1620"
-       preserveAspectRatio="none"
-       id="image22103"
+       y="-164.78065"
        x="94.64286"
-       y="-164.78065" />
+       id="image22103"
+       preserveAspectRatio="none"
+       height="1620"
+       width="1225" />
     <rect
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect22106"

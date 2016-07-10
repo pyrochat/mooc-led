@@ -1,6 +1,6 @@
 % Introduction au microcontrôleur
 % [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
-% rév 2016/07/07
+% rév 2016/07/09
 
 
 Pour commander des enseignes ou des afficheurs à LED, c’est très souvent un **microcontrôleur** qui est utilisé. Voyons de quoi il s’agit.

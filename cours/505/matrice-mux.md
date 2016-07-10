@@ -1,6 +1,6 @@
 % Afficheurs matriciels multiplexés
 % [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
-% rév 2016/07/08
+% rév 2016/07/09
 
 
 ## Afficheur matriciel et schéma de commande ###

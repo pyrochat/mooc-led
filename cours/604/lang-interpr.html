@@ -50,11 +50,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1 class="title">Langage interprété spécialisé</h1>
 <div id="header">
 <p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
-<p class="date">rév 2016/01/22</p>
+<p class="date">rév 2016/07/09</p>
 </div>
 <h2 id="motivation">Motivation</h2>
-<p>Animer une enseigne à LED consiste en une suite d’opérations sur les groupes LED. Animer un afficheur matriciel consiste aussi à envoyer des séquences graphiques. Dans les deux cas, une jolie animation ne se limitera pas à quelques étapes, mais pourra vite devenir longue. Les programmes correspondant vont donc avoir tendance à devenir longs, ce qui va rendre leur lecture fastidieuse et qui risque aussi de remplir rapidement la mémoire du microcontrôleur.</p>
-<p>Une technique souvent utilisée consiste à <strong>inventer</strong> un <em>langage</em> pour décrire ce qui se passe sur l’enseigne ou l’afficheur et programmer les animations dans ce langage.</p>
+<p>Animer une enseigne à LED consiste en une suite d’opérations sur les groupes des LED. Animer un afficheur matriciel consiste aussi à envoyer des séquences graphiques. Dans les deux cas, une jolie animation ne se limitera pas à quelques étapes, mais pourra vite devenir longue. Les programmes correspondant vont donc avoir tendance à s’allonger, ce qui va rendre leur lecture fastidieuse et qui risque aussi de remplir rapidement la mémoire du microcontrôleur.</p>
+<p>Une technique souvent utilisée consiste à <strong>inventer un langage</strong> pour décrire ce qui se passe sur l’enseigne ou l’afficheur et programmer les animations dans ce langage.</p>
 <h2 id="langage-arduino">Langage Arduino</h2>
 <p>Prenons l’exemple très simple. Pour décrire une animation sur une enseigne, deux ordres suffisent pour décrire les actions :</p>
 <ul>
@@ -63,15 +63,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>Dans le cas simple de sorties tout-ou-rien, voici les procédures Arduino qui vont suffire :</p>
 <ul>
-<li>digitalWrite() de l’Arduino convient pour donner un état à une sortie</li>
-<li>delay() pour une attente.</li>
+<li><em>digitalWrite()</em> pour donner un état à une sortie</li>
+<li><em>delay()</em> pour une attente.</li>
 </ul>
 <p>En observant la taille d’un petit programme sur Energia et en ajoutant des appels à ces procédures, on constate que :</p>
 <ul>
-<li>digitalWrite() prend 8 octets en mémoire</li>
-<li>delay() prend 10 octets en mémoire.</li>
+<li><em>digitalWrite()</em> prend 8 octets en mémoire</li>
+<li><em>delay()</em> prend 10 octets en mémoire.</li>
 </ul>
-<p>En prenant par exemple un microcontrôleur MSP430G2213, disposant d’une mémoire flash de 2kB (2048 octets), on sera limité à moins de 80 pas de programme, constitué de paires digitalWrite() - delay(). En constatant qu’un simple chenillard dans les deux sens sur 8 bits en prend déjà 16, c’est réellement limitatif !</p>
+<p>En prenant par exemple un microcontrôleur MSP430G2213, qui dispose d’une mémoire flash de 2kB (2048 octets), on sera limité à moins de 80 pas de programme, constitué de paires <em>digitalWrite() - delay()</em>. En constatant qu’un simple chenillard dans les deux sens sur 8 bits en prend déjà 16, c’est réellement limitatif !</p>
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2
 3
@@ -109,14 +109,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   digitalWrite (P2_0, <span class="dv">0</span>); delay (<span class="dv">300</span>);
 }</code></pre></td></tr></table></div>
 <!-- retour au mode normal -->
-<p>Bien entendu, les instructions permettant l’accès direct aux registres du microcontrôleur permettent d’économiser la place en mémoire. L’instruction P1OUT |= (1&lt;&lt;0); &lt;--- --- &gt; prend 4 octets. C’est déja mieux ! Mais cherchons une autre solution.</p>
+<p>Bien entendu, les instructions permettant l’accès direct aux registres du microcontrôleur permettent d’économiser la place en mémoire. L’instruction <code>P1OUT |= (1&lt;&lt;0);</code> prend 4 octets. C’est déja mieux ! Mais cherchons une autre solution.</p>
 <h2 id="inventer-un-langage">Inventer un langage</h2>
-<p>Une solution élégante est d’inventer un langage. Il aura les deux même instructions :</p>
+<p>Une solution élégante est d’inventer un langage. Notre permier langage n’aura les deux instructions :</p>
 <ul>
 <li><strong>Mettre une intensité sur une sortie</strong>. Paramètres : numéro de la sorte et intensité (0 ou 1)</li>
-<li><strong>Attendre</strong>. Paramètre : durée de l’attente</li>
+<li><strong>Attendre</strong>. Paramètre : durée de l’attente.</li>
 </ul>
-<p>Le programme pourrait alors se présenter sous forme d’un tableau. Nous avons utilisé ici un tableau d’octets. Le programme pour notre chenillard se présenterai alors de la manière suivante :</p>
+<p>Le programme peutt alors se présenter sous forme d’un tableau. Nous avons utilisé ici un tableau d’octets. Le programme pour notre chenillard aura alors la forme suivante :</p>
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2
 3
@@ -136,7 +136,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 17
 18
 19
-</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="dt">uint8_t</span> Animation[] = { <span class="co">// définition d&#39;un tableau d&#39;octets</span>
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="dt">uint8_t</span> Animation[] = { <span class="co">// définition d’un tableau d’octets</span>
   Sortie0+On, Attente<span class="dv">+10</span>,
   Sortie1+On, Attente<span class="dv">+10</span>,
   Sortie2+On, Attente<span class="dv">+10</span>,
@@ -155,7 +155,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   Sortie0+Off, Attente<span class="dv">+30</span>,
   Fin
 }</code></pre></td></tr></table></div>
-<!-- retour au mode normal -->
 <p>Sa taille n’est que de 33 octets. Voici les définitions nécessaire pour que ce tableau se compile correctement :</p>
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2
@@ -181,7 +180,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="ot">#define Attente 0b10000000</span>
 <span class="ot">#define Fin 0b1111111</span></code></pre></td></tr></table></div>
-<!-- retour au mode normal -->
 <h2 id="langage-binaire">Langage binaire</h2>
 <p>Voici la description binaire de notre langage :</p>
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
@@ -195,22 +193,74 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 9
 10
 </pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="co">// Description des instructions :</span>
-<span class="co">// b7 b6 b5 b4 b3 b2 b1 b0  : instructions sur 8 bits</span>
+<span class="co">// b7 b6 b5 b4 b3 b2 b1 b0  : instructions sur 8 bits</span>
 <span class="co">// -----------------------</span>
-<span class="co">//  0 i0 s5-s4-s3-s2-s1-s0  : met une intensité sur une sortie</span>
-<span class="co">//  1 d6-d5-d4-d3-d2-d1-d0  : attente</span>
+<span class="co">//  0 i0 s5-s4-s3-s2-s1-s0  : met une intensité sur une sortie</span>
+<span class="co">//  1 d6-d5-d4-d3-d2-d1-d0  : attente</span>
 <span class="co">// -----------------------</span>
 <span class="co">//</span>
 <span class="co">// Sorties sur 6 bits (maximum 64 sorties)</span>
 <span class="co">// Intensité sur 1 bit (On ou OFF)</span>
 <span class="co">// Durée sur 7 bits, exprimée en dixième de seconde (0 à 12.6 secondes)</span></code></pre></td></tr></table></div>
-<!-- retour au mode normal -->
 <p>Ceux qui ont déjà programmé en assembleur trouveront une grande similitude avec la description des instruction en binaire !</p>
 <p>On voit que des choix ont été faits pour utiliser au mieux les instructions, qui sont des champs de 8 bits. Le bit de poids fort b7 détermine s’il s’agit d’une instruction pour définir l’intensité ou pour l’attente. Ensuite, les 7 bits restant se répartissent selon l’instruction : une intensité et un numéro de sortie pour l’action sur une sortie, une valeur en dixième de seconde pour l’attente. L’usage de la milliseconde comme unité aurait été trop limitative, étant donné que seuls 7 bits sont à disposition.</p>
 <h2 id="interpréteur">Interpréteur</h2>
-<p>Il reste à écrire une procédure qui va interpréter notre langage et le traduire en instructions pour un microcontrôleur. En voici un exemple :</p>
-<div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre></pre></td><td class="sourceCode"><pre><code class="sourceCode c"></code></pre></td></tr></table></div>
-<!-- retour au mode normal -->
-<h2 id="exemple-plus-complexe">Exemple plus complexe</h2>
+<p>Il reste à écrire une procédure qui va interpréter notre langage et le traduire en instructions pour un microcontrôleur :</p>
+<p><sub><sub><sub>~</sub></sub></sub> { .c .numberLines startFrom=&quot;1&quot; } void Exec (unsigned int no) { uint8_t instr = Programme[pc++]; // lit l'instruction if (instr==Fin) { // gère la fin du programme pc = 0; } else { if (instr &amp; 0x8000) { // attente AttenteMs(10 * (instr &amp; 0x7F)); } else { // set intensité if (instr &amp; 0x40) Allume(instr &amp; 0x3F) else Eteint(instr &amp; 0x3F); } } }~~ <!-- retour au mode normal pour l’éditeur --></p>
+<h2 id="langages-plus-complexe">Langages plus complexe</h2>
+<p>Plusieurs compléments permettent de créer un environnement réellement intéressant pour programmer des enseignes complexes :</p>
+<ul>
+<li>L’ajout de la gestion de l'intensité des LED par BCM (<em>Binary Coded Modulation</em>)</li>
+<li>La possibilité d’agir sur des groupes de LED, permettant de simplifier l’écriture des programmes</li>
+<li>La gestion de plusieurs programmes en parallèle, pour gérer plus facilement différentes parties de l’enseigne.</li>
+</ul>
+<h2 id="exemple-de-langage-pour-un-afficheur-matriciel">Exemple de langage pour un afficheur matriciel</h2>
+<p>Pour piloter des animations sur une petite enseigne de pharmacie constituée d’une matrice monochrome de 16x16 LED, un langage plus complet a été imaginé. Il est basé sur le dessin de droites horizontales et verticales, à partir d’un curseur courant. Pour pouvoir réutiliser des parties de programme, un mécanisme d’appel de sous-routine a été mis en place, avec une instruction <em>Label</em> pour indiquer le début de la routine et une instruction <em>Return</em> pour en indiquer la fin. Une pile a été implémentée, rendant possible des appels imbriqués.</p>
+<p>Les animations étant très souvent de répétitions de motifs élémentaires, on a ajouté une instruction de répétition, qui préfixe n’importe quelle autre instruction pour la répéter un certain nombre de fois. Elle est particulièrement utile pour préfixer un appel de routine.</p>
+<p>Voici en détail la définition des instructions :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define DrH 0x30 </span><span class="co">// + dx (sur 4 bits) : droite horizontale, depuis le curseur</span>
+<span class="ot">#define DrV 0x40 </span><span class="co">// + dy (sur 4 bits) : droite verticale, depuis le curseur</span>
+<span class="ot">#define PlusX 0x50 </span><span class="co">// + dx (sur 4 bits) : avance le curseur en X</span>
+<span class="ot">#define PlusY 0x60 </span><span class="co">// + dy (sur 4 bits) : avance le curseur en Y</span>
+<span class="ot">#define MoinsX 0x70 </span><span class="co">// + dx (sur 4 bits) : recule le cureur en X</span>
+<span class="ot">#define MoinsY 0x80 </span><span class="co">// + y (sur 4 bits) : recule le curseur en Y</span>
+<span class="ot">#define Repete 0x90 </span><span class="co">// + 4 bits : préfixe de répétition pour l’instr. suivante</span>
+<span class="ot">#define Delai 0xA0 </span><span class="co">// + 4 bits : Attente, valeur exposant de 2</span>
+<span class="ot">#define SetAccu 0xB0 </span><span class="co">// + 4 bits : Charge l’accumulateur (utilisé pour Intens)</span>
+<span class="ot">#define Label 0xC0 </span><span class="co">// + 5 bits (32 routines max)</span>
+<span class="ot">#define Call 0xE0 </span><span class="co">// + 5 bits</span>
+<span class="ot">#define Fin 0 </span><span class="co">// fin du programme</span>
+<span class="ot">#define Vide 1 </span><span class="co">// efface l’écran</span>
+<span class="ot">#define Ret 2 </span><span class="co">// retour de sous-routine (saut à l’adresse sur la pile)</span>
+<span class="ot">#define Origine 3 </span><span class="co">// place le curseur à 0,0</span>
+<span class="ot">#define ZeroX 4 </span><span class="co">// met à zéro X</span>
+<span class="ot">#define Intens 5 </span><span class="co">// détermine l’intensité, selon la valeur de l’accumulateur</span>
+<span class="ot">#define Masque 0x9</span>
+<span class="ot">#define InvMasque 0xA </span><span class="co">// inverse le masque courant</span>
+<span class="ot">#define SetDelai 0xB </span><span class="co">// définit délai utilisé entre l’affichage de chaque point</span>
+<span class="ot">#define SetDelaiDef 0xC </span><span class="co">// définit la valeur du délai 0</span>
+<span class="ot">#define Effet 0xD</span>
+<span class="ot">#define Libre2 0xE </span><span class="co">// instructions non utilisées</span>
+<span class="ot">#define Libre1 0xF</span></code></pre></div>
+<!-- retour au mode normal pour l’éditeur -->
+<p>Voici un exemple d’animation. Attention, c’est comme l’assembleur : il faut un peu de pratique pour s’y retrouver !</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"> Label+Croix7x7, <span class="co">// Affiche une croix 7x7 (1/4 de la surface), curseur courant</span>
+ PlusX<span class="dv">+2</span>,
+ DrH<span class="dv">+2</span>, PlusY<span class="dv">+1</span>, MoinsX<span class="dv">+2</span>,
+ DrH<span class="dv">+2</span>, PlusY<span class="dv">+1</span>, MoinsX<span class="dv">+4</span>,
+ DrH<span class="dv">+6</span>, PlusY<span class="dv">+1</span>, MoinsX<span class="dv">+6</span>,
+ DrH<span class="dv">+6</span>, PlusY<span class="dv">+1</span>, MoinsX<span class="dv">+6</span>,
+ DrH<span class="dv">+6</span>, PlusY<span class="dv">+1</span>, MoinsX<span class="dv">+4</span>,
+ DrH<span class="dv">+2</span>, PlusY<span class="dv">+1</span>, MoinsX<span class="dv">+2</span>,
+ DrH<span class="dv">+2</span>, MoinsY<span class="dv">+6</span>, MoinsX<span class="dv">+4</span>,
+ Ret,
+
+ Label+Croix7x7plusDel, <span class="co">// Affiche croix 7x7, déplace le curseur en X et attend</span>
+ Vide, Call+Croix7x7, PlusX<span class="dv">+1</span>, Delai<span class="dv">+4</span>, Ret,
+
+ Label+Croix7x7passeX, <span class="co">// Fait passer une croix X</span>
+ ZeroX, MoinsX<span class="dv">+8</span>, Repete<span class="dv">+12</span>, Call+Croix7x7plusDel,
+ Repete<span class="dv">+12</span>, Call+Croix7x7plusDel, Vide, Delai<span class="dv">+6</span>, PlusY<span class="dv">+2</span>, Ret,</code></pre></div>
+<p>La première version de ce programme a permis de placer un bon nombre d’animations graphiques dans un microcontrôleur MSP430G2202, qui ne dispose que de 2 Ko de mémoire flash.</p>
 </body>
 </html>

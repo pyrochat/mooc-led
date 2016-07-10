@@ -13,43 +13,43 @@
 <h1 class="title">Introduction au microcontrôleur</h1>
 <div id="header">
 <p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
-<p class="date">rév 2016/07/07</p>
+<p class="date">rév 2016/07/09</p>
 </div>
-<p>Pour commander des enseignes ou des afficheurs à LED, c’est très souvent un <strong>microcontrôleur</strong> qui est utilisé. Voyons de quoi il s'agit.</p>
+<p>Pour commander des enseignes ou des afficheurs à LED, c’est très souvent un <strong>microcontrôleur</strong> qui est utilisé. Voyons de quoi il s’agit.</p>
 <h2 id="système-informatique">Système informatique</h2>
 <p>Nous sommes tous familiers avec les systèmes informatiques, à commencer par nos ordinateurs de bureau et nos <em>smartphones</em>. À l’intérieur de tout système informatique se trouvent au moins :</p>
 <ul>
 <li>Un <strong>processeur</strong>, qui exécute les instructions. Il est cadencé par une horloge (H).</li>
 <li>Une <strong>mémoire morte</strong> (ROM : <em>Read Only Memory</em>) qui contient des instructions. Son contenu est permanent : il reste intact lorsque le système n’est plus alimenté.</li>
-<li>Une <strong>mémoire vivre</strong> (RAM : <em>Random Access Memory</em>, qui permet de stocker des données. Son contenu est perdu lorsque le courant est coupé.</li>
-<li>Des circuits d’<strong>Entrée-Sortie</strong> (I/O : <em>Input/Output</em>). Ce sont les circuits qui permettent l’interaction avec l’extérieur : clavier, souris, écran, mémoire externe, imprimante, etc.</li>
+<li>Une <strong>mémoire vive</strong> (RAM : <em>Random Access Memory</em>, qui permet de stocker des données. Son contenu est perdu lorsque le courant est coupé.</li>
+<li>Des circuits d’<strong>entrée-sortie</strong> (I/O : <em>Input/Output</em>). Ce sont les circuits qui permettent l’interaction avec l’extérieur : clavier, souris, écran, mémoire externe, imprimante, etc.</li>
 </ul>
-<p>Des lignes électriques, appelées <em>bus</em> relient ces éléments entre eux. Voici un schéma-bloc d'un système informatique :</p>
+<p>Des lignes électriques, appelées <em>bus</em> relient ces éléments entre eux. Voici un schéma-bloc d’un système informatique :</p>
 <div class="figure">
 <img src="images/architecture-sys-info.svg" title="Architecture d’un système informatique" alt="Architecture d’un système informatique" style="width:90.0%" />
 <p class="caption">Architecture d’un système informatique</p>
 </div>
 <h2 id="microcontrôleur">Microcontrôleur</h2>
-<p>Un <strong>microcontrôleur</strong> est aussi un système informatique. Sa particularité est qu’il est contenu dans un seul circuit intégré. L’architecture est la même que celle présentée sur la figure. Par rapport à une carte mère de PC, les éléments qui constituent un microcontrôleur sont généralement plus simples, moins performants, leur capacité est plus limitée :</p>
+<p>Un <strong>microcontrôleur</strong> est aussi un système informatique. Sa particularité est qu’il est contenu dans un seul circuit intégré. L’architecture est la même que celle présentée sur la figure. Par rapport à une carte mère d’ordinateur, les éléments qui constituent un microcontrôleur sont généralement plus simples, moins performants, leur capacité est plus limitée :</p>
 <ul>
-<li>La mémoire morte contient généralement de un à quelques centaines de kB.</li>
+<li>La mémoire morte contient généralement de un à quelques centaines de ko.</li>
 <li>Le processeur est cadencé à des fréquences de quelques mégahertz ou dizaines de mégahertz. Il ne consomme généralement qu’une fraction de watt. Son jeu d’instructions est plus simple.</li>
-<li>La mémoire vive est généralement très limitée : de quelques centaines d'octets (B = byte) à quelques dizaines de kB selon les modèles.</li>
+<li>La mémoire vive est généralement très limitée : de quelques centaines d’octets (ou en anglais <em>byte</em>, abrégé “B”) à quelques dizaines de ko selon les modèles.</li>
 <li>Les circuits d’entrée-sortie sont simplement des entrées logiques, pour lire une valeur binaire, comme par exemple un interrupteur, ainsi que des sorties logiques, capables de fournir quelques milliampères, par exemple pour commander une LED.</li>
 </ul>
-<p>L’intérêt des microcontrôleurs est leur coût très faible, souvent moins d’un euro), leur consommation de courant limitée à quelques de milliampères et leur taille très réduite, vu qu'il s'agit d'un seul circuit intégré. Ils sont donc utilisés dans de très nombreuses applications.</p>
-<p>Bien que des microcontrôleurs existent depuis les années 1970, ils se sont développés de manière spectaculaire depuis quelques années. Les microcontrôleurs actuels contiennent de la mémoire <strong><em>Flash</em></strong>, qui rendent facile l'écriture du programme qui doit s'exécuter</p>
-<p>Alors qu’il était encore complexe et coûteux de mettre en œuvre un microcontrôleur au début des années 2000, cette tâche est maintenant beaucoup plus simple et ne nécessite que du matériel très peu coûteux. Les microcontrôleurs sont donc devenus des composants électroniques incontournables, modifiant profondément la manière de concevoir les circuits électroniques.</p>
+<p>L’intérêt des microcontrôleurs est leur coût très faible, souvent moins d’un euro, leur consommation de courant limitée à quelques de milliampères et leur taille très réduite, vu qu’il s’agit d’un seul circuit intégré. Ils sont donc utilisés dans de très nombreuses applications.</p>
+<p>Bien que des microcontrôleurs existent depuis les années 1970, ils se sont développés de manière spectaculaire depuis quelques années. Les microcontrôleurs actuels contiennent de la mémoire <strong><em>flash</em></strong>, qui facilite l’écriture du programme qui doit s’exécuter.</p>
+<p>Alors qu’il était encore complexe et coûteux de mettre en œuvre un microcontrôleur au début des années 2000, cette tâche est maintenant beaucoup plus simple et ne nécessite que du matériel très peu coûteux. Les microcontrôleurs sont donc devenus des composants électroniques incontournables, modifiant profondément la manière de concevoir les circuits électroniques.</p>
 <h2 id="de-nombreuses-familles">De nombreuses familles</h2>
-<p>Beaucoup de fabricants proposent des microcontrôleurs (Microchip-Atmel, Texas-Instrument, NXP, ST-micro, Cypress, etc). Chaque fabricant offre souvent plusieurs familles de microcontrôleurs (PIC, dsPIC chez Microchip, AVR, AVR32, ARM chez Atmel, MSP430, MSP432 chez Texas Instruments, etc.) Chaque famille comporte souvent des dizaines, voire des centaines de modèles, qui diffèrent les uns des autres principalement par les tailles mémoires (RAM et ROM) et le nombre de broches d’entrée-sortie.</p>
+<p>Beaucoup de fabricants proposent des microcontrôleurs (Microchip-Atmel, Texas-Instrument, NXP, ST-micro, Cypress, etc.). Chaque fabricant offre souvent plusieurs familles de microcontrôleurs (PIC, dsPIC chez Microchip, AVR, AVR32, ARM chez Atmel, MSP430, MSP432 chez Texas Instruments, etc.) Chaque famille comporte souvent des dizaines, voire des centaines de modèles, qui diffèrent les uns des autres principalement par les tailles mémoires (RAM et ROM) et le nombre de broches d’entrée-sortie.</p>
 <p>À titre d’exemple, le processeur MSP430G2253 de Texas Instruments contient :</p>
 <ul>
-<li>Un processeur 16 bits, avec une centaine d’instructions, cadencé au maximum à 16 MHz, avec 16 registres de 16 bits.</li>
-<li>Une mémoire morte de type <em>flash</em> (technologie similaire à celle des clés USB) de 16 kB. Cette mémoire peut être effacée et écrite un très grand nombre de fois.</li>
-<li>Une mémoire vive de 512 B.</li>
-<li>16 broches d’entrée-sorties. Huit d’entre-elles peuvent être connectées à un convertisseur analogique-numérique de 10 bits de résolution. Certaines de ces broches ont également d’autres fonctions spécifiques (génération de signaux, capture d’événements, utilisation d’un quartz, etc.)</li>
+<li>Un processeur 16 bits, avec une centaine d’instructions, cadencé au maximum à 16 MHz, avec 16 registres de 16 bits.</li>
+<li>Une mémoire morte de type <em>flash</em> (technologie similaire à celle des clés USB) de 16 ko. Cette mémoire peut être effacée et écrite un très grand nombre de fois.</li>
+<li>Une mémoire vive de 512 o.</li>
+<li>16 broches d’entrée-sorties. Huit d’entres-elles peuvent être connectées à un convertisseur analogique-numérique de 10 bits de résolution. Certaines de ces broches ont également d’autres fonctions spécifiques (génération de signaux, capture d’événements, utilisation d’un quartz, etc.).</li>
 </ul>
-<p>Les microcontrôleurs de la famille MSP430G sont disponible dans plusieurs boîtiers, dont le DIL20 (Dual-In-Line 20 pins), facile à mettre en œuvre. Voici son brochage :</p>
+<p>Les microcontrôleurs de la famille MSP430G sont disponibles dans plusieurs boîtiers, dont le DIL20 (<em>Dual-In-Line</em> 20 pins), facile à mettre en œuvre. Voici son brochage :</p>
 <div class="figure">
 <img src="images/pinout-msp430-20pin.svg" title="Brochage du MSP430G2553" alt="Brochage du MSP430G2553" style="width:35.0%" />
 <p class="caption">Brochage du MSP430G2553</p>
@@ -59,40 +59,40 @@
 <h2 id="schéma-de-mise-en-œuvre">Schéma de mise en œuvre</h2>
 <p>Chaque broche est désignée par un ou plusieurs noms. Identifions les trois groupes de broches indispensables à la réalisation d’un premier montage fonctionnel à microcontrôleur :</p>
 <ul>
-<li>les alimentations : Gnd et +3 V</li>
+<li>les alimentations : Gnd et +3 V</li>
 <li>les broches de programmation : Rst et TEST</li>
-<li>les broches d’entrées-sorties pour l’application proprement dite, c'est à dire toutes les autres broches.</li>
+<li>les broches d’entrées-sorties pour l’application proprement dite, c’est-à-dire toutes les autres broches.</li>
 </ul>
-<p>Les microcontrôleurs sont presque toujours réalisés en technologie <strong>CMOS</strong> et nécessitent une alimentation unique. Les MSP430 acceptent une tension comprise entre 1,8 et 3,6 V. Deux piles AA ou AAA de 1,5 V montées en série peuvent donc convenir. La borne négative de l’alimentation est souvent désignée par <em>Gnd</em> (<em>Ground</em> : masse). C’est la broche 20 du MSP430G2553. La borne positive est notée <em>3 V</em>, c’est la broche 1.</p>
-<p>La fonction <em>Rst</em> ou <em>Reset</em> est câblée sur la broche 16. Le <em>Rst</em> est une entrée du circuit. Notez la barre sur son nom : cela signifie que cette entrée est active à 0. On le note aussi parfois avec le signe <code>/</code> (slash) précédent le nom : <em>/Rst</em>. C’est une bonne habitude de mettre en évidence qu’un signal est actif à 0. Il sera nécessaire de fixer à l’état 1 la broche <em>RST</em> pour le fonctionnement normal du microcontrôleur. C’est une résistance reliée au <em>+3 V</em> qui joue ce rôle. On parle de résistance de tirage (en anglais <em>pull-up</em> : tirer vers le haut). Une valeur d’environ 47 kΩ convient dans ce cas.</p>
-<p>La programmation des MSP430 peut se faire par l’intermédiaire de deux signaux : le <em>RST</em> et un signal nommé <em>TEST</em> (broche 17). Il n’est pas nécessaire de comprendre le rôle exact de ce signal. Il est généré par le logiciel de programmation qui s’exécute sur un PC, par exemple <em>Code Composer Studio</em> ou <em>Energia</em>. Il est transmis par un programmateur, par exemple celui inclus dans le <em>LaunchPad MSP430</em>.</p>
-<p>Les autres broches du MSP430G2553 sont des entrées-sorties. Elles sont regroupées en 2 ports : P1 et P2. Ces deux ports sont complets : ils comportent chacun 8 broches. D’autres versions du MSP430 sont proposées en boîtier à 14 broches (DIL 14). Dans ce cas, les broches P2.0 à P2.5 n’existent pas.</p>
+<p>Les microcontrôleurs sont presque toujours réalisés en technologie <strong>CMOS</strong> et nécessitent une alimentation unique. Les MSP430 acceptent une tension comprise entre 1,8 et 3,6 V. Deux piles AA ou AAA de 1,5 V montées en série peuvent donc convenir. La borne négative de l’alimentation est souvent désignée par <em>Gnd</em> (<em>Ground</em> : masse). C’est la broche 20 du MSP430G2553. La borne positive est notée <em>3 V</em>, c’est la broche 1.</p>
+<p>La fonction <em>Rst</em> ou <em>Reset</em> est câblée sur la broche 16. Le <em>Rst</em> est une entrée du circuit. Notez la barre sur son nom : cela signifie que cette entrée est active à 0. On le note aussi parfois avec le signe barre oblique (ou <em>slash</em>) <code>/</code> précédant le nom : <em>/Rst</em>. C’est une bonne habitude de mettre en évidence qu’un signal est actif à 0. Il sera nécessaire de fixer à l’état 1 la broche <em>RST</em> pour le fonctionnement normal du microcontrôleur. C’est une résistance reliée au <em>+3 V</em> qui joue ce rôle. On parle de résistance de tirage (en anglais <em>pull-up</em> : tirer vers le haut). Une valeur d’environ 47 kΩ convient dans ce cas.</p>
+<p>La programmation des MSP430 peut se faire par l’intermédiaire de deux signaux : le <em>RST</em> et un signal nommé <em>TEST</em> (broche 17). Il n’est pas nécessaire de comprendre le rôle exact de ce signal. Il est généré par le logiciel de programmation qui s’exécute sur un ordinateur, par exemple <em>Code Composer Studio</em> ou <em>Energia</em>. Il est transmis par un programmateur, par exemple celui inclus dans le <em>LaunchPad MSP430</em>.</p>
+<p>Les autres broches du MSP430G2553 sont des entrées-sorties. Elles sont regroupées en 2 ports : P1 et P2. Ces deux ports sont complets : ils comportent chacun 8 broches. D’autres versions du MSP430 sont proposées en boîtier à 14 broches (DIL 14). Dans ce cas, les broches P2.0 à P2.5 n’existent pas.</p>
 <p>Un microcontrôleur est un composant électronique. Il va trouver sa place dans un schéma électronique pour sa mise en œuvre :</p>
 <div class="figure">
 <img src="images/schema-msp430.svg" title="Schéma de mise en œuvre d’un microcontrôleur" alt="Schéma de mise en œuvre d’un microcontrôleur" style="width:50.0%" />
 <p class="caption">Schéma de mise en œuvre d’un microcontrôleur</p>
 </div>
-<p>Ce schéma est très simple. En plus du microcontrôleur, on y trouve une LED, connectée à la broche <em>P1.0</em>, avec sa résistance de limitation du courant reliée en série vers la masse. Notez la présence d’un condensateur de découplage entre le + et le -. Les électroniciens savent qu’il est utile pour filtrer l’alimentation. On peut dire qu’il est une petite réserve de charges électriques. Sa valeur est souvent de 100 nF. Il sera placé le plus près possible du circuit intégré.</p>
+<p>Ce schéma est très simple. En plus du microcontrôleur, on y trouve une LED, connectée à la broche <em>P1.0</em>, avec sa résistance de limitation du courant reliée en série vers la masse. Notez la présence d’un condensateur de découplage entre le + et le -. Les électroniciens savent qu’il est utile pour filtrer l’alimentation. On peut dire qu’il est une petite réserve de charges électriques. Sa valeur est souvent de 100 nF. Il sera placé le plus près possible du circuit intégré.</p>
 <p>L’entrée <em>Reset</em> est maintenue à l’état logique <em>1</em> par une résistance reliée à l’alimentation positive, appelée résistance de tirage. Les signaux <em>Reset</em> et <em>Test</em> sont reliés à un connecteur, comportant aussi des broches pour l’alimentation. C’est par ce connecteur que le microcontrôleur pourra être programmé.</p>
 <h2 id="réalisation-dun-montage-à-microcontrôleur">Réalisation d’un montage à microcontrôleur</h2>
-<p>L’assemblage de composants électroniques se fait le plus souvent sur un circuit imprimé (<strong>PBC</strong> : <em>Printed Circuit Board</em>). Pour des montages de test, il est possible d’utiliser des techniques de montage sans soudure, tels que les plaques d’expérimentation, appelées en anglais <em>breadboard</em>.</p>
+<p>L’assemblage de composants électroniques se fait le plus souvent sur un circuit imprimé (<strong>PCB</strong> : <em>Printed Circuit Board</em>). Pour des montages de test, il est possible d’utiliser des techniques de montage sans soudure, tels que les plaques d’expérimentation, appelées en anglais <em>breadboard</em>.</p>
 <p>Voici un exemple de montage :</p>
 <div class="figure">
-<img src="images/MSP-2231-LED.svg" title="Mise en œuvre d&#39;un MSP430 sur un Breadboard" alt="Mise en œuvre d&#39;un MSP430 sur un Breadboard" style="width:90.0%" />
-<p class="caption">Mise en œuvre d'un MSP430 sur un Breadboard</p>
+<img src="images/MSP-2231-LED.svg" title="Mise en œuvre d’un MSP430 sur un Breadboard" alt="Mise en œuvre d’un MSP430 sur un Breadboard" style="width:90.0%" />
+<p class="caption">Mise en œuvre d’un MSP430 sur un Breadboard</p>
 </div>
-<p>Notez qu'un MSP430G2231 a été utilisé dans cet exemple, avec seulement 14 broches.</p>
+<p>Notez qu’un MSP430G2231 a été utilisé dans cet exemple, avec seulement 14 broches.</p>
 <h2 id="programmation-dun-microcontrôleur">Programmation d’un microcontrôleur</h2>
 <p>La programmation d’un microcontrôleur se fait à travers ses broches de programmation. Un <strong>programmateur</strong> doit être utilisé, au moins pour la première programmation.</p>
 <p>Dans le cas du MSP430G, la carte LaunchPad contient un programmateur capable de générer les signaux <em>Reset</em> et <em>Test</em> nécessaires à la programmation.</p>
 <div class="figure">
-<img src="images/launchpad-prog.png" title="Mise en œuvre d&#39;un MSP430 sur un Breadboard" alt="Mise en œuvre d&#39;un MSP430 sur un Breadboard" style="width:60.0%" />
-<p class="caption">Mise en œuvre d'un MSP430 sur un Breadboard</p>
+<img src="images/launchpad-prog.png" title="Mise en œuvre d’un MSP430 sur un Breadboard" alt="Mise en œuvre d’un MSP430 sur un Breadboard" style="width:60.0%" />
+<p class="caption">Mise en œuvre d’un MSP430 sur un Breadboard</p>
 </div>
-<p>Il est aussi possible de programmer un microcontrôleur sans utiliser un programmateur. Dans ce cas, le microcontrôleur doit déjà avoir initialement été programmé avec un programme appelé <em>Bootloader</em>, contenu dans une partie de la mémoire du microcontrôleur. Ce programme est capable de recevoir un programme de l'extérieur et de le programmer dans une autre partie de la mémoire.</p>
-<p>L'exemple le plus connu est la carte Arduino :</p>
+<p>Il est aussi possible de programmer un microcontrôleur sans utiliser un programmateur. Dans ce cas, le microcontrôleur doit déjà avoir initialement été programmé avec un programme appelé <em>Bootloader</em>, contenu dans une partie de la mémoire du microcontrôleur. Ce programme est capable de recevoir un programme de l’extérieur et de le programmer dans une autre partie de la mémoire.</p>
+<p>L’exemple le plus connu est la carte Arduino :</p>
 <div class="figure">
-<img src="images/Uno.jpg" title="Carte Arduino Uno" alt="Carte Arduino Uno" style="width:40.0%" />
+<img src="images/Uno.jpg" title="Carte Arduino UNO" alt="Carte Arduino Uno" style="width:40.0%" />
 <p class="caption">Carte Arduino Uno</p>
 </div>
 </body>

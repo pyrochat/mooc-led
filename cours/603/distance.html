@@ -7,61 +7,24 @@
   <meta name="author" content="Pierre-Yves Rochat, EPFL" />
   <title>Commande à distance</title>
   <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-  </style>
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
 <body>
 <h1 class="title">Commande à distance</h1>
 <div id="header">
 <p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
-<p class="date">rév 2015/09/18</p>
+<p class="date">rév 2016/07/10</p>
 </div>
 <h2 id="changer-le-comportement-de-lenseigne-ou-de-lafficheur">Changer le comportement de l’enseigne ou de l’afficheur</h2>
 <p>Les enseignes et afficheurs fonctionnent généralement sans intervention humaine. Mais il est souvent utile de pouvoir modifier leur comportement. Pour une enseigne, on souhaitera par exemple :</p>
 <ul>
 <li>l’allumer et l’éteindre</li>
 <li>changer sa luminosité</li>
-<li>activer des informations exceptionnelles (exemple : Pharmacie de garde)</li>
+<li>activer des informations exceptionnelles (exemple : Nouvel arrivage, Pharmacie de garde)</li>
 </ul>
 <p>Pour les afficheurs, on souhaitera en plus changer les textes qui défilent, les images, etc.</p>
 <p>Dans certains cas, quelques boutons-poussoirs ou un clavier sera placé sur l’enseigne ou l’afficheur. Souvent, on souhaite déporter le dispositif de commande. Dans ce cas, les données seront transférées par l’un des nombreux moyens qu’il existe pour communiquer avec un microcontrôleur : liaisons série asynchrone, I²C, etc.</p>
-<p>Mais les enseignes et afficheurs, pour qu’ils soient bien visibles, sont souvent placés à des endroits peu accessibles, par exemple en hauteur. Les différentes techniques de commande sans fils sont alors les solutions les plus pratiques.</p>
+<p>Mais les enseignes et afficheurs, pour qu’ils soient bien visibles, sont souvent placés à des endroits peu accessibles, par exemple en hauteur. Les différentes techniques de commande sans fils sont alors les solutions les plus pratiques. Nous évoquerons quelques solutions basées sur des transmissions infrarouges et radio.</p>
 <h2 id="infra-rouge">Infra-rouge</h2>
 <p>Les LED infrarouges, associées à des phototransistors, offrent une manière très simple d’envoyer des informations à un afficheur. On connaît les télécommandes des téléviseurs et autres climatiseurs.</p>
 <p>Une simple LED IR peut être utilisée comme émetteur. Mais pour que la liaison fonctionne sans être perturbée par toute sorte rayonnements infra-rouges, tels que les tubes fluorescents, les signaux d’une télécommande sont modulés à une fréquence bien précise. Il s’agit généralement de 38 kHz. La réception se fait alors avec de circuits qui contiennent non seulement un photo transistor, mais également un filtre très sélectif réglé sur cette fréquence de 38 kHz.</p>
@@ -77,18 +40,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <img src="images/modules-radio.jpg" title="Modules radio 433 MHz" alt="Modules radio 433 MHz" width="566" />
 <p class="caption">Modules radio 433 MHz</p>
 </div>
-<p>La mise en œuvre semble très simple. L’émetteur et le récepteur doivent être alimentés. L’émetteur dispose d’une entrée qui active l’émission radio. Il dispose aussi d’une entrée. Le récepteur offre simplement une sortie. En principe, le signal sortant du récepteur doit être l’image du signal entrant dans l’émetteur.</p>
-<p>Mais des contraintes bien particulières doivent être imposées au signal pour que la liaison fonctionne : le signal ne doit pas avoir de composante continue et les durées des 0 et des 1 successifs doivent être contenues dans un intervalle bien précis.</p>
+<p>La mise en œuvre semble très simple. L’émetteur et le récepteur doivent être alimentés. L’émetteur dispose d’une entrée qui active l’émission radio. Il dispose aussi d’une entrée de modulation. Le récepteur offre simplement une sortie, qui correspond au signal modulé. En principe, le signal sortant du récepteur doit être l’image du signal entrant dans l’émetteur.</p>
+<p>Mais des contraintes bien particulières doivent être imposées au signal pour que la liaison fonctionne : le signal ne doit pas avoir de composante continue et les durées des 0 et des 1 successifs doivent être contenues dans un intervalle limité.</p>
 <p>On utilisera donc souvent des librairies spécialisées pour mettre en œuvre de tels modules, comme la librairie <em>Virtual-Wire</em>.</p>
 <h2 id="bluetooth">Bluetooth</h2>
 <p>Le standard Bluetooth présente plusieurs avantages :</p>
 <ul>
 <li>C’est un standard disponible sur beaucoup de systèmes informatique : smartphones, tablettes et PC.</li>
 <li>Il est économe en énergie, surtout en mode <em>Low energy</em>. Mais c’est avantage n’est pas déterminant pour une enseigne ou un afficheur, qui consomment eux-même beaucoup de courant.</li>
-<li>La confidentialité des données est assurée.</li>
+<li>La confidentialité des données est assurée par des mots de passe et le cryptage des données transmises.</li>
 </ul>
-<p>Mais si la couche d’établissement de la communication et de la transmission des données est standardisée, le contenu des données est libre. Il est donc nécessaire de faire fonctionner sur le terminal utilisé (Smartphone, tablette, PC) un logiciel spécialisé.</p>
-<p>Le système d’exploitation <em>Android</em> permet d’écrire facilement des applications qui communiquent par Bluetooth. Mais ce</p>
+<p>Mais si la couche d’établissement de la communication et de la transmission des données est standardisée, le contenu des données est libre. Il est donc nécessaire de faire fonctionner sur le terminal utilisé (Smartphone, tablette, PC) un logiciel dédié.</p>
+<p>Le système d’exploitation <em>Android</em> permet d’écrire facilement des applications qui communiquent par Bluetooth. L'application doit alors être installée avant de pouvoir communiquer</p>
 <h2 id="wifi">WiFi</h2>
 <p>Le standard WiFi permet généralement de relier des ordinateurs en réseau. Sa complexité et ses performances peuvent sembler dépasser les besoins d’une enseigne ou d’un afficheur. Mais l’avantage du WiFi est qu’il va permettre la connexion à un système informatique sans devoir le configurer de manière spécifique, en utilisant des protocoles comme HTTP : il sera alors possible de dialoguer avec l’afficheur avec un simple navigateur Internet (<em>Web browser</em>).</p>
 <p>Or des modules très peu coûteux sont apparus sur le marché il y a quelques années. Il est donc possible de rendre un afficheur paramétrable par WiFi avec un minimum d’effort et de coût.</p>
@@ -98,129 +61,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <img src="images/modules-esp8266.jpg" title="Modules EP-01 et EP-12" alt="Modules EP-01 et EP-12" width="566" />
 <p class="caption">Modules EP-01 et EP-12</p>
 </div>
-<p>Ces modules contiennent le SoC ESP8266 ainsi qu’une mémoire EEPROM pour le programmer. L’antenne est gravée directement sur le circuit imprimé.</p>
-<p>L’ESP8266 communique avec l’extérieur par une ligne série asynchrone. Un jeu de commandes similaires à celles utilisées jadis avec les Modems permet de le commander. Mais il peut aussi devenir autonome. Pour développer les programmes, un environnement de développement est disponible pour l’ESP8266.</p>
-<h2 id="nodemcu">NodeMCU</h2>
-<p>Programmer soi-même un tel circuit est relativement complexe. Une manière beaucoup plus simple de le mettre en œuvre est de charger l’environnement Node-MCU. Cet environnement est <em>open-source</em>. Quelques manipulations simples permettent de le placer dans l’EEPROM du module.</p>
-<p>Avec l’environnement Node-MCU, la programmation s’effectue par des scripts écrits dans le langage <strong>Lua</strong>. C’est un langage de haut niveau interprété, un peu similaire à Python. Il a l’avantage d’être peu gourmand en ressource.</p>
-<p>Un logiciel appelé Esplorer, écrit en Java, permet de charger les scripts Lua et de visualiser le dialogue avec l’ESP8266.</p>
-<p>Nous présenterons ici un script transformant le module ESP8266 en un <em>access point WiFi</em> autonome, sur lequel une serveur offre une page Web, par laquelle il est possible de modifier les textes d’un afficheur. C'est remarquable qu'un programme si court donne lieu à une telle fonctionnalité :</p>
-<div class="sourceCode" startFrom="1"><table class="sourceCode lua numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-</pre></td><td class="sourceCode"><pre><code class="sourceCode lua">cfg<span class="ot">={}</span>
-cfg<span class="ot">.</span>ssid<span class="ot">=</span><span class="st">&quot;Enseigne&quot;</span>
-cfg<span class="ot">.</span>pwd<span class="ot">=</span><span class="st">&quot;testtest&quot;</span>
-wifi<span class="ot">.</span>ap<span class="ot">.</span>config<span class="ot">(</span>cfg<span class="ot">)</span>
-wifi<span class="ot">.</span>setmode<span class="ot">(</span>wifi<span class="ot">.</span>SOFTAP<span class="ot">)</span>
-led_blue <span class="ot">=</span> <span class="dv">4</span>
-gpio<span class="ot">.</span>mode<span class="ot">(</span>led_blue<span class="ot">,</span> gpio<span class="ot">.</span>OUTPUT<span class="ot">)</span>
-srv<span class="ot">=</span>net<span class="ot">.</span>createServer<span class="ot">(</span>net<span class="ot">.</span>TCP<span class="ot">)</span>
-srv:listen<span class="ot">(</span><span class="dv">80</span><span class="ot">,</span><span class="kw">function</span><span class="ot">(</span>conn<span class="ot">)</span>
-    conn:on<span class="ot">(</span><span class="st">&quot;receive&quot;</span><span class="ot">,</span> <span class="kw">function</span><span class="ot">(</span>client<span class="ot">,</span>request<span class="ot">)</span>
-
-        <span class="co">-- extract path and variables :</span>
-        <span class="kw">local</span> _<span class="ot">,</span> _<span class="ot">,</span> method<span class="ot">,</span> path<span class="ot">,</span> vars <span class="ot">=</span> <span class="fu">string.find</span><span class="ot">(</span>request<span class="ot">,</span> <span class="st">&quot;([A-Z]+) (.+)?(.+) HTTP&quot;</span><span class="ot">);</span>
-        <span class="kw">if</span><span class="ot">(</span>method <span class="ot">==</span> <span class="kw">nil</span><span class="ot">)</span><span class="kw">then</span>
-            _<span class="ot">,</span> _<span class="ot">,</span> method<span class="ot">,</span> path <span class="ot">=</span> <span class="fu">string.find</span><span class="ot">(</span>request<span class="ot">,</span> <span class="st">&quot;([A-Z]+) (.+) HTTP&quot;</span><span class="ot">);</span>
-        <span class="kw">end</span>
-
-        <span class="co">-- extract the variables passed in the url :</span>
-        <span class="kw">local</span> _GET <span class="ot">=</span> <span class="ot">{}</span>
-        <span class="kw">if</span> <span class="ot">(</span>vars <span class="ot">~=</span> <span class="kw">nil</span><span class="ot">)</span><span class="kw">then</span>
-            <span class="kw">for</span> k<span class="ot">,</span> v <span class="kw">in</span> string<span class="ot">.</span>gmatch<span class="ot">(</span>vars<span class="ot">,</span> <span class="st">&quot;(%w+)=(%w+)&amp;*&quot;</span><span class="ot">)</span> <span class="kw">do</span>
-                _GET<span class="ot">[</span>k<span class="ot">]</span> <span class="ot">=</span> v
-            <span class="kw">end</span>
-        <span class="kw">end</span>
-
-        <span class="co">-- create the webpage :</span>
-        <span class="kw">local</span> buf <span class="ot">=</span> <span class="st">&quot;&quot;</span><span class="ot">;</span>
-        buf <span class="ot">=</span> buf<span class="ot">..</span><span class="st">&quot;HTTP/1.1 200 OK</span><span class="ot">\n\n</span><span class="st">&lt;!DOCTYPE HTML&gt;</span><span class="ot">\n</span><span class="st">&lt;html&gt;</span><span class="ot">\n</span><span class="st">&quot;</span>
-        buf <span class="ot">=</span> buf<span class="ot">..</span><span class="st">&quot;&lt;head&gt;&lt;meta  content=</span><span class="ot">\&quot;</span><span class="st">text/html; charset=utf-8</span><span class="ot">\&quot;</span><span class="st">&gt;</span><span class="ot">\n</span><span class="st">&quot;</span>
-        buf <span class="ot">=</span> buf<span class="ot">..</span><span class="st">&quot;&lt;title&gt;BMDI&lt;/title&gt;&lt;/head&gt;</span><span class="ot">\n</span><span class="st">&quot;</span>
-        buf <span class="ot">=</span> buf<span class="ot">..</span><span class="st">&quot;&lt;body&gt;&quot;</span>
-        buf <span class="ot">=</span> buf<span class="ot">..</span><span class="st">&quot;&lt;form&gt;&quot;</span>
-        buf <span class="ot">=</span> buf<span class="ot">..</span><span class="st">&quot;&lt;p&gt;Texte 1 :&lt;INPUT NAME=</span><span class="ot">\&quot;</span><span class="st">texte1</span><span class="ot">\&quot;</span><span class="st"> TYPE=text SIZE=32 MAXLENGTH=30&gt;&lt;/INPUT&gt;&lt;/p&gt;&quot;</span>
-        buf <span class="ot">=</span> buf<span class="ot">..</span><span class="st">&quot;&lt;p&gt;Texte 2 :&lt;INPUT NAME=</span><span class="ot">\&quot;</span><span class="st">texte2</span><span class="ot">\&quot;</span><span class="st"> TYPE=text SIZE=32 MAXLENGTH=30&gt;&lt;/INPUT&gt;&lt;/p&gt;&quot;</span>
-        buf <span class="ot">=</span> buf<span class="ot">..</span><span class="st">&quot;&lt;p&gt;Texte 3 :&lt;INPUT NAME=</span><span class="ot">\&quot;</span><span class="st">texte3</span><span class="ot">\&quot;</span><span class="st"> TYPE=text SIZE=32 MAXLENGTH=30&gt;&lt;/INPUT&gt;&lt;/p&gt;&quot;</span>
-        buf <span class="ot">=</span> buf<span class="ot">..</span><span class="st">&quot;&lt;input type=</span><span class="ot">\&quot;</span><span class="st">submit</span><span class="ot">\&quot;</span><span class="st"> value=</span><span class="ot">\&quot;</span><span class="st">Envoi a l&#39;enseigne</span><span class="ot">\&quot;</span><span class="st">&gt;&quot;</span>
-        buf <span class="ot">=</span> buf<span class="ot">..</span><span class="st">&quot;&lt;/form&gt;&quot;</span>
-        buf <span class="ot">=</span> buf<span class="ot">..</span><span class="st">&quot;&lt;/body&gt;&quot;</span>
-        buf <span class="ot">=</span> buf<span class="ot">..</span><span class="st">&quot;&lt;/html&gt;&quot;</span>
-
-        <span class="co">-- do the actions :</span>
-        <span class="kw">if</span> <span class="ot">(</span>_GET<span class="ot">.</span>texte1 <span class="ot">~=</span> <span class="kw">nil</span><span class="ot">)</span> <span class="kw">then</span>
-          <span class="kw">local</span> txt <span class="ot">=</span> <span class="st">&quot;&quot;</span><span class="ot">;</span>
-          txt <span class="ot">=</span> txt<span class="ot">..</span>_GET<span class="ot">.</span>texte1
-          txt <span class="ot">=</span> txt<span class="ot">..</span><span class="st">&quot;|&quot;</span>
-          txt <span class="ot">=</span> txt<span class="ot">..</span>_GET<span class="ot">.</span>texte2
-          txt <span class="ot">=</span> txt<span class="ot">..</span><span class="st">&quot;|&quot;</span>
-          txt <span class="ot">=</span> txt<span class="ot">..</span>_GET<span class="ot">.</span>texte3
-          txt <span class="ot">=</span> txt<span class="ot">..</span><span class="st">&quot;|&quot;</span>
-          txt <span class="ot">=</span> txt<span class="ot">..</span><span class="st">&quot;#&quot;</span>
-          <span class="fu">print</span> <span class="ot">(</span>txt<span class="ot">)</span>
-        <span class="kw">end</span>
-        <span class="co">-- send the data and close the connection :</span>
-        client:send<span class="ot">(</span>buf<span class="ot">);</span>
-        client:<span class="fu">close</span><span class="ot">();</span>
-        <span class="fu">collectgarbage</span><span class="ot">();</span>
-    <span class="kw">end</span><span class="ot">)</span>
-<span class="kw">end</span><span class="ot">)</span></code></pre></td></tr></table></div>
-<!-- retour au mode normal pour Gedit -->
+<p>Ces modules contiennent le SoC ESP8266 ainsi qu’une mémoire EEPROM qui contient son programme. L’antenne est gravée directement sur le circuit imprimé. L’ESP8266 communique avec l’extérieur par une ligne série asynchrone. Il existe plusieurs manières de l'utiliser :</p>
+<ul>
+<li>Par un jeu de commandes commençant par les caractères &quot;AT&quot;, similaires à celles utilisées jadis avec les Modems.</li>
+<li>En écrivant complètemenr le programme. Un environnement de développement est disponible pour cela : ESP-studio.</li>
+<li>Dans le mode Arduino. Une librairie similaire à la librairie Arduino est alors utilisée, avec un environnement similaire au programme Arduino.</li>
+<li>En mode <strong>NodeMCU</strong>. La programmation s’effectue par des scripts écrits dans le langage <strong>Lua</strong>. C’est un langage de haut niveau interprété, un peu similaire à Python, qui a l’avantage d’être peu gourmand en ressource.</li>
+</ul>
+<h2 id="openwrt">OpenWRT</h2>
+<p>Une solution encore plus avancée est d'utiliser un environnement comportant assez de mémoire pour faire fonctionner une distribution Linux. La distribution OpenWRT est prévue pour les routeurs WiFi.</p>
 </body>
 </html>

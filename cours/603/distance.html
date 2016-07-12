@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="nico" />
-  <meta name="author" content="Pierre-Yves Rochat, EPFL" />
+  <meta name="author" content="Pierre-Yves Rochat, EPFL et Nicolas Jeanmonod" />
   <title>Commande à distance</title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
@@ -12,7 +12,7 @@
 <body>
 <h1 class="title">Commande à distance</h1>
 <div id="header">
-<p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
+<p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL et Nicolas Jeanmonod</p>
 <p class="date">rév 2016/07/10</p>
 </div>
 <h2 id="changer-le-comportement-de-lenseigne-ou-de-lafficheur">Changer le comportement de l’enseigne ou de l’afficheur</h2>
@@ -20,55 +20,74 @@
 <ul>
 <li>l’allumer et l’éteindre</li>
 <li>changer sa luminosité</li>
-<li>activer des informations exceptionnelles (exemple : Nouvel arrivage, Pharmacie de garde)</li>
+<li>activer des informations exceptionnelles, par exemple : <em>Nouvel arrivage</em> ou <em>Pharmacie de garde</em>.</li>
 </ul>
 <p>Pour les afficheurs, on souhaitera en plus changer les textes qui défilent, les images, etc.</p>
-<p>Dans certains cas, quelques boutons-poussoirs ou un clavier sera placé sur l’enseigne ou l’afficheur. Souvent, on souhaite déporter le dispositif de commande. Dans ce cas, les données seront transférées par l’un des nombreux moyens qu’il existe pour communiquer avec un microcontrôleur : liaisons série asynchrone, I²C, etc.</p>
-<p>Mais les enseignes et afficheurs, pour qu’ils soient bien visibles, sont souvent placés à des endroits peu accessibles, par exemple en hauteur. Les différentes techniques de commande sans fils sont alors les solutions les plus pratiques. Nous évoquerons quelques solutions basées sur des transmissions infrarouges et radio.</p>
-<h2 id="infra-rouge">Infra-rouge</h2>
-<p>Les LED infrarouges, associées à des phototransistors, offrent une manière très simple d’envoyer des informations à un afficheur. On connaît les télécommandes des téléviseurs et autres climatiseurs.</p>
-<p>Une simple LED IR peut être utilisée comme émetteur. Mais pour que la liaison fonctionne sans être perturbée par toute sorte rayonnements infra-rouges, tels que les tubes fluorescents, les signaux d’une télécommande sont modulés à une fréquence bien précise. Il s’agit généralement de 38 kHz. La réception se fait alors avec de circuits qui contiennent non seulement un photo transistor, mais également un filtre très sélectif réglé sur cette fréquence de 38 kHz.</p>
-<p>Voici un schéma pour une transmission par infrarouge :</p>
+<p>Dans certains cas, quelques boutons-poussoirs ou un clavier seront placés sur l’enseigne ou l’afficheur, mais souvent, on souhaite déporter le dispositif de commande. Dans ce cas, les données seront transférées par l’un des nombreux moyens existants pour communiquer avec un microcontrôleur : liaisons série asynchrone RS232 ou RS485, Ethernet, etc.</p>
+<p>Mais les enseignes et afficheurs, pour qu’ils soient bien visibles, sont souvent placés à des endroits peu accessibles, par exemple en hauteur. Les différentes techniques de commande sans fils sont alors les solutions les plus pratiques. Nous évoquerons quelques solutions basées sur des transmissions de signaux infrarouges et radio.</p>
+<h2 id="infrarouge">Infrarouge</h2>
+<p>Les LED infrarouges (IR), associées à des phototransistors, offrent une manière très simple d’envoyer des informations à un afficheur. On connaît les télécommandes des téléviseurs et autres climatiseurs.</p>
+<p>Une simple LED IR peut être utilisée comme émetteur. Pour que la liaison fonctionne sans être perturbée par toutes sortes de rayonnements infrarouges, tels que les tubes fluorescents, les signaux d’une télécommande sont modulés à une fréquence bien précise, généralement 38 kHz. La réception se fait alors avec des circuits qui contiennent non seulement un phototransistor, mais également un filtre sélectif réglé sur cette fréquence de 38 kHz. Seul le signal de modulation est alors lu par le microcontrôleur.</p>
 <div class="figure">
-<img src="images/schema-ir.png" title="Transmission infrarouge" alt="Transmission infrarouge" width="566" />
-<p class="caption">Transmission infrarouge</p>
+<img src="images/reception-ir.png" title="Signaux infrarouges" alt="Signaux infrarouges" style="width:80.0%" />
+<p class="caption">Signaux infrarouges</p>
 </div>
+<p>Plusieurs protocoles existent pour transmettre l’information, tels que le protocole RC-5 de Philips et protocole japonais appelé souvent protocole NEC. Une solution très plus simple pour envoyer des données à une enseigne ou un afficheur est alors d'utiliser une télécommande du commerce. Des bibliothèques existent pour lires ces signaux de ces télécommandes avec un Arduino.</p>
+<p>Comment gérer la réception des signaux du récepteur infrarouge ? Alors que le microcontrôleur d’une enseigne ou d’un afficheur semble bien occupé par l’affichage des animations, est-il possible de lui confier en plus le décodage de ces signaux ? C’est possible, en utilisant des interruptions sur les flancs du signal sortant du détecteur, puis en mesurant avec un <em>timer</em> le temps entre ces flancs.</p>
+<p>La portée d'un signal infrarouge peut aller jusqu'quelques dizaines de mètre. Avec la modulation à 38 kHz, on peut obtenir un très bonne sensibilité, qui rend le système fonctionnel même si l'émetteur ne vise pas le récepteur, grâce à des réflexions sur l'environnement.</p>
 <h2 id="radio">Radio</h2>
-<p>Les signaux radios peuvent aussi être utilisés pour communiquer avec un afficheur. Bien entendu, il faut alors respecter la législation en vigueur dans chaque pays.</p>
-<p>En Europe, une bande de fréquence autour de 433 MHz est libre. Une puissance maximale ne soit pas dépassée. On trouve de petites paires de modules émetteur-récepteur. Voici comment ils se présentent :</p>
+<p>Les signaux radio peuvent aussi être utilisés pour communiquer avec une enseigne ou un afficheur à LED. Bien entendu, il faut alors respecter la législation en vigueur dans chaque pays.</p>
+<p>En Europe, une bande de fréquence autour de 433 MHz est libre. Cette bande fait partie des bandes de fréquences librement utilisables appelées ISM (bandes Industrielles, Scientifiques et Médicales). Une puissance maximale ne doit pas être dépassée. On trouve des paires de petits modules émetteur-récepteur. Voici comment ils se présentent :</p>
 <div class="figure">
-<img src="images/modules-radio.jpg" title="Modules radio 433 MHz" alt="Modules radio 433 MHz" width="566" />
-<p class="caption">Modules radio 433 MHz</p>
+<img src="images/modules-radio.jpg" title="Modules radio 433 MHz" alt="Modules radio 433 MHz" style="width:80.0%" />
+<p class="caption">Modules radio 433 MHz</p>
 </div>
-<p>La mise en œuvre semble très simple. L’émetteur et le récepteur doivent être alimentés. L’émetteur dispose d’une entrée qui active l’émission radio. Il dispose aussi d’une entrée de modulation. Le récepteur offre simplement une sortie, qui correspond au signal modulé. En principe, le signal sortant du récepteur doit être l’image du signal entrant dans l’émetteur.</p>
-<p>Mais des contraintes bien particulières doivent être imposées au signal pour que la liaison fonctionne : le signal ne doit pas avoir de composante continue et les durées des 0 et des 1 successifs doivent être contenues dans un intervalle limité.</p>
-<p>On utilisera donc souvent des librairies spécialisées pour mettre en œuvre de tels modules, comme la librairie <em>Virtual-Wire</em>.</p>
+<p>La mise en œuvre est très simple. L’émetteur et le récepteur doivent être alimentés. L’émetteur dispose d’une entrée qui active l’émission radio. Le récepteur offre simplement une sortie, qui correspond au signal reçu. Ce type de système n’est adapté que dans un environnement où il n’y a pas beaucoup d’autres émetteurs du même type car la gestion des collisions n’est pas intégrée au niveau du matériel. Elle doit être implémentée au niveau logiciel, ce qui est coûteux en ressources.</p>
+<p>En principe, le signal sortant du récepteur va être l’image du signal entrant dans l’émetteur, si la liaison est bonne. Mais des contraintes bien particulières doivent être imposées au signal pour que la transmission fonctionne : le signal ne doit pas avoir de composante continue et les durées des 0 et des 1 successifs doivent être contenues dans un intervalle limité. On utilisera donc souvent des bibliothèques spécialisées pour mettre en œuvre de tels modules, comme la bibliothèque <em>VirtualWire</em>. Bien que cette librairie ne soit plus officiellement supportée, elle reste très populaire et parfaitement fonctionnelle. La librairie qui devrait la remplacer, <em>RadioHead</em>, est nettement plus complexe.</p>
+<p>Les signaux radio dont la fréquence est autour de quelques centaines de MHz ne sont pas trop directifs. Mais pour obtenir une portée dépassant quelques dizaines de mètres avec ces modules, il faut bien soigner la réalisation de l'antenne.</p>
+<p>D'autres modules radio plus sophistiqués sont disponibles. C'est le cas des modules utilisant le circuit nRF24L01+, proposés à des prix particulièrement bas. Il s'agit qu'un émetteur-récepteur dans la bande des 2.4 GHz, piloté par des signaux SPI.</p>
+<p>Il existe aussi la possibilité d'avoir des portées de plusieurs kilomètres tout en respectant les normes de limitation des puissances d'émission. Comment est-ce possible ? Dans un telle transmission, l'émission utilise un spectre étendu et le récepteur pratique une extraction des signaux alors qu'ils ont un niveau inférieur au bruit. Le standard le plus connu est LoRa.</p>
 <h2 id="bluetooth">Bluetooth</h2>
 <p>Le standard Bluetooth présente plusieurs avantages :</p>
 <ul>
-<li>C’est un standard disponible sur beaucoup de systèmes informatique : smartphones, tablettes et PC.</li>
-<li>Il est économe en énergie, surtout en mode <em>Low energy</em>. Mais c’est avantage n’est pas déterminant pour une enseigne ou un afficheur, qui consomment eux-même beaucoup de courant.</li>
+<li>C’est un standard disponible sur beaucoup de systèmes informatiques : <em>smartphones</em>, tablettes et PC.</li>
+<li>Il est économe en énergie, surtout dans la version Bluetooth 4 <em>Low Energy</em>. Mais cet avantage n’est pas déterminant pour une enseigne ou un afficheur, qui consomment eux-mêmes beaucoup de courant.</li>
 <li>La confidentialité des données est assurée par des mots de passe et le cryptage des données transmises.</li>
 </ul>
-<p>Mais si la couche d’établissement de la communication et de la transmission des données est standardisée, le contenu des données est libre. Il est donc nécessaire de faire fonctionner sur le terminal utilisé (Smartphone, tablette, PC) un logiciel dédié.</p>
-<p>Le système d’exploitation <em>Android</em> permet d’écrire facilement des applications qui communiquent par Bluetooth. L'application doit alors être installée avant de pouvoir communiquer</p>
+<p>Mais si la couche d’établissement de la communication et de la transmission des données est standardisée, le contenu des données est libre. Il est donc nécessaire de faire fonctionner un logiciel dédié sur le terminal utilisé (<em>smartphone</em>, tablette, ordinateur) .</p>
+<p>Les systèmes d’exploitation d’ordinateurs (Windows, OSX, Linux,...) et de périphériques mobiles (Android, iOS, Windows 10,...) permettent tous d’écrire facilement des applications utilisant la communication Bluetooth. Le désavantage de cette approche est que les applications doivent être adaptées, voire complètement réécrites pour chaque système d’exploitation. Ce désavantage est un frein sérieux au développement des applications Bluetooth.</p>
 <h2 id="wifi">WiFi</h2>
-<p>Le standard WiFi permet généralement de relier des ordinateurs en réseau. Sa complexité et ses performances peuvent sembler dépasser les besoins d’une enseigne ou d’un afficheur. Mais l’avantage du WiFi est qu’il va permettre la connexion à un système informatique sans devoir le configurer de manière spécifique, en utilisant des protocoles comme HTTP : il sera alors possible de dialoguer avec l’afficheur avec un simple navigateur Internet (<em>Web browser</em>).</p>
-<p>Or des modules très peu coûteux sont apparus sur le marché il y a quelques années. Il est donc possible de rendre un afficheur paramétrable par WiFi avec un minimum d’effort et de coût.</p>
-<h2 id="esp8266">ESP8266</h2>
-<p>Le circuit ESP8266 du fabricant chinois Espressif Systems est un System-on-Chip (SoC) qui comporte tout ce qu’il faut pour le WiFi. On le trouve généralement sous forme de modules, tels que le EP-01 ou le EP-12.</p>
+<p>Le standard WiFi permet de manière générale de relier sans fil des ordinateurs en réseau avec la fonctionnalité du standard TCP/IP (le protocole de base d'Internet). Sa complexité et ses performances peuvent sembler dépasser les besoins d’une enseigne ou d’un afficheur. Mais l’avantage du WiFi est qu’il va permettre la connexion à un système informatique sans devoir le configurer de manière spécifique, en utilisant des protocoles standards comme le HTTP : il sera alors possible de dialoguer avec l’afficheur avec un simple navigateur internet (<em>web browser</em>), disponible sur tous les systèmes d’exploitation. Cette solution présente l’avantage indéniable de l’interopérabilité entre les différents systèmes d’exploitation.</p>
+<p>Des modules WiFi très peu coûteux sont apparus sur le marché depuis quelques années. Il est donc possible de rendre un afficheur paramétrable par WiFi avec un minimum d’efforts et de coûts. Examinons deux solutions possibles.</p>
+<h3 id="esp8266">ESP8266</h3>
+<p>Le circuit ESP8266 du fabricant chinois Espressif Systems est un <em>System-on-Chip</em> (SoC) qui comporte tout ce qu’il faut pour le WiFi. On le trouve généralement sous forme de modules, dont il existe une quinzaine de variantes.</p>
 <div class="figure">
-<img src="images/modules-esp8266.jpg" title="Modules EP-01 et EP-12" alt="Modules EP-01 et EP-12" width="566" />
-<p class="caption">Modules EP-01 et EP-12</p>
+<img src="images/modules-esp8266.jpg" title="Modules ESP-01 et ESP-12" alt="Modules ESP-01 et ESP-12" style="width:80.0%" />
+<p class="caption">Modules ESP-01 et ESP-12</p>
 </div>
-<p>Ces modules contiennent le SoC ESP8266 ainsi qu’une mémoire EEPROM qui contient son programme. L’antenne est gravée directement sur le circuit imprimé. L’ESP8266 communique avec l’extérieur par une ligne série asynchrone. Il existe plusieurs manières de l'utiliser :</p>
+<p>Ces modules contiennent le SoC (<em>System on Chip</em>) ESP8266 ainsi qu’une mémoire EEPROM qui contient son programme. L’antenne est intégrée directement sur le circuit imprimé. L’ESP8266 communique avec l’extérieur par une ligne série asynchrone. Il existe plusieurs manières de l’utiliser :</p>
 <ul>
-<li>Par un jeu de commandes commençant par les caractères &quot;AT&quot;, similaires à celles utilisées jadis avec les Modems.</li>
-<li>En écrivant complètemenr le programme. Un environnement de développement est disponible pour cela : ESP-studio.</li>
-<li>Dans le mode Arduino. Une librairie similaire à la librairie Arduino est alors utilisée, avec un environnement similaire au programme Arduino.</li>
-<li>En mode <strong>NodeMCU</strong>. La programmation s’effectue par des scripts écrits dans le langage <strong>Lua</strong>. C’est un langage de haut niveau interprété, un peu similaire à Python, qui a l’avantage d’être peu gourmand en ressource.</li>
+<li>Par un jeu de commandes appelées “AT”, similaires à celles utilisées jadis avec les modems. Dans ce cas, on ne programme pas le microcontrôleur interne, mais on communique avec l’ESP via la ligne série asynchrone.</li>
+<li>En écrivant complètement le programme en language C. Un environnement de développement (SDK : <em>Software Developpement Kit</em>) est fourni par le fabricant Espressif.</li>
+<li>Dans le mode Arduino C. Une bibliothèque similaire à la bibliothèque Arduino est alors utilisée. La compilation et le téléchargement du programme peuvent être effectués avec ...</li>
+<li>En mode <em>NodeMCU</em>. La programmation s’effectue par des scripts écrits dans le langage <em>Lua</em>. C’est un langage de haut niveau interprété, similaire à Python, qui a l’avantage d’être peu gourmand en ressource. Des versions similaires utilisent des langages comme <em>MicroPython</em> ou <em>BASIC</em>.</li>
 </ul>
-<h2 id="openwrt">OpenWRT</h2>
-<p>Une solution encore plus avancée est d'utiliser un environnement comportant assez de mémoire pour faire fonctionner une distribution Linux. La distribution OpenWRT est prévue pour les routeurs WiFi.</p>
+<h3 id="modules-utilisant-openwrt">Modules utilisant OpenWRT</h3>
+<p>Une solution encore plus avancée est d’utiliser un module comportant assez de mémoire pour faire fonctionner une distribution Linux. C'est le cas des module LinkIt Smart, qui utilisent le SoC 7688 de MediaTek. C'est aussi le cas de l'Arduino Yún.</p>
+<div class="figure">
+<img src="images/modules-7688.jpg" title="Modules LinkIt Smart 7688" alt="Modules LinkIt Smart 7688" style="width:80.0%" />
+<p class="caption">Modules LinkIt Smart 7688</p>
+</div>
+<p>La distribution la plus souvent utilisée est OpenWRT, qui est optimisée pour les routeurs WiFi. Elle vient avec tous les outils Linux. Un serveur Web est nativement disponible. Il sera par exemple extrêmement facile d'ajouter une caméra vidéo à un tel système.</p>
+<h2 id="réseau-gsm">Réseau GSM</h2>
+<p>Les modules GSM ont baissé de prix de manière spectaculaires ces dernières années. Ils permettant facilement la commande à distance d'une enseigne ou d'un afficheur à LED. Le commande peut se faire par l'envoi de SMS, par exemple pour modifier des textes. Il est aussi possible de communiquer sur le protocole TCP/IP, par le standard GPRS.</p>
+<p>Le module doit bien entendu contenir une carte SIM fournie par un opérateur GSM, qui facturera les frais de communication.</p>
+<h2 id="internet-des-objets">Internet des objets</h2>
+<p>Du moment où une enseigne ou un afficheur dispose d’une capacité de communiquer sur le réseau Internet, il devient un objet connecté. On parle d’<em>Internet des objets</em> (IoT, <em>Internet of Things</em>). En plus de pouvoir recevoir des données pour son fonctionnement, comme par exemple les textes à afficher, il peut communiquer d’autres informations. En voici quelques exemples :</p>
+<ul>
+<li>Des données de maintenance du matériel, telles que les tensions et courants des alimentations, la détection d’éventuelles pannes, les heures de fonctionnement.</li>
+<li>Des informations de surveillance, telles que des détections d’intrusions dans son périmètre, des images de son environnement ou de ce qu’il affiche.</li>
+</ul>
+<p>Tout projet impliquant Internet doit être examiné avec grand soin concernant la sécurité et le cryptage des données.</p>
 </body>
 </html>

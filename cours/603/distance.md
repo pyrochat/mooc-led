@@ -1,5 +1,5 @@
 % Commande à distance
-% [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
+% [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL et Nicolas Jeanmonod
 % rév 2016/07/10
 
 
@@ -9,90 +9,106 @@ Les enseignes et afficheurs fonctionnent généralement sans intervention humain
 
 * l’allumer et l’éteindre
 * changer sa luminosité
-* activer des informations exceptionnelles (exemple : Nouvel arrivage, Pharmacie de garde)
+* activer des informations exceptionnelles, par exemple : *Nouvel arrivage* ou *Pharmacie de garde*.
 
 Pour les afficheurs, on souhaitera en plus changer les textes qui défilent, les images, etc.
 
-Dans certains cas, quelques boutons-poussoirs ou un clavier sera placé sur l’enseigne ou l’afficheur. Souvent, on souhaite déporter le dispositif de commande. Dans ce cas, les données seront transférées par l’un des nombreux moyens qu’il existe pour communiquer avec un microcontrôleur : liaisons série asynchrone, I²C, etc.
+Dans certains cas, quelques boutons-poussoirs ou un clavier seront placés sur l’enseigne ou l’afficheur, mais souvent, on souhaite déporter le dispositif de commande. Dans ce cas, les données seront transférées par l’un des nombreux moyens existants pour communiquer avec un microcontrôleur : liaisons série asynchrone RS232 ou RS485, Ethernet, etc.
 
-Mais les enseignes et afficheurs, pour qu’ils soient bien visibles, sont souvent placés à des endroits peu accessibles, par exemple en hauteur. Les différentes techniques de commande sans fils sont alors les solutions les plus pratiques. Nous évoquerons quelques solutions basées sur des transmissions infrarouges et radio.
+Mais les enseignes et afficheurs, pour qu’ils soient bien visibles, sont souvent placés à des endroits peu accessibles, par exemple en hauteur. Les différentes techniques de commande sans fils sont alors les solutions les plus pratiques. Nous évoquerons quelques solutions basées sur des transmissions de signaux infrarouges et radio.
 
 
-## Infra-rouge ##
+## Infrarouge ##
 
-Les LED infrarouges, associées à des phototransistors, offrent une manière très simple d’envoyer des informations à un afficheur. On connaît les télécommandes des téléviseurs et autres climatiseurs.
+Les LED infrarouges (IR), associées à des phototransistors, offrent une manière très simple d’envoyer des informations à un afficheur. On connaît les télécommandes des téléviseurs et autres climatiseurs.
 
-Une simple LED IR peut être utilisée comme émetteur. Mais pour que la liaison fonctionne sans être perturbée par toute sorte rayonnements infra-rouges, tels que les tubes fluorescents, les signaux d’une télécommande sont modulés à une fréquence bien précise, généralement 38 kHz. La réception se fait alors avec de circuits qui contiennent non seulement un photo transistor, mais également un filtre sélectif réglé sur cette fréquence de 38 kHz. Seul le signal de modulation est alors lu par le microcontrôleur.
+Une simple LED IR peut être utilisée comme émetteur. Pour que la liaison fonctionne sans être perturbée par toutes sortes de rayonnements infrarouges, tels que les tubes fluorescents, les signaux d’une télécommande sont modulés à une fréquence bien précise, généralement 38 kHz. La réception se fait alors avec des circuits qui contiennent non seulement un phototransistor, mais également un filtre sélectif réglé sur cette fréquence de 38 kHz. Seul le signal de modulation est alors lu par le microcontrôleur.
 
-![Réception de sigaux infrarouges](images/sreception-ir.png "Réception de sigaux infrarouges"){ width=80% }
+![Signaux infrarouges](images/reception-ir.png "Signaux infrarouges"){ width=80% }
 
-Plusieurs protocoles existent pour transmettre l'information. Le protocole RC-5 de Philips :
+Plusieurs protocoles existent pour transmettre l’information, tels que le protocole RC-5 de Philips et protocole japonais appelé souvent protocole NEC. Une solution très plus simple pour envoyer des données à une enseigne ou un afficheur est alors d'utiliser une télécommande du commerce. Des bibliothèques existent pour lires ces signaux de ces télécommandes avec un Arduino.
 
-![Protocole RC-5](images/sreception-ir.png "Protocole RC-5"){ width=80% }
+Comment gérer la réception des signaux du récepteur infrarouge ? Alors que le microcontrôleur d’une enseigne ou d’un afficheur semble bien occupé par l’affichage des animations, est-il possible de lui confier en plus le décodage de ces signaux ? C’est possible, en utilisant des interruptions sur les flancs du signal sortant du détecteur, puis en mesurant avec un *timer* le temps entre ces flancs. 
 
-Le protocole japonais, appelé souvent protocole NEC :
-
-![Protocole NEC](images/sreception-ir.png "Protocole NEC"){ width=80% }
-
-Alors que le microcontrôleur d'une enseigne ou d'un afficheur est bien occupé par l'affichage des animations, est-il possible de lui confier encore le décodage des signaux du récepteur infrarouge ? C'est possible, en utilisant des interruptions sur les flancs du signal sortant du détecteur, puis en mesurant avec un Timer le temps entre ces flancs. Des librairies existent pour l'Arduino.
+La portée d'un signal infrarouge peut aller jusqu'quelques dizaines de mètre. Avec la modulation à 38 kHz, on peut obtenir un très bonne sensibilité, qui rend le système fonctionnel même si l'émetteur ne vise pas le récepteur, grâce à des réflexions sur l'environnement.
 
 
 ## Radio ##
 
-Les signaux radios peuvent aussi être utilisés pour communiquer avec une enseigne ou un afficheur à LED. Bien entendu, il faut alors respecter la législation en vigueur dans chaque pays.
+Les signaux radio peuvent aussi être utilisés pour communiquer avec une enseigne ou un afficheur à LED. Bien entendu, il faut alors respecter la législation en vigueur dans chaque pays.
 
-En Europe, une bande de fréquence autour de 433 MHz est libre. Une puissance maximale ne doit pas dépassée. On trouve des paires de petits modules émetteur-récepteur. Voici comment ils se présentent :
+En Europe, une bande de fréquence autour de 433 MHz est libre. Cette bande fait partie des bandes de fréquences librement utilisables appelées ISM (bandes Industrielles, Scientifiques et Médicales). Une puissance maximale ne doit pas être dépassée. On trouve des paires de petits modules émetteur-récepteur. Voici comment ils se présentent :
 
-![Modules radio 433 MHz](images/modules-radio.jpg "Modules radio 433 MHz"){ width=15cm }
+![Modules radio 433 MHz](images/modules-radio.jpg "Modules radio 433 MHz"){ width=80% }
 
-La mise en œuvre semble très simple. L’émetteur et le récepteur doivent être alimentés. L’émetteur dispose d’une entrée qui active l’émission radio.  Le récepteur offre simplement une sortie, qui correspond au signal reçu.
+La mise en œuvre est très simple. L’émetteur et le récepteur doivent être alimentés. L’émetteur dispose d’une entrée qui active l’émission radio. Le récepteur offre simplement une sortie, qui correspond au signal reçu. Ce type de système n’est adapté que dans un environnement où il n’y a pas beaucoup d’autres émetteurs du même type car la gestion des collisions n’est pas intégrée au niveau du matériel. Elle doit être implémentée au niveau logiciel, ce qui est coûteux en ressources.
 
-En principe, le signal sortant du récepteur va être l’image du signal entrant dans l’émetteur, si la liaison est bonne. Mais des contraintes bien particulières doivent être imposées au signal pour que la transmission fonctionne : le signal ne doit pas avoir de composante continue et les durées des 0 et des 1 successifs doivent être contenues dans un intervalle limité. On utilisera donc souvent des librairies spécialisées pour mettre en œuvre de tels modules, comme la librairie *Virtual-Wire*.
+En principe, le signal sortant du récepteur va être l’image du signal entrant dans l’émetteur, si la liaison est bonne. Mais des contraintes bien particulières doivent être imposées au signal pour que la transmission fonctionne : le signal ne doit pas avoir de composante continue et les durées des 0 et des 1 successifs doivent être contenues dans un intervalle limité. On utilisera donc souvent des bibliothèques spécialisées pour mettre en œuvre de tels modules, comme la bibliothèque *VirtualWire*. Bien que cette librairie ne soit plus officiellement supportée, elle reste très populaire et parfaitement fonctionnelle. La librairie qui devrait la remplacer, *RadioHead*, est nettement plus complexe.
+
+Les signaux radio dont la fréquence est autour de quelques centaines de MHz ne sont pas trop directifs. Mais pour obtenir une portée dépassant quelques dizaines de mètres avec ces modules, il faut bien soigner la réalisation de l'antenne.
+
+D'autres modules radio plus sophistiqués sont disponibles. C'est le cas des modules utilisant le circuit nRF24L01+, proposés à des prix particulièrement bas. Il s'agit qu'un émetteur-récepteur dans la bande des 2.4 GHz, piloté par des signaux SPI.
+
+Il existe aussi la possibilité d'avoir des portées de plusieurs kilomètres tout en respectant les normes de limitation des puissances d'émission. Comment est-ce possible ? Dans un telle transmission, l'émission utilise un spectre étendu et le récepteur pratique une extraction des signaux alors qu'ils ont un niveau inférieur au bruit. Le standard le plus connu est LoRa.
 
 
 ## Bluetooth ##
 
 Le standard Bluetooth présente plusieurs avantages :
 
-* C’est un standard disponible sur beaucoup de systèmes informatique : smartphones, tablettes et PC.
-* Il est économe en énergie, surtout en mode *Low energy*. Mais c’est avantage n’est pas déterminant pour une enseigne ou un afficheur, qui consomment eux-même beaucoup de courant.
+* C’est un standard disponible sur beaucoup de systèmes informatiques : *smartphones*, tablettes et PC.
+* Il est économe en énergie, surtout dans la version Bluetooth 4 *Low Energy*. Mais cet avantage n’est pas déterminant pour une enseigne ou un afficheur, qui consomment eux-mêmes beaucoup de courant.
 * La confidentialité des données est assurée par des mots de passe et le cryptage des données transmises.
 
-Mais si la couche d’établissement de la communication et de la transmission des données est standardisée, le contenu des données est libre. Il est donc nécessaire de faire fonctionner un logiciel dédié sur le terminal utilisé (Smartphone, tablette, ordinateur) .
+Mais si la couche d’établissement de la communication et de la transmission des données est standardisée, le contenu des données est libre. Il est donc nécessaire de faire fonctionner un logiciel dédié sur le terminal utilisé (*smartphone*, tablette, ordinateur) .
 
-Le système d’exploitation *Android* permet d’écrire facilement des applications qui communiquent par Bluetooth. L'application doit alors être installée avant de pouvoir communiquer. Pour être d'usage plus général, il faudrait adapter l'application aux différents systèmes d'exploitation : Android, iOS, Windows, Linux, MacOS, etc.
+Les systèmes d’exploitation d’ordinateurs (Windows, OSX, Linux,...) et de périphériques mobiles (Android, iOS, Windows 10,...) permettent tous d’écrire facilement des applications utilisant la communication Bluetooth. Le désavantage de cette approche est que les applications doivent être adaptées, voire complètement réécrites pour chaque système d’exploitation. Ce désavantage est un frein sérieux au développement des applications Bluetooth. 
 
 
 ## WiFi ##
 
-Le standard WiFi permet de manière génrale de relier des ordinateurs en réseau. Sa complexité et ses performances peuvent sembler dépasser les besoins d’une enseigne ou d’un afficheur. Mais l’avantage du WiFi est qu’il va permettre la connexion à un système informatique sans devoir le configurer de manière spécifique, en utilisant des protocoles standards comme le HTTP : il sera alors possible de dialoguer avec l’afficheur avec un simple navigateur Internet (*Web browser*), disponible sir tous les systèmes d'exploitation.
+Le standard WiFi permet de manière générale de relier sans fil des ordinateurs en réseau avec la fonctionnalité du standard TCP/IP (le protocole de base d'Internet). Sa complexité et ses performances peuvent sembler dépasser les besoins d’une enseigne ou d’un afficheur. Mais l’avantage du WiFi est qu’il va permettre la connexion à un système informatique sans devoir le configurer de manière spécifique, en utilisant des protocoles standards comme le HTTP : il sera alors possible de dialoguer avec l’afficheur avec un simple navigateur internet (*web browser*), disponible sur tous les systèmes d’exploitation. Cette solution présente l’avantage indéniable de l’interopérabilité entre les différents systèmes d’exploitation.
 
-Des modules WiFi très peu coûteux sont apparus sur le marché depuis quelques années. Il est donc possible de rendre un afficheur paramétrable par WiFi avec un minimum d’effort et de coût. Examinons quelques solutions possibles.
+Des modules WiFi très peu coûteux sont apparus sur le marché depuis quelques années. Il est donc possible de rendre un afficheur paramétrable par WiFi avec un minimum d’efforts et de coûts. Examinons deux solutions possibles.
 
 
-## ESP8266 ##
+### ESP8266 ###
 
-Le circuit ESP8266 du fabricant chinois Espressif Systems est un System-on-Chip (SoC) qui comporte tout ce qu’il faut pour le WiFi. On le trouve généralement sous forme de modules, tels que le EP-01 ou le EP-12.
+Le circuit ESP8266 du fabricant chinois Espressif Systems est un *System-on-Chip* (SoC) qui comporte tout ce qu’il faut pour le WiFi. On le trouve généralement sous forme de modules, dont il existe une quinzaine de variantes.
 
-![Modules EP-01 et EP-12](images/modules-esp8266.jpg "Modules EP-01 et EP-12"){ width=15cm }
+![Modules ESP-01 et ESP-12](images/modules-esp8266.jpg "Modules ESP-01 et ESP-12"){ width=80% }
 
-Ces modules contiennent le SoC ESP8266 ainsi qu’une mémoire EEPROM qui contient son programme. L’antenne est gravée directement sur le circuit imprimé. L’ESP8266 communique avec l’extérieur par une ligne série asynchrone. Il existe plusieurs manières de l'utiliser :
+Ces modules contiennent le SoC (*System on Chip*) ESP8266 ainsi qu’une mémoire EEPROM qui contient son programme. L’antenne est intégrée directement sur le circuit imprimé. L’ESP8266 communique avec l’extérieur par une ligne série asynchrone. Il existe plusieurs manières de l’utiliser :
 
-* Par un jeu de commandes commençant par les caractères "AT", similaires à celles utilisées jadis avec les Modems.
-* En écrivant complètement le programme. Un environnement de développement est disponible pour cela : ESP-studio.
-* Dans le mode Arduino. Une librairie similaire à la librairie Arduino est alors utilisée, avec un environnement similaire au programme Arduino.
-* En mode **NodeMCU**. La programmation s’effectue par des scripts écrits dans le langage **Lua**. C’est un langage de haut niveau interprété, un peu similaire à Python, qui a l’avantage d’être peu gourmand en ressource.
+* Par un jeu de commandes appelées “AT”, similaires à celles utilisées jadis avec les modems. Dans ce cas, on ne programme pas le microcontrôleur interne, mais on communique avec l’ESP via la ligne série asynchrone.
+* En écrivant complètement le programme en language C. Un environnement de développement (SDK  : *Software Developpement Kit*) est fourni par le fabricant Espressif.
+* Dans le mode Arduino C. Une bibliothèque similaire à la bibliothèque Arduino est alors utilisée. La compilation et le téléchargement du programme peuvent être effectués avec ...
+* En mode *NodeMCU*. La programmation s’effectue par des scripts écrits dans le langage *Lua*. C’est un langage de haut niveau interprété, similaire à Python, qui a l’avantage d’être peu gourmand en ressource. Des versions similaires utilisent des langages comme *MicroPython* ou *BASIC*.
 
-## OpenWRT ##
 
-Une solution encore plus avancée est d'utiliser un environnement comportant assez de mémoire pour faire fonctionner une distribution Linux. La distribution OpenWRT est prévue pour les routeurs WiFi. 
+### Modules utilisant OpenWRT ###
+
+Une solution encore plus avancée est d’utiliser un module comportant assez de mémoire pour faire fonctionner une distribution Linux. C'est le cas des module LinkIt Smart, qui utilisent le SoC 7688 de MediaTek. C'est aussi le cas de l'Arduino Yún.
+
+![Modules LinkIt Smart 7688](images/modules-7688.jpg "Modules LinkIt Smart 7688"){ width=80% }
+
+La distribution la plus souvent utilisée est OpenWRT, qui est optimisée pour les routeurs WiFi. Elle vient avec tous les outils Linux. Un serveur Web est nativement disponible. Il sera par exemple extrêmement facile d'ajouter une caméra vidéo à un tel système.
+
+
+## Réseau GSM ##
+
+Les modules GSM ont baissé de prix de manière spectaculaires ces dernières années. Ils permettant facilement la commande à distance d'une enseigne ou d'un afficheur à LED. Le commande peut se faire par l'envoi de SMS, par exemple pour modifier des textes.  Il est aussi possible de communiquer sur le protocole TCP/IP, par le standard GPRS.
+
+Le module doit bien entendu contenir une carte SIM fournie par un opérateur GSM, qui facturera les frais de communication.
 
 
 ## Internet des objets ##
 
-Du moment où une enseigne ou un afficheur dispose d'une capacité de communiquer sur le réseau Internet, il devient un objet connecté. On parle d'Internet des Objest, **IoT** *Internet of Things*. En plus de pouvoir recevoir de données pour son fonctionnement, comme par exemple les textes à afficher, il peut communiquer d'autres informations. En voici quelques exemples :
+Du moment où une enseigne ou un afficheur dispose d’une capacité de communiquer sur le réseau Internet, il devient un objet connecté. On parle d’*Internet des objets* (IoT, *Internet of Things*). En plus de pouvoir recevoir des données pour son fonctionnement, comme par exemple les textes à afficher, il peut communiquer d’autres informations. En voici quelques exemples :
 
-* Des données de maintenance du matériel, telles que les tension et courant des alimentations, la détection d'éventuelles pannes, les heures de fonctionnement.
-* Des informations surveillance, telles que des détection d'intrusions dans son périmètre, des images de son environnement ou de ce qu'il affiche.
+* Des données de maintenance du matériel, telles que les tensions et courants des alimentations, la détection d’éventuelles pannes, les heures de fonctionnement.
+* Des informations de surveillance, telles que des détections d’intrusions dans son périmètre, des images de son environnement ou de ce qu’il affiche.
+
+Tout projet impliquant Internet doit être examiné avec grand soin concernant la sécurité et le cryptage des données.
 
 

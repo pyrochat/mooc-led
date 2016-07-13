@@ -99,7 +99,7 @@ La distribution la plus souvent utilisée est OpenWRT, qui est optimisée pour l
 
 Les modules GSM ont baissé de prix de manière spectaculaires ces dernières années. Ils permettant facilement la commande à distance d'une enseigne ou d'un afficheur à LED. Le commande peut se faire par l'envoi de SMS, par exemple pour modifier des textes.  Il est aussi possible de communiquer sur le protocole TCP/IP, par le standard GPRS.
 
-Le module doit bien entendu contenir une carte SIM fournie par un opérateur GSM, qui facturera les frais de communication.
+Le module doit bien entendu contenir une carte SIM fournie par un opérateur GSM, qui facturera les frais de communication. La communication avec ces modules se fait généralement par une liaison série asynchrone, avec des commandes “AT”.
 
 
 ## Internet des objets ##

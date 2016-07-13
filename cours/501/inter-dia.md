@@ -215,7 +215,7 @@ Trois étapes pour mettre en œuvre une interruption :
 <section>
 <!-- A -->
 <h1 class="en_tete">Interruption sur une entrée</h1>
-<div style="top:6.5cm; left:2cm; width: 5cm; font-size:45pt;">
+<div style="top:6.5cm; left:2cm; width: 5cm; font-size:45pt; width:57cm;">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines}
  int main() {
    WDTCTL = WDTPW + WDTHOLD; // Stop watchdog timer
@@ -238,7 +238,7 @@ Trois étapes pour mettre en œuvre une interruption :
 <section>
 <!-- A -->
 <h1 class="en_tete">Interruption sur une entrée</h1>
-<div style="top:7.5cm; left:2cm; width: 5cm; font-size:45pt;">
+<div style="top:7.5cm; left:2cm; width: 5cm; font-size:45pt; width:50cm;">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines startFrom="14"}
  // Routine d'interruption associée au Port P1
 

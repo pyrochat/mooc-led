@@ -34,7 +34,7 @@ La portée d’un signal infrarouge peut aller jusqu’à quelques dizaines de m
 
 ## Ondes radio (RF) ##
 
-Les ondes radio (RF, *Radio Frequency*), sont des ondes électromagnétiques dont la gamme de fréquence s’étend de 3 kHz à 300 GHz. Elles peuvent aussi être utilisés pour communiquer avec une enseigne ou un afficheur à LED. Bien entendu, il faut alors respecter la législation en vigueur dans chaque pays.
+Les ondes radio (RF, *Radio Frequency*), sont des ondes électromagnétiques dont la gamme de fréquences s’étend de 3 kHz à 300 GHz. Elles peuvent aussi être utilisées pour communiquer avec une enseigne ou un afficheur à LED. Bien entendu, il faut alors respecter la législation en vigueur dans chaque pays.
 
 En Europe, une bande de fréquence autour de 433 MHz est libre. Cette bande fait partie des bandes de fréquences librement utilisables appelées ISM (bandes Industrielles, Scientifiques et Médicales). Une puissance maximale ne doit pas être dépassée. On trouve des paires de petits modules émetteur-récepteur. Voici comment ils se présentent :
 
@@ -44,7 +44,7 @@ La mise en œuvre des modules 433 MHz est très simple. L’émetteur et le ré
 
 Si la liaison est bonne, le signal sortant du récepteur va être l’image du signal entrant dans l’émetteur. Mais des contraintes bien particulières doivent être imposées au signal pour que la transmission fonctionne : le signal ne doit pas avoir de composante continue et les durées des 0 et des 1 successifs doivent être contenues dans un intervalle limité. On utilisera donc souvent des bibliothèques spécialisées pour mettre en œuvre de tels modules, comme la bibliothèque *VirtualWire*. Bien que cette librairie ne soit plus officiellement maintenue, elle reste très populaire et parfaitement fonctionnelle. La librairie qui devrait la remplacer, *RadioHead*, est nettement plus complexe.
 
-Les signaux radio dont la fréquence est autour de quelques centaines de MHz ne sont pas très directifs. Mais pour obtenir une portée dépassant quelques dizaines de mètres avec ces modules, il faut bien soigner la réalisation de l’antenne.
+Les signaux radio dont la fréquence est autour de quelques centaines de mégahertz ne sont pas très directifs. Mais pour obtenir une portée dépassant quelques dizaines de mètres avec ces modules, il faut bien soigner la réalisation de l’antenne.
 
 D’autres modules radio plus sophistiqués sont disponibles. C’est le cas des modules utilisant le circuit nRF24L01+ de Nordic Semiconductor, proposé à des prix particulièrement bas. Il s’agit d’un émetteur-récepteur dans la bande des 2.4 GHz, piloté par des signaux SPI. <!-- Ils présentent l’avantage d’intégrer un système de gestion des collisions au niveau matériel. -->
 
@@ -97,7 +97,7 @@ La distribution la plus souvent utilisée est OpenWRT, qui est optimisée pour l
 
 ## Réseau GSM ##
 
-Les modules GSM ont baissé de prix de manière spectaculaires ces dernières années. Ils permettent de commander facilement à distance une enseigne ou un afficheur à LED. La commande peut se faire par l’envoi de SMS, par exemple pour modifier des textes. Il est aussi possible de communiquer sur le protocole TCP/IP, par le standard GPRS. Le GSM est une solution de choix quand les distances entre émetteur et récepteur sont grandes, car on peut relier pratiquement tous les lieux habités de notre planète quelles que soient les distances qui les sépare.
+Les modules GSM ont baissé de prix de manière spectaculaires ces dernières années. Ils permettent de commander facilement à distance une enseigne ou un afficheur à LED. La commande peut se faire par l’envoi de SMS, par exemple pour modifier des textes. Il est aussi possible de communiquer sur le protocole TCP/IP, par le standard GPRS. Le GSM est une solution de choix quand les distances entre émetteur et récepteur sont grandes, car on peut relier pratiquement tous les lieux habités de notre planète, quelles que soient les distances qui les séparent.
 
 Le module doit bien entendu contenir une carte SIM fournie par un opérateur GSM, qui facturera les frais de communication. La communication avec ces modules se fait généralement par une liaison série asynchrone, avec des commandes “AT”.
 

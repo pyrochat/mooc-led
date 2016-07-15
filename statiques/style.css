@@ -317,3 +317,16 @@ and (max-device-width : 480px)
 		margin-left: 10px;
 	}
 }
+
+.bleu {
+	color: blue;
+}
+.rouge {
+	color: red;
+}
+.vert {
+	color: green;
+}
+.gris {
+	color: grey;
+}

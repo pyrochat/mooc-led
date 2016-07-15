@@ -66,7 +66,7 @@ Les systèmes d’exploitation d’ordinateurs (Windows, OS X, Linux...) et de 
 
 ## WiFi ##
 
-Le standard WiFi permet de manière générale de relier sans fil des ordinateurs en réseau avec la fonctionnalité du standard TCP/IP (le protocole de base d’internet). Sa complexité et ses performances peuvent sembler dépasser les besoins d’une enseigne ou d’un afficheur. Mais l’avantage du WiFi est qu’il va permettre la connexion à un système informatique sans devoir le configurer de manière spécifique, en utilisant des protocoles standards comme le HTTP : il sera alors possible de dialoguer avec l’afficheur avec un simple navigateur internet (*web browser*), disponible sur tous les systèmes d’exploitation. Cette solution présente l’avantage indéniable de l’interopérabilité entre les différents systèmes d’exploitation.
+Le standard WiFi permet de manière générale de relier sans fil des ordinateurs en réseau avec la fonctionnalité du standard TCP/IP (le protocole de base d’Internet). Sa complexité et ses performances peuvent sembler dépasser les besoins d’une enseigne ou d’un afficheur. Mais l’avantage du WiFi est qu’il va permettre la connexion à un système informatique sans devoir le configurer de manière spécifique, en utilisant des protocoles standards comme le HTTP : il sera alors possible de dialoguer avec l’afficheur avec un simple navigateur Internet (*web browser*), disponible sur tous les systèmes d’exploitation. Cette solution présente l’avantage indéniable de l’interopérabilité entre les différents systèmes d’exploitation.
 
 Des modules WiFi très peu coûteux sont apparus sur le marché depuis quelques années. Il est donc possible de rendre un afficheur paramétrable par WiFi avec un minimum d’efforts et de coûts. Examinons deux solutions possibles.
 
@@ -104,11 +104,11 @@ Le module doit bien entendu contenir une carte SIM fournie par un opérateur GSM
 
 ## Internet des objets ##
 
-À partir du moment où une enseigne ou un afficheur dispose de la capacité de communiquer sur le réseau internet, il devient un objet connecté. On parle alors d’*internet des objets* (IoT, *Internet of Things*). En plus de pouvoir recevoir des données pour son fonctionnement, comme par exemple les textes à afficher, il peut communiquer d’autres informations. En voici quelques exemples :
+À partir du moment où une enseigne ou un afficheur dispose de la capacité de communiquer sur le réseau Internet, il devient un objet connecté. On parle alors d’*Internet des objets* (IoT, *Internet of Things*). En plus de pouvoir recevoir des données pour son fonctionnement, comme par exemple les textes à afficher, il peut communiquer d’autres informations. En voici quelques exemples :
 
 * Des données de maintenance du matériel, telles que les tensions et courants des alimentations, la détection d’éventuelles pannes, les heures de fonctionnement.
 * Des informations de surveillance, telles que des détections d’intrusions dans son périmètre, des images de son environnement ou de ce qu’il affiche.
 
-Tout projet impliquant internet doit être examiné avec grand soin concernant la sécurité et le cryptage des données.
+Tout projet impliquant Internet doit être examiné avec grand soin concernant la sécurité et le cryptage des données.
 
 

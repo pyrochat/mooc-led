@@ -2,10 +2,17 @@
 % [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
 % rév 2016/07/09
 
+<!--
+# 2016-07-16
+Relecture NJ
+
+Remarque : ça serait bien que tu parles de la procédure `_delay_ms()`. C’est une procédure standard AVR qui est beaucoup plus économique que `delay()` en ressources, mais qui a le désavantage de n’accepter que des constantes (et pas des variables) en paramètre. Comme les temps d’attentes sont souvent constants, ça ne pose que rarement un problème. La procédure `_delay_us()` existe aussi.
+
+-->
 
 ## Motivation ##
 
-Animer une enseigne à LED consiste en une suite d’opérations sur les groupes des LED. Animer un afficheur matriciel consiste aussi à envoyer des séquences graphiques. Dans les deux cas, une jolie animation ne se limitera pas à quelques étapes, mais pourra vite devenir longue. Les programmes correspondant vont donc avoir tendance à s’allonger, ce qui va rendre leur lecture fastidieuse et qui risque aussi de remplir rapidement la mémoire du microcontrôleur.
+Animer une enseigne à LED consiste en une suite d’opérations sur les groupes de LED. Animer un afficheur matriciel consiste aussi à envoyer des séquences graphiques. Dans les deux cas, une jolie animation ne se limitera pas à quelques étapes, mais pourra vite devenir longue. Les programmes correspondants vont donc avoir tendance à s’allonger, ce qui va rendre leur lecture fastidieuse et qui risque aussi de remplir rapidement la mémoire du microcontrôleur.
 
 Une technique souvent utilisée consiste à **inventer un langage** pour décrire ce qui se passe sur l’enseigne ou l’afficheur et programmer les animations dans ce langage.
 
@@ -13,20 +20,20 @@ Une technique souvent utilisée consiste à **inventer un langage** pour décrir
 
 Prenons l’exemple très simple. Pour décrire une animation sur une enseigne, deux ordres suffisent pour décrire les actions :
 
-* mettre un groupe de LED à une certaine intensité
+* allumer un groupe de LED avec une certaine intensité,
 * attendre un certain temps.
 
 Dans le cas simple de sorties tout-ou-rien, voici les procédures Arduino qui vont suffire :
 
-* *digitalWrite()* pour donner un état à une sortie
-* *delay()* pour une attente.
+* `digitalWrite()` pour donner un état à une sortie,
+* `delay()` pour une attente.
 
 En observant la taille d’un petit programme sur Energia et en ajoutant des appels à ces procédures, on constate que :
 
-* *digitalWrite()* prend 8 octets en mémoire
-* *delay()* prend 10 octets en mémoire.
+* `digitalWrite()` prend 8 octets en mémoire,
+* `delay()` prend 10 octets en mémoire.
 
-En prenant par exemple un microcontrôleur MSP430G2213, qui dispose d’une mémoire flash de 2kB (2048 octets), on sera limité à moins de 80 pas de programme, constitué de paires *digitalWrite() - delay()*. En constatant qu’un simple chenillard dans les deux sens sur 8 bits en prend déjà 16, c’est réellement limitatif !
+En prenant par exemple un microcontrôleur MSP430G2213, qui dispose d’une mémoire *flash* de 2 kB (2048 octets), on sera limité à moins de 80 pas de programme, constitués de paires `digitalWrite() – delay()`. En constatant qu’un simple chenillard dans les deux sens sur 8 bits en utilise déjà 16, c’est réellement limitatif !
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
 loop() {
@@ -51,16 +58,16 @@ loop() {
 <!-- retour au mode normal -->
 
 Bien entendu, les instructions permettant l’accès direct aux registres du microcontrôleur permettent d’économiser la place en mémoire.
-L’instruction `P1OUT |= (1<<0);` prend 4 octets. C’est déja mieux ! Mais cherchons une autre solution.
+L’instruction `P1OUT |= (1<<0);` utilise 4 octets. C’est déja mieux ! Mais cherchons une autre solution.
 
 ## Inventer un langage ##
 
-Une solution élégante est d’inventer un langage. Notre permier langage n’aura les deux instructions :
+Une solution élégante est d’inventer un langage. Notre premier langage aura les deux instructions :
 
-* **Mettre une intensité sur une sortie**. Paramètres : numéro de la sorte et intensité (0 ou 1)
+* **Mettre une intensité sur une sortie**.<!-- je dirais plutôt : **Activer ou désactiver une sortie**. --> Paramètres : numéro de la sorte et intensité (0 ou 1)
 * **Attendre**. Paramètre : durée de l’attente.
 
-Le programme peutt alors se présenter sous forme d’un tableau. Nous avons utilisé ici un tableau d’octets. Le programme pour notre chenillard aura alors la forme suivante :
+Le programme peut alors se présenter sous forme d’un tableau. Nous avons utilisé ici un tableau d’octets. Le programme pour notre chenillard aura alors la forme suivante :
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
 uint8_t Animation[] = { // définition d’un tableau d’octets
@@ -84,8 +91,8 @@ uint8_t Animation[] = { // définition d’un tableau d’octets
 }
 ~~~~~~~
 
-Sa taille n’est que de 33 octets.
-Voici les définitions nécessaire pour que ce tableau se compile correctement :
+Sa taille n’est que de 33 octets.
+Voici les définitions nécessaires pour que ce tableau se compile correctement :
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
 #define On 0b01000000
@@ -119,9 +126,9 @@ Voici la description binaire de notre langage :
 // Durée sur 7 bits, exprimée en dixième de seconde (0 à 12.6 secondes)
 ~~~~~~~
 
-Ceux qui ont déjà programmé en assembleur trouveront une grande similitude avec la description des instruction en binaire !
+Ceux qui ont déjà programmé en assembleur trouveront une grande similitude avec la description des instructions en binaire !
 
-On voit que des choix ont été faits pour utiliser au mieux les instructions, qui sont des champs de 8 bits. Le bit de poids fort b7 détermine s’il s’agit d’une instruction pour définir l’intensité ou pour l’attente. Ensuite, les 7 bits restant se répartissent selon l’instruction : une intensité et un numéro de sortie pour l’action sur une sortie, une valeur en dixième de seconde pour l’attente. L’usage de la milliseconde comme unité aurait été trop limitative, étant donné que seuls 7 bits sont à disposition.
+On voit que des choix ont été faits pour utiliser au mieux les instructions, qui sont des champs de 8 bits. Le bit de poids fort `b7` détermine s’il s’agit d’une instruction pour définir l’intensité ou pour l’attente. Ensuite, les 7 bits restants se répartissent selon l’instruction : une intensité et un numéro de sortie pour l’action sur une sortie, une valeur en dixième de seconde pour l’attente. L’usage de la milliseconde comme unité aurait été trop limitatif, étant donné que seuls 7 bits sont à disposition.
 
 
 ## Interpréteur ##
@@ -140,34 +147,36 @@ void Exec (unsigned int no) {
       if (instr & 0x40) Allume(instr & 0x3F) else Eteint(instr & 0x3F);
     }
   }
-}~~
+}
+~~~~~~~
 <!-- retour au mode normal pour l’éditeur -->
 
 
-## Langages plus complexe ##
+## Langages plus complexes ##
 
 Plusieurs compléments permettent de créer un environnement réellement intéressant pour programmer des enseignes complexes :
 
-* L’ajout de la gestion de l'intensité des LED par BCM (*Binary Coded Modulation*)
-* La possibilité d’agir sur des groupes de LED, permettant de simplifier l’écriture des programmes
+* L’ajout de la gestion de l’intensité des LED par BCM (*Binary Coded Modulation*).
+* La possibilité d’agir sur des groupes de LED, permettant de simplifier l’écriture des programmes.
 * La gestion de plusieurs programmes en parallèle, pour gérer plus facilement différentes parties de l’enseigne.
 
 
 ## Exemple de langage pour un afficheur matriciel ##
 
-Pour piloter des animations sur une petite enseigne de pharmacie constituée d’une matrice monochrome de 16x16 LED, un langage plus complet a été imaginé. Il est basé sur le dessin de droites horizontales et verticales, à partir d’un curseur courant. Pour pouvoir réutiliser des parties de programme, un mécanisme d’appel de sous-routine a été mis en place, avec une instruction *Label* pour indiquer le début de la routine et une instruction *Return* pour en indiquer la fin. Une pile a été implémentée, rendant possible des appels imbriqués.
+Pour piloter des animations sur une petite enseigne de pharmacie constituée d’une matrice monochrome de 16×16 LED, un langage plus complet a été imaginé. Il est basé sur le dessin de droites horizontales et verticales, à partir d’un curseur courant. Pour pouvoir réutiliser des parties de programme, un mécanisme d’appel de sous-routines a été mis en place, avec une instruction `Label` pour indiquer le début de la routine et une instruction `Return` pour en indiquer la fin. Une pile a été implémentée, rendant possibles des appels imbriqués.
 
-Les animations étant très souvent de répétitions de motifs élémentaires, on a ajouté une instruction de répétition, qui préfixe n’importe quelle autre instruction pour la répéter un certain nombre de fois. Elle est particulièrement utile pour préfixer un appel de routine.
+Les animations étant très souvent de répétitions de motifs élémentaires, on a ajouté une instruction de répétition, qui préfixe n’importe quelle autre instruction, pour la répéter un certain nombre de fois. Elle est particulièrement utile pour préfixer un appel de routine.
 
 Voici en détail la définition des instructions :
 
+<!-- vérifie mes corrections dans le programme ci-dessous -->
 ~~~~~~~ { .c }
 #define DrH 0x30 // + dx (sur 4 bits) : droite horizontale, depuis le curseur
 #define DrV 0x40 // + dy (sur 4 bits) : droite verticale, depuis le curseur
 #define PlusX 0x50 // + dx (sur 4 bits) : avance le curseur en X
 #define PlusY 0x60 // + dy (sur 4 bits) : avance le curseur en Y
-#define MoinsX 0x70 // + dx (sur 4 bits) : recule le cureur en X
-#define MoinsY 0x80 // + y (sur 4 bits) : recule le curseur en Y
+#define MoinsX 0x70 // + dx (sur 4 bits) : recule le curseur en X
+#define MoinsY 0x80 // + dy (sur 4 bits) : recule le curseur en Y
 #define Repete 0x90 // + 4 bits : préfixe de répétition pour l’instr. suivante
 #define Delai 0xA0 // + 4 bits : Attente, valeur exposant de 2
 #define SetAccu 0xB0 // + 4 bits : Charge l’accumulateur (utilisé pour Intens)
@@ -177,7 +186,7 @@ Voici en détail la définition des instructions :
 #define Vide 1 // efface l’écran
 #define Ret 2 // retour de sous-routine (saut à l’adresse sur la pile)
 #define Origine 3 // place le curseur à 0,0
-#define ZeroX 4 // met à zéro X
+#define ZeroX 4 // met X à zéro
 #define Intens 5 // détermine l’intensité, selon la valeur de l’accumulateur
 #define Masque 0x9
 #define InvMasque 0xA // inverse le masque courant
@@ -211,6 +220,6 @@ Voici un exemple d’animation. Attention, c’est comme l’assembleur : il fau
  Repete+12, Call+Croix7x7plusDel, Vide, Delai+6, PlusY+2, Ret,
 ~~~~~~~
 
-La première version de ce programme a permis de placer un bon nombre d’animations graphiques dans un microcontrôleur MSP430G2202, qui ne dispose que de 2 Ko de mémoire flash.
+La première version de ce programme a permis de placer un bon nombre d’animations graphiques dans un microcontrôleur MSP430G2202, qui ne dispose que de 2 Ko de mémoire *flash*.
 
 

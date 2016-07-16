@@ -220,6 +220,6 @@ Voici un exemple d’animation. Attention, c’est comme l’assembleur : il fau
  Repete+12, Call+Croix7x7plusDel, Vide, Delai+6, PlusY+2, Ret,
 ~~~~~~~
 
-La première version de ce programme a permis de placer un bon nombre d’animations graphiques dans un microcontrôleur MSP430G2202, qui ne dispose que de 2 Ko de mémoire *flash*.
+La première version de ce programme a permis de placer un bon nombre d’animations graphiques dans un microcontrôleur MSP430G2202, qui ne dispose que de 2 ko de mémoire *flash*.
 
 

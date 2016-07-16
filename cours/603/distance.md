@@ -24,13 +24,13 @@ Les LED infrarouges (IR), associées à des phototransistors, offrent une maniè
 
 Une simple LED IR peut être utilisée comme émetteur. Pour que la liaison fonctionne sans être perturbée par toutes sortes de rayonnements infrarouges, tels que les tubes fluorescents, les signaux d’une télécommande sont modulés à une fréquence bien précise, généralement 38 kHz. La réception se fait alors avec des circuits qui contiennent non seulement un phototransistor, mais également un filtre sélectif réglé sur cette fréquence de 38 kHz. Seul le signal de modulation est alors lu par le microcontrôleur.
 
-![Signaux infrarouges](images/reception-ir.png "Signaux infrarouges"){ width=80% }
+![Signaux infrarouges](images/signaux-ir.svg "Signaux infrarouges"){ width=80% }
 
 Plusieurs protocoles existent pour transmettre l’information, tels que le protocole RC-5 de Philips et protocole japonais appelé souvent protocole NEC. Une solution très simple pour envoyer des données à une enseigne ou un afficheur est alors d’utiliser une télécommande du commerce. Des bibliothèques existent pour lire ces signaux de ces télécommandes avec un Arduino.
 
 Comment gérer la réception des signaux du récepteur infrarouge ? Alors que le microcontrôleur d’une enseigne ou d’un afficheur semble bien occupé par l’affichage des animations, est-il possible de lui confier en plus le décodage de ces signaux ? C’est possible, en utilisant des interruptions sur les flancs du signal sortant du détecteur, puis en mesurant avec un *timer* le temps entre ces flancs.
 
-La portée d’un signal infrarouge peut aller jusqu’à quelques dizaines de mètres. Avec la modulation à 38 kHz, on peut obtenir une très bonne sensibilité, qui rend le système fonctionnel même si l’émetteur ne vise pas le récepteur, grâce à des réflexions sur l’environnement. <!-- Cependant, cette technologie ne doit être utilisée que si l’on peut s’assurer que l’émetteur et le récepteur sont en contact visuel. Ceci peut être une contrainte, puisque la distance est réduite, mais ça peut être un avantage du point de vue de la sécurité. -->
+La portée d’un signal infrarouge peut aller jusqu’à quelques dizaines de mètres. Avec la modulation à 38 kHz, on peut obtenir une très bonne sensibilité, qui rend le système fonctionnel même si l’émetteur ne vise pas le récepteur, grâce à des réflexions sur l’environnement.
 
 ## Ondes radio (RF) ##
 
@@ -46,7 +46,7 @@ Si la liaison est bonne, le signal sortant du récepteur va être l’image du s
 
 Les signaux radio dont la fréquence est autour de quelques centaines de mégahertz ne sont pas très directifs. Mais pour obtenir une portée dépassant quelques dizaines de mètres avec ces modules, il faut bien soigner la réalisation de l’antenne.
 
-D’autres modules radio plus sophistiqués sont disponibles. C’est le cas des modules utilisant le circuit nRF24L01+ de Nordic Semiconductor, proposé à des prix particulièrement bas. Il s’agit d’un émetteur-récepteur dans la bande des 2.4 GHz, piloté par des signaux SPI. <!-- Ils présentent l’avantage d’intégrer un système de gestion des collisions au niveau matériel. -->
+D’autres modules radio plus sophistiqués sont disponibles. C’est le cas des modules utilisant le circuit nRF24L01+ de Nordic Semiconductor, proposé à des prix particulièrement bas. Il s’agit d’un émetteur-récepteur dans la bande des 2.4 GHz, piloté par des signaux SPI. Ils présentent l’avantage d’intégrer un système de gestion des collisions au niveau matériel.
 
 Il existe aussi la possibilité d’obtenir des portées de plusieurs kilomètres tout en respectant les normes de limitation des puissances d’émission. Comment est-ce possible ? Dans une telle transmission, l’émission utilise un spectre étendu et le récepteur pratique une extraction des signaux alors qu’ils ont un niveau inférieur au bruit. Le standard le plus connu est LoRa.
 
@@ -87,12 +87,11 @@ Ces modules contiennent le SoC (*System on Chip*) ESP8266 ainsi qu’une mémoir
 
 ### Modules utilisant le firmware OpenWRT ###
 
-Une solution encore plus avancée est d’utiliser un module comportant assez de mémoire pour faire fonctionner une distribution Linux. C’est le cas des modules LinkIt Smart, qui utilisent le SoC 7688 de MediaTek.<!-- C’était aussi le cas de l’Arduino Yún. -->
-<!-- Comme l’Arduino Yún n’est plus produit et qu’Arduino ne propose plus de solution OpenWRT (à ma connaissance), je pense que c’est mieux d’enlever cet exemple ou de le mettre au passé. -->
+Une solution encore plus avancée est d’utiliser un module comportant assez de mémoire pour faire fonctionner une distribution Linux. C’est le cas des modules LinkIt Smart, qui utilisent le SoC 7688 de MediaTek.
 
 ![Modules LinkIt Smart 7688](images/modules-7688.jpg "Modules LinkIt Smart 7688"){ width=80% }
 
-La distribution la plus souvent utilisée est OpenWRT, qui est optimisée pour les routeurs WiFi. Elle est fournie avec tous les outils Linux de base <!-- Exemple d’outils ??? bash ? ssh ?... -->. Un serveur web est nativement disponible <!-- apache ?... -->. Il est par exemple extrêmement facile d’ajouter une caméra vidéo à un tel système <!-- est-ce que l’on peut utiliser les drivers de Ubuntu (ou d’un autre Linux de bureau) sur OpenWrt ??? si oui, c’est un avantage qu’il faut citer. -->.
+La distribution la plus souvent utilisée est OpenWRT, qui est optimisée pour les routeurs WiFi. Elle est fournie avec tous les outils Linux de base (compilateurs pour différents langages de programmation, serveurs de tout genre, etc.). Un serveur web est minimum est nativement disponible (*uhttpd*), mais d'autres serveurs Web peuvent être installée, comme *lihttpd*. Il est par exemple extrêmement facile d’ajouter une caméra vidéo à un tel système. OpenWRT supporte une gamme de matériel très étendue.
 
 
 ## Réseau GSM ##

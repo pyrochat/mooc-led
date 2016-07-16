@@ -1,4 +1,4 @@
-% Langage interprété spécialisé
+% Langages interprétés spécialisés
 % [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
 % rév 2016/07/09
 
@@ -129,22 +129,27 @@ On voit que des choix ont été faits pour utiliser au mieux les instructions, q
 Il reste à écrire une procédure qui va interpréter notre langage et le traduire en instructions pour un microcontrôleur :
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
-void Exec (unsigned int no) {
+void Exec () {
   uint8_t instr = Programme[pc++]; // lit l'instruction
   if (instr==Fin) { // gère la fin du programme
     pc = 0;
   } else {
-    if (instr & 0x8000) { // attente
+    if (instr & 0x8000) {  // attente
       AttenteMs(10 * (instr & 0x7F));
-    } else { // set intensité
-      if (instr & 0x40) Allume(instr & 0x3F) else Eteint(instr & 0x3F);
+    } else {               // set intensité
+      if (instr & 0x40) {
+        Allume(instr & 0x3F);
+      } else {
+        Eteint(instr & 0x3F);
+      }
     }
   }
-}~~
+}
+~~~~~~~
 <!-- retour au mode normal pour l’éditeur -->
 
 
-## Langages plus complexe ##
+## Langages plus complexes ##
 
 Plusieurs compléments permettent de créer un environnement réellement intéressant pour programmer des enseignes complexes :
 

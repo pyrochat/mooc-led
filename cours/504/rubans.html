@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="nico" />
+  <meta name="author" content="Pierre-Yves Rochat, EPFL" />
+  <title>Rubans de LED</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<h1 class="title">Rubans de LED</h1>
+<div id="header">
+<p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
+<p class="date">rév 2016/07/09</p>
+</div>
+<h2 id="plusieurs-sortes-de-rubans">Plusieurs sortes de rubans</h2>
+<p>On trouve sur le marché plusieurs types de rubans de LED. On distingue principalement les rubans uniformes et les rubans adressables. Les rubans uniformes peuvent être d'une seule couleur fixe. Dans ce cas seule l'intensité peut être modifiée, par une commande en PWM. Ils peuvent aussi être multicolores. Dans ce cas, tout le ruban peut changer de couleur en même temps. Généralement, la commande se fait par un triple PWM, un pour chaque couleur.</p>
+<p>Nous allons nous intéresser ici aux rubans adressables. Chaque pixel du ruban peut alors prendre une couleur indépendamment des autres pixels.</p>
+<h2 id="les-rubans-adressables">Les rubans adressables</h2>
+<p>Plusieurs solutions sont techniquement possibles pour faire varier l'intensité de chaque pixel d'un ruban. Celles qui minimisent le nombre de fils utilisé sont évidemment les plus intéressantes. Il faut forcément deux fils pour alimenter les LED, le Gnd et le Vcc. Est-ce possible d'utiliser un seul fil pour apporter à chaque pixel l'information qui le concerne ?</p>
+<p>Une solution très souvent utilisée présente l'architecture suivante :</p>
+<div class="figure">
+<img src="images/archi.ruban.svg" title="Rubans à 3 fils" alt="Rubans à 3 fils" style="width:90.0%" />
+<p class="caption">Rubans à 3 fils</p>
+</div>
+<p>Alors que les deux fils d'alimentation relient chaque module de pixel, le troisième fil relie la sortie d'un module vers l'entrée d'un autre.</p>
+<h2 id="le-protocole-des-ws280x">Le protocole des WS280x</h2>
+<p>On imagine bien que les données vont être transmises en série. Mais il devient nécessaire de regrouper sur un seul fil les données et l'horloge. Le principe est une horloge asymétrique :</p>
+<div class="figure">
+<img src="images/horloge-asym.svg" title="Horloge asymétrique" alt="Horloge asymétrique" style="width:90.0%" />
+<p class="caption">Horloge asymétrique</p>
+</div>
+<p>Chaque bit est transmis par un cycle d'horloge. Lorsque la durée de la partie haute du signal est plus longue que le durée de la partie basse, le bit transmis est un zéro.</p>
+<p>Dans le cas des circuits de la famille WS280x, un circuit intégré est utilisé pour chaque pixel, composé de trois LED de couleur rouge, verte et bleu. Souvent, les trois LED sont encapsulées dans le même boîtier. On parle alors d'une LED RGB (<em>Red Green Blue</em>).</p>
+<p>Chaque LED est commandée par un signal PWM de 8 bits. Il est donc nécessaire d'envoyer 24 bits pour chaque pixel.</p>
+<h2 id="reset">Reset</h2>
+<p>Pour synchroniser le début de l'envoi d'une nouvelle série de valeurs à tous les pixels du ruban, une attente d'au moins 50 us est nécessaire. Chaque circuit est alors prêt à recevoir 24 bits. L'astuce utilisée est alors la suivante : chaque circuit ne transmet à sa sortie les information qui se présentent à sont entrée qu'après avoir enregistré les 24 premiers bits qui succèdent au Reset.</p>
+<p>La figure suivante explique ce principe :</p>
+<div class="figure">
+<img src="images/horloge-asym.svg" title="Mise en cascade des modules" alt="Mise en cascade des modules" style="width:90.0%" />
+<p class="caption">Mise en cascade des modules</p>
+</div>
+<h2 id="signaux-rapides">Signaux rapides</h2>
+<p>Les contraintes qu'imposent ce circuit sur le timing des signaux rendent difficile sa programmation avec un AVR ou un MSP430. Des solutions ont toutefois été trouvées, e programmant en assembleur, ou encore en utilisant de manière astucieuse le circuit de communication série.</p>
+<p>Avec un processeur ARM, c'est plus facile de respecter les exigence temporelles. Nous allons ici montrer un programme écrit pour un STM32, testé sur une carte Nucleo :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"></code></pre></div>
+<!-- retour au mode normal pour l'éditeur -->
+</body>
+</html>

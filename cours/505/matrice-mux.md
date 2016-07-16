@@ -62,9 +62,9 @@ On voit sur le schéma que le nombre de registres a diminué : dans ce cas, il 
 
 Notons que dans ce montage, tous les signaux sont actifs à zéro. En effet, c’est bien une tension de 0 V qui permet de faire conduire le transistor PNP, en appliquant une tension négative entre sa base et son émetteur. C’est aussi une tension négative à la sortie du registre qui va allumer la LED correspondante sur la ligne sélectionnée.
 
-## Multiplexeur ##
+## Démultiplexeur ou décodeur##
 
-Pour éviter le grand nombre de signaux de sélection des lignes, un multiplexeur est souvent utilisé. Ce circuit combinatoire est aussi appelé *décodeur*. Ses entrées correspondent aux valeurs binaires. Une seule de ses sorties peut être activée à un instant donné. Le circuit intégré 74HC138 est très souvent utilisé :
+Pour éviter le grand nombre de signaux de sélection des lignes, un *démultiplexeur* est souvent utilisé. Ce circuit combinatoire est aussi appelé *décodeur*. Ses entrées correspondent aux valeurs binaires. Une seule de ses sorties peut être activée à un instant donné. Le circuit intégré 74HC138 est très souvent utilisé :
 
 ![Décodeur à 8 sorties 74HC138](images/mux-138.svg "Décodeur à 8 sorties 74HC138"){ width=40% }
 
@@ -108,14 +108,17 @@ uint8_t matrice[4];
 void CyclesMatrice(uint16_t nbCycles) {
   uint16_t n, x, y;
   for (n=0; n<nbCycles; n++) {
-    for (y=0; y<4; y++) { // envoi et affichage des 4 lignes
-      for (x=0; x<8; x++) { // envoi des 8 bits d'une ligne
-        if (matrice[y] & (1<<x) DataClear; else DataSet;
-          SerClockSet; SerClockClear; // envoie un coup d'horloge série
+    for (y=0; y<4; y++) {           // envoi et affichage des 4 lignes
+      for (x=0; x<8; x++) {         // envoi des 8 bits d'une ligne
+        if (matrice[y] & (1<<x) {
+          DataClear;                // un 0 allume les LED
+        } else {
+          DataSet;
         }
+        SerClockSet; SerClockClear; // envoie un coup d'horloge série
       }
-      ParClockSet; ParClockClear; // envoie un coup d'horloge parallèle
-      AttenteLigne(); // affichage de la ligne durant 25 ms
+      ParClockSet; ParClockClear;   // envoie un coup d'horloge parallèle
+      AttenteLigne();               // affichage de la ligne durant 25 ms
     }
   }
 }

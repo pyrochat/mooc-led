@@ -91,7 +91,7 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">Programme pour un AVR</h1>
-<div style="top:5.5cm; left:2cm; font-size:30pt;">
+<div style="top:5.5cm; left:2cm; font-size:30pt; width:57cm">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -126,7 +126,7 @@ int main () {
 <section>
 <!-- A -->
 <h1 class="en_tete">Programme pour un AVR</h1>
-<div style="top:8cm; left:2cm; font-size:30pt;">
+<div style="top:8cm; left:2cm; font-size:30pt; width:57cm">
 ~~~~~~~ { .c .numberLines startFrom="8" }
     ...
 	secondes++;

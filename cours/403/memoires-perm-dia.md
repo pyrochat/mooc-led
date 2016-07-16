@@ -69,7 +69,7 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">EEPROM : programmation</h1>
-<div style="top:7cm; left:2cm; font-size:36pt;">
+<div style="top:7cm; left:2cm; font-size:36pt; width:57cm">
 ~~~~~~~ { .c .numberLines startFrom="1" }
   // Lecture en EEPROM :
   EEAR = adresse; // l'adresse est donnée
@@ -105,7 +105,7 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">FLASH : programmation</h1>
-<div style="top:7cm; left:2cm; font-size:36pt;">
+<div style="top:7cm; left:2cm; font-size:36pt; width:57cm">
 ~~~~~~~ { .c .numberLines startFrom="1" }
   // Lecture en Flash :
   uint8_t *pointeur; // pointeur dans la Flash

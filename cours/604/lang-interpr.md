@@ -33,7 +33,7 @@ En observant la taille d’un petit programme sur Energia et en ajoutant des app
 * `digitalWrite()` prend 8 octets en mémoire,
 * `delay()` prend 10 octets en mémoire.
 
-En prenant par exemple un microcontrôleur MSP430G2213, qui dispose d’une mémoire *flash* de 2 kB (2048 octets), on sera limité à moins de 80 pas de programme, constitués de paires `digitalWrite() – delay()`. En constatant qu’un simple chenillard dans les deux sens sur 8 bits en utilise déjà 16, c’est réellement limitatif !
+En prenant par exemple un microcontrôleur MSP430G2213, qui dispose d’une mémoire *flash* de 2 ko (2048 octets), on sera limité à moins de 80 pas de programme, constitués de paires `digitalWrite() – delay()`. En constatant qu’un simple chenillard dans les deux sens sur 8 bits en utilise déjà 16, c’est réellement limitatif !
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
 loop() {

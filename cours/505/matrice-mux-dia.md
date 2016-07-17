@@ -234,11 +234,11 @@ void Ping() {
 
     EteintPoint(x,y);
     x+=sensX;
-    if(x==(MaxX-1)) sensX=(-1);
-    if(x==0) sensX=1;
+    if(x==(MaxX-1)) { sensX=(-1); }
+    if(x==0) { sensX=1; }
     y+=sensY;
-    if(y==(MaxY-1)) sensY=(-1);
-    if(y==0) sensY=1;
+    if(y==(MaxY-1)) { sensY=(-1); }
+    if(y==0) { sensY=1; }
   } while (!((x==0)&&(y==0)));
 }
 ~~~~~~~

@@ -105,7 +105,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="ot">#define UnCourt WS28On;WS28On;WS28On;WS28On;WS28On;WS28On;WS28Off;</span>
 <span class="ot">#define ZeroCourt WS28On;WS28Off;WS28Off;WS28Off;WS28Off;WS28Off;WS28Off;</span></code></pre></div>
-<p>Les versions <code>UnCourt</code> et <code>ZeroCourt</code> sont volontairement plus courtes, pour pouvoir compléter leur durée par une instruction.</p>
+<p>Le temps de ces successions de <em>bit set</em> et de <em>bit clear</em>, additionné au temps de l'instruction de test de la boucle d'envoi des bits, va correspondre aux spécifications du fabricant. Leur nombre a été déterminé expérimentalement, avec un oscilloscope. Les versions <code>UnCourt</code> et <code>ZeroCourt</code> sont volontairement plus courtes, pour pouvoir compléter leur durée par une instruction.</p>
 <p>Un tableau va contenir les valeurs des intensités des trois LED de chaque pixel. Les 24 bits vont être mis dans un entier de 32 bits, pour optimiser l’accès au tableau :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="co">// Contenu du ruban :</span>
 <span class="ot">#define LgRuban 50</span>
@@ -169,7 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   }
 }</code></pre></div>
 <p>Toute interruption qui pourrait se produire durant cette boucle perturberait les temps de l’envoi des bits. Une instruction va donc désactiver les interruptions au début du cycle de l’envoi des pixels à tout le ruban, puis les activer à nouveau dans la période qui correspond au <em>reset</em> des WS2811.</p>
-<p>Il est possible de créer des animations sur les LED. Dans l’exemple suivant, une variable <code>temps</code> va compter le temps qui s’écoule et comptant les cycles de raffraîchissement du ruban. En fonction du temps, les couleurs des LED peuvent être modifiées :</p>
+<p>Il est possible de créer des animations sur les LED. Dans l’exemple suivant, une variable <code>temps</code> va compter le temps qui s’écoule et comptant les cycles de rafraîchissement du ruban. En fonction du temps, les couleurs des LED peuvent être modifiées :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">    temps++; <span class="co">// comptage du temps</span>
 
     <span class="co">// Clignotement des LED 0 et 30 :</span>

@@ -97,7 +97,7 @@ Pierre-Yves Rochat
 <!-- 567 --><div style="top:23cm; left:2.65cm; font-size:48pt; width:57cm; line-height: 1.2;">
 <!-- 567 -->* Nécessite une application
 <!-- 67 -->* Sur PC : Windows, OS X, Linux
-<!-- 7 -->* Sur *smartphones* : Android, iOS, Windows 10
+<!-- 7 -->* Sur *smartphones* : Android, Windows 10 (plus difficile sur iOS)
 <!-- 567 --></div>
 </section>
 

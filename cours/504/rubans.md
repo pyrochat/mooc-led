@@ -79,7 +79,7 @@ La mise à *1* et à *0* du signal se fait avec des *bit set*, que le compilat
 #define ZeroCourt WS28On;WS28Off;WS28Off;WS28Off;WS28Off;WS28Off;WS28Off;
 ~~~~~~~
 
-Les versions `UnCourt` et `ZeroCourt` sont volontairement plus courtes, pour pouvoir compléter leur durée par une instruction.
+Le temps de ces successions de *bit set* et de *bit clear*, additionné au temps de l'instruction de test de la boucle d'envoi des bits, va correspondre aux spécifications du fabricant. Leur nombre a été déterminé expérimentalement, avec un oscilloscope. Les versions `UnCourt` et `ZeroCourt` sont volontairement plus courtes, pour pouvoir compléter leur durée par une instruction.
 
 Un tableau va contenir les valeurs des intensités des trois LED de chaque pixel. Les 24 bits vont être mis dans un entier de 32 bits, pour optimiser l’accès au tableau :
 
@@ -154,7 +154,7 @@ int main(void) { // Programme principal
 
 Toute interruption qui pourrait se produire durant cette boucle perturberait les temps de l’envoi des bits. Une instruction va donc désactiver les interruptions au début du cycle de l’envoi des pixels à tout le ruban, puis les activer à nouveau dans la période qui correspond au *reset* des WS2811.
 
-Il est possible de créer des animations sur les LED. Dans l’exemple suivant, une variable `temps` va compter le temps qui s’écoule et comptant les cycles de raffraîchissement du ruban. En fonction du temps, les couleurs des LED peuvent être modifiées :
+Il est possible de créer des animations sur les LED. Dans l’exemple suivant, une variable `temps` va compter le temps qui s’écoule et comptant les cycles de rafraîchissement du ruban. En fonction du temps, les couleurs des LED peuvent être modifiées :
 
 ~~~~~~~ { .c }
     temps++; // comptage du temps

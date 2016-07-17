@@ -62,6 +62,13 @@ Pierre-Yves Rochat
 
 <section>
 <!-- A -->
+<h1 class="en_tete">Commande par transistors N-MOS</h1>
+<img src="./images/nmos-ac.svg" style="top:7cm; left:10cm; width:34cm;" />
+</section>
+
+
+<section>
+<!-- A -->
 <h1 class="en_tete">Rubans adressables</h1>
 <div style="font-size:50pt; left:3cm; width:57cm; top:7cm;">
 * Chaque LED est indépendante pour sa couleur et son intensité

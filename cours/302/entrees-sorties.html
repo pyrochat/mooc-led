@@ -77,7 +77,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li><strong>DDRA</strong> <em><strong>D</strong>ata <strong>D</strong>irection <strong>R</strong>egister</em> : registre de direction. C’est le registre qui précise pour chaque broche si elle est une entée ou une sortie.</li>
 <li><strong>PORTA</strong> : le registre de sortie. Lorsqu’une broche est mise en sortie, c’est ce registre qui précise l’état de la sortie, <em>0</em> ou <em>1</em>.</li>
-<li><strong>PINA</strong> : indique à tout moment l’état de chaque broche. Ce n’est pas à proprement parlé un registre, vu qu’il n’est possible que de lire sa valeur.</li>
+<li><strong>PINA</strong> : indique à tout moment l’état de chaque broche. Ce n’est pas à proprement parler un registre, vu qu’il n’est possible que de lire sa valeur.</li>
 </ul>
 <p>De la même manière, DDRB, PORTB et PINB sont disponible pour le PORT B.</p>
 <p>Voici un tableau qui indique le rôle d’une broche en fonction des valeurs dans DDRA et dans PORTA d’un AVR :</p>
@@ -100,6 +100,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <p>Le MSP430 dispose donc d’une possibilité de placer une résistance de tirage vers le bas (<em>pull-down</em>). C’est la valeur du bit de P1OUT qui détermine si la résistance est vers le haut ou vers le bas.</p>
 <p>Seules cinq combinaisons ont été décrites dans ce tableau. Les trois autres combinaisons n’ont pas lieu d’être utilisées.</p>
+<p>Il faut noter que les entrées d'un microcontrôleur ne doivent pas recevoir une tension supérieure à la tension d'alimentation. Les diodes de protection deviendraient alors conductrices, ce qui n'est pas autorisé. Un soin particulier doit donc être pris lors de l'utilisation de dispositifs n'étant pas alimentés par le même tension. C'est souvent le cas lorsqu'on relie par exemple un Arduino avec un module alimenté en 3.3 V.</p>
 <h2 id="lecture-et-écriture-sur-un-port">Lecture et écriture sur un port</h2>
 <p>Au moment du <em>reset</em>, les registres DDR ou P1DIR prennent la valeur <em>0</em>. En d’autres termes, une broche est par défaut une entrée. Rien de plus n’est à effectuer pour l’utiliser comme telle.</p>
 <p>Il faudra écrire des <em>1</em> dans les bits des registres DDR ou P1DIR correspondant aux broches dont on souhaite qu’elles soient des sorties. Par exemple, l’instruction :</p>

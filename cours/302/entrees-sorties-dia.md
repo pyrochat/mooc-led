@@ -133,7 +133,7 @@ Pierre-Yves Rochat
 <!-- 345678 -->* Écriture : `P1OUT = valeur;`
 </div>
 <!-- 45678 --><div style="top: 15cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
-<!-- 45678 -->* Comment agir sur un bit à la fois ?
+<!-- 45678 -->* Comment agir sur un seul bit à la fois ?
 <!-- 5678 -->* Grâce aux opérateurs logique du C !
 <!-- 45678 --></div>
 <!-- 678 --><div style="top: 22cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">

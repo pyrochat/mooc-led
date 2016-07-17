@@ -114,11 +114,7 @@ Sur la figure matrice-mux-4x8-2all.svg, ça serait bien de dessiner avec un trai
 <p>Le fait que les sorties soient actives à zéro convient bien pour la commande des transistors PNP. L’entrée <strong>OE</strong> (<em>Output Enable</em>) permet d’activer l’affichage.</p>
 <h2 id="courant-nominal-et-courant-maximal">Courant nominal et courant maximal</h2>
 <p>Le multiplexage offre une diminution du nombre de composants nécessaires à l’électronique de commande, mais il diminue l’intensité lumineuse de l’afficheur. Cet effet peut être partiellement compensé en augmentant le courant dans les LED. En effet, on peut jouer sur le fait que le courant nominal des LED peut être dépassé lorsque ce courant n’est pas permanent, ce qui est toujours le cas sur un afficheur multiplexé. Le courant pouvant aller jusqu’à une valeur proche du <strong>courant maximal</strong> accepté par la LED, l’intensité instantanée est sensiblement augmentée. On utilise très souvent 150 % du courant nominal.</p>
-<!--
-Pourquoi est-ce qu’on augmente pas la fréquence de rafraîchissement pour palier le problème de luminosité ? Finalement la fréquence de 100 Hz correspond à une limite de l’électronique d’il y a 20 ou 30 ans qui se basait sur la fréquence du réseau électrique. Aujourd’hui on peut certainement faire mieux. Juste ou faux ?
-
-Question corollaire : quelle est la fréquence max qu’une LED peut accepter ?
--->
+<p>Il faudra toutefois être prudent lors de la mise au point logicielle. Une erreur pourrait laisser les LED avec le courant maximal durant un temps trop long, par exemple en permanence. S'il n'est pas possible d'avoir un circuit avec des résistances plus grandes pour la mise au point, on pourra chercher à diminuer la tension d'alimentation, ce qui fera baisser le courant.</p>
 <h2 id="comparaisons-des-architectures">Comparaisons des architectures</h2>
 <p>Un multiplexage par deux ne diminue que très peu l’intensité lumineuse. Il était très souvent utilisé dans les modules constituant les panneaux des écrans vidéos géants. Il divise par deux le nombre de registres, mais nécessite l’usage d’amplificateurs sur les anodes. Avec la baisse du prix des registres, cette solution est de moins en moins utilisée.</p>
 <p>Par contre, les valeurs 4, 8 et 16 se rencontrent fréquemment, vu que le prix de revient d’un module diminue lorsque la valeur du multiplexage augmente. Mais il faut bien rester conscient de l’incidence du multiplexage sur la luminosité de l’afficheur, en particulier lorsque celui-ci doit être utilisé à l’extérieur (<em>outdoor</em>).</p>
@@ -196,11 +192,11 @@ Question corollaire : quelle est la fréquence max qu’une LED peut accepter 
     CyclesMatrice(DELAI); <span class="co">// l&#39;affichage fait office de délai</span>
     EteintPoint(x,y);
     x+=sensX;
-    <span class="kw">if</span>(x==(MaxX<span class="dv">-1</span>)) sensX=(-<span class="dv">1</span>);
-    <span class="kw">if</span>(x==<span class="dv">0</span>) sensX=<span class="dv">1</span>;
+    <span class="kw">if</span>(x==(MaxX<span class="dv">-1</span>)) { sensX=(-<span class="dv">1</span>); }
+    <span class="kw">if</span>(x==<span class="dv">0</span>) { sensX=<span class="dv">1</span>; }
     y+=sensY;
-    <span class="kw">if</span>(y==(MaxY<span class="dv">-1</span>)) sensY=(-<span class="dv">1</span>);
-    <span class="kw">if</span>(y==<span class="dv">0</span>) sensY=<span class="dv">1</span>;
+    <span class="kw">if</span>(y==(MaxY<span class="dv">-1</span>)) { sensY=(-<span class="dv">1</span>); }
+    <span class="kw">if</span>(y==<span class="dv">0</span>) { sensY=<span class="dv">1</span>; }
   } <span class="kw">while</span> (!((x==<span class="dv">0</span>)&amp;&amp;(y==<span class="dv">0</span>)));
 }</code></pre></td></tr></table></div>
 <!-- retour au mode normal pour l'éditeur -->

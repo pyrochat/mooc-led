@@ -55,13 +55,13 @@ Il existe aussi la possibilité d’obtenir des portées de plusieurs kilomètre
 
 Le standard Bluetooth présente plusieurs avantages :
 
-* C’est un standard disponible sur beaucoup de systèmes informatiques : *smartphones*, tablettes et PC.
+* C’est un standard disponible sur beaucoup de systèmes informatiques : *smartphones*, tablettes et PC. 
 * Il est économe en énergie, surtout dans la version Bluetooth 4 *Low Energy*. Mais cet avantage n’est pas déterminant pour une enseigne ou un afficheur, qui consomment eux-mêmes beaucoup de courant.
 * La confidentialité des données est assurée par des mots de passe et le cryptage des données transmises.
 
 Mais si la couche d’établissement de la communication et de la transmission des données est standardisée, le contenu des données est libre. Il est donc nécessaire de faire fonctionner un logiciel dédié sur le terminal utilisé (*smartphone*, tablette, ordinateur) .
 
-Les systèmes d’exploitation d’ordinateurs (Windows, OS X, Linux...) et de périphériques mobiles (Android, iOS, Windows 10...) permettent tous d’écrire facilement des applications utilisant la communication Bluetooth. Le désavantage de cette approche est que les applications doivent être adaptées, voire complètement réécrites pour chaque système d’exploitation. Ce désavantage est un frein sérieux au développement des applications Bluetooth.
+Les systèmes d’exploitation d’ordinateurs (Windows, OS X, Linux...) et de périphériques mobiles (Android, Windows 10, mais pas forcément iOS...) permettent généralement d’écrire facilement des applications utilisant la communication Bluetooth. Le désavantage de cette approche est que les applications doivent être adaptées, voire complètement réécrites pour chaque système d’exploitation. Ce désavantage est un frein sérieux au développement des applications Bluetooth.
 
 
 ## WiFi ##

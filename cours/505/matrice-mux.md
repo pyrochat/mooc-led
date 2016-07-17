@@ -74,11 +74,7 @@ Le fait que les sorties soient actives à zéro convient bien pour la commande d
 
 Le multiplexage offre une diminution du nombre de composants nécessaires à l’électronique de commande, mais il diminue l’intensité lumineuse de l’afficheur. Cet effet peut être partiellement compensé en augmentant le courant dans les LED. En effet, on peut jouer sur le fait que le courant nominal des LED peut être dépassé lorsque ce courant n’est pas permanent, ce qui est toujours le cas sur un afficheur multiplexé. Le courant pouvant aller jusqu’à une valeur proche du **courant maximal** accepté par la LED, l’intensité instantanée est sensiblement augmentée. On utilise très souvent 150 % du courant nominal.
 
-<!--
-Pourquoi est-ce qu’on augmente pas la fréquence de rafraîchissement pour palier le problème de luminosité ? Finalement la fréquence de 100 Hz correspond à une limite de l’électronique d’il y a 20 ou 30 ans qui se basait sur la fréquence du réseau électrique. Aujourd’hui on peut certainement faire mieux. Juste ou faux ?
-
-Question corollaire : quelle est la fréquence max qu’une LED peut accepter ?
--->
+Il faudra toutefois être prudent lors de la mise au point logicielle. Une erreur pourrait laisser les LED avec le courant maximal durant un temps trop long, par exemple en permanence. S'il n'est pas possible d'avoir un circuit avec des résistances plus grandes pour la mise au point, on pourra chercher à diminuer la tension d'alimentation, ce qui fera baisser le courant.
 
 
 ## Comparaisons des architectures ##
@@ -138,11 +134,11 @@ void Ping() {
     CyclesMatrice(DELAI); // l'affichage fait office de délai
     EteintPoint(x,y);
     x+=sensX;
-    if(x==(MaxX-1)) sensX=(-1);
-    if(x==0) sensX=1;
+    if(x==(MaxX-1)) { sensX=(-1); }
+    if(x==0) { sensX=1; }
     y+=sensY;
-    if(y==(MaxY-1)) sensY=(-1);
-    if(y==0) sensY=1;
+    if(y==(MaxY-1)) { sensY=(-1); }
+    if(y==0) { sensY=1; }
   } while (!((x==0)&&(y==0)));
 }
 ~~~~~~~

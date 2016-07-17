@@ -1,5 +1,5 @@
 titre:
-    - "Rubans de LEDs"
+    - "Rubans de LED adressables"
 type:             Théorie
 niveau:           base
 auteur:          
@@ -9,6 +9,5 @@ code:             rubans
 url:
     cours-html:   rubans.html
     cours-pdf:    rubans.pdf
-url1:
     dias-video:   rubans-dia.pdf
     dias-compact: rubans-dia-compact.pdf

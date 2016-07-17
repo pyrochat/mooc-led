@@ -120,7 +120,7 @@ Version de travail du 2016/01/21
 **5.1** **Les Interruptions**  (YT) [cours-html](../501/inter.html) [cours-pdf](../501/inter.pdf) [dias-compact](../501/inter-dia-compact.pdf)   
 **5.2** **Les timers**  (YT) [cours-html](../502/timers.html) [cours-pdf](../502/timers.pdf)   
 **5.3** **Programmation multi-tâche**  (PYR)   
-**5.4** **Rubans de LEDs**  (PYR) [cours-html](../504/rubans.html) [cours-pdf](../504/rubans.pdf)   
+**5.4** **Rubans de LED adressables**  (PYR) [cours-html](../504/rubans.html) [cours-pdf](../504/rubans.pdf)   
 **5.5** **Les afficheurs matriciels multiplexés**  (PYR) [cours-html](../505/matrice-mux.html) [cours-pdf](../505/matrice-mux.pdf) [dias-compact](../505/matrice-mux-dia-compact.pdf)   
 **5.6** **[Logique] Les FPGA**  (MLN) [dias-compact](../506/fpga-dia-compact.pdf)   
 **5.21** *Pratique :* Récepteur de télécommande IR (?)   

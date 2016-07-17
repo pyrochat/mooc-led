@@ -283,6 +283,7 @@ Remarque : ça serait bien que tu parles de la procédure `_delay_ms()`. C’es
 <span class="ot">#define Libre2 0xE </span><span class="co">// instructions non utilisées</span>
 <span class="ot">#define Libre1 0xF</span></code></pre></div>
 <!-- retour au mode normal pour l’éditeur -->
+<p>A noter qu'on aurait pu utiliser une notation plus sûre : <code>#define DrH(x) (0x30+((x)&amp;0x0f))</code>.</p>
 <p>Voici un exemple d’animation. Attention, c’est comme l’assembleur : il faut un peu de pratique pour s’y retrouver !</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"> Label+Croix7x7, <span class="co">// Affiche une croix 7x7 (1/4 de la surface), curseur courant</span>
  PlusX<span class="dv">+2</span>,

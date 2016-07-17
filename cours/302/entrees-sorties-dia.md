@@ -29,9 +29,9 @@ Pierre-Yves Rochat
 <h1 class="en_tete">Les entrées-sorties</h1>
 <div class="liste_demi" style="font-size:48pt; left:35cm; width:26.0cm; top:8cm;">
 * Rôle des broches en entrée OU en sorties
-* Ports et resistres sur AVR et MSP430
+* Ports et registres sur AVR et MSP430
 * Opérations logiques sur champs de bits
-* Ecritures des constantes
+* Écritures des constantes
 </div>
 </section>
 
@@ -43,14 +43,14 @@ Pierre-Yves Rochat
 * GPIO : _**G**eneral **P**urpose **I**nput **O**utput_
 </div>
 <!-- 23456 --><div style="top: 11cm; left: 3cm; font-size: 48pt;">
-<!-- 23456 -->* Arduino : choix par *pinMode()*
-<!-- 23456 -->* Lecture par *digitalRead()*
-<!-- 23456 -->* Ecriture par *digitalWrite()*
+<!-- 23456 -->* Arduino : choix par `pinMode()`
+<!-- 23456 -->* Lecture par `digitalRead()`
+<!-- 23456 -->* Écriture par `digitalWrite()`
 <!-- 3456 -->* Simple... mais pas toujours optimal
 <!-- 23456 --></div>
 <!-- 456 --><div style="top: 23cm; left: 3cm; font-size: 48pt;">
 <!-- 456 -->* Accès à une seule broche à la fois
-<!-- 56 -->* Temps d'exécution important
+<!-- 56 -->* Temps d’exécution important
 <!-- 6 -->* Taille mémoire peu optimale
 <!-- 456 --></div>
 </section>
@@ -66,8 +66,8 @@ Pierre-Yves Rochat
 </div>
 <!-- 3456 --><img src="./images/poussoir-tirage.svg" style="top:20cm; left:3cm; width:39cm;">
 <!-- 56 --><div style="top: 15cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
-<!-- 56 -->* Sortie à '0'
-<!-- 6 -->* Sortie à '1'
+<!-- 56 -->* Sortie à *0*
+<!-- 6 -->* Sortie à *1*
 <!-- 56 --></div>
 </section>
 
@@ -76,16 +76,16 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Les ports et leurs registres</h1>
 <div style="top: 7cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
-* Les broches sont regroupées dans des **ports**
-<!-- 2345678 -->* Les ports ont souvent 8 bits, par fois 16 ou 32 bits
+* Les broches sont regroupées par **ports**
+<!-- 2345678 -->* Les ports ont souvent 8 bits, parfois 16 ou 32 bits
 <!-- 345678 -->* Un port peut être incomplet sur un modèle donné de microcontrôleur
 <!-- 45678 -->* Les noms des ports dépendent des familles de microcontrôleurs
 </div>
 <!-- 5678 --><div style="top: 18cm; left: 3cm; font-size: 48pt;">
 <!-- 5678 -->* On accède aux broches et à leur rôle par des **registres**
-<!-- 678 -->* **PIC** : PORTA - TRIS
-<!-- 78 -->* **AVR** : PORTA - DDRA - PINA
-<!-- 8 -->* **MSP430** : P1DIR - P1OUT - P1IN -P1REN
+<!-- 678 -->* **PIC** : PORTA — TRIS
+<!-- 78 -->* **AVR** : PORTA — DDRA — PINA
+<!-- 8 -->* **MSP430** : P1DIR — P1OUT — P1IN — P1REN
 <!-- 5678 --></div>
 </section>
 
@@ -94,8 +94,8 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Les registres sur les AVR</h1>
 <div style="top: 7cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
-* Sur les AVR, les ports s’appellent PORT A, PORT B, ...
-<!-- 23456 -->* Les 8 broches du PORT A s’appellent PA0, PA1... PA7
+* Sur les AVR, les ports s’appellent PORTA, PORTB, ...
+<!-- 23456 -->* Les 8 broches du PORTA s’appellent PA0, PA1... PA7
 </div>
 <!-- 3456 --><div style="top: 12cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
 <!-- 3456 -->3 registres sont utilisés pour piloter chaque port :
@@ -134,18 +134,18 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Lecture et écriture sur un port</h1>
 <div style="top: 7cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
-* Initialisations : `P1DIR = 0b01000001;`
-<!-- 2345678 -->* Lecture : `variable = P1IN;`
-<!-- 345678 -->* Ecriture : `P1OUT = valeur;`
+* Initialisations : `P1DIR = 0b01000001;`
+<!-- 2345678 -->* Lecture : `variable = P1IN;`
+<!-- 345678 -->* Écriture : `P1OUT = valeur;`
 </div>
 <!-- 45678 --><div style="top: 15cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
 <!-- 45678 -->* Comment agir sur un bit à la fois ?
 <!-- 5678 -->* Grâce aux opérateurs logique du C !
 <!-- 45678 --></div>
 <!-- 678 --><div style="top: 22cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
-<!-- 678 -->* Le **OU** logique : **|**
-<!-- 78 -->* Le **ET** logique :  **&**
-<!-- 8 -->* L’**inversion** logique : **~**
+<!-- 678 -->* Le **OU** logique : **|**
+<!-- 78 -->* Le **ET** logique :  **&**
+<!-- 8 -->* L’**inversion** logique : **~**
 <!-- 678 --></div>
 </section>
 
@@ -158,7 +158,7 @@ Pierre-Yves Rochat
 </div>
 <!-- 23 --><img src="./images/set-bit.svg" style="top:11cm; left:7cm; width:40cm;">
 <!-- 3 --><div style="top: 27cm; left: 7cm; font-size: 48pt; line-height: 1.2; width:58cm;">
-<!-- 3 -->* Egalement sur plusieurs bits : `P1OUT |= 0b01000001;`
+<!-- 3 -->* Également sur plusieurs bits : `P1OUT |= 0b01000001;`
 <!-- 3 --></div>
 </section>
 
@@ -171,7 +171,7 @@ Pierre-Yves Rochat
 </div>
 <!-- 23 --><img src="./images/clear-bit.svg" style="top:11cm; left:7cm; width:40cm;">
 <!-- 3 --><div style="top: 27cm; left: 7cm; font-size: 48pt; line-height: 1.2; width:58cm;">
-<!-- 3 -->* Egalement sur plusieurs bits : `P1OUT &= 0b10111101;`
+<!-- 3 -->* Également sur plusieurs bits : `P1OUT &= 0b10111101;`
 <!-- 3 --></div>
 </section>
 
@@ -186,28 +186,28 @@ Pierre-Yves Rochat
 <!-- 456 -->* `P1OUT |= (1<<6);`
 </div>
 <!-- 56 --><div style="top: 18cm; left: 7cm; font-size: 48pt; line-height: 1.2; width:58cm;">
-<!-- 56 -->* Avec l'opérateur d'inversion : `P1OUT &=~(1<<6);`
+<!-- 56 -->* Avec l’opérateur d’inversion : `P1OUT &=~(1<<6);`
 <!-- 56 --></div>
 <!-- 6 --><div style="top: 25cm; left: 7cm; font-size: 48pt; line-height: 1.2; width:58cm;">
-<!-- 6 -->* **_Set bit_** : `P1OUT |= (1<<6);`
-<!-- 6 -->* **_Clear bit_** : `P1OUT &=~(1<<6);`
+<!-- 6 -->* **_Set bit_** : `P1OUT |= (1<<6);`
+<!-- 6 -->* **_Clear bit_** : `P1OUT &=~(1<<6);`
 <!-- 6 --></div>
 </section>
 
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Inversion d'un bit par OU exclusif</h1>
+<h1 class="en_tete">Inversion d’un bit par OU exclusif</h1>
 <div style="top: 7cm; left: 7cm; font-size: 48pt; line-height: 2; width:58cm;">
-* Le C offre un opérateur pour le OU exclusif : **^**
-<!-- 2 -->* `P1OUT ^= (1<<6);` : inverse le bit 6
+* Le C offre un opérateur pour le OU exclusif : `^`
+<!-- 2 -->* `P1OUT ^= (1<<6);` : inverse le bit 6
 </div>
 </section>
 
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Utilisations de #define</h1>
+<h1 class="en_tete">Utilisations de <code>#define</code></h1>
 <div style="top:6.5cm; left:2cm; font-size:48pt; width:58cm; line-height: 1.8;">
 ~~~~~~~~~~~~~~~~ {.C  .numberLines}
  #define ClockSet P1OUT |= (1<<5)
@@ -225,10 +225,10 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Les entrées-sorties</h1>
 <div class="liste_demi" style="font-size:48pt; left:31cm; width:28cm; top:8cm; line-height: 1.8;">
-* Rôle des broches en entrée OU en sorties
-* Ports et resistres sur AVR et MSP430
+* Rôle des broches en entrée **ou** en sortie
+* Ports et registres sur AVR et MSP430
 * Opérations logiques sur champs de bits
-* Ecritures des constantes
+* Écritures des constantes
 </div>
 </section>
 

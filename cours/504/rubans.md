@@ -95,9 +95,9 @@ Le programme principal initialise les périphériques par l’intermédiaire de 
 La boucle principale du programme envoie, pour chaque pixels, les 24 bits. Lors du 23^^e^^ bit, le pointeur est incrémenté. L’usage des valeurs courtes de l’envoi des bits est utilisée pour compenser le temps de l’incrémentation. Lors du 24^^e^^ bit, les versions courtes sont aussi utilisées, cette fois pour tenir compte du saut pour le retour au début de la boucle.
 
 ~~~~~~~ { .c }
-int main(void) { // Programme principal :
+int main(void) { // Programme principal
   HAL_Init(); // Initialisation de la librairie Hardware Level
-  SystemClock_Config(); // Configure l’horloge système
+  SystemClock_Config(); // Configure l'horloge système
   MX_GPIO_Init(); // Initialise les périphériques
   PORT_WS2811->MODER |= (0b01 << (BIT_WS2811*2)); // broche en sortie
 
@@ -160,14 +160,14 @@ Il est possible de créer des animations sur les LED. Dans l’exemple suivant, 
 ~~~~~~~ { .c }
     temps++; // comptage du temps
 
-    // Clignotement des la LED 0 et 30 :
+    // Clignotement des LED 0 et 30
     if (temps==500) {
         Ruban[30] = Ruban[0] = 0xFFFFFF;
     }
     if (temps==1000) {
         temps=0; Ruban[30] = Ruban[0] = 0;
     }
-    // Changement progressif de la couleur de le LED 47 :
+    // Changement progressif de la couleur de la LED 47
     Ruban[47]++;
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->

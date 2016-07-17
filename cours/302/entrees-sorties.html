@@ -172,8 +172,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <!-- retour au mode normal pour l’éditeur -->
 <p>On pourra se souvenir que :</p>
 <ul>
-<li><code>|=</code> est l’opération de mise à <em>1</em> d’un bit (<em>Set bit</em> en anglais).</li>
-<li><code>&amp;=~</code> est l’opération de mise à <em>0</em> d’un bit (<em>Clear bit</em> en anglais).</li>
+<li><code>|=</code> est l’opération de mise à <em>1</em> d’un bit (<em>bit set</em> en anglais).</li>
+<li><code>&amp;=~</code> est l’opération de mise à <em>0</em> d’un bit (<em>bit clear</em> en anglais).</li>
 </ul>
 <p>Exemples :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1OUT |= (<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>); <span class="co">// set bit</span>
@@ -183,7 +183,7 @@ P1OUT &amp;=~(<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>);  <spa
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>);</code></pre></div>
 <p>inverse l’état de la broche P1.6 : si elle était à <em>0</em>, elle passera à <em>1</em>, si elle était à <em>1</em>, elle passera à <em>0</em>. Le terme anglais <em>toggle</em> est souvent utilisé. <!-- retour au mode normal pour l’éditeur --></p>
 <h2 id="utilisation-du-define">Utilisation du #define</h2>
-<p>Pour rendre encore plus lisible un programme, on utilisera très souvent la définition de constantes en C par un <code>#define</code>. Il s’agit plus exactement d’un ordre de traduction donné au précompilateur.</p>
+<p>Pour rendre encore plus lisible un programme, on utilisera très souvent la définition de constantes en C par un <code>#define</code>. Il s’agit plus exactement d’un ordre de traduction donné au pré-processeur.</p>
 <p>Voici quelques exemples :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define ClockSet P1OUT |= (1&lt;&lt;5) </span><span class="co">// active le bit de rang 5, utilisé pour une horloge</span>
 <span class="ot">#define ClockClear P1OUT &amp;=~(1&lt;&lt;5) </span><span class="co">// désactive l’horloge</span>

@@ -18,17 +18,11 @@
 <!-- def A --></div>
 <!-- A -->
 <h1 class="en_tete">Les entrées-sorties</h1>
-<div style="top:6.5cm; left:35cm; width:23cm; text-align: right;  font-size:48pt; font-family: Impact, sans-serif;">
+<div style="top:6.5cm; left:31cm; width:23cm; font-size:48pt; font-family: Impact, sans-serif;">
 Pierre-Yves Rochat
 </div>
-</section>
-
-
-<section>
-<!-- A -->
-<h1 class="en_tete">Les entrées-sorties</h1>
-<div class="liste_demi" style="font-size:48pt; left:35cm; width:26.0cm; top:8cm;">
-* Rôle des broches en entrée OU en sorties
+<div class="liste_demi" style="font-size:48pt; left:31cm; width:28cm; top:12cm; line-height: 1.6;">
+* Rôle des broches en entrée et en sorties
 * Ports et registres sur AVR et MSP430
 * Opérations logiques sur champs de bits
 * Écritures des constantes
@@ -38,7 +32,7 @@ Pierre-Yves Rochat
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Broches en entrée OU en sorties</h1>
+<h1 class="en_tete">Broches en entrée et en sorties</h1>
 <div style="top: 7cm; left: 3cm; font-size: 48pt;">
 * GPIO : _**G**eneral **P**urpose **I**nput **O**utput_
 </div>
@@ -189,8 +183,8 @@ Pierre-Yves Rochat
 <!-- 56 -->* Avec l’opérateur d’inversion : `P1OUT &=~(1<<6);`
 <!-- 56 --></div>
 <!-- 6 --><div style="top: 25cm; left: 7cm; font-size: 48pt; line-height: 1.2; width:58cm;">
-<!-- 6 -->* **_Set bit_** : `P1OUT |= (1<<6);`
-<!-- 6 -->* **_Clear bit_** : `P1OUT &=~(1<<6);`
+<!-- 6 -->* **_bit set_** : `P1OUT |= (1<<6);`
+<!-- 6 -->* **_bit clear_** : `P1OUT &=~(1<<6);`
 <!-- 6 --></div>
 </section>
 
@@ -225,7 +219,7 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Les entrées-sorties</h1>
 <div class="liste_demi" style="font-size:48pt; left:31cm; width:28cm; top:8cm; line-height: 1.8;">
-* Rôle des broches en entrée **ou** en sortie
+* Rôle des broches en entrée et en sortie
 * Ports et registres sur AVR et MSP430
 * Opérations logiques sur champs de bits
 * Écritures des constantes

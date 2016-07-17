@@ -205,8 +205,8 @@ P1OUT &=~(1<<6);
 
 On pourra se souvenir que :
 
-* `|=` est l’opération de mise à *1* d’un bit (*Set bit* en anglais).
-* `&=~` est l’opération de mise à *0* d’un bit (*Clear bit* en anglais).
+* `|=` est l’opération de mise à *1* d’un bit (*bit set* en anglais).
+* `&=~` est l’opération de mise à *0* d’un bit (*bit clear* en anglais).
 
 Exemples :
 
@@ -230,7 +230,7 @@ inverse l’état de la broche P1.6 : si elle était à *0*, elle passera à *1
 
 ## Utilisation du #define ##
 
-Pour rendre encore plus lisible un programme, on utilisera très souvent la définition de constantes en C par un `#define`. Il s’agit plus exactement d’un ordre de traduction donné au précompilateur.
+Pour rendre encore plus lisible un programme, on utilisera très souvent la définition de constantes en C par un `#define`. Il s’agit plus exactement d’un ordre de traduction donné au pré-processeur.
 
 Voici quelques exemples :
 

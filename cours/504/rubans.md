@@ -55,22 +55,21 @@ La figure suivante explique ce principe, illustré pour un ruban de 4 LED :
 
 ## Signaux rapides ##
 
-Les documents techniques de WorldSemi semblent indiquer des valeurs différentes pour le *timing* des signaux. Pour le WS2811S, le temps haut du *0* et le temps bas du *1* doivent être de 500 ns, le temps bas du *0* et le temps haut du *1* doivent être de 2000 ns. Une tolérance pour ces deux valeurs est donnée à 150 ns. Le temps de la pause du *reset* doit être supérieur à 50 µs.
+Les documents techniques de WorldSemi semblent indiquer des valeurs différentes pour le *timing* des signaux. Pour le WS2811S, le temps haut du *0* et le temps bas du *1* doivent être de 0.5 μs, le temps bas du *0* et le temps haut du *1* doivent être de 2 μs. Une tolérance pour ces deux valeurs est donnée à 150 ns. Le temps de la pause du *reset* doit être supérieur à 50 µs.
 
-Ces contraintes temporelles rendent difficile sa programmation avec un AVR ou un MSP430<!-- expliquer pourquoi en deux mots -->. Des solutions ont toutefois été trouvées, soit en programmant en assembleur, soit encore en utilisant de manière astucieuse le circuit de communication série.
+Ces contraintes temporelles rendent difficile sa programmation avec un AVR ou un MSP430, dont les processeurs ont fréquences de l'ordre de 16 MHz (125 ns par cycle). Des solutions ont toutefois été trouvées, soit en programmant en assembleur, soit encore en utilisant de manière astucieuse le circuit de communication série.
 
 Avec un processeur ARM fonctionnant avec une horloge de fréquence plus élevée, c’est plus facile de respecter ces exigences temporelles. Nous allons ici montrer un programme écrit pour un STM32 de STmicro, testé sur une carte Nucleo. Voici la partie avec les définitions :
 
 ~~~~~~~ { .c }
 // Signal One Wire pour WS2811
-#define WS2811_Pin GPIO_PIN_10
 #define PORT_WS2811 GPIOA
 #define BIT_WS2811 10
 #define WS28On (PORT_WS2811->ODR|=(1<<BIT_WS2811))
 #define WS28Off (PORT_WS2811->ODR&=~(1<<BIT_WS2811))
 ~~~~~~~
 
-La mise à *1* et à *0* du signal se fait avec des *set bit* <!-- On trouve plus facilement “bit set” que “set bit” sur Internet. Arduino a même une fonction avec ce nom-là : https://www.arduino.cc/en/Reference/BitSet -->, que le compilateur va transcrire dans l’instruction assembleur correspondante, dont l’exécution est très rapide. La production des signaux pour le *0* et pour le *1* se font par l’exécution successive de ces instructions :
+La mise à *1* et à *0* du signal se fait avec des *bit set*, que le compilateur va transcrire dans l’instruction assembleur correspondante, dont l’exécution est très rapide. La production des signaux pour le *0* et pour le *1* se font par l’exécution successive de ces instructions :
 
 ~~~~~~~ { .c }
 #define Un WS28On;WS28On;WS28On;WS28On;WS28On;WS28On;WS28On;WS28Off;
@@ -160,14 +159,14 @@ Il est possible de créer des animations sur les LED. Dans l’exemple suivant, 
 ~~~~~~~ { .c }
     temps++; // comptage du temps
 
-    // Clignotement des LED 0 et 30
+    // Clignotement des LED 0 et 30 :
     if (temps==500) {
         Ruban[30] = Ruban[0] = 0xFFFFFF;
     }
     if (temps==1000) {
         temps=0; Ruban[30] = Ruban[0] = 0;
     }
-    // Changement progressif de la couleur de la LED 47
+    // Changement progressif de la couleur de la LED 47 :
     Ruban[47]++;
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->

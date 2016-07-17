@@ -91,16 +91,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p class="caption">Transmission des bits aux registres successifs</p>
 </div>
 <h2 id="signaux-rapides">Signaux rapides</h2>
-<p>Les documents techniques de WorldSemi semblent indiquer des valeurs différentes pour le <em>timing</em> des signaux. Pour le WS2811S, le temps haut du <em>0</em> et le temps bas du <em>1</em> doivent être de 500 ns, le temps bas du <em>0</em> et le temps haut du <em>1</em> doivent être de 2000 ns. Une tolérance pour ces deux valeurs est donnée à 150 ns. Le temps de la pause du <em>reset</em> doit être supérieur à 50 µs.</p>
-<p>Ces contraintes temporelles rendent difficile sa programmation avec un AVR ou un MSP430<!-- expliquer pourquoi en deux mots -->. Des solutions ont toutefois été trouvées, soit en programmant en assembleur, soit encore en utilisant de manière astucieuse le circuit de communication série.</p>
+<p>Les documents techniques de WorldSemi semblent indiquer des valeurs différentes pour le <em>timing</em> des signaux. Pour le WS2811S, le temps haut du <em>0</em> et le temps bas du <em>1</em> doivent être de 0.5 μs, le temps bas du <em>0</em> et le temps haut du <em>1</em> doivent être de 2 μs. Une tolérance pour ces deux valeurs est donnée à 150 ns. Le temps de la pause du <em>reset</em> doit être supérieur à 50 µs.</p>
+<p>Ces contraintes temporelles rendent difficile sa programmation avec un AVR ou un MSP430, dont les processeurs ont fréquences de l'ordre de 16 MHz (125 ns par cycle). Des solutions ont toutefois été trouvées, soit en programmant en assembleur, soit encore en utilisant de manière astucieuse le circuit de communication série.</p>
 <p>Avec un processeur ARM fonctionnant avec une horloge de fréquence plus élevée, c’est plus facile de respecter ces exigences temporelles. Nous allons ici montrer un programme écrit pour un STM32 de STmicro, testé sur une carte Nucleo. Voici la partie avec les définitions :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="co">// Signal One Wire pour WS2811</span>
-<span class="ot">#define WS2811_Pin GPIO_PIN_10</span>
 <span class="ot">#define PORT_WS2811 GPIOA</span>
 <span class="ot">#define BIT_WS2811 10</span>
 <span class="ot">#define WS28On (PORT_WS2811-&gt;ODR|=(1&lt;&lt;BIT_WS2811))</span>
 <span class="ot">#define WS28Off (PORT_WS2811-&gt;ODR&amp;=~(1&lt;&lt;BIT_WS2811))</span></code></pre></div>
-<p>La mise à <em>1</em> et à <em>0</em> du signal se fait avec des <em>set bit</em> <!-- On trouve plus facilement “bit set” que “set bit” sur Internet. Arduino a même une fonction avec ce nom-là : https://www.arduino.cc/en/Reference/BitSet -->, que le compilateur va transcrire dans l’instruction assembleur correspondante, dont l’exécution est très rapide. La production des signaux pour le <em>0</em> et pour le <em>1</em> se font par l’exécution successive de ces instructions :</p>
+<p>La mise à <em>1</em> et à <em>0</em> du signal se fait avec des <em>bit set</em>, que le compilateur va transcrire dans l’instruction assembleur correspondante, dont l’exécution est très rapide. La production des signaux pour le <em>0</em> et pour le <em>1</em> se font par l’exécution successive de ces instructions :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define Un WS28On;WS28On;WS28On;WS28On;WS28On;WS28On;WS28On;WS28Off;</span>
 <span class="ot">#define Zero WS28On;WS28Off;WS28Off;WS28Off;WS28Off;WS28Off;WS28Off;WS28Off</span>
 
@@ -173,14 +172,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Il est possible de créer des animations sur les LED. Dans l’exemple suivant, une variable <code>temps</code> va compter le temps qui s’écoule et comptant les cycles de raffraîchissement du ruban. En fonction du temps, les couleurs des LED peuvent être modifiées :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">    temps++; <span class="co">// comptage du temps</span>
 
-    <span class="co">// Clignotement des LED 0 et 30</span>
+    <span class="co">// Clignotement des LED 0 et 30 :</span>
     <span class="kw">if</span> (temps==<span class="dv">500</span>) {
         Ruban[<span class="dv">30</span>] = Ruban[<span class="dv">0</span>] = <span class="bn">0xFFFFFF</span>;
     }
     <span class="kw">if</span> (temps==<span class="dv">1000</span>) {
         temps=<span class="dv">0</span>; Ruban[<span class="dv">30</span>] = Ruban[<span class="dv">0</span>] = <span class="dv">0</span>;
     }
-    <span class="co">// Changement progressif de la couleur de la LED 47</span>
+    <span class="co">// Changement progressif de la couleur de la LED 47 :</span>
     Ruban[<span class="dv">47</span>]++;</code></pre></div>
 <!-- retour au mode normal pour l'éditeur -->
 <p>La génération de tels signaux pourrait aussi se faire avec la technique du DMA (<em>Direct Memory Access</em>).</p>

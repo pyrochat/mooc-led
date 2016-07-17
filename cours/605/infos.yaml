@@ -4,10 +4,11 @@ type:             Théorie
 niveau:           avancé
 auteur:          
     - 'PYR'
-statut:           Pas publié
-code:             codeduchapitre
+statut:           Relecture
+code:             murs-led
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   murs-led.html
+    cours-pdf:    murs-led.pdf
+url1:
+    dias-video:   murs-led-dia.pdf
+    dias-compact: murs-led-dia-compact.pdf

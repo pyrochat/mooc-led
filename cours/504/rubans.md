@@ -2,6 +2,7 @@
 % [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
 % rév 2016/07/09
 
+Document incomplet, en cours de rédaction.
 
 ## Plusieurs sortes de rubans ###
 

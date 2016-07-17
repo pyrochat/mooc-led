@@ -4,10 +4,13 @@ type:             Théorie
 niveau:           avancé
 auteur:          
     - MLN
-statut:           Pas publié
+statut:           Relecture
 code:             vhdl
 url:
+    dias-compact: vhdl-dia-compact.pdf
+
+url_no prevus:
     cours-html:   vhdl.html
     cours-pdf:    vhdl.pdf
     dias-video:   vhdl-dia.pdf
-    dias-compact: vhdl-dia-compact.pdf
+

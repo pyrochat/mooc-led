@@ -4,10 +4,11 @@ type:             Théorie
 niveau:           base
 auteur:          
     - 'PYR'
-statut:           Pas publié
+statut:           Relecture
 code:             rubans
 url:
     cours-html:   rubans.html
-    cours-pdf:    ruban.pdf
+    cours-pdf:    rubans.pdf
+url1:
     dias-video:   rubans-dia.pdf
     dias-compact: rubans-dia-compact.pdf

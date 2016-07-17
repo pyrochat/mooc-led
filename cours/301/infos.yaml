@@ -4,10 +4,12 @@ type:             Théorie
 niveau:           base
 auteur:          
     - MLN
-statut:           Pas publié
-code:             codeduchapitre
+statut:           Relecture
+code:             seq
 url:
+    dias-compact: seq-dia-compact.pdf
+url-non-prevus:
     cours-html:   seq.html
     cours-pdf:    seq.pdf
     dias-video:   seq-dia.pdf
-    dias-compact: seq-dia-compact.pdf
+

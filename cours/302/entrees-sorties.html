@@ -113,7 +113,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1OUT = valeur;</code></pre></div>
 <p>permet de placer une valeur binaire dans chacune des huit broches du port P1. Une seule instruction est nécessaire. L’usage de huit digitalWrite() prendrait davantage de place en mémoire, mais surtout un temps beaucoup long !</p>
 <p>Mais comment effectuer une écriture ou une lecture sur une seule broche d’un port, ou encore sur une partie des broches d’un port ? Les opérateurs logiques du langage C permettent de faire facilement ces opérations.</p>
-<h2 id="opérations-logiques">Opérations logiques</h2>
+<h2 id="opérations-logiques-en-c">Opérations logiques en C</h2>
 <p>Nous allons avoir besoin de trois opérateurs :</p>
 <ul>
 <li>Le <strong>OU</strong> logique. L’opérateur se note <strong>|</strong>. Il prend comme opérandes deux valeurs binaires de 8, 16 ou 32 bits. L’opération OU s’effectue entre chacun des bits de même rang des deux opérateurs.</li>
@@ -188,8 +188,8 @@ P1OUT &amp;=~(<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>);  <spa
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define ClockSet P1OUT |= (1&lt;&lt;5) </span><span class="co">// active le bit de rang 5, utilisé pour une horloge</span>
 <span class="ot">#define ClockClear P1OUT &amp;=~(1&lt;&lt;5) </span><span class="co">// désactive l’horloge</span>
 
-<span class="ot">#define Led0On P1OUT |= (1&lt;&lt;0) </span><span class="co">// allume la LED0</span>
-<span class="ot">#define Led0Off P1OUT &amp;=~(1&lt;&lt;0) </span><span class="co">// éteint la LED0</span>
-<span class="ot">#define Led0Toggle P1OUT ^= (1&lt;&lt;0) </span><span class="co">// inverse l’état de la LED0</span></code></pre></div>
+<span class="ot">#define LedRougeOn P1OUT |= (1&lt;&lt;0) </span><span class="co">// allume la LED rouge</span>
+<span class="ot">#define LedRougeOff P1OUT &amp;=~(1&lt;&lt;0) </span><span class="co">// éteint la LED rouge</span>
+<span class="ot">#define LedRougeToggle P1OUT ^= (1&lt;&lt;0) </span><span class="co">// inverse l’état de la LED rouge</span></code></pre></div>
 </body>
 </html>

@@ -4,11 +4,11 @@ type:             Théorie
 niveau:           avancé
 auteur:          
     - MLN
-statut:           Pas publié
+statut:           Relecture
 code:             seq-vhdl
-url1:
+url:
+    dias-compact: seq-vhdl-dia-compact.pdf
+url-non-prevus:
     cours-html:   seq-vhdl.html
     cours-pdf:    seq-vhdl.pdf
-url:
     dias-video:   seq-vhdl-dia.pdf
-    dias-compact: seq-vhdl-dia-compact.pdf

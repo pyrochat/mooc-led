@@ -151,7 +151,6 @@ int main(void) { // Programme principal :
     }
   }
 }
-
 ~~~~~~~
 
 Toute interruption qui pourrait se produire durant cette boucle perturberait les temps de l’envoi des bits. Une instruction va donc désactiver les interruptions au début du cycle de l’envoi des pixels à tout le ruban, puis les activer à nouveau dans la période qui correspond au *reset* des WS2811.
@@ -168,7 +167,7 @@ Il est possible de créer des animations sur les LED. Dans l’exemple suivant, 
     if (temps==1000) {
         temps=0; Ruban[30] = Ruban[0] = 0;
     }
-    // Chamgement progressif de la couleur de le LED 47 :
+    // Changement progressif de la couleur de le LED 47 :
     Ruban[47]++;
 ~~~~~~~
 <!-- retour au mode normal pour l'éditeur -->

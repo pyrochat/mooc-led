@@ -40,7 +40,7 @@ Sur les AVR, les ports s’appellent PORT A, PORT B, etc. Les 8 broches du PORT 
 * **PORTA** : le registre de sortie. Lorsqu’une broche est mise en sortie, c’est ce registre qui précise l’état de la sortie, *0* ou *1*.
 * **PINA** : indique à tout moment l’état de chaque broche. Ce n’est pas à proprement parler un registre, vu qu’il n’est possible que de lire sa valeur.
 
-De la même manière, DDRB, PORTB et PINB sont disponibles pour le PORT  B.
+De la même manière, DDRB, PORTB et PINB sont disponibles pour le PORT B.
 
 Voici un tableau qui indique le rôle d’une broche en fonction des valeurs dans DDRA et dans PORTA d’un AVR :
 

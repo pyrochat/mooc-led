@@ -37,8 +37,8 @@ Un champ de bit peut aussi représenter un nombre. La numération binaire est bi
 Par exemple, 2345 (en décimal) s’exprime par 100100101001 en nombre binaire.
 Preuve en est :
 
-	  1×1  + 0×2   + 0×4   + 1×8   + 0×16   + 1×32
-	+ 0×64 + 0×128 + 1×256 + 0×512 + 0×1024 + 1×2048 = 2345
+      1×1  + 0×2   + 0×4   + 1×8   + 0×16   + 1×32
+    + 0×64 + 0×128 + 1×256 + 0×512 + 0×1024 + 1×2048 = 2345
 
 Pour coder un nombre décimal en binaire, on effectue des divisions entières successives par 2 jusqu’à ce que le quotient soit nul. Le premier reste est le poids faible, le dernier est le poids fort.
 

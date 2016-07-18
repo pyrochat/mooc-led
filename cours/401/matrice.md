@@ -101,7 +101,7 @@ int main() {
     for (i=0; i<16; i++) { // envoie une colonne avec un seul pixel allumé
       P1OUT = (1<<(i&7)); // 1 col de 8 px, 1 seul allumé -> dents de scie
       SerClockOn; SerClockClear; // envoie un coup d'horloge série
-	  ParCloclOn; ParClockClear; // envoie un coup d'horloge
+    ParCloclOn; ParClockClear; // envoie un coup d'horloge
     }
   }
 }

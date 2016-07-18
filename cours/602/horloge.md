@@ -50,7 +50,7 @@ volatile uint8_t secondes;
 
 // Il faut un quartz 32 kHz sur les broches TOSC1 et TOSC2
 ISR (TIMER2_OVF_vect) {
-	secondes++;
+  secondes++;
     ...
 }
 
@@ -86,7 +86,7 @@ Pour l’exemple ci-dessous, il me semble qu’il est plus sage de ne pas faire 
 
 ~~~~~~~ { .c .numberLines startFrom="8" }
     ...
-	secondes++;
+  secondes++;
     if (secondes == 60) {
       secondes = 0;
       minutes++;

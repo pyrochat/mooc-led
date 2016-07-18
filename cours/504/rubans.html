@@ -47,8 +47,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
 <body>
-<h1 class="title">Rubans de LED</h1>
 <div id="header">
+<h1 class="title">Rubans de LED</h1>
 <p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
 <p class="date">rév 2016/07/17</p>
 </div>
@@ -97,9 +97,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <h2 id="signaux-rapides">Signaux rapides</h2>
 <p>Les documents techniques de WorldSemi semblent indiquer des valeurs différentes pour le <em>timing</em> des signaux. Pour le WS2811S, le temps haut du <em>0</em> et le temps bas du <em>1</em> doivent être de 0.5 μs, le temps bas du <em>0</em> et le temps haut du <em>1</em> doivent être de 2 μs. Une tolérance pour ces deux valeurs est donnée à 150 ns. Le temps de la pause du <em>reset</em> doit être supérieur à 50 µs.</p>
-<p>Ces contraintes temporelles rendent difficile sa programmation avec un AVR ou un MSP430, dont les processeurs ont fréquences de l'ordre de 16 MHz (125 ns par cycle). Des solutions ont toutefois été trouvées, soit en programmant en assembleur, soit encore en utilisant de manière astucieuse le circuit de communication série.</p>
+<p>Ces contraintes temporelles rendent difficile sa programmation avec un AVR ou un MSP430, dont les processeurs ont des fréquences de l’ordre de 16 MHz (125 ns par cycle). Des solutions ont toutefois été trouvées, soit en programmant en assembleur, soit encore en utilisant de manière astucieuse le circuit de communication série.</p>
 <p>Avec un processeur ARM fonctionnant avec une horloge de fréquence plus élevée, c’est plus facile de respecter ces exigences temporelles. Nous allons ici montrer un programme écrit pour un STM32 de STmicro, testé sur une carte Nucleo. Voici la partie avec les définitions :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="co">// Signal One Wire pour WS2811</span>
+<span class="ot">#define WS2811_Pin GPIO_PIN_10 &lt;!-- Ajout de Brice --&gt;</span>
 <span class="ot">#define PORT_WS2811 GPIOA</span>
 <span class="ot">#define BIT_WS2811 10</span>
 <span class="ot">#define WS28On (PORT_WS2811-&gt;ODR|=(1&lt;&lt;BIT_WS2811))</span>
@@ -110,7 +111,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="ot">#define UnCourt WS28On;WS28On;WS28On;WS28On;WS28On;WS28On;WS28Off;</span>
 <span class="ot">#define ZeroCourt WS28On;WS28Off;WS28Off;WS28Off;WS28Off;WS28Off;WS28Off;</span></code></pre></div>
-<p>Le temps de ces successions de <em>bit set</em> et de <em>bit clear</em>, additionné au temps de l'instruction de test de la boucle d'envoi des bits, va correspondre aux spécifications du fabricant. Leur nombre a été déterminé expérimentalement, avec un oscilloscope. Les versions <code>UnCourt</code> et <code>ZeroCourt</code> sont volontairement plus courtes, pour pouvoir compléter leur durée par une instruction.</p>
+<p>Le temps de ces successions de <em>bit set</em> et de <em>bit clear</em>, additionné au temps de l’instruction de test de la boucle d’envoi des bits, va correspondre aux spécifications du fabricant. Leur nombre a été déterminé expérimentalement, avec un oscilloscope. Les versions <code>UnCourt</code> et <code>ZeroCourt</code> sont volontairement plus courtes, pour pouvoir compléter leur durée par une instruction.</p>
 <p>Un tableau va contenir les valeurs des intensités des trois LED de chaque pixel. Les 24 bits vont être mis dans un entier de 32 bits, pour optimiser l’accès au tableau :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="co">// Contenu du ruban :</span>
 <span class="ot">#define LgRuban 50</span>

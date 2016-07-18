@@ -47,8 +47,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
 <body>
-<h1 class="title">Langages interprétés spécialisés</h1>
 <div id="header">
+<h1 class="title">Langages interprétés spécialisés</h1>
 <p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
 <p class="date">rév 2016/07/09</p>
 </div>
@@ -163,6 +163,7 @@ Remarque : ça serait bien que tu parles de la procédure `_delay_ms()`. C’es
   Fin
 }</code></pre></td></tr></table></div>
 <p>Sa taille n’est que de 33 octets. Voici les définitions nécessaires pour que ce tableau se compile correctement :</p>
+<!-- 18/07/16 Brice -------- Off n'est pas défini (ça ne compilera donc pas), donc définition à 0? --------->
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2
 3
@@ -175,7 +176,9 @@ Remarque : ça serait bien que tu parles de la procédure `_delay_ms()`. C’es
 10
 11
 12
+13
 </pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="ot">#define On 0b01000000</span>
+<span class="ot">#define Off 0b00000000</span>
 <span class="ot">#define Sortie0 0</span>
 <span class="ot">#define Sortie1 1</span>
 <span class="ot">#define Sortie2 2</span>
@@ -283,7 +286,7 @@ Remarque : ça serait bien que tu parles de la procédure `_delay_ms()`. C’es
 <span class="ot">#define Libre2 0xE </span><span class="co">// instructions non utilisées</span>
 <span class="ot">#define Libre1 0xF</span></code></pre></div>
 <!-- retour au mode normal pour l’éditeur -->
-<p>A noter qu'on aurait pu utiliser une notation plus sûre : <code>#define DrH(x) (0x30+((x)&amp;0x0f))</code>.</p>
+<p>À noter qu’on aurait pu utiliser une notation plus sûre : <code>#define DrH(x) (0x30+((x)&amp;0x0f))</code>.</p>
 <p>Voici un exemple d’animation. Attention, c’est comme l’assembleur : il faut un peu de pratique pour s’y retrouver !</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"> Label+Croix7x7, <span class="co">// Affiche une croix 7x7 (1/4 de la surface), curseur courant</span>
  PlusX<span class="dv">+2</span>,

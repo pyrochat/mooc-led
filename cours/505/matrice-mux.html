@@ -47,13 +47,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
 <body>
-<h1 class="title">Afficheurs matriciels multiplexés</h1>
 <div id="header">
+<h1 class="title">Afficheurs matriciels multiplexés</h1>
 <p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
 <p class="date">rév 2016/07/09</p>
 </div>
 <h2 id="afficheur-matriciel-et-schéma-de-commande">Afficheur matriciel et schéma de commande</h2>
 <p>Le schéma classique d’un afficheur matriciel nécessite simplement une sortie de registre par LED, comme le rappelle ce schéma :</p>
+<!--  18/08/16 Brice ------------------------   Ne passe pas sur Opera 38   ---------------------------- -->
 <div class="figure">
 <img src="images/aff-8x16.svg" title="Afficheur 8×16 pixels commandé par des registres" alt="Afficheur 8×16 pixels commandé par des registres" style="width:95.0%" />
 <p class="caption">Afficheur 8×16 pixels commandé par des registres</p>
@@ -65,7 +66,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <h2 id="augmentation-du-nombre-de-led">Augmentation du nombre de LED</h2>
 <p>Lorsque le nombre de LED augmente, le nombre de registres augmente aussi. Ainsi un afficheur de 32×32 pixels nécessite 1024 sorties de registre. En utilisant le registre classique 74HC595 qui compte 8 sorties, il faut 1024 / 8 = 128 circuits intégrés et 1 résistance par LED, c’est-à-dire 1024 résistances. Ces nombres sont multipliés par 3 pour un afficheur couleur RGB, où un pixel est formé de trois LED.</p>
-<p>Avec l’usage de registres à 16 sorties du type SUM2016, dont les sorties sont à courant constant, une matrice de 32×32 pixels RGB nécessitera tout de même 192 circuits intégrés et 192 résistances.</p>
+<p>Avec l’usage de registres à 16 sorties du type SUM2016, dont les sorties sont à courant constant, une matrice de 32×32 pixels RGB nécessitera tout de même 3x64 = 192 circuits intégrés et 192 résistances.</p>
 <!--
 2016-07-10 Nico
 
@@ -98,13 +99,14 @@ Sur la figure matrice-mux-4x8-2all.svg, ça serait bien de dessiner avec un trai
 <p class="caption">Diagramme des temps d’un afficheur 4×8 multiplexé</p>
 </div>
 <p>ainsi que le schéma correspondant :</p>
+<!-- 18/08/16 Brice ------------------------   Ne passe pas sur Opera 38   ---------------------------- -->
 <div class="figure">
 <img src="images/aff-4x8-mux.svg" title="Afficheur 4×8 multiplexé" alt="Afficheur 4×8 multiplexé" style="width:70.0%" />
 <p class="caption">Afficheur 4×8 multiplexé</p>
 </div>
 <p>Pour un cycle complet de la matrice, le registre série-parallèle doit être chargé pour chacune des lignes, nécessitant chaque fois huit coups d’horloge série et un coup d’horloge parallèle. Une fois les données d’une ligne présentes sur la sortie du registre, les anodes de la ligne correspondante doivent être sélectionnées. Pour un rafraîchissement de la matrice à 100 Hz, il faudra prévoir un temps d’affichage de 100 / 4 = 25 ms pour chacune des quatre lignes.</p>
 <p>On voit sur le schéma que le nombre de registres a diminué : dans ce cas, il n’en reste qu’un. Par contre, il est nécessaire de pouvoir sélectionner les lignes séparément. D’autre part, il faut placer un élément d’amplification, pour pouvoir fournir un courant suffisant pour l’ensemble des LED de la ligne. Nous avons utilisé ici un transistor PNP, mais très souvent, c’est un transistor MOS à canal P qui est utilisé.</p>
-<p>Notons que dans ce montage, tous les signaux sont actifs à zéro. En effet, c’est bien une tension de 0 V qui permet de faire conduire le transistor PNP, en appliquant une tension négative entre sa base et son émetteur. C’est aussi une tension négative à la sortie du registre qui va allumer la LED correspondante sur la ligne sélectionnée.</p>
+<p>Notons que dans ce montage, tous les signaux sont actifs à zéro. En effet, c’est bien une tension de 0 V qui permet de faire conduire le transistor PNP, en appliquant une tension négative entre sa base et son émetteur. C’est ainsi une tension nulle à la sortie du registre qui va allumer la LED correspondante sur la ligne sélectionnée.</p>
 <h2 id="démultiplexeur-ou-décodeur">Démultiplexeur ou décodeur</h2>
 <p>Pour éviter le grand nombre de signaux de sélection des lignes, un <em>démultiplexeur</em> est souvent utilisé. Ce circuit combinatoire est aussi appelé <em>décodeur</em>. Ses entrées correspondent aux valeurs binaires. Une seule de ses sorties peut être activée à un instant donné. Le circuit intégré 74HC138 est très souvent utilisé :</p>
 <div class="figure">

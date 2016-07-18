@@ -47,12 +47,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
 <body>
-<h1 class="title">Entrées-sorties</h1>
 <div id="header">
+<h1 class="title">Entrées-sorties</h1>
 <p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
 <p class="date">rév 2016/07/09</p>
 </div>
-<h2 id="broches-dentrée-sorties">Broches d’entrée-sorties</h2>
+<h2 id="broches-dentrée-sortie">Broches d’entrée-sortie</h2>
 <p>Les microcontrôleurs disposent de broches très souples d’emploi, qui peuvent être des entrées ou des sorties. On les appelle aussi parfois GPIO : <em><strong>G</strong>eneral <strong>P</strong>urpose <strong>I</strong>nput <strong>O</strong>utput</em>. La procédure <em>Arduino pinMode()</em> permet de choisir l’usage de chaque broche. Les procédures <code>digitalRead()</code> et <code>digitalWrite()</code> permettent de lire une valeur d’entrée et d’écrire une valeur sur une sortie.</p>
 <p>Ces procédures cachent les registres que chaque fabricant a prévu pour utiliser les broches d’entrée-sortie. Mais il est souvent utile de les connaître, pour utiliser aussi efficacement que possible les entrées-sorties. C’est en particulier le cas lorsqu’il est nécessaire d’accéder à plusieurs sorties en même temps et lorsqu’un temps minimum doit être pris pour ces opérations. Or c’est souvent le cas dans des afficheurs à LED.</p>
 <h2 id="rôles-possibles-dune-broche">Rôles possibles d’une broche</h2>
@@ -75,11 +75,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Le nombre, les noms et la fonctionnalité des registres qui pilotent un port dans un microcontrôleur varient avec les familles de microcontrôleurs. Nous regarderons ici le cas de la famille des AVR du fabricant Atmel, dont le plus connu est l’ATmega328 utilisé sur la carte Arduino UNO. Nous verrons également le cas de la famille MSP430.</p>
 <p>Sur les AVR, les ports s’appellent PORT A, PORT B, etc. Les 8 broches du PORT A s’appellent PA0, PA1... PA7. Trois registres sont utilisés pour piloter chaque port :</p>
 <ul>
-<li><strong>DDRA</strong> <em><strong>D</strong>ata <strong>D</strong>irection <strong>R</strong>egister</em> : registre de direction. C’est le registre qui précise pour chaque broche si elle est une entée ou une sortie.</li>
+<li><strong>DDRA</strong> <em><strong>D</strong>ata <strong>D</strong>irection <strong>R</strong>egister</em> : registre de direction. C’est le registre qui précise pour chaque broche si elle est une entrée ou une sortie.</li>
 <li><strong>PORTA</strong> : le registre de sortie. Lorsqu’une broche est mise en sortie, c’est ce registre qui précise l’état de la sortie, <em>0</em> ou <em>1</em>.</li>
 <li><strong>PINA</strong> : indique à tout moment l’état de chaque broche. Ce n’est pas à proprement parler un registre, vu qu’il n’est possible que de lire sa valeur.</li>
 </ul>
-<p>De la même manière, DDRB, PORTB et PINB sont disponible pour le PORT B.</p>
+<p>De la même manière, DDRB, PORTB et PINB sont disponibles pour le PORT B.</p>
 <p>Voici un tableau qui indique le rôle d’une broche en fonction des valeurs dans DDRA et dans PORTA d’un AVR :</p>
 <div class="figure">
 <img src="images/table-fonc-avr.svg" title="Rôle d’une broche en fonction de DDR et PORT sur un AVR" alt="Rôle d’une broche en fonction de DDR et PORT sur un AVR" style="width:60.0%" />
@@ -100,7 +100,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <p>Le MSP430 dispose donc d’une possibilité de placer une résistance de tirage vers le bas (<em>pull-down</em>). C’est la valeur du bit de P1OUT qui détermine si la résistance est vers le haut ou vers le bas.</p>
 <p>Seules cinq combinaisons ont été décrites dans ce tableau. Les trois autres combinaisons n’ont pas lieu d’être utilisées.</p>
-<p>Il faut noter que les entrées d'un microcontrôleur ne doivent pas recevoir une tension supérieure à la tension d'alimentation. Les diodes de protection deviendraient alors conductrices, ce qui n'est pas autorisé. Un soin particulier doit donc être pris lors de l'utilisation de dispositifs n'étant pas alimentés par le même tension. C'est souvent le cas lorsqu'on relie par exemple un Arduino avec un module alimenté en 3.3 V.</p>
+<p>Il faut noter que les entrées d'un microcontrôleur ne doivent pas recevoir une tension supérieure à la tension d'alimentation. Les diodes de protection deviendraient alors conductrices, ce qui n'est pas autorisé. Un soin particulier doit donc être pris lors de l'utilisation de dispositifs n'étant pas alimentés par la même tension. C'est souvent le cas lorsqu'on relie par exemple un Arduino avec un module alimenté en 3.3 V.</p>
 <h2 id="lecture-et-écriture-sur-un-port">Lecture et écriture sur un port</h2>
 <p>Au moment du <em>reset</em>, les registres DDR ou P1DIR prennent la valeur <em>0</em>. En d’autres termes, une broche est par défaut une entrée. Rien de plus n’est à effectuer pour l’utiliser comme telle.</p>
 <p>Il faudra écrire des <em>1</em> dans les bits des registres DDR ou P1DIR correspondant aux broches dont on souhaite qu’elles soient des sorties. Par exemple, l’instruction :</p>
@@ -184,7 +184,7 @@ P1OUT &amp;=~(<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>);  <spa
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>);</code></pre></div>
 <p>inverse l’état de la broche P1.6 : si elle était à <em>0</em>, elle passera à <em>1</em>, si elle était à <em>1</em>, elle passera à <em>0</em>. Le terme anglais <em>toggle</em> est souvent utilisé. <!-- retour au mode normal pour l’éditeur --></p>
 <h2 id="utilisation-du-define">Utilisation du #define</h2>
-<p>Pour rendre encore plus lisible un programme, on utilisera très souvent la définition de constantes en C par un <code>#define</code>. Il s’agit plus exactement d’un ordre de traduction donné au pré-processeur.</p>
+<p>Pour rendre encore plus lisible un programme, on utilisera très souvent la définition de constantes en C par un <code>#define</code>. Il s’agit plus exactement d’un ordre de traduction donné au préprocesseur.</p>
 <p>Voici quelques exemples :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define ClockSet P1OUT |= (1&lt;&lt;5) </span><span class="co">// active le bit de rang 5, utilisé pour une horloge</span>
 <span class="ot">#define ClockClear P1OUT &amp;=~(1&lt;&lt;5) </span><span class="co">// désactive l’horloge</span>

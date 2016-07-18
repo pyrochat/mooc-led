@@ -47,8 +47,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
 <body>
-<h1 class="title">Horloges temps réel</h1>
 <div id="header">
+<h1 class="title">Horloges temps réel</h1>
 <p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
 <p class="date">rév 2015/09/18</p>
 </div>
@@ -110,7 +110,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="co">// Il faut un quartz 32 kHz sur les broches TOSC1 et TOSC2</span>
 ISR (TIMER2_OVF_vect) {
-    secondes++;
+  secondes++;
     ...
 }
 
@@ -153,7 +153,7 @@ Pour l’exemple ci-dessous, il me semble qu’il est plus sage de ne pas faire 
 20
 21
 </pre></td><td class="sourceCode"><pre><code class="sourceCode c">    ...
-    secondes++;
+  secondes++;
     <span class="kw">if</span> (secondes == <span class="dv">60</span>) {
       secondes = <span class="dv">0</span>;
       minutes++;

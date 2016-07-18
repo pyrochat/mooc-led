@@ -57,7 +57,7 @@ La figure suivante explique ce principe, illustré pour un ruban de 4 LED :
 
 Les documents techniques de WorldSemi semblent indiquer des valeurs différentes pour le *timing* des signaux. Pour le WS2811S, le temps haut du *0* et le temps bas du *1* doivent être de 0.5 μs, le temps bas du *0* et le temps haut du *1* doivent être de 2 μs. Une tolérance pour ces deux valeurs est donnée à 150 ns. Le temps de la pause du *reset* doit être supérieur à 50 µs.
 
-Ces contraintes temporelles rendent difficile sa programmation avec un AVR ou un MSP430, dont les processeurs ont fréquences de l'ordre de 16 MHz (125 ns par cycle). Des solutions ont toutefois été trouvées, soit en programmant en assembleur, soit encore en utilisant de manière astucieuse le circuit de communication série.
+Ces contraintes temporelles rendent difficile sa programmation avec un AVR ou un MSP430, dont les processeurs ont des fréquences de l’ordre de 16 MHz (125 ns par cycle). Des solutions ont toutefois été trouvées, soit en programmant en assembleur, soit encore en utilisant de manière astucieuse le circuit de communication série.
 
 Avec un processeur ARM fonctionnant avec une horloge de fréquence plus élevée, c’est plus facile de respecter ces exigences temporelles. Nous allons ici montrer un programme écrit pour un STM32 de STmicro, testé sur une carte Nucleo. Voici la partie avec les définitions :
 
@@ -79,7 +79,7 @@ La mise à *1* et à *0* du signal se fait avec des *bit set*, que le compilat
 #define ZeroCourt WS28On;WS28Off;WS28Off;WS28Off;WS28Off;WS28Off;WS28Off;
 ~~~~~~~
 
-Le temps de ces successions de *bit set* et de *bit clear*, additionné au temps de l'instruction de test de la boucle d'envoi des bits, va correspondre aux spécifications du fabricant. Leur nombre a été déterminé expérimentalement, avec un oscilloscope. Les versions `UnCourt` et `ZeroCourt` sont volontairement plus courtes, pour pouvoir compléter leur durée par une instruction.
+Le temps de ces successions de *bit set* et de *bit clear*, additionné au temps de l’instruction de test de la boucle d’envoi des bits, va correspondre aux spécifications du fabricant. Leur nombre a été déterminé expérimentalement, avec un oscilloscope. Les versions `UnCourt` et `ZeroCourt` sont volontairement plus courtes, pour pouvoir compléter leur durée par une instruction.
 
 Un tableau va contenir les valeurs des intensités des trois LED de chaque pixel. Les 24 bits vont être mis dans un entier de 32 bits, pour optimiser l’accès au tableau :
 

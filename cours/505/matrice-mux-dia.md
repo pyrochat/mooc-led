@@ -152,7 +152,7 @@ void CyclesMatrice(uint16_t nbCycles) {
         SerClockSet; SerClockClear; // envoie un coup d'horloge série
       }
       ParClockSet; ParClockClear;   // envoie un coup d'horloge parallèle
-      AttenteLigne();               // affichage de la ligne durant 25 ms
+      AttenteLigne();               // affichage de la ligne durant 2,5 ms
     }
   }
 }

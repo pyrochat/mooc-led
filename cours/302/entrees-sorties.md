@@ -3,7 +3,7 @@
 % rév 2016/07/09
 
 
-## Broches d’entrée-sorties ##
+## Broches d’entrée-sortie ##
 
 Les microcontrôleurs disposent de broches très souples d’emploi, qui peuvent être des entrées ou des sorties. On les appelle aussi parfois GPIO : _**G**eneral **P**urpose **I**nput **O**utput_. La procédure *Arduino pinMode()* permet de choisir l’usage de chaque broche. Les procédures `digitalRead()` et `digitalWrite()` permettent de lire une valeur d’entrée et d’écrire une valeur sur une sortie.
 

@@ -63,6 +63,7 @@ Avec un processeur ARM fonctionnant avec une horloge de fréquence plus élevée
 
 ~~~~~~~ { .c }
 // Signal One Wire pour WS2811
+#define WS2811_Pin GPIO_PIN_10 <!-- Ajout de Brice -->
 #define PORT_WS2811 GPIOA
 #define BIT_WS2811 10
 #define WS28On (PORT_WS2811->ODR|=(1<<BIT_WS2811))

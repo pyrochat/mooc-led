@@ -2,6 +2,7 @@
 % [Pierre-Yves Rochat](mailto:pyr@pyr.ch), EPFL
 % rév 2016/07/11
 
+Document en cours de rédaction.
 
 Des LED rouges ont commencé à être fabriquées en série à la fin des années 1960. Leur luminosité, ou plus exactement leur rendement, n'a fait qu'augmenter depuis cette époque.
 

@@ -1,13 +1,13 @@
 titre:
-    - "Rubans de LEDs"
+    - "Rubans de LED adressables"
 type:             Théorie
 niveau:           base
 auteur:          
     - 'PYR'
-statut:           Pas publié
-code:             rubanss
+statut:           Relecture
+code:             rubans
 url:
     cours-html:   rubans.html
-    cours-pdf:    ruban.pdf
+    cours-pdf:    rubans.pdf
     dias-video:   rubans-dia.pdf
     dias-compact: rubans-dia-compact.pdf

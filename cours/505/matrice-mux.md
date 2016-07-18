@@ -64,9 +64,9 @@ On voit sur le schéma que le nombre de registres a diminué : dans ce cas, il 
 
 Notons que dans ce montage, tous les signaux sont actifs à zéro. En effet, c’est bien une tension de 0 V qui permet de faire conduire le transistor PNP, en appliquant une tension négative entre sa base et son émetteur. C’est ainsi une tension nulle à la sortie du registre qui va allumer la LED correspondante sur la ligne sélectionnée.
 
-## Multiplexeur ##
+## Démultiplexeur ou décodeur##
 
-Pour éviter le grand nombre de signaux de sélection des lignes, un multiplexeur est souvent utilisé. Ce circuit combinatoire est aussi appelé *décodeur*. Ses entrées correspondent aux valeurs binaires. Une seule de ses sorties peut être activée à un instant donné. Le circuit intégré 74HC138 est très souvent utilisé :
+Pour éviter le grand nombre de signaux de sélection des lignes, un *démultiplexeur* est souvent utilisé. Ce circuit combinatoire est aussi appelé *décodeur*. Ses entrées correspondent aux valeurs binaires. Une seule de ses sorties peut être activée à un instant donné. Le circuit intégré 74HC138 est très souvent utilisé :
 
 ![Décodeur à 8 sorties 74HC138](images/mux-138.svg "Décodeur à 8 sorties 74HC138"){ width=40% }
 
@@ -76,11 +76,7 @@ Le fait que les sorties soient actives à zéro convient bien pour la commande d
 
 Le multiplexage offre une diminution du nombre de composants nécessaires à l’électronique de commande, mais il diminue l’intensité lumineuse de l’afficheur. Cet effet peut être partiellement compensé en augmentant le courant dans les LED. En effet, on peut jouer sur le fait que le courant nominal des LED peut être dépassé lorsque ce courant n’est pas permanent, ce qui est toujours le cas sur un afficheur multiplexé. Le courant pouvant aller jusqu’à une valeur proche du **courant maximal** accepté par la LED, l’intensité instantanée est sensiblement augmentée. On utilise très souvent 150 % du courant nominal.
 
-<!--
-Pourquoi est-ce qu’on augmente pas la fréquence de rafraîchissement pour palier le problème de luminosité ? Finalement la fréquence de 100 Hz correspond à une limite de l’électronique d’il y a 20 ou 30 ans qui se basait sur la fréquence du réseau électrique. Aujourd’hui on peut certainement faire mieux. Juste ou faux ?
-
-Question corollaire : quelle est la fréquence max qu’une LED peut accepter ?
--->
+Il faudra toutefois être prudent lors de la mise au point logicielle. Une erreur pourrait laisser les LED avec le courant maximal durant un temps trop long, par exemple en permanence. S'il n'est pas possible d'avoir un circuit avec des résistances plus grandes pour la mise au point, on pourra chercher à diminuer la tension d'alimentation, ce qui fera baisser le courant.
 
 
 ## Comparaisons des architectures ##
@@ -110,14 +106,17 @@ uint8_t matrice[4];
 void CyclesMatrice(uint16_t nbCycles) {
   uint16_t n, x, y;
   for (n=0; n<nbCycles; n++) {
-    for (y=0; y<4; y++) { // envoi et affichage des 4 lignes
-      for (x=0; x<8; x++) { // envoi des 8 bits d'une ligne
-        if (matrice[y] & (1<<x) DataClear; else DataSet;
-          SerClockSet; SerClockClear; // envoie un coup d'horloge série
+    for (y=0; y<4; y++) {           // envoi et affichage des 4 lignes
+      for (x=0; x<8; x++) {         // envoi des 8 bits d'une ligne
+        if (matrice[y] & (1<<x) {
+          DataClear;                // un 0 allume les LED
+        } else {
+          DataSet;
         }
+        SerClockSet; SerClockClear; // envoie un coup d'horloge série
       }
-      ParClockSet; ParClockClear; // envoie un coup d'horloge parallèle
-      AttenteLigne(); // affichage de la ligne durant 25 ms
+      ParClockSet; ParClockClear;   // envoie un coup d'horloge parallèle
+      AttenteLigne();               // affichage de la ligne durant 25 ms
     }
   }
 }
@@ -137,11 +136,11 @@ void Ping() {
     CyclesMatrice(DELAI); // l'affichage fait office de délai
     EteintPoint(x,y);
     x+=sensX;
-    if(x==(MaxX-1)) sensX=(-1);
-    if(x==0) sensX=1;
+    if(x==(MaxX-1)) { sensX=(-1); }
+    if(x==0) { sensX=1; }
     y+=sensY;
-    if(y==(MaxY-1)) sensY=(-1);
-    if(y==0) sensY=1;
+    if(y==(MaxY-1)) { sensY=(-1); }
+    if(y==0) { sensY=1; }
   } while (!((x==0)&&(y==0)));
 }
 ~~~~~~~

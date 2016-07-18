@@ -6,10 +6,11 @@ auteur:
     - MLN
 statut:           Relecture
 code:             concur
-url1:
+url:
+    dias-compact: concur-dia-compact.pdf
+url-non-prevus:
     cours-html:   concur.html
     cours-pdf:    concur.pdf
-    dias-compact: concur-dia-compact.pdf
-url:
     dias-video:   concur-dia.pdf
+
 

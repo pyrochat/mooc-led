@@ -3,11 +3,11 @@ titre:
 type:             Théorie
 niveau:           base
 auteur:          
-    - PYR
-statut:           Pas publié
-code:             distance
-url1:
-    cours-html:   distance.html
-    cours-pdf:    distance.pdf
-    dias-video:   distance-dia.pdf
-    dias-compact: distance-dia-compact.pdf
+    - 'PYR+NJ'
+statut:           Relecture
+code:             com-distance
+url:
+    cours-html:   com-distance.html
+    cours-pdf:    com-distance.pdf
+    dias-video:   com-distance-dia.pdf
+    dias-compact: com-distance-dia-compact.pdf

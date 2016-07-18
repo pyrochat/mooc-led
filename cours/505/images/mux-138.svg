@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.959798"
-     inkscape:cx="-11.086343"
-     inkscape:cy="36.503548"
+     inkscape:zoom="2.8"
+     inkscape:cx="13.866328"
+     inkscape:cy="36.101536"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -65,7 +65,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -170,40 +170,7 @@
          x="96.017853"
          y="420.32648"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.5px;font-family:Arial;-inkscape-font-specification:Arial">A7</tspan></text>
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot4855"
-       style="font-style:normal;font-weight:normal;font-size:11.25px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(-55.727283,265.60506)"><flowRegion
-         id="flowRegion4857"><rect
-           id="rect4859"
-           width="165"
-           height="45"
-           x="75.72728"
-           y="-18.242874" /></flowRegion><flowPara
-         id="flowPara4861"></flowPara></flowRoot>    <flowRoot
-       xml:space="preserve"
-       id="flowRoot4863"
-       style="font-style:normal;font-weight:normal;font-size:11.25px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(-55.727283,265.60506)"><flowRegion
-         id="flowRegion4865"><rect
-           id="rect4867"
-           width="1885"
-           height="635"
-           x="-29.272717"
-           y="-28.242874" /></flowRegion><flowPara
-         id="flowPara4869"></flowPara></flowRoot>    <flowRoot
-       xml:space="preserve"
-       id="flowRoot4871"
-       style="font-style:normal;font-weight:normal;font-size:11.25px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(-55.727283,265.60506)"><flowRegion
-         id="flowRegion4873"><rect
-           id="rect4875"
-           width="440"
-           height="320"
-           x="-104.27272"
-           y="-53.242874" /></flowRegion><flowPara
-         id="flowPara4877"></flowPara></flowRoot>    <circle
+    <circle
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4879"
        cx="82.5"

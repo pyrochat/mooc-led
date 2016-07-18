@@ -4,10 +4,11 @@ type:             Théorie
 niveau:           avancé
 auteur:          
     - MLN
-statut:           Pas publié
+statut:           Relecture
 code:             fpga
 url:
+    dias-compact: fpga-dia-compact.pdf
+url-non-prevus:
     cours-html:   fpga.html
     cours-pdf:    fpga.pdf
     dias-video:   fpga-dia.pdf
-    dias-compact: fpga-dia-compact.pdf

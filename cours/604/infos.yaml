@@ -3,12 +3,11 @@ titre:
 type:             Théorie
 niveau:           avancé
 auteur:
-    - PYR
+    - 'PYR'
 statut:           Relecture
 code:             lang-interpr
 url:
     cours-html:   lang-interpr.html
     cours-pdf:    lang-interpr.pdf
-url1:
     dias-video:   lang-interpr-dia.pdf
     dias-compact: lang-interpr-dia-compact.pdf

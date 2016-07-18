@@ -3,8 +3,8 @@ titre:
 type:             Théorie
 niveau:           avancé
 auteur:          
-    - 'PYR'
-statut:           Pas publié
+    - PYR
+statut:           Relecture
 code:             bcm
 url:
     cours-html:   bcm.html

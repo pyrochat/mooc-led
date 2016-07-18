@@ -27,11 +27,11 @@ Un **microcontrôleur** est aussi un système informatique. Sa particularité es
 * La mémoire vive est généralement très limitée : de quelques centaines d’octets (ou en anglais *byte*, abrégé “B”) à quelques dizaines de ko selon les modèles.
 * Les circuits d’entrée-sortie sont simplement des entrées logiques, pour lire une valeur binaire, comme par exemple un interrupteur, ainsi que des sorties logiques, capables de fournir quelques milliampères, par exemple pour commander une LED.
 
-L’intérêt des microcontrôleurs est leur coût très faible, souvent moins d’un euro, leur consommation de courant limitée à quelques de milliampères et leur taille très réduite, vu qu’il s’agit d’un seul circuit intégré. Ils sont donc utilisés dans de très nombreuses applications.
+L’intérêt des microcontrôleurs est leur coût très faible, souvent moins d’un euro, leur consommation de courant limitée à quelques milliampères et leur taille très réduite, vu qu’il s’agit d’un seul circuit intégré. Ils sont donc utilisés dans de très nombreuses applications.
 
 Bien que des microcontrôleurs existent depuis les années 1970, ils se sont développés de manière spectaculaire depuis quelques années. Les microcontrôleurs actuels contiennent de la mémoire __*flash*__, qui facilite l’écriture du programme qui doit s’exécuter.
 
-Alors qu’il était encore complexe et coûteux de mettre en œuvre un microcontrôleur au début des années 2000, cette tâche est maintenant beaucoup plus simple et ne nécessite que du matériel très peu coûteux. Les microcontrôleurs sont donc devenus des composants électroniques incontournables, modifiant profondément la manière de concevoir les circuits électroniques.
+Alors qu’il était encore complexe et coûteux de mettre en œuvre un microcontrôleur au début des années 2000, cette tâche est maintenant beaucoup plus simple et ne nécessite que du matériel très peu coûteux. Il est possible de les programmer alors qu'ils sont soudés sur leur circuit définitif, au moyen de quelques fils. Les microcontrôleurs sont donc devenus des composants électroniques incontournables, modifiant profondément la manière de concevoir les circuits électroniques.
 
 ## De nombreuses familles ##
 

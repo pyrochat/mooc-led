@@ -4,11 +4,10 @@ type:             Théorie
 niveau:           base
 auteur:          
     - PYR
-statut:           Pas publié
-code:             io
+statut:           Relecture
+code:             entrees-sorties
 url:
-    cours-html:   io.html
-    cours-pdf:    io.pdf
-url1:
-    dias-video:   io-dia.pdf
-    dias-compact: io-dia-compact.pdf
+    cours-html:   entrees-sorties.html
+    cours-pdf:    entrees-sorties.pdf
+    dias-video:   entrees-sorties-dia.pdf
+    dias-compact: entrees-sorties-dia-compact.pdf

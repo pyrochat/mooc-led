@@ -28,10 +28,13 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">Afficheurs matriciels multiplexés</h1>
-<div style="font-size:52pt; left:34cm; width:26.0cm; top:8cm;">
+<div style="top:6.5cm; left:35cm; width:23cm; text-align: right;  font-size:48pt; font-family: Impact, sans-serif;">
+Pierre-Yves Rochat
+</div>
+<div style="font-size:52pt; left:34cm; width:26.0cm; top:11cm;">
 * Augmentation du nombre de LED
 * Usage du multiplexage temporel
-* Conséquences sur la luminosité
+* Conséquence sur la luminosité
 * Programmation
 </div>
 </section>
@@ -47,7 +50,7 @@ Pierre-Yves Rochat
 <div style="font-size:52pt; left:34cm; width:26.0cm; top:13cm;">
 * Augmentation du nombre de LED
 * Usage du multiplexage temporel
-* Conséquences sur la luminosité
+* Conséquence sur la luminosité
 * Programmation
 </div>
 </section>
@@ -66,15 +69,15 @@ Pierre-Yves Rochat
 <h1 class="en_tete">Conséquence de l’augmentation du nombre de LED</h1>
 <div style="font-size:52pt; left:3cm; width:46cm; top:7cm;">
 * 32 x 32 pixels => 1024 sorties de registre
-<!-- 2345678 -->* 128 registres 8 bits 74HC595 et 1024 résistances
-<!-- 345678 -->* Trois fois plus pour une matrice RGB !
-<!-- 45786 -->* Registres 16 bits à sortie à courant constant SUM2016
-<!-- 5786 -->*  192 circuits intégrés et 192 résistances
+<!-- 234567 -->* 128 registres 8 bits 74HC595 et 1024 résistances
+<!-- 34567 -->* Trois fois plus pour une matrice RGB !
+<!-- 4567 -->* Registres 16 bits à sortie à courant constant SUM2016
+<!-- 557 -->* 192 circuits intégrés et 192 résistances
 </div>
-<!-- 678 --><div style="font-size:52pt; left:3cm; width:46cm; top:21cm;">
-<!-- 78 -->* Peut-on obtenir des schémas plus simples ?
-<!-- 8 -->* Avec le multiplexage temporel !
-<!-- 678 --></div>
+<!-- 67 --><div style="font-size:52pt; left:3cm; width:46cm; top:21cm;">
+<!-- 67 -->* Peut-on obtenir des schémas plus simples ?
+<!-- 7 -->* Avec le multiplexage temporel !
+<!-- 67 --></div>
 </section>
 
 
@@ -109,7 +112,7 @@ Pierre-Yves Rochat
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Multiplexeur</h1>
+<h1 class="en_tete">Démultiplexeur ou décodeur</h1>
 <img src="./images/mux-138.svg" style="top:6cm; left:15cm; width:10cm;" />
 <!-- 2 --><div style="font-size:52pt; left:40cm; width:18cm; top:13cm;">
 <!-- 2 -->* 74HC138
@@ -161,21 +164,24 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">Cycle d’affichage</h1>
-<div style="top: 7cm; left: 2.65cm; font-size: 36pt; line-height: 2; width:57.0cm;">
+<div style="top: 6cm; left: 2.65cm; font-size: 36pt; line-height: 2; width:57.0cm;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 uint8_t matrice[4];
 
 void CyclesMatrice(uint16_t nbCycles) {
   uint16_t n, x, y;
   for (n=0; n<nbCycles; n++) {
-    for (y=0; y<4; y++) { // envoi et affichage des 4 lignes
-      for (x=0; x<8; x++) { // envoi des 8 bits d'une ligne
-        if (matrice[y] & (1<<x) DataClear; else DataSet;
-          SerClockSet; SerClockClear; // envoie un coup d'horloge série
+    for (y=0; y<4; y++) {           // envoi et affichage des 4 lignes
+      for (x=0; x<8; x++) {         // envoi des 8 bits d'une ligne
+        if (matrice[y] & (1<<x) {
+          DataClear;
+        } else {
+          DataSet;
         }
+        SerClockSet; SerClockClear; // envoie un coup d'horloge série
       }
-      ParClockSet; ParClockClear; // envoie un coup d'horloge parallèle
-      AttenteLigne(); // affichage de la ligne durant 25 ms
+      ParClockSet; ParClockClear;   // envoie un coup d'horloge parallèle
+      AttenteLigne();               // affichage de la ligne durant 25 ms
     }
   }
 }
@@ -187,7 +193,7 @@ void CyclesMatrice(uint16_t nbCycles) {
 <section>
 <!-- A -->
 <h1 class="en_tete">Modification du programme de commande</h1>
-<div style="top: 5.2cm; left: 2.65cm; font-size: 36pt; line-height: 2; width:57.0cm;">
+<div style="top: 6cm; left: 2.65cm; font-size: 36pt; line-height: 2; width:57.0cm;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 void Ping() {
   int16_t x=0;
@@ -215,7 +221,7 @@ void Ping() {
 <section>
 <!-- A -->
 <h1 class="en_tete">La procédure de cycle donne la base de temps</h1>
-<div style="top: 5.2cm; left: 2.65cm; font-size: 36pt; line-height: 2; width:57.0cm;">
+<div style="top: 6cm; left: 2.65cm; font-size: 36pt; line-height: 2; width:57.0cm;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 void Ping() {
   int16_t x=0;
@@ -228,11 +234,11 @@ void Ping() {
 
     EteintPoint(x,y);
     x+=sensX;
-    if(x==(MaxX-1)) sensX=(-1);
-    if(x==0) sensX=1;
+    if(x==(MaxX-1)) { sensX=(-1); }
+    if(x==0) { sensX=1; }
     y+=sensY;
-    if(y==(MaxY-1)) sensY=(-1);
-    if(y==0) sensY=1;
+    if(y==(MaxY-1)) { sensY=(-1); }
+    if(y==0) { sensY=1; }
   } while (!((x==0)&&(y==0)));
 }
 ~~~~~~~
@@ -246,7 +252,7 @@ void Ping() {
 <div style="font-size:52pt; left:34cm; width:26.0cm; top:8cm;">
 * Augmentation du nombre de LED
 * Usage du multiplexage temporel
-* Conséquences sur la luminosité
+* Conséquence sur la luminosité
 * Programmation
 </div>
 </section>

@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="nico" />
   <meta name="author" content="Pierre-Yves Rochat, EPFL" />
   <title>Horloges temps réel</title>
   <style type="text/css">code{white-space: pre;}</style>
@@ -47,34 +47,34 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
 </head>
 <body>
-<div id="header">
 <h1 class="title">Horloges temps réel</h1>
-<h2 class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</h2>
-<h3 class="date">rév 2015/09/18</h3>
+<div id="header">
+<p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
+<p class="date">rév 2015/09/18</p>
 </div>
 <h2 id="afficher-lheure">Afficher l’heure</h2>
 <p>Les LED se prêtent très bien à afficher l’heure. Que ce soit pour de petits réveils ou pour des horloges géantes, l’heure est souvent affichée au moyen de LED. Une zone avec une horloge peut très bien être ajoutée à une enseigne à motifs fixes pour la rendre plus attrayante. Un journal lumineux peut compléter les informations qu’il affiche en donnant de temps en temps l’heure et la date.</p>
 <p>Encore faut-il que l’heure indiquée soit juste ! Rien de plus désagréable qu’une horloge affichant une heure fausse... Il faut donc disposer d’un moyen de connaître l’heure de manière fiable.</p>
 <h2 id="base-de-temps">Base de temps</h2>
 <p>Une montre mécanique est réalisée sur la base d’un mouvement oscillant, dont la fréquence est aussi stable que possible. Une chaîne de diviseurs mécaniques, basés sur des engrenages, permet ensuite d’afficher les secondes, les minutes et les heures au moyen d’aiguilles.</p>
-<p>Une montre électronique utilise un principe similaire. La différence est que le système oscillant est un cristal de quartz. La fréquence la plus couramment utilisée est 32’768 Hz. Pourquoi cette valeur ? Parce que c’est une puissance de 2, très exactement 2 à la puissance 15. Il va donc suffire de diviser la fréquence produite par l’oscillateur à quartz par une chaîne de 15 diviseurs par 2 pour obtenir un signal de 1 Hz. Un diviseur par deux, appelé aussi compteur binaire, peut être réalisé avec une bascule, comme le montrent le schéma, les équations et le diagramme des temps de la figure suivante :</p>
+<p>Une montre électronique utilise un principe similaire. La différence est que le système oscillant est un cristal de quartz. La fréquence la plus couramment utilisée est 32’768 Hz. Pourquoi cette valeur ? Parce que c’est une puissance de 2, très exactement 2 à la puissance 15. Il va donc suffire de diviser la fréquence produite par l’oscillateur à quartz par une chaîne de 15 diviseurs par 2 pour obtenir un signal de 1 Hz. Un diviseur par deux, appelé aussi compteur binaire, peut être réalisé avec une bascule, comme le montrent le schéma, les équations et le diagramme des temps de la figure suivante :</p>
 <div class="figure">
 <img src="images/div2.png" title="Diviseur par 2" alt="Diviseur par 2" width="566" />
 <p class="caption">Diviseur par 2</p>
 </div>
-<p>Ensuite, des diviseurs successifs vont produire les secondes, les minutes, les heures, etc, comme l’indique la figure ci-dessous :</p>
+<p>Ensuite, des diviseurs successifs vont produire les secondes, les minutes, les heures, etc., comme l’indique la figure ci-dessous :</p>
 <div class="figure">
 <img src="images/horloge-32k-div.png" title="Principe d’une horloge électronique" alt="Principe d’une horloge électronique" width="566" />
 <p class="caption">Principe d’une horloge électronique</p>
 </div>
-<p>Les circuits logiques qui composent une horloge électronique s’appellent souvent Real Time Clock, abrégé RTC (Horloge en Temps Réel).</p>
+<p>Les circuits logiques qui composent une horloge électronique s’appellent souvent <em>Real Time Clock</em>, abrégé RTC (Horloge Temps Réel).</p>
 <h2 id="pile-de-secours">Pile de secours</h2>
-<p>Il est presque impossible d’assurer qu’un dispositif soit en permanence connecté à un réseau électrique fonctionnel. Dans beaucoup de pays du monde, il est illusoire de vouloir compter sur un approvisionnement électrique sans pannes. De plus, certains dispositifs doivent être parfois déplacés. Il faut donc une source d’énergie de secours, qui assure en permanence le fonctionnement de l’oscillateur à quartz et de la chaîne de division, pour ne pas perdre l’heure. Il est possible d’utiliser pour cela une petite pile.</p>
+<p>Il est presque impossible d’assurer qu’un dispositif soit en permanence connecté à un réseau électrique fonctionnel. Dans beaucoup de pays, il est illusoire de vouloir compter sur un approvisionnement électrique sans pannes. De plus, certains dispositifs doivent être parfois déplacés. Il faut donc une source d’énergie de secours, qui assure en permanence le fonctionnement de l’oscillateur à quartz et de la chaîne de division, pour ne pas perdre l’heure. Il est possible d’utiliser pour cela une pile, souvent une pile bouton.</p>
 <p><strong><em>Anecdote :</em></strong> On trouve une telle pile dans tous les ordinateurs. Elle est souvent désignée par l’expression <em>pile C-MOS</em>. Est-ce à dire qu’une pile est fabriquée en technologie C-MOS ? Évidemment non ! Cette expression date du temps où les premiers circuits C-MOS étaient utilisés pour réaliser des horloges, qu’il était alors possible de faire fonctionner en permanence grâce à une pile de taille modeste, vu que la technologie C-MOS consomme un minimum de courant. Aujourd’hui, tous les microprocesseurs et microcontrôleurs sont basés sur la technologie C-MOS. Mais l’expression <em>pile C-MOS</em> est encore usitée de nos jours.</p>
-<p>Les piles utilisées pour maintenir l’heure sont souvent des piles au lithium. Pourquoi les piles rechargeables ne sont-elles que peu utilisées dans ce domaine ? La raison est la suivante : la capacité d’une pile au lithium est suffisante pour maintenir une horloge temps réel pendant environ 10 ans. C’est aussi l’ordre de grandeur de la durée de vie de cette pile. Or les piles rechargeables ont une durée de vie généralement plus faible, elle ne sont donc pas particulièrement intéressantes pour cette application.</p>
-<h2 id="supercap">Supercap</h2>
-<p>Il existe un autre système d’accumulation d’énergie, qui peut être utilisé pour des horloges temps réel. Ce sont les <em>supercap</em>. Il s’agit de condensateurs électrolytiques basés sur une technologie à double couche électrochimique. Il est courant d’obtenir des capacités de plusieurs Farad, pour une taille similaire à une pile au lithium.</p>
-<p>La capacité de la supercap est généralement dimensionnée pour assurer à l’horloge une autonomie de quelques jours ou quelques semaines. Dès que l’appareil est relié au réseau électrique, la supercap est rapidement rechargée. Le nombre de cycles charge-décharge peut être très grand, de l’ordre de 100’000 cycles. Pour comparaison, la durée de vie d’un accumulateur est limité à environ 1’000 cycles. Mais celle d’un condensateur traditionnel, même électrolytique est encore bien supérieure.</p>
+<p>Les piles utilisées pour maintenir l’heure sont souvent des piles au lithium. Pourquoi les piles rechargeables ne sont-elles que peu utilisées dans ce domaine ? La raison est la suivante : la capacité d’une pile au lithium est suffisante pour maintenir une horloge temps réel pendant environ 10 ans. C’est aussi l’ordre de grandeur de la durée de vie de cette pile. Or les piles rechargeables ont une durée de vie généralement plus faible, elles ne sont donc pas particulièrement intéressantes pour cette application.</p>
+<h2 id="supercap"><em>Supercap</em></h2>
+<p>Il existe un autre système d’accumulation d’énergie, qui peut être utilisé pour des horloges temps réel. Ce sont les <em>supercaps</em>. Il s’agit de condensateurs électrolytiques basés sur une technologie à double couche électrochimique. Il est courant d’obtenir des capacités de plusieurs farads, pour une taille similaire à une pile au lithium.</p>
+<p>La capacité de la <em>supercap</em> est généralement dimensionnée pour assurer à l’horloge une autonomie de quelques jours ou quelques semaines. Dès que l’appareil est relié au réseau électrique, la <em>supercap</em> est rapidement rechargée. Le nombre de cycles charge-décharge peut être très grand, de l’ordre de 100’000 cycles. Pour comparaison, la durée de vie d’un accumulateur est limitée à environ 1’000 cycles. Mais celle d’un condensateur traditionnel, même électrolytique est encore bien supérieure.</p>
 <h2 id="programmation-dune-horloge-avec-un-microcontrôleur">Programmation d’une horloge avec un microcontrôleur</h2>
 <p>La programmation d’une horloge temps réel va beaucoup dépendre du microcontrôleur utilisé pour ce qui concerne la production d’un événement toutes les secondes. Voici un exemple applicable à un ATmega328 :</p>
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
@@ -108,7 +108,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="dt">volatile</span> <span class="dt">uint8_t</span> secondes;
 
-<span class="co">// Il faut un quartz 32 khz sur les broches TOSC1 et TOSC2</span>
+<span class="co">// Il faut un quartz 32 kHz sur les broches TOSC1 et TOSC2</span>
 ISR (TIMER2_OVF_vect) {
     secondes++;
     ...
@@ -116,11 +116,11 @@ ISR (TIMER2_OVF_vect) {
 
 <span class="dt">int</span> main () {
   Temps=<span class="dv">0</span>;
-  ASSR=(<span class="dv">1</span>&lt;&lt;AS2); <span class="co">// oscillateur quartz 32 khz</span>
+  ASSR=(<span class="dv">1</span>&lt;&lt;AS2); <span class="co">// oscillateur quartz 32 kHz</span>
   TCCR2B=<span class="bn">0b101</span>; <span class="co">// prédivision par 128</span>
   TIMSK2=(<span class="dv">1</span>&lt;&lt;TOIE2); <span class="co">// interruption Timer2 Overflow autorisée</span>
   sei(); <span class="co">// toutes les interruptions autorisées</span>
-  <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">// boucle correspondant à tous les réveils dus à l&#39;interruption</span>
+  <span class="kw">while</span> (<span class="dv">1</span>) { <span class="co">//boucle correspondant à tous les réveils dus à l&#39;interruption</span>
     set_sleep_mode(SLEEP_MODE_PWR_SAVE); <span class="co">// mise en veille</span>
     sleep_enable();
     sleep_mode(); <span class="co">// mode normal après un réveil</span>
@@ -128,9 +128,16 @@ ISR (TIMER2_OVF_vect) {
   }
 }</code></pre></td></tr></table></div>
 <!-- retour au mode normal -->
-<p>Un quartz va être branché sur les broches prévues à cet effet. L’oscillateur correspondant va être mis en œuvre à l’intérieur du microcontrôleur. Son signal de sortie va actionner directement le Timer2, à travers un pré-diviseur de 128 (7 bits). Le Timer2 est un timer 8 bits, ce qui correspond à un diviseur par 256. Or 128 × 256 est justement égal à 32’768 (15 bits). En autorisant une interruption sur le dépassement de capacité (Overflow) du Timer2, on obtient bien une interruption à chaque seconde.</p>
-<p>Au moment de l’interruption, le microcontrôleur va se remettre à fonctionner. Dans la routine d’interruption, il va prendre en compte dans une variable le passage à la seconde suivante. Cette variable sera conservée en mémoire vive : le bon mode de sommeil du microcontrôleur doit être choisi pour cela. Le microcontrôleur va ensuite repasser en mode sommeil (sleep), pour minimiser sa consommation.</p>
+<p>Un quartz va être branché sur les broches prévues à cet effet. L’oscillateur correspondant va être mis en œuvre à l’intérieur du microcontrôleur. Son signal de sortie va actionner directement le Timer2, à travers un prédiviseur de 128 (7 bits). Le Timer2 est un timer 8 bits, ce qui correspond à un diviseur par 256. Or 128 × 256 est justement égal à 32’768 (15 bits). En autorisant une interruption sur le dépassement de capacité (<em>overflow</em>) du Timer2, on obtient bien une interruption chaque seconde.</p>
+<p>Au moment de l’interruption, le microcontrôleur va sortir de sa mise en veille. Dans la routine d’interruption, il va prendre en compte dans une variable le passage à la seconde suivante. Cette variable sera conservée en mémoire vive : le bon mode de sommeil du microcontrôleur doit être choisi pour cela. Le microcontrôleur va ensuite repasser en mode sommeil (<em>sleep</em>), pour minimiser sa consommation.</p>
 <p>La partie qui compte les secondes, les minutes et les heures est par contre applicable à tous microcontrôleurs :</p>
+<!--
+Pour l’exemple ci-dessous, il me semble qu’il est plus sage de ne pas faire des tests d’égalité stricts, mais des tests >=. Qu’est ce que tu en penses ?
+
+... if (secondes >= 60) { ...
+... if (minutes >= 60) { ...
+... if (heures >= 24) { ...
+ -->
 <div class="sourceCode" startFrom="8"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>8
 9
 10
@@ -161,21 +168,75 @@ ISR (TIMER2_OVF_vect) {
     ...</code></pre></td></tr></table></div>
 <!-- retour au mode normal -->
 <h2 id="circuits-rtc-spécialisés">Circuits RTC spécialisés</h2>
-<p>Pour décharger le microcontrôleur de la tâche de maintenir l’horloge temps réel, mais surtout pour éviter de devoir maintenir en fonctionnement le microcontrôleur au moyen d’une pile, on utilise souvent des circuits intégrés spécialisés. Plusieurs fabricants offrent de tels circuit, comme Maxim Integrated avec le DS1307, NXP (anciennement Philips) avec les PFC8523 ou PFC8536 ou encore Texas Instrument avec le bq32000.</p>
-<p>Pour communiquer avec un microcontrôleur, ces circuits utilisent généralement les protocoles I2C ou SPI. Voici un schéma de mise en œuvre d’un bq32000 :</p>
+<p>Pour décharger le microcontrôleur de la tâche de maintenir l’horloge temps réel, mais surtout pour éviter de devoir maintenir en fonctionnement le microcontrôleur au moyen d’une pile, on utilise souvent des circuits intégrés spécialisés. Plusieurs fabricants offrent de tels circuits, comme Maxim Integrated avec le DS1307, NXP (anciennement Philips) avec les PFC8523 ou PFC8536 ou encore Texas Instrument avec le bq32000.</p>
+<p>Pour communiquer avec un microcontrôleur, ces circuits utilisent généralement les protocoles I²C ou SPI. Voici un schéma de mise en œuvre d’un bq32000 :</p>
 <div class="figure">
 <img src="images/bq32000.png" title="Schéma de la mise en œuvre d’un circuit horloge temps réel" alt="Schéma de la mise en œuvre d’un circuit horloge temps réel" width="415" />
 <p class="caption">Schéma de la mise en œuvre d’un circuit horloge temps réel</p>
 </div>
+<!--
+Question philosophique : quand on crée une horloge avec un microcontrôleur et un DS1307, quelle est la façon la plus rationnelle de travailler :
+
+SOLUTION 1
+- Le µcontrôleur se réveille toutes les secondes
+- Il demande l’heure au DS1307 via I²C
+- Il affiche l’heure
+- Il retourne dodo
+
+SOLUTION 2
+- Le µcontrôleur règle la sortie SQW du DS1307 à 1 Hz lors de la 1ère utilisation. Le signal SQW est connecté à une broche du microcontrôleur qui est configurée pour le réveiller lors d’une transition.
+- Le µcontrôleur demande l’heure au DS1307 toutes les 24 heures (ou avec une autre constante de temps).
+- Il se réveille avec SQW
+- Il ajoute 1 à la variable HEURE
+- Il affiche l’heure
+- Il retourne dodo
+
+SOLUTION 3
+Même chose que la solution 2 sauf qu’on n’utilise pas le signal SQW du DS1307, mais un timer interne du µcontrôleur qui le réveille toutes les secondes.
+
+
+MON AVIS
+La solution 1 est de loin la plus facile à programmer, mais elle a le désavantage de beaucoup utiliser la communication I²C et donc d’être énergivore. Du point de la précision, c’est pas génial non plus, puisqu’on ne peut pas prédire quelle est la durée de la communication sur le bus I²C. Pour info, c’est cette solution que j’ai retenu pour l’instant pour mon horloge à cycles ultradiens (http://ouilogique.com/horloge_cycles_ultradiens/).
+
+La solution 2 est bien du point de vue de la consommation d’énergie, mais si le microcontrôleur a un souci, on ne le corrigera qu’une fois la constante de temps passée (24 h dans mon exemple).
+
+Je n’aime pas beaucoup la solution 3 parce qu’on doit foire tout un micmac pour prendre en compte le fait que le timer ne peut pas être réglé à une seconde exactement.
+
+On pourrait aussi faire un mélange des solutions 1 et 2 en réveillant le microntrôleur avec le signal SQW et en demandant chaque fois l’heure via I²C.
+
+Bon, de mon expérience, le DS1307 n’est pas suffisamment précis pour s’inquiéter trop de l’exactitude. C’est plus pour l’aspect philosophique que ça m’intéresse.
+
+-->
 <h2 id="rtc-dans-le-microcontrôleur">RTC dans le microcontrôleur</h2>
-<p>Certains microcontrôleurs comportent des circuits logiques qui permettent d’avoir très facilement une horloge en temps réel. L’alimentation de cette partie du circuit intégré est complètement séparée du reste du microcontrôleur. Une entrée permet de brancher directement une pile 3 Volt. C’est le cas par exemple du microcontrôleur STM32F051. La figure montre un extrait de son architecture.</p>
+<!-- Est-ce que ce que tu veux dire n’est pas plutôt :
+
+Certains microcontrôleurs intègrent une horloge temps réel.
+
+???
+-->
+<p>Certains microcontrôleurs comportent des circuits logiques qui permettent de créer très facilement une horloge en temps réel. L’alimentation de cette partie du circuit intégré est complètement séparée du reste du microcontrôleur. Une entrée permet de brancher directement une pile 3 V. C’est le cas par exemple du microcontrôleur STM32F051. La figure montre un extrait de son architecture.</p>
 <div class="figure">
 <img src="images/STM32F051-RTC.png" title="RTC du microcontrôleur STM32f051" alt="RTC du microcontrôleur STM32f051" width="415" />
 <p class="caption">RTC du microcontrôleur STM32f051</p>
 </div>
-<p>Entourée de rouge se trouve une zone isolée, avec son alimentation. Elle comporte une oscillateur à quartz, un diviseur 32 bits, ainsi que quelques positions mémoire RAM, rendues permanentes lorsqu’une pile alimente cette partie du circuit.</p>
+<p>Entourée de rouge se trouve une zone isolée, avec son alimentation. Elle comporte un oscillateur à quartz, un diviseur 32 bits, ainsi que quelques positions mémoire RAM, rendues permanentes lorsqu’une pile alimente cette partie du circuit.</p>
 <h2 id="lheure-par-internet">L’heure par Internet</h2>
 <p>Lorsqu’un afficheur est prévu pour être régulièrement connecté à Internet, il n’est plus indispensable d’avoir une pile pour alimenter un circuit qui conserve l’heure. En effet, il est très facile d’obtenir l’heure par Internet.</p>
-<p>C’est le Protocole d’Heure Réseau (Network Time Protocol ou NTP) qui est utilisé, ou sa version simplifiée SNTP.</p>
+<p>C’est le Protocole d’Heure Réseau (<em>Network Time Protocol</em> ou NTP) qui est utilisé, ou sa version simplifiée SNTP.</p>
+<p>Il existe des serveurs NTP partout dans le monde. Citons-en quelques-uns qui sont accessibles librement :</p>
+<ul>
+<li>Suisse : ntp.metas.ch</li>
+<li>USA : time.nist.gov</li>
+</ul>
+<!--
+
+Ça serait bien d’avoir un exemple de serveur NTP par continent.
+
+Si tu as quelques infos sur les techniques de synchonisation, ça serait bien de les indiquer. En effet, ce n’est pas trivial de tenir compte des temps de latences. Il y a la latence lors de la demande via NTP, puis la latence lors de la synchro via I²C. Quelles sont les incertitudes minimales qu’on peut obtenir ? Et comment les obtenir ?
+
+
+NTP ne gère pas le passage à l’heure d’été et d’hiver. Comment faire pour l’implémenter ? Si on code les dates et les heures de passage en dur dans l’application on prend le risque de devoir mettre à jour tous les systèmes programmés si un jour les dates changent.
+
+-->
 </body>
 </html>

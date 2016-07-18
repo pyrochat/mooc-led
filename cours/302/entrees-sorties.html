@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="nico" />
+  <meta name="author" content="Pierre-Yves Rochat, EPFL" />
+  <title>Entrées-sorties</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<h1 class="title">Entrées-sorties</h1>
+<div id="header">
+<p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
+<p class="date">rév 2016/07/09</p>
+</div>
+<h2 id="broches-dentrée-sorties">Broches d’entrée-sorties</h2>
+<p>Les microcontrôleurs disposent de broches très souples d’emploi, qui peuvent être des entrées ou des sorties. On les appelle aussi parfois GPIO : <em><strong>G</strong>eneral <strong>P</strong>urpose <strong>I</strong>nput <strong>O</strong>utput</em>. La procédure <em>Arduino pinMode()</em> permet de choisir l’usage de chaque broche. Les procédures <code>digitalRead()</code> et <code>digitalWrite()</code> permettent de lire une valeur d’entrée et d’écrire une valeur sur une sortie.</p>
+<p>Ces procédures cachent les registres que chaque fabricant a prévu pour utiliser les broches d’entrée-sortie. Mais il est souvent utile de les connaître, pour utiliser aussi efficacement que possible les entrées-sorties. C’est en particulier le cas lorsqu’il est nécessaire d’accéder à plusieurs sorties en même temps et lorsqu’un temps minimum doit être pris pour ces opérations. Or c’est souvent le cas dans des afficheurs à LED.</p>
+<h2 id="rôles-possibles-dune-broche">Rôles possibles d’une broche</h2>
+<p>Une broche peut être une entrée ou une sortie, mais regardons plus en détail chacun de ces cas. Pour une sortie, la broche peut prendre l’état <em>0</em> ou l’état <em>1</em>. Sur certains microcontrôleurs, il est même possible de préciser la <em>force</em> de cette sortie, plus précisément la résistance interne des transistors qui commandent l’état <em>0</em> et l’état <em>1</em>.</p>
+<p>Pour une entrée, plusieurs modes sont souvent proposés :</p>
+<ul>
+<li>Entrée à haute impédance. Dans ce cas, l’entrée doit être reliée en permanence à une sortie. Mais lorsque ce n’est pas le cas, la valeur lue peut changer de manière aléatoire, à cause des charges électriques qui peuvent se présenter sur l’entrée.</li>
+<li>Entrée avec une résistance de tirage vers le haut : <em>pull-up</em></li>
+<li>Entrée avec une résistance de tirage vers le bas : <em>pull-down</em></li>
+</ul>
+<p>Les résistances de tirage sont utilisées lorsqu’une entrée peut ne pas être reliée en permanence à une sortie. C’est le cas lorsqu’un bouton poussoir est utilisé. C’est aussi le cas lorsque des entrées sont reliées à un autre dispositif par l’intermédiaire d’un connecteur, qui peut être débranché.</p>
+<p>La figure suivante montre la nécessité d’une résistance de tirage lors de l’utilisation d’un bouton-poussoir.</p>
+<div class="figure">
+<img src="images/poussoir-tirage.svg" title="Branchement d’un poussoir et résistance de tirage" alt="Branchement d’un poussoir et résistance de tirage" style="width:80.0%" />
+<p class="caption">Branchement d’un poussoir et résistance de tirage</p>
+</div>
+<p>Lorsque le poussoir n’est pas pressé, l’état logique <em>1</em> est assuré par une résistance reliée à l’alimentation positive. La résistance peut être externe ou interne au microcontrôleur.</p>
+<h2 id="les-ports-et-leurs-registres">Les ports et leurs registres</h2>
+<p>Dans un microcontrôleur, les broches d’entrée-sortie sont toujours regroupées dans ce qu’on appelle des <strong>ports</strong>. Il s’agit le plus souvent de ports de 8 bits, mais ils peuvent aussi avoir 16 ou même 32 bits. Parfois, un port n’est pas complet sur un modèle donné de microcontrôleur, pour tenir compte du nombre de broches disponibles sur le boîtier utilisé.</p>
+<p>Le nombre, les noms et la fonctionnalité des registres qui pilotent un port dans un microcontrôleur varient avec les familles de microcontrôleurs. Nous regarderons ici le cas de la famille des AVR du fabricant Atmel, dont le plus connu est l’ATmega328 utilisé sur la carte Arduino UNO. Nous verrons également le cas de la famille MSP430.</p>
+<p>Sur les AVR, les ports s’appellent PORT A, PORT B, etc. Les 8 broches du PORT A s’appellent PA0, PA1... PA7. Trois registres sont utilisés pour piloter chaque port :</p>
+<ul>
+<li><strong>DDRA</strong> <em><strong>D</strong>ata <strong>D</strong>irection <strong>R</strong>egister</em> : registre de direction. C’est le registre qui précise pour chaque broche si elle est une entée ou une sortie.</li>
+<li><strong>PORTA</strong> : le registre de sortie. Lorsqu’une broche est mise en sortie, c’est ce registre qui précise l’état de la sortie, <em>0</em> ou <em>1</em>.</li>
+<li><strong>PINA</strong> : indique à tout moment l’état de chaque broche. Ce n’est pas à proprement parler un registre, vu qu’il n’est possible que de lire sa valeur.</li>
+</ul>
+<p>De la même manière, DDRB, PORTB et PINB sont disponible pour le PORT B.</p>
+<p>Voici un tableau qui indique le rôle d’une broche en fonction des valeurs dans DDRA et dans PORTA d’un AVR :</p>
+<div class="figure">
+<img src="images/table-fonc-avr.svg" title="Rôle d’une broche en fonction de DDR et PORT sur un AVR" alt="Rôle d’une broche en fonction de DDR et PORT sur un AVR" style="width:60.0%" />
+<p class="caption">Rôle d’une broche en fonction de DDR et PORT sur un AVR</p>
+</div>
+<p>Pour une broche donnée, nous avons quatre combinaisons binaires, qui permettent de choisir entre une entrée à haute impédance, une entrée avec résistance de tirage vers le haut, une sortie à l’état <em>0</em> et une sortie à l’état <em>1</em>.</p>
+<p>Sur le MSP430, les ports s’appellent P1, P2, etc. Les broches sont notées P1.0, P1.1... P1.7. On utilise 4 registres pour le pilotage des entrées-sorties :</p>
+<ul>
+<li><strong>P1DIR</strong> : le registre de direction. Il est équivalent au DDR des AVR.</li>
+<li><strong>P1OUT</strong> : le registre de sortie. Il est équivalent au PORT des AVR.</li>
+<li><strong>P1REN</strong> <em><strong>R</strong>esistor <strong>E</strong>nable</em> : commande l’enclenchement des résistances de tirage.</li>
+<li><strong>P1IN</strong> : indique à tout moment l’état de chaque broche.</li>
+</ul>
+<p>Voici un tableau qui indique le rôle d’une broche en fonction des valeurs des registres, pour un MSP430 :</p>
+<div class="figure">
+<img src="images/table-fonc-msp.svg" title="Rôle d’une broche en fonction des registres sur un MSP430" alt="Rôle d’une broche en fonction des registres sur un MSP430" style="width:50.0%" />
+<p class="caption">Rôle d’une broche en fonction des registres sur un MSP430</p>
+</div>
+<p>Le MSP430 dispose donc d’une possibilité de placer une résistance de tirage vers le bas (<em>pull-down</em>). C’est la valeur du bit de P1OUT qui détermine si la résistance est vers le haut ou vers le bas.</p>
+<p>Seules cinq combinaisons ont été décrites dans ce tableau. Les trois autres combinaisons n’ont pas lieu d’être utilisées.</p>
+<p>Il faut noter que les entrées d'un microcontrôleur ne doivent pas recevoir une tension supérieure à la tension d'alimentation. Les diodes de protection deviendraient alors conductrices, ce qui n'est pas autorisé. Un soin particulier doit donc être pris lors de l'utilisation de dispositifs n'étant pas alimentés par le même tension. C'est souvent le cas lorsqu'on relie par exemple un Arduino avec un module alimenté en 3.3 V.</p>
+<h2 id="lecture-et-écriture-sur-un-port">Lecture et écriture sur un port</h2>
+<p>Au moment du <em>reset</em>, les registres DDR ou P1DIR prennent la valeur <em>0</em>. En d’autres termes, une broche est par défaut une entrée. Rien de plus n’est à effectuer pour l’utiliser comme telle.</p>
+<p>Il faudra écrire des <em>1</em> dans les bits des registres DDR ou P1DIR correspondant aux broches dont on souhaite qu’elles soient des sorties. Par exemple, l’instruction :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1DIR = 0B01000001;</code></pre></div>
+<p>permet de mettre les broches P1.0 et P1.6 en sortie.</p>
+<p>Il faut noter qu’il est possible de changer à tout moment le rôle d’une broche. Si le choix du mode se fait souvent au début du programme, il existe des cas où le rôle d’une broche change au cours du temps.</p>
+<p>Il est possible de connaître la valeur sur les 8 broches d’un port, en lisant PINA sur un AVR ou P1IN sur un MSP430. Cette lecture est possible indépendamment du rôle assigné aux broches, entrées ou sorties. L’instruction :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">variable = P1IN;</code></pre></div>
+<p>permet de prendre connaissance des valeurs des 8 broches de P1.</p>
+<p>L’instruction :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1OUT = valeur;</code></pre></div>
+<p>permet de placer une valeur binaire dans chacune des huit broches du port P1. Une seule instruction est nécessaire. L’usage de huit <code>digitalWrite()</code> prendrait davantage de place en mémoire, mais surtout un temps beaucoup plus long !</p>
+<p>Mais comment effectuer une écriture ou une lecture sur une seule broche d’un port, ou encore sur une partie des broches d’un port ? Les opérateurs logiques du langage C permettent de faire facilement ces opérations.</p>
+<h2 id="opérations-logiques-en-c">Opérations logiques en C</h2>
+<p>Nous allons avoir besoin de trois opérateurs :</p>
+<ul>
+<li>Le <code>OU</code> logique. L’opérateur se note <code>|</code>. Il prend comme opérandes deux valeurs binaires de 8, 16 ou 32 bits. L’opération OU s’effectue entre chacun des bits de même rang des deux opérateurs.</li>
+<li>Le <code>ET</code> logique. L’opérateur se note <code>&amp;</code>. Il s’applique également entre deux valeurs binaires de 8, 16 ou 32 bits.</li>
+<li>L’<code>inversion</code> logique. L’opérateur se note <code>~</code>. Il s’applique à une valeur binaire de 8, 16 ou 32 bits. Chaque bit est inversé : <em>0</em> devient <em>1</em> et <em>1</em> devient <em>0</em>.</li>
+</ul>
+<p>Il ne faut pas confondre les opérateurs <code>|</code>, <code>&amp;</code> et <code>~</code> avec les opérateurs <code>||</code> (opérateur OU), <code>&amp;&amp;</code> (opérateur ET) et <code>!</code> (opérateur d’inversion), qui agissent non pas sur chacun des bits des opérandes, mais sur des opérandes considérés comme une seule valeur booléenne : fausse (si la valeur est nulle) ou vraie (si la valeur est non nulle).</p>
+<h2 id="mise-à-1-de-bits">Mise à <em>1</em> de bits</h2>
+<p>L’opération de mise à <em>1</em> d’un ou de plusieurs bits dans un registre s’effectue avec l’opérateur OU. Par exemple, l’instruction :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1OUT |= <span class="bn">0b01000000</span>;</code></pre></div>
+<p>va mettre à un le bit de rang 6 dans le registre <code>P1OUT</code>. La figure suivante l’explique :</p>
+<div class="figure">
+<img src="images/set-bit.svg" title="Mise à 1 d’un bit dans un registre" alt="Mise à 1 d’un bit dans un registre" style="width:60.0%" />
+<p class="caption">Mise à 1 d’un bit dans un registre</p>
+</div>
+<p>L’opération peut agir sur plusieurs bits. Par exemple, l’instruction :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1OUT |= <span class="bn">0b01000001</span>;</code></pre></div>
+<p>va mettre les broches P1.0 et P1.6 à <em>1</em>, sans toucher les autres bits.</p>
+<h2 id="mise-à-0-de-bits">Mise à <em>0</em> de bits</h2>
+<p>C’est l’opérateur ET qui va permettre la mise à <em>0</em> d’un ou de plusieurs bits dans un registre. Par exemple, l’instruction :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1OUT &amp;= <span class="bn">0b10111111</span>;</code></pre></div>
+<p>va mettre à <em>1</em> le bit de rang 6 dans le registre P1OUT. La figure suivante l’explique :</p>
+<div class="figure">
+<img src="images/clear-bit.svg" title="Mise à 0 d’un bit dans un registre" alt="Mise à 0 d’un bit dans un registre" style="width:60.0%" />
+<p class="caption">Mise à 0 d’un bit dans un registre</p>
+</div>
+<p>Il est possible aussi d’agir sur plusieurs bits :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1OUT &amp;= <span class="bn">0b10111110</span>;</code></pre></div>
+<p>met à <em>0</em> P1.0 et P1.6, sans toucher les autres bits.</p>
+<h2 id="test-de-bits">Test de bits</h2>
+<p>Le test d’un bit peut se faire avec l’opérateur ET. Par exemple, pour tester la valeur du bit de rang 3, l’opération :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1IN &amp; <span class="bn">0b00001000</span></code></pre></div>
+<p>va rendre une valeur nulle si le bit 3 est à <em>0</em> et une valeur non nulle si le bit est à <em>1</em>, comme le montre la figure suivante :</p>
+<div class="figure">
+<img src="images/test-bit.svg" title="Test d’un bit" alt="Test d’un bit" style="width:110.0%" />
+<p class="caption">Test d’un bit</p>
+</div>
+<p>Comme le C considère une valeur nulle comme fausse et une valeur non nulle comme vraie, l’instruction :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">if</span> (P1IN &amp; <span class="bn">0b00001000</span>)</code></pre></div>
+<p>va bien tester si le bit de rang 3 est à 1.</p>
+<p>Pour tester si un bit a une valeur nulle, on peut par exemple inverser logiquement le test précédent par l’opérateur <em>!</em>  :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">if</span> (!(P1IN &amp; <span class="bn">0b00001000</span>))</code></pre></div>
+<h2 id="optimisation-par-les-compilateurs">Optimisation par les compilateurs</h2>
+<p>Les compilateurs savent utiliser de manière astucieuse les instructions spécifiques des microcontrôleurs. Par exemple, l’instruction de mise à <em>1</em> d’un bit unique dans un registre se fera avec un AVR avec l’instruction spécifique <em>SetBit</em>. Mais s’il faut agir sur plusieurs bits, une opération OU sera utilisée.</p>
+<p>Par contre, sur un MSP430 qui dispose d’une instruction spécifique pour le OU sur plusieurs bits (<em>multiple SetBit</em>), c’est systématiquement cette instruction qui sera utilisée par le compilateur.</p>
+<h2 id="écriture-plus-lisible-des-constantes">Écriture plus lisible des constantes</h2>
+<p>Écrire les constantes sous forme décimale ne fait pas apparaître facilement les bits concernés dans une opération sur champs de bits. Les notations hexadécimales et binaires sont un peu plus claires. Mais il est plus lisible de composer les valeurs binaires au moyen de l’opérateur de décalage vers la gauche <code>&lt;&lt;</code>. Ainsi les quatre notations suivantes sont équivalentes et le compilateur produit le même code pour chacune d’entre elles :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">* P1OUT |= <span class="dv">64</span>; <span class="co">// valeur en décimal</span>
+* P1OUT |= <span class="bn">0x40</span>; <span class="co">// valeur en hexadécimal</span>
+* P1OUT |= <span class="bn">0b01000000</span>; <span class="co">// valeur en binaire</span>
+* P1OUT |= (<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>); <span class="co">// valeur construite avec l’opérateur de décalage</span></code></pre></div>
+<!-- retour au mode normal pour l’éditeur -->
+<p>Mais la dernière écriture est la seule qui met clairement en évidence que c’est le seul bit de rang 6 qui est à <em>1</em>.</p>
+<p>Pour l’opération de mise à zéro d’un bit, l’opérateur d’inversion <code>~</code> va rendre service. Par exemple, la constante 0b10111111 peut être notée comme ~0b01000000. Ce qui permet la syntaxe suivante :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1OUT &amp;=~(<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>);</code></pre></div>
+<!-- retour au mode normal pour l’éditeur -->
+<p>On pourra se souvenir que :</p>
+<ul>
+<li><code>|=</code> est l’opération de mise à <em>1</em> d’un bit (<em>bit set</em> en anglais).</li>
+<li><code>&amp;=~</code> est l’opération de mise à <em>0</em> d’un bit (<em>bit clear</em> en anglais).</li>
+</ul>
+<p>Exemples :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1OUT |= (<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>); <span class="co">// set bit</span>
+P1OUT &amp;=~(<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>);  <span class="co">// clear bit</span></code></pre></div>
+<h2 id="propriété-de-lopérateur-ou-exclusif">Propriété de l’opérateur OU-exclusif</h2>
+<p>En plus des opérateurs OU, ET et l’inversion, l’opérateur OU-exclusif est aussi disponible en C, noté par <code>^</code>. Il permet de réaliser le changement de valeur sur une partie des bits d’un champ de bit. Par exemple, l’instruction :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">P1OUT ^= (<span class="dv">1</span>&lt;&lt;<span class="dv">6</span>);</code></pre></div>
+<p>inverse l’état de la broche P1.6 : si elle était à <em>0</em>, elle passera à <em>1</em>, si elle était à <em>1</em>, elle passera à <em>0</em>. Le terme anglais <em>toggle</em> est souvent utilisé. <!-- retour au mode normal pour l’éditeur --></p>
+<h2 id="utilisation-du-define">Utilisation du #define</h2>
+<p>Pour rendre encore plus lisible un programme, on utilisera très souvent la définition de constantes en C par un <code>#define</code>. Il s’agit plus exactement d’un ordre de traduction donné au pré-processeur.</p>
+<p>Voici quelques exemples :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define ClockSet P1OUT |= (1&lt;&lt;5) </span><span class="co">// active le bit de rang 5, utilisé pour une horloge</span>
+<span class="ot">#define ClockClear P1OUT &amp;=~(1&lt;&lt;5) </span><span class="co">// désactive l’horloge</span>
+
+<span class="ot">#define LedRougeOn P1OUT |= (1&lt;&lt;0) </span><span class="co">// allume la LED rouge</span>
+<span class="ot">#define LedRougeOff P1OUT &amp;=~(1&lt;&lt;0) </span><span class="co">// éteint la LED rouge</span>
+<span class="ot">#define LedRougeToggle P1OUT ^= (1&lt;&lt;0) </span><span class="co">// inverse l’état de la LED rouge</span></code></pre></div>
+</body>
+</html>

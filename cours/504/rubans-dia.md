@@ -41,8 +41,8 @@ Pierre-Yves Rochat
 <img src="./images/diffus.jpg" style="top:18cm; left:3cm; width:13cm;" />
 <img src="./images/ruban-ic.png" style="top:21cm; left:20cm; width:19cm;" />
 <img src="./images/ruban-ic2.png" style="top:18cm; left:42cm; width:14cm;" />
-<!-- 2 --><img src="./images/adressable.png" style="top:7cm; left:25cm; width:14.7cm;" />
-<!-- 2 --><img src="./images/uniforme-bleu.png" style="top:7cm; left:43cm; width:14cm;" />
+<!-- 2 --><img src="./images/adressable.png" style="top:7cm; left:43cm; width:14.7cm;" />
+<!-- 2 --><img src="./images/uniforme-bleu.png" style="top:7cm; left:25cm; width:14cm;" />
 </section>
 
 
@@ -50,7 +50,7 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Rubans uniformes</h1>
 <div style="font-size:50pt; left:3cm; width:57cm; top:7cm;">
-* une seule couleur un seule intensité à un instant-donné, pour toutes les LED
+* une seule couleur et une seule intensité à un instant donné, pour toutes les LED
 </div>
 <img src="./images/archi-uniforme.svg" style="top:10cm; left:3cm; width:37cm;" />
 <!-- 2 --><img src="./images/uniforme-ac.svg" style="top:23cm; left:3cm; width:30cm;" />
@@ -72,13 +72,16 @@ Pierre-Yves Rochat
 <h1 class="en_tete">Rubans adressables</h1>
 <div style="font-size:50pt; left:3cm; width:57cm; top:7cm;">
 * Chaque LED est indépendante pour sa couleur et son intensité
-<!-- 234 -->* Rubans adressables *(Addressable strips)*
+<!-- 2345 -->* Rubans adressables *(Addressable strips)*
 </div>
-<!-- 34 --><img src="./images/archi-adressable.svg" style="top:13.5cm; left:3cm; width:42cm;" />
-<!-- 4 --><div style="font-size:50pt; left:3cm; width:46cm; top:24cm;">
-<!-- 4 -->* Horloge asymétrique
-<!-- 4 --></div>
-<!-- 4 --><img src="./images/horloge-asym.svg" style="top:27cm; left:3cm; width:31cm;" />
+<!-- 345 --><img src="./images/archi-adressable.svg" style="top:13.5cm; left:3cm; width:42cm;" />
+<!-- 45 --><div style="font-size:50pt; left:3cm; width:46cm; top:24cm;">
+<!-- 45 -->* Horloge asymétrique
+<!-- 45 --></div>
+<!-- 5 --><div style="font-size:50pt; left:35cm; width:46cm; top:24cm;">
+<!-- 5 -->* Worldsemi WS28xx
+<!-- 5 --></div>
+<!-- 45 --><img src="./images/horloge-asym.svg" style="top:27cm; left:3cm; width:31cm;" />
 </section>
 
 
@@ -112,7 +115,6 @@ Chaque registre :
 <h1 class="en_tete">Bit banging</h1>
 <div style="top: 6cm; left: 2.65cm; font-size: 37pt; line-height: 1.5; width:57.0cm;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
-#define WS2811_Pin GPIO_PIN_10
 #define PORT_WS2811 GPIOA
 #define BIT_WS2811 10
 #define WS28On (PORT_WS2811->ODR|=(1<<BIT_WS2811))
@@ -132,21 +134,21 @@ Chaque registre :
 <!-- A -->
 <h1 class="en_tete">Initialisations et variables</h1>
 <div style="top: 6cm; left: 2.65cm; font-size: 37pt; line-height: 1.5; width:57.0cm;">
-~~~~~~~ { .c .numberLines startFrom="13" }
+~~~~~~~ { .c .numberLines startFrom="12" }
 // Contenu du ruban :
 #define LgRuban 50
 uint32_t Ruban[LgRuban];
 
-int main(void) {     // Programme principal
-  HAL_Init();        // Initialisation de la librairie Hardware Level
+int main(void) {        // Programme principal
+  HAL_Init();           // Initialisation de la librairie Hardware Level
   SystemClock_Config(); // Configure l'horloge système
-  MX_GPIO_Init();    // Initialise les périphériques
+  MX_GPIO_Init();       // Initialise les périphériques
   PORT_WS2811->MODER |= (0b01 << (BIT_WS2811*2)); // broche en sortie
 
   uint32_t i;
   volatile uint16_t j;
   uint32_t v, idx;
-  uint32_t *pt;      // pointeur dans le tableau
+  uint32_t *pt;         // pointeur dans le tableau
 
   // Initialisation fixe des couleurs
   for (idx=0; idx<LgRuban; idx++) {
@@ -161,7 +163,7 @@ int main(void) {     // Programme principal
 <!-- A -->
 <h1 class="en_tete">Boucle critique</h1>
 <div style="top: 6cm; left: 2.65cm; font-size: 37pt; line-height: 1.5; width:57.0cm;">
-~~~~~~~ { .c .numberLines startFrom="33" }
+~~~~~~~ { .c .numberLines startFrom="32" }
  while (1) { // boucle principale
     pt = Ruban;
     __ASM volatile ("cpsid i"); // interrupt OFF
@@ -189,7 +191,7 @@ int main(void) {     // Programme principal
 <!-- A -->
 <h1 class="en_tete">Boucle critique</h1>
 <div style="top: 6cm; left: 2.65cm; font-size: 37pt; line-height: 1.5; width:57.0cm;">
-~~~~~~~ { .c .numberLines startFrom="51" }
+~~~~~~~ { .c .numberLines startFrom="50" }
       if (v & (1<<11)) {Un;} else {Zero;}
       if (v & (1<<10)) {Un;} else {Zero;}
       if (v & (1<<9)) {Un;} else {Zero;}

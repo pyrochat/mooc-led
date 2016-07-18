@@ -18,16 +18,10 @@
 <!-- def A --></div>
 <!-- A -->
 <h1 class="en_tete">Le microcontrôleur</h1>
-<div style="top:6.5cm; left:35cm; width:23cm; text-align: right;  font-size:48pt; font-family: Impact, sans-serif;">
+<div style="top:6cm; left:35cm; width:23cm; font-size:48pt; font-family: Impact, sans-serif;">
 Pierre-Yves Rochat
 </div>
-</section>
-
-
-<section>
-<!-- A -->
-<h1 class="en_tete">Le microcontrôleur</h1>
-<div class="liste_demi" style="font-size:48pt; left:35cm; width:26.0cm; top:8cm;">
+<div class="liste_demi" style="font-size:48pt; left:35cm; width:26.0cm; top:11cm;">
 * Système informatique
 * Le microcontrôleur
 * De nombreuses familles
@@ -63,8 +57,8 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">De nombreuses familles de microcontrôleurs</h1>
-<div style="top: 8cm; left: 3cm; font-size: 48pt;">
-* De nombreux fabricants
+<div style="top: 7cm; left: 3cm; font-size: 48pt;">
+* De nombreux fabricants, des milliers de modèles différents !
 </div>
 <!-- 234567 --><img src="./images/microchip-atmel-logo.png" style="top:11cm; left:3cm; width:19cm; ">
 <!-- 234567 --><img src="./images/nxp-logo.png" style="top:11.7cm; left:20cm; width:5cm; ">
@@ -76,10 +70,10 @@ Pierre-Yves Rochat
 <!-- 4567 -->* Mémoire vive de quelques octets à des centaines de ko
 <!-- 567 -->* De quelques broches à des centaines de broches d’entrées-sorties
 <!-- 34567 --></div>
-<!-- 67 --><img src="./images/dil14.png" style="top:25.0cm; left:7cm; width:9cm; ">
-<!-- 67 --><img src="./images/smd16.png" style="top:25.0cm; left:19cm; width:7cm; ">
-<!-- 67 --><img src="./images/mlp28.svg" style="top:26.0cm; left:30cm; width:2cm; ">
-<!-- 7 --><img src="./images/mlp28.svg" style="top:25.0cm; left:35cm; width:8cm; ">
+<!-- 67 --><img src="./images/dil14.png" style="top:25.0cm; left:6cm; width:9cm; ">
+<!-- 67 --><img src="./images/smd16.png" style="top:25.0cm; left:18cm; width:7cm; ">
+<!-- 67 --><img src="./images/mlp28.svg" style="top:26.0cm; left:29cm; width:2cm; ">
+<!-- 7 --><img src="./images/mlp28.svg" style="top:25.0cm; left:34cm; width:8cm; ">
 </section>
 
 

@@ -21,6 +21,9 @@ Pour des rubans RGB, le câblage est généralement à anode commune, mais pas t
 
 ![Câblage des rubans uniformes à anode commune](images/uniforme-ac.svg "Câblage des rubans uniformes à anode commune"){ width=90% }
 
+Le nombre de LED peut devenir important, nécessitant des courants importants. Des transistors MOS sont souvent utilisés. Voici le schéma pour un montage à anodes communes :
+
+![Transistors N-MOS utilisé pour commander les cathodes](images/nmos-ac.svg "Transistors N-MOS utilisé pour commander les cathodes"){ width=60% }
 
 ## Les rubans adressables ##
 

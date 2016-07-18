@@ -70,14 +70,15 @@ Pierre-Yves Rochat
 <h1 class="en_tete">Ondes radio (RF)</h1>
 <div style="top:7cm; left:2.65cm; font-size:48pt; width:57cm; line-height: 1.2;">
 * Ondes électromagnétiques, de 3 kHz à 300 GHz
-<!-- 2345 -->* Respecter la législation de chaque pays !
-<!-- 345 -->* Modules 433 MHz
+<!-- 23456 -->* Respecter la législation de chaque pays !
+<!-- 3456 -->* Modules 433 MHz
 </div>
-<!-- 345 --><img src="./images/radio433.jpg" style="top:9cm; left:42cm; width:13cm;" />
-<!-- 45 --><div style="top:19cm; left:2.65cm; font-size:48pt; width:57cm; line-height: 1.2;">
-<!-- 45 -->* Contraintes sur le signal modulant, utilisation de librairies
-<!-- 5 -->* Modules plus complexes, gérant les collisions. Ex : modules nRF24L01+
-<!-- 45 --></div>
+<!-- 3456 --><img src="./images/radio433.jpg" style="top:9cm; left:42cm; width:13cm;" />
+<!-- 456 --><div style="top:19cm; left:2.65cm; font-size:48pt; width:57cm; line-height: 1.2;">
+<!-- 456 -->* Contraintes sur le signal modulant, utilisation de librairies
+<!-- 56 -->* Modules plus complexes, gérant les collisions. Ex : modules nRF24L01+
+<!-- 6 -->* Des portées de plusieurs km sans augmentation de la puissance : LoRa
+<!-- 456 --></div>
 </section>
 
 

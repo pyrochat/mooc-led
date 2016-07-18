@@ -40,13 +40,13 @@ Pierre-Yves Rochat
 <!-- 23456 -->* Arduino : choix par `pinMode()`
 <!-- 23456 -->* Lecture par `digitalRead()`
 <!-- 23456 -->* Écriture par `digitalWrite()`
-<!-- 3456 -->* Simple... mais pas toujours optimal
 <!-- 23456 --></div>
-<!-- 456 --><div style="top: 23cm; left: 3cm; font-size: 48pt;">
+<!-- 3456 --><div style="top: 21cm; left: 3cm; font-size: 48pt;">
+<!-- 3456 -->* Simple... mais pas toujours optimal
 <!-- 456 -->* Accès à une seule broche à la fois
 <!-- 56 -->* Temps d’exécution important
 <!-- 6 -->* Taille mémoire peu optimale
-<!-- 456 --></div>
+<!-- 3456 --></div>
 </section>
 
 
@@ -71,7 +71,7 @@ Pierre-Yves Rochat
 <h1 class="en_tete">Les ports et leurs registres</h1>
 <div style="top: 7cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
 * Les broches sont regroupées par **ports**
-<!-- 2345678 -->* Les ports ont souvent 8 bits, parfois 16 ou 32 bits
+<!-- 2345678 -->* Les ports ont souvent **8 bits**, parfois 16 ou 32 bits
 <!-- 345678 -->* Un port peut être incomplet sur un modèle donné de microcontrôleur
 <!-- 45678 -->* Les noms des ports dépendent des familles de microcontrôleurs
 </div>
@@ -107,14 +107,14 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Les registres sur les MSP430</h1>
 <div style="top: 7cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
-* Sur les AVR, les ports s’appellent P1, P2, ...
+* Sur les MSP430, les ports s’appellent P1, P2, ...
 <!-- 234567 -->* Les 8 broches de P1 s’appellent P1.0, P1.1... P1.7
 </div>
 <!-- 34567 --><div style="top: 12cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
 <!-- 34567 -->4 registres sont utilisés pour piloter chaque port :
 <!-- 34567 --></div>
 <!-- 34567 --><div style="top: 17cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
-<!-- 34567 -->* **P1DIR** _**D**ata **D**irection **R**egister_
+<!-- 34567 -->* **P1DIR** : registre de direction
 <!-- 4567 -->* **P1OUT** : registre de sortie
 <!-- 567 -->* **P1IN** : donne l’état de chaque broche
 <!-- 67 -->* **P1REN** : enclenche une résistance de tirage
@@ -132,9 +132,9 @@ Pierre-Yves Rochat
 <!-- 2345678 -->* Lecture : `variable = P1IN;`
 <!-- 345678 -->* Écriture : `P1OUT = valeur;`
 </div>
-<!-- 45678 --><div style="top: 15cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
+<!-- 45678 --><div style="top: 15.5cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
 <!-- 45678 -->* Comment agir sur un seul bit à la fois ?
-<!-- 5678 -->* Grâce aux opérateurs logique du C !
+<!-- 5678 -->* Grâce aux opérateurs logiques du C !
 <!-- 45678 --></div>
 <!-- 678 --><div style="top: 22cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:58cm;">
 <!-- 678 -->* Le **OU** logique : **|**
@@ -179,10 +179,10 @@ Pierre-Yves Rochat
 <!-- 3456 -->* `P1OUT |= 0b01000000;`
 <!-- 456 -->* `P1OUT |= (1<<6);`
 </div>
-<!-- 56 --><div style="top: 18cm; left: 7cm; font-size: 48pt; line-height: 1.2; width:58cm;">
+<!-- 56 --><div style="top: 19cm; left: 7cm; font-size: 48pt; line-height: 1.2; width:58cm;">
 <!-- 56 -->* Avec l’opérateur d’inversion : `P1OUT &=~(1<<6);`
 <!-- 56 --></div>
-<!-- 6 --><div style="top: 25cm; left: 7cm; font-size: 48pt; line-height: 1.2; width:58cm;">
+<!-- 6 --><div style="top: 24cm; left: 7cm; font-size: 48pt; line-height: 1.2; width:58cm;">
 <!-- 6 -->* **_bit set_** : `P1OUT |= (1<<6);`
 <!-- 6 -->* **_bit clear_** : `P1OUT &=~(1<<6);`
 <!-- 6 --></div>
@@ -194,14 +194,14 @@ Pierre-Yves Rochat
 <h1 class="en_tete">Inversion d’un bit par OU exclusif</h1>
 <div style="top: 7cm; left: 7cm; font-size: 48pt; line-height: 2; width:58cm;">
 * Le C offre un opérateur pour le OU exclusif : `^`
-<!-- 2 -->* `P1OUT ^= (1<<6);` : inverse le bit 6
+<!-- 2 -->* `P1OUT ^= (1<<6); // inverse le bit 6`
 </div>
 </section>
 
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Utilisations de <code>#define</code></h1>
+<h1 class="en_tete">Utilisation de <code>#define</code></h1>
 <div style="top:6.5cm; left:2cm; font-size:48pt; width:58cm; line-height: 1.8;">
 ~~~~~~~~~~~~~~~~ {.C  .numberLines}
  #define ClockSet P1OUT |= (1<<5)

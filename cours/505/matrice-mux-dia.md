@@ -15,33 +15,8 @@
 <!-- def A --><img src="../../statiques/images/epfl-logo-pp.png" style="top:0.8cm; left:54.41cm; width:3.6cm" />
 <!-- def A --><img src="../../statiques/images/rescif-trait.png" style="top:5.07cm; left:0cm; width:60.02cm; height:0.23cm" />
 <!-- def A --><div style="top:31.26cm; left:35cm; width:23cm; text-align: right;  font-size:21pt; font-family: Arial Narrow, sans-serif; color:#555555;">
-<!-- def A -->**Enseignes et afficheurs à LED** | Affichages matriciels
+<!-- def A -->**Enseignes et afficheurs à LED** | Affichages matriciels multiplexés
 <!-- def A --></div>
-<!-- A -->
-<h1 class="en_tete">Afficheurs matriciels multiplexés</h1>
-<div style="top:6.5cm; left:35cm; width:23cm; text-align: right;  font-size:48pt; font-family: Impact, sans-serif;">
-Pierre-Yves Rochat
-</div>
-</section>
-
-
-<section>
-<!-- A -->
-<h1 class="en_tete">Afficheurs matriciels multiplexés</h1>
-<div style="top:6.5cm; left:35cm; width:23cm; text-align: right;  font-size:48pt; font-family: Impact, sans-serif;">
-Pierre-Yves Rochat
-</div>
-<div style="font-size:52pt; left:34cm; width:26.0cm; top:11cm;">
-* Augmentation du nombre de LED
-* Usage du multiplexage temporel
-* Conséquence sur la luminosité
-* Programmation
-</div>
-</section>
-
-
-<!-- Option : Page bienvenue et nom, demi-->
-<section>
 <!-- A -->
 <h1 class="en_tete">Afficheurs matriciels multiplexés</h1>
 <div style="top:6.5cm; left:34cm; width:23cm; text-align: left;  font-size:48pt; font-family: Impact, sans-serif;">
@@ -72,7 +47,7 @@ Pierre-Yves Rochat
 <!-- 234567 -->* 128 registres 8 bits 74HC595 et 1024 résistances
 <!-- 34567 -->* Trois fois plus pour une matrice RGB !
 <!-- 4567 -->* Registres 16 bits à sortie à courant constant SUM2016
-<!-- 557 -->* 192 circuits intégrés et 192 résistances
+<!-- 567 -->* 192 circuits intégrés et 192 résistances
 </div>
 <!-- 67 --><div style="font-size:52pt; left:3cm; width:46cm; top:21cm;">
 <!-- 67 -->* Peut-on obtenir des schémas plus simples ?
@@ -113,10 +88,7 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">Démultiplexeur ou décodeur</h1>
-<img src="./images/mux-138.svg" style="top:6cm; left:15cm; width:10cm;" />
-<!-- 2 --><div style="font-size:52pt; left:40cm; width:18cm; top:13cm;">
-<!-- 2 -->* 74HC138
-<!-- 2 --></div>
+<img src="./images/mux-138.svg" style="top:8cm; left:10cm; width:20cm;" />
 </section>
 
 
@@ -125,11 +97,12 @@ Pierre-Yves Rochat
 <h1 class="en_tete">Courant nominal et courant maximal</h1>
 <div style="font-size:52pt; left:3cm; width:48cm; top:7cm;">
 * Un courant **nominal** est donné par le fabricant
-<!-- 23 -->* Le courant **maximal** est supérieur, mais ne peut pas être permanent
+* Le courant **maximal** est supérieur
+* Mais ne peut pas être permanent
 </div>
-<!-- 3 --><div style="font-size:52pt; left:3cm; width:46cm; top:21cm;">
-<!-- 3 -->* Souvent : 150 % du courant nominal
-<!-- 3 --></div>
+<!-- 2 --><div style="font-size:52pt; left:3cm; width:46cm; top:17cm;">
+<!-- 2 -->* Souvent : 150 % du courant nominal
+<!-- 2 --></div>
 </section>
 
 
@@ -137,13 +110,11 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Comparaisons des architectures</h1>
 <div style="font-size:52pt; left:3cm; width:56cm; top:7cm;">
-* Multiplexage par 2 :
+* Multiplexage par 2 : peu de perte de luminosité, peu de simplification du schéma
 <!-- 2345 -->* Multiplexage par 4 : compromis intéressant
-<!-- 345 -->* Multiplexage par 8 et 16 : afficheurs d’intérieur
-</div>
-<!-- 45 --><div style="font-size:52pt; left:3cm; width:56cm; top:16cm;">
+<!-- 345 -->* Multiplexage par 8 et 16 : perte de luminosité, afficheurs d’intérieur
 <!-- 45 -->* Facteurs de multiplexage plus importants : trop peu de luminosité
-<!-- 45 --></div>
+</div>
 <!-- 5 --><div style="font-size:52pt; left:3cm; width:56cm; top:21cm;">
 <!-- 5 -->* Panne d’une LED peut entraîner des perturbations sur les LED voisines
 <!-- 5 --></div>
@@ -206,11 +177,11 @@ void Ping() {
     Attente(DELAI);
     EteintPoint(x,y);
     x+=sensX;
-    if(x==(MaxX-1)) sensX=(-1);
-    if(x==0) sensX=1;
+    if(x==(MaxX-1)) { sensX=(-1); }
+    if(x==0) { sensX=1; }
     y+=sensY;
-    if(y==(MaxY-1)) sensY=(-1);
-    if(y==0) sensY=1;
+    if(y==(MaxY-1)) { sensY=(-1); }
+    if(y==0) { sensY=1; }
   } while (!((x==0)&&(y==0)));
 }
 ~~~~~~~

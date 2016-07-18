@@ -7,6 +7,7 @@
 
 Le schéma classique d’un afficheur matriciel nécessite simplement une sortie de registre par LED, comme le rappelle ce schéma :
 
+<!--  18/08/16 Brice ------------------------   Ne passe pas sur Opera 38   ---------------------------- -->
 ![Afficheur 8×16 pixels commandé par des registres](images/aff-8x16.svg "Afficheur 8×16 pixels commandé par des registres"){ width=95% }
 
 L’envoi des données dans les registres série-parallèle se fait selon le diagramme des temps suivant :
@@ -17,7 +18,7 @@ L’envoi des données dans les registres série-parallèle se fait selon le dia
 
 Lorsque le nombre de LED augmente, le nombre de registres augmente aussi. Ainsi un afficheur de 32×32 pixels nécessite 1024 sorties de registre. En utilisant le registre classique 74HC595 qui compte 8 sorties, il faut 1024 / 8 = 128 circuits intégrés et 1 résistance par LED, c’est-à-dire 1024 résistances. Ces nombres sont multipliés par 3 pour un afficheur couleur RGB, où un pixel est formé de trois LED.
 
-Avec l’usage de registres à 16 sorties du type SUM2016, dont les sorties sont à courant constant, une matrice de 32×32 pixels RGB nécessitera tout de même 192 circuits intégrés et 192 résistances.
+Avec l’usage de registres à 16 sorties du type SUM2016, dont les sorties sont à courant constant, une matrice de 32×32 pixels RGB nécessitera tout de même 3x64 = 192 circuits intégrés et 192 résistances.
 
 <!--
 2016-07-10 Nico
@@ -54,13 +55,14 @@ Mais il est possible de commander cette matrice de LED selon le principe du mult
 
 ainsi que le schéma correspondant :
 
+<!-- 18/08/16 Brice ------------------------   Ne passe pas sur Opera 38   ---------------------------- -->
 ![Afficheur 4×8 multiplexé](images/aff-4x8-mux.svg "Afficheur 4×8 multiplexé"){ width=70% }
 
 Pour un cycle complet de la matrice, le registre série-parallèle doit être chargé pour chacune des lignes, nécessitant chaque fois huit coups d’horloge série et un coup d’horloge parallèle. Une fois les données d’une ligne présentes sur la sortie du registre, les anodes de la ligne correspondante doivent être sélectionnées. Pour un rafraîchissement de la matrice à 100 Hz, il faudra prévoir un temps d’affichage de 100 / 4 = 25 ms pour chacune des quatre lignes.
 
 On voit sur le schéma que le nombre de registres a diminué : dans ce cas, il n’en reste qu’un. Par contre, il est nécessaire de pouvoir sélectionner les lignes séparément. D’autre part, il faut placer un élément d’amplification, pour pouvoir fournir un courant suffisant pour l’ensemble des LED de la ligne. Nous avons utilisé ici un transistor PNP, mais très souvent, c’est un transistor MOS à canal P qui est utilisé.
 
-Notons que dans ce montage, tous les signaux sont actifs à zéro. En effet, c’est bien une tension de 0 V qui permet de faire conduire le transistor PNP, en appliquant une tension négative entre sa base et son émetteur. C’est aussi une tension négative à la sortie du registre qui va allumer la LED correspondante sur la ligne sélectionnée.
+Notons que dans ce montage, tous les signaux sont actifs à zéro. En effet, c’est bien une tension de 0 V qui permet de faire conduire le transistor PNP, en appliquant une tension négative entre sa base et son émetteur. C’est ainsi une tension nulle à la sortie du registre qui va allumer la LED correspondante sur la ligne sélectionnée.
 
 ## Multiplexeur ##
 

@@ -91,7 +91,7 @@ Une solution encore plus avancée est d’utiliser un module comportant assez de
 
 ![Module LinkIt Smart 7688](images/linkit-smart.jpg "Module LinkIt Smart 7688"){ width=40% }
 
-La distribution la plus souvent utilisée est OpenWRT, qui est optimisée pour les routeurs WiFi. Elle est fournie avec tous les outils Linux de base (compilateurs pour différents langages de programmation, serveurs de tout genre, etc.). Un serveur web est minimum est nativement disponible (*uhttpd*), mais d'autres serveurs Web peuvent être installée, comme *lighttpd*. Il est par exemple extrêmement facile d’ajouter une caméra vidéo à un tel système. OpenWRT supporte une gamme de matériel très étendue.
+La distribution la plus souvent utilisée est OpenWRT, qui est optimisée pour les routeurs WiFi. Elle est fournie avec tous les outils Linux de base (compilateurs pour différents langages de programmation, serveurs de tout genre, etc.). Un serveur web minimum est nativement disponible (*uhttpd*), mais d'autres serveurs Web peuvent être installés, comme *lighttpd*. Il est par exemple extrêmement facile d’ajouter une caméra vidéo à un tel système. OpenWRT supporte une gamme de matériel très étendue.
 
 
 ## Réseau GSM ##

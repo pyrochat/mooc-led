@@ -94,8 +94,11 @@ uint8_t Animation[] = { // définition d’un tableau d’octets
 Sa taille n’est que de 33 octets.
 Voici les définitions nécessaires pour que ce tableau se compile correctement :
 
+<!-- 18/07/16 Brice -------- Off n'est pas défini (ça ne compilera donc pas), donc définition à 0? --------->
+
 ~~~~~~~ { .c .numberLines startFrom="1" }
 #define On 0b01000000
+#define Off 0b00000000
 #define Sortie0 0
 #define Sortie1 1
 #define Sortie2 2
@@ -203,7 +206,7 @@ Voici en détail la définition des instructions :
 <!-- retour au mode normal pour l’éditeur -->
 
 
-A noter qu'on aurait pu utiliser une notation plus sûre : `#define DrH(x) (0x30+((x)&0x0f))`.
+À noter qu’on aurait pu utiliser une notation plus sûre : `#define DrH(x) (0x30+((x)&0x0f))`.
 
 Voici un exemple d’animation. Attention, c’est comme l’assembleur : il faut un peu de pratique pour s’y retrouver !
 

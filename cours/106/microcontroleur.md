@@ -22,9 +22,9 @@ Des lignes électriques, appelées *bus* relient ces éléments entre eux. Voici
 
 Un **microcontrôleur** est aussi un système informatique. Sa particularité est qu’il est contenu dans un seul circuit intégré. L’architecture est la même que celle présentée sur la figure. Par rapport à une carte mère d’ordinateur, les éléments qui constituent un microcontrôleur sont généralement plus simples, moins performants, leur capacité est plus limitée :
 
-* La mémoire morte contient généralement de un à quelques centaines de ko.
+* La mémoire morte contient généralement de un à quelques centaines de kilooctets.
 * Le processeur est cadencé à des fréquences de quelques mégahertz ou dizaines de mégahertz. Il ne consomme généralement qu’une fraction de watt. Son jeu d’instructions est plus simple.
-* La mémoire vive est généralement très limitée : de quelques centaines d’octets (ou en anglais *byte*, abrégé “B”) à quelques dizaines de ko selon les modèles.
+* La mémoire vive est généralement très limitée : de quelques centaines d’octets (ou en anglais *byte*, abrégé “B”) à quelques dizaines de kilooctets selon les modèles.
 * Les circuits d’entrée-sortie sont simplement des entrées logiques, pour lire une valeur binaire, comme par exemple un interrupteur, ainsi que des sorties logiques, capables de fournir quelques milliampères, par exemple pour commander une LED.
 
 L’intérêt des microcontrôleurs est leur coût très faible, souvent moins d’un euro, leur consommation de courant limitée à quelques milliampères et leur taille très réduite, vu qu’il s’agit d’un seul circuit intégré. Ils sont donc utilisés dans de très nombreuses applications.

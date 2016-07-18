@@ -3,7 +3,7 @@
 % rév 2016/07/09
 
 
-## Broches d’entrée-sorties ##
+## Broches d’entrée-sortie ##
 
 Les microcontrôleurs disposent de broches très souples d’emploi, qui peuvent être des entrées ou des sorties. On les appelle aussi parfois GPIO : _**G**eneral **P**urpose **I**nput **O**utput_. La procédure *Arduino pinMode()* permet de choisir l’usage de chaque broche. Les procédures `digitalRead()` et `digitalWrite()` permettent de lire une valeur d’entrée et d’écrire une valeur sur une sortie.
 
@@ -36,11 +36,11 @@ Le nombre, les noms et la fonctionnalité des registres qui pilotent un port dan
 
 Sur les AVR, les ports s’appellent PORT A, PORT B, etc. Les 8 broches du PORT A s’appellent PA0, PA1... PA7. Trois registres sont utilisés pour piloter chaque port :
 
-* **DDRA** _**D**ata **D**irection **R**egister_ : registre de direction. C’est le registre qui précise pour chaque broche si elle est une entée ou une sortie.
+* **DDRA** _**D**ata **D**irection **R**egister_ : registre de direction. C’est le registre qui précise pour chaque broche si elle est une entrée ou une sortie.
 * **PORTA** : le registre de sortie. Lorsqu’une broche est mise en sortie, c’est ce registre qui précise l’état de la sortie, *0* ou *1*.
 * **PINA** : indique à tout moment l’état de chaque broche. Ce n’est pas à proprement parler un registre, vu qu’il n’est possible que de lire sa valeur.
 
-De la même manière, DDRB, PORTB et PINB sont disponible pour le PORT  B.
+De la même manière, DDRB, PORTB et PINB sont disponibles pour le PORT B.
 
 Voici un tableau qui indique le rôle d’une broche en fonction des valeurs dans DDRA et dans PORTA d’un AVR :
 
@@ -63,7 +63,7 @@ Le MSP430 dispose donc d’une possibilité de placer une résistance de tirage 
 
 Seules cinq combinaisons ont été décrites dans ce tableau. Les trois autres combinaisons n’ont pas lieu d’être utilisées.
 
-Il faut noter que les entrées d'un microcontrôleur ne doivent pas recevoir une tension supérieure à la tension d'alimentation. Les diodes de protection deviendraient alors conductrices, ce qui n'est pas autorisé. Un soin particulier doit donc être pris lors de l'utilisation de dispositifs n'étant pas alimentés par le même tension. C'est souvent le cas lorsqu'on relie par exemple un Arduino avec un module alimenté en 3.3 V.
+Il faut noter que les entrées d'un microcontrôleur ne doivent pas recevoir une tension supérieure à la tension d'alimentation. Les diodes de protection deviendraient alors conductrices, ce qui n'est pas autorisé. Un soin particulier doit donc être pris lors de l'utilisation de dispositifs n'étant pas alimentés par la même tension. C'est souvent le cas lorsqu'on relie par exemple un Arduino avec un module alimenté en 3.3 V.
 
 
 ## Lecture et écriture sur un port ##
@@ -232,7 +232,7 @@ inverse l’état de la broche P1.6 : si elle était à *0*, elle passera à *1
 
 ## Utilisation du #define ##
 
-Pour rendre encore plus lisible un programme, on utilisera très souvent la définition de constantes en C par un `#define`. Il s’agit plus exactement d’un ordre de traduction donné au pré-processeur.
+Pour rendre encore plus lisible un programme, on utilisera très souvent la définition de constantes en C par un `#define`. Il s’agit plus exactement d’un ordre de traduction donné au préprocesseur.
 
 Voici quelques exemples :
 

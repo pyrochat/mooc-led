@@ -203,7 +203,7 @@ Voici en détail la définition des instructions :
 <!-- retour au mode normal pour l’éditeur -->
 
 
-A noter qu'on aurait pu utiliser une notation plus sûre : `#define DrH(x) (0x30+((x)&0x0f))`.
+À noter qu’on aurait pu utiliser une notation plus sûre : `#define DrH(x) (0x30+((x)&0x0f))`.
 
 Voici un exemple d’animation. Attention, c’est comme l’assembleur : il faut un peu de pratique pour s’y retrouver !
 

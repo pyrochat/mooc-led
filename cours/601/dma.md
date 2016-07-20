@@ -33,7 +33,7 @@ Sur d'autres microcontrôleurs moins évolués, par exemple quelques PIC18 et le
 
 ![Vue MSP432](images/map_msp432.png "Vue MSP432"){ width=15cm }
 
-Le contrôleur DMA est une unité dédiée, reliée aux bus d'addresse et de données. Il s'agit en quelque sorte d'un mini-CPU qui va s'occuper exclusivement de transférer les données entre la mémoire et les périphériques.
+Le contrôleur DMA est une unité dédiée, reliée au bus de données. Il s'agit en quelque sorte d'un mini-CPU qui va s'occuper exclusivement de transférer les données entre la mémoire et les périphériques, ou entre la mémoire et la mémoire.
 Chaque périphérique que nous souhaitons utiliser en DMA doit être conçu pour travailler avec le contrôleur DMA. L'interaction entre les deux se fait via un canal dédié.
 
 

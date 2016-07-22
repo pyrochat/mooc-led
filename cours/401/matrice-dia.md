@@ -69,21 +69,21 @@ Pierre-Yves Rochat
 <!-- 56 -->* *Pitch*. Exemple : **P6** = 6 mm entre chaque pixel
 <!-- 6 -->* **Densité** : nombre de pixels par unité de surface
 </div>
-<!-- 23456 --><img src="./images/aff-10x24-300dpi.png" style="top:11cm; left:33.0cm; width:25.5cm;" />
+<!-- 23456 --><img src="./images/afficheur-10x24-300dpi.png" style="top:11cm; left:33.0cm; width:25.5cm;" />
 </section>
 
 
 <section>
 <!-- A -->
 <h1 class="en_tete">Afficheurs à LED</h1>
-<img src="./images/aff-10x24-300dpi.png" style="top:8cm; left:10cm; width:34cm;" />
+<img src="./images/afficheur-10x24-300dpi.png" style="top:8cm; left:10cm; width:34cm;" />
 </section>
 
 
 <section>
 <!-- A -->
 <h1 class="en_tete">Commande des LED par des registres</h1>
-<img src="./images/aff-8x16-200dpi.png" style="top:6cm; left:6cm; width:36cm;" />
+<img src="./images/afficheur-8x16-200dpi.png" style="top:6cm; left:6cm; width:36cm;" />
 </section>
 
 
@@ -214,7 +214,7 @@ int main(void) {
 uint16_t Matrice[NbLignes]; // mots de 16 bits, correspondant à une ligne
 ~~~~~~~
 </div>
-<img src="./images/organisation-aff-8x16-120dpi.png" style="top:15cm; left:6cm; width:34cm;" />
+<img src="./images/organisation-afficheur-8x16-120dpi.png" style="top:15cm; left:6cm; width:34cm;" />
 </section>
 
 
@@ -242,7 +242,7 @@ void Diagonale() {
 }
 ~~~~~~~
 </div>
-<!-- 2 --><img src="./images/organisation-aff-8x16-120dpi.png" style="top:16cm; left:29cm; width:30cm;" />
+<!-- 2 --><img src="./images/organisation-afficheur-8x16-120dpi.png" style="top:16cm; left:29cm; width:30cm;" />
 </section>
 
 
@@ -283,7 +283,7 @@ uint8_t Matrice[NbColonnes]; // mots de 8 bits, correspondant à une colonne
 
 ~~~~~~~
 </div>
-<img src="./images/organisation-aff-8x16-byte-120dpi.png" style="top:11cm; left:6cm; width:28cm;" />
+<img src="./images/organisation-afficheur-8x16-byte-120dpi.png" style="top:11cm; left:6cm; width:28cm;" />
 </section>
 
 
@@ -297,7 +297,7 @@ uint8_t Matrice[NbColonnes]; // mots de 8 bits, correspondant à une colonne
 
 void AfficheMatrice() {
   // pour chaque colonne :
-  for (uint16_t x=0; x<MaxX; x++) { 
+  for (uint16_t x=0; x<MaxX; x++) {
     P2OUT = ~Matrice[x]; // une colonne
     // envoie un coup d'horloge série :
     SerClockSet; SerClockClear;
@@ -307,7 +307,7 @@ void AfficheMatrice() {
 }
 ~~~~~~~
 </div>
-<!-- 2 --><img src="./images/organisation-aff-8x16-byte-120dpi.png" style="top:12cm; left:33cm; width:25cm;" />
+<!-- 2 --><img src="./images/organisation-afficheur-8x16-byte-120dpi.png" style="top:12cm; left:33cm; width:25cm;" />
 </section>
 
 

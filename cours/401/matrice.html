@@ -75,7 +75,7 @@ PYR : c’est ce sujet qui devrait introduire le concept d’afficheur, par opp
 <p>Un afficheur à LED est donc un ensemble de LED dont il est possible de choisir l’état de chacune d’elles indépendamment des autres.</p>
 <p>Les LED sont généralement disposées en lignes et en colonnes : on obtient un afficheur orthogonal.</p>
 <div class="figure">
-<img src="images/aff-10x24-120dpi.png" title="Afficheur de 10x24 LED" alt="Afficheur de 10x24 LED" width="491" />
+<img src="images/afficheur-10x24-120dpi.png" title="Afficheur de 10x24 LED" alt="Afficheur de 10x24 LED" width="491" />
 <p class="caption">Afficheur de 10x24 LED</p>
 </div>
 <p>Si la distance est la même horizontalement et verticalement (en x et y), l’afficheur est orthonormé. La géométrie des LED permet de réaliser toutes sortes d’afficheurs, sans se limiter à une grille orthonormée. Il existe des afficheurs cylindriques, sphériques ou en forme de pyramide ! Plus couramment, on trouve des afficheurs qui prennent une forme dont la signification est connue, comme les afficheurs en forme de croix de pharmacie, très répandus depuis quelques années.</p>
@@ -91,7 +91,7 @@ Sur le schéma, pour les 3 registres, la 5e LED depuis la gauche est cul-de-jatt
 Je corrige...
 -->
 <div class="figure">
-<img src="images/aff-8x16-120dpi.png" title="Schéma d’un afficheur comportant 8 lignes de 16 LED" alt="Schéma d’un afficheur comportant 8 lignes de 16 LED" width="529" />
+<img src="images/afficheur-8x16-120dpi.png" title="Schéma d’un afficheur comportant 8 lignes de 16 LED" alt="Schéma d’un afficheur comportant 8 lignes de 16 LED" width="529" />
 <p class="caption">Schéma d’un afficheur comportant 8 lignes de 16 LED</p>
 </div>
 <p>Remarquez que les LED n’ont pas de résistances série. Les registres utilisés contiennent des sources de courant ajustables au moyen d’une seule résistance pour tout le registre.</p>
@@ -239,7 +239,7 @@ Ce problème m’avait donné pas mal de fil à retordre lors du MOOC µcontrôl
 <!-- retour au mode normal pour l'éditeur -->
 <p>Nous choissons de placer les axes x et y de la manière suivante :</p>
 <div class="figure">
-<img src="images/organisation-aff-8x16-120dpi.png" title="Organisation de l’afficheur 8x16 pixels" alt="Organisation de l’afficheur 8x16 pixels" width="415" />
+<img src="images/organisation-afficheur-8x16-120dpi.png" title="Organisation de l’afficheur 8x16 pixels" alt="Organisation de l’afficheur 8x16 pixels" width="415" />
 <p class="caption">Organisation de l’afficheur 8x16 pixels</p>
 </div>
 <p>Les procédures permettant d’allumer et d’éteindre un pixel, désigné par ses coordonnées, sont particulièrement simples dans ce cas :</p>
@@ -302,7 +302,7 @@ Ce problème m’avait donné pas mal de fil à retordre lors du MOOC µcontrôl
 <!-- retour au mode normal pour l'éditeur -->
 <p>Cette procédure semble compliquée. Une organisation optimisée des données en mémoire pourrait la simplifier :</p>
 <div class="figure">
-<img src="images/organisation-aff-8x16-byte-120dpi.png" title="Organisation plus optimale des pixels en mémoire" alt="Organisation plus optimale des pixels en mémoire" width="340" />
+<img src="images/organisation-afficheur-8x16-byte-120dpi.png" title="Organisation plus optimale des pixels en mémoire" alt="Organisation plus optimale des pixels en mémoire" width="340" />
 <p class="caption">Organisation plus optimale des pixels en mémoire</p>
 </div>
 <p>Voici la définition et la procédure correspondante :</p>

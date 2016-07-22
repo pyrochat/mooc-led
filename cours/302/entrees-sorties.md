@@ -63,7 +63,7 @@ Le MSP430 dispose donc d’une possibilité de placer une résistance de tirage 
 
 Seules cinq combinaisons ont été décrites dans ce tableau. Les trois autres combinaisons n’ont pas lieu d’être utilisées.
 
-Il faut noter que les entrées d'un microcontrôleur ne doivent pas recevoir une tension supérieure à la tension d'alimentation. Les diodes de protection deviendraient alors conductrices, ce qui n'est pas autorisé. Un soin particulier doit donc être pris lors de l'utilisation de dispositifs n'étant pas alimentés par la même tension. C'est souvent le cas lorsqu'on relie par exemple un Arduino avec un module alimenté en 3.3 V.
+Il faut noter que les entrées d’un microcontrôleur ne doivent pas recevoir une tension supérieure à la tension d’alimentation. Les diodes de protection deviendraient alors conductrices, ce qui n’est pas autorisé. Un soin particulier doit donc être pris lors de l’utilisation de dispositifs n’étant pas alimentés par la même tension. C’est souvent le cas lorsqu’on relie par exemple un Arduino avec un module alimenté en 3.3 V.
 
 
 ## Lecture et écriture sur un port ##

@@ -20,7 +20,7 @@ La logique binaire peut être représentée par l’Algèbre de BOOLE, qui perme
 L’Algèbre de BOOLE est conçue autour d’opérations logiques de base :
 
 * le complément logique : NON, représenté par un surligné
-* l'addition logique : OU, représenté par le signe __+__
+* l’addition logique : OU, représenté par le signe __+__
 * produit logique : ET, représenté par le signe __•__
 * et leurs dérivés (XOR, NAND, NOR, etc)
 
@@ -28,11 +28,11 @@ L’Algèbre de BOOLE est conçue autour d’opérations logiques de base :
 
 Les éléments de base des systèmes logiques sont des portes logiques que l’on peut assembler pour réaliser des fonctions logiques qui peuvent à leur tour êtres assemblées pour construire des machines numériques.
 
-La seule porte intéressante à une entrée est l'inverseur :
+La seule porte intéressante à une entrée est l’inverseur :
 
 ![Figure : Inverseur](images/non.png "Inverseur")
 
-La table de vérité qui est un tableau qui indique la valeur de la sortie pour toutes les combinaisons des entrées. Chaque ligne correspond à une combinaison des variables. Ici, elle n'a que deux lignes.
+La table de vérité qui est un tableau qui indique la valeur de la sortie pour toutes les combinaisons des entrées. Chaque ligne correspond à une combinaison des variables. Ici, elle n’a que deux lignes.
 
 Les deux portes de base à 2 entrées sont la porte OU et la porte ET :
 

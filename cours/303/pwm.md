@@ -52,12 +52,12 @@ void setup() { // Initialisations
 
 void loop() { // Boucle infinie, durée 10ms => un cycle du PWM à 100 Hz
   LedOn;
-  delayMicrosecond(100*pwmLed); // durée de l'impulsion
+  delayMicrosecond(100*pwmLed); // durée de l’impulsion
   LedOff;
   delayMicrosecond(100*(100-pwmLed)); // solde de la période
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Le programme a été écrit de telle manière que les valeurs du PWM doivent être choisies entre 0 et 100, elles représentent donc dans ce cas des _pour cents_. Les informaticiens choisissent plus souvent des valeurs dans une plage binaire, comme par exemple de 0 à 255 (8 bits, voir l’exemple suivant).
 
@@ -90,7 +90,7 @@ void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
   delayMicroseconds(39);
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Dans ce cas, la boucle principale dure seulement le temps qui correspond à une fraction de la période du PWM, ici un 256<sup>e</sup> de la période. L’usage de cette valeur, associée à un compteur de type uint8_t (8 bits non signés), simplifie le programme, en évitant de gérer le retour à zéro, qui s’effectue au moment du dépassement de capacité (overflow).
 
@@ -113,10 +113,10 @@ void loop() { // Boucle infinie
 
   cptPwm++; // passe automatiquement de 255 à 0 (overflow)
   delayMicrosecond(39); // on pourrait diminuer cette valeur
-  // pour tenir compte du temps d'exécution de la boucle for.
+  // pour tenir compte du temps d’exécution de la boucle for.
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 ## Programmation d’une séquence en PWM ##
 
@@ -128,7 +128,7 @@ Prenons un exemple. Pour donner l’impression qu’un appareil est en mode "rep
 
 ![Figure : diagramme des temps de la LED suggérant le repos](images/chrono-repos-5c.svg "diagramme des temps de la LED suggérant le repos"){ width=15cm }
 
-La séquence est cyclique et dure 4 s. Il imite la respiration d’une personne qui dort. Durant la première seconde, l’intensité augmente jusqu’au maximum. Durant la deuxième seconde, elle diminue jusqu’à zéro, valeur qui reste jusqu’à la fin du cycle. L'intensité est générée par du PWM.
+La séquence est cyclique et dure 4 s. Il imite la respiration d’une personne qui dort. Durant la première seconde, l’intensité augmente jusqu’au maximum. Durant la deuxième seconde, elle diminue jusqu’à zéro, valeur qui reste jusqu’à la fin du cycle. L’intensité est générée par du PWM.
 
 La courbe se divise en 3 parties. Il est facile d’exprimer l’intensité en fonction du temps dans chacune des parties. Voici comment compléter le programme :
 
@@ -156,7 +156,7 @@ void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
   delayMicroseconds(39);
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Il est important de contrôler que les variables utilisées ne produisent pas de dépassement de capacité pour les calculs effectués. La variable `pwmLed` a été choisie ici sur 16 bits. Pour la première droite, `cpt10ms` peut aller jusqu’à *99*. Multiplié par *256*, on obtient un nombre inférieur à *65’535* (qui est le nombre maximum que peut représenter un nombre entier de 16 bits). Le contrôle doit être fait pour tous les cas.
 

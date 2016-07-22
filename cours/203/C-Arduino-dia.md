@@ -86,7 +86,7 @@ Pierre-Yves Rochat
 <!-- 45 -->* Logiciel libre (Open source)
 <!-- 45 --></div>
 <!-- 5 --><div style="top: 23.0cm; left: 41cm; font-size: 48pt;">
-<!-- 5 -->* Version pour d'autres microcontrôleurs
+<!-- 5 -->* Version pour d’autres microcontrôleurs
 <!-- 5 --></div>
 <!-- 5 --><div style="top: 27.5cm; left: 41cm; font-size: 48pt;">
 <!-- 5 -->* Energia pour les MSP430

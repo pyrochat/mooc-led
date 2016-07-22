@@ -1,6 +1,6 @@
 <!-- DIAPORAMA -->
-<!-- version originale : 29'989 octets -->
-<!-- version 2015/12/25 avec Pre-DIA : 9'331 octets -->
+<!-- version originale : 29’989 octets -->
+<!-- version 2015/12/25 avec Pre-DIA : 9’331 octets -->
 
 <!-- Page de titre -->
 <section class="page_de_garde">

@@ -8,9 +8,9 @@ Version de travail du 2016/01/21
 
 **Enseignants** : (YT) : Yves Tiecours, (AT) Alain Tiedeu, (MLN) Mamadou Lamine Ndiaye, (PYR) Pierre-Yves Rochat (?) à déterminer.
 
-**Documents** : Les notes de cours sont disponibles en HTML et en PDF. Les dispositives sont en PDF, avec une version complète utilisée pour les vidéos, ainsi qu'une version compacte qui sera mise à disposition des participants du MOOC.
+**Documents** : Les notes de cours sont disponibles en HTML et en PDF. Les dispositives sont en PDF, avec une version complète utilisée pour les vidéos, ainsi qu’une version compacte qui sera mise à disposition des participants du MOOC.
 
-**Domaines** : Le cours introduit progressivement des sujets en *électronique* et en *microcontrôleur*, pour apprendre à concevoir des enseignes et des afficheurs à LED. En parallèle, des sujets de *circuits logiques* sont introduits, pour mener à la réalisation de commande d'afficheurs complexes utilisant des FPGA. En plus, quelques sujets de *physique* sont proposés.
+**Domaines** : Le cours introduit progressivement des sujets en *électronique* et en *microcontrôleur*, pour apprendre à concevoir des enseignes et des afficheurs à LED. En parallèle, des sujets de *circuits logiques* sont introduits, pour mener à la réalisation de commande d’afficheurs complexes utilisant des FPGA. En plus, quelques sujets de *physique* sont proposés.
 
 
 ## Semaine 1 ##
@@ -69,7 +69,7 @@ Version de travail du 2016/01/21
 
 **3.1** **[Logique] Circuits logiques séquentiels**  (MLN) [dias-compact](../301/seq-dia-compact.pdf)   
 **3.2** **Entrées-sorties**  (PYR) [cours-html](../302/entrees-sorties.html) [cours-pdf](../302/entrees-sorties.pdf) [dias-compact](../302/entrees-sorties-dia-compact.pdf)   
-**3.3** **PWM : modulation de largeur d'impulsion**  (PYR) [cours-html](../303/pwm.html) [cours-pdf](../303/pwm.pdf) [dias-compact](../303/pwm-dia-compact.pdf)   
+**3.3** **PWM : modulation de largeur d’impulsion**  (PYR) [cours-html](../303/pwm.html) [cours-pdf](../303/pwm.pdf) [dias-compact](../303/pwm-dia-compact.pdf)   
 **3.4** **Le multiplexage temporel**  (PYR) [cours-html](../304/multiplex.html) [cours-pdf](../304/multiplex.pdf) [dias-compact](../304/multiplex-dia-compact.pdf)   
 **3.5** **Registre d’extension série-parallèle**  (PYR) [cours-html](../305/registres-ser-par.html) [cours-pdf](../305/registres-ser-par.pdf) [dias-compact](../305/registres-ser-par-dia-compact.pdf)   
 **3.6** **Montages électroniques**  (PYR)    

@@ -100,39 +100,39 @@ int main() {
   while (1) {
     for (i=0; i<16; i++) { // envoie une colonne avec un seul pixel allumé
       P1OUT = (1<<(i&7)); // 1 col de 8 px, 1 seul allumé -> dents de scie
-      SerClockOn; SerClockClear; // envoie un coup d'horloge série
-    ParCloclOn; ParClockClear; // envoie un coup d'horloge
+      SerClockOn; SerClockClear; // envoie un coup d’horloge série
+    ParCloclOn; ParClockClear; // envoie un coup d’horloge
     }
   }
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Pour générer des caractères, il faut disposer d’une table décrivant les positions des pixels des différents caractères.
 Voici une manière de les représenter :
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
 const uint8_t GenCar [] { // tableau des pixels des caractères
-  0b01111110, // caractère 'A'
+  0b01111110, // caractère ’A’
   0b00001001, // Il faut pencher la tête à droite
   0b00001001, // pour voir sa forme !
   0b00001001,
   0b01111110,
 
-  0b01111111, // caractère 'B'
+  0b01111111, // caractère ’B’
   0b01001001, // Les caractères forment
   0b01001001, // une matrice de 5x7
   0b01001001,
   0b00110110,
 
-  0b00111110, // caractère 'C'
+  0b00111110, // caractère ’C’
   0b01000001, // Les caractères ont ici
-  0b01000001, // une chasse fixe, c'est-à-dire
+  0b01000001, // une chasse fixe, c’est-à-dire
   0b01000001, // que tous les caractères ont
   0b01000001  // la même largeur en pixels
 };
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Voici un programme qui affiche un texte :
 <!-- Est-ce que tu expliques le concept de pointeur dans le cours ? PYR : Pas prévu... à réfléchir ! -->
@@ -145,25 +145,25 @@ int main(void) {
   init(); // initialisations...
   while(1) { // le texte défile sans fin
     ptTexte = Texte;
-    while (*ptTexte!='\0') { // boucle des caractères du texte
+    while (*ptTexte!=’\0’) { // boucle des caractères du texte
       caractere = *ptTexte; // le caractère à afficher
-      idxGenCar = (caractere-'A') * 5; // conversion ASCII à index GenCar[]
+      idxGenCar = (caractere-’A’) * 5; // conversion ASCII à index GenCar[]
       for (i=0; i<5; i++) { // envoie les 5 colonnes du caractère
         P2OUT = ~GenCar[idxGenCar++]; // 1 colonne du caractère (actif à 0)
-        SerClockSet; SerClockClear; // coup d'horloge série
-        ParClockSet; ParClockClear; // coup d'horloge parallèle
+        SerClockSet; SerClockClear; // coup d’horloge série
+        ParClockSet; ParClockClear; // coup d’horloge parallèle
         AttenteMs (delai);
       }
       ptTexte++; // passe au caractère suivant
       P2OUT = ~0; // colonne vide, séparant les caractères
-      SerClockSet; SerClockClear; // coup d'horloge série
-      ParClockSet; ParClockClear; // coup d'horloge parallèle
+      SerClockSet; SerClockClear; // coup d’horloge série
+      ParClockSet; ParClockClear; // coup d’horloge parallèle
       AttenteMs (delai);
     }
   }
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Dans l’exemple ci-dessus, le texte à afficher est enregistré dans un tableau. L’instruction `const` indique au compilateur que ce tableau peut être stocké en mémoire de programme. Sans cette instruction, il aurait été enregistré en mémoire RAM qui est souvent nettement plus petite que la mémoire de programme. Pour accéder aux caractères de ce texte, un pointeur est utilisé. La déclaration du pointeur s’écrit : `const char *ptTexte;`. Le symbole * indique qu’il s’agit d’un pointeur.
 
@@ -180,7 +180,7 @@ Dans notre exemple, l’afficheur a 8 lignes de 16 pixels. Un mot de 16 bits po
 #define NbLignes 8
 uint16_t Matrice[NbLignes]; // mots de 16 bits, correspondant à une ligne
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Nous choissons de placer les axes x et y de la manière suivante :
 
@@ -198,7 +198,7 @@ void EteintPoint(int16_t x, int16_t y) {
 }
 
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Voici une procédure pour afficher une diagonale en travers de l’afficheur :
 
@@ -213,7 +213,7 @@ void Diagonale() {
   }
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Mais toutes ces procédures ne vont rien afficher sur les LED ! Il faut encore une procédure qui va placer chaque pixel sur la LED correspondante. Pour l’écrire, il faut garder en mémoire l’organisation matérielle de notre matrice, avec les 8 registres série-parallèles de 16 bits.
 
@@ -224,12 +224,12 @@ void AfficheMatrice() {
     for (uint16_t y=0; y<MaxY; y++)  {
       if (Matrice[y]&(1<<x)) P2OUT &=~(1<<y); else P2OUT |= (1<<y);
     }
-    SerClockSet; SerClockClear; // envoie un coup d'horloge série
+    SerClockSet; SerClockClear; // envoie un coup d’horloge série
   }
   ParClockSet; ParClockClear; // envoie les valeur sur les LED
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Cette procédure semble compliquée. Une organisation optimisée des données en mémoire pourrait la simplifier :
 
@@ -244,12 +244,12 @@ uint8_t Matrice[NbColonnes]; // mots de 8 bits, correspondant à une colonne
 void AfficheMatrice() {
   for (uint16_t x=0; x<MaxX; x++) {
     P2OUT = ~Matrice[x];
-    SerClockSet; SerClockClear; // envoie un coup d'horloge série
+    SerClockSet; SerClockClear; // envoie un coup d’horloge série
   }
   ParClockSet; ParClockClear; // envoie les valeur sur les LED
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Non seulement la procédure `AfficheMatrice()` est beaucoup plus simple, mais en plus elle va prendre moins de temps à être exécutée. Dans notre cas, la vitesse ne pose pas de problème. Mais dès que les afficheurs deviennent plus grands, cette question devient cruciale.
 
@@ -274,7 +274,7 @@ Voici un programme complet qui génère une animation graphique sur notre affich
 ~~~~~~~ { .c .numberLines startFrom="1" }
 // Afficheur didactique 16x8
 // Les 8 bits sont sur P2
-// Usage d'une matrice en bytes
+// Usage d’une matrice en bytes
 // Ping !
 
 #include <msp430g2553.h>
@@ -311,7 +311,7 @@ void EteintPoint(int16_t x, int16_t y) {
 void AfficheMatrice() {
   for (uint16_t x=0; x<MaxX; x++) {
     P2OUT = ~Matrice[x];
-    SerClockSet; SerClockClear; // envoie un coup d'horloge série
+    SerClockSet; SerClockClear; // envoie un coup d’horloge série
   }
   ParClockSet; ParClockClear; // envoie les valeurs sur les LED
 }
@@ -349,5 +349,5 @@ int main(void) {
   }
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 

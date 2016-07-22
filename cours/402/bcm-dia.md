@@ -42,9 +42,9 @@ Pierre-Yves Rochat
 <h1 class="en_tete">PWM sur une matrice</h1>
 <img src="./images/pwm.svg" style="top:6cm; left:10cm; width:40cm; ">
 <div style="top: 17cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
-* Le **PWM** est généralement utilisé pour faire varier l'intensité d'une LED
-<!-- 234 -->* Sur un afficheur matriciel, l'intensité de chaque LED doit être **indépendante**
-<!-- 34 -->* Pour changer l'état d'une LED, il faut renvoyer l'état de **toutes** les LED
+* Le **PWM** est généralement utilisé pour faire varier l’intensité d’une LED
+<!-- 234 -->* Sur un afficheur matriciel, l’intensité de chaque LED doit être **indépendante**
+<!-- 34 -->* Pour changer l’état d’une LED, il faut renvoyer l’état de **toutes** les LED
 </div>
 <!-- 4 --><div style="top: 27cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
 <!-- 4 -->* Fréquence de rafraîchissement : F~raf~ = F~pwm~ × N~intens~
@@ -98,7 +98,7 @@ Pierre-Yves Rochat
 <!-- 345 --><img src="./images/bcm-change2.svg" style="top:12.5cm; left:6cm; width:30cm; ">
 <!-- 45 --><div style="top: 26cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
 <!-- 45 -->* Le temps minimum entre deux raffraîchissements est le même
-<!-- 5 -->* Du temps libre se dégage sur les bits de poids fort, utilisable pour calculer l'état suivant
+<!-- 5 -->* Du temps libre se dégage sur les bits de poids fort, utilisable pour calculer l’état suivant
 <!-- 45 --></div>
 </section>
 

@@ -141,26 +141,26 @@ Voici un programme qui met en œuvre une interruption sur l’entrée `P1.3` (le
 int main() {
     WDTCTL = WDTPW + WDTHOLD; // Stop watchdog timer
     P1DIR |= (1<<6); // Led verte en sortie
-    P1OUT |= (1<<3); P1REN |= (1<<3); //pull-up sur l'entrée P1.3
+    P1OUT |= (1<<3); P1REN |= (1<<3); //pull-up sur l’entrée P1.3
 
-    P1IES |= (1<<3); // Mode d'interruption : sur le flanc descendant
+    P1IES |= (1<<3); // Mode d’interruption : sur le flanc descendant
     P1IE |= (1<<3); // Interruption P1 activée sur le bit 3
-    P1IFG &=~(1<<3); // Fanion d'interruption remis à zéro
+    P1IFG &=~(1<<3); // Fanion d’interruption remis à zéro
     __enable_interrupt(); // General Interrupt Enable
 
-    while(1) { // il n'y a rien à faire dans la boucle principale !
+    while(1) { // il n’y a rien à faire dans la boucle principale !
     }
 }
 
-// Routine d'interruption associée au Port P1
+// Routine d’interruption associée au Port P1
 // Syntaxe spécifique pour les interruptions :
 #pragma vector=PORT1_VECTOR
 __interrupt void Port1_ISR(void) {
-  P1IFG &= ~(1<<3); // Fanion d'interruption correspondant au bit 3 remis à 0
+  P1IFG &= ~(1<<3); // Fanion d’interruption correspondant au bit 3 remis à 0
   P1OUT ^= (1<<6); // inverse P1.6 (LED verte)
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 La première remarque, c’est que la boucle principale `while(1)...` ne fait rien ! En plus des initialisations classique des entrées et des sorties, trois instructions ont été ajoutées, correspondant aux étapes de mise en œuvre d’une interruption :
 
@@ -183,17 +183,17 @@ int main() {
   ...
   P1IES &=~((1<<3)|(1<<4)); // interruptions aux flancs montants
   P1IE |= (1<<3)|(1<<4); // Interruption activée sur 2 entrées
-  P1IFG &=~((1<<3)|(1<<4)); // Fanions d'interruption remis à zéro
+  P1IFG &=~((1<<3)|(1<<4)); // Fanions d’interruption remis à zéro
   ...
 
 #pragma vector=PORT1_VECTOR
 __interrupt void Port1_ISR(void) {
-  // scrutation des causes possible de l'interruption :
+  // scrutation des causes possible de l’interruption :
   if (P1IFG & (1<<3)) {... ; P1IFG &= ~(1<<3); }
   if (P1IFG & (1<<4)) {... ; P1IFG &= ~(1<<4); }
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 ## Interruption de fin de conversion ##
 
@@ -207,15 +207,15 @@ int main() {
   // Activation du convertisseur ADC 10 bits (ADC10) :
   ADC10CTL0 = ADC10SHT_2 + ADC10ON + ADC10IE; // ADC10ON, interrupt enabled
   ADC10CTL1 = INCH_1; // Canal 1 = entrée A1 = P1.1
-  ADC10AE0 |= (1<<1); // Enclanchement de l'entrée A1
+  ADC10AE0 |= (1<<1); // Enclanchement de l’entrée A1
   __enable_interrupt(); // General Interrupt Enable
   ADC10CTL0 |= ENC + ADC10SC; // lance une première conversion
 
-  while(1) { // il n'y a rien à faire dans la boucle principale !
+  while(1) { // il n’y a rien à faire dans la boucle principale !
   }
 }
 
-// Routine d'interruption associée à la fin de conversion ADC
+// Routine d’interruption associée à la fin de conversion ADC
 #pragma vector=ADC10_VECTOR
 __interrupt void ADC10_ISR(void) {
   uint16_t val = ADC10MEM; // lit le résultat de la conversion

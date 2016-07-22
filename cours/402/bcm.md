@@ -30,7 +30,7 @@ Comment produire simplement un signal dont le total du temps actif est un nombre
 
 Il s’agit de découper la période du signal en tranches dont les durées sont les poids binaires. Penons par exemple un signal dont l’intensité est donnée par un nombre de 4 bits, produisant 16 intensités possibles. Les tranches du BCM auront les valeur 1, 2, 4 et 8, divisant ainsi la période du signal en 15 tranches de durée égale : 1 + 2+ 4 + 8 = 15 = 2^4^ - 1. Pour chaque valeur d’intensité, on active la LED chaque fois que le poids binaire concerné est à 1 dans le nombre.
 
-Voici une période du signal, à gauche pour des intensités correspondant aux poids binaires, à droite pour d'autres valeur composées d'un nombre différent de bits :
+Voici une période du signal, à gauche pour des intensités correspondant aux poids binaires, à droite pour d’autres valeur composées d’un nombre différent de bits :
 
 ![Principe du BCM](images/bcm.svg "Principe du BCM"){ width=80% }
 
@@ -40,9 +40,9 @@ Voici encore les signaux pour trois autres valeurs, représentés sur plusieurs 
 
 ## Avantages et limites du BCM ##
 
-La production de signaux BCM est surtout intéressante lorsque le nombre de LED à commander est important. Au lieu d'avoir 2^b^ rafraîchissements à faire à chaque cycle, il suffit de b rafraîchissements (b est le nombre de bits de l'intensité).
+La production de signaux BCM est surtout intéressante lorsque le nombre de LED à commander est important. Au lieu d’avoir 2^b^ rafraîchissements à faire à chaque cycle, il suffit de b rafraîchissements (b est le nombre de bits de l’intensité).
 
-Mais on remarquera que le temps minimum entre deux rafraîchissements n'a pas changé par rapport au PWM. Ce temps correspond à la durée du bit de poids faible. Il reste le point critique pour l'affichage sur une matrice de LED. Par contre, la durée du bit de poids fort est égal à la moitié de la période. Souvent, on pourra utiliser cette durée pour calculer les valeurs des intensités de chaque LES en vue du prochain cycle.
+Mais on remarquera que le temps minimum entre deux rafraîchissements n’a pas changé par rapport au PWM. Ce temps correspond à la durée du bit de poids faible. Il reste le point critique pour l’affichage sur une matrice de LED. Par contre, la durée du bit de poids fort est égal à la moitié de la période. Souvent, on pourra utiliser cette durée pour calculer les valeurs des intensités de chaque LES en vue du prochain cycle.
 
 ![Chargement des valeurs pour chaque bit](images/bcm-change.svg "Chargement des valeurs pour chaque bit"){ width=95% }
 
@@ -82,7 +82,7 @@ int main() {
 
 La première boucle for correspond à une période des signaux. Elle contient une attente dont la durée progresse selon les puissances de 2 : `Attente (1<<n);`
 
-Il faut noter que cette manière de programmer la durée de chaque bits est imprécise, vu qu'elle ne tient pas compte du temps d'exécution des autres instructions du programme. On peut observer un certaine irrégularité de la progression des intensités, par exemple au passage de 127 à 128. Une programmation en utilisant des Timer et des interruptions résoudra ce problème.
+Il faut noter que cette manière de programmer la durée de chaque bits est imprécise, vu qu’elle ne tient pas compte du temps d’exécution des autres instructions du programme. On peut observer un certaine irrégularité de la progression des intensités, par exemple au passage de 127 à 128. Une programmation en utilisant des Timer et des interruptions résoudra ce problème.
 
 
 

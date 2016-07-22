@@ -90,7 +90,7 @@ void Envoie8bitsSerie (uint8_t valeur) {
   ClockParHaut; ClockParBas;
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Cette procédure devient souvent la procédure centrale dans un programme qui gère un afficheur à LED, celle qui consomme le plus de temps . Il faut l’écrire avec soin, en allant même jusqu’à regarder comment le compilateur l’a traduite en instructions assembleur, pour chercher à optimiser le code pour une exécution aussi rapide que possible.
 
@@ -108,7 +108,7 @@ Voici par exemple une version plus optimisée de l’envoi des bits :
     valeur = valeur >> 1;
 ...
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Cette version supprime l’opération `valeur & (1<<i)`, qui prend davantage de cycles d’horloge du microprocesseur que l’instruction `valeur & (1<<0)`.
 

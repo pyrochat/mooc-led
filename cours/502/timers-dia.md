@@ -53,7 +53,7 @@ et registres de comparaison
 <!-- A -->
 <h1 class="en_tete">Gestion précise du temps</h1>
 <div style="font-size:50pt; left:2.65cm; top:6.5cm; width:57cm">
-* Gérer le temps en jouant avec le temps d'exécution des instructions est compliqué...
+* Gérer le temps en jouant avec le temps d’exécution des instructions est compliqué...
 <!-- 23 -->* Des circuits spécialisés vont nous aider !
 <!-- 3 -->* Par exemple pour générer un PWM :
 </div>
@@ -65,7 +65,7 @@ et registres de comparaison
 <!-- A -->
 <h1 class="en_tete">Compteur binaire</h1>
 <div style="font-size:50pt; left:2.65cm; top:6.5cm; width:55cm">
-* La base d'un timer est un compteur binaire :
+* La base d’un timer est un compteur binaire :
 </div>
 <img src="./images/div2-200dpi.png" style="top:11cm; left:10cm; width:39cm;" />
 <!-- 23 --><img src="./images/div2n.svg" style="top:22cm; left:2.65cm; width:25cm;" />
@@ -213,22 +213,22 @@ int main() {
 <!-- A -->
 <h1 class="en_tete">Les interruptions associées aux timers</h1>
 <div style="font-size:48pt; left:2.65cm; width:57.0cm; top:9cm;">
-* Les timers deviennent très intéressant lorsqu'ils sont associés à des interruptions
+* Les timers deviennent très intéressant lorsqu’ils sont associés à des interruptions
 <!-- 234 -->* Une interruption peut être générée au dépassement de capacité du compteur
 <!-- 34 -->* Des interruptions peuvent se produire par les registres de comparaison
-<!-- 4 -->* Bien d'autres modes sont disponibles
+<!-- 4 -->* Bien d’autres modes sont disponibles
 </div>
 </section>
 
 
 <section>
 <!-- A -->
-<h1 class="en_tete">L'interruptions de dépassement de capacité</h1>
+<h1 class="en_tete">L’interruptions de dépassement de capacité</h1>
 <div style="top:5.3cm; left:1.5cm; width: 56cm; font-size:38pt;">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines startFrom="14"}
 int main() {
   ...
-  TACTL |= TAIE; // Interruption de l'overflow
+  TACTL |= TAIE; // Interruption de l’overflow
   _BIS_SR (GIE); // Autorisation générale des interruptions
   while (1) {    // Boucle infinie vide
   }
@@ -236,7 +236,7 @@ int main() {
 // Timer_A1 Interrupt Vector (TAIV) handler
 #pragma vector=TIMER0_A1_VECTOR
 __interrupt void Timer_A1 (void) {
-  switch (TAIV) {    // discrimination des sources d'interruption
+  switch (TAIV) {    // discrimination des sources d’interruption
   case  2:           // CCR1 : not used
     break;
   case  4:           // CCR2 : not used
@@ -253,7 +253,7 @@ __interrupt void Timer_A1 (void) {
 
 <section>
 <!-- A -->
-<h1 class="en_tete">L'interruption de comparaison</h1>
+<h1 class="en_tete">L’interruption de comparaison</h1>
 <div style="top:6.5cm; left:1.5cm; width: 56cm; font-size:45pt;">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines startFrom="14"}
 int main() {
@@ -281,7 +281,7 @@ __interrupt void Timer_A0 (void) {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines startFrom="14"}
 int main() {
   ...
-  TACTL |= TAIE;   // Interruption de l'overflow
+  TACTL |= TAIE;   // Interruption de l’overflow
   TACCTL0 |= CCIE; // Interruption de la comparaison
   _BIS_SR (GIE);   // Autorisation générale des interruptions
   while (1) {      // Boucle infinie vide
@@ -289,7 +289,7 @@ int main() {
 }
 #pragma vector=TIMER0_A1_VECTOR
 __interrupt void Timer_A1 (void) {
-  switch (TAIV) {    // discrimination des sources d'interruption
+  switch (TAIV) {    // discrimination des sources d’interruption
   case  2:           // CCR1 : not used
     break;
   case  4:           // CCR2 : not used

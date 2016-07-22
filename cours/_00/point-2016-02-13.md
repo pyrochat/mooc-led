@@ -17,7 +17,7 @@
 
 <div style="font-size:48pt; left:3cm; width:56.0cm; top:11cm;">
 * Ce sera le **premier** MOOC enregistré en Afrique
-<!-- 23 -->* Il doit être d'**excellente qualité**, tant sur le fond que sur la forme
+<!-- 23 -->* Il doit être d’**excellente qualité**, tant sur le fond que sur la forme
 <!-- 3 -->* **Aucune différence de qualité** ne soit être visible entre les vidéos du *nord* et du *sud*
 </div>
 </section>
@@ -26,7 +26,7 @@
 <section>
 <!-- A -->
 <div style="font-size:55pt; left:3cm; width:56.0cm; top:5cm;">
-**Etat d'avancement du MOOC au 13 février**
+**Etat d’avancement du MOOC au 13 février**
 </div>
 
 <div style="font-size:48pt; left:3cm; width:56.0cm; top:11cm;">
@@ -53,7 +53,7 @@
 </div>
 
 <div style="font-size:48pt; left:3cm; width:56.0cm; top:11cm;">
-* Terminer les vidéos de la filière *physique* d'**Alain Tiedeu**
+* Terminer les vidéos de la filière *physique* d’**Alain Tiedeu**
 * Terminer les vidéos de **Yves Tiecoura**
 <!-- 234 -->* Si possible avoir deux enregistrements de chaque leçon pour se prémunir de *coquilles*
 </div>
@@ -71,8 +71,8 @@
 </div>
 
 <div style="font-size:48pt; left:3cm; width:56.0cm; top:11cm;">
-* Terminer toutes les **notes de cours**. PYR fera le travail d'adaptation en Markdown
-<!-- 2345678 -->* Terminer les **diapositives** de toutes les leçons. PYR fera le travail d'adaptation en MD
+* Terminer toutes les **notes de cours**. PYR fera le travail d’adaptation en Markdown
+<!-- 2345678 -->* Terminer les **diapositives** de toutes les leçons. PYR fera le travail d’adaptation en MD
 <!-- 345678 -->* Enregistrer les **vidéos** manquantes (*diapositives prêtes = billet émis*)
 <!-- 45678 -->* Préparer des **exercices** pour chaque leçon
 <!-- 5678 -->* Préparer des question pour les **Quizzes** pour chaque leçon

@@ -105,7 +105,7 @@ void setup() {
   P2DIR |= 0xFF; // P2.0 à P2.7 en sortie
 }
 
-void loop() { // Boucle infinie, correspond à toute l'animation
+void loop() { // Boucle infinie, correspond à toute l’animation
   P2OUT = 0; // éteint toutes les LED
   P2OUT |= (1<<0); delay(200); // allume la première LED
   P2OUT |= (1<<1); delay(200); // allume successivement chaque LED...
@@ -119,10 +119,10 @@ void loop() { // Boucle infinie, correspond à toute l'animation
   P2OUT = 0xFF; delay(500); // allume toutes les LED
   P2OUT = 0; delay(500); // répète...
   P2OUT = 0xFF; delay(1000);
-  P2OUT = 0; delay(500); // pause avant la reprise de l'animation
+  P2OUT = 0; delay(500); // pause avant la reprise de l’animation
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 </div>
 </section>
 
@@ -139,14 +139,14 @@ void ChenillardAjoute(uint16_t attente) {
   }
 }
 ...
-void loop() { // Boucle infinie, correspond à toute l'animation
+void loop() { // Boucle infinie, correspond à toute l’animation
   ChenillardAjoute(200);
   delay(800); // attend un peu après la dernière LED
   P2OUT = 0; delay(500); // éteint toutes les LED pendant 1/2 seconde
   ...
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 </div>
 </section>
 

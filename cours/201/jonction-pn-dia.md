@@ -33,7 +33,7 @@ Prof. Alain Tiedeu
 <h1 class="en_tete">La diode à jonction : principes physiques</h1>
 <div style="top: 7.5cm; left: 33.5cm; font-size: 53pt; line-height: 1.2;">
 * Modèle de Bohr
-* Niveaux d'énergie
+* Niveaux d’énergie
 * Semi-conducteurs intrinsèques
 * Dopage N et P
 * Jonction PN
@@ -71,7 +71,7 @@ Prof. Alain Tiedeu
 <!-- Page Energie, 5 entrées -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Modèle de Bohr : niveaux d'énergie</h1>
+<h1 class="en_tete">Modèle de Bohr : niveaux d’énergie</h1>
 <div style="font-size:45pt; left:2.65cm; top:6.5cm; line-height:1.2; width:30cm">
 * Couche n correspond à un niveau d’énergie E~n~
 </div>
@@ -337,7 +337,7 @@ Prof. Alain Tiedeu
 <h1 class="en_tete">La diode à jonction : principes physiques</h1>
 <div style="top: 7.5cm; left: 33.5cm; font-size: 53pt; line-height: 1.2;">
 * Modèle de Bohr
-* Niveaux d'énergie
+* Niveaux d’énergie
 * Semi-conducteurs intrinsèques
 * Dopage N et P
 * Jonction PN

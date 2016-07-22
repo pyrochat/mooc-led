@@ -220,14 +220,14 @@ Trois étapes pour mettre en œuvre une interruption :
  int main() {
    WDTCTL = WDTPW + WDTHOLD; // Stop watchdog timer
    P1DIR |= (1<<6); // Led verte en sortie
-   P1OUT |= (1<<3); P1REN |= (1<<3); //pull-up sur l'entrée P1.3
+   P1OUT |= (1<<3); P1REN |= (1<<3); //pull-up sur l’entrée P1.3
 
    P1IES |= (1<<3); // Sur le flanc descendant
    P1IE |= (1<<3); // Interruption P1 activée sur le bit 3
-   P1IFG &=~(1<<3); // Fanion d'interruption remis à zéro
+   P1IFG &=~(1<<3); // Fanion d’interruption remis à zéro
    __enable_interrupt(); // General Interrupt Enable
 
-   while(1) { // il n'y a rien à faire dans la boucle principale !
+   while(1) { // il n’y a rien à faire dans la boucle principale !
    }
  }
 
@@ -240,13 +240,13 @@ Trois étapes pour mettre en œuvre une interruption :
 <h1 class="en_tete">Interruption sur une entrée</h1>
 <div style="top:7.5cm; left:2cm; width: 5cm; font-size:45pt; width:50cm;">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines startFrom="14"}
- // Routine d'interruption associée au Port P1
+ // Routine d’interruption associée au Port P1
 
  // Syntaxe spécifique pour les interruptions :
  #pragma vector=PORT1_VECTOR
  __interrupt void Port1_ISR(void) {
 
-   // Fanion d'interruption correspondant au bit 3 remis à 0 :
+   // Fanion d’interruption correspondant au bit 3 remis à 0 :
    P1IFG &= ~(1<<3)
 
    P1OUT ^= (1<<6); // inverse P1.6 (LED verte)
@@ -267,12 +267,12 @@ Trois étapes pour mettre en œuvre une interruption :
    ...
    P1IES &=~((1<<3)|(1<<4)); // Flancs montants
    P1IE |= (1<<3)|(1<<4); // Interruption activée sur 2 entrées
-   P1IFG &=~((1<<3)|(1<<4)); // Fanions d'interruption remis à 0
+   P1IFG &=~((1<<3)|(1<<4)); // Fanions d’interruption remis à 0
    ...
 
  #pragma vector=PORT1_VECTOR
  __interrupt void Port1_ISR(void) {
-   // discrimination des causes possible de l'interruption :
+   // discrimination des causes possible de l’interruption :
    if (P1IFG & (1<<3)) { P1IFG &= ~(1<<3); ... ;}
    if (P1IFG & (1<<4)) { P1IFG &= ~(1<<4); ... ;}
  }
@@ -293,11 +293,11 @@ Trois étapes pour mettre en œuvre une interruption :
    // Activation du convertisseur ADC 10 bits (ADC10) :
    ADC10CTL0 = ADC10SHT_2 + ADC10ON + ADC10IE; // Interrupt enable
    ADC10CTL1 = INCH_1; // Canal 1 = entrée A1 = P1.1
-   ADC10AE0 |= (1<<1); // Autorisation de l'entrée A1
+   ADC10AE0 |= (1<<1); // Autorisation de l’entrée A1
    __enable_interrupt(); // General Interrupt Enable
    ADC10CTL0 |= ENC + ADC10SC; // lance une première conversion
 
-   while(1) { // il n'y a rien à faire dans la boucle principale !
+   while(1) { // il n’y a rien à faire dans la boucle principale !
    }
  }
 
@@ -310,7 +310,7 @@ Trois étapes pour mettre en œuvre une interruption :
 <h1 class="en_tete">Interruption sur une fin de conversion AD</h1>
 <div style="top:6.5cm; left:1.5cm; width: 56cm; font-size:45pt;">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines startFrom="14"}
- // Routine d'interruption associée à la fin de conversion ADC
+ // Routine d’interruption associée à la fin de conversion ADC
  #pragma vector=ADC10_VECTOR
  __interrupt void ADC10_ISR(void) {
 

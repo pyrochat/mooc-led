@@ -58,7 +58,7 @@ Prof. Alain Tiedeu
 <!-- Page bandes, 5 entrées -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Bandes d'énergie</h1>
+<h1 class="en_tete">Bandes d’énergie</h1>
 <div style="font-size:45pt; left:2.65cm; top:7cm; line-height:0.9; width:35cm">
 * (1 couche => 1 valeur d’énergie) est **approximative** et correspond à atome isolé<br/><br/>
 * Pour N (grand)  atomes, ils dépendent les uns des autres<br/><br/>
@@ -103,7 +103,7 @@ h est la constante de Planck , c la vitesse de la lumière<br/> et  λ la longue
 * **Courant** passe dans la LED
 </div>
 <div style="font-size:45pt; left:2.65cm; top:13cm; line-height:1.5; width:56cm">
-* **Transitions énergétiques** des électrons dans le matériau de la LED<br/> (l'intensité du courant influence les transitions)
+* **Transitions énergétiques** des électrons dans le matériau de la LED<br/> (l’intensité du courant influence les transitions)
 </div>
 <div style="font-size:45pt; left:2.65cm; top:20cm; line-height:1.5; width:56cm">
 * => **Lumière** de longueur d’onde λ
@@ -131,7 +131,7 @@ Examinons **trois façons** de déterminer la couleur de la radiation émise :
 <!-- A -->
 <h1 class="en_tete">Alliages et couleur de radiation</h1>
 <div style="font-size:45pt; left:2.65cm; top:7cm; line-height:1.5; width:30cm">
-* Depuis les années 1960, la recherche a permis<br/> de découvrir des **alliages d'éléments chimiques**<br/> qui, utilisés dans la fabrication des LED<br/> permettent d’émettre des radiations de couleurs<br/> différentes
+* Depuis les années 1960, la recherche a permis<br/> de découvrir des **alliages d’éléments chimiques**<br/> qui, utilisés dans la fabrication des LED<br/> permettent d’émettre des radiations de couleurs<br/> différentes
 </div>
 <!-- 2 --><div style="font-size:45pt; left:2.65cm; top:22cm; line-height:1.5; width:35cm">
 <!-- 2 -->* Quelques exemples sont donnés dans ce tableau :

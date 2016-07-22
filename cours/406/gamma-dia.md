@@ -91,7 +91,7 @@ Prof. Alain Tiedeu
 <!-- 34 --></div>
 <!-- 34 --><img src="./images/ecran-faisceau-60dpi.png" style="top:19.0cm; left:37cm; width:11.0cm" />
 <!-- 4 --><div style="font-size:45pt; left:2.65cm; top:27cm; line-height:1.0; width:35cm">
-<!-- 4 -->* Il faut corriger : c'est la <span style="color: #f00;">CORRECTION GAMMA</span>
+<!-- 4 -->* Il faut corriger : c’est la <span style="color: #f00;">CORRECTION GAMMA</span>
 <!-- 4 --></div>
 </section>
 

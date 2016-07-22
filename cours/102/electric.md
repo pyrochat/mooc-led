@@ -45,7 +45,7 @@ Le **courant électrique** s’exprime en **Ampère**, noté A.
 
 Le courant qui traverse une LED ne dépasse généralement pas 10 mA. Mais une enseigne composée de plusieurs milliers de LED peux nécessiter des courants importants de quelques dizaines d’Ampère.
 
-Le choix du diamètre d’un fil électrique ne dépend pas de la tension, mais du courant qui le traverse. Il faudra donc dimensionner correctement les fils. Par exemple, un fils de cuivre de 1 mm² de section n’est pas suffisant pour un courant dépassant 16 A. Sur les circuits imprimés, le cuive a une épaisseur d'environ 35 microns. Il faut donc bien dimentionner la largeur des pistes en fonction du courant.
+Le choix du diamètre d’un fil électrique ne dépend pas de la tension, mais du courant qui le traverse. Il faudra donc dimensionner correctement les fils. Par exemple, un fils de cuivre de 1 mm² de section n’est pas suffisant pour un courant dépassant 16 A. Sur les circuits imprimés, le cuive a une épaisseur d’environ 35 microns. Il faut donc bien dimentionner la largeur des pistes en fonction du courant.
 
 La mesure du courant nécessite de couper le circuit et d’y insérer l’appareil de mesure. C’est la raison pour laquelle la mesure directe du courant est beaucoup plus rare. On préférera une mesure indirecte.
 
@@ -84,13 +84,13 @@ Dans le schéma ci-dessous, deux résistances ont été montées *en parallèle*
 
 U = U~1~ = U~2~ = R~1~ × I~1~ = R~2~ × I~2~
 
-Quel est alors la valeur du courant I ? On admet facilement que les électrons ne peuvent pas *sortir* du fils. C'est la loi des noeuds de Kirchhoff, qui dit que la somme des intensités des courants qui entrent par un nœud est égale à la somme des intensités des courants qui sortent du même nœud.
+Quel est alors la valeur du courant I ? On admet facilement que les électrons ne peuvent pas *sortir* du fils. C’est la loi des noeuds de Kirchhoff, qui dit que la somme des intensités des courants qui entrent par un nœud est égale à la somme des intensités des courants qui sortent du même nœud.
 
 On a donc I = I~1~ + I~2~
 
-I~1~ et I~2~ peuvent être calculés par la loi d'Ohm.
+I~1~ et I~2~ peuvent être calculés par la loi d’Ohm.
 
-Dans un montage en parallèle, on peut donc dire que les courants s'ajoutent.
+Dans un montage en parallèle, on peut donc dire que les courants s’ajoutent.
 
 
 ![Résistances en parallèle](images/schema-pile-res2p.svg "Résistances en parallèle"){ width=60% }
@@ -105,13 +105,13 @@ Le courant à travers les deux résistances est le même. I~1~ = I~2~ = I. On pe
 
 U~1~ = R~1~ × I~1~ et U~2~ = R~2~ × I~2~
 
-Or la loi des mailles de Krichhoff dit que dans une maille quelconque d'un réseau, la somme algébrique des différences de potentiel le long de la maille est nulle.
+Or la loi des mailles de Krichhoff dit que dans une maille quelconque d’un réseau, la somme algébrique des différences de potentiel le long de la maille est nulle.
 
 On a donc U~1~ + U~2~ = 5 V
 
 La résolution de ces équations donne I~1~ = I~2~ = 5 V / (R~1~ + R~2~) = 1 mA
 
-Dans un montage en série, on peut donc dire que les tensions s'ajoutent. Les deux résistances en série peuvent être considérée comme une seule résistance dont la valeur est la somme de deux.
+Dans un montage en série, on peut donc dire que les tensions s’ajoutent. Les deux résistances en série peuvent être considérée comme une seule résistance dont la valeur est la somme de deux.
 
 
 

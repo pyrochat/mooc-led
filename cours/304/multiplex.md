@@ -46,7 +46,7 @@ void loop() {
   }
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 On voit que tous les états possibles pour 2 LED sont affichés (00, 01, 10, 11). Il a toutefois un défaut : lorsqu’elles sont allumées ensemble, chaque LED donne l’impression d’être allumée plus faiblement. En effet, on a généré un PWM de 50%. Ce défaut peut être corrigé en ne dépassant jamais les 50% pour chaque LED :
 
@@ -59,7 +59,7 @@ On voit que tous les états possibles pour 2 LED sont affichés (00, 01, 10, 11)
   }
   ...
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 L’affaiblissement de l’intensité peut être partiellement compensé dans ce cas. En effet, le courant nominal d’une LED (donné par le fabricant) ne doit pas être dépassé en continu. Mais lorsque l’allumage n’est jamais continu, c’est le courant maximal de la LED (également donné par le fabricant), qui ne doit pas être dépassé. Or le courant maximal (typiquement 20mA) est supérieur au courant nominal (typiquement 10mA). On va donc pouvoir utiliser une résistance de limitation plus petite pour atteindre ce courant maximal, pour autant que la contrainte de ne jamais allumer la LED plus de 50% du temps soit respectée par le programme.
 

@@ -72,18 +72,18 @@ Pierre-Yves Rochat
 <div style="top:7cm; left:2cm; font-size:36pt; width:57cm">
 ~~~~~~~ { .c .numberLines startFrom="1" }
   // Lecture en EEPROM :
-  EEAR = adresse; // l'adresse est donnée
+  EEAR = adresse; // l’adresse est donnée
   EECR = (1<<EERE); // le fanion de lecture est activé
   valeur = EEDR; // lecture de la valeur
 
   // Ecriture en EEPROM :
-  while (EECR & (1<<EEPE)) {} // attente de la fin d'une éventuelle écriture précédente
-  EEAR = adresse; // l'adresse est donnée
+  while (EECR & (1<<EEPE)) {} // attente de la fin d’une éventuelle écriture précédente
+  EEAR = adresse; // l’adresse est donnée
   EEDR = valeur; // la valeur est donnée
   EECR = (1<<EEMPE); // autorise une écriture (Master Write Enable)
-  EECR = (1<<EEPE); // lance le cycle d'écriture (Write Enable)
+  EECR = (1<<EEPE); // lance le cycle d’écriture (Write Enable)
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 </div>
 </section>
 
@@ -109,7 +109,7 @@ Pierre-Yves Rochat
 ~~~~~~~ { .c .numberLines startFrom="1" }
   // Lecture en Flash :
   uint8_t *pointeur; // pointeur dans la Flash
-  pointeur = (uint8_t *) 0x1040; //place l'adresse dans le pointeur
+  pointeur = (uint8_t *) 0x1040; //place l’adresse dans le pointeur
   uint8_t valeur = *pointeur;
 
   // Ecriture en Flash :
@@ -117,14 +117,14 @@ Pierre-Yves Rochat
   *pointeur = valeur; // écrit la valeur dans la Flash
   FCTL3 = FWKEY + LOCK; // Set LOCK bit
 
-  // Effacement d'un bloc de la mémoire Flash
+  // Effacement d’un bloc de la mémoire Flash
   FCTL1 = FWKEY + ERASE; // Set Erase bit
   FCTL3 = FWKEY; // Clear Lock bit
-  *pointeur = 0; // lance un cycle d'effacement du bloc, la valeur donnée n'a pas d'importance
+  *pointeur = 0; // lance un cycle d’effacement du bloc, la valeur donnée n’a pas d’importance
   FCTL3 = FWKEY + LOCK; // Set LOCK bit
   FCTL1 = FWKEY; // Clear WRT bit
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 </div>
 </section>
 

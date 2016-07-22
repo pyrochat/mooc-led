@@ -74,7 +74,7 @@ Codage des informations dans les circuits numériques :
 <h1 class="en_tete">Algèbre de BOOLE</h1>
 <div style="top: 8cm; left: 2.65cm; font-size: 53pt; line-height: 2.0;">
 * Outil mathématique pour représenter les systèmes logiques
-* Conçue autour d'**opérateurs logiques** de base:
+* Conçue autour d’**opérateurs logiques** de base:
 </div>
 <!-- 2 --><div style="top: 17cm; left: 5cm; font-size: 53pt; line-height: 1.5;">
 <!-- 2 -->* Le **NON** logique *(complément logique)*
@@ -185,14 +185,14 @@ Codage des informations dans les circuits numériques :
 <section>
 <!-- A -->
 <!-- I -->
-<h1 class="en_tete">Propriété de l'algèbre de Boole</h1>
+<h1 class="en_tete">Propriété de l’algèbre de Boole</h1>
 </section>
 
 
 <!-- Page propriétés 1, 4 entrées-->
 <section>
 <!-- A -->
-<h1 class="en_tete">Propriété de l'algèbre de Boole</h1>
+<h1 class="en_tete">Propriété de l’algèbre de Boole</h1>
 <div style="top: 7cm; left: 2.65cm; font-size: 53pt; line-height: 2;">
 * Commutativité
 </div>
@@ -215,7 +215,7 @@ Codage des informations dans les circuits numériques :
 <!-- Page propriétés 2, 3 entrées-->
 <section>
 <!-- A -->
-<h1 class="en_tete">Propriété de l'algèbre de Boole</h1>
+<h1 class="en_tete">Propriété de l’algèbre de Boole</h1>
 <div style="top: 7cm; left: 2.65cm; font-size: 53pt; line-height: 2;">
 * Distributivité
 </div>

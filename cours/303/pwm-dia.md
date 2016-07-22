@@ -135,7 +135,7 @@ void setup() { // Initialisations
 
 void loop() { // Boucle infinie, durée 10ms => un cycle du PWM à 100 Hz
   LedOn;
-  delayMicrosecond(100*pwmLed); // durée de l'impulsion
+  delayMicrosecond(100*pwmLed); // durée de l’impulsion
   LedOff;
   delayMicrosecond(100*(100-pwmLed); // solde de la période
 }

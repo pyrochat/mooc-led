@@ -31,7 +31,7 @@ Pierre-Yves Rochat
 * Électrons libres et courant électrique
 * Tension électrique
 * Unités électriques
-* Résistance et loi d'Ohm
+* Résistance et loi d’Ohm
 * Énergie et puissance
 * Montages en parallèle et en série
 </div>
@@ -44,8 +44,8 @@ Pierre-Yves Rochat
 <!-- 2345 --><img src="./images/atome.svg" style="top:7cm; left:30cm; width:30cm;">
 <div style="top: 17cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
 * La matière est composée d’**atomes**
-<!-- 2345 -->* Le noyau de l'atome est composé de **protons** et de **neutrons**
-<!-- 345 -->* Le noyau est entouré d'un nuage d’**électrons**, disposés en **couches** successives
+<!-- 2345 -->* Le noyau de l’atome est composé de **protons** et de **neutrons**
+<!-- 345 -->* Le noyau est entouré d’un nuage d’**électrons**, disposés en **couches** successives
 <!-- 45 -->* Les électrons de la dernière couche sont capables de se déplacer d’un atome à l’autre
 <!-- 45 -->* On parle d’**électrons libres**
 <!-- 5 -->* Lorsque leur mouvement est ordonné, on parle de **courant électrique**
@@ -74,7 +74,7 @@ Pierre-Yves Rochat
 <div style="top: 7cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
 * Un **courant** va se produire dans un conducteur
 * En présence d’une *force électromotrice*
-<!-- 234 -->* On l'appelle aussi **tension électrique**
+<!-- 234 -->* On l’appelle aussi **tension électrique**
 <!-- 34 -->* Exemple :
 <!-- 4 --></div>
 <!-- 4 --><div style="top: 22cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
@@ -104,7 +104,7 @@ Pierre-Yves Rochat
 
 <section>
 <!-- A -->
-<h1 class="en_tete">Résistance et loi d'Ohm</h1>
+<h1 class="en_tete">Résistance et loi d’Ohm</h1>
 <div style="top: 7cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
 * Voici un circuit électrique réalisé avec une source de tension et une **résistance** :
 </div>
@@ -112,7 +112,7 @@ Pierre-Yves Rochat
 <!-- 234 --><div style="top: 19cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
 <!-- 234 -->* Le courant électrique est le même en tout point de ce circuit : I~1~ = I~2~
 <!-- 34 -->* Ce courant est d’autant plus **grand** que la résistance est **petite**
-<!-- 4 -->* C'est la loi d'Ohm : **I = U / R**
+<!-- 4 -->* C’est la loi d’Ohm : **I = U / R**
 <!-- 234 --></div>
 <!-- 4 --><div style="top: 27cm; left: 5cm; font-size: 40pt; line-height: 1.0;">
 <!-- 4 -->* U : la tension électrique, exprimée en Volt [V]
@@ -126,7 +126,7 @@ Pierre-Yves Rochat
 <!-- A -->
 <h1 class="en_tete">Energie et puissance</h1>
 <div style="top: 7cm; left: 3cm; font-size: 48pt;  width:45cm;">
-* De l'énergie est dissipée dans la résistance : c'est l'effet Joule
+* De l’énergie est dissipée dans la résistance : c’est l’effet Joule
 </div>
 <img src="./images/schema-pile-chaleur.svg" style="top:10.5cm; left:7cm; width:25cm; ">
 <!-- 2345 --><div style="top: 19cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
@@ -135,7 +135,7 @@ Pierre-Yves Rochat
 <!-- 2345 --></div>
 <!-- 45 --><div style="top: 25cm; left: 3cm; font-size: 48pt; line-height: 1.2;">
 <!-- 45 -->* Le rendement calorifique : 100%
-<!-- 5 -->* Dans une LED, une partie de l'energie est lumineuse
+<!-- 5 -->* Dans une LED, une partie de l’energie est lumineuse
 <!-- 45 --></div>
 <!-- 5 --><img src="./images/schema-pile-led.svg" style="top:21cm; left:40cm; width:17cm; ">
 </section>
@@ -170,7 +170,7 @@ Pierre-Yves Rochat
 <!-- 3 -->* Loi des mailles de Kirchhoff :
 <!-- 23 --></div>
 <!-- 3 --><div style="top: 25.0cm; left: 3cm; font-size: 48pt; line-height: 1.2; width:56cm; ">
-<!-- 3 -->Dans une maille quelconque d'un réseau, la somme algébrique des différences de potentiel le long de la maille est nulle
+<!-- 3 -->Dans une maille quelconque d’un réseau, la somme algébrique des différences de potentiel le long de la maille est nulle
 <!-- 3 --></div>
 </section>
 
@@ -182,7 +182,7 @@ Pierre-Yves Rochat
 * Électrons libres et courant électrique
 * Tension électrique
 * Unités électriques
-* Résistance et loi d'Ohm
+* Résistance et loi d’Ohm
 * Énergie et puissance
 * Montages en parallèle et en série
 </div>

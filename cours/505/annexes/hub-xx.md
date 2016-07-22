@@ -27,7 +27,7 @@ Semble correspondre au HUB12, dual  16 :
 =====================================================================
 
 
-Most led display modules' interface define:
+Most led display modules’ interface define:
 Note:N=(GND),   L=(LAT or ST),   S=(Clk),   O=(OE),   E=(/OE)   R=red color signal
 G=Green signal,   U=blue signal,   A,B,C,D=row signal,   H=the signal afer row signal compile,   F=NC,   V=VCC
 order

@@ -89,7 +89,7 @@ void setup() {
   P2DIR |= 0xFF; // P2.0 à P2.7 en sortie
 }
 
-void loop() { // Boucle infinie, correspond à toute l'animation
+void loop() { // Boucle infinie, correspond à toute l’animation
   P2OUT  = 0;                  // éteint toutes les LED
   P2OUT |= (1<<0); delay(200); // allume la première LED
   P2OUT |= (1<<1); delay(200); // allume successivement chaque LED...
@@ -103,10 +103,10 @@ void loop() { // Boucle infinie, correspond à toute l'animation
   P2OUT  = 0xFF;   delay(500); // allume toutes les LED
   P2OUT  = 0;      delay(500); // répète...
   P2OUT  = 0xFF;   delay(1000);
-  P2OUT  = 0;      delay(500); // pause avant la reprise de l'animation
+  P2OUT  = 0;      delay(500); // pause avant la reprise de l’animation
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 On aurait pu utiliser uniquement des procédures `pinMode()` pour l’initialisation et `digitalWrite()` pour les animations. Dans un cas comme dans l’autre, le style de ce programme n’est pas un modèle du genre et a donc nécessité de nombreux commentaires. Or *un programme bien écrit ne nécessite pas beaucoup de commentaires*, alors qu’on voudrait souvent vous faire croire que plus un programme comporte de commentaires, mieux il est écrit !
 
@@ -116,7 +116,7 @@ L’utilisation de définitions comme :
 #define Led1ON P2OUT |= (1<<0)
 #define Led1OFF P2OUT &=~(1<<0)
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 rendrait le code plus lisible.
 
@@ -131,14 +131,14 @@ void ChenillardAjoute(uint16_t attente) {
   }
 }
 ...
-void loop() { // Boucle infinie, correspond à toute l'animation
+void loop() { // Boucle infinie, correspond à toute l’animation
   ChenillardAjoute(200);
   delay(800); // attend un peu après la dernière LED
   P2OUT = 0; delay(500); // éteint toutes les LED pendant 1/2 seconde
   ...
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 On pourrait aussi écrire une fonction chenillard encore plus générale, avec en paramètres non seulement le temps d’attente, mais le sens du mouvement et le fait de garder ou non les LED précédentes allumées.
 

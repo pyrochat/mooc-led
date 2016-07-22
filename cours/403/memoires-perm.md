@@ -27,18 +27,18 @@ Voici les instructions pour lire et écrire dans la mémoire :
 
 ~~~~~~~ { .c }
   // Lecture en EEPROM :
-  EEAR = adresse; // l'adresse est donnée
+  EEAR = adresse; // l’adresse est donnée
   EECR = (1<<EERE); // le fanion de lecture est activé
   valeur = EEDR; // lecture de la valeur
 
   // Ecriture en EEPROM :
-  while (EECR & (1<<EEPE)) {} // attend la fin d'une écriture précédente
-  EEAR = adresse; // l'adresse est donnée
+  while (EECR & (1<<EEPE)) {} // attend la fin d’une écriture précédente
+  EEAR = adresse; // l’adresse est donnée
   EEDR = valeur; // la valeur est donnée
   EECR = (1<<EEMPE); // autorise une écriture (Master Write Enable)
-  EECR = (1<<EEPE); // lance le cycle d'écriture (Write Enable)
+  EECR = (1<<EEPE); // lance le cycle d’écriture (Write Enable)
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Le fanion EEMPE signifiait EEprom Master Program Enable. Mais les lettres PE sont traduites dans la documentation actuelle par Write Enable. EEMPE doit être activé juste avant l’activation du fanion EEPE (EEprom Write Enable) qui lance le cycle d’écriture. Son activation ne dure que quelques cycles d’horloge : il est automatiquement remis à zéro. Aucune écriture n’est possible s’il n’est pas actif. Son but est de rendre improbable une écriture accidentelle en EEPROM. L’activation des EEMPE et de EEPE doivent en effet se suivre de près pour qu’une écriture soit possible.
 
@@ -54,10 +54,10 @@ Sur les MSP430, l’architecture de Von Neumann rend facile l’accès à la mé
 ~~~~~~~ { .c }
   // Lecture en Flash :
   uint8_t *pointeur; // pointeur dans la Flash
-  pointeur = (uint8_t *) 0x1040; //place l'adresse dans le pointeur
+  pointeur = (uint8_t *) 0x1040; //place l’adresse dans le pointeur
   uint8_t valeur = *pointeur;
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 On remarque le trans-typage de l’adresse, indiquée ici en hexadécimal, vers le type du pointeur, qui est dans ce cas un pointeur vers des valeurs 8 bits non-signées `(uint8_t *)`.
 
@@ -69,19 +69,19 @@ L’écriture se fait de la même manière. Il faut toutefois précéder l’éc
   *pointeur = valeur; // écrit la valeur dans la Flash
   FCTL3 = FWKEY + LOCK; // Set LOCK bit
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 L’effacement s’effectue par bloc. Il s’effectue lorsqu’une écriture est faite dans la zone du bloc alors que le fanion d’effacement est activé. Mais il est nécessaire de désactiver au préalable le fanion qui bloque toute écriture en mémoire Flash.
 
 ~~~~~~~ { .c }
-  // Effacement d'un bloc de la mémoire Flash
+  // Effacement d’un bloc de la mémoire Flash
   FCTL1 = FWKEY + ERASE; // Set Erase bit
   FCTL3 = FWKEY; // Clear Lock bit
-  *pointeur = 0; // lance l'effacement du bloc, valeur sans importance
+  *pointeur = 0; // lance l’effacement du bloc, valeur sans importance
   FCTL3 = FWKEY + LOCK; // Set LOCK bit
   FCTL1 = FWKEY; // Clear WRT bit
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Souvent, des librairies sont disponibles pour faciliter ce travail. Pour les AVR, construits sur une architecture de Harvard, la librairie `Pgmspace.h` est utilisée.
 

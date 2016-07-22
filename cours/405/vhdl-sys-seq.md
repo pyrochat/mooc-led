@@ -13,7 +13,7 @@
 Les instructions séquentielles sont exécutées les unes après les autres, l’ordre d’écriture est très important contrairement aux instructions concurrentes. Les instructions séquentielles sont réalisées par le biais de processus (PROCESS). Plusieurs PROCESS peuvent s’exécuter en parallèles dans une architecture. Toutes les instructions concurrentes sont en réalité des processus. Un processus peut avoir des variables locales.
 
 #### Les PROCESS ####
-Les instructions séquentielles permettent de modéliser des comportements procéduraux constitués d'un suite d'action à exécuter en séquence. Les instructions séquentielles ne peuvent être utilisées que dans le corps d'un processus ou d'un sous-programme.
+Les instructions séquentielles permettent de modéliser des comportements procéduraux constitués d’un suite d’action à exécuter en séquence. Les instructions séquentielles ne peuvent être utilisées que dans le corps d’un processus ou d’un sous-programme.
 Les instructions séquentielles du VHDL sont très évoluées à l’image des langages de haut niveau.
 
 On les utilise dans un process, les instructions s’exécutent suivant l’ordre d’écriture.
@@ -26,10 +26,10 @@ Un process peut contenir des parties combinatoires, des parties séquentielles.
 
 Un processus peut avoir des variables locales. Le fonctionnement du processus est régi par les règles suivantes :
 Un processus est une boucle infinie, il recommence automatiquement à la fin du process.
-Un processus doit être synchronisé par des points d'arrêt qui sont :
+Un processus doit être synchronisé par des points d’arrêt qui sont :
 
-* Une "liste de sensibilité" (process(liste de signaux)) qui contient une liste de signaux qui réveillent le processus lors d'un changement d'un des signaux.
-* Des instructions d'arrêt wait dans sa description interne. Le wait est sensible soit à un signal soit à un temps.
+* Une "liste de sensibilité" (process(liste de signaux)) qui contient une liste de signaux qui réveillent le processus lors d’un changement d’un des signaux.
+* Des instructions d’arrêt wait dans sa description interne. Le wait est sensible soit à un signal soit à un temps.
 
  ![Figure : Syntaxe PROCESS](images/Synthaxe_process.png "Synthaxe process VHDL")
 
@@ -43,8 +43,8 @@ L’instruction séquentielle wait peut prendre plusieurs formes :
 
  ![Figure : Syntaxe WAIT](images/Synthaxe_wait.png "Synthaxe wait VHDL")
 
-La partie exécutable d'un processus n’est activée que si un changement d'état survient sur au moins un signal de sa liste de sensibilité.
-L'instruction séquentielle wait peut prendre plusieurs formes:
+La partie exécutable d’un processus n’est activée que si un changement d’état survient sur au moins un signal de sa liste de sensibilité.
+L’instruction séquentielle wait peut prendre plusieurs formes:
 
 * La forme wait : attente d’un signal parmi la liste de sensibilité.
 * La forme wait for permet d’attendre un temps
@@ -75,8 +75,8 @@ Elle est souvent utilisée pour la description de machines d’état ou toute fo
 
 Les instructions de boucle (LOOP) permettent de décrire des comportements répétitifs, elles peuvent prendre ces trois formes :
 
-* La boucle for permet d'effectuer un nombre fini d'itérations.
-* La boucle while permet d'effectuer des itérations de manière conditionnelle.
+* La boucle for permet d’effectuer un nombre fini d’itérations.
+* La boucle while permet d’effectuer des itérations de manière conditionnelle.
 * La boucle générale permet de décrire des boucles infinies.
 
 
@@ -85,8 +85,8 @@ Les instructions de boucle (LOOP) permettent de décrire des comportements rép�
 
 Il y  a la possibilité d’utiliser les instructions next et exit pour contrôler le comportement de la boucle:
 
-* L'instruction Next stoppe l'itération courante et démarre l'itération suivante.
-* L'instruction exit stoppe l'itération et sort de la boucle.
+* L’instruction Next stoppe l’itération courante et démarre l’itération suivante.
+* L’instruction exit stoppe l’itération et sort de la boucle.
 
 ## Applications instructions séquentielles ##
 
@@ -101,12 +101,12 @@ La synthèse en VHDL utilise quatre signaux internes Sr, Ss qui prennent respect
 
 ![Figure : Bascule RS](images/bascules_RS_vhdl.png "Bascule RS ")
 
-La bascule est activée sur front montant de l’horloge, l’instruction Ck'event est utilisée pour détecter l’événement sur Ck. Cette instruction est une fonction de type boolean qui vaut TRUE si un événement est détecté sur Ck. Ck'event and Ck = '1 permet ainsi de détecter un front montant sur Ck, c’est équivalent à l’instruction rising_edge(Ck).
+La bascule est activée sur front montant de l’horloge, l’instruction Ck’event est utilisée pour détecter l’événement sur Ck. Cette instruction est une fonction de type boolean qui vaut TRUE si un événement est détecté sur Ck. Ck’event and Ck = ’1 permet ainsi de détecter un front montant sur Ck, c’est équivalent à l’instruction rising_edge(Ck).
 
 
 #### Bascule D ####
 
-La sortie Q prend donc l'état de l'entrée D sur front montant de l'horloge (Ck)
+La sortie Q prend donc l’état de l’entrée D sur front montant de l’horloge (Ck)
 
  ![Figure : Bascule D](images/bascule_D.png "Bascule D ")
 
@@ -120,16 +120,16 @@ La bascule D avec entrées de forçage SET et RESET.
 #### Bascule JK ####
 
 
-Lorsque J = K = 0, la bascule JK conserve le dernier état indépendamment de l'horloge : mémorisation.
-Lorsque J = K = 1, la sorite Q de la bascule JK bascule à chaque front d'horloge.
-Lorsque J différent de K, la sortie Q de la bascule JK recopie l'entrée J à chaque front d'horloge.
+Lorsque J = K = 0, la bascule JK conserve le dernier état indépendamment de l’horloge : mémorisation.
+Lorsque J = K = 1, la sorite Q de la bascule JK bascule à chaque front d’horloge.
+Lorsque J différent de K, la sortie Q de la bascule JK recopie l’entrée J à chaque front d’horloge.
 
  ![Figure : Bascule JK VHDL](images/bascule_JK.png "Bascule JK ")
 
 
 #### Compteur modulo 10 ####
 
-Un compteur est un système séquentiel qui permet de dénombrer des impulsions appliquées sur son entrée  d'horloge (ck : clock ).
+Un compteur est un système séquentiel qui permet de dénombrer des impulsions appliquées sur son entrée  d’horloge (ck : clock ).
 
 #### Compteur modulo 10 (Gestion de la fréquence du comptage) ####
 
@@ -153,7 +153,7 @@ Quelle est la fréquence de comptage si la fréquence de l’horloge est de 50 M
 
 #### Registre à décalage série parallèle ####
 
-Dans un registre à décalage les bascules sont interconnectées de façon à ce que l'état logique de la bascule de rang i puisse être transmis à la bascule de rang i+1 quand un signal d'horloge est appliqué à l'ensemble des bascules.
+Dans un registre à décalage les bascules sont interconnectées de façon à ce que l’état logique de la bascule de rang i puisse être transmis à la bascule de rang i+1 quand un signal d’horloge est appliqué à l’ensemble des bascules.
 
 Ce type de registre permet de transformer un codage temporel (succession des bits dans le temps) en un codage spatial (information stockée en mémoire statique).
 

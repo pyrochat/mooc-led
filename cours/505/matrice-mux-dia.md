@@ -143,15 +143,15 @@ void CyclesMatrice(uint16_t nbCycles) {
   uint16_t n, x, y;
   for (n=0; n<nbCycles; n++) {
     for (y=0; y<4; y++) {           // envoi et affichage des 4 lignes
-      for (x=0; x<8; x++) {         // envoi des 8 bits d'une ligne
+      for (x=0; x<8; x++) {         // envoi des 8 bits d’une ligne
         if (matrice[y] & (1<<x) {
           DataClear;
         } else {
           DataSet;
         }
-        SerClockSet; SerClockClear; // envoie un coup d'horloge série
+        SerClockSet; SerClockClear; // envoie un coup d’horloge série
       }
-      ParClockSet; ParClockClear;   // envoie un coup d'horloge parallèle
+      ParClockSet; ParClockClear;   // envoie un coup d’horloge parallèle
       AttenteLigne();               // affichage de la ligne durant 2,5 ms
     }
   }
@@ -201,7 +201,7 @@ void Ping() {
   int8_t sensY=1;
   do {
     AllumePoint(x,y);
-    CyclesMatrice(DELAI); // l'affichage fait office de délai
+    CyclesMatrice(DELAI); // l’affichage fait office de délai
 
     EteintPoint(x,y);
     x+=sensX;

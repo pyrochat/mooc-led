@@ -15,7 +15,7 @@ Il faut différencier trois significations différentes du mot Arduino :
 
 `1.` L’Arduino est une **carte à microcontrôleurs**, plus exactement une famille de cartes. L’**Arduino UNO** est la plus connue. Elle contient un microcontrôleur AVR du fabricant Atmel, le modèle ATmega328. Un câble USB permet de la brancher sur un PC, principalement pour déposer un programme dans le microcontrôleur. Les cartes Arduino sont *open hardware* : leurs plans sont publiques. Comme elles sont produites par de nombreux fabricants, leur prix est très favorable.
 
-Deux rangées de connecteurs permettent d'accéder aux broches du microcontrôleur. Beaucoup de *cartes filles* ou *shields* sont proposés, pour toutes sortes d'applications. Ces connecteurs sont devenus de véritables standard *de facto*. Bien d'autres microcontrôleurs sont disponibles avec la même connectique, donnant la possibilité d'utiliser les nombreux *shields* disponibles.
+Deux rangées de connecteurs permettent d’accéder aux broches du microcontrôleur. Beaucoup de *cartes filles* ou *shields* sont proposés, pour toutes sortes d’applications. Ces connecteurs sont devenus de véritables standard *de facto*. Bien d’autres microcontrôleurs sont disponibles avec la même connectique, donnant la possibilité d’utiliser les nombreux *shields* disponibles.
 
 ![Exemple de carte Arduino](images/Uno.jpg "Exemple de carte Arduino")
 
@@ -60,7 +60,7 @@ L’organigramme à gauche de la figure correspond à ce que voit l’utilisateu
 
 Il faut noter que la procédure `loop()` a une durée d’exécution qui peut varier considérablement d’un programme à un autre. Pour une enseigne ou un afficheur à LED, elle pourrait par exemple durer le temps d’un cycle complet de l’animation. Mais elle pourrait tout aussi bien durer un temps très court, par exemple un temps fixe de 10 µs. Tout dépendra de la manière de programmer.
 
-Le programme suivant est un programme Arduino correct, bien qu'il ne produire aucun effet :
+Le programme suivant est un programme Arduino correct, bien qu’il ne produire aucun effet :
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
 void setup() {
@@ -69,7 +69,7 @@ void setup() {
 void loop() {
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Il est possible de le compiler et de l’exécuter... mais il ne fait rien !
 
@@ -121,14 +121,14 @@ void loop() {
   digitalWrite(P1_0, (digitalRead(P1_3));
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 En permanence, il écrit sur la broche P1_0, qui est la LED rouge du Launchpad, la valeur lue sur P1_3, qui est le bouton-poussoir. On devrait donc voir la LED rouge s’allumer lorsque le bouton-poussoir est pressé et s’éteindre lorsqu’il est relâché. Malheureusement... il ne fonctionne pas ! Il faut modifier la ligne d’initialisation de la manière suivante pour qu’il fonctionne un peu mieux :
 
 ~~~~~~~ { .c .numberLines startFrom="3" }
   pinMode(P1_3, INPUT_PULLUP);
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 C’est une raison électrique qui oblige l’utilisation du mode `INPUT_PULLUP`. Elle sera expliquée en détail dans une prochaine leçon. On apprendra aussi pourquoi ce programme fait l’inverse de ce qu’on avait imaginé : la LED sera allumée tant qu’on ne presse pas sur le bouton-poussoir et s’éteindra lorsqu’on le presse.
 
@@ -156,7 +156,7 @@ void loop() {
   delay(500);
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 On y trouve la procédure `setup()` qui met en sortie la broche sur laquelle la LED rouge du LaunchPad est branchée.
 

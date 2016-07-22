@@ -31,7 +31,7 @@ L’intérêt des microcontrôleurs est leur coût très faible, souvent moins d
 
 Bien que des microcontrôleurs existent depuis les années 1970, ils se sont développés de manière spectaculaire depuis quelques années. Les microcontrôleurs actuels contiennent de la mémoire __*flash*__, qui facilite l’écriture du programme qui doit s’exécuter.
 
-Alors qu’il était encore complexe et coûteux de mettre en œuvre un microcontrôleur au début des années 2000, cette tâche est maintenant beaucoup plus simple et ne nécessite que du matériel très peu coûteux. Il est possible de les programmer alors qu'ils sont soudés sur leur circuit définitif, au moyen de quelques fils. Les microcontrôleurs sont donc devenus des composants électroniques incontournables, modifiant profondément la manière de concevoir les circuits électroniques.
+Alors qu’il était encore complexe et coûteux de mettre en œuvre un microcontrôleur au début des années 2000, cette tâche est maintenant beaucoup plus simple et ne nécessite que du matériel très peu coûteux. Il est possible de les programmer alors qu’ils sont soudés sur leur circuit définitif, au moyen de quelques fils. Les microcontrôleurs sont donc devenus des composants électroniques incontournables, modifiant profondément la manière de concevoir les circuits électroniques.
 
 ## De nombreuses familles ##
 

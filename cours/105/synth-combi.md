@@ -51,8 +51,8 @@ En factorisant et en utilisant les propriétés de BOOLE on a :
 
 ## Simplification par Tableau de KARNAUGH ##
 
-Le tableau de Karnaugh est une forme particulière de la table de vérité. Il comprend 2^N^  cases, N étant le nombre de variables d'entrées de la fonction considérée. Dans chaque case est inscrite la valeur de la sortie.
-Les variables sont disposées selon le code GRAY ou code binaire réfléchi.  Lorsque l'on passe d'une case à la case adjacente, une seule variable change.
+Le tableau de Karnaugh est une forme particulière de la table de vérité. Il comprend 2^N^  cases, N étant le nombre de variables d’entrées de la fonction considérée. Dans chaque case est inscrite la valeur de la sortie.
+Les variables sont disposées selon le code GRAY ou code binaire réfléchi.  Lorsque l’on passe d’une case à la case adjacente, une seule variable change.
 Simplification : Pour exprimer la sortie S:
 
 * Effectuer des groupements de cases adjacentes successivement contenant des 1.

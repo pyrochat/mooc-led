@@ -172,7 +172,7 @@ uint8_t Animation[] = {
 <div style="top:5.2cm; left:2cm; font-size:39pt; width:50cm; line-height: 0.9;">
 ~~~~~~~~~~~~~~~~ {.C  .numberLines}
 void Exec () {
-  uint8_t instr = Programme[pc++]; // lit l'instruction
+  uint8_t instr = Programme[pc++]; // lit l’instruction
   if (instr==Fin) { // gère la fin du programme
     pc = 0;
   } else {
@@ -196,7 +196,7 @@ void Exec () {
 <!-- A -->
 <h1 class="en_tete">Langages plus complexes</h1>
 <div style="font-size:52pt; left:3cm; width:56cm; top:8cm; line-height: 1.5;">
-* Gestion de l'intensité des LED par BCM (*Binary Coded Modulation*)
+* Gestion de l’intensité des LED par BCM (*Binary Coded Modulation*)
 <!-- 23 -->* Agir sur des groupes de LED
 <!-- 3 -->* Programmes en parallèle
 </section>

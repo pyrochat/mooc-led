@@ -24,7 +24,7 @@ Les niveaux de description peuvent être :
 * Comportemental ou fonctionnel
 	-	Le modèle est décrit par, sa fonction, son algorithme. Il s’agit de décrire comment cela fonctionne.
 * Structurel (RTL « Register Transfert Logic »)
-	-	Le modèle est décrit sous forme d'éléments séquentiels, il prend en compte  la notion d’horloge, de cycle;
+	-	Le modèle est décrit sous forme d’éléments séquentiels, il prend en compte  la notion d’horloge, de cycle;
 * Porte logique (Structurel)
 	-	Le modèle est décrit par sa topologie (netlist) de portes logiques, de registres, de composants
 
@@ -37,7 +37,7 @@ Dans tous les cas une décomposition du cahier des charges en fonctions simples 
 
 La structure générale d’un programme VHDL est constitué de deux unités de conception dépendantes et obligatoires : une entité (vue externe du composant), det une architecture (vue interne du composant) toujours rattachée à une entité.
 
-L'entité (*Entity*) et l'architecture (*Architecture*) sont des unités de compilation obligatoires pour décrire un modèle.  L’ensemble entité ou architecture doit être écrite dans le même fichier et un même fichier peut contenir plusieurs entités et architectures.
+L’entité (*Entity*) et l’architecture (*Architecture*) sont des unités de compilation obligatoires pour décrire un modèle.  L’ensemble entité ou architecture doit être écrite dans le même fichier et un même fichier peut contenir plusieurs entités et architectures.
 
 L’entité (Entity) permet de déclarer les modes des ports en entrée et/ou sortie (in, out, inout, buffer)
 IN pour dire que le port est à lecture seule
@@ -48,12 +48,12 @@ BUFFER écriture/lecture sur un port
 L’architecture (Architecture) permet de décrire le comportement de la fonction à synthétiser, définir les signaux internes, les composants, ….
 A une entité peut correspondre plusieurs architectures.
 
-VHDL considère deux domaines d'instructions disjoints: les instructions concurrentes et séquentielles. Chaque domaine possède ses propres instructions qu'il n'est pas permis d'utiliser dans l'autre domaine.
+VHDL considère deux domaines d’instructions disjoints: les instructions concurrentes et séquentielles. Chaque domaine possède ses propres instructions qu’il n’est pas permis d’utiliser dans l’autre domaine.
 
 ![Figure : Structure programme vhdl](images/Structure_programme.png "Structure programme VHDL")
 
 Les instructions concurrentes modélisent des comportements asynchrones s’executant en parallèle.
-Les instructions séquentielles font intervenir la notion d’ordre et de durée et modélisent des comportements procéduraux. Les instructions séquentielles ne peuvent être utilisées que dans le corps d'un processus ou d'un sous-programme.
+Les instructions séquentielles font intervenir la notion d’ordre et de durée et modélisent des comportements procéduraux. Les instructions séquentielles ne peuvent être utilisées que dans le corps d’un processus ou d’un sous-programme.
 
 
 Dans l’exemple de la figure nous présentons un multiplexeur 2 vers 1 (2 entrées e1 et e2 et la sortie s). L’architecture décrit les relations entre les entrées et la sortie. *s recopie e1 lorsque sel = ‘1’ recopie e2 dans tous les autres cas*
@@ -85,7 +85,7 @@ Come dans tout langage le type définit l’ensemble des valeurs que peut prendr
 *	Les variables (VARIABLE) sont des objets dont la valeur peut changer par affectation au cours de la simulation. Les variables sont toujours locales à un processus: il n’y a pas de variables globales
 *	Les signaux (SIGNAL) désignent des signaux internes qui ne sortent pas du composant. Ils peuvent être déclarés n’importe où dans le programme,
 sauf à l’intérieur d’un processus. Seuls les signaux peuvent communiquer entre plusieurs processus dans une architecture et avec le monde extérieur.
-*	Les fichiers (FILE) permettent l'échange de données entre l'extérieur et le simulateur VHDL.
+*	Les fichiers (FILE) permettent l’échange de données entre l’extérieur et le simulateur VHDL.
 
 ![Figure : Declaration des types de base](images/declaration-type-base.png "Type de base")
 
@@ -222,7 +222,7 @@ Dans l’exemple de la figure, la synthèse d’un décodeur BCD 7 segments est 
 
 ### Instructions concurrentes : Génération conditionnelle IF ……GENERATE / FOR …..GENERATE ###
 
-L'instruction generate est une instruction concurrente qui permet la description de comportements ou de structures régulières.
+L’instruction generate est une instruction concurrente qui permet la description de comportements ou de structures régulières.
 Elle permet de multiplier des instructions, soit un nombre fixe de fois (forme itérative), soit selon une condition (forme conditionnelle). Elle s’utilise avec for (itérative) ou if (conditionnelle)
 
 
@@ -243,7 +243,7 @@ End generate label ;
 
 Les instruction FOR ……GENERATE et IF ……GENERATE permettent l’instanciation de multiples composants, elles permettent  l’exécution conditionnelle d’instructions concurrentes. Les instructions ne seront prises en compte que si la condition est vraie.
 
-La synthèse d'un additionneur 4 bits à partir de 4 additionneur 1 bit permet d’illustrer les deux formes d’utilisation de l’instruction Generate avec une boucle FOR l’instruction IF GENERATE pour instancier automatiquement les différents bits du LSB au MSB.
+La synthèse d’un additionneur 4 bits à partir de 4 additionneur 1 bit permet d’illustrer les deux formes d’utilisation de l’instruction Generate avec une boucle FOR l’instruction IF GENERATE pour instancier automatiquement les différents bits du LSB au MSB.
 
 
 

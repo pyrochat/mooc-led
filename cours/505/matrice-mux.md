@@ -76,7 +76,7 @@ Le fait que les sorties soient actives à zéro convient bien pour la commande d
 
 Le multiplexage offre une diminution du nombre de composants nécessaires à l’électronique de commande, mais il diminue l’intensité lumineuse de l’afficheur. Cet effet peut être partiellement compensé en augmentant le courant dans les LED. En effet, on peut jouer sur le fait que le courant nominal des LED peut être dépassé lorsque ce courant n’est pas permanent, ce qui est toujours le cas sur un afficheur multiplexé. Le courant pouvant aller jusqu’à une valeur proche du **courant maximal** accepté par la LED, l’intensité instantanée est sensiblement augmentée. On utilise très souvent 150 % du courant nominal.
 
-Il faudra toutefois être prudent lors de la mise au point logicielle. Une erreur pourrait laisser les LED avec le courant maximal durant un temps trop long, par exemple en permanence. S'il n'est pas possible d'avoir un circuit avec des résistances plus grandes pour la mise au point, on pourra chercher à diminuer la tension d'alimentation, ce qui fera baisser le courant.
+Il faudra toutefois être prudent lors de la mise au point logicielle. Une erreur pourrait laisser les LED avec le courant maximal durant un temps trop long, par exemple en permanence. S’il n’est pas possible d’avoir un circuit avec des résistances plus grandes pour la mise au point, on pourra chercher à diminuer la tension d’alimentation, ce qui fera baisser le courant.
 
 
 ## Comparaisons des architectures ##
@@ -107,21 +107,21 @@ void CyclesMatrice(uint16_t nbCycles) {
   uint16_t n, x, y;
   for (n=0; n<nbCycles; n++) {
     for (y=0; y<4; y++) {           // envoi et affichage des 4 lignes
-      for (x=0; x<8; x++) {         // envoi des 8 bits d'une ligne
+      for (x=0; x<8; x++) {         // envoi des 8 bits d’une ligne
         if (matrice[y] & (1<<x) {
           DataClear;                // un 0 allume les LED
         } else {
           DataSet;
         }
-        SerClockSet; SerClockClear; // envoie un coup d'horloge série
+        SerClockSet; SerClockClear; // envoie un coup d’horloge série
       }
-      ParClockSet; ParClockClear;   // envoie un coup d'horloge parallèle
+      ParClockSet; ParClockClear;   // envoie un coup d’horloge parallèle
       AttenteLigne();               // affichage de la ligne durant 25 ms
     }
   }
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Pour le reste, la programmation d’un afficheur multiplexé est la même que celle d’un afficheur non multiplexé. Par exemple, la procédure qui affiche un point qui rebondit sur les bords devient la suivante :
 
@@ -133,7 +133,7 @@ void Ping() {
   int8_t sensY=1;
   do {
     AllumePoint(x,y);
-    CyclesMatrice(DELAI); // l'affichage fait office de délai
+    CyclesMatrice(DELAI); // l’affichage fait office de délai
     EteintPoint(x,y);
     x+=sensX;
     if(x==(MaxX-1)) { sensX=(-1); }
@@ -144,7 +144,7 @@ void Ping() {
   } while (!((x==0)&&(y==0)));
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Les deux lignes qu’on trouvait dans le programme pour un afficheur non multiplexé :
 

@@ -100,7 +100,7 @@ La boucle principale du programme envoie, pour chaque pixels, les 24 bits. Lors
 ~~~~~~~ { .c }
 int main(void) { // Programme principal
   HAL_Init(); // Initialisation de la librairie Hardware Level
-  SystemClock_Config(); // Configure l'horloge système
+  SystemClock_Config(); // Configure l’horloge système
   MX_GPIO_Init(); // Initialise les périphériques
   PORT_WS2811->MODER |= (0b01 << (BIT_WS2811*2)); // broche en sortie
 
@@ -173,7 +173,7 @@ Il est possible de créer des animations sur les LED. Dans l’exemple suivant, 
     // Changement progressif de la couleur de la LED 47 :
     Ruban[47]++;
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 La génération de tels signaux pourrait aussi se faire avec la technique du DMA (*Direct Memory Access*).
 

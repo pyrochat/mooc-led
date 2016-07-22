@@ -15,7 +15,7 @@
 4.2 C D V   BCM : la modulation codée binaire                    à monter
 4.3 C D V   Mémoires permanentes                                 à monter
 
-5.3         Multitâche                                       10% (interrupt, timers; machines d'état; RTOS)
+5.3         Multitâche                                       10% (interrupt, timers; machines d’état; RTOS)
 5.4 c       Rubans de LEDs                                   30% 
 5.5 C D v   Les afficheurs matriciels multiplexés                à enregistrer <<<<<<<<<<<<<<<<<
 

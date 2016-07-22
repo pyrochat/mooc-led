@@ -61,7 +61,7 @@ ALTERA a une part de marché de prés de plus de 40%.
 Plusieurs niveaux de description existent pour synthétiser un circuit logique:
 
 * Un modèle peut être décrit par son comportement ou son fonctionnement qui décrit un modèle par, sa fonction, son algorithme. Il s’agit d’utiliser des instructions d’un langage de programmation pour décrire comment cela fonctionne.
-* La description par RTL (RTL « Register Transfert Logic ») revient à décrire l'implémentation sous forme d'éléments séquentiels en prenant en compte  la notion d’horloge , de cycle;
+* La description par RTL (RTL « Register Transfert Logic ») revient à décrire l’implémentation sous forme d’éléments séquentiels en prenant en compte  la notion d’horloge , de cycle;
 * La description par les portes logiques (Structurel) utilise la topologie (netlist) de portes logiques, de registres, de composants, etc. pour réaliser le circuit.
 
 La méthodologie de conception d’un circuit logique avec les FPGA se décline en quatre étapes:
@@ -91,7 +91,7 @@ Le CYLONE II d’ALTERA est un FPGA qui Compte de 68416 éléments logiques  reg
 
 ![Figure : Cyclone II](images/cyclone2.png "Cyclone II")
 
-Le CYLONE II compte quatre boucles à verrouillage de phase (PLL). Les blocs logiques disposent d’éléments d'entrée / sorties,de multiplicateurs embarqués, et de blocs mémoire embarquée. La configuration rapide du circuit peut se faire en moins de 100ms. Il intègre le mode de configuration série USB BLASTER ou JTAG
+Le CYLONE II compte quatre boucles à verrouillage de phase (PLL). Les blocs logiques disposent d’éléments d’entrée / sorties,de multiplicateurs embarqués, et de blocs mémoire embarquée. La configuration rapide du circuit peut se faire en moins de 100ms. Il intègre le mode de configuration série USB BLASTER ou JTAG
 
 
 ![Figure : Cyclone II](images/cyclone_EL.png "Cyclone II")

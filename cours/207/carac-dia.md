@@ -78,7 +78,7 @@ Prof. Alain Tiedeu
 </div>
 <img src="./images/carac-prat-150dpi.png" style="top:7cm; left:43cm; width:15cm" />
 <!-- 2 --><div style="font-size:45pt; left:2.65cm; top:16cm; line-height:1.2; width:57cm">
-<!-- 2 -->* **Tension de seuil direct**<br/> La tension aux bornes d'une LED<br/>polarisée en direct dépend :
+<!-- 2 -->* **Tension de seuil direct**<br/> La tension aux bornes d’une LED<br/>polarisée en direct dépend :
 <!-- 2 --></div>
 <!-- 2 --><div style="font-size:45pt; left:4cm; top:23cm; line-height:1.2; width:57cm">
 <!-- 2 -->* du composé utilisé (couleur de la LED)<br/>
@@ -154,8 +154,8 @@ Prof. Alain Tiedeu
 <!-- A -->
 <h1 class="en_tete">Luminosité</h1>
 <div style="font-size:45pt; left:2.65cm; top:7cm; line-height:1.5; width:55cm">
-* On atteint aujourd’hui **3'000 millicandela** (mcd) pour une simple LED de 5 mm de diamètre
-* Bien davantage pour des LED d'éclairage
+* On atteint aujourd’hui **3’000 millicandela** (mcd) pour une simple LED de 5 mm de diamètre
+* Bien davantage pour des LED d’éclairage
 </div>
 <!-- 234 --><div style="font-size:45pt; left:2.65cm; top:13.0cm; line-height:1.2; width:50cm">
 <!-- 234 -->* Le mcd est l’unité de mesure et fait référence à la **lueur d’une bougie**
@@ -206,13 +206,13 @@ Prof. Alain Tiedeu
 <!-- A -->
 <h1 class="en_tete">Durée de vie</h1>
 <div style="font-size:45pt; left:2.65cm; top:7cm; line-height:1.2; width:50cm">
-* Très grande, peut atteindre **10 ans** (100'000 heures) !
+* Très grande, peut atteindre **10 ans** (100’000 heures) !
 </div>
 <!-- 234 --><div style="font-size:45pt; left:2.65cm; top:11cm; line-height:1.2; width:50cm">
-<!-- 234 -->* Typiquement de l’ordre de **30'000 à 40'000 heures**
+<!-- 234 -->* Typiquement de l’ordre de **30’000 à 40’000 heures**
 <!-- 234 --></div>
 <!-- 34 --><div style="font-size:45pt; left:2.65cm; top:15cm; line-height:1.2; width:50cm">
-<!-- 34 -->*  *Pour comparaison* : durée de vie des ampoules à incandescence  de 300 à 1'000 h.
+<!-- 34 -->*  *Pour comparaison* : durée de vie des ampoules à incandescence  de 300 à 1’000 h.
 <!-- 34 --></div>
 <!-- 4 --><div style="font-size:45pt; left:2.65cm; top:20cm; line-height:1.2; width:50cm">
 <!-- 4 -->* **MAIS** la durée de vie est réduite par :<br/> - Courant élevé utilisé (donc forte luminosité)<br/> - Variation de température

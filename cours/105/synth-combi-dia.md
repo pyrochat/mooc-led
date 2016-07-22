@@ -43,7 +43,7 @@ Dr. Mamadou Lamine Ndiaye
 </div>
 <div style="top: 18cm; left: 32.0cm; font-size: 53pt; line-height: 1.6;">
 * Diagramme temporel
-* Synthèse d'un décodeur 7 segments
+* Synthèse d’un décodeur 7 segments
 </div>
 </section>
 
@@ -177,14 +177,14 @@ Dr. Mamadou Lamine Ndiaye
 <!-- Page 7 segments vide  -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Synthèse d'un  décodeur 7 segments</h1>
+<h1 class="en_tete">Synthèse d’un  décodeur 7 segments</h1>
 </section>
 
 
 <!-- Page 7 segments 1  -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Synthèse d'un  décodeur 7 segments</h1>
+<h1 class="en_tete">Synthèse d’un  décodeur 7 segments</h1>
 <img src="./images/segment-7.png" style="top:9cm; left:3cm; width:10cm;" />
 </section>
 
@@ -192,7 +192,7 @@ Dr. Mamadou Lamine Ndiaye
 <!-- Page 7 segments 1  -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Synthèse d'un  décodeur 7 segments</h1>
+<h1 class="en_tete">Synthèse d’un  décodeur 7 segments</h1>
 <img src="./images/segment-7.png" style="top:9cm; left:3cm; width:10cm;" />
 <img src="./images/seg-0-9.png" style="top:7cm; left:20cm; width:35cm;" />
 </section>
@@ -201,7 +201,7 @@ Dr. Mamadou Lamine Ndiaye
 <!-- Page formules  -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Synthèse d'un décodeur 7 segments</h1>
+<h1 class="en_tete">Synthèse d’un décodeur 7 segments</h1>
 <img src="./images/segment-7.png" style="top:10.5cm; left:3cm; width:7cm;" />
 <img src="./images/deco-verite-300dpi.png" style="top:6cm; left:14cm; width:19cm;" />
 <!-- 2 --><img src="./images/deco-verite-r-300dpi.png" style="top:6cm; left:14cm; width:19cm;" />
@@ -212,7 +212,7 @@ Dr. Mamadou Lamine Ndiaye
 <!-- Page 7 segments ABCD  -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Synthèse d'un  décodeur 7 segmentss</h1>
+<h1 class="en_tete">Synthèse d’un  décodeur 7 segmentss</h1>
 <img src="./images/segment-7.png" style="top:10.5cm; left:3cm; width:7cm;" />
 <img src="./images/kar-4a-300dpi.png" style="top:6.5cm; left:14cm; width:17cm;" />
 <img src="./images/kar-4b-300dpi.png" style="top:6.5cm; left:40cm; width:17cm;" />
@@ -224,7 +224,7 @@ Dr. Mamadou Lamine Ndiaye
 <!-- Page 7 segments EFG  -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Synthèse d'un décodeur 7 segments</h1>
+<h1 class="en_tete">Synthèse d’un décodeur 7 segments</h1>
 <img src="./images/segment-7.png" style="top:10.5cm; left:3cm; width:7cm;" />
 <img src="./images/kar-4e-300dpi.png" style="top:6.5cm; left:14cm; width:17cm;" />
 <img src="./images/kar-4f-300dpi.png" style="top:6.5cm; left:40cm; width:17cm;" />
@@ -235,7 +235,7 @@ Dr. Mamadou Lamine Ndiaye
 <!-- Page Sa  -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Synthèse d'un décodeur 7 segments</h1>
+<h1 class="en_tete">Synthèse d’un décodeur 7 segments</h1>
 <img src="./images/segment-7.png" style="top:10.5cm; left:3cm; width:7cm;" />
 <img src="./images/kar-4a-300dpi.png" style="top:7cm; left:14cm; width:28cm;" />
 <!-- 23 --><img src="./images/kar-4a-s-300dpi.png" style="top:7cm; left:14cm; width:28cm;" />
@@ -245,7 +245,7 @@ Dr. Mamadou Lamine Ndiaye
 <!-- Page formules  -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Synthèse d'un décodeur 7 segments</h1>
+<h1 class="en_tete">Synthèse d’un décodeur 7 segments</h1>
 <img src="./images/segment-7.png" style="top:10.5cm; left:3cm; width:7cm;" />
 <img src="./images/formules.png" style="top:7cm; left:14cm; width:30cm;" />
 </section>
@@ -264,7 +264,7 @@ Dr. Mamadou Lamine Ndiaye
 </div>
 <div style="top: 18cm; left: 32.0cm; font-size: 53pt; line-height: 1.6;">
 * Diagramme temporel
-* Synthèse d'un décodeur 7 segments
+* Synthèse d’un décodeur 7 segments
 </div>
 </section>
 

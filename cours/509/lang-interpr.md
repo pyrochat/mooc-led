@@ -57,7 +57,7 @@ Une solution élégante est d’inventer un langage. Il aura les deux même inst
 
 Le programme pourrait alors se présenter sous forme d’un tableau. Nous avons utilisé ici un tableau d’octets. Le programme pour notre chenillard se présenterai alors de la manière suivante :
 
-uint8_t Animation[] = { // définition d'un tableau d'octets
+uint8_t Animation[] = { // définition d’un tableau d’octets
   Sortie0+On, Attente+10,
   Sortie1+On, Attente+10,
   Sortie2+On, Attente+10,

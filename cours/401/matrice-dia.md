@@ -103,9 +103,9 @@ int main() {
 
   for (i=0; i<16; i++) { // envoie 1 colonne avec 1 pixel allumé
     P2OUT = (1<<(i&7)); // 1 col de 8 px, 1 seul allumé
-    SerClockOn; SerClockClear; // envoie un coup d'horloge série
+    SerClockOn; SerClockClear; // envoie un coup d’horloge série
   }
-  ParCloclOn; ParClockClear; // envoie un coup d'horloge
+  ParCloclOn; ParClockClear; // envoie un coup d’horloge
 
   while (1) { // attente infinie
   }
@@ -128,21 +128,21 @@ int main() {
 <div style="top: 6cm; left: 4cm; font-size: 38pt; line-height: 2;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 const uint8_t GenCar [] { // tableau des pixels des caractères
-  0b01111110, // caractère 'A'
+  0b01111110, // caractère ’A’
   0b00001001, // Il faut pencher la tête à droite
   0b00001001, // pour voir sa forme !
   0b00001001,
   0b01111110,
 
-  0b01111111, // caractère 'B'
+  0b01111111, // caractère ’B’
   0b01001001, // Les caractères forment
   0b01001001, // une matrice de 5x7
   0b01001001,
   0b00110110,
 
-  0b00111110, // caractère 'C'
+  0b00111110, // caractère ’C’
   0b01000001, // Les caractères ont ici
-  0b01000001, // une chasse fixe, c'est-à-dire
+  0b01000001, // une chasse fixe, c’est-à-dire
   0b01000001, // que tous les caractères ont
   0b01000001  // la même largeur en pixels
 };
@@ -173,19 +173,19 @@ int main(void) {
   init(); // initialisations...
   while(1) { // le texte défile sans fin
     ptTexte = Texte;
-    while (*ptTexte!='\0') { // boucle des caractères du texte
+    while (*ptTexte!=’\0’) { // boucle des caractères du texte
       caractere = *ptTexte; // le caractère à afficher
-      idxGenCar = (caractere-'A') * 5; // conversion ASCII à index GenCar[]
+      idxGenCar = (caractere-’A’) * 5; // conversion ASCII à index GenCar[]
       for (i=0; i<5; i++) { // envoie les 5 colonnes du caractère
         P2OUT = ~GenCar[idxGenCar++]; // 1 colonne du caractère (actif à 0)
-        SerClockSet; SerClockClear; // coup d'horloge série
-        ParClockSet; ParClockClear; // coup d'horloge parallèle
+        SerClockSet; SerClockClear; // coup d’horloge série
+        ParClockSet; ParClockClear; // coup d’horloge parallèle
         AttenteMs (delai);
       }
       ptTexte++; // passe au caractère suivant
       P2OUT = ~0; // colonne vide, séparant les caractères
-      SerClockSet; SerClockClear; // coup d'horloge série
-      ParClockSet; ParClockClear; // coup d'horloge parallèle
+      SerClockSet; SerClockClear; // coup d’horloge série
+      ParClockSet; ParClockClear; // coup d’horloge parallèle
       AttenteMs (delai);
     }
   }
@@ -257,7 +257,7 @@ void AfficheMatrice() {
     for (uint16_t y=0; y<MaxY; y++)  {
       if (Matrice[y]&(1<<x)) P2OUT &=~(1<<y); else P2OUT |= (1<<y);
     }
-    SerClockSet; SerClockClear; // envoie un coup d'horloge série
+    SerClockSet; SerClockClear; // envoie un coup d’horloge série
   }
   ParClockSet; ParClockClear; // envoie les valeurs sur les LED
 }
@@ -299,7 +299,7 @@ void AfficheMatrice() {
   // pour chaque colonne :
   for (uint16_t x=0; x<MaxX; x++) {
     P2OUT = ~Matrice[x]; // une colonne
-    // envoie un coup d'horloge série :
+    // envoie un coup d’horloge série :
     SerClockSet; SerClockClear;
   }
   // envoie les valeur sur les LED :
@@ -316,7 +316,7 @@ void AfficheMatrice() {
 <h1 class="en_tete">Animations</h1>
 <div style="top: 8cm; left: 6cm; font-size: 53pt; line-height: 1.5; width:44cm;">
 * préparer une image en mémoire
-<!-- 2345 -->* envoyer son contenu sur l'afficheur
+<!-- 2345 -->* envoyer son contenu sur l’afficheur
 <!-- 345 -->* attendre le temps nécessaire
 <!-- 45 -->* préparer une autre image
 <!-- 5 -->* ...

@@ -144,7 +144,7 @@ Pierre-Yves Rochat
 #define ClockParHaut P1OUT |= (1<<2)
 #define ClockParBas P1OUT &=~(1<<2)
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 </div>
 </section>
 
@@ -166,7 +166,7 @@ void Envoie8bitsSerie (uint8_t valeur) {
   ClockParHaut; ClockParBas;
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 </div>
 </section>
 
@@ -186,7 +186,7 @@ void Envoie8bitsSerie (uint8_t valeur) {
     valeur = valeur >> 1;
 ...
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 </div>
 </section>
 

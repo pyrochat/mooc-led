@@ -103,8 +103,8 @@ Chaque registre :
 <h1 class="en_tete">Génération des signaux</h1>
 <div style="font-size:48pt; left:3cm; width:57cm; top:7cm; line-height: 1.2;">
 * Le fabricant donne des contraintes sur le *timing* des signaux
-<!-- 34 -->* Difficile de tenir les spécifications avec des processeurs dont l'horloge est à 16 MHz
-<!-- 4 -->* Plus facile avec un processeurs dont l'horloge est de 48 MHz : **ARM**
+<!-- 34 -->* Difficile de tenir les spécifications avec des processeurs dont l’horloge est à 16 MHz
+<!-- 4 -->* Plus facile avec un processeurs dont l’horloge est de 48 MHz : **ARM**
 </div>
 <!-- 234 --><img src="./images/timing-asym.svg" style="top:18cm; left:3cm; width:32cm;" />
 </section>
@@ -141,7 +141,7 @@ uint32_t Ruban[LgRuban];
 
 int main(void) {        // Programme principal
   HAL_Init();           // Initialisation de la librairie Hardware Level
-  SystemClock_Config(); // Configure l'horloge système
+  SystemClock_Config(); // Configure l’horloge système
   MX_GPIO_Init();       // Initialise les périphériques
   PORT_WS2811->MODER |= (0b01 << (BIT_WS2811*2)); // broche en sortie
 

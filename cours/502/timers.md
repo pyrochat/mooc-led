@@ -137,7 +137,7 @@ int main() {
   }
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Comment fonctionne la boucle principale ? Chaque fois que le fanion TAIFG passe à `1`, l’alimentation de la LED est inversée. Le fanion TAIF (qui se trouve aussi dans le registre TACTL) signale un dépassement de capacité, c’est-à-dire le retour à zéro du compteur. Il doit être remis à zéro en vue du prochain cycle.
 Calculons la période de clignotement : l’horloge de 1 MHz est divisée par `8` par le prédiviseur. Le timer est donc commandé à une fréquence de 125 kHz ce qui correspond à une période de 8 µs.
@@ -171,7 +171,7 @@ int main() {
   }
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Au début du programme, le registre de comparaison a été initialisé à 62’500, une valeur qui correspond à une demi-seconde dans notre cas : `62’500 × 8 µs = 500 ms`.
 Une fois cette valeur atteinte, il faut ajouter 62’500 à la valeur courant du registre de comparaison. On va dépasser la capacité du registre, qui a 16 bits. On obtiendra :
@@ -188,7 +188,7 @@ L’intérêt principal des timers est de les associer à des interruptions. Mod
 ~~~~~~~ { .c }
 int main() {
   ...
-  TACTL |= TAIE; // Interruption de l'overflow
+  TACTL |= TAIE; // Interruption de l’overflow
   _BIS_SR (GIE); // Autorisation générale des interruptions
   while (1) {    // Boucle infinie vide
   }
@@ -197,7 +197,7 @@ int main() {
 // Timer_A1 Interrupt Vector (TAIV) handler
 #pragma vector=TIMER0_A1_VECTOR
 __interrupt void Timer_A1 (void) {
-  switch (TAIV) {    // discrimination des sources d'interruption
+  switch (TAIV) {    // discrimination des sources d’interruption
   case  2:           // CCR1 : not used
     break;
   case  4:           // CCR2 : not used
@@ -208,7 +208,7 @@ __interrupt void Timer_A1 (void) {
   }
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 Notez le nom de la routine d’interruption. Elle ne concerne pas le TIMER 1 ! Elle est la seconde routine d’interruption du TIMER 0, la première étant présentée dans le prochain exemple.
 
@@ -235,7 +235,7 @@ __interrupt void Timer_A0 (void) {
   P1OUT ^= (1<<0); // Inversion LED
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 ## PWM par interruption ##
 
@@ -245,7 +245,7 @@ En combinant les interruptions du dépassement de capacité et de la comparaison
 
 int main() {
   ...
-  TACTL |= TAIE;   // Interruption de l'overflow
+  TACTL |= TAIE;   // Interruption de l’overflow
   TACCTL0 |= CCIE; // Interruption de la comparaison
   _BIS_SR (GIE);   // Autorisation générale des interruptions
   while (1) {      // Boucle infinie vide
@@ -254,7 +254,7 @@ int main() {
 
 #pragma vector=TIMER0_A1_VECTOR
 __interrupt void Timer_A1 (void) {
-  switch (TAIV) {    // discrimination des sources d'interruption
+  switch (TAIV) {    // discrimination des sources d’interruption
   case  2:           // CCR1 : not used
     break;
   case  4:           // CCR2 : not used
@@ -270,7 +270,7 @@ __interrupt void Timer_A0 (void) {
   P1OUT &=~(1<<0); // Désactiver le signal au moment donné par le registre de comparaison
 }
 ~~~~~~~
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 
 
 Les timers offrent de très nombreuses possibilités. L’étude détaillée de la documentation peut prendre du temps. De nombreux exemples sont fournis par les fabricants pour en illustrer les divers usages.

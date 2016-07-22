@@ -56,7 +56,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Le schéma classique d’un afficheur matriciel nécessite simplement une sortie de registre par LED, comme le rappelle ce schéma :</p>
 <!--  18/08/16 Brice ------------------------   Ne passe pas sur Opera 38   ---------------------------- -->
 <div class="figure">
-<img src="images/aff-8x16.svg" title="Afficheur 8×16 pixels commandé par des registres" alt="Afficheur 8×16 pixels commandé par des registres" style="width:95.0%" />
+<img src="images/afficheur-8x16.svg" title="Afficheur 8×16 pixels commandé par des registres" alt="Afficheur 8×16 pixels commandé par des registres" style="width:95.0%" />
 <p class="caption">Afficheur 8×16 pixels commandé par des registres</p>
 </div>
 <p>L’envoi des données dans les registres série-parallèle se fait selon le diagramme des temps suivant :</p>
@@ -101,7 +101,7 @@ Sur la figure matrice-mux-4x8-2all.svg, ça serait bien de dessiner avec un trai
 <p>ainsi que le schéma correspondant :</p>
 <!-- 18/08/16 Brice ------------------------   Ne passe pas sur Opera 38   ---------------------------- -->
 <div class="figure">
-<img src="images/aff-4x8-mux.svg" title="Afficheur 4×8 multiplexé" alt="Afficheur 4×8 multiplexé" style="width:70.0%" />
+<img src="images/afficheur-4x8-mux.svg" title="Afficheur 4×8 multiplexé" alt="Afficheur 4×8 multiplexé" style="width:70.0%" />
 <p class="caption">Afficheur 4×8 multiplexé</p>
 </div>
 <p>Pour un cycle complet de la matrice, le registre série-parallèle doit être chargé pour chacune des lignes, nécessitant chaque fois huit coups d’horloge série et un coup d’horloge parallèle. Une fois les données d’une ligne présentes sur la sortie du registre, les anodes de la ligne correspondante doivent être sélectionnées. Pour un rafraîchissement de la matrice à 100 Hz, il faudra prévoir un temps d’affichage de 100 / 4 = 25 ms pour chacune des quatre lignes.</p>

@@ -94,7 +94,7 @@ uint8_t Animation[] = { // définition d’un tableau d’octets
 Sa taille n’est que de 33 octets.
 Voici les définitions nécessaires pour que ce tableau se compile correctement :
 
-<!-- 18/07/16 Brice -------- Off n’est pas défini (ça ne compilera donc pas), donc définition à 0? --------->
+<!-- 18/07/16 Brice - Off n’est pas défini (ça ne compilera donc pas), donc définition à 0? - -->
 
 ~~~~~~~ { .c .numberLines startFrom="1" }
 #define On 0b01000000

@@ -7,7 +7,7 @@
 
 Le schéma classique d’un afficheur matriciel nécessite simplement une sortie de registre par LED, comme le rappelle ce schéma :
 
-<!--  20/07/16 Brice ------------------------   Changement de nom pour passer sur Opera (avec bloqueur de pub)   ---------------------------- -->
+<!--  20/07/16 Brice - Changement de nom pour passer sur Opera (avec bloqueur de pub) - -->
 ![Afficheur 8×16 pixels commandé par des registres](images/afficheur-8x16.svg "Afficheur 8×16 pixels commandé par des registres"){ width=95% }
 
 L’envoi des données dans les registres série-parallèle se fait selon le diagramme des temps suivant :
@@ -55,7 +55,7 @@ Mais il est possible de commander cette matrice de LED selon le principe du mult
 
 ainsi que le schéma correspondant :
 
-<!-- 20/07/16 Brice ------------------------   Changement de nom pour passer sur Opera (avec bloqueur de pub)   ---------------------------- -->
+<!-- 20/07/16 Brice - Changement de nom pour passer sur Opera (avec bloqueur de pub) - -->
 ![Afficheur 4×8 multiplexé](images/afficheur-4x8-mux.svg "Afficheur 4×8 multiplexé"){ width=70% }
 
 Pour un cycle complet de la matrice, le registre série-parallèle doit être chargé pour chacune des lignes, nécessitant chaque fois huit coups d’horloge série et un coup d’horloge parallèle. Une fois les données d’une ligne présentes sur la sortie du registre, les anodes de la ligne correspondante doivent être sélectionnées. Pour un rafraîchissement de la matrice à 100 Hz, il faudra prévoir un temps d’affichage de 100 / 4 = 25 ms pour chacune des quatre lignes.

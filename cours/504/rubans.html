@@ -120,7 +120,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>La boucle principale du programme envoie, pour chaque pixels, les 24 bits. Lors du 23<sup><sup>e</sup></sup> bit, le pointeur est incrémenté. L’usage des valeurs courtes de l’envoi des bits est utilisée pour compenser le temps de l’incrémentation. Lors du 24<sup><sup>e</sup></sup> bit, les versions courtes sont aussi utilisées, cette fois pour tenir compte du saut pour le retour au début de la boucle.</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main(<span class="dt">void</span>) { <span class="co">// Programme principal</span>
   HAL_Init(); <span class="co">// Initialisation de la librairie Hardware Level</span>
-  SystemClock_Config(); <span class="co">// Configure l&#39;horloge système</span>
+  SystemClock_Config(); <span class="co">// Configure l’horloge système</span>
   MX_GPIO_Init(); <span class="co">// Initialise les périphériques</span>
   PORT_WS2811-&gt;MODER |= (<span class="bn">0b01</span> &lt;&lt; (BIT_WS2811*<span class="dv">2</span>)); <span class="co">// broche en sortie</span>
 
@@ -187,7 +187,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     }
     <span class="co">// Changement progressif de la couleur de la LED 47 :</span>
     Ruban[<span class="dv">47</span>]++;</code></pre></div>
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 <p>La génération de tels signaux pourrait aussi se faire avec la technique du DMA (<em>Direct Memory Access</em>).</p>
 </body>
 </html>

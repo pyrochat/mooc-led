@@ -13,33 +13,72 @@
 <div id="header">
 <h1 class="title">Murs de LED</h1>
 <p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
-<p class="date">rév 2016/07/11</p>
+<p class="date">rév 2016/10/04</p>
 </div>
-<p>Document en cours de rédaction.</p>
-<p>Des LED rouges ont commencé à être fabriquées en série à la fin des années 1960. Leur luminosité, ou plus exactement leur rendement, n'a fait qu'augmenter depuis cette époque.</p>
-<p>Le prix des LED n'a fait que baisser au cours des années, rendant possible financièrement l'usage de LED en nombre important. C'est à ce moment que sont apparus les premiers journaux lumineux monochromes. Leur taille n'a fait qu'augmenter depuis.</p>
-<p>Si des LED vertes ont suivi les LED rouges déjà dans les années 1970, il a fallu attendre les années 1990 pour que des LED bleues utilisables deviennent disponible. Il devenait alors possible de réaliser des afficheurs multicolores, avec des pixels construits au moyen de trois LED rouges, vertes et bleues. Avec un nombre suffisant de pixels, de véritables écrans vidéos ont pu être réalisés.</p>
-<p>Actuellement, le plus long afficheur de ce type mesure... 460 m ! Couramment, des écrans de plusieurs dizaines de mètre carrés forment de véritables murs de LED, très souvent utilisés lors de spectacles publiques.</p>
+<h2 id="des-témoins-lumineux-aux-écrans-géants">Des témoins lumineux aux écrans géants</h2>
+<p>Des LED rouges ont commencé à être fabriquées en série à la fin des années 1960. Leur caractéristiques et leur prix en limitaient l'usage à des témoins lumineux. Leur luminosité n’a fait qu’augmenter depuis cette époque, principalement par l'augmentation de leur rendement.</p>
+<p>Parallèlement, le prix des LED n’a fait que baisser, rendant possible financièrement l’usage de LED en nombre important. C’est à ce moment que sont apparus les premiers afficheurs matriciels à LED. Il s'agissait alors de simples journaux lumineux monochromes. Leur taille n’a fait qu’augmenter depuis.</p>
+<p>Si des LED vertes ont suivi les LED rouges déjà dans les années 1970, il a fallu attendre les années 1990 pour que des LED bleues utilisables soient produites en quantité. Il devenait alors possible de réaliser des afficheurs multicolores, avec des pixels construits au moyen de trois LED : une rouge, une verte et une bleue. Avec un nombre suffisant de pixels, de véritables écrans vidéos ont pu être réalisés. On les appelle écrans géants ou murs de LED.</p>
+<div class="figure">
+<img src="images/benin-guinee-c.jpg" title="Mur de LED" alt="Mur de LED" style="width:80.0%" />
+<p class="caption">Mur de LED</p>
+</div>
+<p>Actuellement, le plus long afficheur de ce type mesure 500 m et utilise 20 millions de LED. Couramment, des écrans de plusieurs dizaines de mètre carrés sont très souvent utilisés lors de spectacles, ainsi que pour la publicité dans les villes.</p>
 <p>Nous allons voir comment ils sont réalisés.</p>
 <h2 id="des-millions-de-led">Des millions de LED</h2>
-<p>Le nombre de LED d'un afficheur dépend de sa taille et de l'espacement entre les LED. La distance en deux LED, exprimée en mm, est souvent appelée le <em><strong>Pitch</strong></em> d'un afficheur. Prenons un exemple.</p>
-<p>Calculons le nombre de LED d'un afficheur de 16x9 m avec un pitch de 6 mm : * nombre de pixels par mètre : 1'000 / 6 = 166 LED par mètre * nombre de pixels par mètre carré : 166 x 166 = 27'556 * nombre de pixels pour l'afficheur : 16 x 9 x 27'556 = 3'968'064 * avec 3 LED par pixel (rouge, vert, bleu) : 3 x 3 968 064 = 11'904'192</p>
-<p>L'affichage d'une image vidéo sur un tel afficheur nécessite l'envoi d'une valeur d'intensité variable sur chaque LED. Cette intensité va changer au rythme des images successives de la vidéo, par exemple 25 fois par seconde.</p>
-<p>Pour produire une intensité variable, une modulation du type PWM ou BCM est utilisée. Quelle que soit la modulation, le temps entre l'allumage et l'extinction d'une LED peut être calculé en fonction de la fréquence de rafraîchissement et du nombre de bits de l'intensité. Prenons l'exemple d'un rafraîchissement de 100 Hz et de 8 bits d'intensité.</p>
+<p>Le nombre de LED d’un afficheur dépend de sa taille et de l’espacement entre les LED. La distance entre deux LED, exprimée en mm, est souvent appelée le <em><strong>Pitch</strong></em> d’un afficheur.</p>
+<p>Prenons un exemple et calculons le nombre de LED d’un afficheur de 16 par 9 m avec un pitch de 6 mm :</p>
+<ul>
+<li>nombre de pixels par mètre : 1'000 / 6 = 166 pixels par mètre</li>
+<li>nombre de pixels par mètre carré : 166 × 166 = 27'556</li>
+<li>nombre de pixels pour l’afficheur : 16 × 9 × 27'556 = 3'968'064</li>
+<li>avec 3 LED par pixel (rouge, vert, bleu) : 3 × 3'968'064 = 11'904'192 LED</li>
+</ul>
+<p>L’affichage d’une image vidéo sur un tel afficheur nécessite l’envoi d’une valeur d’intensité variable sur chaque LED. Cette intensité va changer au rythme des images successives de la vidéo, par exemple 25 fois par seconde.</p>
+<p>Pour produire une intensité variable, une modulation du type PWM ou BCM est utilisée. Quelle que soit la modulation, le temps entre l’allumage et l’extinction d’une LED peut être calculé en fonction de la fréquence de rafraîchissement et du nombre de bits de l’intensité. Prenons l’exemple d’un rafraîchissement de 100 Hz et de 8 bits d’intensité.</p>
 <ul>
 <li>Période de rafraîchissement : 1 / 100 Hz = 10 ms</li>
-<li>Fraction du temps utilisé pour l'affichage de l'intensité la plus faible : 8 bits correspondent à 256 valeur, la fraction est donc de 1 / 256.</li>
-<li>Durée d'affichage de l'intensité la plus faible : 10 ms / 256 = 39 us</li>
+<li>Fraction du temps utilisé pour l’affichage de l’intensité la plus faible : 8 bits correspondent à 256 valeur, la fraction est donc de 1 / 256.</li>
+<li>Durée d’affichage de l’intensité la plus faible : 10 ms / 256 = 39 μs</li>
 </ul>
-<p>Dans notre mur de LED, il faut donc être capable d'envoyer une nouvelle valeur à environ 12 millions de LED en un temps de 39 us. Seule une organisation hiérarchique du mur de LED permet une telle performance.</p>
-<h2 id="panneaux-et-modules">Panneaux et modules</h2>
-<p>Les écrans géants sont généralement composés de panneaux. Chaque panne doit être couvert de LED jusqu'à son bord pour assurer une continuité de l'image. Les panneaux ont souvent environ un mètre carré. Les panneaux se fixent les uns aux autres par des fixations mécaniques adéquates.</p>
-<p>Chaque panneau est constitué de modules carrés ou rectangulaires. On trouve souvent 4 rangées de 4 carrés chacune. Chacun des module est principalement composé d'un circuit imprimé, comportant d'un côté les LED et de l'autre les circuits de commande : des registres dans le cas de modules non multiplexés et un ensemble de registres, de décodeurs et d'amplificateurs pour des modules multiplexés.</p>
+<p>Dans notre mur de LED, il faut donc être capable d’envoyer une nouvelle valeur à environ 12 millions de LED en un temps de 39 us. Seule une organisation hiérarchique du mur de LED associée à des circuits logiques programmables rapides permet une telle performance.</p>
+<h2 id="écran-composé-de-panneaux">Écran composé de panneaux</h2>
+<p>Les écrans géants sont généralement composés de <strong>panneaux</strong>. Chaque panneau doit être couvert de LED jusqu’à son bord pour assurer une continuité de l’image. La taille des panneaux est liée au <em>pitch</em>, parce que le nombre de LED est généralement une puissance de 2.</p>
+<p>Par exemple, les panneaux d'un écran P10 (<em>pitch</em> de 10 mm) ont souvent une taille de 64 cm, chaque panneau comportant 64 × 64 LED.</p>
 <div class="figure">
-<img src="images/panneaux-modules.png" title="Organisation en panneaux et modules" alt="Organisation en panneaux et modules" style="width:80.0%" />
-<p class="caption">Organisation en panneaux et modules</p>
+<img src="images/panneau3.svg" title="Branchement des panneaux" alt="Organisation d&#39;un écran en panneaux" style="width:100.0%" />
+<p class="caption">Organisation d'un écran en panneaux</p>
 </div>
-<p>Tous les panneaux reçoivent un signal contenant les pixels de tout l'écran. Chaque panneau doit connaître sa position dans l'ensemble de l'écran, extrait du signal la partie de l'image qui le concerne et la mémorise. Ensuite, l'image est distribuée sur les modules.</p>
-<p>... HDbaseT PoH (Power over HDbaseT) ... HDCP ??</p>
+<div class="figure">
+<img src="images/panneaux-arriere.png" title="Organisation d&#39;un écran en panneaux" alt="Branchement des panneaux" style="width:70.0%" />
+<p class="caption">Branchement des panneaux</p>
+</div>
+<p>Les panneaux se fixent les uns aux autres par des fixations mécaniques adéquates.</p>
+<p>Tous les panneaux reçoivent un signal contenant les pixels de tout l’écran. Chaque panneau doit connaître sa position dans l’ensemble de l’écran. Il extrait du signal la partie de l’image qui le concerne et la mémorise. Cette fonction est assurée par une carte électronique, comportant en général une FPGA (circuit logique programmable).</p>
+<h2 id="panneaux-composés-de-modules">Panneaux composés de modules</h2>
+<p>Chaque panneau est constitué de <strong>modules</strong> carrés ou rectangulaires. On trouve souvent 4 rangées de 4 modules chacune. Chacun des module est principalement composé d’un circuit imprimé, comportant d’un côté les LED et de l’autre les circuits de commande. Les modules non multiplexés comportent principalement des registres. Pour les modules multiplexés, il s'agit d'un ensemble de registres, de décodeurs et d’amplificateurs.</p>
+<p>Par exemple, les modules d'un écran P10 (<em>pitch</em> de 10 mm) ont souvent une taille de 16 cm, chaque module comportant 16 × 16 LED. Le panneaux est alors composé de 4 × 4 modules.</p>
+<div class="figure">
+<img src="images/panneau-modules.svg" title="Organisation d&#39;un panneau en modules" alt="Organisation d&#39;un panneau en modules" style="width:100.0%" />
+<p class="caption">Organisation d'un panneau en modules</p>
+</div>
+<p>Le circuit situé sur chaque panneau qui extrait sa partie de l'image est aussi responsable d'envoyer cette image sur les registres des modules. C'est encore la FPGA qui s'en occupe. Dans l'exemple d'un panneau organisé en 64 pixels, s'il y a 4 lignes sur un même registre, il pouvoir envoyer 4 × 64 valeurs binaires en 39 μs, ce qui nécessite une horloge de 4 × 64 / 39 μs = 6.5 MHz.</p>
+<h2 id="standards-pour-les-signaux">Standards pour les signaux</h2>
+<p>Plusieurs fabricants proposent des standards pour le transfert des données aux écrans. Ce sont généralement des standards propriétaires dont il est difficile de trouver la documentation.</p>
+<p>Pour le signal de tout l'écran, distribué aux différents panneaux, le standard électrique des réseaux Ethernet est souvent utilisé, avec des câbles munis de paires torsadées et des connecteurs RJ45.</p>
+<div class="figure">
+<img src="images/rj45-male.png" title="Connecteur RJ45 câble" alt="Connecteur RJ45 câble" style="width:25.0%" />
+<p class="caption">Connecteur RJ45 câble</p>
+</div>
+<div class="figure">
+<img src="images/rj45-fem.png" title="Connecteur RJ45 circuit imprimé" alt="Connecteur RJ45 circuit imprimé" style="width:25.0%" />
+<p class="caption">Connecteur RJ45 circuit imprimé</p>
+</div>
+<p>Mais les données ne sont pas organisées en paquets IP, mais selon une définition spécifique.</p>
+<p>Entre la carte de commande du panneau et les modules, des câbles plats sont généralement utilisés. Plusieurs standards existent, dont le nom est souvent précédé par le mot <em>HUB</em>. Voici par exemple la définition des signaux du HUB75 :</p>
+<div class="figure">
+<img src="images/hub75.png" title="HUB75" alt="HUB75" style="width:30.0%" />
+<p class="caption">HUB75</p>
+</div>
 </body>
 </html>

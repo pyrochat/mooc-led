@@ -17,7 +17,6 @@
 # 2016/01/18 : Modifications de la présentation
 # 2016/02/08 : n'affiche plus les niveaux
 # 2017/03/22 : en vue de la version définitive du MOOC
-# 2017/03/23 : deux version (travail et production)
 
 import glob
 import yaml
@@ -96,18 +95,15 @@ Version de travail du 2017/03/22
         elif( dataMap[ "statut" ] in [ u"supprimé" ] ):
             pass
         elif( dataMap[ "type" ] in [ u"Expérience" ] ):
-            pass
-            ## TOC = u'%s\n\n### Expérience à distance\n\n' % ( TOC )
-            ## for TITRE in dataMap[ "titre" ]:
-            ##     TOC = '%s* %s\n' % ( TOC, TITRE )
+            TOC = u'%s\n\n### Expérience à distance\n\n' % ( TOC )
+            for TITRE in dataMap[ "titre" ]:
+                TOC = '%s* %s\n' % ( TOC, TITRE )
         elif( dataMap[ "type" ] in [ u"Devoir" ] ):
-            pass
-            ## TOC = u'%s\n### Devoirs de programmation\n\n' % ( TOC )
-            ## for TITRE in dataMap[ "titre" ]:
-            ##     TOC = '%s* %s\n' % ( TOC, TITRE )
+            TOC = u'%s\n### Devoirs de programmation\n\n' % ( TOC )
+            for TITRE in dataMap[ "titre" ]:
+                TOC = '%s* %s\n' % ( TOC, TITRE )
         elif( dataMap[ "type" ] in [ u"Pratique sur PC", u"Pratique" ] ):
-            pass
-            ## TOC = '%s\n**%d.%d** *%s :* %s %s' % ( TOC, nbsemaine, nbchapitre, dataMap[ "type" ], dataMap[ "titre" ][ 0 ], AUTEUR )
+            TOC = '%s\n**%d.%d** *%s :* %s %s' % ( TOC, nbsemaine, nbchapitre, dataMap[ "type" ], dataMap[ "titre" ][ 0 ], AUTEUR )
         else:
             TOC = '%s\n**%d.%d** **%s** %s %s %s' % ( TOC, nbsemaine, nbchapitre, dataMap[ "titre" ][ 0 ], NIVEAU, AUTEUR, CAT )
         if( dataMap[ "statut" ] not in [ u"Pas publié" ] ):
@@ -127,8 +123,8 @@ Version de travail du 2017/03/22
 
         TOC = '%s %s' % ( TOC, '  ' )
 
-    tocfilename = "../cours/000/plan-mooc-led.md"
-    htmltocfilename = "../cours/000/plan-mooc-led.html"
+    tocfilename = "../cours/000/plan-work-mooc-led.md"
+    htmltocfilename = "../cours/000/plan-work-mooc-led.html"
     tocfile = open( tocfilename, 'w' )
     tocfile.write( TOC.encode( 'utf-8' ) )
     tocfile.close

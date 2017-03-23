@@ -1,6 +1,7 @@
 titre:
     - "Rubans de LEDs RGB, pilotée par un MSP432"
     - "Afficheur Matriciel RGB"
+categ:            
 type:             Expérience
 niveau:           base
 auteur:          

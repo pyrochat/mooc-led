@@ -1,14 +1,15 @@
 titre:
-    - "Montages électroniques"
+    - "Caractéristiques des LED"
+categ:            physique
 type:             Théorie
-niveau:           base
-auteur:
-    - 'PYR'
+niveau:           avancé
+auteur:          
+    - AT
 statut:           Relecture
-code:             montages
-url:
-    c-html:    montages.html
-    c-pdf:     montages.pdf
+code:             carac
 url1:
-    d-video:   montages-dia.pdf
-    d-compact: montages-dia-compact.pdf
+    cours-html:  carac.html
+    cours-pdf:    carac.pdf
+url:
+    dias-video:   carac-dia.pdf
+    dias-compact: carac-dia-compact.pdf

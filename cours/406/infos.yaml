@@ -1,14 +1,15 @@
 titre:
-    - "[Physique] Correction Gamma"
+    - "LED, lumière et couleur"
+categ:            physique
 type:             Théorie
-niveau:           avancé
+niveau:           base
 auteur:          
     - AT
 statut:           Relecture
-code:             gamma
+code:             couleur
 url1:
-    cours-html:   gamma.html
-    cours-pdf:    gamma.pdf
+    cours-html:   couleur.html
+    cours-pdf:    couleur.pdf
 url:
-    dias-video:   gamma-dia.pdf
-    dias-compact: gamma-dia-compact.pdf
+    dias-video:   couleur-dia.pdf
+    dias-compact: couleur-dia-compact.pdf

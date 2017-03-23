@@ -1,5 +1,6 @@
 titre:
-    - "[Logique] Circuits séquentiels en VHDL"
+    - "Circuits séquentiels en VHDL"
+categ:            logique
 type:             Théorie
 niveau:           avancé
 auteur:          

@@ -1,0 +1,15 @@
+titre:
+    - "Montages électroniques"
+categ:            
+type:             Théorie
+niveau:           base
+auteur:
+    - 'PYR'
+statut:           supprimé
+code:             montages
+url:
+    c-html:    montages.html
+    c-pdf:     montages.pdf
+url1:
+    d-video:   montages-dia.pdf
+    d-compact: montages-dia-compact.pdf

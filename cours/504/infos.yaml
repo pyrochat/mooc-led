@@ -1,13 +1,14 @@
 titre:
-    - "Rubans de LED adressables"
+    - "Les afficheurs matriciels multiplexés"
+categ:            
 type:             Théorie
 niveau:           base
 auteur:          
-    - 'PYR'
+    - PYR
 statut:           Relecture
-code:             rubans
+code:             matrice-mux
 url:
-    cours-html:   rubans.html
-    cours-pdf:    rubans.pdf
-    dias-video:   rubans-dia.pdf
-    dias-compact: rubans-dia-compact.pdf
+    cours-html:   matrice-mux.html
+    cours-pdf:    matrice-mux.pdf
+    dias-video:   matrice-mux-dia.pdf
+    dias-compact: matrice-mux-dia-compact.pdf

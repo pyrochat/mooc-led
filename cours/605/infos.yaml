@@ -1,14 +1,15 @@
 titre:
-    - "Vidéo et murs de LED"
+    - "Commande d’un afficheur avec une FPGA"
+categ:            logique
 type:             Théorie
 niveau:           avancé
 auteur:          
-    - 'PYR'
+    - MLN
 statut:           Relecture
-code:             murs-led
+code:             commande-fpga
 url:
-    cours-html:   murs-led.html
-    cours-pdf:    murs-led.pdf
-url1:
-    dias-video:   murs-led-dia.pdf
-    dias-compact: murs-led-dia-compact.pdf
+    dias-compact: commande-fpga-dia-compact.pdf
+url-non-prevus:
+    cours-html:   commande-fpga.html
+    cours-pdf:    commande-fpga.pdf
+    dias-video:   commande-fpga-dia.pdf

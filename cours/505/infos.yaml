@@ -1,13 +1,15 @@
 titre:
-    - "Les afficheurs matriciels multiplexés"
+    - "Les FPGA"
+categ:            
 type:             Théorie
-niveau:           base
+niveau:           avancé
 auteur:          
-    - PYR
+    - MLN
 statut:           Relecture
-code:             matrice-mux
+code:             fpga
 url:
-    cours-html:   matrice-mux.html
-    cours-pdf:    matrice-mux.pdf
-    dias-video:   matrice-mux-dia.pdf
-    dias-compact: matrice-mux-dia-compact.pdf
+    dias-compact: fpga-dia-compact.pdf
+url-non-prevus:
+    cours-html:   fpga.html
+    cours-pdf:    fpga.pdf
+    dias-video:   fpga-dia.pdf

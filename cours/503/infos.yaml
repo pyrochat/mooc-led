@@ -1,13 +1,14 @@
 titre:
-    - "Programmation multi-tâche"
+    - "Rubans de LED adressables"
+categ:            
 type:             Théorie
 niveau:           base
 auteur:          
     - 'PYR'
-statut:           Pas publié
-code:             codeduchapitre
+statut:           Relecture
+code:             rubans
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   rubans.html
+    cours-pdf:    rubans.pdf
+    dias-video:   rubans-dia.pdf
+    dias-compact: rubans-dia-compact.pdf

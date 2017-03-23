@@ -1,14 +1,15 @@
 titre:
-    - "[Logique] Les FPGA"
+    - "Correction Gamma"
+categ:            physique
 type:             Théorie
 niveau:           avancé
 auteur:          
-    - MLN
+    - AT
 statut:           Relecture
-code:             fpga
+code:             gamma
+url1:
+    cours-html:   gamma.html
+    cours-pdf:    gamma.pdf
 url:
-    dias-compact: fpga-dia-compact.pdf
-url-non-prevus:
-    cours-html:   fpga.html
-    cours-pdf:    fpga.pdf
-    dias-video:   fpga-dia.pdf
+    dias-video:   gamma-dia.pdf
+    dias-compact: gamma-dia-compact.pdf

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="https://tel.search.ch/favicon.ico">
+<title>ad</title>
+<!-- base href="https://tel.search.ch/iframe_ad.html?campaignname=Adition_AdServer_Setup_201507_EN&bannername=Telefon_Noresult_(desktop2014_LB%2FWB)&iframeid=sl_if1&bannerid=288284&locationid=229&keyword=%5B+becurious+%5D%3Ccountry_ch%3E%3Cip_n%2Fa%3E" -->
+<script type="text/javascript">
+			function sl_resizead(height) { var p = parent || window; if ("postMessage" in p) p.postMessage({ id:"sl_if1", height:height }, "*") };
+			function sl_closead() { sl_resizead(0) };
+			document.domain = "search.ch";
+		</script>
+<script type="text/javascript" src="iframe_ad_data_002/postscribe.js"></script></head>
+<body style="font-family:'Verdana',sans-serif; font-size:small; padding:0; margin:0"><div class="sl_bv" id="sl_bvid_288284"><!--bstart--><script src="iframe_ad_data_002/jquery.js" type="text/javascript">
+</script><script src="iframe_ad_data_002/DAC.js" type="text/javascript">
+</script><script type="text/javascript">
+//<![CDATA[
+ADTECH.config.page = { protocol: 'https', server: 'adserver.adtech.de', network: '780.2', siteid: '855185', params: { loc: '100' }};
+NUGGAD = {'config': {'nuggrid' : 'search.ch', 'nuggtg' : 'TelNoresults', 'nuggn' : '805450299', 'nuggsid': '1274509898'}}
+//]]>
+</script><script src="iframe_ad_data_002/persad.js" type="text/javascript">
+</script><script type="text/javascript">
+//<![CDATA[
+(function ($) {
+        function initAdSpecial(adId) {
+                function showAd(params) {
+                        window.ADTECH.config.placements[adId] = { sizeid: '', params: params };
+                        window.ADTECH.enqueueAd(adId);
+                        window.ADTECH.executeQueue();
+                }
+                if (window.bwAdVars) {
+                        window.bwAdVars.kvsearch_cat = "";
+                        window.bwAdVars.kvsearch_reg = "";
+                        window.bwAdVars.kvsearch_query = "becurious+%5D%3Cip_n%2Fa%3E";
+                        showAd(window.bwAdVars);
+                } else {
+                        // wait for results from nuggAd()
+                        $(document).on('bwAdVars-ready', function (e, bwAdVars) {
+                                window.bwAdVars.kvsearch_cat = "";
+                                window.bwAdVars.kvsearch_reg = "";
+                                window.bwAdVars.kvsearch_query = "becurious+%5D%3Cip_n%2Fa%3E";
+                                showAd(bwAdVars);
+                        });
+                }
+        }
+        window.persAdInitAdSpecial = initAdSpecial;
+}(window.$));
+//]]>
+</script>
+<div class="mod modAd" id="6282864"><script type="text/javascript" src="iframe_ad_data_002/ADTECH" adtechqueueid="36874"></script></div>
+<script type="text/javascript">
+//<![CDATA[
+                if (window.persAdInitAd) {
+                        window.persAdInitAdSpecial(6282864);
+                }
+//]]>
+</script><script src="iframe_ad_data_002/tagger.js" type="text/javascript">
+</script><img alt="" style="position:absolute; border:0; width:1px; height:1px" src="iframe_ad_data_002/0.gif">
+<!--bend--></div>
+
+
+</body></html>

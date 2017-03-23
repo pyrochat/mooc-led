@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="nico" />
+  <meta name="author" content="Pierre-Yves Rochat, EPFL" />
+  <title>Dynamic Memory Access</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../../statiques/style.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Dynamic Memory Access</h1>
+<p class="author"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x79;&#114;&#64;&#112;&#x79;&#114;&#46;&#x63;&#104;" class="email">&#80;&#x69;&#x65;&#114;&#114;&#x65;&#x2d;&#x59;&#118;&#x65;&#x73;&#32;&#82;&#x6f;&#x63;&#104;&#x61;&#116;</a>, EPFL</p>
+<p class="date">rév 2015/09/18</p>
+</div>
+<p>Auteurs : Pierre-Yves Rochat et Brice Perruche</p>
+<h2 id="limites-du-débit-de-sortie-dun-microcontrôleur">Limites du débit de sortie d'un microcontrôleur</h2>
+<p>Les afficheurs matriciels exigent le renvoi périodique des valeurs de chaque LED et les microcontrôleurs montrent leur limite lorsque le nombre de pixels augmentent. L'usage de microcontrôleurs dont la fréquence du processeur est plus élevés ne fera que reporter un peu plus loin le problème. La solution ultime et l'usage de circuits logiques spécilisée, implémentés généralement dans des circuits FPGA.</p>
+<p>Mais une solution intéressante pour repousser plus loin les limites du microcontrôleurs pour le raffraîchissement des matrices de LED est l'usage d'une technique bien connue dans les ordinateurs, l'<strong>Accès Direct en Mémoire</strong> (<em>Direct Memory Access</em>, <strong>DMA</strong>).</p>
+<p>Déjà à la fin des années 1970, le circuit Intel 8237 proposait du DMA compatible avec l'architecture des processeurs de la famille 8085. Quelques années plus tard, ce même circuit équipait les premiers PC d'IBM. On trouve encore aujourd'hui dans les <em>chip set</em> des PC modernes des traces de ce circuit.</p>
+<h2 id="architecture-dun-microcontrôleur">Architecture d'un microcontrôleur</h2>
+<p>Un microcontrôleur est composé d’un processeur, de mémoires ROM et RAM, ainsi que de circuits d'entrées-sorties (I/O). Ces éléments sont reliés entre eux par des bus d’adresse et de données.</p>
+<div class="figure">
+<img src="images/architecture-sys-info.svg" title="Architecture d’un système informatique" alt="Architecture d’un système informatique" style="width:90.0%" />
+<p class="caption">Architecture d’un système informatique</p>
+</div>
+<p>Le programme suivant, en langage Arduino, prend une valeur en mémoire et l'affiche sur une LED branchée sur un port de sortie.</p>
+<div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c">  <span class="dt">int</span> variable = <span class="dv">1</span>;
+  digitalWrite (P2_0, variable);</code></pre></td></tr></table></div>
+<p>Dans le microcontrôleur, ce programme se déroulera de la manière suivante :</p>
+<ul>
+<li>Le processeur va placer l'adresse de la variable en mémoire sur le bus d'adresses et transférer sa valeur à travers le bus de données pour la mettre dans un de ses registres internes. On parle d'un cycle d'accés à la mémoire.</li>
+<li>dans une seconde étape, le processeur va placer l'adresse du registre de sortie sur le bus d'adresse et transférer la valeur par le bus de données dans le registre de sortie. Il s'agit d'un cycle d'accès aux entrées-sorties. Selon les architectures, les bus mémoires et d'entrées-sorties sont communus ou séparés.</li>
+</ul>
+<p>Ces deux étapes ont nécessité également deux autres cycles d'accés à la mémoire, pour aller chercher les instructions correspondantes aux deux transferts réalisée.</p>
+<p>Cette façon de faire ne pose pas de problème dans le cas de programmes simples et peu performants. Cependant, un nombre d’opérations d’entrées-sorties plus élevé peut entrainer une saturation du CPU, qui n’aura plus le temps de s’occuper du traitement des données. D’un autre point de vue, dans le monde des systèmes embarqués, on voudra souvent réduire autant que possible l’utilisation du CPU, qui est particulièrement énergivore.</p>
+<h2 id="se-passer-du-cpu">Se passer du CPU</h2>
+<p>Est-il possible de décharger le processeur de ces tâches ? C'est le but des contrôleurs le DMA. Plusieurs familles de microcontrôleurs en proposent. C'est le cas des microcontrôleurs base de processeurs ARM Cortex M, tels que les MSP432 de Texas Instrument et les STM32 de ST-micro. Certains PIC le proposent aussi (PIC32, PIC24FJ).</p>
+<p>Sur d’autres microcontrôleurs moins évolués, tels quecertains PIC18 et MSP430, on peut trouver un périphérique (SPI, ADC) capable de transférer des données en mémoire RAM de maniète autonome. Il ne s'agit alors pas s'un contrôleur DMA à usage gnéral, mais c'est bien de l'accès direct en mémoire qui est effectué.</p>
+<p>Voici une figure qui montre comment l'architecture d'un système informatique peut être modifiée pour effectuer du DMA :</p>
+<div class="figure">
+<img src="images/architecture-sys-info_DMA.svg" title="Architecture SI DMA" alt="Archi SI DMA" width="566" />
+<p class="caption">Archi SI DMA</p>
+</div>
+<p>Le contrôleur DMA est donc une unité dédiée, reliée au bus de données. Il s’agit en quelque sorte d’un mini-processeur qui va s’occuper exclusivement de transférer les données entre la mémoire et les périphériques. Les transferts peuvent s'effectuer d'une zone mémoire à une autre, entre la mémoire et des périphériques, ou directement entre des périphériques.</p>
+<p>Chaque périphérique que nous souhaitons utiliser en DMA doit être conçu pour travailler avec le contrôleur DMA. L’interaction entre les deux se fait via un canal dédié.</p>
+<h2 id="le-canal-dma">Le canal DMA</h2>
+<p>Il est fréquent que le contrôleur DMA soit relié à plusieurs périphériques à la fois. Comment les sélectionner ? En leur attribuant un numéro. Ainsi fonctionne le contrôleur DMA : Il est équipé de plusieures unités (canaux), chacune reliée à un périphérique, généralement suivant notre volonté. Chaque canal est relié au bus de données.</p>
+<div class="figure">
+<img src="images/STM32_DMA_controller.png" title="STM32 DMA Controller" alt="STM32 DMA" width="566" />
+<p class="caption">STM32 DMA</p>
+</div>
+<p>Le schéma ci-dessus illustre un des deux contrôleurs DMA d'un STM32 F4xx, un microcontrôleur performant dont la sophistication entraîne une certaine complexité.</p>
+<p>Son contrôleur DMA est divisé en 8 flux (streams), chaque flux disposant de 8 canaux multiplexés. Les accès à la mémoire et aux périphériques sont assurés respectivement par le port mémoire (Memory port) et le port périphérique (Peripheral port), même si ce dernier à également accès à la mémoire lors des transactions mémoire-mémoire. Ces deux ports sont reliés au bus de données (AHB data bus).</p>
+<p>Le transfert de données d'un port à l'autre se fait via un flux. Chaque flux possède une mémoire tampon (buffer FIFO), activé ou non à notre convenance. Enfin, l'arbitre gère la priorité des flux DMA pour chacun des deux ports. Les priorités sont définies librement dans le programme.</p>
+<h2 id="exemple-simple-de-dma">Exemple simple de DMA</h2>
+<p>Les contrôleurs DMA sont complexes, les programme qui les mettent en oeuvre sont souvent assez longs. Ils ne sont pas facile à mettre au point, tant le volume de la documantation est important. Il est souvent préférable de s'inspirer de programmes existant, proposés par les fabricants et de les adapter à notre application.</p>
+<p>Nous prendrons ici un programme volontairement le plus simple possible. Il va être capable d'envoyer une séquence de valeurs sur une LED.</p>
+<p>Voici le programme complet :</p>
+<div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="co">// Exemple d&#39;utilsation du DMA</span>
+<span class="co">// 2016 Brice Perruche, Pierre-Yves Rochat</span>
+
+<span class="ot">#include &quot;stm32f4xx.h&quot;</span>
+<span class="ot">#include &quot;stm32f4xx_nucleo.h&quot;</span>
+<span class="ot">#include &quot;stm32f4xx_hal_tim.h&quot;</span>
+<span class="ot">#include &quot;stm32f4xx_hal_dma.h&quot;</span>
+
+<span class="ot">#define LG_TRAME 64</span>
+<span class="dt">uint8_t</span> trame[LG_TRAME];
+
+<span class="dt">static</span> TIM_Base_InitTypeDef  TIM_TimeBaseStructure1;
+<span class="dt">static</span> TIM_HandleTypeDef s_TimerInstance1;
+
+<span class="dt">static</span> DMA_InitTypeDef DMA_InitStructure;
+<span class="dt">static</span> DMA_HandleTypeDef DMA_Handle;
+
+<span class="dt">void</span> InitGPIOA() {
+    <span class="dt">static</span> GPIO_InitTypeDef GPIO_A;
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __GPIOA_CLK_ENABLE();
+
+    GPIO_A.Pin =   GPIO_PIN_5;
+    GPIO_A.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_A.Pull = GPIO_NOPULL;
+    GPIO_A.Speed = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(GPIOA, &amp;GPIO_A);
+}
+
+<span class="dt">void</span> InitTrame() {
+    <span class="kw">for</span>(<span class="dt">uint16_t</span> i=<span class="dv">0</span>; i&lt;LG_TRAME<span class="dv">-8</span>; i+=<span class="dv">8</span>) {
+        trame[i] = (<span class="dv">1</span>&lt;&lt;<span class="dv">5</span>); trame[i<span class="dv">+1</span>] = <span class="dv">0</span>; trame[i<span class="dv">+2</span>] = (<span class="dv">1</span>&lt;&lt;<span class="dv">5</span>); trame[i<span class="dv">+3</span>] = <span class="dv">0</span>;
+        trame[i<span class="dv">+4</span>] = <span class="dv">0</span>; trame[i<span class="dv">+5</span>] = <span class="dv">0</span>; trame[i<span class="dv">+6</span>] = <span class="dv">0</span>; trame[i<span class="dv">+7</span>] = <span class="dv">0</span>;
+    }
+}
+
+<span class="dt">void</span> InitDMA() {
+    __HAL_RCC_DMA2_CLK_ENABLE();
+
+    DMA_InitStructure.Channel = DMA_CHANNEL_6;
+    DMA_InitStructure.Direction = DMA_MEMORY_TO_PERIPH;
+    DMA_InitStructure.MemInc = DMA_MINC_ENABLE;
+    DMA_InitStructure.PeriphInc = DMA_PINC_DISABLE;
+    DMA_InitStructure.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+    DMA_InitStructure.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+    DMA_InitStructure.Mode = DMA_NORMAL;
+    DMA_InitStructure.Priority = DMA_PRIORITY_VERY_HIGH;
+    DMA_InitStructure.FIFOMode = DMA_FIFOMODE_DISABLE;
+    DMA_InitStructure.MemBurst = DMA_MBURST_SINGLE;
+    DMA_InitStructure.PeriphBurst = DMA_PBURST_SINGLE;
+
+    DMA_Handle.Instance =  DMA2_Stream5;
+    DMA_Handle.Init = DMA_InitStructure;
+
+    HAL_DMA_Init(&amp;DMA_Handle);
+    HAL_DMA_Start(&amp;DMA_Handle, (<span class="dt">uint32_t</span>) trame, (<span class="dt">uint32_t</span>) &amp;GPIOA-&gt;ODR, LG_TRAME );
+}
+
+<span class="dt">void</span> InitializeTimer1() {
+    __TIM1_CLK_ENABLE();
+
+    TIM_TimeBaseStructure1.Prescaler = <span class="dv">5000</span>;
+    TIM_TimeBaseStructure1.CounterMode = TIM_COUNTERMODE_UP;
+    TIM_TimeBaseStructure1.Period = <span class="bn">0x00FF</span>;
+    TIM_TimeBaseStructure1.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+    TIM_TimeBaseStructure1.RepetitionCounter = <span class="dv">0</span>;
+
+    s_TimerInstance1.Init = TIM_TimeBaseStructure1;
+    s_TimerInstance1.Instance = TIM1;
+
+    HAL_TIM_Base_Init(&amp;s_TimerInstance1);
+    TIM1-&gt;DIER =  TIM_DMA_UPDATE;   <span class="co">// DMA Interrupt Enable</span>
+    HAL_TIM_Base_Start(&amp;s_TimerInstance1);
+
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>) {
+    HAL_Init();
+    InitGPIOA();
+    InitTrame();
+    InitDMA();
+    InitializeTimer1();
+
+    <span class="kw">while</span>(<span class="dv">1</span>) {
+    }
+}</code></pre></td></tr></table></div>
+<p>à suivre :</p>
+<ul>
+<li>expliquer le code...</li>
+<li>donner des pistes pour l'utilisation d'une matrice de LED (placer les signaux couleurs et clocks dans la mémoire et lancer le DMA, timer pour les cycles, timer pour l'intensité sur OE).</li>
+</ul>
+</body>
+</html>

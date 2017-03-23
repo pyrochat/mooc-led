@@ -16,6 +16,7 @@
 # 2016/01/02 : Modifications mineures
 # 2016/01/18 : Modifications de la présentation
 # 2016/02/08 : n'affiche plus les niveaux
+# 2017/03/22 : en vue de la version définitive du MOOC
 
 import glob
 import yaml
@@ -52,13 +53,13 @@ def main():
 
 <img src="../../statiques/images/vignette.jpg" alt="Vignette du MOOC" style="width: 300px; text-align=center;"/>
 
-Version de travail du 2016/01/21
+Version de travail du 2017/03/22
 
-**Enseignants** : (YT) : Yves Tiecours, (AT) Alain Tiedeu, (MLN) Mamadou Lamine Ndiaye, (PYR) Pierre-Yves Rochat (?) à déterminer.
+**Enseignants** : (YT) : Yves Tiecours, (AT) Alain Tiedeu, (MLN) Mamadou Lamine Ndiaye, (PYR) Pierre-Yves Rochat.
 
-**Documents** : Les notes de cours sont disponibles en HTML et en PDF. Les dispositives sont en PDF, avec une version complète utilisée pour les vidéos, ainsi qu'une version compacte qui sera mise à disposition des participants du MOOC.
+**Documents** : Les notes de cours sont disponibles en HTML et en PDF. Les dispositives sont en PDFen version compacte.
 
-**Domaines** : Le cours introduit progressivement des sujets en *électronique* et en *microcontrôleur*, pour apprendre à concevoir des enseignes et des afficheurs à LED. En parallèle, des sujets de *circuits logiques* sont introduits, pour mener à la réalisation de commande d'afficheurs complexes utilisant des FPGA. En plus, quelques sujets de *physique* sont proposés.
+**Domaines** : Le cours introduit progressivement des sujets en *électronique* et en *microcontrôleur*, pour apprendre à concevoir des enseignes et des afficheurs à LED. En parallèle, un cours de *circuits logiques* est donné, pour mener à la réalisation de commande d'afficheurs complexes utilisant des FPGA. En plus, quelques sujets de *physique* sont proposés.
 """
 
 
@@ -131,7 +132,8 @@ Version de travail du 2016/01/21
         ]
     executeSystemCmd( pandocCmd )
     print( "\nTable des matières générée dans le fichier " + htmltocfilename )
-    # executeSystemCmd( [ "rm " + tocfilename ] ) # À cause de l’exécution asynchrone de Pandoc, c’est mieux de ne pas effacer le fichier md tout de suite.
+    # executeSystemCmd( [ "rm " + tocfilename ] )
+    # À cause de l’exécution asynchrone de Pandoc, c’est mieux de ne pas effacer le fichier md tout de suite.
 
     if( len( BROKENLINKS ) ):
         print u"\n###\n!!! LISTE DES LIENS CASSÉS !!!"
@@ -143,3 +145,4 @@ Version de travail du 2016/01/21
 if __name__ == '__main__':
 
     main()
+

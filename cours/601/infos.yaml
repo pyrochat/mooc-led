@@ -5,9 +5,9 @@ niveau:           base
 auteur:          
     - PYR+BP
 statut:           Pas publié
-code:             codeduchapitre
+code:             dma
 url:
-    cours-html:   codeduchapitre.html
-    cours-pdf:    codeduchapitre.pdf
-    dias-video:   codeduchapitre-dia.pdf
-    dias-compact: codeduchapitre-dia-compact.pdf
+    cours-html:   dma.html
+    cours-pdf:    dma.pdf
+    dias-video:   dma-dia.pdf
+    dias-compact: dma-dia-compact.pdf

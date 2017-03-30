@@ -77,4 +77,4 @@ Version de travail du 2017/03/22
 **6.3** **Commande à distance**  (PYR+NJ)  [cours-html](../603/com-distance.html) [cours-pdf](../603/com-distance.pdf) [dias-compact](../603/com-distance-dia-compact.pdf)   
 **6.4** **Langages interprétés spécialisés**  (PYR)  [cours-html](../604/lang-interpr.html) [cours-pdf](../604/lang-interpr.pdf) [dias-compact](../604/lang-interpr-dia-compact.pdf)   
 **6.5** **Commande d’un afficheur avec une FPGA**  (MLN) *[Logique]*  [dias-compact](../605/commande-fpga-dia-compact.pdf)   
-**6.6** **Vidéo et murs de LED**  (PYR)  [cours-html](../606/murs-led.html) [cours-pdf](../606/murs-led.pdf)                  
+**6.6** **Vidéo et murs de LED**  (PYR)  [cours-html](../606/murs-led.html) [cours-pdf](../606/murs-led.pdf) [dias-compact](../606/murs-led-dia-compact.pdf)                  

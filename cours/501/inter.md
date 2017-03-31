@@ -2,8 +2,6 @@
 % [Yves Tiecoura](mailto:tiecouray@yahoo.fr), INP-HB Yamoussoukro
 % rév 2015/12/13
 
-Version provisoire. Nous travaillons sur ce document, mais les remarques sont les bienvenues !
-
 ## Motivation ##
 
 Un système à microcontrôleur est généralement pourvu d’entrées et de sorties. Le but premier du programme est souvent de réagir correctement aux changements d’état des entrées, en agissant en conséquence sur les sorties.

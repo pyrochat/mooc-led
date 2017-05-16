@@ -137,7 +137,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   P2DIR |= <span class="bn">0xFF</span>; <span class="co">// P2.0 à P2.7 en sortie</span>
 }
 
-<span class="dt">void</span> loop() { <span class="co">// Boucle infinie, correspond à toute l&#39;animation</span>
+<span class="dt">void</span> loop() { <span class="co">// Boucle infinie, correspond à toute l’animation</span>
   P2OUT  = <span class="dv">0</span>;                  <span class="co">// éteint toutes les LED</span>
   P2OUT |= (<span class="dv">1</span>&lt;&lt;<span class="dv">0</span>); delay(<span class="dv">200</span>); <span class="co">// allume la première LED</span>
   P2OUT |= (<span class="dv">1</span>&lt;&lt;<span class="dv">1</span>); delay(<span class="dv">200</span>); <span class="co">// allume successivement chaque LED...</span>
@@ -151,14 +151,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   P2OUT  = <span class="bn">0xFF</span>;   delay(<span class="dv">500</span>); <span class="co">// allume toutes les LED</span>
   P2OUT  = <span class="dv">0</span>;      delay(<span class="dv">500</span>); <span class="co">// répète...</span>
   P2OUT  = <span class="bn">0xFF</span>;   delay(<span class="dv">1000</span>);
-  P2OUT  = <span class="dv">0</span>;      delay(<span class="dv">500</span>); <span class="co">// pause avant la reprise de l&#39;animation</span>
+  P2OUT  = <span class="dv">0</span>;      delay(<span class="dv">500</span>); <span class="co">// pause avant la reprise de l’animation</span>
 }</code></pre></td></tr></table></div>
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 <p>On aurait pu utiliser uniquement des procédures <code>pinMode()</code> pour l’initialisation et <code>digitalWrite()</code> pour les animations. Dans un cas comme dans l’autre, le style de ce programme n’est pas un modèle du genre et a donc nécessité de nombreux commentaires. Or <em>un programme bien écrit ne nécessite pas beaucoup de commentaires</em>, alors qu’on voudrait souvent vous faire croire que plus un programme comporte de commentaires, mieux il est écrit !</p>
 <p>L’utilisation de définitions comme :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define Led1ON P2OUT |= (1&lt;&lt;0)</span>
 <span class="ot">#define Led1OFF P2OUT &amp;=~(1&lt;&lt;0)</span></code></pre></div>
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 <p>rendrait le code plus lisible.</p>
 <p>Mais le fait d’utiliser l’accès aux sorties par le registre <code>P2OUT</code> permet de programmer plus simplement la fonction du chenillard :</p>
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
@@ -183,13 +183,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   }
 }
 ...
-<span class="dt">void</span> loop() { <span class="co">// Boucle infinie, correspond à toute l&#39;animation</span>
+<span class="dt">void</span> loop() { <span class="co">// Boucle infinie, correspond à toute l’animation</span>
   ChenillardAjoute(<span class="dv">200</span>);
   delay(<span class="dv">800</span>); <span class="co">// attend un peu après la dernière LED</span>
   P2OUT = <span class="dv">0</span>; delay(<span class="dv">500</span>); <span class="co">// éteint toutes les LED pendant 1/2 seconde</span>
   ...
 }</code></pre></td></tr></table></div>
-<!-- retour au mode normal pour l'éditeur -->
+<!-- retour au mode normal pour l’éditeur -->
 <p>On pourrait aussi écrire une fonction chenillard encore plus générale, avec en paramètres non seulement le temps d’attente, mais le sens du mouvement et le fait de garder ou non les LED précédentes allumées.</p>
 <p>Que vois-je ? Ai-je écrit le mot <em>mouvement</em> ? Est-ce que les LED bougent ? C’est toute la magie des LED... Elles ne bougent pas, mais peuvent donner l’impression de mouvement.</p>
 </body>

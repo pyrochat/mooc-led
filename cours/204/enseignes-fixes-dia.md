@@ -90,7 +90,7 @@ Regrouper les LED en motifs.
 <!-- Page commande courant, 2 entrées-->
 <section>
 <!-- A -->
-<h1 class="en_tete">Courant importants</h1>
+<h1 class="en_tete">Courant important</h1>
 <!-- Contenu : -->
 <img src="./images/transistor-courants.png" style="top:11cm; left:1.5cm; width:57cm;" />
 </section>

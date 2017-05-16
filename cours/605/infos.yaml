@@ -1,5 +1,5 @@
 titre:
-    - "Commande d’un afficheur avec une FPGA"
+    - "Commande d’une matrice à LED avec une FPGA"
 categ:            logique
 type:             Théorie
 niveau:           avancé

@@ -18,8 +18,8 @@ Version de travail du 2017/03/22
 
 
 **1.1** **Introduction aux enseignes et afficheurs à LED**  (PYR)  [cours-html](../101/intro.html) [cours-pdf](../101/intro.pdf)   
-**1.2** **Électricité et LED**  (PYR)  [cours-html](../102/electric.html) [cours-pdf](../102/electric.pdf) [dias-compact](../102/electric-dia-compact.pdf)   
-**1.3** **Représentation binaire**  (YT)  [cours-html](../103/binaire.html) [cours-pdf](../103/binaire.pdf) [dias-compact](../103/binaire-dia-compact.pdf)   
+**1.2** **Circuits électriques**  (PYR)  [cours-html](../102/electric.html) [cours-pdf](../102/electric.pdf) [dias-compact](../102/electric-dia-compact.pdf)   
+**1.3** **Nombres et champs de bits**  (YT)  [cours-html](../103/binaire.html) [cours-pdf](../103/binaire.pdf) [dias-compact](../103/binaire-dia-compact.pdf)   
 **1.4** **Circuits logiques combinatoires**  (MLN) *[Logique]*  [dias-compact](../104/sys-combi-dia-compact.pdf)   
 **1.5** **Synthèse de circuits combinatoires**  (MLN) *[Logique]*  [dias-compact](../105/synth-combi-dia-compact.pdf)   
 **1.6** **Le microcontrôleur**  (PYR)  [cours-html](../106/microcontroleur.html) [cours-pdf](../106/microcontroleur.pdf) [dias-compact](../106/microcontroleur-dia-compact.pdf)   
@@ -41,7 +41,7 @@ Version de travail du 2017/03/22
 
 
 
-**2.1** **La jonction PN : principes physiques**  (AT) *[Physique]*  [dias-compact](../201/jonction-pn-dia-compact.pdf)   
+**2.1** **La diode à jonction : principes physiques**  (AT) *[Physique]*  [dias-compact](../201/jonction-pn-dia-compact.pdf)   
 **2.2** **Le transistor**  (YT)  [cours-html](../202/transistor.html) [cours-pdf](../202/transistor.pdf) [dias-compact](../202/transistor-dia-compact.pdf)   
 **2.3** **Programmation en C-Arduino**  (PYR)  [cours-html](../203/C-Arduino.html) [cours-pdf](../203/C-Arduino.pdf) [dias-compact](../203/C-Arduino-dia-compact.pdf)   
 **2.4** **Enseignes à motifs fixes**  (PYR)  [cours-html](../204/enseignes-fixes.html) [cours-pdf](../204/enseignes-fixes.pdf) [dias-compact](../204/enseignes-fixes-dia-compact.pdf)   
@@ -91,7 +91,7 @@ Version de travail du 2017/03/22
 
 
 
-**4.1** **Les afficheurs matriciels**  (PYR)  [cours-html](../401/matrice.html) [cours-pdf](../401/matrice.pdf) [dias-compact](../401/matrice-dia-compact.pdf)   
+**4.1** **Afficheurs matriciels**  (PYR)  [cours-html](../401/matrice.html) [cours-pdf](../401/matrice.pdf) [dias-compact](../401/matrice-dia-compact.pdf)   
 **4.2** **BCM : la modulation codée binaire**  (PYR)  [cours-html](../402/bcm.html) [cours-pdf](../402/bcm.pdf) [dias-compact](../402/bcm-dia-compact.pdf)   
 **4.3** **Mémoires permanentes**  (PYR)  [cours-html](../403/memoires-perm.html) [cours-pdf](../403/memoires-perm.pdf) [dias-compact](../403/memoires-perm-dia-compact.pdf)   
 **4.4** **Séquenceurs à compteurs**  (YT)  [cours-html](../404/seq-compteur.html) [cours-pdf](../404/seq-compteur.pdf) [dias-compact](../404/seq-compteur-dia-compact.pdf)   
@@ -119,7 +119,7 @@ Version de travail du 2017/03/22
 **5.2** **Les timers**  (YT)  [cours-html](../502/timers.html) [cours-pdf](../502/timers.pdf)   
 **5.3** **Rubans de LED adressables**  (PYR)  [cours-html](../503/rubans.html) [cours-pdf](../503/rubans.pdf) [dias-compact](../503/rubans-dia-compact.pdf)   
 **5.4** **Les afficheurs matriciels multiplexés**  (PYR)  [cours-html](../504/matrice-mux.html) [cours-pdf](../504/matrice-mux.pdf) [dias-compact](../504/matrice-mux-dia-compact.pdf)   
-**5.5** **Les FPGA**  (MLN)  [dias-compact](../505/fpga-dia-compact.pdf)   
+**5.5** **Circuits logiques prorammables : FPGA**  (MLN)  [dias-compact](../505/fpga-dia-compact.pdf)   
 **5.6** **Correction Gamma**  (AT) *[Physique]*  [dias-compact](../506/gamma-dia-compact.pdf)   
 **5.21** *Pratique :* Récepteur de télécommande IR (?)   
 **5.22** *Pratique :* Mise en oeuvre d’un ruban de LED (?)   
@@ -144,8 +144,8 @@ Version de travail du 2017/03/22
 **6.2** **Horloges temps réel**  (PYR)  [cours-html](../602/horloge.html) [cours-pdf](../602/horloge.pdf) [dias-compact](../602/horloge-dia-compact.pdf)   
 **6.3** **Commande à distance**  (PYR+NJ)  [cours-html](../603/com-distance.html) [cours-pdf](../603/com-distance.pdf) [dias-compact](../603/com-distance-dia-compact.pdf)   
 **6.4** **Langages interprétés spécialisés**  (PYR)  [cours-html](../604/lang-interpr.html) [cours-pdf](../604/lang-interpr.pdf) [dias-compact](../604/lang-interpr-dia-compact.pdf)   
-**6.5** **Commande d’un afficheur avec une FPGA**  (MLN) *[Logique]*  [dias-compact](../605/commande-fpga-dia-compact.pdf)   
-**6.6** **Vidéo et murs de LED**  (PYR)  [cours-html](../606/murs-led.html) [cours-pdf](../606/murs-led.pdf)   
+**6.5** **Commande d’une matrice à LED avec une FPGA**  (MLN) *[Logique]*  [dias-compact](../605/commande-fpga-dia-compact.pdf)   
+**6.6** **Vidéo et murs de LED**  (PYR)  [cours-html](../606/murs-led.html) [cours-pdf](../606/murs-led.pdf) [dias-compact](../606/murs-led-dia-compact.pdf)   
 **6.21** *Pratique :* Afficheur matriciel commandé en DMA (BP?)   
 **6.22** *Pratique :* Affichage de l’heure sur une enseigne à MSP432 (?)   
 **6.23** *Pratique :* Mise en oeuvre d’un module WiFi (NJ)   

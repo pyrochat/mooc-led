@@ -172,6 +172,23 @@ Pierre-Yves Rochat
 
 <section>
 <!-- A -->
+<h1 class="en_tete">Test d'un bit</h1>
+<div style="top: 7cm; left: 7cm; font-size: 48pt; line-height: 1.2; width:58cm;">
+* `P1IN & 0b00001000;`
+</div>
+<!-- 267 --><img src="./images/test-bit-7.svg" style="top:10cm; left:7cm; width:50cm;">
+<!-- 367 --><img src="./images/test-bit-8.svg" style="top:10cm; left:7cm; width:50cm;">
+<!-- 467 --><img src="./images/test-bit-9.svg" style="top:10cm; left:7cm; width:50cm;">
+<!-- 567 --><img src="./images/test-bit.svg" style="top:10cm; left:7cm; width:50cm;">
+<!-- 67 --><div style="top: 26cm; left: 7cm; font-size: 48pt; line-height: 1.2; width:58cm;">
+<!-- 67 -->* Par exemple comme condition d'un if : `if (P1IN & 0b00001000)`
+<!-- 7 -->* Condition inverse : `if (!(P1IN & 0b00001000))`
+<!-- 67 --></div>
+</section>
+
+
+<section>
+<!-- A -->
 <h1 class="en_tete">Écriture plus lisibles des constantes</h1>
 <div style="top: 7cm; left: 7cm; font-size: 48pt; line-height: 1.2; width:58cm;">
 * `P1OUT |= 64;`

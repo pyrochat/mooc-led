@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="122.19638mm"
-   height="57.466461mm"
-   viewBox="0 0 432.97931 203.62132"
+   width="152.45679mm"
+   height="73.28231mm"
+   viewBox="0 0 540.20122 259.66173"
    id="svg2"
    version="1.1"
    inkscape:version="0.92.1 r15371"
-   sodipodi:docname="architecture-sys-info.svg"
+   sodipodi:docname="architecture-dma0.svg"
    inkscape:export-filename="/home/pyr/git/mooc-led/cours/104/images/architecture-sys-info.png"
    inkscape:export-xdpi="39.9571"
    inkscape:export-ydpi="39.9571">
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="79.908649"
-     inkscape:cy="330.14442"
+     inkscape:zoom="1.979899"
+     inkscape:cx="236.15677"
+     inkscape:cy="188.03606"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -39,10 +39,10 @@
      inkscape:object-nodes="true"
      inkscape:snap-smooth-nodes="true"
      inkscape:snap-bbox="true"
-     fit-margin-top="2"
-     fit-margin-left="2"
-     fit-margin-bottom="2"
-     fit-margin-right="2"
+     fit-margin-top="15"
+     fit-margin-left="30"
+     fit-margin-bottom="15"
+     fit-margin-right="1"
      inkscape:window-width="1871"
      inkscape:window-height="1176"
      inkscape:window-x="1489"
@@ -52,8 +52,8 @@
     <inkscape:grid
        type="xygrid"
        id="grid4136"
-       originx="-48.66325"
-       originy="-706.34634" />
+       originx="60.736386"
+       originy="-676.27157" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -71,7 +71,7 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-48.663238,-142.39455)">
+     transform="translate(60.736381,-116.42898)">
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.00031245;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -149,24 +149,24 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.00031245;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       x="166.0101"
-       y="156.27116"
+       x="167.04076"
+       y="155.13139"
        id="text4186"><tspan
          sodipodi:role="line"
          id="tspan4188"
-         x="166.0101"
-         y="156.27116"
+         x="167.04076"
+         y="155.13139"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:1.00031245;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none">Bus d'adresses</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.00031245;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       x="168.80331"
-       y="338.84381"
+       x="170.35507"
+       y="338.48181"
        id="text4186-1"><tspan
          sodipodi:role="line"
          id="tspan4188-3"
-         x="168.80331"
-         y="338.84381"
+         x="170.35507"
+         y="338.48181"
          style="font-size:8.75px;line-height:1.25;stroke-width:1.00031245;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none">Bus de données</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.00031245;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"

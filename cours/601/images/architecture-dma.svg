@@ -29,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="269.99688"
+     inkscape:cx="185.90168"
      inkscape:cy="188.03606"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -43,10 +43,10 @@
      fit-margin-left="30"
      fit-margin-bottom="15"
      fit-margin-right="1"
-     inkscape:window-width="1871"
-     inkscape:window-height="1176"
-     inkscape:window-x="1489"
-     inkscape:window-y="78"
+     inkscape:window-width="1391"
+     inkscape:window-height="876"
+     inkscape:window-x="49"
+     inkscape:window-y="24"
      inkscape:window-maximized="1"
      inkscape:snap-global="false">
     <inkscape:grid
@@ -115,7 +115,7 @@
          id="tspan4152"
          x="404.16574"
          y="250.38301"
-         style="font-size:16.25px;line-height:1.25;font-family:Ubuntu;stroke-width:1.00031245;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;-inkscape-font-specification:Ubuntu;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">I/O</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.25px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:1.00031245;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none">I/O</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.00031245;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 89.062509,288.29975 V 199.23724 H 192.18751 v 89.06251 z"
@@ -167,7 +167,7 @@
          id="tspan4188-3"
          x="170.35507"
          y="338.48181"
-         style="font-size:8.75px;line-height:1.25;stroke-width:1.00031245;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none">Bus de données</tspan></text>
+         style="font-size:8.75px;line-height:1.25;stroke-width:1.00031245;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;-inkscape-font-specification:Ubuntu;font-family:Ubuntu;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Bus de données</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.00031245;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 440.62503,217.98725 h 32.8125"

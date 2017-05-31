@@ -157,10 +157,13 @@ void InitTimer1() {
 <h1 class="en_tete">Utilisation du DMA pour piloter des matrices de LED</h1>
 <div style="font-size:44pt; left:3cm; width:57cm; top:8cm; line-height: 1.2;">
 * Les registres série-parallèles nécessitent des signaux de données et des horloges
-<!-- 34 -->* Les horloges peuvent être placées en mémoire comme les données
-<!-- 4 -->* Certains microcontrôleurs ont des circuits programmables capables de générer de telle horloges 
+<!-- 2345 -->* Les horloges peuvent être placées en mémoire comme les données
+<!-- 345 -->* Certains microcontrôleurs ont des circuits programmables capables de générer de telle horloges 
 </div>
-<!-- 234 --><img src="./images/timing-8x4.svg" style="top:17cm; left:3cm; width:44cm;" />
+<!-- 45 --><div style="font-size:44pt; left:3cm; width:57cm; top:20cm; line-height: 1.2;">
+<!-- 45 -->* Finalement, on a repoussé avec le DMA la limite d'utilisation des microcontrôleurs
+<!-- 5 -->* Pour aller encore plus loin, il faudra des circuits logiques programmables, comme les FPGA
+<!-- 45 --></div>
 </section>
 
 

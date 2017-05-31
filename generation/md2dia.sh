@@ -53,7 +53,7 @@ function HTML2PDFprince
 
 function HTML2PDFweasyprint
 {
-    weasyprint     \
+    python -m weasyprint     \
         $HTML_FILE \
         $PDF_FILE
 }

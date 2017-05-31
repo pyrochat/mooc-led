@@ -56,14 +56,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2 id="limites-du-débit-de-sortie-dun-microcontrôleur">Limites du débit de sortie d'un microcontrôleur</h2>
 <p>Les afficheurs matriciels exigent le renvoi périodique des valeurs de chaque LED et les microcontrôleurs montrent leur limite lorsque le nombre de pixels augmente. L'usage de microcontrôleurs dont la fréquence du processeur est plus élevée ne fera que reporter un peu plus loin le problème. La solution ultime est l'usage de circuits logiques spécialisés, implémentés généralement dans des circuits FPGA.</p>
 <p>Mais une solution intéressante pour repousser les limites des microcontrôleurs pour le rafraîchissement des matrices de LED est l'usage d'une technique bien connue dans les ordinateurs, l'<strong>Accès Direct en Mémoire</strong> (<em>Direct Memory Access</em>, <strong>DMA</strong>).</p>
-<p>Déjà à la fin des années 1970, le circuit Intel 8237 proposait du DMA compatible avec l'architecture des processeurs de la famille 8085. Quelques années plus tard, ce même circuit équipait les premiers PC d'IBM. On trouve encore aujourd'hui dans les <em>chip set</em> des PC modernes des traces de ce circuit. Et beaucoup de microcontrôleurs mettent cette technique à disposition.</p>
+<p>Déjà à la fin des années 1970, le circuit Intel 8237 proposait du DMA compatible avec l'architecture des processeurs de la famille 8085. Quelques années plus tard, ce même circuit équipait les premiers PC d'IBM. On trouve encore aujourd'hui dans les <em>chipset</em> des PC modernes des traces de ce circuit. Et beaucoup de microcontrôleurs mettent cette technique à disposition.</p>
 <h2 id="architecture-dun-microcontrôleur">Architecture d'un microcontrôleur</h2>
-<p>Un microcontrôleur est composé d’un processeur, de mémoires ROM et RAM, ainsi que de circuits d'entrées-sorties (I/O). Ces éléments sont reliés entre eux par des bus d’adresse et de données.</p>
+<p>Un microcontrôleur est composé d’un processeur, de mémoires ROM et RAM, ainsi que de circuits d'entrées-sorties (I/O). Ces éléments sont reliés entre eux par des bus d’adresses et de données.</p>
 <div class="figure">
 <img src="images/architecture-sys-info.svg" title="Architecture d’un système informatique" alt="Architecture d’un système informatique" style="width:90.0%" />
 <p class="caption">Architecture d’un système informatique</p>
 </div>
-<p>Le programme suivant, en langage Arduino, prend une valeur en mémoire et l'affiche sur une LED branchée sur un port de sortie :</p>
+<p>Le programme suivant, en langage Arduino, charge une valeur depuis la mémoire et l'affiche sur une LED branchée sur un port de sortie :</p>
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
 2
 </pre></td><td class="sourceCode"><pre><code class="sourceCode c">  <span class="dt">int</span> variable = <span class="dv">1</span>;
@@ -71,30 +71,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>A l'intérieur du microcontrôleur, ce programme se déroulera de la manière suivante :</p>
 <ul>
 <li>Le processeur va placer l'adresse de la variable en mémoire sur le bus d'adresses et transférer sa valeur à travers le bus de données pour la mettre dans un de ses registres internes. On parle d'un cycle d'accés à la mémoire.</li>
-<li>dans une seconde étape, le processeur va placer l'adresse du registre de sortie sur le bus d'adresse et transférer la valeur par le bus de données dans le registre de sortie. Il s'agit d'un cycle d'accès aux entrées-sorties. Selon les architectures, les bus mémoires et d'entrées-sorties sont communs ou séparés.</li>
+<li>Dans une seconde étape, le processeur va placer l'adresse du registre de sortie sur le bus d'adresses et transférer la valeur par le bus de données dans le registre de sortie. Il s'agit d'un cycle d'accès aux entrées-sorties. Selon les architectures, les bus mémoires et d'entrées-sorties sont communs ou séparés.</li>
 </ul>
 <p>Ces deux étapes ont nécessité également deux autres cycles d'accès à la mémoire, pour aller chercher les instructions correspondantes aux deux transferts réalisée.</p>
 <p>Cette façon de faire ne pose pas de problème dans le cas de programmes simples et peu performants. Cependant, un nombre d’opérations d’entrées-sorties plus élevé peut entraîner une saturation du processeur, qui n’aura plus le temps de s’occuper du traitement des données. D’un autre point de vue, dans le monde des systèmes embarqués, on voudra souvent réduire autant que possible l’utilisation du processeur, pour limiter la consommation de courant.</p>
 <h2 id="se-passer-du-processeur">Se passer du processeur</h2>
 <p>Est-il possible de décharger le processeur de ces tâches ? C'est le but des contrôleurs le DMA. Plusieurs familles de microcontrôleurs en proposent. C'est le cas des microcontrôleurs comportant des processeurs ARM Cortex M, tels que les MSP432 de Texas Instrument et les STM32 de ST-micro. Certains PIC le proposent aussi (PIC32, PIC24FJ).</p>
-<p>Sur d’autres microcontrôleurs moins évolués, tels quecertains PIC18 et MSP430, on peut trouver un périphérique (SPI, ADC) capable de transférer des données en mémoire RAM de manière autonome. Il ne s'agit alors pas s'un contrôleur DMA à usage général, mais c'est bien de l'accès direct en mémoire qui est effectué.</p>
+<p>Sur d’autres microcontrôleurs moins évolués, tels que certains PIC18 et MSP430, on peut trouver un périphérique (SPI, ADC) capable de transférer des données en mémoire RAM de manière autonome. Il ne s'agit alors pas d'un contrôleur DMA à usage général, mais c'est bien de l'accès direct en mémoire qui est effectué.</p>
 <p>Voici une figure qui montre comment l'architecture d'un système informatique peut être modifiée pour effectuer du DMA :</p>
 <div class="figure">
 <img src="images/architecture-dma.svg" title="Architecture avec DMA" alt="Architecture avec DMA" style="width:90.0%" />
 <p class="caption">Architecture avec DMA</p>
 </div>
-<p>Le contrôleur DMA est donc une unité dédiée, reliée au bus d'adresse et au bus de données. Il s’agit en quelque sorte d’un mini-processeur qui va s’occuper exclusivement de transférer les données entre la mémoire et les périphériques. Les transferts peuvent s'effectuer d'une zone mémoire à une autre, entre la mémoire et des périphériques, ou directement entre des périphériques. Chaque périphérique utilisable en DMA doit être conçu pour travailler avec le contrôleur DMA.</p>
+<p>Le contrôleur DMA est donc une unité dédiée, reliée au bus d'adresses et au bus de données. Il s’agit en quelque sorte d’un mini-processeur qui va s’occuper exclusivement de transférer les données entre la mémoire et les périphériques. Les transferts peuvent s'effectuer d'une zone mémoire à une autre, entre la mémoire et des périphériques, ou directement entre des périphériques. Chaque périphérique utilisable en DMA doit être conçu pour travailler avec le contrôleur DMA.</p>
 <h2 id="le-canal-dma">Le canal DMA</h2>
-<p>Il est fréquent que le contrôleur DMA soit relié à plusieurs périphériques à la fois. Comment les sélectionner ? En leur attribuant des numéros qu'on appelle des canaux. Le choix des cannaux se fait au moyen de registres sur les quels le programme agit.</p>
+<p>Il est fréquent que le contrôleur DMA soit relié à plusieurs périphériques à la fois. Comment les sélectionner ? En leur attribuant des numéros qu'on appelle des canaux. Le choix des canaux se fait au moyen de registres sur les quels le programme agit.</p>
 <div class="figure">
 <img src="images/STM32_DMA_controller.png" title="STM32 DMA Controller" alt="STM32 DMA" width="566" />
 <p class="caption">STM32 DMA</p>
 </div>
 <p>Le schéma ci-dessus illustre un des deux contrôleurs DMA d'un STM32 F4xx, qui est un microcontrôleur performant dont la sophistication entraîne une certaine complexité.</p>
-<p>Son contrôleur DMA est divisé en 8 flux (streams), chaque flux disposant de 8 canaux multiplexés. Les accès à la mémoire et aux périphériques sont assurés respectivement par le port mémoire (Memory port) et le port périphérique (Peripheral port), même si ce dernier à également accès à la mémoire lors des transactions mémoire-mémoire. Ces deux ports sont reliés au bus de données.</p>
+<p>Son contrôleur DMA est divisé en 8 flux (streams), chaque flux disposant de 8 canaux multiplexés. Les accès à la mémoire et aux périphériques sont assurés respectivement par le port mémoire (Memory port) et le port périphérique (Peripheral port), même si ce dernier à également accès à la mémoire lors des transferts mémoire-mémoire. Ces deux ports sont reliés au bus de données.</p>
 <p>Le transfert de données d'un port à l'autre se fait via un flux. Chaque flux possède une mémoire tampon (buffer FIFO), qu'il est possible d'activer ou non. Enfin, l'arbitre gère la priorité des flux DMA pour chacun des deux ports. Les priorités sont définies librement par des registres.</p>
 <h2 id="exemple-simple-de-dma">Exemple simple de DMA</h2>
-<p>Les contrôleurs DMA sont complexes, ils comportent un très grand nombre de registres et les programme qui les mettent en œuvre sont souvent assez longs. Ils ne sont pas facile à mettre au point, tant le volume de la documentation est important. Il est souvent préférable de s'inspirer de programmes existant, proposés par les fabricants et de les adapter à notre application.</p>
+<p>Les contrôleurs DMA sont complexes, ils comportent un très grand nombre de registres et les programmes qui les mettent en œuvre sont souvent assez longs. Ils ne sont pas facile à mettre au point, tant le volume de la documentation est important. Il est souvent préférable de s'inspirer de programmes existants, proposés par les fabricants et de les adapter à notre application.</p>
 <p>Nous prendrons ici un programme volontairement le plus simple possible. Il va juste être capable d'envoyer une séquence de valeurs sur une LED.</p>
 <p>Voici le programme complet :</p>
 <div class="sourceCode" startFrom="1"><table class="sourceCode c numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
@@ -182,7 +182,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 83
 84
 85
-</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="co">// Exemple d&#39;utilsation du DMA</span>
+</pre></td><td class="sourceCode"><pre><code class="sourceCode c"><span class="co">// Exemple d&#39;utilisation du DMA</span>
 <span class="co">// 2016 Brice Perruche, Pierre-Yves Rochat</span>
 
 <span class="pp">#include </span><span class="im">&quot;stm32f4xx.h&quot;</span>
@@ -253,7 +253,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     s_TimerInstance1.Instance = TIM1;
 
     HAL_TIM_Base_Init(&amp;s_TimerInstance1);
-    TIM1-&gt;DIER =  TIM_DMA_UPDATE;   <span class="co">// DMA Interrupt Enable</span>
+    TIM1-&gt;DIER =  TIM_DMA_UPDATE;   <span class="co">// Activation Interruption DMA</span>
     HAL_TIM_Base_Start(&amp;s_TimerInstance1);
 }
 
@@ -269,11 +269,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 }</code></pre></td></tr></table></div>
 <h2 id="explication-du-code">Explication du code</h2>
 <p>Le fabricant des STM32 propose un <em>Hardware Abstraction Layer</em> (HAL) qui facilite la mise en œuvre du microcontrôleur. Après son initialisation, les entrées-sorties utilisées sont choisies (ici seulement la broche PA5 en sortie). La procédure InitTrame place en mémoire des valeurs qui devront être envoyées sur la LED.</p>
-<p>La procédure <code>InitDMA</code> sélectionne un canal d'accès direct en mémoire, qui va effectuer des transferts entre la mémoire et un périphérique <em>(MEMORY_TO_PERIPH)</em>, avec incrémentation des adresses mémoire <em>(MINC_ENABLE)</em>, mais sans incrémentation des adresses périphériques <em>(DMA_PINC_DISABLE)</em>. La taille des valeurs transférées est 8 bits <em>(PDATAALIGN_BYTE et MDATAALIGN_BYTE)</em>. Le choix est ensuite fait de la priorité <em>(PRIORITY_VERY_HIGH)</em> et de l'usage de la mémoire tampon <em>(FIFOMODE_DISABLE)</em>. Le mode <em>BURST_SINGLE</em> indique que chaque transfert est individuel.</p>
+<p>La procédure <code>InitDMA</code> sélectionne un canal d'accès direct en mémoire, qui va effectuer des transferts entre la mémoire et un périphérique <em>(MEMORY_TO_PERIPH)</em>, avec incrémentation des adresses mémoire <em>(MINC_ENABLE)</em>, mais sans incrémentation des adresses périphériques <em>(DMA_PINC_DISABLE)</em>. La taille des valeurs transférées est de 8 bits <em>(PDATAALIGN_BYTE et MDATAALIGN_BYTE)</em>. Le choix est ensuite fait de la priorité <em>(PRIORITY_VERY_HIGH)</em> et de l'usage de la mémoire tampon <em>(FIFOMODE_DISABLE)</em>. Le mode <em>BURST_SINGLE</em> indique que chaque transfert est individuel.</p>
 <p>Finalement, un timer est utilisé pour cadencer le transfert. La procédure <code>InitTimer1</code> initialise le timer, l'associe avec le DMA et lance les opérations.</p>
 <p>On remarque que la boucle principale <code>while(1)</code> est vide : les transferts se font sans l'intervention du processeur.</p>
 <h2 id="rafraîchissement-de-grandes-matrices-de-led-avec-du-dma">Rafraîchissement de grandes matrices de LED avec du DMA</h2>
-<p>Les matrices de LED sont le plus souvent accédées par des registres série-parallèles. L'envoi des données successive est cadencé par l'horloge série. Dans le cas de l'usage du DMA, cette horloge est parfois générée par des circuits spécifiques disponibles dans certains microcontrôleurs. Elle peut aussi être générée par des valeurs successives en mémoire. Chaque donnée nécessitera alors deux cases mémoire, une avec l'horloge à 0, l'autre avec l'horloge à 1.</p>
+<p>Les matrices de LED sont le plus souvent accédées par des registres série-parallèles. L'envoi des données successives est cadencé par l'horloge série. Dans le cas de l'usage du DMA, cette horloge est parfois générée par des circuits spécifiques disponibles dans certains microcontrôleurs. Elle peut aussi être générée par des valeurs successives en mémoire. Chaque donnée nécessitera alors deux cases mémoire, une avec l'horloge à 0, l'autre avec l'horloge à 1.</p>
 <p>Avant de faire transférer les valeurs de la mémoire vers la matrice de LED par le DMA, il faut les générer en mémoire. Ce travail peut être fait par un programme, qui va par exemple produire des animations à partir d'un langage vectoriel. Lorsqu'il s'agit de signaux vidéos, c'est souvent un autre canal DMA qui va saisir les valeurs sur le signal vidéo et les placer en mémoire.</p>
 </body>
 </html>

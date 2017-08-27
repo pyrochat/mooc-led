@@ -65,7 +65,7 @@ Version de travail du 2017/03/22
 **5.2** **Les timers**  (YT)  [cours-html](../502/timers.html) [cours-pdf](../502/timers.pdf)   
 **5.3** **Rubans de LED adressables**  (PYR)  [cours-html](../503/rubans.html) [cours-pdf](../503/rubans.pdf) [dias-compact](../503/rubans-dia-compact.pdf)   
 **5.4** **Les afficheurs matriciels multiplexés**  (PYR)  [cours-html](../504/matrice-mux.html) [cours-pdf](../504/matrice-mux.pdf) [dias-compact](../504/matrice-mux-dia-compact.pdf)   
-**5.5** **Circuits logiques prorammables : FPGA**  (MLN)  [dias-compact](../505/fpga-dia-compact.pdf)   
+**5.5** **Circuits logiques programmables : FPGA**  (MLN)  [dias-compact](../505/fpga-dia-compact.pdf)   
 **5.6** **Correction Gamma**  (AT) *[Physique]*  [dias-compact](../506/gamma-dia-compact.pdf)                  
 
 ## Semaine 6 ##

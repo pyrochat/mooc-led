@@ -56,7 +56,7 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">Commander 2 LED avec 1 broche</h1>
-<div style="top:7cm; left:2cm; font-size:50pt;">
+<div style="top:7cm; left:2cm; width: 57.8cm; font-size:47pt;">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines}
  #define SORTIE_1 pinMode(P1_4, OUTPUT); digitalWrite(P1_4, 1)
  #define SORTIE_0 pinMode(P1_4, OUTPUT); digitalWrite(P1_4, 0)
@@ -69,7 +69,7 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">Commander 2 LED avec 1 broche</h1>
-<div style="top:7cm; left:2cm; width: 5cm; font-size:53pt;">
+<div style="top:7cm; left:2cm; width: 57.8cm; font-size:47pt;">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C .numberLines startFrom="4"}
 void loop() {
   uint8_t i;
@@ -84,7 +84,7 @@ void loop() {
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 </div>
-<!-- 2 --><div style="top:23.0cm; left:42cm; font-size:48pt; color:#e2001a">←  *intensité plus faible*</div>
+<!-- 2 --><div style="top:21.0cm; left:42cm; font-size:48pt; color:#e2001a">←  *intensité plus faible*</div>
 </section>
 
 <!-- Page demi, 3 arrivées -->

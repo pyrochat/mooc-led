@@ -90,7 +90,7 @@ Pierre-Yves Rochat
 <section>
 <!-- A -->
 <h1 class="en_tete">Programme de commande</h1>
-<div style="top: 6cm; left: 4cm; font-size: 38pt; line-height: 2;">
+<div style="top: 6cm; left: 2cm; width:57.8cm; font-size: 38pt; line-height: 2;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 #define SerClockOn P1OUT |= (1<<4)
 #define SerClockOff P1OUT &=~(1<<4)
@@ -125,7 +125,7 @@ int main() {
 <section>
 <!-- A -->
 <h1 class="en_tete">Générateur de caractères</h1>
-<div style="top: 6cm; left: 4cm; font-size: 38pt; line-height: 2;">
+<div style="top: 6cm; left: 4cm; width:55cm; font-size: 38pt; line-height: 2;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 const uint8_t GenCar [] { // tableau des pixels des caractères
   0b01111110, // caractère ’A’
@@ -167,7 +167,7 @@ const char *ptTexte; // pointeur vers le texte à afficher
 <section>
 <!-- A -->
 <h1 class="en_tete">Affichage d’un texte</h1>
-<div style="top: 5.2cm; left: 2.65cm; font-size: 36pt; line-height: 2; width:57.0cm;">
+<div style="top: 5.2cm; left: 2cm; width:57.8cm; font-size: 36pt; line-height: 2;">
 ~~~~~~~ { .c .numberLines startFrom="3" }
 int main(void) {
   init(); // initialisations...
@@ -208,7 +208,7 @@ int main(void) {
 <section>
 <!-- A -->
 <h1 class="en_tete">Mémorisation des pixels</h1>
-<div style="top: 6cm; left: 2.65cm; font-size: 40pt; line-height: 2; width:54cm;">
+<div style="top: 6cm; left: 2cm; width:57.8cm; font-size: 40pt; line-height: 2;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 #define NbLignes 8
 uint16_t Matrice[NbLignes]; // mots de 16 bits, correspondant à une ligne
@@ -249,7 +249,7 @@ void Diagonale() {
 <section>
 <!-- A -->
 <h1 class="en_tete">Affichage de la matrice</h1>
-<div style="top: 6cm; left: 4cm; font-size: 38pt; line-height: 2;">
+<div style="top: 6cm; left: 2cm; width:57.8cm; font-size: 38pt; line-height: 2;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 void AfficheMatrice() {
   for (uint16_t x=0; x<MaxX; x++) {
@@ -276,7 +276,7 @@ void AfficheMatrice() {
 <section>
 <!-- A -->
 <h1 class="en_tete">Mémorisation des pixels, autre organisation</h1>
-<div style="top: 6cm; left: 4cm; font-size: 38pt; line-height: 2; width:54cm;">
+<div style="top: 6cm; left: 2cm; width:57.8cm; font-size: 38pt; line-height: 2;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 #define NbColonnes 16
 uint8_t Matrice[NbColonnes]; // mots de 8 bits, correspondant à une colonne
@@ -290,7 +290,7 @@ uint8_t Matrice[NbColonnes]; // mots de 8 bits, correspondant à une colonne
 <section>
 <!-- A -->
 <h1 class="en_tete">Affichage de la matrice</h1>
-<div style="top: 6cm; left: 2.65cm; font-size: 38pt; line-height: 2; width:54cm;">
+<div style="top: 6cm; left: 2cm; width:57.8cm; font-size: 38pt; line-height: 2;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 #define NbColonnes 16
 uint8_t Matrice[NbColonnes]; // mots de 8 bits, correspondant à une colonne
@@ -326,7 +326,7 @@ void AfficheMatrice() {
 <!-- Ping -->
 <section>
 <!-- A -->
-<h1 class="en_tete">Ping !</h1>
+<h1 class="en_tete">Ping</h1>
 <div style="top: 6cm; left: 4cm; font-size: 38pt; line-height: 2; width:55cm;">
 ~~~~~~~ { .c .numberLines startFrom="1" }
 void Ping() {

@@ -159,7 +159,7 @@ Comment programmer plusieurs signaux PWM en même temps ?
 <section>
 <!-- A -->
 <h1 class="en_tete">Programmer plusieurs PW</h1>
-<div style="top:6.5cm; left:2cm; width: 5cm; font-size:41pt; width:55cm">
+<div style="top:6.5cm; left:2cm; width: 57.8cm; font-size:41pt;">
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines}
 uint8_t pwmLed; // valeur du PWM, 0 à 255 (8 bits)
@@ -173,7 +173,7 @@ void setup() { // Initialisations
 }
 
 void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
-  if ((cptPwm==0) && (pwmLed>0)) LedOn; // seulement pour une valeur positive
+  if ((cptPwm==0) && (pwmLed>0)) LedOn; // si la valeur est positive
   if (cptPwm==pwmLed) LedOff;
 
   cptPwm++; // passe automatiquement de 255 à 0 (overflow)
@@ -212,7 +212,7 @@ void loop() { // Boucle infinie, durée 39us (256 * 39us = ~10ms)
 <section>
 <!-- A -->
 <h1 class="en_tete">Séquences en PWM</h1>
-<div style="top:5.4cm; left:2cm; width: 5cm; font-size:38pt; width:55cm">
+<div style="top:5.4cm; left:2cm; width: 5cm; font-size:38pt; width:57.8cm">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.C  .numberLines}
 uint16_t pwmLed; // valeur du PWM, 0 à 255 (8 bits,16 bits pour les calculs)
 uint16_t cpt10ms = 0; // compteur des cycles, de 0 à 400 (par 10ms, total 4s)

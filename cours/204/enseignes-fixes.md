@@ -19,7 +19,7 @@ On peut construire de telles enseignes en fixant des LED sur des panneaux par ex
 
 ## Découper le motif en segments ##
 
-Mais on peut aller plus loin en découpant les motifs en différentes parties. Le terme “segment” sera souvent utilisé, bien que chaque partie n’a pas forcément la forme d’un segment de droite. Il est alors possible de commander chaque segment individuellement. On programmera alors des animations qui attirent l’œil, telles que des clignotements, des chenillards et même des variations continues d’intensité par PWM. Ce sujet sera abordé plus tard dans ce cours.
+Mais on peut aller plus loin en découpant les motifs en différentes parties. Le terme “segment” sera souvent utilisé, bien que chaque partie n’a pas forcément la forme d’un segment de droite. Il est alors possible de commander chaque segment individuellement. On programmera alors des animations qui attirent l’œil, telles que des clignotements, des chenillards et même des variations continues d’intensité par PWM (*Pulse Width Modulation* : ce sujet sera abordé plus tard dans ce cours).
 
 Voici comment l’enseigne de pharmacie peut être découpée en segments :
 
@@ -39,7 +39,7 @@ Voici le schéma utilisé, comportant un transistor NPN :
 
 Une sortie du microcontrôleur va commander la base du transistor à travers une résistance. Lorsque la sortie est à l’état 0, aucun courant ne peut circuler dans la base du transistor, qui est alors bloqué : aucun courant ne peut circuler entre le collecteur et l’émetteur, toutes les LED seront donc éteintes.
 
-La valeur de la résistance de base sera déterminée de telle manière à être certain que le transistor soit saturé lorsque la sortie du microcontrôleur est à l’état logique 1. Il faut tenir compte de la tension de la sortie à l’état 1, souvent 3.3 V ou 5 V, selon la tension d’alimentation du microcontrôleur. Il faut lui soustraire la tension base-émetteur du transistor, qui est de 0.7 V. On s’assurera ensuite que le courant de base soit supérieur au courant de collecteur divisé par le facteur d’amplification du transistor.
+La valeur de la résistance de base sera déterminée de telle manière à être certain que le transistor soit saturé lorsque la sortie du microcontrôleur est à l’état logique 1. Il faut tenir compte de la tension de la sortie à l’état 1, souvent 3.3 V ou 5 V, selon la tension d’alimentation du microcontrôleur. Il faut lui soustraire la tension base-émetteur du transistor, qui est de 0.7 V. On s’assurera ensuite que le courant de base soit supérieur au courant de collecteur divisé par le facteur d’amplification du transistor. Exemple : avec un signal logique de 3 V et une résistance de base de 1 kΩ, le courant de base sera (3 - 0.7) / 1k = 2.3 mA; un transistor dont le facteur de gain β vaut 100 sera alors saturé jusqu'à un courant de collecteur de 230 mA.
 
 Même si elles sont regroupées en un seul motif, commandé par une seule sortie d’un microcontrôleur, il est toujours nécessaire de placer une résistance de limitation de courant pour chaque LED. Il est fortement déconseillé de n’utiliser qu’une seule résistance en série avec plusieurs LED reliées en parallèle, car cette façon de faire ne permet pas d’ajuster le courant consommé par chacune des LED, donc la luminosité de l’afficheur ne sera pas constante. Ceci est dû au fait qu’il y a des dispersions importantes dans les caractéristiques des LED, même si elles sont du même fabricant et de la même série de production.
 
@@ -54,7 +54,7 @@ Ce schéma montre comment commander plusieurs LED en série avec un transistor, 
 
 Il faut connaître la tension de chaque LED pour choisir le nombre optimal de LED dans chaque branche. Les LED rouges ont en général une tension d’environ 2 V, alors que les vertes ou les bleues ont plutôt 3 V. Mais il existe plusieurs technologies pour produire des LED et il faut bien se renseigner concernant les LED choisies... ou simplement les mesurer !
 
-Avec une tension d’alimentation de 12 V, on peut alimenter par exemple 5 LED rouges ou 3 LED vertes. Notez qu’avec un seul transistor faible signal, il est possible de commander un grand nombre de LED. Par exemple, un BC337, dont le courant maximal est d’environ 500 mA (cette valeur varie selon les fabricants) permet de commander jusqu’à environ 250 LED rouges avec cette technique : chaque groupe de 5 LED en série reçoit 10 mA et il est possible de placer 50 branches.
+Avec une tension d’alimentation de 12 V, on peut alimenter par exemple 5 LED rouges ou 3 LED vertes. Notez qu’avec un seul transistor faible signal, il est possible de commander un grand nombre de LED. Par exemple, un BC337, dont le courant de collecteur maximal est d’environ 500 mA (cette valeur varie selon les fabricants) permet de commander jusqu’à environ 250 LED rouges avec cette technique : chaque groupe de 5 LED en série reçoit 10 mA et il est possible de placer 50 branches.
 
 Prenons un autre exemple. Avec une alimentation de PC portable, fournissant 16 V et un maximum de 4.5 A, combien de LED vertes est-il possible de commander ? La tension aux bornes de chaque LED doit être d’environ 3 V, pour un courant de 10 mA.
 

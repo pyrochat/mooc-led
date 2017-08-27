@@ -9,7 +9,7 @@ On se souvient que la matière est composée d’**atomes**. Les atomes ont un n
 
 ![Structure d’un atome](images/atome.svg "Structure d’un atome"){ width=55% }
 
-Dans certains les matériaux, les électrons de la dernière couche sont capables de se déplacer d’un atome à l’autre. On parle d’**électrons libres**. Ce mouvement est généralement désordonné. Lors qu’il est ordonné, on parle de **courant électrique**.
+Dans certains matériaux, les électrons de la dernière couche sont capables de se déplacer d’un atome à l’autre. On parle d’**électrons libres**. Ce mouvement est généralement désordonné. Lors qu’il est ordonné, on parle de **courant électrique**.
 
 Les électrons ayant une charge négative, ils se **déplacent** du *moins* vers le *plus*. Ils se déplacent lentement, de l’ordre de quelques centimètres par heure.
 
@@ -39,7 +39,7 @@ Dans les enseignes et afficheurs à LED, la tension est généralement inférieu
 
 La tension électrique se mesure toujours entre deux points. Souvent, un point est considéré comme un point de référence. Il s’appelle la **masse** (*ground*). On peut alors dire, par abus de langage, que la tension *en un point* à telle valeur : c’est en fait la tension entre ce point et la masse.
 
-Comme la tension se mesure entre deux point, c’est facile de la mesurer sans modifier le circuit. L’appareil s’appelle un voltmètre. Les multi-mètres proposent toujours cette fonction.
+Comme la tension se mesure entre deux points, c’est facile de la mesurer sans modifier le circuit. L’appareil s’appelle un voltmètre. Les multi-mètres proposent toujours cette fonction.
 
 Le **courant électrique** s’exprime en **Ampère**, noté A.
 
@@ -84,7 +84,7 @@ Dans le schéma ci-dessous, deux résistances ont été montées *en parallèle*
 
 U = U~1~ = U~2~ = R~1~ × I~1~ = R~2~ × I~2~
 
-Quel est alors la valeur du courant I ? On admet facilement que les électrons ne peuvent pas *sortir* du fils. C’est la loi des noeuds de Kirchhoff, qui dit que la somme des intensités des courants qui entrent par un nœud est égale à la somme des intensités des courants qui sortent du même nœud.
+Quel est alors la valeur du courant I ? On admet facilement que les électrons ne peuvent pas *sortir* des fils. C’est la loi des noeuds de Kirchhoff, qui dit que la somme des intensités des courants qui entrent par un nœud est égale à la somme des intensités des courants qui sortent du même nœud.
 
 On a donc I = I~1~ + I~2~
 

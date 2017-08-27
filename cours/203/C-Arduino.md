@@ -13,7 +13,7 @@ Il faut différencier trois significations différentes du mot Arduino :
 * un environnement de développement
 * une librairie pour microcontrôleurs.
 
-`1.` L’Arduino est une **carte à microcontrôleurs**, plus exactement une famille de cartes. L’**Arduino UNO** est la plus connue. Elle contient un microcontrôleur AVR du fabricant Atmel, le modèle ATmega328. Un câble USB permet de la brancher sur un PC, principalement pour déposer un programme dans le microcontrôleur. Les cartes Arduino sont *open hardware* : leurs plans sont publiques. Comme elles sont produites par de nombreux fabricants, leur prix est très favorable.
+`1.` L’Arduino est une **carte à microcontrôleurs**, plus exactement une famille de cartes. L’**Arduino UNO** est la plus connue. Elle contient un microcontrôleur AVR du fabricant Atmel, le modèle ATmega328. Un câble USB permet de la brancher sur un PC, principalement pour déposer un programme dans le microcontrôleur. Les cartes Arduino sont *open hardware* : leurs plans sont publics. Comme elles sont produites par de nombreux fabricants, leur prix est très favorable.
 
 Deux rangées de connecteurs permettent d’accéder aux broches du microcontrôleur. Beaucoup de *cartes filles* ou *shields* sont proposés, pour toutes sortes d’applications. Ces connecteurs sont devenus de véritables standard *de facto*. Bien d’autres microcontrôleurs sont disponibles avec la même connectique, donnant la possibilité d’utiliser les nombreux *shields* disponibles.
 
@@ -51,12 +51,12 @@ La procédure `void loop()` est appelée à la suite de `setup()`. Mais, contrai
 
 ## Organigramme ##
 
-Une des manière de représenter le déroulement d’un programme est l’organigramme.
+Une des manières de représenter le déroulement d’un programme est l’organigramme.
 Voici donc l’organigramme général d’un programme Arduino :
 
 ![Organigramme d’un programme Arduino](images/organi-arduino-120dpi.png "Organigramme d’un programme Arduino"){ width=7cm }
 
-L’organigramme à gauche de la figure correspond à ce que voit l’utilisateur. Mais en fait, derrière l’usage de `setup()` et `loop()` proposé par Arduino, des instructions cachées s’exécutent avant chacune de ces procédures, comme le montre l’organigramme de droite. C’est dans la procédure `main()` produite par l’environnement Arduino que ces instructions sont ajoutées.
+L’organigramme à gauche de la figure correspond à ce que voit l’utilisateur. Mais en fait, derrière l’usage de `setup()` et `loop()` proposé par Arduino, des instructions cachées s’exécutent avant chacune de ces procédures, comme le montre l’organigramme de droite. C’est dans la procédure `main()` générée automatiquement par l’environnement Arduino que ces instructions sont ajoutées.
 
 Il faut noter que la procédure `loop()` a une durée d’exécution qui peut varier considérablement d’un programme à un autre. Pour une enseigne ou un afficheur à LED, elle pourrait par exemple durer le temps d’un cycle complet de l’animation. Mais elle pourrait tout aussi bien durer un temps très court, par exemple un temps fixe de 10 µs. Tout dépendra de la manière de programmer.
 

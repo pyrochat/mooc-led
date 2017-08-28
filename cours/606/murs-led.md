@@ -60,7 +60,7 @@ Chaque panneau est constitué de **modules** carrés ou rectangulaires. On trouv
 
 Par exemple, les modules d'un écran P10 (*pitch* de 10 mm) ont souvent une taille de 16 cm, chaque module comportant 16 × 16 LED. Le panneaux est alors composé de 4 × 4 modules.
 
-![Organisation d'un panneau en modules](images/panneau-modules.svg "Organisation d'un panneau en modules"){ width=100% }
+![Organisation d'un panneau en modules](images/module-cabl3.svg "Organisation d'un panneau en modules"){ width=100% }
 
 Le circuit situé sur chaque panneau qui extrait sa partie de l'image est aussi responsable d'envoyer cette image sur les registres des modules. C'est encore la FPGA qui s'en occupe. Dans l'exemple d'un panneau organisé en 64 pixels, s'il y a 4 lignes sur un même registre, il pouvoir envoyer 4 × 64 valeurs binaires en 39 μs, ce qui nécessite une horloge de 4 × 64 / 39 μs = 6.5 MHz.
 

@@ -38,7 +38,7 @@ Nous sommes quatre enseignants à vous présenter ce MOOC :
 
 Chaque semaine, six vidéos de cours vous seront présentées. Voici un plan du cours, mettant en évidence plusieurs filières :
 
-![Plan du cours, avec ses filières](images/structure-coul-cadre-b.svg "Plan du cours, avec ses filières"){ width=100% }
+![Plan du cours, avec ses filières](images/structure-coul-cadre.svg "Plan du cours, avec ses filières"){ width=90% }
 
 Le sujet principal du cours est bien les enseignes et afficheurs à LED. Quelques leçons sont spécifiques à ce domaine, notés en noir. Mais vous voyez aussi en couleur trois autres groupes de leçons.
 
